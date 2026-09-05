@@ -1,0 +1,102 @@
+{
+  "year": 2022,
+  "metrics": [
+    {
+      "policy": "baseline",
+      "minute_observations": 58080,
+      "negative_target_minutes": 33213,
+      "negative_target_share": 0.571849173553719,
+      "cash_mismatch_minutes": 17418,
+      "cash_mismatch_share": 0.299896694214876,
+      "frozen_order_events": 684,
+      "next_day_pending_events": 112,
+      "blocked_sell_events": 237,
+      "blocked_sell_units_requested": 474,
+      "first_blocked_sale": {
+        "policy": "baseline",
+        "timestamp": "2022-01-04 14:16:00",
+        "trading_day": "2022-01-04",
+        "trigger": "frozen_order",
+        "signed_target": -2,
+        "cash_target": 0,
+        "before": 2,
+        "after": 2,
+        "buy": 0,
+        "sell": 0,
+        "blocked_sell": 2,
+        "unmapped_short_target": 2,
+        "settled": 0,
+        "locked": 2
+      }
+    },
+    {
+      "policy": "slow_conflict_half",
+      "minute_observations": 58080,
+      "negative_target_minutes": 33213,
+      "negative_target_share": 0.571849173553719,
+      "cash_mismatch_minutes": 18498,
+      "cash_mismatch_share": 0.31849173553719007,
+      "frozen_order_events": 735,
+      "next_day_pending_events": 122,
+      "blocked_sell_events": 268,
+      "blocked_sell_units_requested": 407,
+      "first_blocked_sale": {
+        "policy": "slow_conflict_half",
+        "timestamp": "2022-01-04 14:16:00",
+        "trading_day": "2022-01-04",
+        "trigger": "frozen_order",
+        "signed_target": -2,
+        "cash_target": 0,
+        "before": 2,
+        "after": 2,
+        "buy": 0,
+        "sell": 0,
+        "blocked_sell": 2,
+        "unmapped_short_target": 2,
+        "settled": 0,
+        "locked": 2
+      }
+    }
+  ],
+  "initial_inventory": {
+    "baseline": {
+      "trading_day": "2021-12-31",
+      "settled": 2,
+      "locked": 0,
+      "desired": 2
+    },
+    "slow_conflict_half": {
+      "trading_day": "2021-12-31",
+      "settled": 2,
+      "locked": 0,
+      "desired": 2
+    }
+  },
+  "final_inventory": {
+    "baseline": {
+      "trading_day": "2022-12-30",
+      "settled": 0,
+      "locked": 2,
+      "desired": 2
+    },
+    "slow_conflict_half": {
+      "trading_day": "2022-12-30",
+      "settled": 0,
+      "locked": 2,
+      "desired": 2
+    }
+  },
+  "prior_receipt_sha256": "b1b84ca838ab9cef6ddad09b863c5454df3d82afedbe2055bb49ea9a4980fbdb",
+  "no_prices_or_returns_loaded": true,
+  "tradable_pnl_computed": false,
+  "input_hashes": {
+    "artifacts/execution_counterexamples/sessions/2022/orders.csv.gz": "f0f55c39746cb9813e11ac9f24be850f3a0147b6aee4f8d6bc1ffa837f97bedc",
+    "artifacts/execution_counterexamples/sessions/2022/minute_marks.csv.gz": "5f83ceaaa4cf0776852abedef01838ddefb118cf3b10ec78402b5b2529ff4e66",
+    "artifacts/execution_counterexamples/sessions/2022/snapshot_boundaries.json": "eb4ad4ce737b2dfde86a87fea30e007bd9043efd7f9f146f4225479465a494ef"
+  },
+  "source_hashes": {
+    "src/star50_filter/market_admission.py": "43497774d23018a04889a80eb3b709a037ca5048988eccf5b93bffca1b90c2fc",
+    "scripts/audit_market_admission.py": "f947b2cbb5584067dce05157f127a8be1b427033e389aa3463d9f1aef468623c",
+    "docs/research/market_admission/preregistration.json": "d7bcdd0b3ae1462dd431cdac9774a89631edafea3faba3e8e4a09ee070b5a982"
+  }
+}

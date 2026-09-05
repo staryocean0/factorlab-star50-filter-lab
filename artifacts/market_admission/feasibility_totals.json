@@ -1,0 +1,337 @@
+{
+  "metrics": [
+    {
+      "minute_observations": 290876,
+      "negative_target_minutes": 157702,
+      "cash_mismatch_minutes": 81246,
+      "frozen_order_events": 3485,
+      "next_day_pending_events": 529,
+      "blocked_sell_events": 1178,
+      "blocked_sell_units_requested": 2356,
+      "policy": "baseline",
+      "negative_target_share": 0.5421622959611656,
+      "cash_mismatch_share": 0.27931489706954166
+    },
+    {
+      "minute_observations": 290876,
+      "negative_target_minutes": 157702,
+      "cash_mismatch_minutes": 85397,
+      "frozen_order_events": 3755,
+      "next_day_pending_events": 563,
+      "blocked_sell_events": 1333,
+      "blocked_sell_units_requested": 2112,
+      "policy": "slow_conflict_half",
+      "negative_target_share": 0.5421622959611656,
+      "cash_mismatch_share": 0.2935855828600503
+    }
+  ],
+  "yearly": [
+    {
+      "year": 2021,
+      "metrics": [
+        {
+          "policy": "baseline",
+          "minute_observations": 58320,
+          "negative_target_minutes": 29450,
+          "negative_target_share": 0.5049725651577504,
+          "cash_mismatch_minutes": 15740,
+          "cash_mismatch_share": 0.26989026063100136,
+          "frozen_order_events": 709,
+          "next_day_pending_events": 100,
+          "blocked_sell_events": 232,
+          "blocked_sell_units_requested": 464,
+          "first_blocked_sale": {
+            "policy": "baseline",
+            "timestamp": "2021-01-04 13:41:00",
+            "trading_day": "2021-01-04",
+            "trigger": "frozen_order",
+            "signed_target": -2,
+            "cash_target": 0,
+            "before": 2,
+            "after": 2,
+            "buy": 0,
+            "sell": 0,
+            "blocked_sell": 2,
+            "unmapped_short_target": 2,
+            "settled": 0,
+            "locked": 2
+          }
+        },
+        {
+          "policy": "slow_conflict_half",
+          "minute_observations": 58320,
+          "negative_target_minutes": 29450,
+          "negative_target_share": 0.5049725651577504,
+          "cash_mismatch_minutes": 16375,
+          "cash_mismatch_share": 0.280778463648834,
+          "frozen_order_events": 764,
+          "next_day_pending_events": 105,
+          "blocked_sell_events": 256,
+          "blocked_sell_units_requested": 423,
+          "first_blocked_sale": {
+            "policy": "slow_conflict_half",
+            "timestamp": "2021-01-04 13:41:00",
+            "trading_day": "2021-01-04",
+            "trigger": "frozen_order",
+            "signed_target": -1,
+            "cash_target": 0,
+            "before": 2,
+            "after": 2,
+            "buy": 0,
+            "sell": 0,
+            "blocked_sell": 2,
+            "unmapped_short_target": 1,
+            "settled": 0,
+            "locked": 2
+          }
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "metrics": [
+        {
+          "policy": "baseline",
+          "minute_observations": 58080,
+          "negative_target_minutes": 33213,
+          "negative_target_share": 0.571849173553719,
+          "cash_mismatch_minutes": 17418,
+          "cash_mismatch_share": 0.299896694214876,
+          "frozen_order_events": 684,
+          "next_day_pending_events": 112,
+          "blocked_sell_events": 237,
+          "blocked_sell_units_requested": 474,
+          "first_blocked_sale": {
+            "policy": "baseline",
+            "timestamp": "2022-01-04 14:16:00",
+            "trading_day": "2022-01-04",
+            "trigger": "frozen_order",
+            "signed_target": -2,
+            "cash_target": 0,
+            "before": 2,
+            "after": 2,
+            "buy": 0,
+            "sell": 0,
+            "blocked_sell": 2,
+            "unmapped_short_target": 2,
+            "settled": 0,
+            "locked": 2
+          }
+        },
+        {
+          "policy": "slow_conflict_half",
+          "minute_observations": 58080,
+          "negative_target_minutes": 33213,
+          "negative_target_share": 0.571849173553719,
+          "cash_mismatch_minutes": 18498,
+          "cash_mismatch_share": 0.31849173553719007,
+          "frozen_order_events": 735,
+          "next_day_pending_events": 122,
+          "blocked_sell_events": 268,
+          "blocked_sell_units_requested": 407,
+          "first_blocked_sale": {
+            "policy": "slow_conflict_half",
+            "timestamp": "2022-01-04 14:16:00",
+            "trading_day": "2022-01-04",
+            "trigger": "frozen_order",
+            "signed_target": -2,
+            "cash_target": 0,
+            "before": 2,
+            "after": 2,
+            "buy": 0,
+            "sell": 0,
+            "blocked_sell": 2,
+            "unmapped_short_target": 2,
+            "settled": 0,
+            "locked": 2
+          }
+        }
+      ]
+    },
+    {
+      "year": 2023,
+      "metrics": [
+        {
+          "policy": "baseline",
+          "minute_observations": 58080,
+          "negative_target_minutes": 32285,
+          "negative_target_share": 0.5558712121212122,
+          "cash_mismatch_minutes": 17254,
+          "cash_mismatch_share": 0.29707300275482096,
+          "frozen_order_events": 712,
+          "next_day_pending_events": 106,
+          "blocked_sell_events": 242,
+          "blocked_sell_units_requested": 484,
+          "first_blocked_sale": {
+            "policy": "baseline",
+            "timestamp": "2023-01-10 10:36:00",
+            "trading_day": "2023-01-10",
+            "trigger": "frozen_order",
+            "signed_target": -2,
+            "cash_target": 0,
+            "before": 2,
+            "after": 2,
+            "buy": 0,
+            "sell": 0,
+            "blocked_sell": 2,
+            "unmapped_short_target": 2,
+            "settled": 0,
+            "locked": 2
+          }
+        },
+        {
+          "policy": "slow_conflict_half",
+          "minute_observations": 58080,
+          "negative_target_minutes": 32285,
+          "negative_target_share": 0.5558712121212122,
+          "cash_mismatch_minutes": 18044,
+          "cash_mismatch_share": 0.3106749311294766,
+          "frozen_order_events": 764,
+          "next_day_pending_events": 111,
+          "blocked_sell_events": 275,
+          "blocked_sell_units_requested": 422,
+          "first_blocked_sale": {
+            "policy": "slow_conflict_half",
+            "timestamp": "2023-01-10 10:36:00",
+            "trading_day": "2023-01-10",
+            "trigger": "frozen_order",
+            "signed_target": -1,
+            "cash_target": 0,
+            "before": 2,
+            "after": 2,
+            "buy": 0,
+            "sell": 0,
+            "blocked_sell": 2,
+            "unmapped_short_target": 1,
+            "settled": 0,
+            "locked": 2
+          }
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "metrics": [
+        {
+          "policy": "baseline",
+          "minute_observations": 58080,
+          "negative_target_minutes": 32605,
+          "negative_target_share": 0.5613808539944903,
+          "cash_mismatch_minutes": 15577,
+          "cash_mismatch_share": 0.2681990358126722,
+          "frozen_order_events": 680,
+          "next_day_pending_events": 113,
+          "blocked_sell_events": 238,
+          "blocked_sell_units_requested": 476,
+          "first_blocked_sale": {
+            "policy": "baseline",
+            "timestamp": "2024-01-02 13:01:00",
+            "trading_day": "2024-01-02",
+            "trigger": "frozen_order",
+            "signed_target": -2,
+            "cash_target": 0,
+            "before": 2,
+            "after": 2,
+            "buy": 0,
+            "sell": 0,
+            "blocked_sell": 2,
+            "unmapped_short_target": 2,
+            "settled": 0,
+            "locked": 2
+          }
+        },
+        {
+          "policy": "slow_conflict_half",
+          "minute_observations": 58080,
+          "negative_target_minutes": 32605,
+          "negative_target_share": 0.5613808539944903,
+          "cash_mismatch_minutes": 16117,
+          "cash_mismatch_share": 0.2774965564738292,
+          "frozen_order_events": 734,
+          "next_day_pending_events": 118,
+          "blocked_sell_events": 266,
+          "blocked_sell_units_requested": 409,
+          "first_blocked_sale": {
+            "policy": "slow_conflict_half",
+            "timestamp": "2024-01-02 13:01:00",
+            "trading_day": "2024-01-02",
+            "trigger": "frozen_order",
+            "signed_target": -1,
+            "cash_target": 0,
+            "before": 2,
+            "after": 2,
+            "buy": 0,
+            "sell": 0,
+            "blocked_sell": 2,
+            "unmapped_short_target": 1,
+            "settled": 0,
+            "locked": 2
+          }
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "metrics": [
+        {
+          "policy": "baseline",
+          "minute_observations": 58316,
+          "negative_target_minutes": 30149,
+          "negative_target_share": 0.5169936209616571,
+          "cash_mismatch_minutes": 15257,
+          "cash_mismatch_share": 0.2616263118183689,
+          "frozen_order_events": 700,
+          "next_day_pending_events": 98,
+          "blocked_sell_events": 229,
+          "blocked_sell_units_requested": 458,
+          "first_blocked_sale": {
+            "policy": "baseline",
+            "timestamp": "2025-01-03 10:06:00",
+            "trading_day": "2025-01-03",
+            "trigger": "frozen_order",
+            "signed_target": -2,
+            "cash_target": 0,
+            "before": 2,
+            "after": 2,
+            "buy": 0,
+            "sell": 0,
+            "blocked_sell": 2,
+            "unmapped_short_target": 2,
+            "settled": 0,
+            "locked": 2
+          }
+        },
+        {
+          "policy": "slow_conflict_half",
+          "minute_observations": 58316,
+          "negative_target_minutes": 30149,
+          "negative_target_share": 0.5169936209616571,
+          "cash_mismatch_minutes": 16363,
+          "cash_mismatch_share": 0.2805919473214898,
+          "frozen_order_events": 758,
+          "next_day_pending_events": 107,
+          "blocked_sell_events": 268,
+          "blocked_sell_units_requested": 451,
+          "first_blocked_sale": {
+            "policy": "slow_conflict_half",
+            "timestamp": "2025-01-03 10:06:00",
+            "trading_day": "2025-01-03",
+            "trigger": "frozen_order",
+            "signed_target": -2,
+            "cash_target": 0,
+            "before": 1,
+            "after": 1,
+            "buy": 0,
+            "sell": 0,
+            "blocked_sell": 1,
+            "unmapped_short_target": 2,
+            "settled": 0,
+            "locked": 1
+          }
+        }
+      ]
+    }
+  ],
+  "source": "sealed annual summaries",
+  "tradable_pnl_computed": false
+}

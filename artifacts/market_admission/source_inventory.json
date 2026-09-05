@@ -1,0 +1,211 @@
+{
+  "input_receipt_sha256": "84d394d53ab56059635f26f257e84df07ab9a147288be6daadeec1417dae7af0",
+  "metadata_only": true,
+  "views": [
+    {
+      "view": "1m_official",
+      "rows": 317280,
+      "missing_provenance_fields": [
+        "first_seen_at",
+        "received_at",
+        "revision_id",
+        "source_sent_at"
+      ]
+    },
+    {
+      "view": "5m_offset_0",
+      "rows": 63456,
+      "missing_provenance_fields": [
+        "first_seen_at",
+        "received_at",
+        "revision_id",
+        "source_sent_at"
+      ]
+    },
+    {
+      "view": "5m_offset_1",
+      "rows": 60812,
+      "missing_provenance_fields": [
+        "first_seen_at",
+        "received_at",
+        "revision_id",
+        "source_sent_at"
+      ]
+    },
+    {
+      "view": "5m_offset_2",
+      "rows": 60812,
+      "missing_provenance_fields": [
+        "first_seen_at",
+        "received_at",
+        "revision_id",
+        "source_sent_at"
+      ]
+    },
+    {
+      "view": "5m_offset_3",
+      "rows": 60812,
+      "missing_provenance_fields": [
+        "first_seen_at",
+        "received_at",
+        "revision_id",
+        "source_sent_at"
+      ]
+    },
+    {
+      "view": "5m_offset_4",
+      "rows": 60812,
+      "missing_provenance_fields": [
+        "first_seen_at",
+        "received_at",
+        "revision_id",
+        "source_sent_at"
+      ]
+    },
+    {
+      "view": "15m_offset_5",
+      "rows": 18508,
+      "missing_provenance_fields": [
+        "first_seen_at",
+        "received_at",
+        "revision_id",
+        "source_sent_at"
+      ]
+    },
+    {
+      "view": "15m_offset_10",
+      "rows": 18508,
+      "missing_provenance_fields": [
+        "first_seen_at",
+        "received_at",
+        "revision_id",
+        "source_sent_at"
+      ]
+    },
+    {
+      "view": "30m_offset_15",
+      "rows": 7932,
+      "missing_provenance_fields": [
+        "first_seen_at",
+        "received_at",
+        "revision_id",
+        "source_sent_at"
+      ]
+    },
+    {
+      "view": "60m_offset_30",
+      "rows": 2644,
+      "missing_provenance_fields": [
+        "first_seen_at",
+        "received_at",
+        "revision_id",
+        "source_sent_at"
+      ]
+    },
+    {
+      "view": "60m_offset_45",
+      "rows": 2644,
+      "missing_provenance_fields": [
+        "first_seen_at",
+        "received_at",
+        "revision_id",
+        "source_sent_at"
+      ]
+    },
+    {
+      "view": "daily_noon_close_1130",
+      "rows": 1322,
+      "missing_provenance_fields": [
+        "first_seen_at",
+        "received_at",
+        "revision_id",
+        "source_sent_at"
+      ]
+    },
+    {
+      "view": "daily_proxy_close_1400",
+      "rows": 1322,
+      "missing_provenance_fields": [
+        "first_seen_at",
+        "received_at",
+        "revision_id",
+        "source_sent_at"
+      ]
+    },
+    {
+      "view": "daily_proxy_close_1430",
+      "rows": 1322,
+      "missing_provenance_fields": [
+        "first_seen_at",
+        "received_at",
+        "revision_id",
+        "source_sent_at"
+      ]
+    }
+  ],
+  "source_audits": [
+    {
+      "year": 2021,
+      "sha256": "f07c852ed5e53d74fe2fc84e6442c60048c962abecad5ccbd9f21f9f28c7bc31",
+      "minute_rows": 58320,
+      "synthetic_minutes": 244,
+      "availability_offset_patterns": {
+        "+08:00": 58076,
+        "59:00Z": 243,
+        "20:00Z": 1
+      }
+    },
+    {
+      "year": 2022,
+      "sha256": "fe16c2790f5407387cbf3a276b81410835127bee62b9a61483276729c2e2071e",
+      "minute_rows": 58080,
+      "synthetic_minutes": 244,
+      "availability_offset_patterns": {
+        "+08:00": 57836,
+        "59:00Z": 242,
+        "01:00Z": 1,
+        "02:00Z": 1
+      }
+    },
+    {
+      "year": 2023,
+      "sha256": "40d0219603fab5436b3ac0549fb04c522cba1a8c2eedc711bfbf3419295f6916",
+      "minute_rows": 58080,
+      "synthetic_minutes": 242,
+      "availability_offset_patterns": {
+        "+08:00": 57838,
+        "59:00Z": 242
+      }
+    },
+    {
+      "year": 2024,
+      "sha256": "2e0b82b663c4ece11645e34e0db42708bca700b1ed7667752b0d82b849896a07",
+      "minute_rows": 58080,
+      "synthetic_minutes": 247,
+      "availability_offset_patterns": {
+        "+08:00": 57833,
+        "59:00Z": 243,
+        "57:00Z": 1,
+        "03:00Z": 1,
+        "07:00Z": 1,
+        "12:00Z": 1
+      }
+    },
+    {
+      "year": 2025,
+      "sha256": "57f2c3f71ff4973853ba51e1f6652a7aa4e94e6b148423d59863f853648419b5",
+      "minute_rows": 58320,
+      "synthetic_minutes": 243,
+      "availability_offset_patterns": {
+        "+08:00": 58077,
+        "59:00Z": 243
+      }
+    }
+  ],
+  "legacy_availability_status": "unproven",
+  "market_realtime_publication_exists": true,
+  "source_or_receiver_archive_delivered": false,
+  "raw_etf_execution_history_delivered": false,
+  "intraday_strategy_admitted": false,
+  "production_authority": false
+}

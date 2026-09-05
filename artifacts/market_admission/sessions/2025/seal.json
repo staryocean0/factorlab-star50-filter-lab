@@ -1,0 +1,12 @@
+{
+  "year": 2025,
+  "prior_receipt_sha256": "7d11fb5e5f21a5f3b7cae2fc141260eaed1f072bd2a28a3bf4f926c4abbbbc43",
+  "protocol_sha256": "d7bcdd0b3ae1462dd431cdac9774a89631edafea3faba3e8e4a09ee070b5a982",
+  "files": {
+    "analysis.json": "daabb4d7106518dc69807b49030b28a9bfd10a25020e34d374f71cbb5029b7f2",
+    "first_counterexample.svg": "5bfa38eb4732e192d6892aca630a165f664aeeb5774ef807422f1493865c118c",
+    "inventory_minutes.csv.gz": "6e156c2df382aba6dd6d10ecc584bee403e59da0a8e04aff3ac9623cc28c8898",
+    "requests.csv.gz": "657cbc83b718be3134a1c5c023bb3a87565e916dc62a539462aae55a818b12d3",
+    "summary.json": "72dc3b4108d6764017b6374ebba7b892f0cdd9e25657a0ab01a2e095e045a494"
+  }
+}
