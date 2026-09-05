@@ -1,0 +1,42 @@
+{
+  "schema": "star50_market_admission@1",
+  "parent_commit": "75cf370e12f8bc1521d917fb6e8f55afa5c13d1f",
+  "lineage": "Descendant infrastructure audit; preserve both prior research bundles and signal code byte-for-byte.",
+  "objective": "Separate historical market publication, receiver observability, and tradable account feasibility. Do not calculate ETF or option returns from index prices.",
+  "data_roles": {
+    "2020-07-23/2020-12-31": "existing_warmup_metadata_only",
+    "2021-01-01/2025-12-31": "consumed_repeat_audit",
+    "2026-01-01/onward": "no_market_carrier_read_no_selection"
+  },
+  "access": {
+    "allow": ["this repository", "its sealed order and minute-clock artifacts", "generic upstream provenance discovery", "official exchange and fund-manager product/rule/data documentation"],
+    "deny": ["sibling strategy contents and results", "Layer4_options_MO_execution", "live registries", "credentials", "paid subscriptions or purchases", "external messages"]
+  },
+  "frozen_orders": {
+    "source": "artifacts/execution_counterexamples/sessions/{year}",
+    "view": 0,
+    "scenario": "delay_1m_observed",
+    "policies": ["baseline", "slow_conflict_half"],
+    "new_signal_computations": 0,
+    "new_strategy_candidates": 0,
+    "selection_budget": 0
+  },
+  "cash_inventory_diagnostic": {
+    "instrument_reference": "588000.SH domestic equity ETF, secondary-market cash account only",
+    "unit": "abstract inventory unit, not portfolio weight, yuan, or an asserted executable share lot",
+    "desired_signed_units": "2 * existing q_after",
+    "desired_cash_units": "max(desired_signed_units, 0); clipping is a changed-policy feasibility diagnostic, never an equivalent long/short strategy",
+    "initial_units": 0,
+    "settlement": "Purchases locked until first observed minute of next trading day; only settled units may be sold. Inventory carries across years.",
+    "event_schedule": "Every frozen order timestamp; plus first observed minute of a new trading day only when pending cash target differs from inventory. Latest target supersedes stale targets; no end-of-day forced sale of locked units.",
+    "optimistic_assumptions": ["unlimited cash", "immediate complete fills of eligible units", "no spread, fee, price limit, suspension, capacity or queue restrictions"],
+    "prohibited_outputs": ["ETF CAGR", "ETF MDD", "tradable PnL", "production eligibility"]
+  },
+  "option_scope": "Product existence and required-data mapping only: STAR50 ETF options begin 2023-06-05. No option strategy, strike search, simulated option price or Layer4 implementation.",
+  "reported_fields": ["source rows and missing provenance", "signed short-holding minute share", "cash-target inventory mismatch minute share", "blocked sale events and units", "cross-year inventory state", "first mechanical counterexample", "first option eligibility date"],
+  "sessions": [2021, 2022, 2023, 2024, 2025],
+  "review": "Prepare one annual order-feasibility pack, manually inspect event and figure, seal chained receipt, then open next year. These are repeat audits, not new blind tests. Whole-policy return optimization is out of scope.",
+  "admission_levels": ["unproven", "source_send_replay", "receiver_replay"],
+  "hard_gates": ["timezone-aware distinct clocks", "first/revised version retention and evidence hashes", "no post-decision revision selected", "complete recursive feature prefix", "raw tradable product quotes", "historical instrument and account constraints"],
+  "authorities": {"fresh_oos": false, "production_authority": false, "promotion": false}
+}
