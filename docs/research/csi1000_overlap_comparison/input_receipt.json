@@ -1,0 +1,16 @@
+{
+  "source": "/home/starryocean/\u684c\u9762/\u91cf\u5316/unified_datahub/.runtime/live/exports/factorlab_unified_index_kline_v3_20260824",
+  "export_id": "factorlab_unified_index_kline_v3_20260824",
+  "symbols": {
+    "csi1000": "000852.SH",
+    "star50": "000688.SH"
+  },
+  "overlap_days": {
+    "n": 1476,
+    "first": "2020-07-23",
+    "last": "2026-08-21"
+  },
+  "comparison_basis": "same trading days, native frequency bar count H=16, no 2015-2020 CSI-only history",
+  "production_authority": false,
+  "strategy_selection_authority": false
+}

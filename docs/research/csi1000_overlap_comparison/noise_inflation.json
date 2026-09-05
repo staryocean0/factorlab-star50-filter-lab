@@ -1,0 +1,12 @@
+{
+  "csi1000": {
+    "n_days": 1476,
+    "median_1m_path_over_5m_net": 1.9734661416786867,
+    "p90_1m_path_over_5m_net": 2.5161328246890635
+  },
+  "star50": {
+    "n_days": 1476,
+    "median_1m_path_over_5m_net": 2.2811684184783783,
+    "p90_1m_path_over_5m_net": 2.8775203002217467
+  }
+}

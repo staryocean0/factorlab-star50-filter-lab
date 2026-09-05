@@ -1,0 +1,38 @@
+{
+  "study_id": "star50_filter_frequency_v1",
+  "instrument": "000688.SH",
+  "roles": {
+    "2020-07-23/2020-12-31": "warmup_only_not_scored",
+    "2021-01-01/2025-12-31": "development_material",
+    "2026-01-01/2026-08-21": "consumed_repeat_audit_not_for_selection"
+  },
+  "working_views": [
+    "5m_offset_0"
+  ],
+  "available_views": [
+    "1m_official",
+    "5m_offset_0",
+    "5m_offset_1",
+    "5m_offset_2",
+    "5m_offset_3",
+    "5m_offset_4",
+    "15m_offset_5",
+    "15m_offset_10",
+    "30m_offset_15",
+    "60m_offset_30",
+    "60m_offset_45",
+    "daily_noon_close_1130",
+    "daily_proxy_close_1400",
+    "daily_proxy_close_1430"
+  ],
+  "forbidden_working_chart": [
+    "1m_official"
+  ],
+  "fresh_oos": false,
+  "production_authority": false,
+  "do_not_mix_with": [
+    "factorlab-two-wave-strategy-lab",
+    "factorlab-overnight-open-lab",
+    "factorlab-multifactor-stock-lab"
+  ]
+}

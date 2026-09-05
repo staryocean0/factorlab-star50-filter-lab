@@ -1,0 +1,7 @@
+{
+  "period": "1h_12bars_5m",
+  "baseline": "slope_only",
+  "selected_fixed": "fixed_0.2pct",
+  "selected_vol": "vol_k1",
+  "years": "2021-2025 development; 2026 not used for selection"
+}

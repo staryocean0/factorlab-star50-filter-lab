@@ -1,0 +1,12 @@
+{
+  "question": "From 5m upward, which STAR50 native frequency and causal filter family extract a stable slow drift?",
+  "execution": "signal at bar close, position from next open to following open, long/short slope sign",
+  "period_days": [2, 3, 4, 5, 6, 8, 10],
+  "families": ["sma_lp", "ema_lp", "butter_lp_n1", "butter_lp_n2", "butter_bp_n1"],
+  "butter_bp_band": "[1/(4P), 1/P] causal Butterworth, CSI1000-style IIR bandpass",
+  "selection_on": "2021-2025 natural years only",
+  "eligibility": "at least 4 of 5 development years have positive annual log return at 0 cost",
+  "rank": "eligible first by positive-year count, then median annual log return, then lower flip rate",
+  "not_allowed": ["pick by 2026", "pick by pooled CAGR alone", "copy CSI1000 IIR without family comparison", "1m working chart"],
+  "index_not_tradable": true
+}

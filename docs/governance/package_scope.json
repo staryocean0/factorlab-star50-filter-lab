@@ -1,0 +1,24 @@
+{
+  "schema_id": "star50_filter_lab_package_scope@1.0",
+  "package_role": "temporary_private_cloud_research_repository",
+  "objective": "STAR50_000688_multi_frequency_causal_filter_timing_research",
+  "source_project": "FactorLab",
+  "included": [
+    "STAR50_all_DataHub_bar_views",
+    "causal_IIR_lowpass_bandpass_helpers",
+    "hysteresis_and_vol_threshold_backtest",
+    "2021_2025_development_receipts",
+    "strategy_slice_rebuild_skill"
+  ],
+  "excluded": [
+    "FactorLab_git_history",
+    "credentials",
+    "Layer4_options_MO_execution",
+    "REAKA_multifactor",
+    "two_wave_theme",
+    "overnight_open_theme",
+    "live_registry_mutation"
+  ],
+  "production_authority": false,
+  "private_repository_required": true
+}

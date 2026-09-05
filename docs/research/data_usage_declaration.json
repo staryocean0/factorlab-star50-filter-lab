@@ -1,0 +1,16 @@
+{
+  "study_id": "star50_filter_frequency_v1",
+  "instrument": "000688.SH",
+  "source": "factorlab_unified_index_kline_v3_20260824",
+  "roles": {
+    "2020-07-23/2020-12-31": "warmup_only_not_scored",
+    "2021-01-01/2025-12-31": "development_material",
+    "2026-01-01/2026-08-21": "consumed_repeat_audit_not_for_selection"
+  },
+  "forbidden": ["1m_official"],
+  "working_views": ["5m_offset_0", "15m_offset_5", "30m_offset_15", "60m_offset_30"],
+  "robustness_views_not_for_selection": ["5m_offset_1", "5m_offset_2", "5m_offset_3", "5m_offset_4", "15m_offset_10", "60m_offset_45"],
+  "fresh_oos": false,
+  "production_authority": false,
+  "reason_2026_not_fresh": "already opened in lat_innovation_indices_mirror_20260824 aggregate challenge"
+}

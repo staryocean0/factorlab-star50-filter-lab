@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "factorlab-star50-filter-lab"
+version = "0.1.0"
+description = "Bounded FactorLab STAR50 causal filter timing research theme"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=2.0,<3",
+  "pandas>=2.2,<3",
+  "pyarrow>=19,<22",
+  "pytest>=8.3,<9",
+  "scipy>=1.15,<2",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/star50_filter"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

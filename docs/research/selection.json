@@ -1,0 +1,21 @@
+{
+  "winner_on_2021_2025_only": {
+    "view": "5m_offset_0",
+    "family": "butter_lp_n1",
+    "period_days": 2,
+    "period_bars": 96,
+    "positive_years": 5,
+    "median_annual_logret": 0.4701220883769243,
+    "dev_pooled_logret": 2.6084637733124145,
+    "flip_rate": 0.06797843209214352,
+    "logret_2021": 0.6142933260209458,
+    "logret_2022": 0.4701220883769243,
+    "logret_2023": 0.14549910435056707,
+    "logret_2024": 1.112536602404254,
+    "logret_2025": 0.26601265215972314,
+    "logret_2026": -0.07095234776880638
+  },
+  "n_grid": 140,
+  "n_eligible": 118,
+  "note": "2026 columns stored but not used in sort"
+}
