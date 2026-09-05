@@ -1,0 +1,24 @@
+name: drawdown-research
+on:
+  push:
+    branches: ["research/drawdown-conditions-20260905"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e .
+      - run: python scripts/validate_theme_package.py
+      - run: python scripts/export_drawdown_material.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: star50-development-material
+          path: artifacts/drawdown_material/
+          retention-days: 14
+          if-no-files-found: error
