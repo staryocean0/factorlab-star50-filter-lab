@@ -1,0 +1,10 @@
+{
+ "year":2022,"reviewer":"main_agent",
+ "observations":[
+  {"symptom":"October-November contains full-development largest drawdown; upward index drift and larger short-side losses, plus losing long trades","evidence":"descriptive/top10_drawdowns.csv rank1","interpretation":"repeated tactical loss in a rising phase recurs after2021; not solely an overnight loss"},
+  {"symptom":"slow-conflict half annual MDD10.6769% vs baseline14.3238% and matched12.1584%; annual return68.6626% vs matched59.1429%","evidence":"policy_metrics.csv offset0 annual cost0","interpretation":"second-year timing progress beyond lower average exposure; formula unchanged"},
+  {"symptom":"slow rule again passes4/5 offset MDD comparisons and fails offset4. Chop improves0bp MDD but is worse than matched at3/5bps","evidence":"policy_metrics.csv","interpretation":"cross-offset counterexample persists; mechanism does not justify universal veto"}
+ ],
+ "verdict":"Retain repeated risk reduction at primary offset, keep offset4 and cost counterexamples. Continue same frozen experiments to2023. No hard obligation or production promotion.",
+ "hard_obligations_promoted":0,"fresh_oos":false,"production_authority":false
+}

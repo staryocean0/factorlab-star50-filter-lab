@@ -1,0 +1,10 @@
+{
+ "year":2023,"reviewer":"main_agent",
+ "observations":[
+  {"symptom":"Repeated long drawdowns in2023 include flat February-March and falling April/September-October markets","evidence":"descriptive/top10_drawdowns.csv ranks4,5,7","interpretation":"a rising slow market with false shorts is not a complete explanation; downward and flat cases must also be retained"},
+  {"symptom":"slow half MDD10.6448% < full11.8759% but > matched9.9670%; chop MDD11.3794% > matched11.0515%","evidence":"policy_metrics.csv offset0 annual cost0","interpretation":"both conditional rules fail incremental MDD versus same exposure in2023; cannot patch the thresholds after observing this"},
+  {"symptom":"slow half annual return29.8082% > matched25.5624%; risk and return measures disagree","evidence":"policy_metrics.csv offset0 annual cost0","interpretation":"retain as financial tradeoff, not successful risk timing in every year"}
+ ],
+ "verdict":"Counterexample year. Keep exactly frozen rules for2024 and report their limits; no winner promotion, no extra condition.",
+ "hard_obligations_promoted":0,"fresh_oos":false,"production_authority":false
+}

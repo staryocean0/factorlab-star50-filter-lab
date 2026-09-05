@@ -1,0 +1,11 @@
+{
+ "year":2025,"reviewer":"main_agent",
+ "observations":[
+  {"symptom":"slow half annual MDD9.1855% only slightly below full9.2798%, worse than matched7.7541%; chop MDD10.5576% is worse than full","evidence":"policy_metrics.csv offset0 annual cost0","interpretation":"second primary-offset year where reduced exposure does not deliver incremental MDD timing"},
+  {"symptom":"five-year slow half CAGR73.7065% MDD10.6769%; full CAGR86.5718% MDD14.3238%; matched CAGR67.9168% MDD12.0570%","evidence":"policy_metrics.csv offset0 cumulative cost0","interpretation":"pooled risk progress beyond exposure remains, but annual universality is falsified"},
+  {"symptom":"five-year slow rule beats matched MDD at offsets0-3, slightly fails offset4; baseline offsets1-2 have20.13%/19.37% MDD","evidence":"policy_metrics.csv all views cumulative cost0","interpretation":"user approximately20% is compatible with offset robustness results; main offset0 alone understates sensitivity"},
+  {"symptom":"at3bps baseline MDD27.50%, slow half20.08%; at5bps both negative CAGR and very large drawdown","evidence":"policy_metrics.csv offset0 cumulative costs","interpretation":"zero-cost results cannot be sold as realistic trading drawdown; chop resizing preserves almost full turnover and worsens cost outcomes"}
+ ],
+ "verdict":"Retain slow_conflict_half as conditional-on-bar-availability research progression. No baseline upgrade: source availability unresolved, weak offset4 and2023/2025 incremental MDD, no fresh challenge. Chop rule is not an attractive cost-robust successor.",
+ "hard_obligations_promoted":0,"fresh_oos":false,"production_authority":false
+}

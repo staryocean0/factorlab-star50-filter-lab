@@ -1,0 +1,9 @@
+policy,cost_bps,annual_mdd_better_count,annual_mdd_worse_count,annual_log_return_better_count,annual_mdd_improvement_median,positive_quarter_log_delta_count,negative_quarter_log_delta_count,quarter_log_delta_median,note
+slow_conflict_half,0,3,2,5,0.0071658457409641,12,8,0.010721826853246144,diagnostic distribution only; no promotion gate relaxed or fresh OOS claimed
+slow_conflict_half,1,3,2,5,0.006122846435388712,12,8,0.011095368362163002,diagnostic distribution only; no promotion gate relaxed or fresh OOS claimed
+slow_conflict_half,3,3,2,5,0.0066524125023881,12,8,0.011843075655575096,diagnostic distribution only; no promotion gate relaxed or fresh OOS claimed
+slow_conflict_half,5,3,2,5,0.015674049664353817,12,8,0.012591615810108498,diagnostic distribution only; no promotion gate relaxed or fresh OOS claimed
+chop_half,0,2,3,4,-0.003279159526046599,11,9,0.0035458940221130505,diagnostic distribution only; no promotion gate relaxed or fresh OOS claimed
+chop_half,1,2,3,2,-0.007764016451897809,10,10,0.0007960078575328013,diagnostic distribution only; no promotion gate relaxed or fresh OOS claimed
+chop_half,3,1,4,0,-0.017160649896086816,8,12,-0.004704347311235452,diagnostic distribution only; no promotion gate relaxed or fresh OOS claimed
+chop_half,5,0,5,0,-0.0265167488102577,5,15,-0.010205480392239744,diagnostic distribution only; no promotion gate relaxed or fresh OOS claimed

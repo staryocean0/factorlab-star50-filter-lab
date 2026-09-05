@@ -1,0 +1,125 @@
+{
+  "sampling": "daily",
+  "n_observations": 1212,
+  "n_permutations": 2000,
+  "seed": 20260906,
+  "observed": {
+    "mdd": 0.1163695888702462,
+    "longest_underwater_observations": 71,
+    "longest_peak_to_recovery_or_end_observations": 72
+  },
+  "references": {
+    "1": {
+      "block_size": 1,
+      "n_blocks": 1212,
+      "mdd": {
+        "quantiles": {
+          "0.025": 0.12158297464129042,
+          "0.5": 0.16843526128023328,
+          "0.95": 0.2418235234447185,
+          "0.975": 0.2612838247070086,
+          "0.99": 0.28221158542886304
+        },
+        "upper_tail_count": 1973,
+        "upper_tail_plus_one": 0.9865067466266867
+      },
+      "longest_underwater_observations": {
+        "quantiles": {
+          "0.025": 58.0,
+          "0.5": 104.0,
+          "0.95": 195.0,
+          "0.975": 218.0,
+          "0.99": 248.01
+        },
+        "upper_tail_count": 1791,
+        "upper_tail_plus_one": 0.895552223888056
+      },
+      "longest_peak_to_recovery_or_end_observations": {
+        "quantiles": {
+          "0.025": 59.0,
+          "0.5": 105.0,
+          "0.95": 196.0,
+          "0.975": 219.0,
+          "0.99": 249.01
+        },
+        "upper_tail_count": 1790,
+        "upper_tail_plus_one": 0.8950524737631185
+      }
+    },
+    "5": {
+      "block_size": 5,
+      "n_blocks": 243,
+      "mdd": {
+        "quantiles": {
+          "0.025": 0.1157643636724652,
+          "0.5": 0.1581165334257405,
+          "0.95": 0.23107266703612944,
+          "0.975": 0.24802170338143206,
+          "0.99": 0.2702361486118454
+        },
+        "upper_tail_count": 1946,
+        "upper_tail_plus_one": 0.9730134932533733
+      },
+      "longest_underwater_observations": {
+        "quantiles": {
+          "0.025": 61.0,
+          "0.5": 106.0,
+          "0.95": 199.04999999999995,
+          "0.975": 229.0,
+          "0.99": 256.03999999999996
+        },
+        "upper_tail_count": 1831,
+        "upper_tail_plus_one": 0.9155422288855573
+      },
+      "longest_peak_to_recovery_or_end_observations": {
+        "quantiles": {
+          "0.025": 62.0,
+          "0.5": 107.0,
+          "0.95": 200.04999999999995,
+          "0.975": 230.0,
+          "0.99": 257.03999999999996
+        },
+        "upper_tail_count": 1830,
+        "upper_tail_plus_one": 0.9150424787606197
+      }
+    },
+    "20": {
+      "block_size": 20,
+      "n_blocks": 61,
+      "mdd": {
+        "quantiles": {
+          "0.025": 0.09742856668829178,
+          "0.5": 0.12810557686274243,
+          "0.95": 0.16846225363689027,
+          "0.975": 0.18072945122373668,
+          "0.99": 0.19061004758347797
+        },
+        "upper_tail_count": 1478,
+        "upper_tail_plus_one": 0.7391304347826086
+      },
+      "longest_underwater_observations": {
+        "quantiles": {
+          "0.025": 55.0,
+          "0.5": 91.0,
+          "0.95": 160.0,
+          "0.975": 178.0,
+          "0.99": 204.0
+        },
+        "upper_tail_count": 1643,
+        "upper_tail_plus_one": 0.8215892053973014
+      },
+      "longest_peak_to_recovery_or_end_observations": {
+        "quantiles": {
+          "0.025": 56.0,
+          "0.5": 92.0,
+          "0.95": 161.0,
+          "0.975": 179.0,
+          "0.99": 205.0
+        },
+        "upper_tail_count": 1641,
+        "upper_tail_plus_one": 0.8205897051474262
+      }
+    }
+  },
+  "interpretation": "Descriptive order-exchangeability reference conditional on realized daily returns; not a causal proof or a calibrated p-value under arbitrary dependent/nonstationary returns. Daily sampling cannot reveal bar-level maximum drawdown. Unrecovered episode durations are right-censored at the final observation."
+}

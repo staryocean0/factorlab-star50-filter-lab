@@ -1,0 +1,21 @@
+{
+  "year": 2024,
+  "stage": "fixed complete policy diagnostic counterfactual",
+  "risk_protocol_sha256": "d72415d571bbff31ccc2a96ac10db5b26c604a5f042110a999138eb16bb45f21",
+  "prior_receipt_sha256": "b7c90a5bef76650e4cc3681c66c6f1ef6867eb5cc5d348dca267b18f2bc5406a",
+  "source_digests": {
+    "scripts/run_drawdown_study.py": "31665f4c99d62dacddf759bda11beb03e362184249674cffb94cbefa48a6f935",
+    "src/star50_filter/drawdown_research.py": "c62c80c15ebcbd7273bc1c37d789cd684a85d319daad950e0d4683ad8857f979",
+    "src/star50_filter/drawdown_diagnostics.py": "abe2bea4f5d75dc1cf06a5693032008591b8a3b0c2e75df8dddb26020e2bad2f",
+    "scripts/reproduce_historical_baseline.py": "084a803426f610e9c66ea9b3d4b30ed7475ecd018c11b08309f5a8aa6cd95b8e"
+  },
+  "evidence_files": {
+    "daily_accounts.csv.gz": "84669fed045c639654a0648e3746a4049d583958ef492e21ed1060fd44a34c8f",
+    "quarterly_accounts.csv": "2df53d9089a1fda6743b7875e2554bcfd3c1835a1e6345301a0b761a5a5e6b72",
+    "policy_metrics.csv": "6b547d047adb104118bd5f17d7aa5f9351f9f97c8cc155ab4e128d9c72d902f1"
+  },
+  "max_input_year": 2024,
+  "parameter_updates": 0,
+  "fresh_oos": false,
+  "production_authority": false
+}

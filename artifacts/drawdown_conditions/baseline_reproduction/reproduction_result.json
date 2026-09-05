@@ -1,0 +1,55 @@
+{
+  "schema": "star50_historical_baseline_reproduction_result@1",
+  "status": "multiple_implementations_same_development_path",
+  "registered_implementation_count": 8,
+  "matched_candidate_ids": [
+    "ddof0_shift0_min24",
+    "ddof0_shift0_min48"
+  ],
+  "matched_development_path_count": 1,
+  "selected_equivalent_replay_id": "ddof0_shift0_min48",
+  "default_matches_historical": true,
+  "initial_unverified_spec_matches_historical": false,
+  "availability_audit": {
+    "source_field_present": true,
+    "bar_close_replay_is_an_assumption": true,
+    "source_available_at_modified": false,
+    "source_rows_available_after_assumed_decision": 63456,
+    "development_rows_available_after_assumed_decision": 58176,
+    "source_local_availability_clocks": [
+      "15:30:00"
+    ],
+    "actual_source_availability_passes_bar_close_contract": false,
+    "status": "source_availability_gap"
+  },
+  "identification_limit": "min_periods and startup details may be unidentifiable after 2020 warmup",
+  "input": {
+    "source_path": "/workspace/scratch/05387590159d/material/5m_offset_0.parquet",
+    "source_sha256": "8b2f8972c987ee79bc3ff7a6b4f198750f6238ff014cf17921be844a744abaf3",
+    "latest_allowed_day": "2025-12-31",
+    "view": "5m_offset_0",
+    "rows": 63456,
+    "first_day": "2020-07-23",
+    "last_day": "2025-12-31"
+  },
+  "protocol_sha256": "4495c2bb1868fcc329187342583d46ccb020777f6933b45b3e1577c7f8118f72",
+  "fingerprints_sha256": "eba1c1ede82fbeb9a7da60dfc3cd27b388fc22bc0c74a16deb63cc12450f0c59",
+  "fresh_oos": false,
+  "production_authority": false,
+  "reproduced_frame_path": "/workspace/scratch/05387590159d/repo/artifacts/drawdown_conditions/baseline_reproduction/reproduced_baseline_frame.csv.gz",
+  "reproduced_frame_sha256": "1d10782c55f940c1862ea2a5c016c453bdd6cfb01a7486b926b08a7a6b21aac8",
+  "reproduced_spec": {
+    "ddof": 0,
+    "sigma_shift": 0,
+    "min_periods": 48
+  },
+  "observed_fingerprint": {
+    "annual_2021_pct": 75.89881317090415,
+    "annual_2022_pct": 74.03667883669752,
+    "annual_2023_pct": 31.533811429942453,
+    "annual_2024_pct": 240.93749243357158,
+    "annual_2025_pct": 65.48712918654269,
+    "cagr_pct": 86.75662509083047,
+    "mdd_pct": -14.323804733417234
+  }
+}

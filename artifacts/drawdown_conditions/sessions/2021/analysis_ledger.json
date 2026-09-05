@@ -1,0 +1,14 @@
+{
+  "year":2021,
+  "reviewer":"main_agent",
+  "observations":[
+    {"symptom":"March-April drawdown while index rose; short losses dominate but both directions lose","evidence":"descriptive/top10_drawdowns.csv rank3","root_status":"descriptive mechanism candidate; no hard obligation"},
+    {"symptom":"slow-conflict half exposure lowers annual MDD 12.1068% to9.4190%; matched exposure MDD10.1356%","evidence":"policy_metrics.csv offset0 annual cost0","interpretation":"conditional timing increment exists on this year; CAGR63.8797% versus matched58.9751%, while full exposure75.0300%"},
+    {"symptom":"slow rule beats matched MDD in4/5 offsets, fails offset4; chop rule loses to matched CAGR and degrades badly at5bps","evidence":"policy_metrics.csv all offsets and costs","interpretation":"retain measured progress, reject universal mechanism claim; cost sensitivity remains material"}
+  ],
+  "verdict":"Retain first-year diagnostic risk reduction; no promotion. Continue exact same frozen rules into2022 with zero retuning.",
+  "hard_obligations_promoted":0,
+  "fresh_oos":false,
+  "production_authority":false,
+  "rerun_disclosure":"Replayed once after an event market-return boundary bug fix; identical policy and candidate values, no new parameter attempt."
+}

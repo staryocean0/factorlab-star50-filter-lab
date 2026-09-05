@@ -1,0 +1,97 @@
+{
+  "schema": "star50_historical_baseline_reproduction@1",
+  "purpose": "missing-implementation fingerprint identification; never performance ranking",
+  "source_commit": "bdbcf7dc2f613100ea7ceeb6968ab7fc2b5c9df9",
+  "historical_reference_path": "docs/research/one_hour_threshold_compare.csv",
+  "reference_row": "vol_k1",
+  "data_roles": {
+    "2020": "warmup",
+    "2021-2025": "consumed development",
+    "2026": "excluded"
+  },
+  "frozen_policy": {
+    "view": "5m_offset_0",
+    "period_bars": 12,
+    "butter_order": 1,
+    "hysteresis_k": 1
+  },
+  "sigma": "rolling48 std of log-close first differences, unscaled per-bar sigma",
+  "candidates": [
+    {
+      "ddof": 0,
+      "sigma_shift": 0,
+      "min_periods": 24
+    },
+    {
+      "ddof": 0,
+      "sigma_shift": 0,
+      "min_periods": 48
+    },
+    {
+      "ddof": 0,
+      "sigma_shift": 1,
+      "min_periods": 24
+    },
+    {
+      "ddof": 0,
+      "sigma_shift": 1,
+      "min_periods": 48
+    },
+    {
+      "ddof": 1,
+      "sigma_shift": 0,
+      "min_periods": 24
+    },
+    {
+      "ddof": 1,
+      "sigma_shift": 0,
+      "min_periods": 48
+    },
+    {
+      "ddof": 1,
+      "sigma_shift": 1,
+      "min_periods": 24
+    },
+    {
+      "ddof": 1,
+      "sigma_shift": 1,
+      "min_periods": 48
+    }
+  ],
+  "historical_fingerprint": {
+    "annual_2021_pct": 75.89881317090416,
+    "annual_2022_pct": 74.03667883669753,
+    "annual_2023_pct": 31.53381142994245,
+    "annual_2024_pct": 240.9374924335716,
+    "annual_2025_pct": 65.48712918654272,
+    "cagr_pct": 86.75662509083047,
+    "mdd_pct": -14.323804733417234
+  },
+  "match_tolerance_pct": {
+    "atol": 1e-08,
+    "rtol": 1e-10
+  },
+  "account": "zero-cost signed-log index-point research account",
+  "execution": "close t decision; open t+1 fill; open t+2 first return booking",
+  "mdd": "development-only geometric NAV, initial equity=1 included in high-water mark",
+  "cagr": "exp(sum(development log pnl) / 5 calendar years) - 1",
+  "initial_unverified_spec": {
+    "ddof": 1,
+    "sigma_shift": 0,
+    "min_periods": 48
+  },
+  "replay_default_spec": {
+    "ddof": 0,
+    "sigma_shift": 0,
+    "min_periods": 48
+  },
+  "equivalent_startup_convention": "Prefer the full 48-observation window only among identical matching development paths",
+  "availability_assumption": "Research replay assumes each OHLC bar is available at its close; source available_at is audited separately and is not silently overwritten",
+  "fresh_oos": false,
+  "production_authority": false,
+  "source_hashes": {
+    "scripts/reproduce_historical_baseline.py": "084a803426f610e9c66ea9b3d4b30ed7475ecd018c11b08309f5a8aa6cd95b8e",
+    "src/star50_filter/filters.py": "2f3bea36d6a8103c53cf96b5a93e967fa42ef9b6bbe161d4199287c3bf9e73bd",
+    "src/star50_filter/backtest.py": "d341e4a28afa7d47e8da4fa316f07538aec730fa2a8dd7d2ebb4344f321e1841"
+  }
+}

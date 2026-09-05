@@ -1,0 +1,10 @@
+{
+ "year":2024,"reviewer":"main_agent",
+ "observations":[
+  {"symptom":"LateSeptember short sharp drawdown reaches12.4035%; overnight gap contributes materially and chop flag is absent","evidence":"descriptive/top10_drawdowns.csv rank2","interpretation":"jump/fast reversal is distinct from protracted whipsaw; must not pool them as one low-frequency condition"},
+  {"symptom":"slow half annual MDD8.4538% versus baseline12.4035% and matched10.4032%; annual return188.1656% versus baseline240.9375% and matched176.6018%","evidence":"policy_metrics.csv offset0 annual cost0","interpretation":"risk reduction exceeds constant exposure effect on this year, with explicit return sacrifice"},
+  {"symptom":"chop half does not reduce the12.4035% maximum drawdown and is worse than matched11.6292%","evidence":"policy_metrics.csv offset0 annual cost0","interpretation":"the predeclared whipsaw proxy fails to cover a key abrupt event; no post-event extra rule admitted"}
+ ],
+ "verdict":"Retain slow-conflict risk reduction and chop counterexample; complete2025 with frozen rules, no promotion.",
+ "hard_obligations_promoted":0,"fresh_oos":false,"production_authority":false
+}

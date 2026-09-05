@@ -1,0 +1,11 @@
+{
+  "schema": "star50_fixed_experiment_review@1",
+  "year": 2024,
+  "evidence_receipt_sha256": "b581eec13d960c8432985eced9f8fedb9cadd0a3fd955bd17c9e5c94dfc0cda0",
+  "analysis_ledger_sha256": "6a3c8a209b03e2d160141913fc4a8a1fd812932a01f20c672ea56d271124671f",
+  "prior_receipt_sha256": "b7c90a5bef76650e4cc3681c66c6f1ef6867eb5cc5d348dca267b18f2bc5406a",
+  "frozen_policy_sha256": "d72415d571bbff31ccc2a96ac10db5b26c604a5f042110a999138eb16bb45f21",
+  "parameter_updates": 0,
+  "fresh_oos": false,
+  "production_authority": false
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "star50_frozen_drawdown_figures@1",
+  "reads_sealed_evidence_only": true,
+  "signal_or_account_replay_calls": 0,
+  "daily_paths": [
+    "baseline",
+    "slow_conflict_half",
+    "constant_075"
+  ],
+  "matched_constant_usage": "Only sealed 2025 full-period metrics; never concatenate year-matched policies",
+  "inputs": {
+    "artifacts/drawdown_conditions/descriptive/daily_baseline.csv": "c9716f7dc02f6029e6583be5de95a21f1cdc60cfa010e1d40c02f42c4060e0e7",
+    "artifacts/drawdown_conditions/descriptive/top10_drawdowns.csv": "15f22d11a34fac517e43f06865c1b5445e78b6461b72e640be7ec05a88d61732",
+    "artifacts/drawdown_conditions/sessions/2021/daily_accounts.csv.gz": "b4210109dbf52e7eeeebd5e7a9514f7e5667b6b10e31240b970e706f31610b45",
+    "artifacts/drawdown_conditions/sessions/2021/sealed_receipt.json": "fe1846fbdd574497045e8113336519b6597e6560bbc8629c668cfab3d9a10772",
+    "artifacts/drawdown_conditions/sessions/2022/daily_accounts.csv.gz": "fe4a18fc8b483303e0a151e3715b217cbcfd186ae880c146346b413a1d52f295",
+    "artifacts/drawdown_conditions/sessions/2022/sealed_receipt.json": "92925cef9de772bb316a589eb4e042283cc69cfb5eb1f89c6de7e8b96a16f4db",
+    "artifacts/drawdown_conditions/sessions/2023/daily_accounts.csv.gz": "e1f9a4c8102a087236c419a761bd69a4480e489339e2c6a30826c97d9dfa6c47",
+    "artifacts/drawdown_conditions/sessions/2023/sealed_receipt.json": "b7c90a5bef76650e4cc3681c66c6f1ef6867eb5cc5d348dca267b18f2bc5406a",
+    "artifacts/drawdown_conditions/sessions/2024/daily_accounts.csv.gz": "84669fed045c639654a0648e3746a4049d583958ef492e21ed1060fd44a34c8f",
+    "artifacts/drawdown_conditions/sessions/2024/sealed_receipt.json": "b6b3e8a836405e1e88c28f187c3b5c092174a728f1ff26480966cb7152745879",
+    "artifacts/drawdown_conditions/sessions/2025/daily_accounts.csv.gz": "2470dc96945a7018b610f45a06bef01508b114861630d6c62ca9696e5dc6a10e",
+    "artifacts/drawdown_conditions/sessions/2025/policy_metrics.csv": "efde71af2bfa2572cfe36a4e87a0c43df5d2ac83a67c2f00e2f6bfb733562f38",
+    "artifacts/drawdown_conditions/sessions/2025/sealed_receipt.json": "e94bea816d3fd839caebd2ea5fc00aaaa7d4032d687a06a71554e556916d674a"
+  },
+  "figure_source_sha256": "fa15eb184f554a8162e5b6872febcb49f1e1897c869c6efb416da4b87e325396",
+  "svg_outputs": [
+    "annual_2021.svg",
+    "annual_2022.svg",
+    "annual_2023.svg",
+    "annual_2024.svg",
+    "annual_2025.svg",
+    "offset_robustness.svg",
+    "overview.svg"
+  ],
+  "png_usage": "Local visual QA; SVG files are the versioned figure sources",
+  "limits": [
+    "Daily sampling hides intraday extremes",
+    "Annual lines normalize at first plotted mark",
+    "Offsets are not independent markets"
+  ]
+}
