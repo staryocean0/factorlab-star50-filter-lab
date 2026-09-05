@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "sessions": 5,
+  "snapshots": 200,
+  "sealed_files": 55,
+  "max_bridge_nav_log_error": 8.040790255847696e-14,
+  "no_source_market_reads": true,
+  "exact_snapshot_hashes": true,
+  "fresh_oos": false,
+  "production_authority": false
+}

@@ -1,0 +1,9 @@
+{
+  "year": 2024,
+  "prior_receipt_sha256": "872832b01d96869b0522b3a34de095e5a7e68bf4dad9244f4d15dc0106df6767",
+  "frozen_policy_sha256": "987f42670f4cd880c09c4d6cdfcb81e6a8eaa02698efe4e14319e293ae971090",
+  "evidence_sha256": "52c90e9124fdc45a41956da18c1abb9e337101d7322790b7bb98cd98af0bed96",
+  "analysis_sha256": "359ba4b6cf563b4379d1f297b01af7430ed9f41201067f1018df826ad7a5474b",
+  "fresh_oos": false,
+  "production_authority": false
+}

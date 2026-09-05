@@ -1,0 +1,59 @@
+{
+  "schema": "execution_counterexample_closeout@1",
+  "scientific_status": "infrastructure or measurement gap",
+  "lineage": "descendant of drawdown_conditions",
+  "new_strategy_candidates": 0,
+  "parameter_updates": 0,
+  "sequential_sessions": 5,
+  "retained_measurement": {
+    "minute_coarse_endpoint_parity": true,
+    "complete_account_snapshots": 200,
+    "minute_delay_changes_economics": true,
+    "conditional_information_exists_but_is_not_stable_mdd_protection": true
+  },
+  "progression_ledger": [
+    {
+      "scope": "5m+0 2021-2025 delayed1m 3bp versus same full-exposure account",
+      "baseline_mdd": 0.260954,
+      "slow_half_mdd": 0.245563,
+      "status": "conditional_measured_risk_progress_retained",
+      "limit": "Bar-close observability assumption and index-point execution model; not verified tradable causality."
+    },
+    {
+      "scope": "same-exposure comparator, delayed1m primary",
+      "status": "return_drawdown_tradeoff",
+      "slow_half_cagr": 0.177448,
+      "slow_half_mdd": 0.245563,
+      "matched_cagr": 0.137758,
+      "matched_mdd": 0.222211,
+      "limit": "Matched exposure is retrospective. MDD superiority absent; no dominance claim."
+    },
+    {
+      "scope": "2025 primary delayed1m zero cost",
+      "status": "counterexample_retained",
+      "baseline_mdd": 0.128436,
+      "slow_half_mdd": 0.141526
+    }
+  ],
+  "promotion_ledger": {
+    "promoted": false,
+    "baseline_changed": false,
+    "reasons": [
+      "Primary MDD superiority beyond same-exposure control fails after1minute delay.",
+      "Zero-cost2025 risk worsens even against full exposure.",
+      "Source availability semantics, version lineage and tradable fills unresolved.",
+      "All five years already consumed, not fresh challenges."
+    ]
+  },
+  "next_required_evidence": [
+    "source available_at schema and generation code for exact dataset_version",
+    "point-in-time intraday export/ingestion/revision records",
+    "ordering of synthetic minute repair and coarse-bar creation",
+    "tradable instrument carrier and complete execution contract"
+  ],
+  "authorities": {
+    "fresh_oos": false,
+    "production_authority": false,
+    "live_registry_mutation": false
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "year": 2023,
+  "prior_receipt_sha256": "13225429623c665c4f5cf81e3a342bcfef6f23d16f18fc49b397ec1777bf0260",
+  "frozen_policy_sha256": "987f42670f4cd880c09c4d6cdfcb81e6a8eaa02698efe4e14319e293ae971090",
+  "evidence_sha256": "3c36ab6f6a6f91285c0f26036ca27a6fe1e070a2fc9506aa8702c9f1e72d2c7d",
+  "analysis_sha256": "f25a5d3063949c8f9eb25baa55d968cff7414b692637e725c6b40abe62d7d657",
+  "fresh_oos": false,
+  "production_authority": false
+}

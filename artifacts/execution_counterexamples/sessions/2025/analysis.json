@@ -1,0 +1,44 @@
+{
+  "year": 2025,
+  "main_agent_reviewed": true,
+  "graphical_evidence": "annual.svg：延迟1m、3bp下1—8月明显拖累，9—11月恢复后年末回落；慢冲突全年多数时间不如恒定50%保护，无法解释为单纯随机短震荡。此图只是已实现路径，随机性结论仍沿用首轮参照。",
+  "observations": [
+    {
+      "symptom": "延迟一分钟把基线3bp年度收益从+8.860%变为−8.267%；慢冲突从+7.908%变为−6.630%。执行边界显著改变当年经济性。",
+      "evidence": "annual_metrics.csv legacy_on_minute vs delay_1m",
+      "opportunity_sufficiency": "243日、相同信号与成本",
+      "owner": "execution latency sensitivity",
+      "resolved": "frozen-account intervention only"
+    },
+    {
+      "symptom": "零成本延迟：慢冲突MDD14.153%高于基线12.844%，也高于等仓位10.768%；3bp虽低于基线24.254%，但22.622%仍差于等仓位20.563%。",
+      "evidence": "annual_metrics.csv view0 delay_1m",
+      "opportunity_sufficiency": "full year, adverse effect not erased",
+      "owner": "conditional allocation counterexample",
+      "resolved": false
+    },
+    {
+      "symptom": "1/8—2/5零成本主要下降段，冲突覆盖24.6%；弃利0.167789超过避亏0.152657，半仓本身在基线已亏损时继续减掉了净盈利机会，使该段更差0.015133。",
+      "evidence": "top10_events.csv view0 delay_1m cost0 rank1",
+      "opportunity_sufficiency": "3168分钟、15日，足以量化该事件但不能推断一般原因",
+      "owner": "profitable countertrend removal plus unprotected losses",
+      "resolved": "exact opportunity accounting"
+    },
+    {
+      "symptom": "加入3bp后主下降段扩大为1/8—8/15共147日，慢冲突毛收益差−0.020108，成本节省+0.041425才净减损。相对等仓位常量仍差−0.026263；全年净优势也主要是成本节省。",
+      "evidence": "top10_events.csv cost3 rank1; opportunity_attribution.csv",
+      "opportunity_sufficiency": "long decline and66-day recovery",
+      "owner": "weak gross edge and turnover drag",
+      "resolved": "accounting identity"
+    },
+    {
+      "symptom": "243个填充分钟都为14:59；跳过填充成交主图仍与延迟一致。最终原五分钟端点累计净值桥接全部通过。",
+      "evidence": "source_audit.json / bridge_parity.json",
+      "opportunity_sufficiency": "all243 days and5views",
+      "owner": "source integrity",
+      "resolved": "endpoint parity; true availability unresolved"
+    }
+  ],
+  "mechanism_verdict": "确认2025是更强反例：数学上因果的慢冲突降仓会在某些持续下跌账户段减掉盈利机会，不能宣称已经识别稳定避险状态。保留其他年份的正进展并阻止基线升级。",
+  "next_step": "五年全部封存后，仅从200个成本无关完整账户快照推导五年/季度报告；不读取2026，不添加门槛。下一轮优先闭合盘中历史版本和可交易执行载体，再冻结新的低容量机制试验。"
+}

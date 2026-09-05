@@ -1,0 +1,37 @@
+{
+  "year": 2023,
+  "main_agent_reviewed": true,
+  "graphical_evidence": "annual.svg：3bp延迟账户2月见高点后长期未恢复，8—9月反弹后再次回落。半仓降低谷底深度，却没有恢复到年度高点。",
+  "observations": [
+    {
+      "symptom": "零成本延迟：慢冲突MDD9.809%，仍不如同仓位常量8.948%；3bp变为13.957%，优于常量16.506%。3bp慢冲突最长水下223日，基线212日。",
+      "evidence": "annual_metrics.csv view0 delay_1m",
+      "opportunity_sufficiency": "242交易日、有多次完整回撤及未完成恢复",
+      "owner": "risk-depth vs recovery frontier",
+      "resolved": false
+    },
+    {
+      "symptom": "2/21—3/14零成本主跌段仅24.9%分钟处于慢冲突；避亏0.118403、弃利0.107109，净减损0.011294，小于均匀减仓对该段的保护，故相对等仓位少0.007838。",
+      "evidence": "top10_events.csv cost0 view0 delay_1m rank1 decline",
+      "opportunity_sufficiency": "3694分钟、16交易日",
+      "owner": "conditional coverage and remaining full exposure",
+      "resolved": "exact event accounting; root market dynamics unresolved"
+    },
+    {
+      "symptom": "8/30—10/20下降段优于等仓位0.006146；随后恢复段弃利0.524416超过避亏0.496046，相对等仓位少0.009605，保护与恢复发生权衡。",
+      "evidence": "top10_events.csv cost0 rank2 decline/recovery",
+      "opportunity_sufficiency": "32日下降及50日恢复",
+      "owner": "countertrend/recovery opportunity removal",
+      "resolved": "accounting tradeoff"
+    },
+    {
+      "symptom": "成本将本来可修复的阶段连成更长水下：3bp最深段由2/21持续到10/20共162日，毛减损0.030602、成本节省0.055081；全年相对满仓毛收益减少0.028261但成本节省0.075343。",
+      "evidence": "top10_events.csv cost3 rank1 and opportunity_attribution.csv",
+      "opportunity_sufficiency": "same frozen signals and same marks under two cost schedules",
+      "owner": "turnover drag plus intermittent weak edge",
+      "resolved": "conditional accounting counterfactual, not proof of structural regime"
+    }
+  ],
+  "mechanism_verdict": "确认2023反例在延迟执行下仍成立：零成本降风险信息不足以超越恒定减仓，成本后改善又不能解决恢复慢。不得根据此年另加锯齿阈值。",
+  "next_step": "封存2023，打开2024，检查急涨和方向切换机会；保留所有反例。"
+}

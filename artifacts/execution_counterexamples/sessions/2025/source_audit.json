@@ -1,0 +1,73 @@
+{
+  "year": 2025,
+  "minute_rows": 58320,
+  "synthetic_minutes": 243,
+  "synthetic_clock_counts": {
+    "14:59": 243
+  },
+  "source_kind_counts": {
+    "market_index_transaction_derived_1m": 58077,
+    "market_index_transaction_derived_1m_causal_flat_missing_minute": 243
+  },
+  "availability_offset_patterns": {
+    "+08:00": 58077,
+    "59:00Z": 243
+  },
+  "views": [
+    {
+      "view": 0,
+      "bars": 63456,
+      "open_mismatches": 0,
+      "close_mismatches": 0,
+      "max_open_error": 0.0,
+      "max_close_error": 0.0,
+      "open_endpoint_synthetic": 0,
+      "close_endpoint_synthetic": 1,
+      "publication_after_close": 63456
+    },
+    {
+      "view": 1,
+      "bars": 60812,
+      "open_mismatches": 0,
+      "close_mismatches": 0,
+      "max_open_error": 0.0,
+      "max_close_error": 0.0,
+      "open_endpoint_synthetic": 0,
+      "close_endpoint_synthetic": 1,
+      "publication_after_close": 60812
+    },
+    {
+      "view": 2,
+      "bars": 60812,
+      "open_mismatches": 0,
+      "close_mismatches": 0,
+      "max_open_error": 0.0,
+      "max_close_error": 0.0,
+      "open_endpoint_synthetic": 0,
+      "close_endpoint_synthetic": 4,
+      "publication_after_close": 60812
+    },
+    {
+      "view": 3,
+      "bars": 60812,
+      "open_mismatches": 0,
+      "close_mismatches": 0,
+      "max_open_error": 0.0,
+      "max_close_error": 0.0,
+      "open_endpoint_synthetic": 0,
+      "close_endpoint_synthetic": 1,
+      "publication_after_close": 60812
+    },
+    {
+      "view": 4,
+      "bars": 60812,
+      "open_mismatches": 0,
+      "close_mismatches": 0,
+      "max_open_error": 0.0,
+      "max_close_error": 0.0,
+      "open_endpoint_synthetic": 0,
+      "close_endpoint_synthetic": 1323,
+      "publication_after_close": 60812
+    }
+  ]
+}

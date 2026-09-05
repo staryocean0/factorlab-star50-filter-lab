@@ -1,0 +1,75 @@
+{
+  "schema": "execution_audit_year@1",
+  "year": 2022,
+  "prior_receipt_sha256": "cc2c190fc221aa14c98bb00cf1ed8a69aae42306fb180fb2c90da2269a975da8",
+  "frozen_policy_sha256": "987f42670f4cd880c09c4d6cdfcb81e6a8eaa02698efe4e14319e293ae971090",
+  "max_input_year": 2022,
+  "inputs": [
+    {
+      "view": "1m_official",
+      "sha256": "b42c8a0bff5475362df8ada101c53d371d783e324fc35b2e0294676d5e760e36",
+      "rows": 142800,
+      "last_day": "2022-12-30",
+      "filter_max_day": "2022-12-31"
+    },
+    {
+      "view": "5m_offset_0",
+      "sha256": "8b2f8972c987ee79bc3ff7a6b4f198750f6238ff014cf17921be844a744abaf3",
+      "rows": 28560,
+      "last_day": "2022-12-30",
+      "filter_max_day": "2022-12-31"
+    },
+    {
+      "view": "5m_offset_1",
+      "sha256": "ebfe34788942039ffe2098ae6972b8ea731e1a021fd2cd69658da2381a493dec",
+      "rows": 27370,
+      "last_day": "2022-12-30",
+      "filter_max_day": "2022-12-31"
+    },
+    {
+      "view": "5m_offset_2",
+      "sha256": "2d430f3e53869b1ab8de2a232740f3e78c1ec30ccc2e9453ac008ed4e13f1cc0",
+      "rows": 27370,
+      "last_day": "2022-12-30",
+      "filter_max_day": "2022-12-31"
+    },
+    {
+      "view": "5m_offset_3",
+      "sha256": "09e8096061ca9e785ead605fd30fb2160263c2c19cf3ddaaf6af3436472779f6",
+      "rows": 27370,
+      "last_day": "2022-12-30",
+      "filter_max_day": "2022-12-31"
+    },
+    {
+      "view": "5m_offset_4",
+      "sha256": "3e1665723b6184921097e442840c2baf6eb85cd1695299c21670e1ccc99e1c19",
+      "rows": 27370,
+      "last_day": "2022-12-30",
+      "filter_max_day": "2022-12-31"
+    }
+  ],
+  "files": {
+    "annual.svg": "3545b50d82891d10cbb64d3a7ef1aaf277db00f90fcfdad4f117aaac65581487",
+    "condition_cells.csv": "725cc6c9948c2207484c7cf60433651cb93bf2048b6d5a3859e868eb8c92d363",
+    "daily_accounts.csv.gz": "db2a3891c1c1cbb375e6c5deaab0c3acd7199880c123a3d00d996c33c55c1920",
+    "bridge_parity.json": "79b26a532965a588d82925b3c08c908cde44f8753177ec15656e58074086695b",
+    "snapshot_boundaries.json": "eb4ad4ce737b2dfde86a87fea30e007bd9043efd7f9f146f4225479465a494ef",
+    "source_audit.json": "fe16c2790f5407387cbf3a276b81410835127bee62b9a61483276729c2e2071e",
+    "minute_marks.csv.gz": "5f83ceaaa4cf0776852abedef01838ddefb118cf3b10ec78402b5b2529ff4e66",
+    "annual_metrics.csv": "7ca5fb1143b16680ce93be219cb30cb21775500e2060d636632d8bda6f58c0b2",
+    "opportunity_attribution.csv": "bf81c5dc4b83fdf90b8b84d148658b48b16989a2469ab8b8935e6ac7d8432c7c",
+    "orders.csv.gz": "f0f55c39746cb9813e11ac9f24be850f3a0147b6aee4f8d6bc1ffa837f97bedc",
+    "top10_events.csv": "41d660b4710cc1b0df5a201c9e62dd7d4604b7da767321bae5458baf66f5b3d6"
+  },
+  "source_digests": {
+    "scripts/run_execution_audit.py": "bba2f2ea6b7b9686007cb1648c1c65fe7d5a128e92828f0190d5b18d10edb37a",
+    "src/star50_filter/execution_audit.py": "a049b0315a4437d1b066a64c5389ff3500ceb5d0827346ef2d071510fd83ee69",
+    "src/star50_filter/drawdown_research.py": "c62c80c15ebcbd7273bc1c37d789cd684a85d319daad950e0d4683ad8857f979",
+    "src/star50_filter/filters.py": "6e2c22adff111dba0e0dc17ed5e760399460772ec0bbe75816bda0b9379523da",
+    "src/star50_filter/drawdown_diagnostics.py": "abe2bea4f5d75dc1cf06a5693032008591b8a3b0c2e75df8dddb26020e2bad2f",
+    "scripts/reproduce_historical_baseline.py": "084a803426f610e9c66ea9b3d4b30ed7475ecd018c11b08309f5a8aa6cd95b8e"
+  },
+  "new_strategy_candidates": 0,
+  "fresh_oos": false,
+  "production_authority": false
+}

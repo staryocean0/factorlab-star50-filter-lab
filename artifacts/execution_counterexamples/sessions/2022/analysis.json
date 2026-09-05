@@ -1,0 +1,37 @@
+{
+  "year": 2022,
+  "main_agent_reviewed": true,
+  "graphical_evidence": "annual.svg：3bp盘中账户3—5月累积收益，5月后缓慢回撤；慢冲突主要在11月下跌后保持相对优势，未消除长期水下。",
+  "observations": [
+    {
+      "symptom": "延迟1m、3bp：基线年收益12.061%、MDD21.719%；慢冲突16.740%/17.795%，等仓位常量10.021%/18.561%。最长日水下三者均159日。",
+      "evidence": "annual_metrics.csv",
+      "opportunity_sufficiency": "242交易日，持续水下足量",
+      "owner": "exposure timing and recovery speed",
+      "resolved": false
+    },
+    {
+      "symptom": "5/13—11/11峰谷跨度124个交易日；半仓净改善0.057644，其中毛改善0.019822、成本节省0.037822。11/11后恢复段半仓相对等仓位常量少赚0.005211。",
+      "evidence": "top10_events.csv view0 delay_1m cost3 rank1",
+      "opportunity_sufficiency": "124-day decline and36-day observed recovery; recovery remains censored at year-end",
+      "owner": "decline protection vs recovery opportunity",
+      "resolved": "accounting identity; market cause unresolved"
+    },
+    {
+      "symptom": "全年毛收益减少0.029634、成本节省0.070540；相对满仓的净优势仍依赖成本，但相对等仓位常量有正毛增量0.055044。",
+      "evidence": "opportunity_attribution.csv view0 delay_1m cost3",
+      "opportunity_sufficiency": "removed wins3.068772 vs avoided losses3.039139",
+      "owner": "disentangle position scale from conditional allocation",
+      "resolved": false
+    },
+    {
+      "symptom": "244填充分钟：242个14:59，另外10:01/10:02各1；严格跳过填充成交与延迟主图结果仍相同。端点桥接五视图精确通过。",
+      "evidence": "source_audit.json / bridge_parity.json",
+      "opportunity_sufficiency": "source population",
+      "owner": "execution carrier",
+      "resolved": "endpoint parity only"
+    }
+  ],
+  "mechanism_verdict": "第二年支持降回撤信息，但不能把恢复期缩短作为已解决成果；净优势、毛优势和等仓位优势需保持区分。literal批次公开仍负收益且不证明真实发布延迟。",
+  "next_step": "封存2022，打开既知反例2023；同一固定政策、无新增阈值。"
+}

@@ -1,0 +1,37 @@
+{
+  "year": 2021,
+  "main_agent_reviewed": true,
+  "graphical_evidence": "annual.svg：3bp延迟版本在3—7月回撤、7月后恢复；literal_publication全年主要水下，与盘中版本路径明显不同。",
+  "observations": [
+    {
+      "symptom": "延迟一分钟后零成本慢冲突MDD11.54%，高于同仓位常量9.86%；加入3bp后慢冲突14.58%，优于常量15.82%。",
+      "evidence": "annual_metrics.csv view0 delay_1m, costs0/3",
+      "opportunity_sufficiency": "full243-day session, ample changes",
+      "owner": "execution timing plus turnover",
+      "resolved": false
+    },
+    {
+      "symptom": "3bp下全年慢冲突比基线多0.017648对数收益，毛收益减少0.053793、成本节省0.071441；净优势主要是交易成本节省。",
+      "evidence": "opportunity_attribution.csv view0 delay_1m",
+      "opportunity_sufficiency": "wins_removed2.939122 and losses_avoided2.885329, both ample",
+      "owner": "position sizing and turnover",
+      "resolved": "accounting identity only"
+    },
+    {
+      "symptom": "最大下降段3/9—7/13，86交易日，半仓比基线改善0.052731净对数收益；次大下降段8/2—9/30相对等仓位常量反而少0.016074。",
+      "evidence": "top10_events.csv view0 delay_1m cost3 ranks1/2",
+      "opportunity_sufficiency": "two distinct decline episodes",
+      "owner": "state discrimination varies by episode",
+      "resolved": false
+    },
+    {
+      "symptom": "244填充分钟中243个是14:59；跳过填充成交与延迟成交本年度主图结果相同。+4一个原始端点需先跳过14:20填充行才能精确对齐。",
+      "evidence": "source_audit.json and repair_amendment.json",
+      "opportunity_sufficiency": "source population audited",
+      "owner": "source export and missing-minute handling",
+      "resolved": "price bridge verified, pipeline provenance unresolved"
+    }
+  ],
+  "mechanism_verdict": "保留条件性降回撤进展；本年不支持稳定优于简单减仓，也不能把3bp净优势都归功于低频预测。literal available_at结果只揭示字段含义重要，不能断言真实市场必须等收盘后。无新候选、无硬门槛升级。",
+  "next_step": "封存2021，按相同冻结规则打开2022；不改变低频阈值。"
+}

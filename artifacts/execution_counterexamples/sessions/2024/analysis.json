@@ -1,0 +1,37 @@
+{
+  "year": 2024,
+  "main_agent_reviewed": true,
+  "graphical_evidence": "annual.svg：9—10月上涨是年度净收益集中来源；慢冲突仍有较多盈利暴露但低于满仓，literal批次信号在同段明显下跌。",
+  "observations": [
+    {
+      "symptom": "延迟1m、3bp：慢冲突年收益102.238%，低于基线119.726%，高于等仓位常量92.128%；MDD10.884%，低于13.569%及11.393%。水下69日高于基线59日。",
+      "evidence": "annual_metrics.csv view0 delay_1m",
+      "opportunity_sufficiency": "242交易日、明显上涨机会",
+      "owner": "risk-return sacrifice permitted by user; recovery unresolved",
+      "resolved": false
+    },
+    {
+      "symptom": "9/27—9/30急涨中的短时回撤：慢冲突覆盖50.4%，与锯齿交集为0；半仓毛减损0.046180，成本节省仅0.000300。随后恢复217分钟，冲突为0，政策回到全仓并保留全部该段盈利。",
+      "evidence": "top10_events.csv view0 delay_1m cost3 rank2",
+      "opportunity_sufficiency": "119分钟下降、217分钟恢复；两者各涉及2交易日，不能据此视为大样本",
+      "owner": "fast reversal against stable drift; effective tactical risk reduction",
+      "resolved": "event accounting only"
+    },
+    {
+      "symptom": "全年弃利3.957083超过避亏3.799554，成本节省0.074593仍不足抵消，因此对满仓净增量−0.082937；但对等仓位常量毛增量+0.046303。",
+      "evidence": "opportunity_attribution.csv view0 delay_1m cost3",
+      "opportunity_sufficiency": "many opportunities, cannot use annual return sacrifice as automatic veto",
+      "owner": "opportunity sacrifice vs capital scaling",
+      "resolved": "accounting identity"
+    },
+    {
+      "symptom": "247合成分钟包括242个14:59及5个盘中时点，主图跳过合成成交结果不变；五视图端点仍全部闭合。",
+      "evidence": "source_audit.json / bridge_parity.json",
+      "opportunity_sufficiency": "complete source audit",
+      "owner": "data carrier",
+      "resolved": "endpoint identity"
+    }
+  ],
+  "mechanism_verdict": "本年支持慢冲突有超出恒定减仓的风险信息，同时明确年度收益让渡；不能据单个急涨成功事件升级一般机制。",
+  "next_step": "封存2024，打开最后一个已消费年度2025。完成后从封存快照统一汇总，不按五年结果再调参。"
+}

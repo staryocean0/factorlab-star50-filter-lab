@@ -1,0 +1,9 @@
+{
+  "year": 2021,
+  "prior_receipt_sha256": null,
+  "frozen_policy_sha256": "987f42670f4cd880c09c4d6cdfcb81e6a8eaa02698efe4e14319e293ae971090",
+  "evidence_sha256": "a175877ed89228f81389ef12a55a3a6fd91275c50acfb91d984803fe41bec82d",
+  "analysis_sha256": "04a7b212e1fb321a3dd719b9cf90b5da0aa5ff5c5835517f44273d209b5f2adc",
+  "fresh_oos": false,
+  "production_authority": false
+}

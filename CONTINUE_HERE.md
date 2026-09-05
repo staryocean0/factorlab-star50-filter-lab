@@ -12,3 +12,14 @@
    All five reviewed sessions are sealed; do not overwrite or retune them.
 6. Validate `python scripts/validate_drawdown_study.py`. Resolve data availability
    and tradable execution before any stronger causal or production claim.
+7. Second round: `docs/research/execution_counterexamples/report.md`.
+   All five annual sessions are sealed. Do not overwrite them or retune rules.
+   One-minute delayed, 3bp primary account: baseline CAGR16.80%/MDD26.10%;
+   slow-conflict half17.74%/24.56%; matched constant13.78%/22.22%.
+   Slow-conflict MDD advantage beyond constant exposure is not robust to delay.
+   2025 zero-cost delayed slow-conflict MDD14.15% exceeds baseline12.84%.
+8. Exact minute/coarse endpoint bridge handles six-minute first-session offset
+   bars and first-observed quotes following synthetic missing-minute repair.
+   Source publication semantics and tradable execution remain unresolved.
+   Validate `python scripts/finalize_execution_audit.py --validate-only`.
+   The current scientific status remains `infrastructure or measurement gap`.
