@@ -16,3 +16,4 @@
 - [报告](research/cross_scale_root_cause/report.md)
 - [白皮书](research/cross_scale_root_cause/whitepaper.md)与[工作流](research/cross_scale_root_cause/workflow.md)
 - [不可变证据清单](../artifacts/cross_scale_root_cause/manifest.json)
+- [校验状态与CI启动失败回执](research/cross_scale_root_cause_ci_closeout.md)

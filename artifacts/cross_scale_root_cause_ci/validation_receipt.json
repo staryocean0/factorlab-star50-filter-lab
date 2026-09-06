@@ -1,0 +1,68 @@
+{
+  "schema": "star50_cross_scale_root_cause_ci_closeout@1",
+  "research_commit": "2ae61ee90cc14c45cb474ec3e9f643109fbb3470",
+  "manifest_sha256": "34694e64616be9013db81683bb0a67295127a72123075caff3380c8b86971d56",
+  "research_complete": true,
+  "remote_ci_passed": false,
+  "local_checks": {
+    "new_tests": {
+      "passed": 3,
+      "failed": 0
+    },
+    "full_available_local_checkout": {
+      "passed": 34,
+      "failed": 1,
+      "failure": "FileNotFoundError: data/development/5m_offset_0.parquet; original binary carrier is absent from partial local checkout, not a research output mismatch"
+    },
+    "without_original_carrier_package_tests": {
+      "passed": 31,
+      "failed": 0,
+      "excluded_file": "tests/test_package.py"
+    },
+    "frozen_study_validator_with_development_material": {
+      "valid": true,
+      "positions_identical": true,
+      "five_annual_receipts_valid": true,
+      "accounting_and_component_identities_valid": true,
+      "registered_budget_valid": true,
+      "all_pngs_decodable": true
+    }
+  },
+  "remote_ci": {
+    "workflow": "cross-scale-root-cause",
+    "run_id": 34007578040,
+    "url": "https://github.com/staryocean0/factorlab-star50-filter-lab/actions/runs/34007578040",
+    "attempts": 2,
+    "conclusion": "failure",
+    "attempt1_job_id": 101417506414,
+    "attempt2_job_id": 101417645487,
+    "steps": null,
+    "logs_url": null,
+    "attempt1_log_fetch": "404 BlobNotFound",
+    "annotation_count_observed": 1,
+    "annotation_fetch": "GitHub connector rejects check-runs/{id}/annotations endpoint as unsupported",
+    "root_cause": "unconfirmed; failed before job steps, do not infer billing/quota/code failure"
+  },
+  "all_original_commit_run_ids": [
+    34007579622,
+    34007579630,
+    34007579607,
+    34007577936,
+    34007577969,
+    34007577939,
+    34007577869,
+    34007578040
+  ],
+  "remote_content_verification": {
+    "changed_file_blobs_verified": 102,
+    "historical_immutable_blobs_modified": 0,
+    "mutable_old_files_changed": [
+      "CURRENT_RESEARCH.md",
+      "docs/INDEX.md"
+    ]
+  },
+  "production_authority": false,
+  "merge_authority_used": false,
+  "data_2026_used": false,
+  "followup": "Inspect the failed Actions UI annotation / runner availability, then rerun existing frozen workflow. Do not change research results or weaken tests."
+}

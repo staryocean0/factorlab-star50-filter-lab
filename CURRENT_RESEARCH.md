@@ -19,6 +19,8 @@
   这是事后选定窗口的互斥记账占比，不是因果解释比例。强趋势回撤仍有反例。
 - `available_at`仍按用户澄清的历史获取语义；2026未参与属性/参数发现。
   2021—2025持续为已消费，五个年度已依次审查封存。生产权限false。
+- 本地本轮校验通过；GitHub CI在任何步骤启动前失败，重试一次仍同样。
+  原因未确认，不能宣称远端CI通过；见`docs/research/cross_scale_root_cause_ci_closeout.md`。
 - 校验：`python scripts/validate_cross_scale_root_cause.py`；完整数据重放另加
   `--data-dir artifacts/drawdown_material`。不重写本轮或前三轮manifest。
 - 后续若继续，先冻结“盘中可得的推进/响应滞后/回吐”有限测量与验证预算；
