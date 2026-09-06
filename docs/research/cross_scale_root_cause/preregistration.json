@@ -1,0 +1,174 @@
+{
+  "schema": "star50_cross_scale_root_cause_protocol@1",
+  "frozen_before_new_attribute_outcome_analysis": true,
+  "parent_commit": "e429a04350c139b08b31cc1ad601e7ef1721c1b4",
+  "prior_evidence": "Three consumed research rounds; baseline and top10 events already known. This is retrospective, not blind preregistration or fresh validation.",
+  "data_roles": {
+    "2020": "warmup",
+    "2021-2025": "consumed development; hindsight discovery and controls",
+    "2026": "excluded before price calculations; no padding or parameter discovery"
+  },
+  "available_at": "Historical retrieval availability, not realtime arrival. Intraday realtime is realtime per owner.",
+  "account": {
+    "primary_view": "5m_offset_0",
+    "position": "unchanged original full-size long/short",
+    "formula": "causal Butterworth order1 cutoff1/12; sigma48 ddof0 current; hysteresis k1; exec_pos[i]=signal[i-2]",
+    "cost": 0,
+    "nav": "original signed-log index account, 2020 state and boundary interval carried; 2021 NAV reset1",
+    "expected_cagr_pct": 86.75662509083047,
+    "expected_mdd_pct": 14.323804733417234,
+    "not_a_tradable_etf_account": true
+  },
+  "price_attributes": {
+    "features": [
+      "eff_1d",
+      "eff_5d",
+      "eff_20d",
+      "rv_1d",
+      "rv_5d",
+      "rv_20d",
+      "rv_ratio_1_20",
+      "drift_disagree_1_20",
+      "acf1_5d",
+      "acf3_5d",
+      "acf12_5d",
+      "fast_share_1d",
+      "fast_share_5d",
+      "fast_share_20d",
+      "work_turns_5d",
+      "slow_work_velocity_5d",
+      "slow_work_opposition_5d",
+      "wick_1d",
+      "gap_share_1d",
+      "threshold_work_amplitude_5d"
+    ],
+    "count": 20,
+    "sampling": "all14 existing carriers; no locally constructed market bars",
+    "primary_nominal_bar_minutes": 5,
+    "cutoffs_bars": [
+      12,
+      48,
+      240,
+      960
+    ],
+    "cutoffs_nominal_trading_time": [
+      "1hour",
+      "1day",
+      "5days",
+      "20days"
+    ],
+    "lookbacks_days": [
+      1,
+      5,
+      20
+    ],
+    "bands": [
+      "x-L12",
+      "L12-L48",
+      "L48-L240",
+      "L240-L960",
+      "L960"
+    ],
+    "filter": "first-order Butterworth SOS forward/backward; squared magnitude, zero phase, nonorthogonal, future used. Causal companion uses forward SOS initialized at first value.",
+    "edge_exclusion": "exclude first/last20 trading days of full <=2025 input from inferential panel; 2020 covers left edge. All original-account events still reported, with edge flags.",
+    "daily_sample": "last bar of each trading day; trailing windows use native observations_per_day times days; 48primary,46offset. Frequency labels nominal; overnight compressed, irregular coarse views are sparse samplings.",
+    "eff": "abs(sum close log returns)/sum abs close log returns",
+    "rv": "sqrt(mean squared close log returns), bp per native bar; daily snapshots",
+    "acf": "rolling Pearson correlation return[t] versus return[t-lag], window5days",
+    "fast_share": "sum squared differences of fast component divided by sum of squared differences of five nonorthogonal components; relative variation, NOT orthogonal variance explained",
+    "slow_work_velocity": "RMS diff L240 / RMS diff (L12-L48), window5days",
+    "slow_work_opposition": "share of bars with diff L240 and diff work opposite, window5days",
+    "work_turns": "sign changes in diff work per native day, trailing5days",
+    "wick": "mean (loghigh-loglow-abs(logclose-logopen))/(loghigh-loglow), zero range->0, clipped0..1",
+    "gap_share": "sum squared(logopen-prevlogclose)/(that + squared(logclose-logopen)), trailing1day",
+    "threshold_work_amplitude": "mean original sigma / std(work levels,ddof0), trailing5days",
+    "drift_disagree": "sign trailing1day netreturn differs from trailing20day netreturn",
+    "native_view_audit": "efficiency1/5/20days and wick1day for all14; summary/event comparisons only, not a feature search"
+  },
+  "inference": {
+    "outcomes": [
+      "daily fixed-account log pnl",
+      "daily log pnl / daily sum abs open returns (capture)"
+    ],
+    "tests": 40,
+    "statistic": "Spearman rho after within-year centering ranks, all20features x2outcomes",
+    "null_1": "1999 independent circular shifts of whole feature panel within each year; shifts at least20tradingdays from0 andyearlength. Retains feature dependence and within-year temporal structure except wrap. Breaks synchronous property-PNL association. Conditional stationarity assumption, not universal chance proof.",
+    "null_2": "1999 permutations of consecutive20day feature blocks within year; preserves within-block relations, breaks order and alignment.",
+    "multiplicity": "two-sided maximum absolute rho over40 tests per surrogate; add-one p. Report unadjusted and maxT adjusted for both nulls.",
+    "uncertainty": "1000 year-stratified moving20day paired-block bootstraps, percentile95% CI; overlap remains, no iid bar standard errors",
+    "fixed_cells": [
+      [
+        "fast_share_5d",
+        "slow_work_velocity_5d"
+      ],
+      [
+        "eff_1d",
+        "eff_20d"
+      ]
+    ],
+    "cell_thresholds": "pooled dev-panel medians without outcome optimization; descriptive only. Report all4 cells for each, loss/win counts, loss contribution, durations, annual/offset replication.",
+    "secondary": "yearwise and 5offset Spearman signs, nonoverlap5day block means, causal companion attributes lagged1day. No best feature/policy selection. Causal proxy companion is a separate40test maxT family.",
+    "matched_controls": "for every primary cell, compare other cells within year x realized-volatility tercile; list counts, pnl/capture differences. Matching is descriptive, not causal identification.",
+    "event_selection": "all original top10 peak->trough andtrough->recovery; remainder underwater and at/highwater controls; no event-specific threshold tuning"
+  },
+  "mechanism": {
+    "trades": "completed same-position runs of booked open intervals; exact netreturn, MFE,MAE, favorable-excursion giveback, duration and losses. Includes clipped event trade fragments separately.",
+    "price_ablations": "all7 nonempty subsets of 3 groups {fast=x-L12,medium=L12-L240,slow=L240}; SOSfiltfilt on logopen and logclose separately; reconstruct synthetic O/C, rerun IDENTICAL baseline and threshold, full size. All-groups parity required. Retrospective structural perturbation, not realistic surrogate/null/causal treatment effect; nonorthogonality and boundary artifacts disclosed.",
+    "synthetic_wave_grid": {
+      "period_bars": [
+        6,
+        8,
+        12,
+        24,
+        48,
+        96,
+        240
+      ],
+      "fast_log_amplitude": 0.002,
+      "slow_period_bars": 960,
+      "slow_to_fast_velocity_ratio": [
+        0,
+        0.5,
+        2
+      ],
+      "slow_phase": [
+        0,
+        1.5707963267948966,
+        3.141592653589793
+      ],
+      "constant_drift_to_fast_velocity_ratio": [
+        -0.5,
+        0,
+        0.5
+      ],
+      "wave_cases": 63,
+      "drift_cases": 21,
+      "bars": 9600,
+      "warmup_bars": 1920,
+      "open": "previous close; no gap; full fixed algorithm; no market calibration",
+      "budget_total": 84
+    }
+  },
+  "annual_review": "Main agent reviews and seals2021,2022,2023,2024,2025 in order, fixed measurements only. No blind claim or annual strategy rebuilding; user scope overrides generic12year skill.",
+  "attempt_budget": {
+    "primary_features": 20,
+    "primary_associations": 40,
+    "causal_proxy_associations": 40,
+    "cell_tables": 2,
+    "market_price_ablation_paths": 7,
+    "synthetic_cases": 84,
+    "policy_candidates": 0
+  },
+  "authority": {
+    "fresh_oos": false,
+    "production": false,
+    "live_registry_mutation": false,
+    "position_changes": false
+  },
+  "source_hashes": {
+    "scripts/reproduce_historical_baseline.py": "084a803426f610e9c66ea9b3d4b30ed7475ecd018c11b08309f5a8aa6cd95b8e",
+    "src/star50_filter/filters.py": "2f3bea36d6a8103c53cf96b5a93e967fa42ef9b6bbe161d4199287c3bf9e73bd",
+    "src/star50_filter/backtest.py": "d341e4a28afa7d47e8da4fa316f07538aec730fa2a8dd7d2ebb4344f321e1841",
+    "src/star50_filter/drawdown_diagnostics.py": "abe2bea4f5d75dc1cf06a5693032008591b8a3b0c2e75df8dddb26020e2bad2f"
+  }
+}
