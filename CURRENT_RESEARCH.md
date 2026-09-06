@@ -1,5 +1,9 @@
 # Current research entry
 
+## 当前：V2单笔质量优先研究与回测完成
+
+[结果与图形](docs/research/half_day_slope_union_v2/result.md) → [工作流](docs/research/half_day_slope_union_v2/workflow.md) → [冻结参数](docs/research/half_day_slope_union_v2/selected_policy.json)。2021—2023有界324身份开发后冻结，2024/2025逐年原样检验；V2相对V1提高平均单笔与整体Sharpe，2025总收益/Sharpe仍有代价。AI自加交易次数硬门的开发后修订已公开。指数方向费用代理模拟，非真实ETF/期权账户；2026未读，无生产权。下述V1为前序原型。
+
 ## 当前：半日低通1分钟斜率并集原型（用户最新改版）
 
 [白皮书](docs/research/half_day_slope_union_v1/whitepaper.md) → [工作流](docs/research/half_day_slope_union_v1/workflow.md) → [机器合同](docs/research/half_day_slope_union_v1/contract.json)。接管原线程 `01a074d4-b841-7dc2-9cc0-2063f63de807` 最后任务：同一科创50半日低通策略改为原生1m、120交易分钟截止、入出场各1—5根相关性校正斜率并集、多空镜像。首版仅合成验证，经济参数未选优；2026未读取。旧5m限制和下述任务优先级由本次用户明确改版取代，历史工件保持可查。

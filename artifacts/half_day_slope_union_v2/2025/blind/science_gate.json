@@ -1,0 +1,8 @@
+{
+  "status": "diagnostic_signal_present_account_contract_may_open",
+  "v1_prefix_equivalence": true,
+  "clock": "raw_native_1m_closed_bar_to_next_open",
+  "read_max_year": 2025,
+  "financial_account": "index_direction_simulation",
+  "production_authority": false
+}

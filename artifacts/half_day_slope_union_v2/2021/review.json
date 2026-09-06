@@ -1,0 +1,25 @@
+{
+  "year": 2021,
+  "reviewer": "Codex controller",
+  "selected_config": {
+    "entry_alpha": 0.05,
+    "exit_alpha": 0.05,
+    "weight_power": 2,
+    "volatility_window": 480,
+    "entry_confirm": 3,
+    "cooldown": 0
+  },
+  "status": "provisional_development_choice",
+  "evidence_hashes": {
+    "blind/receipt.json": "98a1a134d4d08ba3c18f4c74534b6fa1da6353ffdc58c8511c794d4fc836b88b",
+    "family/receipt.json": "dae89256acd72bce084671ba5229950acb296009218f3cd345566d40d742d2d6",
+    "ranking.csv": "07520b961e85f5c96a5741a218645ac2c3aa02f7dd8c4b1e02fe0fb52c76dd5b",
+    "blind_review.json": "7e1719b523c431fad6720457100d6cdc629907ce51fad9f8e6329cd20b8c13d5"
+  },
+  "observations": [
+    "共同家族第一年按冻结门选择101笔/19.10bp/Sharpe0.845；V1为71笔/13.12bp/0.528。选择依赖最少100笔门，38笔/41.59bp的高均值点保留进展但不晋级。",
+    "此年获选参数更宽入场并加三根确认，收益来源不能简写为更少交易；当年日MDD18.14%比V1 16.39%稍差，在预注册2个百分点容差内。",
+    "未增加规则，下一年先盲测这个整案。仅一年度材料，不能称稳定高质量。"
+  ],
+  "production_authority": false
+}

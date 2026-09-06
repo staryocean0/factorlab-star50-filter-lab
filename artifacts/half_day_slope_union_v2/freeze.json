@@ -1,0 +1,2610 @@
+{
+  "inputs": {
+    "/home/starryocean/桌面/量化/factorlab-star50-filter-lab/artifacts/drawdown_material/1m_official.parquet": "ba03caa432d3212512da73d31ddf86f47dbf121628a6e91897c73b6e331e959e"
+  },
+  "sources": {
+    "src/star50_filter/slope_union.py": "a58d60251dcb90fab8cd9a3a644df6e8a63f4f6673c5bd5ac622cee5d9ace472",
+    "src/star50_filter/slope_union_v2.py": "0fe273e7317d5cdb6f428ddcd8b2008fb9158cf9b4cee66e0a0798989730f580",
+    "scripts/research_slope_union_v2.py": "2b15650c8fee8a44fba1444ce1e96878bd128af40d3c8541e4ada1415354d204",
+    "tests/test_slope_union_v2.py": "86f3dfd9e3b3300b8d4f9c603ffe77c9c9958db44de5cd8dbf269ca307f0a0fa",
+    "docs/research/half_day_slope_union_v2/whitepaper.md": "9974c452d75cbebac4bfca763fcd30cfd5d349f592adc2e3651133e1c38f3179",
+    "docs/research/half_day_slope_union_v2/data_usage.json": "c987958fd6b488133efc29acce3681ea023f3ae0185ece379cdf467e1e0e7b8b"
+  },
+  "policies": {
+    "e0.001_x0.05_p0_w120_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p0_w120_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p0_w120_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p0_w120_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p0_w240_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p0_w240_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p0_w240_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p0_w240_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p0_w480_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p0_w480_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p0_w480_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p0_w480_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p1_w120_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p1_w120_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p1_w120_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p1_w120_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p1_w240_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p1_w240_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p1_w240_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p1_w240_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p1_w480_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p1_w480_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p1_w480_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p1_w480_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p2_w120_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p2_w120_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p2_w120_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p2_w120_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p2_w240_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p2_w240_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p2_w240_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p2_w240_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p2_w480_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p2_w480_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.05_p2_w480_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.05_p2_w480_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p0_w120_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p0_w120_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p0_w120_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p0_w120_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p0_w240_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p0_w240_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p0_w240_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p0_w240_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p0_w480_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p0_w480_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p0_w480_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p0_w480_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p1_w120_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p1_w120_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p1_w120_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p1_w120_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p1_w240_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p1_w240_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p1_w240_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p1_w240_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p1_w480_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p1_w480_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p1_w480_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p1_w480_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p2_w120_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p2_w120_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p2_w120_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p2_w120_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p2_w240_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p2_w240_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p2_w240_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p2_w240_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p2_w480_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p2_w480_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.15_p2_w480_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.15_p2_w480_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p0_w120_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p0_w120_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p0_w120_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p0_w120_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p0_w240_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p0_w240_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p0_w240_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p0_w240_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p0_w480_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p0_w480_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p0_w480_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p0_w480_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p1_w120_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p1_w120_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p1_w120_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p1_w120_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p1_w240_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p1_w240_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p1_w240_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p1_w240_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p1_w480_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p1_w480_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p1_w480_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p1_w480_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p2_w120_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p2_w120_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p2_w120_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p2_w120_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p2_w240_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p2_w240_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p2_w240_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p2_w240_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p2_w480_c1_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p2_w480_c1_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.001_x0.3_p2_w480_c3_d0": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.001_x0.3_p2_w480_c3_d5": {
+      "entry_alpha": 0.001,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p0_w120_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p0_w120_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p0_w120_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p0_w120_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p0_w240_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p0_w240_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p0_w240_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p0_w240_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p0_w480_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p0_w480_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p0_w480_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p0_w480_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p1_w120_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p1_w120_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p1_w120_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p1_w120_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p1_w240_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p1_w240_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p1_w240_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p1_w240_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p1_w480_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p1_w480_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p1_w480_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p1_w480_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p2_w120_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p2_w120_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p2_w120_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p2_w120_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p2_w240_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p2_w240_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p2_w240_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p2_w240_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p2_w480_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p2_w480_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.05_p2_w480_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.05_p2_w480_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p0_w120_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p0_w120_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p0_w120_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p0_w120_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p0_w240_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p0_w240_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p0_w240_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p0_w240_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p0_w480_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p0_w480_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p0_w480_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p0_w480_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p1_w120_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p1_w120_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p1_w120_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p1_w120_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p1_w240_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p1_w240_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p1_w240_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p1_w240_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p1_w480_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p1_w480_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p1_w480_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p1_w480_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p2_w120_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p2_w120_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p2_w120_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p2_w120_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p2_w240_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p2_w240_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p2_w240_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p2_w240_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p2_w480_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p2_w480_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.15_p2_w480_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.15_p2_w480_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p0_w120_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p0_w120_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p0_w120_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p0_w120_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p0_w240_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p0_w240_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p0_w240_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p0_w240_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p0_w480_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p0_w480_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p0_w480_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p0_w480_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p1_w120_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p1_w120_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p1_w120_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p1_w120_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p1_w240_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p1_w240_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p1_w240_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p1_w240_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p1_w480_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p1_w480_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p1_w480_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p1_w480_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p2_w120_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p2_w120_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p2_w120_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p2_w120_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p2_w240_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p2_w240_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p2_w240_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p2_w240_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p2_w480_c1_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p2_w480_c1_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.01_x0.3_p2_w480_c3_d0": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.01_x0.3_p2_w480_c3_d5": {
+      "entry_alpha": 0.01,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p0_w120_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p0_w120_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p0_w120_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p0_w120_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p0_w240_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p0_w240_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p0_w240_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p0_w240_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p0_w480_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p0_w480_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p0_w480_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p0_w480_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p1_w120_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p1_w120_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p1_w120_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p1_w120_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p1_w240_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p1_w240_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p1_w240_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p1_w240_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p1_w480_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p1_w480_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p1_w480_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p1_w480_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p2_w120_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p2_w120_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p2_w120_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p2_w120_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p2_w240_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p2_w240_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p2_w240_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p2_w240_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p2_w480_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p2_w480_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.05_p2_w480_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.05_p2_w480_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.05,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p0_w120_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p0_w120_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p0_w120_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p0_w120_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p0_w240_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p0_w240_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p0_w240_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p0_w240_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p0_w480_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p0_w480_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p0_w480_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p0_w480_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p1_w120_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p1_w120_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p1_w120_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p1_w120_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p1_w240_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p1_w240_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p1_w240_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p1_w240_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p1_w480_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p1_w480_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p1_w480_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p1_w480_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p2_w120_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p2_w120_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p2_w120_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p2_w120_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p2_w240_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p2_w240_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p2_w240_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p2_w240_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p2_w480_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p2_w480_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.15_p2_w480_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.15_p2_w480_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.15,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p0_w120_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p0_w120_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p0_w120_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p0_w120_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p0_w240_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p0_w240_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p0_w240_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p0_w240_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p0_w480_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p0_w480_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p0_w480_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p0_w480_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 0.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p1_w120_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p1_w120_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p1_w120_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p1_w120_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p1_w240_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p1_w240_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p1_w240_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p1_w240_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p1_w480_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p1_w480_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p1_w480_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p1_w480_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 1.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p2_w120_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p2_w120_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p2_w120_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p2_w120_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 120,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p2_w240_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p2_w240_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p2_w240_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p2_w240_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 240,
+      "entry_confirm": 3,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p2_w480_c1_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p2_w480_c1_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 1,
+      "cooldown": 5
+    },
+    "e0.05_x0.3_p2_w480_c3_d0": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 0
+    },
+    "e0.05_x0.3_p2_w480_c3_d5": {
+      "entry_alpha": 0.05,
+      "exit_alpha": 0.3,
+      "weight_power": 2.0,
+      "volatility_window": 480,
+      "entry_confirm": 3,
+      "cooldown": 5
+    }
+  },
+  "baseline": "e0.01_x0.05_p1_w240_c1_d0",
+  "execution_window": "next_tradable_after_bar_close",
+  "production_authority": false
+}

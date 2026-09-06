@@ -1,0 +1,28 @@
+{
+  "freeze_sha256": "712c898845beeeefe17089d283fbbe4f8857ae280e65b47fa3dc5e9dea6b9db6",
+  "year": 2022,
+  "mode": "blind",
+  "prior_review_sha256": "7191b6dba4f7efa2392793e1719e070605e2db00a1015a854d6060b47fc4e920",
+  "read_rows": 142800,
+  "year_rows": 58080,
+  "elapsed_seconds": 0.7180772479623556,
+  "backend": "numpy_cpu_sparse_events",
+  "files": {
+    "e0.01_x0.05_p1_w240_c1_d0_daily.parquet": "38c8047affe047adffbd3149393485a5c9d0d209982da8e5e7563286f4ea6f8b",
+    "e0.01_x0.05_p1_w240_c1_d0_targets.npy": "8c81b26178103b261c2c6fcafefb5a4c27b971967bb3284a318fe85ba3e3faf1",
+    "e0.01_x0.05_p1_w240_c1_d0_trades.parquet": "b0a87a0dc4ee1f7670b6292589fd129b8e330735e8169e36dbd01e90922dac9c",
+    "e0.05_x0.05_p2_w480_c3_d0_daily.parquet": "864d6f65af2ccb6ae0ba3570122f7fe94b3c7a66546de6bb16acbe3547874efd",
+    "e0.05_x0.05_p2_w480_c3_d0_targets.npy": "4bd3018e962bbd20dcdb7619dd6be853e6679c5cfd5ad2a67d8ae2ecf1ebc0e7",
+    "e0.05_x0.05_p2_w480_c3_d0_trades.parquet": "2bcdd12bc0077d24084f424060dbc8bd9ddf411faf3560bb20f3a7c3d2771eb4",
+    "metrics.csv": "fff9c50ca0df5c37ce597be4f5dd3e838f71671662335036063e3aa674e1b26d",
+    "science_gate.json": "338ffe05188c72b0bbd115618af055912ca232262c2bd629c51f0b8a4d6b0d5a"
+  },
+  "prior_policy": {
+    "entry_alpha": 0.05,
+    "exit_alpha": 0.05,
+    "weight_power": 2,
+    "volatility_window": 480,
+    "entry_confirm": 3,
+    "cooldown": 0
+  }
+}

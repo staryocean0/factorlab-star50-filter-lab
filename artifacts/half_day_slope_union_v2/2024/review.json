@@ -1,0 +1,22 @@
+{
+  "year": 2024,
+  "reviewer": "Codex controller",
+  "selected_config": {
+    "entry_alpha": 0.001,
+    "exit_alpha": 0.05,
+    "weight_power": 2,
+    "volatility_window": 480,
+    "entry_confirm": 1,
+    "cooldown": 5
+  },
+  "status": "frozen_policy_repeat_audit_no_reselection",
+  "evidence_hashes": {
+    "blind_receipt_sha256": "739fc1156eb229e5440673173a08ac18d5a5d9373d4cac0828f6947f97a7ba96"
+  },
+  "observations": [
+    "35笔136.86bp、Sharpe1.355、分钟MDD13.42%相对V1的64笔55.94bp、0.837、22.41%改善。",
+    "2024-09-24至10-10长多净4745.70bp，相对全年逐笔净和4790.19bp贡献99.07%；中位单笔仍为-35.01bp，因此质量改善高度依赖右尾。",
+    "2月长多盈利1149.22bp说明不只有单次盈利机会，但12月多头亏461.52bp与2月亏395.10bp须保留。没有改参数或派发新候选，2025保持同一身份。"
+  ],
+  "production_authority": false
+}

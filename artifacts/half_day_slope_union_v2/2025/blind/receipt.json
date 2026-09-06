@@ -1,0 +1,28 @@
+{
+  "freeze_sha256": "712c898845beeeefe17089d283fbbe4f8857ae280e65b47fa3dc5e9dea6b9db6",
+  "year": 2025,
+  "mode": "blind",
+  "prior_review_sha256": "bd3b438fab6fac9e2862d6e3a05b4f8a6612ad27d9a9cee3be729e0d02a26df2",
+  "read_rows": 317280,
+  "year_rows": 58320,
+  "elapsed_seconds": 0.9420563649618998,
+  "backend": "numpy_cpu_sparse_events",
+  "files": {
+    "e0.001_x0.05_p2_w480_c1_d5_daily.parquet": "7ae892ed5ab75d693e7896d66e94f755949bba7c7de9276bdbc3f64f9aa7b57d",
+    "e0.001_x0.05_p2_w480_c1_d5_targets.npy": "9075150ea13f21ec27af609a47a29a6d679330c6c43d45a00d79f867dafb4169",
+    "e0.001_x0.05_p2_w480_c1_d5_trades.parquet": "a83288b5043ddfe82c11ec5ff3e6b904e424f727260a2a25dbc372d9c26a5c56",
+    "e0.01_x0.05_p1_w240_c1_d0_daily.parquet": "67488eb0c09cf062f53f491ff29d5ac0eeca66be55e7c6f68449aed267e495c9",
+    "e0.01_x0.05_p1_w240_c1_d0_targets.npy": "36a27b026e25294890ddd656c2a1be42422032168ae34bf586d3ce3cfe595fa3",
+    "e0.01_x0.05_p1_w240_c1_d0_trades.parquet": "9ac473e8abd897e9fb62d9961c63f65278763d9c9f81544e8c6f04ec927b635b",
+    "metrics.csv": "38d55aedf38f8533dd8098dc8e38edfedb3ef29d40ebcb5e1801706d3ad5dd6f",
+    "science_gate.json": "05b98c3e39dbb9202dcd0c5d30fccf83c9d0d2a896698aea7cf2c3d3654c762c"
+  },
+  "prior_policy": {
+    "entry_alpha": 0.001,
+    "exit_alpha": 0.05,
+    "weight_power": 2,
+    "volatility_window": 480,
+    "entry_confirm": 1,
+    "cooldown": 5
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "year": 2025,
+  "reviewer": "Codex controller",
+  "selected_config": {
+    "entry_alpha": 0.001,
+    "exit_alpha": 0.05,
+    "weight_power": 2,
+    "volatility_window": 480,
+    "entry_confirm": 1,
+    "cooldown": 5
+  },
+  "status": "repeat_audit_complete_no_reselection",
+  "evidence_hashes": {
+    "blind_receipt_sha256": "5ce9f83562130fd3b18794e38605b123513d40ca12b22e6e1015456f35f2833b"
+  },
+  "observations": [
+    "V2 37笔90.31bp / Sharpe1.675 / MDD10.18%；V1 59笔72.46bp / Sharpe1.699 / MDD11.68%。质量增加、风险略降，但年收益36.87%低于46.20%、Sharpe略退。",
+    "V2 8月20日至9月4日多头赚1374.31bp，而V1更早入场同波段赚2478.20bp，说明严格入场减少交易会漏掉部分趋势，不是纯免费增益。",
+    "仍有1月13日空头亏355.66bp与3月长多亏301.55bp。禁止据后两年结果增加事后规则；下一步只汇总与独立账户重放。"
+  ],
+  "production_authority": false
+}

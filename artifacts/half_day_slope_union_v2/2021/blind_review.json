@@ -1,0 +1,12 @@
+{
+  "year": 2021,
+  "reviewer": "Codex controller",
+  "prior": "V1",
+  "observations": [
+    "71 trades, mean net 13.120746 bp, median -11.460522 bp, daily Sharpe 0.528327, minute MDD 17.9579% under 2bp/side.",
+    "Average holding 569.73 trading minutes and zero <=5-minute trades contradict the assumption that V1 primarily suffers rapid whipsaws.",
+    "2021-02-18 long to next morning loses 336.59bp; 2021-08-30 long loses 330.57bp; 2021-03-04 short holds 951min and gains 677.48bp. Simply shortening all holding windows may sacrifice genuine trends.",
+    "Preregistered family includes faster exit and more permissive entry as counterexamples as well as confirmation/cooldown. No family results yet read."
+  ],
+  "family_authorized": true
+}

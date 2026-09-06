@@ -1,0 +1,31 @@
+{
+  "schema_id": "star50.half_day_slope_union@2.0",
+  "strategy_id": "star50_half_day_lowpass",
+  "version": "slope_union_v2",
+  "status": "retrospective_research_candidate_waiting_unseen_challenge",
+  "sample_minutes": 1,
+  "cutoff_minutes": 120,
+  "filter_order": 1,
+  "lookbacks": [1, 2, 3, 4, 5],
+  "direction": "long_short",
+  "config": {
+    "entry_alpha": 0.001,
+    "exit_alpha": 0.05,
+    "weight_power": 2.0,
+    "volatility_window": 480,
+    "entry_confirm": 1,
+    "cooldown": 5
+  },
+  "primary": "mean_completed_trade_net_simple_return_bp",
+  "development": "2021-2023",
+  "frozen_repeat_audit": "2024-2025",
+  "excluded": "2026",
+  "unique_parameter_identities": 324,
+  "development_annual_family_evaluations": 972,
+  "selection_rule_amended_after_development_results": true,
+  "amendment": "selection_amendment.md",
+  "fee_proxy_per_side_bps": 2,
+  "actual_etf_or_option_account": false,
+  "fresh_oos": false,
+  "production_authority": false
+}

@@ -1,0 +1,18 @@
+{
+  "freeze_sha256": "712c898845beeeefe17089d283fbbe4f8857ae280e65b47fa3dc5e9dea6b9db6",
+  "year": 2021,
+  "mode": "blind",
+  "prior_review_sha256": null,
+  "read_rows": 84720,
+  "year_rows": 58320,
+  "elapsed_seconds": 0.4209461429854855,
+  "backend": "numpy_cpu_sparse_events",
+  "files": {
+    "e0.01_x0.05_p1_w240_c1_d0_daily.parquet": "f8f5ae60ff4c9cc2a644458ac4a7a4c71237fb6a166d375ea3e6e3051a41656b",
+    "e0.01_x0.05_p1_w240_c1_d0_targets.npy": "15e2ab9aea2bca1737bb47d43dbd3ec5b60fda83a4c8dbd06223fb2e4be96641",
+    "e0.01_x0.05_p1_w240_c1_d0_trades.parquet": "d6a2ccae49e8f044d96f0ae3dc96680ba552141c0f6b3dba7912297b1839d7a5",
+    "metrics.csv": "3b69370e4ddf3acbf38caef0a4c6c624c3117c42a7b10ebe9b09b02e55bca06c",
+    "science_gate.json": "e5de6a1ca37ed3c84c3019f29300d6d0993eb48f77d5813aa4eb9109b2663364"
+  },
+  "prior_policy": null
+}

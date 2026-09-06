@@ -1,0 +1,2 @@
+policy_id,entry_alpha,exit_alpha,weight_power,volatility_window,entry_confirm,cooldown,trades,mean_net_bp,median_net_bp,win_rate,profit_factor,mean_bars,short_hold_fraction,sharpe,return,cagr,mdd,sum_trade_net_bp
+e0.01_x0.05_p1_w240_c1_d0,0.01,0.05,1.0,240,1,0,71,13.120746457998665,-11.460521984334449,0.4647887323943662,1.182828943427455,569.7323943661971,0.0,0.5283273091267515,0.08269233565159273,0.08588298401462535,0.1795785543131354,931.5729985179053

@@ -1,0 +1,15 @@
+{
+  "profile": "cpu-heavy-rf-grid",
+  "runs": [
+    {
+      "run_id": "1788707945433545341-738596-cpu-heavy-rf-grid",
+      "started_at": 1788707945.4335566,
+      "duration_s": 78.044,
+      "exit_code": 0,
+      "workers": 2,
+      "peak_rss_gb": 0.412,
+      "sample_count": 39,
+      "active_job_count_at_admission": 0
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema_id": "star50.slope_union_v2.data_usage@1.0",
+  "source_view": "artifacts/drawdown_material/1m_official.parquet",
+  "source_receipt": "artifacts/drawdown_material/receipt.json",
+  "roles": {
+    "2020": "warmup_only",
+    "2021-2023": "consumed_development_material_sequential_annual_sessions",
+    "2024-2025": "repeat_audit_of_2023_frozen_policy_no_reranking",
+    "2026": "excluded"
+  },
+  "candidate_count": 324,
+  "primary": "mean_completed_trade_net_simple_return_bp",
+  "fee_bps_per_side": 2.0,
+  "cost_sensitivity_bps_per_side": [0, 2, 4, 7],
+  "account": "index_direction_simulation_fixed_entry_units_annual_flat_boundaries",
+  "actual_etf_or_option_fills": false,
+  "fresh_oos": false,
+  "production_authority": false
+}

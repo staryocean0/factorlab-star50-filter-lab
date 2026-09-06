@@ -1,0 +1,126 @@
+{
+  "scientific_status": "retrospective_comparison_not_fresh_oos",
+  "final_config": {
+    "entry_alpha": 0.001,
+    "exit_alpha": 0.05,
+    "weight_power": 2,
+    "volatility_window": 480,
+    "entry_confirm": 1,
+    "cooldown": 5
+  },
+  "replay": [
+    {
+      "year": 2021,
+      "label": "V1",
+      "targets_exact": true,
+      "trades_exact": true,
+      "cash_share_max_error": 1.9984014443252818e-15
+    },
+    {
+      "year": 2022,
+      "label": "V1",
+      "targets_exact": true,
+      "trades_exact": true,
+      "cash_share_max_error": 1.1102230246251565e-15
+    },
+    {
+      "year": 2023,
+      "label": "V1",
+      "targets_exact": true,
+      "trades_exact": true,
+      "cash_share_max_error": 1.1102230246251565e-15
+    },
+    {
+      "year": 2024,
+      "label": "V1",
+      "targets_exact": true,
+      "trades_exact": true,
+      "cash_share_max_error": 2.220446049250313e-15
+    },
+    {
+      "year": 2025,
+      "label": "V1",
+      "targets_exact": true,
+      "trades_exact": true,
+      "cash_share_max_error": 5.10702591327572e-15
+    },
+    {
+      "year": 2021,
+      "label": "V2",
+      "targets_exact": true,
+      "trades_exact": true,
+      "cash_share_max_error": 1.5543122344752192e-15
+    },
+    {
+      "year": 2022,
+      "label": "V2",
+      "targets_exact": true,
+      "trades_exact": true,
+      "cash_share_max_error": 2.220446049250313e-15
+    },
+    {
+      "year": 2023,
+      "label": "V2",
+      "targets_exact": true,
+      "trades_exact": true,
+      "cash_share_max_error": 1.1102230246251565e-15
+    },
+    {
+      "year": 2024,
+      "label": "V2",
+      "targets_exact": true,
+      "trades_exact": true,
+      "cash_share_max_error": 8.881784197001252e-16
+    },
+    {
+      "year": 2025,
+      "label": "V2",
+      "targets_exact": true,
+      "trades_exact": true,
+      "cash_share_max_error": 1.3322676295501878e-15
+    }
+  ],
+  "v1_full_prefix_exact": true,
+  "source_2026_rows_read": 0,
+  "production_authority": false,
+  "source_sha256": {
+    "scripts/report_slope_union_v2.py": "0be2eca101974d5e5113162b448088d97b015ae4f12ecb3fab33d5a00db1bf5f",
+    "tests/test_slope_union_v2_account_oracle.py": "db735bd565d60fba8d57909872afd80e57e5cfeef1d046d3ca6939bba1ab7ccd"
+  },
+  "files": {
+    "2021_V1_snapshot.parquet": "21cbed566e29b97f68ba6a37fae33d285b55547f47a6f11d0b2056b441e2abef",
+    "2021_V1_trades.csv": "a72f4956705a72ec659c84102eaecd1c93aa5d0dc5ae77616d7e8bdc24bad5de",
+    "2021_V2_snapshot.parquet": "8391ece351adff96ba0ba8ea840a725ef8840e8de2126858306bbd59620ea670",
+    "2021_V2_trades.csv": "4381d10a5d2e430f832e51f9fff5735d33f216846a242d6f76bd8c1e2bfbc6f6",
+    "2022_V1_snapshot.parquet": "3bf777ecf33250f4a6ac9c66f11297e4aebaca8befc9c2d4724363364e0d7f34",
+    "2022_V1_trades.csv": "585f331d835927eee5966e73efa617e6058fe96f356d2de304a6870eda6975aa",
+    "2022_V2_snapshot.parquet": "85e0597901de7d0e5ece32f1250186740c58da708192b634cf3f63410960755b",
+    "2022_V2_trades.csv": "5210fdea77da333cbed5a7e55d553ce2aabaca63f0d437e0ac55924e1f2fdf28",
+    "2023_V1_snapshot.parquet": "46c86cc63ac88cb954e8b4ae0680904d810006910013eceb832948aaa8337bd9",
+    "2023_V1_trades.csv": "39902a2cdfcbe571a736e6be4949703df53ba802038105869be8dc3ef5321b4b",
+    "2023_V2_snapshot.parquet": "6d2936424808aebdf585fc4c0b97cb985dd124cdaf97dbdc15e3038eee6a9fc9",
+    "2023_V2_trades.csv": "64549dca1dab19ccf08c3f585e3415cce3a25cbabeb7f776df9057e2f3415ebd",
+    "2024_V1_snapshot.parquet": "37897f2044ae46f1461f8a32a246e4435fcac94f6e7dcc66b8522bdea5163d48",
+    "2024_V1_trades.csv": "346b42c08f93e361386f5999bbc69b0c1c8d7303dd3633966d0f4707d7cf05ea",
+    "2024_V2_snapshot.parquet": "72e7b66ca563f84c6d08508af12bafedb641ae0ef109822ebd625a8439a8ff6f",
+    "2024_V2_trades.csv": "f9642158201f0a345733c41b6f615a169a19551c5a5ea95a01b93a672ef46aa3",
+    "2025_V1_snapshot.parquet": "e0e18cd4e7fc1497880ed829cbff3c2f797a88313317ac88be8faf56eb23d67a",
+    "2025_V1_trades.csv": "6f159f65dbdf7bdd537f38cec68f124b3b9d6ffd6a6790969e1afff821689839",
+    "2025_V2_snapshot.parquet": "fa6d15df216d739a2fc3fcb2e21cd82991ebaea574b72ccdca149aa939aba000",
+    "2025_V2_trades.csv": "2ece3f850d5b424f43ed69f7ffa546ecf01ef71c9a902c47e1d4b7d8aa354fd5",
+    "V1_all_trades.csv": "b3b84b58b3b8f8de313c330c7064a0e147049319ed3109d8b29ca5796b181668",
+    "V1_daily.csv": "f7eb504357fe325a8b2ef9853ba9079695837b04adc5a75f0d3bc1e5f3a4918b",
+    "V2_all_trades.csv": "376eadd5a760cf51962595be5d2fb05a83d9848a34770f13586c2795914bab49",
+    "V2_daily.csv": "2ac58b6907fd7ee0264b40f3945d686011689bd9495d185780ba328027417b36",
+    "annual.csv": "836b8808b8e6d4d45374519eb24f3158ed6e7d54bddd4875166990fb33b4ab3e",
+    "comparison.png": "e01150459ff38dd472bd34065b38877f14984dbd867fe2517de9c5a4e6643db8",
+    "parameter_effects.csv": "4a4f60cded201a75f596deb43cf5fbeae86fdc231ecc185d1b2a7a01b538202e",
+    "report.html": "fa9d1d6af46855381f01d2845db490ce9cdde6b0bd27ddd82fc2f2df185fb5ef",
+    "summary.csv": "6bd7925abec7afe30669586b13c06d61f1e91666cb46e8a40e263e33d5218f1d",
+    "trades_2021.html": "690a053a9a1f4095bf1e09f0baf52ba1e43ebe016a6cfe3f8a8d3407caa2de56",
+    "trades_2022.html": "87e73bd2db6df6a5378e357f472c68c757b7003f2a8a8923ef18a9d7972d7494",
+    "trades_2023.html": "4ed7f127de89859f25948c1ca77d0908dba95afa10587be800c62986d6cd7efe",
+    "trades_2024.html": "0562a5cda255018352b22f31d55aa41a529c01c12d67c0e8587491ca2ad5143a",
+    "trades_2025.html": "04d32efcbdbfe5eb1afa50c51043ed5b3039bca19546621d4ce63b0336527aac"
+  }
+}

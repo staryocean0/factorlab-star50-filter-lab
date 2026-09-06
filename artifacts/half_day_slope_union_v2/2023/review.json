@@ -1,0 +1,29 @@
+{
+  "year": 2023,
+  "reviewer": "Codex controller",
+  "selected_config": {
+    "entry_alpha": 0.001,
+    "exit_alpha": 0.05,
+    "weight_power": 2,
+    "volatility_window": 480,
+    "entry_confirm": 1,
+    "cooldown": 5
+  },
+  "status": "final_v2_frozen_before_2024",
+  "selection_rule": "selection_rule_v2_owner_quality_priority",
+  "selection_rule_changed_after_development_results": true,
+  "amendment": "docs/research/half_day_slope_union_v2/selection_amendment.md",
+  "prior_rule_choice": "e0.05_x0.15_p2_w120_c3_d0",
+  "evidence_hashes": {
+    "blind/receipt.json": "9aec77172b51311ff92aa21cb31aa9c3c4103249e0339e98d634510e3e4c49d2",
+    "family/receipt.json": "4e76e45ca932c6d89cedb9942be96388eb1021c1d2b9b89040c71d36bca981fd",
+    "ranking.csv": "926d0f9839748f83494a32d4783854935e0faf15d92177d271bd99511b736358",
+    "blind_review.json": "ab95ad51226a24df9f44d032e7460b1ab451e684506fec5f6ffee0811f6477c0"
+  },
+  "observations": [
+    "选择更严格入场、480收益波动窗、偏重长窗口、即时确认、退出后5分钟冷却。开发117笔26.3153bp/Sharpe0.684/日MDD12.7956%；不是声明达到绝对高夏普。",
+    "原100笔门由AI自加，强迫增加交易；撤销依据与结果后修订事实公开保留。2024/2025绝不再选择或改变。",
+    "三年逐笔/持有时长图显示大亏来自跨日错向，不仅是短抖；单笔质量仍依赖盈利尾部，后两年固定审阅风险。"
+  ],
+  "production_authority": false
+}

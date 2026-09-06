@@ -1,0 +1,25 @@
+{
+  "year": 2022,
+  "reviewer": "Codex controller",
+  "selected_config": {
+    "entry_alpha": 0.05,
+    "exit_alpha": 0.05,
+    "weight_power": 2,
+    "volatility_window": 120,
+    "entry_confirm": 3,
+    "cooldown": 0
+  },
+  "status": "provisional_development_choice",
+  "evidence_hashes": {
+    "blind/receipt.json": "7a16b38e884d299ab6b2f9aa60a35704807fb27624759eed6342ced54e6b4aae",
+    "family/receipt.json": "608b408f2205dd707a11afd7431e5b710826f637c0aa9d07ce1eb6f1f8331c89",
+    "ranking.csv": "95c4f9b7af56d5fd73e200efa50b35835f0c42c9595c362e5a70b72cb6d579af",
+    "blind_review.json": "d0617f80b78321056e5c60dff52914be92839b83faa6ae40f922e28b1f6aa058"
+  },
+  "observations": [
+    "累计225笔平均10.8456bp、Sharpe0.5272；V1累计146笔7.6107bp、0.2680。固定选择门下更短波动窗取代480，仍不采用冷却。",
+    "低频38至45笔的高质量点35.78bp仍保留但因预注册100笔最低数不晋级，不能仅展示筛除后的赢家。",
+    "2022先前整案风险较差，当前选择从完整共同家族重建，未继承旧赢家作为代码父亲；下一年仍需盲测。"
+  ],
+  "production_authority": false
+}
