@@ -1,0 +1,25 @@
+{
+  "schema": "star50_available_at_owner_clarification@1.0",
+  "date": "2026-09-06",
+  "authority": "explicit_user_data_owner_clarification_in_current_conversation",
+  "user_statement": "available_at 的含义是作为历史数据可以被获取的时间，盘中作为实时数据的获取是实时的。",
+  "available_at_semantics": "historical_data_retrieval_availability_time",
+  "intraday_realtime_availability": "realtime_as_confirmed_by_user",
+  "not_a_measurement_of": [
+    "intraday_feed_latency",
+    "earliest_live_market_observation",
+    "decision_time_bar_visibility"
+  ],
+  "supersedes_interpretations": [
+    "15:30 available_at means the intraday bar was unavailable in realtime",
+    "historical available_at alone establishes source_availability_gap for intraday research",
+    "K-line root-cause attribution must wait for realtime reception logs because of this field"
+  ],
+  "current_semantic_status": "resolved_by_user_clarification",
+  "blocks_root_cause_research": false,
+  "historical_artifact_policy": "Preserve sealed bytes, calculations and audit chronology. Read old availability-gap labels and literal-15:30 scenarios as superseded field interpretations, not the current data contract or proof of actual live delay.",
+  "runtime_timing_contract": "Realtime analysis uses completed bars and information known by the decision time. Historical retrieval availability must not be substituted for realtime decision-time availability.",
+  "scope_limit": "This clarifies field meaning. It does not invent measured feed latency, revision histories, fills or an ETF execution account. Those are separate questions and not prerequisites for the next descriptive K-line attribution task.",
+  "new_strategy_runs_this_update": 0,
+  "production_authority": false
+}
