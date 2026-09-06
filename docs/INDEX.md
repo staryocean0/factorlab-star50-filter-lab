@@ -10,3 +10,9 @@
 - Cloud prompt: `docs/user/cloud_execution_prompt.md`
 - Receipts: `docs/research/`
 - Skill: `.codex/skills/strategy-slice-rebuild/SKILL.md`
+
+## 第四轮：固定策略跨尺度根因
+
+- [报告](research/cross_scale_root_cause/report.md)
+- [白皮书](research/cross_scale_root_cause/whitepaper.md)与[工作流](research/cross_scale_root_cause/workflow.md)
+- [不可变证据清单](../artifacts/cross_scale_root_cause/manifest.json)

@@ -1,0 +1,107 @@
+{
+  "protocol_sha256": "6ffc5e14cf4517636566039899c26f7b6340b3e36860b86d14d17c56987c8c18",
+  "inputs": [
+    {
+      "view": "15m_offset_10",
+      "sha256": "4b68478442b60a20a4504bcdba20deeab31ee7d3befba5ca4a0f4a8885c83da6",
+      "rows": 18508,
+      "first": "2020-07-23",
+      "last": "2025-12-31"
+    },
+    {
+      "view": "15m_offset_5",
+      "sha256": "1100b9d0a7c8d494cc9bba2ea35e68d22626baed0019eae89a618f2eccd4020d",
+      "rows": 18508,
+      "first": "2020-07-23",
+      "last": "2025-12-31"
+    },
+    {
+      "view": "1m_official",
+      "sha256": "b42c8a0bff5475362df8ada101c53d371d783e324fc35b2e0294676d5e760e36",
+      "rows": 317280,
+      "first": "2020-07-23",
+      "last": "2025-12-31"
+    },
+    {
+      "view": "30m_offset_15",
+      "sha256": "ec3f18d3ad3f1072ecbc0ce15300ffffc47dc3bb6358c680313b06cef4d3f2bc",
+      "rows": 7932,
+      "first": "2020-07-23",
+      "last": "2025-12-31"
+    },
+    {
+      "view": "5m_offset_0",
+      "sha256": "8b2f8972c987ee79bc3ff7a6b4f198750f6238ff014cf17921be844a744abaf3",
+      "rows": 63456,
+      "first": "2020-07-23",
+      "last": "2025-12-31"
+    },
+    {
+      "view": "5m_offset_1",
+      "sha256": "ebfe34788942039ffe2098ae6972b8ea731e1a021fd2cd69658da2381a493dec",
+      "rows": 60812,
+      "first": "2020-07-23",
+      "last": "2025-12-31"
+    },
+    {
+      "view": "5m_offset_2",
+      "sha256": "2d430f3e53869b1ab8de2a232740f3e78c1ec30ccc2e9453ac008ed4e13f1cc0",
+      "rows": 60812,
+      "first": "2020-07-23",
+      "last": "2025-12-31"
+    },
+    {
+      "view": "5m_offset_3",
+      "sha256": "09e8096061ca9e785ead605fd30fb2160263c2c19cf3ddaaf6af3436472779f6",
+      "rows": 60812,
+      "first": "2020-07-23",
+      "last": "2025-12-31"
+    },
+    {
+      "view": "5m_offset_4",
+      "sha256": "3e1665723b6184921097e442840c2baf6eb85cd1695299c21670e1ccc99e1c19",
+      "rows": 60812,
+      "first": "2020-07-23",
+      "last": "2025-12-31"
+    },
+    {
+      "view": "60m_offset_30",
+      "sha256": "a1e6725c74069f41e36d4c997f2b1e88c1a321ed6dc0d19a3f2e21bb4fcf06e0",
+      "rows": 2644,
+      "first": "2020-07-23",
+      "last": "2025-12-31"
+    },
+    {
+      "view": "60m_offset_45",
+      "sha256": "9e9fd770b421a78bc1620f24e8346ed55f483f608cf1f3c6c5ce914cc0d5dc3b",
+      "rows": 2644,
+      "first": "2020-07-23",
+      "last": "2025-12-31"
+    },
+    {
+      "view": "daily_noon_close_1130",
+      "sha256": "42786b6a01954a6e53c08fb8a1edfb405fe979e3b7c48632c8d8d8de3f39809c",
+      "rows": 1322,
+      "first": "2020-07-23",
+      "last": "2025-12-31"
+    },
+    {
+      "view": "daily_proxy_close_1400",
+      "sha256": "fb204245231d625550fb6038166528357010ce1b7b1466d7461cad32b266bf2a",
+      "rows": 1322,
+      "first": "2020-07-23",
+      "last": "2025-12-31"
+    },
+    {
+      "view": "daily_proxy_close_1430",
+      "sha256": "db093a8737b03abe1f8671d82d6b63bd38c1fcbb59360d130fb8d60f21135b27",
+      "rows": 1322,
+      "first": "2020-07-23",
+      "last": "2025-12-31"
+    }
+  ],
+  "excluded_2026": true,
+  "available_at": "historical retrieval only; realtime realtime",
+  "policy_candidates": 0,
+  "production_authority": false
+}

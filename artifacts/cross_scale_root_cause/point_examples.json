@@ -1,0 +1,7 @@
+{
+  "worst_day": "2022-10-25",
+  "winning_day": "2022-10-14",
+  "matching": "same year and full-day realized-volatility tercile; choose median positive daily capture; descriptive only",
+  "worst_day_selection": "minimum summed PnL inside the fixed largest drawdown, then show full K-line day",
+  "additional_hypothesis_tests": 0
+}

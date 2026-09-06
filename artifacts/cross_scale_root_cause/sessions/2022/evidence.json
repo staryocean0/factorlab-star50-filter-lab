@@ -1,0 +1,39 @@
+{
+  "year": 2022,
+  "baseline_annual_pct": 74.03667883669753,
+  "inference_days": 242,
+  "figure_event_rank": 1,
+  "attribute_means": {
+    "eff_1d": 0.17918837888870506,
+    "eff_5d": 0.0877775418772684,
+    "eff_20d": 0.050107248902312,
+    "rv_1d": 22.402316118586295,
+    "rv_5d": 22.82751714225629,
+    "rv_20d": 23.08456900181369,
+    "rv_ratio_1_20": 0.980378229878712,
+    "drift_disagree_1_20": 0.4132231404958678,
+    "acf1_5d": 0.004033706066516399,
+    "acf3_5d": -0.014658357939545747,
+    "acf12_5d": -0.006821357925848985,
+    "fast_share_1d": 0.8929253230211905,
+    "fast_share_5d": 0.896438767182802,
+    "fast_share_20d": 0.8966149648599413,
+    "work_turns_5d": 7.309917355371901,
+    "slow_work_velocity_5d": 0.36287363156428526,
+    "slow_work_opposition_5d": 0.48810261707988983,
+    "wick_1d": 0.45157169351817045,
+    "gap_share_1d": 0.11203216778615722,
+    "threshold_work_amplitude_5d": 1.050798110348837
+  },
+  "daily_losing_share": 0.45867768595041325,
+  "consumed_material": true,
+  "blind": false,
+  "policy_change": false,
+  "protocol_sha256": "6ffc5e14cf4517636566039899c26f7b6340b3e36860b86d14d17c56987c8c18",
+  "thresholds": {
+    "fast_share_5d": 0.8992100766843851,
+    "slow_work_velocity_5d": 0.3393953510846341,
+    "eff_1d": 0.15079035725916515,
+    "eff_20d": 0.03958675140607745
+  }
+}

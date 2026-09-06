@@ -1,0 +1,21 @@
+{
+  "year": 2021,
+  "prior_receipt_sha256": "6ffc5e14cf4517636566039899c26f7b6340b3e36860b86d14d17c56987c8c18",
+  "baseline_formula_hashes": {
+    "scripts/reproduce_historical_baseline.py": "084a803426f610e9c66ea9b3d4b30ed7475ecd018c11b08309f5a8aa6cd95b8e",
+    "src/star50_filter/filters.py": "2f3bea36d6a8103c53cf96b5a93e967fa42ef9b6bbe161d4199287c3bf9e73bd",
+    "src/star50_filter/backtest.py": "d341e4a28afa7d47e8da4fa316f07538aec730fa2a8dd7d2ebb4344f321e1841",
+    "src/star50_filter/drawdown_diagnostics.py": "abe2bea4f5d75dc1cf06a5693032008591b8a3b0c2e75df8dddb26020e2bad2f"
+  },
+  "files": {
+    "artifacts/cross_scale_root_cause/sessions/2021/associations.csv": "0f2a3af3b18d52e4edffe91d5c7d70822fc355e7f8d6908a0edffb778c89ab24",
+    "artifacts/cross_scale_root_cause/sessions/2021/cells.csv": "c41f5307d8188a035659237b732e2f1c1af56a1571adaf2e5e36a0ea50b51f92",
+    "artifacts/cross_scale_root_cause/sessions/2021/event.png": "c70d1165ca65d59d96e03fb478fd13ae10b60660aaa3a3782e88db9e92457491",
+    "artifacts/cross_scale_root_cause/sessions/2021/event_legs.csv": "fb41c97ea1951eb82cce18fde88014cb0c2f942465864dccd0c8eacb1c252c75",
+    "artifacts/cross_scale_root_cause/sessions/2021/evidence.json": "87fa8e78a3f4baaec9a7087eee12114263eeff3a1b7d9aa78dc362c7ba401d05",
+    "artifacts/cross_scale_root_cause/sessions/2021/review.json": "c5e1aa05aaeb78819fcae1941ae9392ba6a61cb22d701b633f64e476b7c9aebd",
+    "artifacts/cross_scale_root_cause/sessions/2021/trades.csv": "9c668b0d26dd3f9f54416eb3580894eb948117c4775cda3779ead2aa9233aa94"
+  },
+  "policy_change": false,
+  "production_authority": false
+}

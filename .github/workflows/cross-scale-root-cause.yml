@@ -1,0 +1,26 @@
+name: cross-scale-root-cause
+on:
+  push:
+    branches: ["research/drawdown-conditions-20260905"]
+    paths:
+      - "src/star50_filter/cross_scale_root_cause.py"
+      - "scripts/*cross_scale_root_cause.py"
+      - "tests/test_cross_scale_root_cause.py"
+      - "docs/research/cross_scale_root_cause/**"
+      - "artifacts/cross_scale_root_cause/**"
+      - ".github/workflows/cross-scale-root-cause.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e . matplotlib
+      - run: python -m pytest -q
+      - run: python scripts/export_drawdown_material.py
+      - run: python scripts/validate_cross_scale_root_cause.py --data-dir artifacts/drawdown_material

@@ -1,0 +1,21 @@
+{
+  "year": 2022,
+  "prior_receipt_sha256": "1bee2f961e835b3ff892487c6a087569c53ab8d66850483a0f0512dc15f7a2bc",
+  "baseline_formula_hashes": {
+    "scripts/reproduce_historical_baseline.py": "084a803426f610e9c66ea9b3d4b30ed7475ecd018c11b08309f5a8aa6cd95b8e",
+    "src/star50_filter/filters.py": "2f3bea36d6a8103c53cf96b5a93e967fa42ef9b6bbe161d4199287c3bf9e73bd",
+    "src/star50_filter/backtest.py": "d341e4a28afa7d47e8da4fa316f07538aec730fa2a8dd7d2ebb4344f321e1841",
+    "src/star50_filter/drawdown_diagnostics.py": "abe2bea4f5d75dc1cf06a5693032008591b8a3b0c2e75df8dddb26020e2bad2f"
+  },
+  "files": {
+    "artifacts/cross_scale_root_cause/sessions/2022/associations.csv": "9320df9f167045724d0f394cf61d5c90bdf29bf9979e936c5f8a6aac805ba0bd",
+    "artifacts/cross_scale_root_cause/sessions/2022/cells.csv": "df9b32821bae5550df9056acee54b68a8dd634e20704e7a0dc4c7d9e57866236",
+    "artifacts/cross_scale_root_cause/sessions/2022/event.png": "036fd57e404087405c9dcd8c4222c8b91ad65069f0d6d3d73a0d165fcb7a2646",
+    "artifacts/cross_scale_root_cause/sessions/2022/event_legs.csv": "ec0dfff1924aac5d0d35455ee08120aee85ae32a9541422d4f572f68f47cd97b",
+    "artifacts/cross_scale_root_cause/sessions/2022/evidence.json": "0fb14e85bab168c975003cf60e6b12cb9e39d48a644069c85926b02368911b45",
+    "artifacts/cross_scale_root_cause/sessions/2022/review.json": "a223a6666d5d79b3c9472e8b698b6159321979092cb9dbff892233a859f3c48c",
+    "artifacts/cross_scale_root_cause/sessions/2022/trades.csv": "266b935f435a0cc03d45b6ab1d7064daccbead3f4970228df814aca1691b9561"
+  },
+  "policy_change": false,
+  "production_authority": false
+}
