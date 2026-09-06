@@ -1,0 +1,48 @@
+{
+  "status": "synthetic_prototype_verified_economics_not_evaluated",
+  "config": {
+    "cutoff_minutes": 120.0,
+    "volatility_window": 240,
+    "entry_alpha": 0.01,
+    "exit_alpha": 0.05,
+    "weight_power": 1.0,
+    "sigma_floor": 1e-12,
+    "direction": "long_short"
+  },
+  "config_sha256": "ae821bfc3b06bd977745bd1221af3a29ec5dbfcfff8e659599a270392e0b3504",
+  "versions": {
+    "python": "3.11.11",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1"
+  },
+  "checks": {
+    "prefix": true,
+    "deterministic_repeat": true,
+    "mirror": true,
+    "known_sigma_gaussian_single_time_union_bound": true
+  },
+  "known_sigma_null_draws": 100000,
+  "known_sigma_null_rates": {
+    "entry": 0.00331,
+    "exit": 0.01808
+  },
+  "synthetic_rows": 2880,
+  "ready_rows": 2639,
+  "target_changes": 23,
+  "market_rows_read": 0,
+  "account_execution": false,
+  "production_authority": false,
+  "source_sha256": {
+    "src/star50_filter/slope_union.py": "a58d60251dcb90fab8cd9a3a644df6e8a63f4f6673c5bd5ac622cee5d9ace472",
+    "scripts/run_half_day_slope_union_v1.py": "d86345982cdd0177e0f816adedfcf9e64e657a469d3fa4625545c8149180efe3",
+    "tests/test_slope_union.py": "c354f1daacc15779b48c200fa443e9b635e829eef8e1a30598040dbff313b6fe",
+    "docs/research/half_day_slope_union_v1/whitepaper.md": "271fc667dac2de4240d9040537e8eb70b33dfffb5b9fc4db8ee5f2e9844b8638",
+    "docs/research/half_day_slope_union_v1/contract.json": "03880072681d4d95966dc57663ebed6d8585a8b62674e8cd9d50bb4038979e0b",
+    "docs/research/half_day_slope_union_v1/workflow.md": "a61960d47400b0c97bb6ca91e6da74053b9515cddf61a8f2f1ffd3a8bc3c2e56"
+  },
+  "artifacts": {
+    "synthetic_signals.parquet": "12958ec448c4d65848bc1bf1cc0c807db7026b6de5adbb6ec444d2571f291f29",
+    "thresholds.csv": "03291de4ea365de0e2044b4ecc4d78d31278399ad5e6c7953b1ae2244f340f4b"
+  }
+}

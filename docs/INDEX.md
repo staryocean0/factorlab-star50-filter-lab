@@ -1,5 +1,7 @@
 # STAR50 filter lab index
 
+- Current version: [半日低通1分钟、1—5根斜率并集白皮书](research/half_day_slope_union_v1/whitepaper.md) → [工作流](research/half_day_slope_union_v1/workflow.md) → [线程接管](research/half_day_slope_union_v1/handoff.md)。Layer 3策略原型；未进行历史收益选参。
+
 - Current task and corrections: `CURRENT_RESEARCH.md`
 - Next session: `docs/user/next_session_drawdown_root_cause.md`
 - available_at semantics: `docs/governance/available_at_owner_clarification_20260906.json`

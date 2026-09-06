@@ -1,5 +1,9 @@
 # Current research entry
 
+## 当前：半日低通1分钟斜率并集原型（用户最新改版）
+
+[白皮书](docs/research/half_day_slope_union_v1/whitepaper.md) → [工作流](docs/research/half_day_slope_union_v1/workflow.md) → [机器合同](docs/research/half_day_slope_union_v1/contract.json)。接管原线程 `01a074d4-b841-7dc2-9cc0-2063f63de807` 最后任务：同一科创50半日低通策略改为原生1m、120交易分钟截止、入出场各1—5根相关性校正斜率并集、多空镜像。首版仅合成验证，经济参数未选优；2026未读取。旧5m限制和下述任务优先级由本次用户明确改版取代，历史工件保持可查。
+
 ## 已执行：第四轮固定策略跨尺度根因（2026-09-06）
 
 最新报告：`docs/research/cross_scale_root_cause/report.md`；数学定义和完整
