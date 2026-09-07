@@ -40,6 +40,38 @@ Event-cluster bootstrap, resampling whole first-shock episodes rather than indiv
 
 The continuous ratio also ranks the next-five-minute realized ratio positively: Spearman correlation is about 0.40 in 2024, 0.64 in 2025, and 0.48 pooled.
 
+## Robustness of the ordering
+
+The ordered next-Unsafe relationship
+
+`Unsafe > Recovering-high > Recovering-low`
+
+holds in **every one** of the following 2024-2025 slices without changing the thresholds:
+
+### Half-session
+
+- morning: 51.6% / 25.0% / 13.6%;
+- afternoon: 50.7% / 12.8% / 6.9%.
+
+### Checkpoint after first shock
+
+- +5m: 63.4% / 24.0% / 11.1%;
+- +10m: 36.4% / 8.7% / 5.9%;
+- +15m: 53.3% / 16.7% / 11.1%;
+- +20m: 46.7% / 12.5% / 7.4%.
+
+### Calendar year
+
+- 2024: 50.0% / 13.8% / 8.9%;
+- 2025: 53.1% / 22.7% / 8.3%.
+
+### Index
+
+- STAR50: 49.3% / 17.6% / 11.1%;
+- CSI1000: 54.1% / 11.8% / 3.8%.
+
+These are descriptive cell probabilities and some cells are small, but the complete preservation of the ordering is stronger evidence for the state abstraction than any single pooled percentage.
+
 ## 2026 held-out historical validation snapshot
 
 The thresholds above were frozen before the 2026 validation. The 2026-01-05..2026-08-21 pack supplies 41 evaluable +5/+10/+15/+20 checkpoints from 14 first-shock events.
@@ -62,13 +94,14 @@ The continuous ratio's 2026 Spearman correlation with the following five-minute 
 2. `Unsafe` is genuinely persistent. A current Unsafe reading does not merely describe the past five minutes; approximately half or more of observed checkpoints remain Unsafe in the next five minutes.
 3. `Recovering-low` is materially safer than Unsafe, but is **not Clean**. Reactivation to Unsafe remains about 9% in pooled 2024-2025 and 20% in the small 2026 snapshot.
 4. `Recovering-high` is an intermediate analytical band and may be shown in diagnostics, but it is not promoted to a separate release state.
-5. These transition probabilities are empirical calibration summaries, not production probabilities. They must be refreshed only on genuinely new snapshots without retuning the frozen boundaries.
+5. The state ordering survives index, year, morning/afternoon and checkpoint slicing on consumed history; this supports keeping one transparent state score rather than adding cell-specific thresholds.
+6. These transition probabilities are empirical calibration summaries, not production probabilities. They must be refreshed only on genuinely new snapshots without retuning the frozen boundaries.
 
 ## State-machine implication
 
 Keep the durable state abstraction:
 
-`first shock -> Unsafe -> Recovering`
+`first shock -> post-shock episode {Unsafe <-> Recovering}`
 
 Within `Recovering`, the continuous ratio remains the primary output. For visualization only, ratio <1.0 may be called `Recovering-low` and 1.0..1.5 `Recovering-high`.
 
