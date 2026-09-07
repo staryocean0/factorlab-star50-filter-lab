@@ -1,0 +1,90 @@
+name: post-shock-state-calibration-v2
+on:
+  push:
+    branches: ["research/post-shock-state-calibration-v2-20260908"]
+    paths: [".github/workflows/post-shock-state-calibration-v2.yml"]
+permissions:
+  contents: read
+concurrency:
+  group: post-shock-state-calibration-v2
+  cancel-in-progress: false
+jobs:
+  state-calibration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONPATH: src
+      PYTHONUNBUFFERED: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - name: Checkout frozen protocol, inherited engine, and bounded 2024-2025 1m inputs
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/post-shock-state-calibration-v2.yml
+            /docs/research/post_shock_state_calibration_v2/
+            /docs/research/first_shock_gate_v1/code/first_shock_gate.py
+            /docs/research/first_shock_gate_v1/delivery_manifest.json
+            /src/star50_filter/__init__.py
+            /src/star50_filter/cloud_market_data.py
+            /data/cross_index_risk_gate_v1/manifest.json
+            /data/cross_index_risk_gate_v1/1m/000688.SH/202[45].parquet
+            /data/cross_index_risk_gate_v1/1m/000852.SH/202[45].parquet
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install frozen research environment
+        run: |
+          python -m pip install numpy==2.3.5 pandas==2.2.3 scikit-learn==1.8.0 pyarrow pytest
+          mkdir -p evidence
+          python -m pip freeze > evidence/environment.txt
+      - name: Verify inherited engine identity and run synthetic gates
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root=Path('.')
+          delivery=json.loads((root/'docs/research/first_shock_gate_v1/delivery_manifest.json').read_text())
+          expected=next(x['sha256'] for x in delivery['files'] if x['path']=='code/first_shock_gate.py')
+          path=root/'docs/research/first_shock_gate_v1/code/first_shock_gate.py'
+          actual=hashlib.sha256(path.read_bytes()).hexdigest()
+          assert expected=='e67f2ecfb8ad7e38b0e38cd6abb37304a320a1972b0030739e8f602e214f1306'
+          assert actual==expected, (actual, expected)
+          print('inherited first-shock engine identity passed', actual)
+          PY
+          python -m pytest -q docs/research/post_shock_state_calibration_v2/tests --junitxml=evidence/tests.xml | tee evidence/tests.log
+      - name: Run frozen state calibration once
+        run: |
+          set -o pipefail
+          python docs/research/post_shock_state_calibration_v2/code/state_calibration_v2.py \
+            --root . --out evidence/state_calibration | tee evidence/market.log
+      - name: Seal evidence manifest
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib,json,os
+          from pathlib import Path
+          d=Path('evidence'); d.mkdir(exist_ok=True)
+          items=[]
+          for p in sorted(d.rglob('*')):
+              if p.is_file():
+                  items.append({'path':str(p.relative_to(d)), 'bytes':p.stat().st_size,
+                                'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+          (d/'output_manifest.json').write_text(json.dumps(items, indent=2)+'\n')
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as h:
+              h.write('# Post-shock state calibration V2\n\nResults-blind 2024-2025 two-index calibration only. No 2026, Clean promotion, returns/P&L, trading, or production.\n')
+          PY
+      - name: Upload review evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post-shock-state-calibration-v2-${{ github.run_id }}
+          retention-days: 14
+          if-no-files-found: error
+          path: evidence/
