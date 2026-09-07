@@ -1,0 +1,95 @@
+{
+  "schema": "first_shock_conditioned_precursor_gate_v3.4",
+  "registered_before_v34_outputs": true,
+  "post_v33_followup": true,
+  "scientific_role": "consumed-history mechanism translation diagnostic; may only decide whether a fixed candidate merits later truly new-period validation",
+  "primary_symbol": "000688.SH",
+  "inherits": {
+    "event_taxonomy": "first_shock_morphology_v3 frozen quiet_first_tail",
+    "primary_score": "0.5*((logE30-logE240)+(logE60-logE240))",
+    "decision_universe_and_future_label": "v3.3: current quiet decision rows, no first-tail in prior 30m, half-session minute 31..105, future quiet_first_tail in t+2..t+15",
+    "matching_state_from_v32": ["log_sigma_pre", "log_rv480"],
+    "neighbor_count_from_v32": 100,
+    "risk_percentile_threshold_from_v33": 0.80
+  },
+  "years": {
+    "historical_conditioning_library": [2022, 2023],
+    "evaluation": [2024, 2025]
+  },
+  "fresh_oos": false,
+  "conditioning_algorithm": {
+    "labels_used": false,
+    "library_rows": "v3.3-eligible decision rows from 2022-2023 only",
+    "exact_group": ["afternoon", "minute"],
+    "distance_dimensions": ["log_sigma_pre", "log_rv480"],
+    "standardization": "within each 2022-2023 exact group, divide coordinate differences by the calibration-library population standard deviation; floor each scale at 1e-8",
+    "neighbors": "100 nearest historical library rows by Euclidean distance; deterministic stable tie-break by year, session, day",
+    "conditional_score": "midrank percentile of the evaluation row primary_scale_score among the 100 neighbor primary_scale_score values",
+    "risk_gate": "conditional_score >= 0.80",
+    "no_year_specific_refit": true,
+    "no_label_fit": true,
+    "no_fallback_pool": true,
+    "insufficient_group_rule": "if an exact group has fewer than 100 historical rows, the decision row is unavailable; do not widen clock/half-session group"
+  },
+  "state_support_diagnostic": {
+    "purpose": "detect evaluation-state extrapolation without deleting unfavorable outcomes",
+    "calibration_reference": "for every 2022-2023 library row, compute distance to its 100th nearest OTHER row in the same exact group using the same scales",
+    "group_support_limit": "99th percentile of those leave-one-out 100th-neighbor distances",
+    "evaluation_extrapolated": "evaluation row 100th-neighbor distance exceeds its group support limit",
+    "do_not_drop_extrapolated_rows": true,
+    "candidate_support_requirement": "extrapolated decision-row fraction <= 5% separately in 2024 and 2025"
+  },
+  "comparators": {
+    "raw_scale_gate": "v3.3 frozen result retained as prior comparator; do not retune or overwrite",
+    "common_volatility": "same v3.3 historical groupwise 80th-percentile log_sigma_pre gate, recomputed only as an identity check from 2022-2023 labels-blind calibration"
+  },
+  "evaluation": {
+    "years_separate": true,
+    "row_metrics": [
+      "eligible decision rows",
+      "future-label prevalence",
+      "conditional risk coverage",
+      "future-label risk in conditional-risk rows",
+      "future-label risk in Clean rows",
+      "risk difference percentage points",
+      "risk ratio",
+      "continuous conditional-score ROC AUC",
+      "alarm segment count",
+      "evaluation-state extrapolated fraction"
+    ],
+    "event_metrics": [
+      "frozen quiet-first events with any eligible strict prewindow decision",
+      "event recall from any risk decision in [e-15,e-2]",
+      "median maximum strict lead among hits",
+      "prewindow support fraction and complete-prewindow subset"
+    ],
+    "random_reference": {
+      "repeats": 5000,
+      "seed": 20260908,
+      "method": "same v3.3 half-session alarm-sequence permutation within evaluation year and morning/afternoon class",
+      "report": ["event-recall 2.5/50/97.5 percentiles", "fraction randomized recall >= observed"]
+    }
+  },
+  "decision_rule": {
+    "not_a_promotion_test": true,
+    "candidate_for_future_locked_validation_only_if_all": [
+      "conditional risk-Clean future-label difference is positive in both 2024 and 2025",
+      "continuous conditional-score AUC > 0.5 in both 2024 and 2025",
+      "event recall is not below the session-permutation median in either evaluation year",
+      "evaluation-state extrapolated fraction <= 5% in both evaluation years"
+    ],
+    "if_failed": "stop this V3.2 scale-score route; do not scan new K, percentiles, distance dimensions, or alternative thresholds on 2024/2025",
+    "if_passed": "freeze exactly this candidate and wait for explicitly authorized truly new-period data; consumed-history results still cannot validate or deploy it"
+  },
+  "do_not": [
+    "fit classifier/regression or optimize K",
+    "change the frozen V3.2 scale score",
+    "add morphology variables after reading v3.3",
+    "search conditional percentile thresholds",
+    "use 2024/2025 labels in neighbor selection, scaling, support limits, or threshold construction",
+    "use evaluation-year controls or future quiet status to build historical neighbors",
+    "drop extrapolated, missing, session-boundary, or adverse evaluation rows after seeing labels",
+    "read 2026 or any returns/PnL/trading/production state"
+  ],
+  "production_authority": false
+}
