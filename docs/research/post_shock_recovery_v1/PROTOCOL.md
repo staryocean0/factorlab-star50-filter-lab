@@ -17,14 +17,14 @@ For each first event with pre-event background `sigma_pre`, and each integer min
 - `Recovering` when `1.0 <= R5(k) < 1.5`;
 - `Clean-candidate` when `R5(k) < 1.0`.
 
-A descriptive **release time** is the earliest lag k at which two consecutive non-overlapping 5-minute blocks are both below background (`R5_block < 1.0`). If no such pair occurs before the half-session ends, release is right-censored. This release label uses future information and is an outcome for later causal prediction; it is not itself an online signal.
+A descriptive **release-start lag** is the earliest lag k at which two consecutive non-overlapping 5-minute blocks are both below background (`RMS(block)/sigma_pre < 1.0`). If no such pair occurs before the half-session ends, release is right-censored. Because the rule uses two future 5-minute blocks, an online observer could only **confirm** that release at `k+10` minutes; both release-start and confirmation time must be reported separately. This release label uses future information and is an outcome for later causal prediction; it is not itself an online signal.
 
 Sensitivity thresholds are fixed at Unsafe ratios 1.25 and 2.0; the primary 1.5 result must be reported first. No threshold selection by best performance.
 
 ## Outputs
 
 1. Risk-decay curve by lag 0..45 minutes: fraction Unsafe and median `R5(k)`, with denominators and censoring.
-2. Release-time distribution: median, quartiles, share released by 5/10/15/30 minutes, and right-censor rate.
+2. Release-time distribution: median, quartiles, share with release-start by 5/10/15/30 minutes, corresponding online-confirmation times, and right-censor rate.
 3. Results separately for 000688.SH / 000852.SH and 2024 / 2025, plus pooled-by-index summaries.
 4. Repeat on `quiet_first` events from the sealed event taxonomy, without changing the primary universe.
 5. Candidate causal release features, measured only up to decision time after the shock: event amplitude, sigma_pre, event-minute 3s path descriptors, and trailing post-event 1/2/5-minute realized activity. These features are only screened after the descriptive duration results are frozen.
