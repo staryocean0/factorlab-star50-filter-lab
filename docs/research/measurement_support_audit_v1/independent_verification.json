@@ -1,0 +1,16 @@
+{
+  "scope": "export arithmetic and frozen-path subset replay; not raw-Parquet full retraining",
+  "output_hashes_verified": 13,
+  "support_years_verified": 10,
+  "yearly_waterfall_gap_event_bridge_checks": 10,
+  "unique_events_checked": 104,
+  "previous_frozen_source_prefixes_recomputed": 100,
+  "prefix_replay_max_abs_bp_error": 2.4442670110147446e-12,
+  "prefix_replay_unavailable_due_to_export_boundary_or_unknown_anchor": [
+    "000688.SH/2021-09-29/0/119",
+    "000688.SH/2023-05-15/0/116",
+    "000688.SH/2024-11-07/1/113",
+    "000688.SH/2025-01-17/0/116"
+  ],
+  "no_new_model_effect_claim": true
+}

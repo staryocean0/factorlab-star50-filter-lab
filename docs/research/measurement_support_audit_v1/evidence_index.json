@@ -1,0 +1,17 @@
+{
+  "base_ref": "424a6b5a931cf610aa731125aa2081cdf3accbbb",
+  "execution_commit": "83e63394f6418a48bbdca92f8bdea4fe01124077",
+  "branch": "research/measurement-support-audit-20260907",
+  "run_id": 34100182102,
+  "artifact_id": 10010240746,
+  "artifact_bytes": 52567,
+  "artifact_sha256": "f6605358c3330b3e7634ab2f35f965dc1aa4522a65b42406d08f86b629528e49",
+  "first_valid_fine_decision_day_in_audited_scope": "2022-05-16",
+  "independent_training_first_events": {"000688.SH": 6, "000852.SH": 1},
+  "model_refit": false,
+  "new_model_effectiveness_validated": false,
+  "assistance_required_now": false,
+  "conditional_earlier_seconds_gap": "2021-01-04 through2022-05-13; complete parent source would be needed only to restore the original early-history protocol",
+  "read_2026": false,
+  "production_authority": false
+}
