@@ -1,0 +1,52 @@
+name: direction-stability-consumed-history
+on:
+  push:
+    branches: ["research/direction-stability-actions-20260907"]
+    paths: [".github/workflows/direction-stability-authorized.yml"]
+permissions:
+  contents: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - name: Checkout frozen diagnostic and bounded inputs
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/research/post_shock_recovery_v1/DIRECTION_STABILITY_PROTOCOL.md
+            /docs/research/post_shock_recovery_v1/code/state_sufficiency.py
+            /docs/research/post_shock_recovery_v1/code/direction_stability.py
+            /docs/research/post_shock_recovery_v1/tests/test_direction_stability.py
+            /data/cross_index_risk_gate_v1/1m/000688.SH/2024.parquet
+            /data/cross_index_risk_gate_v1/1m/000688.SH/2025.parquet
+            /data/cross_index_risk_gate_v1/1m/000852.SH/2024.parquet
+            /data/cross_index_risk_gate_v1/1m/000852.SH/2025.parquet
+            /data/cross_index_risk_gate_2026_v1/1m/000688.SH/2026.parquet
+            /data/cross_index_risk_gate_2026_v1/1m/000852.SH/2026.parquet
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install fixed dependencies
+        run: python -m pip install numpy==2.3.5 pandas==2.2.3 scikit-learn==1.8.0 pytest pyarrow
+      - name: Run frozen tests
+        run: python -m pytest -q docs/research/post_shock_recovery_v1/tests/test_direction_stability.py
+      - name: Run direction-stability diagnostic
+        run: |
+          mkdir -p evidence
+          python docs/research/post_shock_recovery_v1/code/direction_stability.py --repo-root . --out evidence | tee evidence/run.log
+      - name: Upload evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: direction-stability-${{ github.run_id }}
+          retention-days: 14
+          if-no-files-found: error
+          path: evidence/
