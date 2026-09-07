@@ -1,0 +1,69 @@
+{
+  "schema": "state_measurement_support_audit_v3.5",
+  "registered_before_outputs": true,
+  "purpose": "separate common-volatility state transport failure from fine-measurement support drift after the stopped STAR50 V3.2/V3.3/V3.4 scale-score route; this audit cannot rescue or promote that route",
+  "symbols": ["000688.SH", "000852.SH"],
+  "years": {"historical_reference": [2022, 2023], "audit": [2024, 2025]},
+  "future_labels_used": false,
+  "risk_gate_evaluated": false,
+  "returns_or_pnl_evaluated": false,
+  "fresh_oos": false,
+  "read_2026": false,
+  "clock_scope": {"half_session_minutes_inclusive": [31, 105], "grouping": ["afternoon", "minute"]},
+  "layer_A_common_state_transport": {
+    "universe": "all clock-scope rows with finite log_sigma_pre and log_rv480; no quiet/event filter",
+    "state_dimensions": ["log_sigma_pre", "log_rv480"],
+    "historical_library": "2022-2023 exact half-session/minute rows",
+    "neighbor_count": 100,
+    "standardization": "historical-group population std with floor 1e-8",
+    "support_limit": "99th percentile of each 2022-2023 row's leave-one-out 100th-neighbor distance in the same exact group",
+    "audit_outputs": [
+      "state extrapolated fraction by symbol/year",
+      "state extrapolated fraction by month",
+      "state extrapolated fraction by morning/afternoon",
+      "state extrapolated fraction by fixed minute bands 31-55,56-80,81-105",
+      "median and p95 100th-neighbor distance",
+      "marginal historical-envelope exceedance for log_sigma_pre and log_rv480 using groupwise 1%-99% historical bounds"
+    ]
+  },
+  "layer_B_measurement_support": {
+    "universe": "all clock-scope rows before requiring fine-feature availability",
+    "fine_measurements": ["primary_scale_score availability", "fine_gap3_fraction5", "fine_max_age5", "fine_repeat_fraction5"],
+    "source_semantics": "3s input is a variable-density snapshot observation surface, not trade/orderbook event flow; no interpolation or forward-filled missing endpoints",
+    "audit_outputs": [
+      "fine primary-score availability by symbol/year/month",
+      "mean/p95 fine_gap3_fraction5 by symbol/year/month",
+      "median/p95 fine_max_age5 by symbol/year/month",
+      "mean fine_repeat_fraction5 by symbol/year/month"
+    ]
+  },
+  "layer_C_star50_route_support": {
+    "symbol": "000688.SH",
+    "universe": "V3.4-like causal quiet decision rows without reading any future label: minute 31-105, quiet_pre=true, current first_tail=false, no first_tail observed in prior 30 minutes, finite primary_scale_score/log_sigma_pre/log_rv480",
+    "state_support_definition": "same 2022-2023 exact-clock 100-neighbor support rule as layer A",
+    "audit_outputs": [
+      "route-support extrapolated fraction by year/month/half-session/minute band",
+      "measurement metrics split by in-support vs extrapolated state rows",
+      "no shock/event outcome comparison"
+    ]
+  },
+  "interpretation_rules": [
+    "If both indices show similar 2024/2025 state-extrapolation increases, describe this as evidence of common state-transport drift, not STAR50-specific precursor failure.",
+    "If STAR50 state drift is much larger than CSI1000 under the same clock/state definition, describe it as STAR50-specific state transport mismatch, not a causal mechanism.",
+    "If fine measurement availability/gap/age metrics change materially at the same time, report a mixed state-plus-measurement concern; do not adjust the stopped scale score.",
+    "If measurement metrics are stable while state support deteriorates, prioritize future protocols that explicitly model state transport rather than treating the issue as a 3s data-quality artifact.",
+    "No numerical threshold in this audit can promote a risk gate."
+  ],
+  "fixed_minute_bands": [[31,55],[56,80],[81,105]],
+  "do_not": [
+    "use any t+ future shock label",
+    "evaluate event recall, precision, Clean risk or PnL",
+    "retune V3.2/V3.3/V3.4 score, K, matching dimensions or thresholds",
+    "drop extrapolated rows",
+    "reinterpret snapshot row counts as trade intensity",
+    "interpolate missing 3s endpoints",
+    "read 2026",
+    "grant trading or production authority"
+  ],
+  "production_authority": false
+}
