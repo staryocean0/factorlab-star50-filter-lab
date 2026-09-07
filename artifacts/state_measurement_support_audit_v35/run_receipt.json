@@ -1,0 +1,28 @@
+{
+  "workflow_sha": "3209a25da4588105f0801ab51ababd3248f48cd7",
+  "research_ref": "d4c55741eb19684d86b2c771945acba17c842462",
+  "run_id": "34144712706",
+  "artifact_id": 10027285202,
+  "artifact_digest": "sha256:b48d198098f30abc5412433517b8f9c444801f6037b9b6b6f6d07a04dbe0239a",
+  "tests": {"passed": 6, "failed": 0, "elapsed_seconds": 1.48},
+  "scientific_audit_status": "completed_successfully",
+  "independent_postrun_hash_check": "all_19_artifact_receipt_files_matched",
+  "primary_findings": {
+    "star50_state_extrapolated_2024": 0.10524084124830393,
+    "star50_state_extrapolated_2025": 0.15184629073517963,
+    "csi1000_state_extrapolated_2024": 0.09945275854366764,
+    "csi1000_state_extrapolated_2025": 0.02074296518740963,
+    "star50_route_extrapolated_2024": 0.05743411238189955,
+    "star50_route_extrapolated_2025": 0.1257479474929264,
+    "star50_primary_score_available_2025": 1.0,
+    "csi1000_primary_score_available_2025": 1.0,
+    "star50_fine_gap3_fraction5_mean_2025": 0.0,
+    "csi1000_fine_gap3_fraction5_mean_2025": 0.0
+  },
+  "future_labels_used": false,
+  "risk_gate_evaluated": false,
+  "fresh_oos": false,
+  "read_2026": false,
+  "returns_or_pnl_evaluated": false,
+  "production_authority": false
+}
