@@ -29,7 +29,8 @@ def test_active_precondition_from_short_return():
 
 def test_intermediate_precondition():
     s = sample(); start = (40-1)*4
-    s['return_bp'][start] = 10.0
+    # 35bp observed pre-range violates quiet (<30bp) but remains below active (>=45bp).
+    s['price'][start-10] = 100.35
     z = m.minute_morphology(s, 40)
     assert z['quiet_pre'] is False and z['active_pre'] is False
 
