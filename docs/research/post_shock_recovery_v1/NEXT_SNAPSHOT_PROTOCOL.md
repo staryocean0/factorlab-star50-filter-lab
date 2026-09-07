@@ -4,13 +4,15 @@ Frozen: 2026-09-07, **before any same-semantics data after 2026-08-21 are opened
 
 Purpose: preserve the scientific value of the next incremental data snapshot. This protocol does not authorize trading or production use.
 
+See `VALIDATION_READINESS.md` for the frozen event-count tiers and planning evidence.
+
 ## Data boundary
 
 The current consumed validation snapshot ends at 2026-08-21.
 
-The next independent time extension begins with the first complete same-semantics trading day after 2026-08-21 delivered by DataHub. Do not inspect outcome summaries from those days before this protocol is applied.
+The next independent time extension begins with the first complete same-semantics trading day after 2026-08-21 delivered by DataHub. Do not inspect post-shock outcome summaries from those days before the formal snapshot is sealed.
 
-Use the append-only 1m index data for:
+Use append-only native 1m index data for:
 
 - `000688.SH` STAR50
 - `000852.SH` CSI1000
@@ -27,61 +29,85 @@ Do not change:
 - five-minute rolling RMS numerator;
 - fixed denominator `sigma_pre` for the whole episode;
 - state boundary `Unsafe >= 1.5`;
-- Recovering analytical sub-band boundary at 1.0;
+- Recovering display-band boundary at 1.0;
 - missing/repair input -> Unknown;
 - no online `Clean` transition.
 
-## Primary forward-state test
+Do not add elapsed time, dwell time, shock direction, background-sigma terms, other-index headline volatility, or static shock-severity grades to rescue a future result. Those additions did not show stable consumed-history increment.
+
+## Readiness rule
+
+The stopping/readiness unit is the **eligible first-shock episode**, not checkpoint rows.
+
+- fewer than 10 pooled events: descriptive only;
+- 10-19: limited validation;
+- at least 20 pooled events: minimum formal core validation;
+- at least 30 pooled events: preferred formal snapshot when practical.
+
+For cross-index interpretation, require at least 6 eligible events from each index at the minimum tier, preferably 10 each at the preferred tier. If that representation floor is not met, report pooled results but do not call the result cross-index confirmation.
+
+State-band row counts are reported after opening the formal snapshot; they are not used as an outcome-driven stopping rule.
+
+## Primary core state test
 
 At +5/+10/+15/+20 minute checkpoints after each eligible first shock:
 
 1. compute current `recovery_ratio` from the latest five completed valid minutes;
-2. compute following-five-minute realized ratio using the same fixed `sigma_pre`;
-3. classify current and following ratios into:
-   - Recovering-low <1.0;
-   - Recovering-high 1.0..1.5;
-   - Unsafe >=1.5.
+2. compute the following-five-minute realized ratio using the same fixed `sigma_pre`;
+3. classify current state as:
+   - `Recovering`: ratio <1.5;
+   - `Unsafe`: ratio >=1.5.
 
-Primary table: full 3x3 current-to-next state transition matrix with raw counts.
+Primary table: 2x2 current-state vs following-five-minute Unsafe/Recovering transition matrix with raw counts.
 
-Primary ordered hypothesis:
+Primary hypothesis:
 
-`P(next Unsafe | current Unsafe) > P(next Unsafe | Recovering-high) > P(next Unsafe | Recovering-low)`.
+`P(next Unsafe | current Unsafe) > P(next Unsafe | current Recovering)`.
 
-Do not change bins to improve this ordering.
+Use 10,000 whole-event bootstrap resamples, seed 20260907. At a formal-tier snapshot, strengthening the durable state abstraction requires the 95% lower bound for this probability difference to be greater than zero.
 
 ## Primary continuous-score test
 
 Report:
 
-- Spearman correlation between current ratio and following-five-minute ratio;
+- Spearman correlation between current `recovery_ratio` and following-five-minute realized ratio;
 - log-risk RMSE of simple persistence `predicted next ratio = current ratio`;
-- event-cluster bootstrap interval for
-  `P(next Unsafe | Unsafe) - P(next Unsafe | Recovering-low)`.
+- event-cluster bootstrap interval for the core Unsafe-minus-Recovering next-Unsafe probability difference.
 
-Bootstrap unit is the complete first-shock episode, not individual checkpoints. Use 10,000 resamples, seed 20260907.
+A positive continuous association is required for strengthening the current state abstraction.
 
-## Minimum evidence policy
+## Secondary display-band diagnostics
 
-Always report the data even when small, but distinguish evidence strength:
+Without changing the primary result, also report the existing display bands:
 
-- fewer than 10 pooled eligible first-shock events: descriptive only;
-- 10-19: limited validation;
-- at least 20 pooled events: primary pooled validation may be interpreted, while each index still reports its own count;
-- do not invent extra event definitions to reach a sample threshold.
+- Recovering-low <1.0;
+- Recovering-high 1.0..1.5;
+- Unsafe >=1.5.
 
-No minimum count turns the study into production acceptance.
+Provide the full 3x3 transition matrix and the directional ordering
 
-## Secondary reports
+`Unsafe > Recovering-high > Recovering-low`
 
-Without selecting among them:
+for next-Unsafe probability, but **do not use a small-sample reversal between Recovering-high and Recovering-low as the sole reason to reject the durable two-state abstraction**. Those bands are analytical displays, not separate causal states.
+
+Also report:
 
 - STAR50 and CSI1000 separately;
-- quiet-first vs prior-active event taxonomy if 3s path support is available;
 - transition probabilities by +5/+10/+15/+20 checkpoint;
-- right-censor/quality-loss counts.
+- 15-minute future risk burden as a secondary diagnostic;
+- right-censor/quality-loss counts;
+- quiet-first vs prior-active taxonomy only if compatible 3s support is available.
 
-Cross-index other-index volatility is not a primary feature because it did not show stable historical increment. Event-close severity descriptors are metadata only.
+## Formal acceptance interpretation
+
+The stable state abstraction is strengthened only if, without retuning:
+
+1. the core Unsafe-minus-Recovering next-Unsafe contrast is positive;
+2. its event-cluster 95% lower bound is >0 at a formal-tier snapshot;
+3. current ratio vs next ratio Spearman association is positive;
+4. both index-specific point estimates are disclosed and any sign reversal is flagged.
+
+Exact historical probabilities are not targets. A new snapshot may have different calibration while preserving the state ordering.
 
 ## Explicitly forbidden on the new snapshot
 
@@ -93,13 +119,12 @@ Before the primary report is sealed, do not:
 - select the best checkpoint;
 - reopen `Clean`;
 - change first-shock thresholds;
+- add previously rejected hidden variables to rescue results;
 - use new data to choose constituent/microstructure features;
 - silently revise prior snapshots.
 
-## Decision after the snapshot
+## Failure policy
 
-The stable state abstraction is strengthened only if the forward ordering remains directionally coherent and the continuous recovery ratio retains positive forward association.
+A formal-tier failure must be retained. First investigate data semantics, event incidence, censoring, and state nonstationarity. Do not immediately retune on the same snapshot.
 
-A failure must be retained. It should trigger investigation of data semantics or state nonstationarity, not immediate retuning on the same snapshot.
-
-`Clean` remains disabled regardless of this primary test. Reopening `Clean` requires its own future protocol and materially more independent events or materially different information.
+`Clean` remains disabled regardless of this test. Reopening Clean requires its own future protocol and materially more independent events or materially different information.
