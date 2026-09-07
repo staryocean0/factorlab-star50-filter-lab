@@ -1,0 +1,73 @@
+name: first-shock-v2-pre-onset-ledger-audit
+on:
+  push:
+    branches: ["research/first-shock-seconds-v2-actions-20260907"]
+    paths: [".github/workflows/first-shock-v2-ledger-audit.yml"]
+permissions:
+  contents: read
+jobs:
+  ledger-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: c85775999b28dce0ff594a72735385f13185ac15
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/research/first_shock_gate_v1/
+            /docs/research/first_shock_seconds_v2/
+            /src/star50_filter/__init__.py
+            /src/star50_filter/cloud_market_data.py
+            /data/cross_index_risk_gate_v1/manifest.json
+            /data/cross_index_risk_gate_v1/1m/000688.SH/202[1-5].parquet
+            /data/cross_index_risk_gate_v1/1m/000852.SH/202[1-5].parquet
+            /data/cross_index_risk_gate_3s_v1/manifest.json
+            /data/cross_index_risk_gate_3s_v1/primary_acceptance.json
+            /data/cross_index_risk_gate_3s_v1/000688.SH_202[1-5].parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_202[1-5].parquet
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install and verify isolated ledger code
+        run: |
+          mkdir -p evidence
+          python -m pip install numpy==2.3.5 pandas==2.2.3 scikit-learn==1.8.0 joblib pytest pyarrow
+          python -m pip freeze > evidence/environment.txt
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          d=Path('docs/research/first_shock_seconds_v2/code')
+          assert hashlib.sha256((d/'ledger_lag_audit.py').read_bytes()).hexdigest()=='43170f71ab0241a57087bbaaeb35c2c5a0ca3327f3e6003c197ac9e8e3ccd632'
+          assert hashlib.sha256((d/'seconds_v2.py').read_bytes()).hexdigest()=='c222c466c7c9692fc9b9467f51269801ddf073b06ca004fe09e735f630cc1f9c'
+          PY
+      - name: Test lag correction and regenerate descriptive ledger only
+        run: |
+          set -o pipefail
+          python -m pytest -q docs/research/first_shock_seconds_v2/tests/test_ledger_lag.py --junitxml=evidence/lag_tests.xml | tee evidence/lag_tests.log
+          python docs/research/first_shock_seconds_v2/code/ledger_lag_audit.py --root . --out evidence/ledger_lag2 | tee evidence/ledger.log
+      - name: Seal outputs
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('evidence');items=[]
+          for p in sorted(d.rglob('*')):
+              if p.is_file():items.append({'path':str(p.relative_to(d)),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+          (d/'output_manifest.json').write_text(json.dumps(items,indent=2)+'\n')
+          PY
+      - name: Upload corrected ledger and paths
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seconds-v2-ledger-lag2-${{ github.run_id }}
+          retention-days: 14
+          if-no-files-found: error
+          path: evidence/
