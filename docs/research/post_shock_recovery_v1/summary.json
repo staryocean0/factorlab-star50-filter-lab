@@ -1,0 +1,71 @@
+{
+  "schema": "post_shock_recovery_v1_summary",
+  "events": {
+    "000688.SH": 52,
+    "000852.SH": 25
+  },
+  "km": {
+    "000688.SH": {
+      "n": 52,
+      "censor_share": 0.28846153846153844,
+      "km_median_release_start": 14.0,
+      "km_release_by_5": 0.15995115995115994,
+      "km_release_by_10": 0.36996336996336987,
+      "km_release_by_15": 0.5250493096646941,
+      "km_release_by_30": 0.7338188438780153
+    },
+    "000852.SH": {
+      "n": 25,
+      "censor_share": 0.24,
+      "km_median_release_start": 19.0,
+      "km_release_by_5": 0.24,
+      "km_release_by_10": 0.36,
+      "km_release_by_15": 0.4486153846153845,
+      "km_release_by_30": 0.7374358974358974
+    },
+    "quiet_000688.SH": {
+      "n": 25,
+      "censor_share": 0.16000000000000003,
+      "km_median_release_start": 14.0,
+      "km_release_by_5": 0.12181818181818171,
+      "km_release_by_10": 0.28909090909090907,
+      "km_release_by_15": 0.5093333333333333,
+      "km_release_by_30": 0.8470649350649351
+    },
+    "quiet_000852.SH": {
+      "n": 19,
+      "censor_share": 0.26315789473684215,
+      "km_median_release_start": 11.0,
+      "km_release_by_5": 0.3157894736842104,
+      "km_release_by_10": 0.4736842105263157,
+      "km_release_by_15": 0.5989974937343359,
+      "km_release_by_30": 0.821776663881927
+    }
+  },
+  "rule_precision": {
+    "R1": {
+      "000688.SH": {"stable_release_precision": 0.34146341463414637, "false_release_share": 0.6585365853658537},
+      "000852.SH": {"stable_release_precision": 0.3333333333333333, "false_release_share": 0.6666666666666666}
+    },
+    "R2": {
+      "000688.SH": {"stable_release_precision": 0.36585365853658536, "false_release_share": 0.6341463414634146},
+      "000852.SH": {"stable_release_precision": 0.3157894736842105, "false_release_share": 0.6842105263157895}
+    },
+    "R3": {
+      "000688.SH": {"stable_release_precision": 0.4117647058823529, "false_release_share": 0.5882352941176471},
+      "000852.SH": {"stable_release_precision": 0.3157894736842105, "false_release_share": 0.6842105263157895}
+    }
+  },
+  "release_model_2025": {
+    "rows": 70,
+    "events": 20,
+    "stable_base_rate": 0.3,
+    "auc": 0.7784256559766765,
+    "brier": 0.17581490742591094,
+    "release_rows_at_p80": 0,
+    "release_rows_at_p90": 0
+  },
+  "scientific_status": "duration measurable; no validated causal hard release; online Clean not promoted",
+  "fresh_oos": false,
+  "production_authority": false
+}
