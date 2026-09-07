@@ -1,0 +1,12 @@
+{
+  "status": "post-v1-synthetic-result exploratory diagnostic, not preregistered confirmation",
+  "reason": "aggregate residual did not improve positive-control first-shock recall; do not change original run or thresholds",
+  "probes": [
+    "deterministic alternating returns: inspect each Haar scale before averaging",
+    "replace one aggregate residual with two residuals for Haar-2 and Haar-4, same baseline and labels",
+    "uniform fragmented alarm at exact 20% quota, to demonstrate the event-recall matching opportunity effect"
+  ],
+  "seeds": [20260907, 20260908, 20260909],
+  "do_not": ["select best seed", "replace original v1 result", "claim market validity", "claim independent confirmatory inference"],
+  "selection_note": "seed 20260907 controls have already been consumed; other seeds are new synthetic draws of the same designer-selected DGP"
+}

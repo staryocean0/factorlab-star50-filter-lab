@@ -1,0 +1,178 @@
+{
+  "schema": "first_shock_engineering_summary@1",
+  "base_commit": "8a07c422593c66e3d5669ebfd5b83586e1609411",
+  "market_evidence": false,
+  "production_authority": false,
+  "fresh_oos": false,
+  "tests": {
+    "passed": 46,
+    "full_repository_pytest": false,
+    "unit_test_seconds": 2.95,
+    "initial_harness_failure_preserved": true
+  },
+  "registered_aggregate_positive_control": {
+    "risk_time_quota": 0.2,
+    "baseline_clean_risk": 0.10129348016081105,
+    "enhanced_clean_risk": 0.10146827477713687,
+    "baseline_first_recall": 0.6086956521739131,
+    "enhanced_first_recall": 0.6086956521739131,
+    "clean_risk_delta_ci95": [
+      -0.0008174864730889079,
+      0.0012712757094913239
+    ]
+  },
+  "post_result_split_diagnostic": [
+    {
+      "kind": "null",
+      "seed": 20260907,
+      "baseline_clean_risk": 0.10068169900367069,
+      "baseline_recall": 0.5942028985507246,
+      "baseline_episode_precision": 0.2847222222222222,
+      "enhanced_clean_risk": 0.10041950707918196,
+      "enhanced_recall": 0.6304347826086957,
+      "enhanced_episode_precision": 0.271875,
+      "clean_risk_delta_ci95": [
+        -0.005511760820842472,
+        0.004460845803690568
+      ],
+      "recall_delta_ci95": [
+        -0.0069768289128534135,
+        0.09060921717171709
+      ]
+    },
+    {
+      "kind": "precursor",
+      "seed": 20260907,
+      "baseline_clean_risk": 0.10129348016081105,
+      "baseline_recall": 0.6086956521739131,
+      "baseline_episode_precision": 0.28865979381443296,
+      "enhanced_clean_risk": 0.0906310085649362,
+      "enhanced_recall": 0.7318840579710145,
+      "enhanced_episode_precision": 0.2433734939759036,
+      "clean_risk_delta_ci95": [
+        -0.01874336980845892,
+        -0.004659999488081744
+      ],
+      "recall_delta_ci95": [
+        0.07246376811594202,
+        0.1881987577639751
+      ]
+    },
+    {
+      "kind": "null",
+      "seed": 20260908,
+      "baseline_clean_risk": 0.09292911893893721,
+      "baseline_recall": 0.5983606557377049,
+      "baseline_episode_precision": 0.3273542600896861,
+      "enhanced_clean_risk": 0.09318749461717336,
+      "enhanced_recall": 0.6065573770491803,
+      "enhanced_episode_precision": 0.2642857142857143,
+      "clean_risk_delta_ci95": [
+        -0.004217097278368642,
+        0.004438174834553209
+      ],
+      "recall_delta_ci95": [
+        -0.03908014405176091,
+        0.07142857142857151
+      ]
+    },
+    {
+      "kind": "precursor",
+      "seed": 20260908,
+      "baseline_clean_risk": 0.09155111532167771,
+      "baseline_recall": 0.6065573770491803,
+      "baseline_episode_precision": 0.27611940298507465,
+      "enhanced_clean_risk": 0.08199121522693997,
+      "enhanced_recall": 0.8114754098360656,
+      "enhanced_episode_precision": 0.2456575682382134,
+      "clean_risk_delta_ci95": [
+        -0.015478859708948257,
+        -0.003618129406279559
+      ],
+      "recall_delta_ci95": [
+        0.11202898550724641,
+        0.30197708795269773
+      ]
+    },
+    {
+      "kind": "null",
+      "seed": 20260909,
+      "baseline_clean_risk": 0.09911971830985916,
+      "baseline_recall": 0.5658914728682171,
+      "baseline_episode_precision": 0.2896825396825397,
+      "enhanced_clean_risk": 0.09630281690140845,
+      "enhanced_recall": 0.6046511627906976,
+      "enhanced_episode_precision": 0.2392638036809816,
+      "clean_risk_delta_ci95": [
+        -0.006190075277873878,
+        0.001226259758208128
+      ],
+      "recall_delta_ci95": [
+        -0.007751937984496138,
+        0.0892478302796528
+      ]
+    },
+    {
+      "kind": "precursor",
+      "seed": 20260909,
+      "baseline_clean_risk": 0.10026408450704226,
+      "baseline_recall": 0.5813953488372093,
+      "baseline_episode_precision": 0.28957528957528955,
+      "enhanced_clean_risk": 0.09463028169014084,
+      "enhanced_recall": 0.6589147286821705,
+      "enhanced_episode_precision": 0.256797583081571,
+      "clean_risk_delta_ci95": [
+        -0.011554518419766525,
+        -0.0004945265028948509
+      ],
+      "recall_delta_ci95": [
+        -0.007556980056980047,
+        0.18190573770491802
+      ]
+    }
+  ],
+  "random_alarm": {
+    "analysis": "additional descriptive diagnostic, synthetic only",
+    "all_decision_window_risk": 0.13354775555866313,
+    "risk_inside_random_clean": 0.13083377031987414,
+    "risk_time": 0.19997203188365265,
+    "event_counts": {
+      "unique_first_events": 138,
+      "eligible_first_events": 138,
+      "unknown_or_no_eligible_warning_share": 0.0,
+      "warned_events": 131,
+      "recall_all_known_events": 0.9492753623188406,
+      "recall_eligible_events": 0.9492753623188406,
+      "amplitude_weighted_miss_share": 0.05495661807980355,
+      "median_earliest_lead_minutes": 12.0,
+      "median_latest_lead_minutes": 4.0,
+      "alarm_episodes": 2300,
+      "matched_episodes_one_to_one": 131,
+      "episode_precision_one_to_one": 0.056956521739130433
+    }
+  },
+  "execution": {
+    "location": "current cloud conversation",
+    "synthetic_original_exit": 0,
+    "diagnostic_final_resume_exit": 0,
+    "earlier_diagnostic_tool_timeouts_preserved": true,
+    "per_case_aggregate_consistency": "passed",
+    "resume_json_byte_identity": "7/7 passed",
+    "raw_market_download": "connection failure / DNS unavailable",
+    "dependency_install": "DNS unavailable",
+    "market_runner": "implemented, --help and compile checked, not executed on market data"
+  },
+  "source_sha256": {
+    "code/diagnose_measurement.py": "a4b63f3b207e3bc8e06e2bd336be0167c4ad97ad7fdd0fb83ef61e3847cf92b4",
+    "code/first_shock_gate.py": "e67f2ecfb8ad7e38b0e38cd6abb37304a320a1972b0030739e8f602e214f1306",
+    "code/run_split_market.py": "3b3c88f12ab29022c151b74f940a259dae4951996d07fe47458ab48349c0496f"
+  },
+  "protocol_sha256": "ca058344e8e3b68258db1adf29c1bccf1741f41096957ba17740368951abae7f",
+  "limits": [
+    "Synthetic only; no index effectiveness claim",
+    "Split version is a post-result exploratory correction",
+    "Event recall alone can be high for fragmented random alarms",
+    "Market runner not executed in cloud",
+    "Full subminute experiment and market sensitivity controls remain unexecuted"
+  ]
+}

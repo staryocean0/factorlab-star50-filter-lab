@@ -1,0 +1,72 @@
+{
+  "schema": "first_shock_delivery@1",
+  "base_commit": "8a07c422593c66e3d5669ebfd5b83586e1609411",
+  "branch": "research/first-shock-gate-20260907",
+  "destination_prefix": "docs/research/first_shock_gate_v1/",
+  "files": [
+    {
+      "path": "code/diagnose_measurement.py",
+      "bytes": 5046,
+      "sha256": "a4b63f3b207e3bc8e06e2bd336be0167c4ad97ad7fdd0fb83ef61e3847cf92b4",
+      "git_blob_sha": "e62d2fb998ff6d0be9a717c193c07047567d8039"
+    },
+    {
+      "path": "code/first_shock_gate.py",
+      "bytes": 26769,
+      "sha256": "e67f2ecfb8ad7e38b0e38cd6abb37304a320a1972b0030739e8f602e214f1306",
+      "git_blob_sha": "18ec71c64ba441460a221dfcc59b97080a026d81"
+    },
+    {
+      "path": "code/run_split_market.py",
+      "bytes": 3817,
+      "sha256": "3b3c88f12ab29022c151b74f940a259dae4951996d07fe47458ab48349c0496f",
+      "git_blob_sha": "ed07c11cd47969d54a0a1477b3c2764b599762bf"
+    },
+    {
+      "path": "code/verify_delivery.py",
+      "bytes": 745,
+      "sha256": "a4d2db12a5ecbb3af10d8b56227b5218d682ef1f601869b36cd085139295f9f4",
+      "git_blob_sha": "6006c64dc736b9e549de8235009330f000a1ca6f"
+    },
+    {
+      "path": "tests/test_first_shock_gate.py",
+      "bytes": 10018,
+      "sha256": "525c31a7f1b06545c02e6197c89c66b2c985d2d05d31602a41fb1b5e128b9779",
+      "git_blob_sha": "3d9ba5e3175e95824303175fa04de4ca0b1e766e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 10562,
+      "sha256": "6160e1cf26e2509d1577dfc74dea8dfc937b52999ad36ac540f57e74b37d3560",
+      "git_blob_sha": "e8cb4ce923daef4c664a11186fbea5849be7e907"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 226,
+      "sha256": "c6a1160025c83556042ba628ccc026f2b86f0d006a6f953978e33fadf4cf7305",
+      "git_blob_sha": "23c66d553bc3e0b02f91e73646b280ebcb8edbfc"
+    },
+    {
+      "path": "docs/protocol.json",
+      "bytes": 2958,
+      "sha256": "ca058344e8e3b68258db1adf29c1bccf1741f41096957ba17740368951abae7f",
+      "git_blob_sha": "dd3ba81f2cfb2cfdac8e42b7c2cde877f1b0d5b8"
+    },
+    {
+      "path": "docs/diagnostic_registration.json",
+      "bytes": 864,
+      "sha256": "2bb968ff3b677e28b674c519012c47036f981c2fdaf53a505e3525d6749c35b7",
+      "git_blob_sha": "5d7a38b052c5ea8f4ddf598a1eb542230611ff2a"
+    },
+    {
+      "path": "artifacts/engineering_summary.json",
+      "bytes": 6144,
+      "sha256": "e0f07107eb4904f0efd4ed58bb60783d50144f869cf1cb65a59c170e9dc1f5b1",
+      "git_blob_sha": "d87f677c06a30ffbd6079e9c7e6257fdbd9a9b5e"
+    }
+  ],
+  "additional_modified_repository_path": "docs/ops/cloud_local_communication.md",
+  "scope": "new research only; market execution pending; no old evidence rewritten",
+  "fresh_oos": false,
+  "production_authority": false
+}
