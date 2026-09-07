@@ -70,3 +70,26 @@ python "$D/code/run_split_market.py" --repo-root . --out artifacts/first_shock_v
 当前会话取回全部三份ZIP，核验63份清单文件；从导出特征／估计器重放349200行决定、936行事件表、356完整路径及全部相位和六组区块区间。不是重新训练或原始Parquet的全量再计算。2021无满足规则的秒级特征决定点；科创50实际2022训练58个重叠正窗口，中证1000三种支持均只有14个、未过冻结门槛，未拟合。科创50B2-B1差异区间仍含零，不晋级，不据此否定所有跨尺度方法。
 
 本地只需按新review/evidence_index.json归档三份ZIP并做自己的必要验收，不重复启动已有证据的整轮计算。完整重放artifact10008242216于2026-09-14到期；主小证据10008240326及账本10008304105于2026-09-21到期。未修改main、旧freeze、2026输入或生产；下一轮采样支持／端点语义与标签问题单独登记。
+
+---
+
+## CL-STAR-RISK-20260907 / POST-SHOCK-RECOVERY-2026（本地已反馈，等待云端复核）
+
+- 任务：按 `docs/ops/post_shock_recovery_2026_data_request.md` 导出科创50/中证1000 的 2026 年 1 分钟与 3 秒，并推到本主题仓 `research/post-shock-recovery-2026-validation`。
+- 代码分支/提交：本反馈写入同一分支；推送后的 commit 以 git log 为准，基线请求提交为 `ba549e1e6b`。
+- 执行地点：本地 DataHub 父层切片，不是 Actions，不是云端重算。
+- 命令与退出码：`python3 scripts/export_post_shock_recovery_2026.py` 退出码 0。随后对父层做独立 DuckDB 对照，1m close/质量字段与 3s price 的 parent-child mismatch 均为 0。
+- 实际数据范围：`2026-01-05` 至 `2026-08-21`，两指数各 154 个完整交易日。请求上界是最新完整交易日、最多 `2026-09-07`；同语义父层只到 `2026-08-21`。未拼接 TDX 重建的 `2026-08-24/25`，未伪造 8 月 22 日之后的行情。
+- 身份摘要：
+  - 1m 父层 `factorlab_unified_index_kline_v3_20260824` / `1m_official.parquet` SHA256 `aeacff04b268c166faac333ec7ab9d840abcd347d82cb3bcee0218d058fc7423`，dataset `bars_cn_index_1m_raw_canonical_market_index_baidu_3s_20000714_20260821_factorlab_unified_missing_day_repaired_v8_20260824`。
+  - 3s 父层 `market_index_baidu_3s_20000714_20260821_cffex_underlyings_alias_repaired_v4_20260823` SHA256 `a2abc93ef0975490aae73c606ca8157a15c44cd182626c7537a9a62494310540`。
+- 产物（独立新包，未改 2021-2025 封存 manifest）：
+  - `data/cross_index_risk_gate_2026_v1/1m/000688.SH/2026.parquet` 36960 行，SHA256 `b7e7e9a9e85b738d661583dcd3d7dab158562fddac4355362cc37597db21eca4`
+  - `data/cross_index_risk_gate_2026_v1/1m/000852.SH/2026.parquet` 36960 行，SHA256 `60b2054d2055bef8010a9948a0589bc1c4b0bb18dd6f373a9366f97e689fdf87`
+  - `data/cross_index_risk_gate_2026_3s_v1/000688.SH_2026.parquet` 730261 行，SHA256 `2b791b8e977a77a97b30854e441ef88fca8be43f96ffff0d97e825bb3e74bc96`，同秒额外源顺序行 14
+  - `data/cross_index_risk_gate_2026_3s_v1/000852.SH_2026.parquet` 730395 行，SHA256 `59c960a7d8d585b5d312d9952dd4f54e3f9e16807f5e43fc15c2fa0f45a5caca`，同秒额外源顺序行 46
+  - 汇总 receipt：`docs/ops/evidence/post_shock_recovery_2026_export_v1/receipt.json`
+- 时区：源字符串 Z 仍是上海墙钟，按前 19 字符 localize Asia/Shanghai。
+- 未执行：2026 首跳事件、风险衰减、KM、恢复分数、release/3s 模型回放、交易回测、参数搜索。旧 `load_market_data` 仍拒绝 2026，以免污染 2021-2025 loader。
+- 云端复核：**尚未发生**。本地切片与 hash 对照不是云端独立全量复验。
+- 云端下一步：按 receipt 验收 SHA/行数/时区/质量字段后，用冻结定义跑 2026 held-out 验证；覆盖只报到 `2026-08-21`。

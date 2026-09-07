@@ -1,5 +1,9 @@
 # Current research entry
 
+## 当前：2026恢复状态验证数据包已到（截止2026-08-21）
+
+分支 `research/post-shock-recovery-2026-validation`。协议见[PROTOCOL](docs/research/post_shock_recovery_2026/PROTOCOL.md)，最小请求见[data request](docs/ops/post_shock_recovery_2026_data_request.md)，本地回执见[receipt](docs/ops/evidence/post_shock_recovery_2026_export_v1/receipt.json)。科创50/中证1000 的独立 1m+3s 包已按同语义父层切片到 `2026-08-21`，未改 2021-2025 封存 manifest，未授交易或生产权。科学验证仍待云端按冻结定义执行。
+
 ## 当前：交接云端进行科创50/中证1000底层K线风险研究
 
 先读[2026-09-07交接说明](docs/handoff/cloud_risk_gate_20260907/HANDOFF.md)与[数据说明](docs/handoff/cloud_risk_gate_20260907/DATA.md)。用户将任务扩展为两指数的跨尺度波动、聚集/孤立冲击与因果风险分桶；当前不做交易/期权，V2不改。15项文献全文已补齐并随包上传。DataHub新离线导出只开放截至2025年的两指数3秒，旧线上合同不变。以下均为既有研究成果或历史任务，不能覆盖当前范围。

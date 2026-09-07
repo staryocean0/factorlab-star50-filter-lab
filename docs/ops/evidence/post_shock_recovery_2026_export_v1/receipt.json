@@ -1,0 +1,83 @@
+{
+  "schema": "post_shock_recovery_2026_export_receipt@1.0",
+  "task": "CL-STAR-RISK-20260907 / POST-SHOCK-RECOVERY-2026",
+  "executor": "local_datahub_slice",
+  "consumer_repo": "staryocean0/factorlab-star50-filter-lab",
+  "consumer_branch": "research/post-shock-recovery-2026-validation",
+  "request": "docs/ops/post_shock_recovery_2026_data_request.md",
+  "requested_start": "2026-01-01",
+  "requested_cap": "2026-09-07",
+  "actual_first_day": "2026-01-05",
+  "actual_last_day": "2026-08-21",
+  "actual_days": 154,
+  "timezone_policy": "source Z strings encode Shanghai wall clock; use first 19 characters localised Asia/Shanghai, not UTC conversion",
+  "new_ohlc_created": false,
+  "interpolation": false,
+  "same_second_rows_deduplicated": false,
+  "tdx_reconstructed_days_stitched": false,
+  "post_snapshot_rows": 0,
+  "sealed_2021_2025_manifests_unchanged": {
+    "data/cross_index_risk_gate_v1/manifest.json": "7554feccb7a2cfae797d2d9acf139aeb845967a7e24cec4756fdb0d2f4dac059",
+    "data/cross_index_risk_gate_3s_v1/manifest.json": "d832231dbb62be4d2209121222b29c82a1241e655f822c0d45b28c8b2cb8b223"
+  },
+  "data_role": "held_out_validation_material",
+  "fresh_oos": false,
+  "production_authority": false,
+  "online_serving_granted": false,
+  "coverage_note": "Authoritative same-semantics parents end on 2026-08-21. Isolated TDX reconstructed days 2026-08-24/25 were not stitched.",
+  "files": [
+    {
+      "path": "data/cross_index_risk_gate_2026_v1/1m/000688.SH/2026.parquet",
+      "sha256": "b7e7e9a9e85b738d661583dcd3d7dab158562fddac4355362cc37597db21eca4",
+      "bytes": 584376,
+      "symbol": "000688.SH",
+      "frequency": "1m",
+      "rows": 36960,
+      "days": 154,
+      "first_day": "2026-01-05",
+      "last_day": "2026-08-21",
+      "dataset_version": "bars_cn_index_1m_raw_canonical_market_index_baidu_3s_20000714_20260821_factorlab_unified_missing_day_repaired_v8_20260824",
+      "source_sha256": "aeacff04b268c166faac333ec7ab9d840abcd347d82cb3bcee0218d058fc7423"
+    },
+    {
+      "path": "data/cross_index_risk_gate_2026_v1/1m/000852.SH/2026.parquet",
+      "sha256": "60b2054d2055bef8010a9948a0589bc1c4b0bb18dd6f373a9366f97e689fdf87",
+      "bytes": 707905,
+      "symbol": "000852.SH",
+      "frequency": "1m",
+      "rows": 36960,
+      "days": 154,
+      "first_day": "2026-01-05",
+      "last_day": "2026-08-21",
+      "dataset_version": "bars_cn_index_1m_raw_canonical_market_index_baidu_3s_20000714_20260821_factorlab_unified_missing_day_repaired_v8_20260824",
+      "source_sha256": "aeacff04b268c166faac333ec7ab9d840abcd347d82cb3bcee0218d058fc7423"
+    },
+    {
+      "path": "data/cross_index_risk_gate_2026_3s_v1/000688.SH_2026.parquet",
+      "sha256": "2b791b8e977a77a97b30854e441ef88fca8be43f96ffff0d97e825bb3e74bc96",
+      "bytes": 6129485,
+      "symbol": "000688.SH",
+      "frequency": "3s",
+      "rows": 730261,
+      "days": 154,
+      "first_day": "2026-01-05",
+      "last_day": "2026-08-21",
+      "dataset_version": "market_index_baidu_3s_20000714_20260821_cffex_underlyings_alias_repaired_v4_20260823",
+      "source_sha256": "a2abc93ef0975490aae73c606ca8157a15c44cd182626c7537a9a62494310540"
+    },
+    {
+      "path": "data/cross_index_risk_gate_2026_3s_v1/000852.SH_2026.parquet",
+      "sha256": "59c960a7d8d585b5d312d9952dd4f54e3f9e16807f5e43fc15c2fa0f45a5caca",
+      "bytes": 6621531,
+      "symbol": "000852.SH",
+      "frequency": "3s",
+      "rows": 730395,
+      "days": 154,
+      "first_day": "2026-01-05",
+      "last_day": "2026-08-21",
+      "dataset_version": "market_index_baidu_3s_20000714_20260821_cffex_underlyings_alias_repaired_v4_20260823",
+      "source_sha256": "a2abc93ef0975490aae73c606ca8157a15c44cd182626c7537a9a62494310540"
+    }
+  ],
+  "elapsed_seconds": 2.384254527001758
+}
