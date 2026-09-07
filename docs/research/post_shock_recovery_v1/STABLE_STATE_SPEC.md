@@ -6,7 +6,9 @@ Date: 2026-09-07. Research status after 2024-2025 development and the held-out 2
 
 The repository freezes the following supported market-state abstraction:
 
-`observed first shock -> Unsafe -> Recovering score`
+`observed first shock -> post-shock episode {Unsafe <-> Recovering}`
+
+The episode starts in Unsafe. Thereafter it may move repeatedly between Unsafe and Recovering as the rolling state changes. The broad lifecycle still reads “first shock -> Unsafe -> recovery”, but it is not a one-way finite-state chain.
 
 No causal online `Clean` transition is validated.
 
@@ -79,14 +81,18 @@ This is why the ratio is retained as a state score and why a low current ratio i
 
 See `STATE_TRANSITION_EVIDENCE.md` for counts, event-cluster bootstrap and limitations.
 
+Minute-by-minute historical paths also show that recovery is frequently interrupted: among 2024-2025 episodes that first reach Recovering, about 64% later return to Unsafe at least once within the observed path, and about 38% reactivate within ten minutes of the first Recovering reading. See `REACTIVATION_DIAGNOSTIC.md`.
+
 ## What is explicitly NOT allowed
 
+- no monotone one-way lock from Unsafe into Recovering;
 - no fixed +10/+15/+20/+30 minute automatic release;
 - no simple cooling rule promoted to Clean;
 - no use of the frozen logistic/3s models as a hard release gate;
 - no static shock-severity grade promoted from event amplitude/path shape;
 - no cross-index headline-volatility term added without future independent evidence;
 - no substitution of trailing2 or trailing10 for the frozen trailing5 score from consumed results;
+- no hysteresis boundary tuned from the already-observed state flips;
 - no threshold/feature search on the 2026 snapshot;
 - no trading/backtest conclusion from this state alone;
 - no rewriting of the sealed 2021-2025 or 2026 validation manifests.
@@ -99,6 +105,8 @@ Research reference implementation:
 - `tests/test_post_shock_state.py`
 
 The implementation deliberately has no online Clean state, holds `sigma_pre` fixed, rejects same/prior-minute observations, treats invalid inputs as Unknown, allows Recovering -> Unsafe reactivation, and terminates rather than bridging a session boundary.
+
+Nine boundary/causality tests passed in the cloud session before the files were written to GitHub.
 
 ## Evidence boundary
 
