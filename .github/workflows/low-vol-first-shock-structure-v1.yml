@@ -2,7 +2,9 @@ name: low-vol-first-shock-structure-v1
 on:
   push:
     branches: ["research/low-vol-first-shock-structure-v1-20260907"]
-    paths: [".github/workflows/low-vol-first-shock-structure-v1.yml"]
+    paths:
+      - ".github/workflows/low-vol-first-shock-structure-v1.yml"
+      - "docs/research/low_vol_first_shock_structure_v1/**"
 permissions:
   contents: read
 concurrency:
