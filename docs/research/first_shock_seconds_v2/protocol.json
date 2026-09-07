@@ -1,0 +1,114 @@
+{
+  "schema": "first_shock_seconds_v2.0",
+  "registered_before_v2_market_results": true,
+  "base_commit": "99362b50675cfd4f147bbe6dcaf744453b16070d",
+  "old_research_preserved": true,
+  "owner_authorization": "User agreed to execute V2; Actions allowed after direct download failure; no 2026/trading/production.",
+  "inputs": {
+    "symbols": [
+      "000688.SH",
+      "000852.SH"
+    ],
+    "years": [
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "frequencies": [
+      "1m",
+      "3s"
+    ],
+    "physical_partitions": 20
+  },
+  "roles": {
+    "fit": [
+      2021,
+      2022
+    ],
+    "score_threshold_calibration": [
+      2023
+    ],
+    "evaluation": [
+      2024,
+      2025
+    ],
+    "fresh_oos": false
+  },
+  "decision_grid": "one minute, half-session minute31..105; same decision clock for B0/B1/B2",
+  "label": "V1 operational first tail event retained: abs minute log return >30bp AND >4x preceding30min RMS, floor1bp, preceding30 known event-free minutes",
+  "target": "event close at t+2..t+15; label t+1 competing imminent event separately; all-window safety label retained; no silent imminent exclusion",
+  "minimum_lead": "one minute before earliest possible event-minute onset; not merely before event close",
+  "grids": {
+    "primary_seconds": 15,
+    "audit_only_seconds": [
+      30,
+      60
+    ],
+    "no_optimal_frequency_selection": true
+  },
+  "primary_gap_contract": "fresh as-of endpoints age<=3s, no interpolation; discard return crossing source gap>15s. This is an endpoint-grid measurement, NOT an uninterrupted3s path.",
+  "sensitivities": [
+    "joint complete-path source gap<=3s",
+    "individual source support with gap<=15s"
+  ],
+  "same_second": "source rows preserved; stable last row_index for as-of endpoint explicitly; same-second moves make path timing unknown",
+  "B0": "sealed V1 baseline feature structure; refit to actionable target and same support as B1/B2; NOT the V1 fitted estimator",
+  "B1_extra": [
+    "15s RMS-squared5m",
+    "15s RMS-squared15m",
+    "max absolute15s return1m",
+    "absolute net5m",
+    "crossed3s-gap fraction5m",
+    "max endpoint age5m",
+    "repeat return fraction5m"
+  ],
+  "B2_extra": "four log Haar energies at physical30/60/120/240s, each trailing5m smooth, residualized on B1 training only; retain all scales separately",
+  "estimation": "StandardScaler + ridge(alpha=1) residualization; StandardScaler + logistic(C=1, no class weights, max_iter=2000). Fit2021/22 only. No hyperparameter search.",
+  "fit_support_minimum": {
+    "rows": 500,
+    "positive_windows": 20,
+    "calibration_score_rows": 100
+  },
+  "risk_budgets": [
+    0.1,
+    0.2,
+    0.3
+  ],
+  "primary_budget": 0.2,
+  "thresholds": "2023 score quantiles from all eligible decisions, no calibration outcomes; also evaluation-only exact ranking quotas; do not confuse these.",
+  "paired_inference": "five-trading-day moving-block bootstrap,1000 draws,seed20260907; B2-minus-B1 Clean actionable risk conditional on fixed fitted models/quota; all index-years reported",
+  "phases": "all15 minute phases reported; no best-phase selection",
+  "random_reference": {
+    "repeats": 200,
+    "method": "constrained whole-session alarm template assignment within afternoon and train-defined minute31 logRV30 tertiles; random-cost Hungarian assignment; identity allowed",
+    "preserved": [
+      "alarm minutes",
+      "episode lengths",
+      "episode count",
+      "clock positions"
+    ],
+    "report": [
+      "self-assignment fraction",
+      "changed cells"
+    ],
+    "limitation": "coarse conditioning; not a uniform exact permutation-test p-value"
+  },
+  "ledger": "all known minute first events >=minute33 plus3 controls each, same index/year/half-session/minute, nearest logRV30/logRV480; event-free surrounding intervals. Hindsight only, never classifier training or population incidence estimation.",
+  "path_descriptors": "raw observation path -10m..+5m around event close; freshness and maxgap; source-vs-official return; observed range lower bound; top3 abs increment share/ER only complete3s paths without same-second extras;20/80pct progress descriptive not true onset",
+  "path_reason_thresholds": {
+    "concentrated_top3_share": 0.6,
+    "roundtrip_efficiency_below": 0.25
+  },
+  "unknown_policy": "no fill of absent/repair prices. B0/B1/B2 share decision support. Report every source/year support and event loss; label Unknown is not Clean.",
+  "scientific_status": "exploratory sequential evaluation on consumed history; neither causality nor deployment acceptance",
+  "production_authority": false,
+  "limits": [
+    "15s forecast is primary;30/60 are measurement audit only",
+    "no new event-label optimization",
+    "no order flow or intensity inferred from snapshot row counts",
+    "no source real-time arrival proof",
+    "no guarantee Clean risk=0"
+  ]
+}

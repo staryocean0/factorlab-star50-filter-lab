@@ -1,0 +1,30 @@
+{
+  "schema": "v2_code_delivery@1",
+  "base_commit": "99362b50675cfd4f147bbe6dcaf744453b16070d",
+  "files": [
+    {
+      "path": "code/seconds_v2.py",
+      "bytes": 31016,
+      "sha256": "c222c466c7c9692fc9b9467f51269801ddf073b06ca004fe09e735f630cc1f9c",
+      "git_blob_sha": "fb07081a4f42bcf9dda509fd3d16cb661fa45ce3"
+    },
+    {
+      "path": "tests/test_seconds_v2.py",
+      "bytes": 6879,
+      "sha256": "f2837d65ad3ecaa9a47201c3b7016aa0d73dd2f7ca9afbfc1d009f485e1a0892",
+      "git_blob_sha": "c51fd9b05072cf050e4f9183bff7f697151e73ab"
+    },
+    {
+      "path": "protocol.json",
+      "bytes": 4861,
+      "sha256": "0989d36e8f31230af52bfc3d71c5e0326a21e3c0bff71930a2e08dfc9619dc98",
+      "git_blob_sha": "8b1da2b1bfac2bfac34e595773711fb0c27642f0"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1630,
+      "sha256": "17b76b29a602d693248b7657bfd5a59682821897d70fd690f0e33c4215ba203d",
+      "git_blob_sha": "9da2977f46c3855badbd570a1bf8f60dfdb5d351"
+    }
+  ]
+}
