@@ -4,19 +4,50 @@
 
 Read first:
 1. `docs/research/post_shock_recovery_v1/STABLE_STATE_SPEC.md`
-2. `docs/research/post_shock_recovery_2026/RESULTS.md`
-3. `docs/ops/data_requirements_star50_risk_research.md`
-4. `docs/handoff/cloud_risk_gate_20260907/HANDOFF.md`
+2. `docs/research/post_shock_recovery_v1/STATE_TRANSITION_EVIDENCE.md`
+3. `docs/research/post_shock_recovery_v1/REACTIVATION_DIAGNOSTIC.md`
+4. `docs/research/post_shock_recovery_v1/NEXT_SNAPSHOT_PROTOCOL.md`
+5. `docs/research/post_shock_recovery_2026/RESULTS.md`
+6. `docs/ops/data_requirements_star50_risk_research.md`
+7. `docs/handoff/cloud_risk_gate_20260907/HANDOFF.md`
 
-Current research line is now frozen as:
+Current supported research line is:
 
-`observed first shock -> Unsafe -> continuous Recovering score`
+`observed first shock -> post-shock episode {Unsafe <-> Recovering}`
 
-Primary Recovering score: trailing completed-5m RMS divided by the frozen pre-shock `sigma_pre`.
+The episode starts Unsafe. Thereafter the primary continuous score is:
 
-`Clean` is **not** an online validated transition. Do not re-open release-rule/threshold/model tuning on the already-consumed 2024-2025 data or the 2026-01-05..2026-08-21 validation snapshot. Re-open Clean research only with genuinely new independent events after the current same-semantics cutoff (`2026-08-21`) or a new preregistered materially different information layer.
+`recovery_ratio = trailing completed-5m RMS / frozen pre-shock sigma_pre`
 
-The core state line needs native 1m STAR50/CSI1000 data plus immutable manifest/quality receipts. 3s observations remain important for path/measurement research but are not required to compute the stable recovery score. See the data-requirements document for the shared data-tool contract.
+The five-minute window is refreshed every completed minute. Recovering can reactivate to Unsafe; do not lock the episode into monotone recovery.
+
+For analysis/visualization only:
+- Recovering-low: ratio <1.0
+- Recovering-high: 1.0..1.5
+- Unsafe: >=1.5
+
+These fixed bands preserve forward-risk ordering across 2024/2025, both indices, morning/afternoon, all +5/+10/+15/+20 checkpoints, and directionally in the small held-out 2026 snapshot.
+
+`Clean` is **not** an online validated transition. Do not re-open release-rule/threshold/model tuning on the already-consumed 2024-2025 data or the 2026-01-05..2026-08-21 validation snapshot.
+
+Do not currently add:
+- event-close mild/severe shock grades;
+- cross-index headline-volatility terms;
+- trailing2/trailing10 substitutions;
+- hysteresis tuned from observed state flips;
+- lunch/overnight bridging.
+
+Session boundary termination means censored/outside the current model, not Clean.
+
+The next genuinely independent same-semantics time extension starts after `2026-08-21`. Apply `NEXT_SNAPSHOT_PROTOCOL.md` before opening outcome summaries from that extension. Re-open Clean research only with a separate frozen protocol plus materially more independent events or materially different information.
+
+Reference research implementation and validation harness:
+- `docs/research/post_shock_recovery_v1/code/post_shock_state.py`
+- `docs/research/post_shock_recovery_v1/tests/test_post_shock_state.py`
+- `docs/research/post_shock_recovery_v1/code/state_transition_eval.py`
+- `docs/research/post_shock_recovery_v1/tests/test_state_transition_eval.py`
+
+The core state line needs native 1m STAR50/CSI1000 data plus immutable manifest/quality receipts. 3s observations remain important for path/measurement research but are not required to compute the stable recovery score.
 
 Current work remains market-state research, not strategy/account/production continuation.
 
