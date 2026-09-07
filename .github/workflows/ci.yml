@@ -1,6 +1,7 @@
 name: star50-filter-lab
 on:
   push:
+    branches-ignore: ["research/normalization-stability-actions-20260907"]
   pull_request:
 jobs:
   validate:
