@@ -1,0 +1,109 @@
+name: first-shock-seconds-v2-authorized
+on:
+  push:
+    branches: ["research/first-shock-seconds-v2-actions-20260907"]
+    paths: [".github/workflows/first-shock-seconds-v2.yml"]
+permissions:
+  contents: read
+concurrency:
+  group: first-shock-seconds-v2-authorized
+  cancel-in-progress: false
+jobs:
+  seconds-measurement-and-comparison:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - name: Checkout frozen V2 and exactly bounded input files
+        uses: actions/checkout@v4
+        with:
+          ref: 7302e52e4e17092a31d1d7bd70b5d55998eaab71
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/research/first_shock_gate_v1/
+            /docs/research/first_shock_seconds_v2/
+            /src/star50_filter/__init__.py
+            /src/star50_filter/cloud_market_data.py
+            /data/cross_index_risk_gate_v1/manifest.json
+            /data/cross_index_risk_gate_v1/1m/000688.SH/202[1-5].parquet
+            /data/cross_index_risk_gate_v1/1m/000852.SH/202[1-5].parquet
+            /data/cross_index_risk_gate_3s_v1/manifest.json
+            /data/cross_index_risk_gate_3s_v1/primary_acceptance.json
+            /data/cross_index_risk_gate_3s_v1/000688.SH_202[1-5].parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_202[1-5].parquet
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install and record research environment
+        run: |
+          mkdir -p evidence
+          python -m pip install numpy==2.3.5 pandas==2.2.3 scikit-learn==1.8.0 joblib pytest pyarrow
+          python -m pip freeze > evidence/environment.txt
+      - name: Verify frozen source and protocol bytes
+        run: |
+          set -o pipefail
+          python docs/research/first_shock_gate_v1/code/verify_delivery.py | tee evidence/v1_delivery.log
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          d=Path('docs/research/first_shock_seconds_v2')
+          m=json.loads((d/'code_manifest.json').read_text())
+          for i in m['files']:
+              p=d/i['path'];b=p.read_bytes()
+              assert len(b)==i['bytes'] and hashlib.sha256(b).hexdigest()==i['sha256'],i['path']
+          print('V2 source and protocol hashes passed')
+          (Path('evidence')/'code_manifest.json').write_text((d/'code_manifest.json').read_text())
+          (Path('evidence')/'protocol.json').write_text((d/'protocol.json').read_text())
+          PY
+      - name: Run only sealed V1 and new V2 engineering tests
+        run: |
+          set -o pipefail
+          python -m pytest -q docs/research/first_shock_gate_v1/tests docs/research/first_shock_seconds_v2/tests --junitxml=evidence/tests.xml | tee evidence/tests.log
+      - name: Validate 20 partitions and run frozen V2 once
+        run: |
+          set -o pipefail
+          python docs/research/first_shock_seconds_v2/code/seconds_v2.py --root . --out evidence/v2 | tee evidence/market.log
+      - name: Seal output receipts including partial failures
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib,json,os
+          from pathlib import Path
+          d=Path('evidence');d.mkdir(exist_ok=True)
+          items=[]
+          for p in sorted(d.rglob('*')):
+              if p.is_file():items.append({'path':str(p.relative_to(d)),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+          (d/'output_manifest.json').write_text(json.dumps(items,indent=2)+'\n')
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as h:
+              h.write('# V2 first-shock seconds research\n\nFrozen code7302e52e; two indices2021-2025. No trading. Read run status, input receipt and outputs before claiming completion.\n')
+          PY
+      - name: Upload review evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seconds-v2-review-${{ github.run_id }}
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            evidence/*.json
+            evidence/*.log
+            evidence/*.xml
+            evidence/*.txt
+            evidence/v2/*.json
+            evidence/v2/*.csv
+      - name: Upload full replay separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seconds-v2-replay-${{ github.run_id }}
+          retention-days: 7
+          if-no-files-found: ignore
+          path: |
+            evidence/v2/*.csv.gz
+            evidence/v2/*.joblib
