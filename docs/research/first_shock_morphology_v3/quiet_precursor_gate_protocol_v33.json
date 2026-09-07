@@ -1,0 +1,85 @@
+{
+  "schema": "first_shock_quiet_precursor_gate_v3.3",
+  "registered_before_outputs": true,
+  "inherits_score": "first_shock_precursor_existence_v3.2",
+  "score_identity": "primary_scale_score = 0.5*((logE30-logE240)+(logE60-logE240)) from trailing 15s endpoint-grid Haar energies smoothed over physical 5 minutes",
+  "purpose": "test whether the already-frozen V3.2 STAR50 primary scale score can rank future quiet-first-tail risk in the full quiet decision universe without fitting a classifier or defining new morphology features",
+  "primary_symbol": "000688.SH",
+  "negative_control_symbol_modeling": "none; CSI1000 is not promoted on this route after V3.2 precursor non-confirmation",
+  "years": {
+    "calibration": [2022, 2023],
+    "evaluation": [2024, 2025]
+  },
+  "fresh_oos": false,
+  "decision_universe": {
+    "half_session_minute_range_inclusive": [31, 105],
+    "quiet_pre": true,
+    "current_first_tail": false,
+    "past_first_tail_lookback_minutes": 30,
+    "require_no_known_first_tail_in_past_30m": true,
+    "require_finite_primary_score": true,
+    "require_finite_log_sigma_pre": true,
+    "missing_or_stale_fine_path": "exclude from eligible decision rows; never carry forward or impute"
+  },
+  "label": {
+    "name": "quiet_first_tail_in_t_plus_2_to_t_plus_15",
+    "definition": "within the same half-session, at least one frozen V3 first-tail event with quiet_pre=true occurs at event minute e in [t+2,t+15]",
+    "why_start_t_plus_2": "preserves the V3.2 strict timing boundary: decision close t is at least one minute earlier than the earliest possible onset of event minute e",
+    "session_boundary": "future windows crossing the half-session boundary are not created because decision minute is capped at 105",
+    "event_identity": "frozen V3 quiet_first_tail only; no relabeling from v3.3 outcomes"
+  },
+  "calibration": {
+    "uses_labels": false,
+    "grouping": ["afternoon", "minute"],
+    "minimum_rows_per_group": 100,
+    "risk_time_quantile": 0.8,
+    "primary_gate": "primary_scale_score >= 2022-2023 groupwise 80th percentile",
+    "common_volatility_baseline": "log_sigma_pre >= 2022-2023 groupwise 80th percentile",
+    "no_fallback_threshold": true,
+    "reason": "fix approximately 20% time coverage while neutralizing half-session clock seasonality; evaluation-year coverage drift is reported rather than repaired"
+  },
+  "evaluation": {
+    "years_separate": true,
+    "row_metrics": [
+      "eligible decision rows",
+      "future-label prevalence",
+      "risk coverage",
+      "future-label risk in flagged rows",
+      "future-label risk in Clean rows",
+      "risk difference percentage points",
+      "risk ratio",
+      "continuous-score ROC AUC",
+      "alarm segment count"
+    ],
+    "event_metrics": [
+      "unique quiet-first-tail events with at least one eligible strict prewindow decision",
+      "event recall from any flagged decision in [e-15,e-2] intersect eligible decision universe",
+      "median maximum strict lead among hit events",
+      "prewindow support coverage and complete-prewindow subset recall"
+    ],
+    "random_reference": {
+      "repeats": 5000,
+      "seed": 20260908,
+      "method": "permute complete observed alarm sequences across half-sessions within evaluation year and same morning/afternoon class, preserving within-session alarm autocorrelation and minute-of-half-session structure",
+      "report": "2.5/50/97.5 percentile of event recall and descriptive fraction randomized recall >= observed"
+    },
+    "comparison_rule": "primary scale gate and common-volatility baseline are both reported; no winner selection creates a new rule"
+  },
+  "interpretation": {
+    "positive_evidence_requires": "the frozen scale score to show higher future quiet-first risk in flagged than Clean rows and event recall above its session-permutation reference in both 2024 and 2025, with no requirement to tune coverage",
+    "failure_means": "the V3.2 event-vs-control precursor does not translate into a stable full-universe risk gate under this fixed design; it does not prove all cross-scale precursors impossible",
+    "deployment": "none; consumed-history diagnostic only"
+  },
+  "do_not": [
+    "fit a classifier or regression model",
+    "change the V3.2 primary score formula",
+    "search risk quantiles after reading 2024/2025",
+    "use evaluation-year quantiles to force 20% coverage",
+    "use e-1 or event-minute features",
+    "redefine quiet_first_tail",
+    "drop adverse years or session-boundary events after seeing results",
+    "treat missing fine observations as unchanged prices",
+    "read 2026, returns/PnL, trading or production state"
+  ],
+  "production_authority": false
+}
