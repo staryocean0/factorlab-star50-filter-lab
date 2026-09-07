@@ -1,0 +1,14 @@
+{
+  "schema": "v2_ledger_state_lag_amendment@1",
+  "identified_before_reviewing_v2_market_outputs": true,
+  "original_forecast_commit": "7302e52e4e17092a31d1d7bd70b5d55998eaab71",
+  "reason": "Original descriptive control matching used anchor-minute volatility, containing the event itself. Move matching states two minutes back for genuine pre-onset context matching.",
+  "changes_only": "descriptive nearest-neighbour control selection in path ledger",
+  "unchanged": ["event anchors", "event threshold", "source gap policies", "B0/B1/B2", "training/calibration/evaluation", "forecast scores", "random surrogate"],
+  "matching_state_lag_minutes": 2,
+  "do_not_overwrite_original_ledger": true,
+  "no_new_model_fit": true,
+  "code_sha256": "43170f71ab0241a57087bbaaeb35c2c5a0ca3327f3e6003c197ac9e8e3ccd632",
+  "tests": "2 local tests passed; contemporary event volatility mutation does not change the new matching",
+  "production_authority": false
+}
