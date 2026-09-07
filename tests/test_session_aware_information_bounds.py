@@ -12,16 +12,17 @@ from star50_filter.session_aware_information_bounds import (
 )
 
 
-def support_rows(leg_id, moves, *, missing=()):
+def support_rows(leg_id, log_moves, *, missing=(), start=100.0):
     rows = []
-    price = 100.0
-    for ordinal, move in enumerate(moves):
+    price = float(start)
+    missing = set(missing)
+    for ordinal, log_move in enumerate(log_moves):
         opened = price
-        closed = price + float(move)
+        closed = price * float(np.exp(log_move))
         rows.append({
             "leg_id": leg_id,
             "step_ordinal": ordinal,
-            "observed": ordinal not in set(missing),
+            "observed": ordinal not in missing,
             "open": opened,
             "high": max(opened, closed),
             "low": min(opened, closed),
@@ -41,7 +42,10 @@ def test_complete_actual_support_collapses_to_oracle_and_offset_can_have_six_ste
         {"leg_id": "equal5", "expected_step_count": 5, "offset": 0, "published": True},
         {"leg_id": "equal6", "expected_step_count": 6, "offset": 1, "published": True},
     ])
-    support = pd.DataFrame(support_rows("equal5", [1, 1, 1, 1, 1]) + support_rows("equal6", [1, 1, 1, 1, 1, 1]))
+    support = pd.DataFrame(
+        support_rows("equal5", [.01] * 5)
+        + support_rows("equal6", [.01] * 6)
+    )
     out = evaluate_information_set_bounds(legs, support)
     a = out.set_index("leg_id").loc["equal5"]
     b = out.set_index("leg_id").loc["equal6"]
@@ -59,10 +63,10 @@ def test_missing_source_step_is_retained_with_full_universal_interval():
         "leg_id": "session-edge", "expected_step_count": 5,
         "boundary_class": "session_edge", "strict_pair": True, "qualified": True,
     }])
-    support = pd.DataFrame(support_rows("session-edge", [1, 1, 1, 1, 1], missing={2}))
+    support = pd.DataFrame(support_rows("session-edge", [.01] * 5, missing={2}))
     out = evaluate_information_set_bounds(legs, support)
     row = out.iloc[0]
-    assert len(out) == 1  # boundary leg is not silently dropped
+    assert len(out) == 1
     assert not row.support_complete
     assert row.support_gap
     assert not row.oracle_comparable
@@ -74,26 +78,31 @@ def test_missing_source_step_is_retained_with_full_universal_interval():
 
 
 def test_complete_support_uses_current_bar_open_not_previous_adjacent_close():
+    rows = support_rows("am-open", [.01, .01])
+    native_close = rows[-1]["close"]
     legs = pd.DataFrame([{
         "leg_id": "am-open", "expected_step_count": 2,
-        "native_open": 100.0, "native_high": 102.0,
-        "native_low": 100.0, "native_close": 102.0,
+        "native_open": 100.0, "native_high": native_close,
+        "native_low": 100.0, "native_close": native_close,
     }])
-    support = pd.DataFrame(support_rows("am-open", [1, 1]))
+    support = pd.DataFrame(rows)
     out = evaluate_information_set_bounds(legs, support)
     row = out.iloc[0]
     assert row.ohlc_consistency == "match"
     assert row.oracle_comparable
-    assert row.motion_total == pytest.approx(2.0)
+    assert row.motion_total_log == pytest.approx(.02)
+    assert row.motion_concentration_oracle == pytest.approx(1.0)
 
 
 def test_ohlc_mismatch_fails_closed_to_universal_bound_not_false_oracle():
+    rows = support_rows("bad-envelope", [.01, .01])
+    native_close = rows[-1]["close"]
     legs = pd.DataFrame([{
         "leg_id": "bad-envelope", "expected_step_count": 2,
-        "native_open": 99.0, "native_high": 102.0,
-        "native_low": 99.0, "native_close": 102.0,
+        "native_open": 99.0, "native_high": native_close,
+        "native_low": 99.0, "native_close": native_close,
     }])
-    support = pd.DataFrame(support_rows("bad-envelope", [1, 1]))
+    support = pd.DataFrame(rows)
     out = evaluate_information_set_bounds(legs, support)
     row = out.iloc[0]
     assert row.support_complete
@@ -116,19 +125,19 @@ def test_authoritative_identity_accepts_only_expected_surface_by_default():
 
 def test_results_blind_gate_rejects_future_or_trading_outcomes():
     legs = pd.DataFrame([{"leg_id": "x", "expected_step_count": 1, "future_return": 0.01}])
-    support = pd.DataFrame(support_rows("x", [1]))
+    support = pd.DataFrame(support_rows("x", [.01]))
     with pytest.raises(IntakeError, match="results-blind"):
         evaluate_information_set_bounds(legs, support)
 
 
 def test_topology_rejects_duplicate_or_out_of_range_ordinals():
     legs = pd.DataFrame([{"leg_id": "x", "expected_step_count": 2}])
-    support = pd.DataFrame(support_rows("x", [1, 1]))
+    support = pd.DataFrame(support_rows("x", [.01, .01]))
     support.loc[1, "step_ordinal"] = 0
     with pytest.raises(IntakeError, match="duplicate step_ordinal"):
         evaluate_information_set_bounds(legs, support)
 
-    support = pd.DataFrame(support_rows("x", [1, 1]))
+    support = pd.DataFrame(support_rows("x", [.01, .01]))
     support.loc[1, "step_ordinal"] = 2
     with pytest.raises(IntakeError, match="outside"):
         evaluate_information_set_bounds(legs, support)
@@ -139,7 +148,10 @@ def test_summary_is_topology_only_and_stratifies_frozen_overlays():
         {"leg_id": "a", "expected_step_count": 2, "offset": 0, "published": True},
         {"leg_id": "b", "expected_step_count": 2, "offset": 1, "published": True},
     ])
-    support = pd.DataFrame(support_rows("a", [1, 1]) + support_rows("b", [1, 1], missing={1}))
+    support = pd.DataFrame(
+        support_rows("a", [.01, .01])
+        + support_rows("b", [.01, .01], missing={1})
+    )
     bounds = evaluate_information_set_bounds(legs, support)
     summary = summarize_bounds(bounds)
     assert summary["legs"] == 2
