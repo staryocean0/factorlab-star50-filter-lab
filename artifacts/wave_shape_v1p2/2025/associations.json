@@ -1,0 +1,42 @@
+[
+  {
+    "feature": "peak_fraction",
+    "target": "net_log",
+    "adjusted_rank_rho": -0.1060545663578595
+  },
+  {
+    "feature": "peak_fraction",
+    "target": "capture",
+    "adjusted_rank_rho": -0.13035669981462547
+  },
+  {
+    "feature": "time_mass_skew",
+    "target": "net_log",
+    "adjusted_rank_rho": -0.09247441387658037
+  },
+  {
+    "feature": "time_mass_skew",
+    "target": "capture",
+    "adjusted_rank_rho": -0.08489827403987657
+  },
+  {
+    "feature": "motion_concentration",
+    "target": "net_log",
+    "adjusted_rank_rho": -0.11206266126244915
+  },
+  {
+    "feature": "motion_concentration",
+    "target": "capture",
+    "adjusted_rank_rho": -0.06894730309300949
+  },
+  {
+    "feature": "half_height_width",
+    "target": "net_log",
+    "adjusted_rank_rho": -0.08938392135912795
+  },
+  {
+    "feature": "half_height_width",
+    "target": "capture",
+    "adjusted_rank_rho": -0.09302416975391566
+  }
+]

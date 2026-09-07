@@ -1,0 +1,17 @@
+{
+  "purpose": "user_requested_chart_only",
+  "period_days": 0.5,
+  "period_bars": 24,
+  "order": 1,
+  "signal_rule": "slope_sign_no_hysteresis",
+  "execution": "next_tradable_open; lower curve is prior-close LP known at that open",
+  "mdd_reconstructed": 0.21045736566006967,
+  "peak_source_end_label": "2025-04-07 14:25:00",
+  "trough_source_end_label": "2025-09-26 14:10:00",
+  "visible_bars": 6048,
+  "buy_points": 481,
+  "sell_points": 481,
+  "data_2026_used": false,
+  "not_the_LP12_volatility_gate_version": true,
+  "source_sha256": "1745640f249eb0138e5e092c48d2af421eca78692dc8de227107e606f0d2e267"
+}

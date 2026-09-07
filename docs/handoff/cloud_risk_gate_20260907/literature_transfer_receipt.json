@@ -1,0 +1,201 @@
+{
+  "files": [
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/README.md",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/README.md",
+      "sha256": "3e40991546bd68498e2101113cc963ed19f20e046efd487bb5675629b960ce30",
+      "bytes": 6031
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/acquire.py",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/acquire.py",
+      "sha256": "704800a62fcf36f90f0897a5f561a66304baad85bdaa8818a204441026f915e6",
+      "bytes": 2893
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/alexiou_et_al_2025_pricing_event_risk.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/alexiou_et_al_2025_pricing_event_risk.pdf",
+      "sha256": "e5a2f9d5d857b5725e5e12f4880954edb6ddd54b0567cb7bcadf698dbca9393a",
+      "bytes": 2174535
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/audit_archive.py",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/audit_archive.py",
+      "sha256": "5e540689ebe6fcee7a9a22315535b716b6cd89095b4d776fb3af6442d7ba0042",
+      "bytes": 6954
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/barndorff_nielsen_shephard_2004_bipower.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/barndorff_nielsen_shephard_2004_bipower.pdf",
+      "sha256": "21dd5a9fea25a9cbc6db38671fa45321bf2a0d89354effde03e97257c2f5e608",
+      "bytes": 896546
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/chen_2024_jump_clustering_forecasting.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/chen_2024_jump_clustering_forecasting.pdf",
+      "sha256": "9a186c3fdaface3107495c85529c40745329c194806c61e98ccc0a7ee76ec3b5",
+      "bytes": 2530725
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/chen_clements_urquhart_2024_marked_hawkes.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/chen_clements_urquhart_2024_marked_hawkes.pdf",
+      "sha256": "0c71ef6428bb8ae2ccb86b3135956aad2d55200c756bbc6fdac87c11baceaa67",
+      "bytes": 635187
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/christensen_kolokolov_2024_intensity_bursts.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/christensen_kolokolov_2024_intensity_bursts.pdf",
+      "sha256": "eb7e51f7601f12a21a4e906862d6851a062ec71f5c64028c9693e99fe2007e31",
+      "bytes": 1603105
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/christensen_oomen_podolskij_2014_fact_or_friction.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/christensen_oomen_podolskij_2014_fact_or_friction.pdf",
+      "sha256": "c249c16c105f95cdc954c71306f15ac4950e78a5e1868c82f4c353cdd0fc414a",
+      "bytes": 6314402
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/cont_kukanov_stoikov_2014_order_book_impact.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/cont_kukanov_stoikov_2014_order_book_impact.pdf",
+      "sha256": "40d1d5f0baf7944a1b9f4c12d3644038e657acf4a3dfb500b2057c2269edd25f",
+      "bytes": 741640
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/corsi_2009_har_rv.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/corsi_2009_har_rv.pdf",
+      "sha256": "18c305635feefc152a0522791de67677b5db037dd10958a09134c7d55cf222e5",
+      "bytes": 1058248
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/download_receipt_20260907T041118233979Z.json",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/download_receipt_20260907T041118233979Z.json",
+      "sha256": "9a74888396e9403adfc58eef868d5b7c4d6f2765cb5e15f6375f0fb0c563909d",
+      "bytes": 14158
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/download_receipt_20260907T041327225735Z.json",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/download_receipt_20260907T041327225735Z.json",
+      "sha256": "c9efbda2e0095e9bec565577b806207d420bfa4342d264c141f0280f90b0a767",
+      "bytes": 12067
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/gould_bonart_queue_imbalance.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/gould_bonart_queue_imbalance.pdf",
+      "sha256": "a5051285adfe2d8a2d7f46a758486f357d556a46a964bc89b245de7e7a0bc338",
+      "bytes": 1649240
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/kwok_2024_autocorrelated_jump_occurrences.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/kwok_2024_autocorrelated_jump_occurrences.pdf",
+      "sha256": "56c059b335ce1c38049072a93c194758fdc158f92bc26c3d52b276ddb35fd95a",
+      "bytes": 1066283
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/lee_mykland_2008_jump_detection.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/lee_mykland_2008_jump_detection.pdf",
+      "sha256": "9802729132ddc02136d73542301ce38494f68ab7eeec753a8176ce14a4c1629c",
+      "bytes": 260327
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/missing_fulltexts.md",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/missing_fulltexts.md",
+      "sha256": "3c2f2adca21f780a76f199f8faf4760ffd34157a07efd4eccaaf275db76ff470",
+      "bytes": 3004
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/mucciante_sancetta_order_book_hawkes.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/mucciante_sancetta_order_book_hawkes.pdf",
+      "sha256": "9969f9fddb3a3b122a0287d76662159d99b0f662b0ea8944acb87eee81ca7c0a",
+      "bytes": 648316
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/nason_vonsachs_kroisandt_2000_wavelet_spectrum.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/nason_vonsachs_kroisandt_2000_wavelet_spectrum.pdf",
+      "sha256": "3bce80a875e88961b454d8f9a267329ba149ee16e5f72b4ffa05921319ddb2ae",
+      "bytes": 824087
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/page_1954_continuous_inspection_schemes.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/page_1954_continuous_inspection_schemes.pdf",
+      "sha256": "d8912c002df77c41420ba70f0158bf8c5a7ef3a165a993e969c70e0f35acfd3d",
+      "bytes": 971854
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/register_user_delivery.py",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/register_user_delivery.py",
+      "sha256": "bf827405f7a14945813fa0da2a812bb5fa320b58274e001d5c24eac62d999034",
+      "bytes": 5157
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/sources.json",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/sources.json",
+      "sha256": "75afcfc09f0e7f15476c73b88ce55da2315d800132b2cdb011c171ecf0931e93",
+      "bytes": 7238
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/user_delivery_receipt.json",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/user_delivery_receipt.json",
+      "sha256": "e6807bf0fe0366329424683c082ed8f88a2d7fbd29642f72db20fa08ba5c4fad",
+      "bytes": 3635
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/validation.json",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/validation.json",
+      "sha256": "b73043011f1728ccc9096813dc35a8e9a482b0ca9acc55a0ed077154c2e47ea1",
+      "bytes": 13741
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/validation_before_user_delivery.json",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/validation_before_user_delivery.json",
+      "sha256": "0c775d2e8b8ef1f1e53a49d9e592679fef4d5d16594340d1b6cf96d7fcfd0715",
+      "bytes": 12213
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/从“滤波”转向“风险分桶”：跨频段突发波动的事前门控研究.md",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/从“滤波”转向“风险分桶”：跨频段突发波动的事前门控研究.md",
+      "sha256": "7c8182a5d145b8176b61da7de2c990f4a00886c5adab1a4b21d4c5a2fcea7d68",
+      "bytes": 31437
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/volatility_three_state_router_methods_20260828/README.md",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/volatility_three_state_router_methods_20260828/README.md",
+      "sha256": "3468e4b383ec8e882e3e2d0a359e3913cbc7e9ebc5ede9b4f22db4ab59c25183",
+      "bytes": 1318
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/volatility_three_state_router_methods_20260828/adams_mackay_2007_bayesian_online_changepoint_detection.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/volatility_three_state_router_methods_20260828/adams_mackay_2007_bayesian_online_changepoint_detection.pdf",
+      "sha256": "b88ebb53033d361fe4b1feeca819a1b39a17dfb29f694d6ac2b71ed6a9fcde6f",
+      "bytes": 255274
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/volatility_three_state_router_methods_20260828/barndorff_nielsen_shephard_2003_jump_testing_bipower_variation.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/volatility_three_state_router_methods_20260828/barndorff_nielsen_shephard_2003_jump_testing_bipower_variation.pdf",
+      "sha256": "241cff17f9cccb65c84f3fd48892d7204ef9bb49203f12b40c3322e22e0c9078",
+      "bytes": 1801174
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/volatility_three_state_router_methods_20260828/hamilton_1989_regime_switching.pdf",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/volatility_three_state_router_methods_20260828/hamilton_1989_regime_switching.pdf",
+      "sha256": "6e9e7fcdd54545e24fa4e7efc33e4d891bf260fa55e5ed70e42375bb6b2b341b",
+      "bytes": 2223703
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/volatility_three_state_router_methods_20260828/method_assessment.md",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/volatility_three_state_router_methods_20260828/method_assessment.md",
+      "sha256": "86d5cb018d4cd784b53b419b518bdec25ddf980ef22ab9a7d19b03037dde8b2b",
+      "bytes": 5758
+    },
+    {
+      "local_source": "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/research_materials/10_regime_dynamics_investment_frameworks/volatility_three_state_router_methods_20260828/page_1954_source_record.md",
+      "path": "research_materials/10_regime_dynamics_investment_frameworks/volatility_three_state_router_methods_20260828/page_1954_source_record.md",
+      "sha256": "e78f9894a3a9f1c317a099ddd3ee5a0051bdf6feda1484dc5a23be409f22d2c4",
+      "bytes": 1337
+    }
+  ],
+  "main_papers": 14,
+  "supplementary_page_paper": 1,
+  "additional_files": "existing methodology package dependencies; do not count these as new references from the owner markdown",
+  "all_identified_fulltexts_available": true,
+  "private_internal_research_only": true
+}

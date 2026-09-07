@@ -1,0 +1,4 @@
+policy,gross_log_delta,saved_turnover_sides,break_even_fee_per_side_bp,meaning
+A,-0.37738331107135853,2274,1.6594195177821458,"same signed-log index path fee sensitivity, not actual ETF/options pricing"
+B,-0.039627730902254805,356,1.1130765569222767,"same signed-log index path fee sensitivity, not actual ETF/options pricing"
+AB,-0.4706723093342789,2466,1.9084646992340026,"same signed-log index path fee sensitivity, not actual ETF/options pricing"

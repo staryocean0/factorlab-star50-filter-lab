@@ -1,0 +1,7 @@
+{
+  "finding": "Source high/low and the original first-close display anchor are numeric strings; plotting required explicit float conversion.",
+  "scope": "rendering only; completed window measurement and original account untouched",
+  "old_executor": "initial_plot_executor.py",
+  "old_run_receipt": "initial_plot_run.json",
+  "repair": "explicit float conversion for plotting OHLC"
+}

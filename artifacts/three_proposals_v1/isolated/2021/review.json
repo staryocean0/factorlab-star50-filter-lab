@@ -1,0 +1,16 @@
+{
+  "controller": "Codex",
+  "year": 2021,
+  "prior_review_sha256": "fc6c474f3b4355e3bd2c56bd0959d1a7110bb930b287d2940c34c69eec4b85a4",
+  "account_receipt_sha256": "41cec1b81d1b9a2aba5262836bdc541f4ec628f492bcb61b7f22988f2cc11050",
+  "graph_reviewed": "accounts.png",
+  "observations": [
+    "A/B/AB在统一费用代理下均减少交易、提高完整交易均值、降低本年MDD；B只减少36笔，净收益32.51%到41.34%，MDD16.37%到13.54%。",
+    "A与AB降低在场时间但不是调小持仓；图中原满单位仍保留主要上行，少付费用对净收益改善有贡献。不得将全部差额归为信号alpha。",
+    "通道优先C显著压交易却牺牲较多原滤波收益；其大范围认领并不是只捕获几个极端冲击。单笔较大不等于收益回撤交换更好。",
+    "2021仅为第一材料年，不根据它调A窗口、B阈值或C尺度。聚集性是否存在尚待完整不重叠窗口对照。"
+  ],
+  "promoted": false,
+  "next_year_may_open": 2022,
+  "production_authority": false
+}

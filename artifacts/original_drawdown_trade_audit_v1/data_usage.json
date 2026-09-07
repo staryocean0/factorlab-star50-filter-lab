@@ -1,0 +1,11 @@
+{
+  "roles": {
+    "2021-2025": "repeat_audit_of_consumed_original_snapshots",
+    "2026": "excluded"
+  },
+  "policy_changes": 0,
+  "account_changes": 0,
+  "purpose": "drawdown trade accounting and observational morphology, not factor selection",
+  "fresh_oos": false,
+  "production_authority": false
+}

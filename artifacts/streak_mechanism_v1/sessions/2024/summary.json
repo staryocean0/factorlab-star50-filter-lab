@@ -1,0 +1,65 @@
+{
+  "year": 2024,
+  "trades": 680,
+  "wins": 269,
+  "losses": 411,
+  "flats": 0,
+  "win_rate": 0.39558823529411763,
+  "mean_win_log": 0.011845966564003989,
+  "mean_loss_log": -0.004750171155107276,
+  "sequence_statistics": {
+    "longest_loss": 11.0,
+    "longest_win": 5.0,
+    "scan_low": 2.5683891094981486,
+    "scan_high": 2.3268267610792543
+  },
+  "stage_associations": [
+    {
+      "feature": "eff_1d",
+      "outcome": "win_rate",
+      "rho": 0.0781564936930735
+    },
+    {
+      "feature": "eff_1d",
+      "outcome": "mean_trade_log",
+      "rho": 0.3399913156752063
+    },
+    {
+      "feature": "fast_share_1d",
+      "outcome": "win_rate",
+      "rho": -0.2173489695956891
+    },
+    {
+      "feature": "fast_share_1d",
+      "outcome": "mean_trade_log",
+      "rho": -0.2609639600521059
+    },
+    {
+      "feature": "slow_work_velocity_5d",
+      "outcome": "win_rate",
+      "rho": 0.16674834676658518
+    },
+    {
+      "feature": "slow_work_velocity_5d",
+      "outcome": "mean_trade_log",
+      "rho": 0.38080764220581853
+    },
+    {
+      "feature": "threshold_work_amplitude_5d",
+      "outcome": "win_rate",
+      "rho": -0.1419643682380445
+    },
+    {
+      "feature": "threshold_work_amplitude_5d",
+      "outcome": "mean_trade_log",
+      "rho": -0.44463742943986106
+    }
+  ],
+  "longest_loss_first": "2024-05-10 11:05:00",
+  "longest_loss_last": "2024-05-14 11:10:00",
+  "longest_loss_trades": 11,
+  "longest_loss_log_pnl": -0.04037775440988689,
+  "best50_first": "2024-06-18 10:35:00",
+  "best50_last": "2024-07-15 10:55:00",
+  "best50_win_rate": 0.54
+}

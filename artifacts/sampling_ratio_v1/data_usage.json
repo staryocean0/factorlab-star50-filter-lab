@@ -1,0 +1,17 @@
+{
+  "2020-2024": "price_only_warmup_and_state",
+  "2025": "consumed_signal_diagnostics",
+  "2026": "excluded",
+  "no_economic_backtest": true,
+  "physical_cutoff_minutes": 120,
+  "input_hashes": {
+    "1m_official": "ba03caa432d3212512da73d31ddf86f47dbf121628a6e91897c73b6e331e959e",
+    "5m_offset_0": "d4102ac8aacc69f47d7d8f28d419f65d2f41cacef3833f5123d79963a2255829"
+  },
+  "dependency_hashes": {
+    "src/star50_filter/filters.py": "6e2c22adff111dba0e0dc17ed5e760399460772ec0bbe75816bda0b9379523da",
+    "scripts/reproduce_historical_baseline.py": "084a803426f610e9c66ea9b3d4b30ed7475ecd018c11b08309f5a8aa6cd95b8e"
+  },
+  "source_sha256": "2faca2211f907afb7167a2c4ffad02f925bd7b049926e287934c86c38e14a2c6",
+  "method_sha256": "1568e64aea6b9ab3ff8920fd9b63360e08413ea02ac6d48d438ff3182a8c2e2d"
+}

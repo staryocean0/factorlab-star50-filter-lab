@@ -1,0 +1,83 @@
+{
+  "schema": "star50_conditional_bucket_owner_contract@1",
+  "date": "2026-09-06",
+  "issue": "fl-qg35a",
+  "authority": "current_user_systematic_top_level_requirement",
+  "primary_objectives": [
+    "reduce_complete_account_maximum_drawdown",
+    "increase_mean_net_profit_per_completed_trade"
+  ],
+  "supporting_objectives": [
+    "reduce_churn_and_false_entry_signals",
+    "reduce_transaction_count_through_conditionally_weak_bucket_veto"
+  ],
+  "permitted_tradeoff": "annualized_return_may_decline_only_with_explicit_material_risk_quality_exchange_value",
+  "unfixed_financial_preference": "No arbitrary allowable CAGR loss or synthetic leverage benefit is invented by the controller. Retain the full Pareto frontier and report the exchange in both directions.",
+  "research_order": [
+    "causal_factor_state_and_cross_scale_property_observability",
+    "conditional_bucket_evidence_with_winning_counterexamples",
+    "entry_veto_complete_policy_and_two_carrier_account_validation",
+    "small_parameter_refinement_after_valid_bucket_mechanism",
+    "position_and_leverage_research_last"
+  ],
+  "fixed_signal_root": {
+    "instrument": "000688.SH",
+    "view": "5m_offset_0",
+    "filter": "causal Butterworth order1 period12",
+    "hysteresis": "k1 times rolling48 population sigma, current closed bar",
+    "initial_source": "bdbcf7dc2f613100ea7ceeb6968ab7fc2b5c9df9",
+    "baseline_parameter_search_open": false
+  },
+  "time_roles": {
+    "2020": "warmup_only",
+    "2021-2025": "consumed_development_material",
+    "2026": "excluded_from_price_return_factor_selection_reads"
+  },
+  "cost_model": {
+    "etf_user_words": "买卖双向成本万2",
+    "option_user_words": "成本按照4.5元一张计算",
+    "entry_price": "actual_visible_best_ask",
+    "exit_price": "actual_visible_best_bid",
+    "additional_spread_charge": 0,
+    "additional_slippage_charge": 0,
+    "additional_impact_charge": 0,
+    "other_modelled_costs": 0,
+    "fee_side_interpretation": "pending_user_clarification",
+    "existing_option_infrastructure_reference": "4.5 RMB per contract per side; reference only until current question resolved",
+    "forbid_midpoint_or_close_substitute_for_missing_quote": true
+  },
+  "carrier_choices": {
+    "underlying": "pending_user_clarification_588000_or_588080",
+    "etf_direction_mapping": "pending_confirmation_of_cash_long_flat_and_T1_inventory",
+    "option_direction_mapping": "pending_confirmation_of_buy_call_for_long_and_buy_put_for_short",
+    "option_tenor": "nearest_unexpired_month_at_entry",
+    "option_moneyness": "at_the_money_at_entry_from_visible_underlying_and_PIT_contract_master",
+    "naked_option_selling_authorized": false,
+    "automatic_contract_switch_inside_trade": false,
+    "account_capital_and_fixed_size": "must_be_frozen_before_account_results; no size optimization in this phase"
+  },
+  "candidate_mechanism_families": [
+    "small_work_band_amplitude_with_low_directional_efficiency",
+    "entry_against_coherent_slow_drift",
+    "fast_oscillation_dominance_without_sufficient_work_progress",
+    "recent_reversal_cluster_without_net_progress"
+  ],
+  "candidate_status": "measurement_candidates_not_discovered_valid_factors_or_admitted_vetoes",
+  "required_evidence": [
+    "information_available_at_decision_and_future_prefix_invariance",
+    "all_bucket_denominators_dates_trade_counts_and_winning_counterexamples",
+    "avoided_losses_foregone_gains_and_fee_savings_separately",
+    "same_carrier_same_capital_same_sizing_same_quote_cost_basis",
+    "independent_annual_materials_and_complete_policy_repricing",
+    "drawdown_depth_duration_recovery_and_net_trade_quality",
+    "CAGR_tradeoff_Pareto_frontier_without_assuming_leverage_linear_scaling",
+    "source_closure_and_replay_identity"
+  ],
+  "entry_veto_semantics": "Any later accepted veto must be known before entry; exits and inventory obligations remain executable; no hindsight deletion of losing trades.",
+  "current_scope": "owner_contract_data_preflight_and_causal_measurement_scaffold",
+  "formal_dual_carrier_backtest_open": false,
+  "new_bucket_economics_computed": false,
+  "new_veto_admitted": false,
+  "production_authority": false,
+  "fresh_oos": false
+}

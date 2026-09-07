@@ -1,5 +1,10 @@
 # STAR50 filter lab — cloud research prompt
 
+> Superseded by the user's 2026-09-07 scope expansion. Read
+> [`../handoff/cloud_risk_gate_20260907/HANDOFF.md`](../handoff/cloud_risk_gate_20260907/HANDOFF.md)
+> and validate the new bounded package. The content below is immutable historical
+> context only; do not execute its trading tasks or use its working-clock restriction.
+
 Private bounded theme. Do not write to or merge with
 `factorlab-two-wave-strategy-lab`, `factorlab-overnight-open-lab`, or
 `factorlab-multifactor-stock-lab`.

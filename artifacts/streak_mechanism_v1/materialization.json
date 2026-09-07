@@ -1,0 +1,42 @@
+{
+  "protocol_sha256": "c3fe547231affb65228af2b130b26f0667688aef5fa7d5eb2519c8a103254348",
+  "inputs": [
+    {
+      "view": "5m_offset_0",
+      "bars": 58176,
+      "fragments": 3484,
+      "closed_trades": 3482,
+      "last_day": "2025-12-31"
+    },
+    {
+      "view": "5m_offset_1",
+      "bars": 55752,
+      "fragments": 3362,
+      "closed_trades": 3360,
+      "last_day": "2025-12-31"
+    },
+    {
+      "view": "5m_offset_2",
+      "bars": 55752,
+      "fragments": 3408,
+      "closed_trades": 3406,
+      "last_day": "2025-12-31"
+    },
+    {
+      "view": "5m_offset_3",
+      "bars": 55752,
+      "fragments": 3362,
+      "closed_trades": 3360,
+      "last_day": "2025-12-31"
+    },
+    {
+      "view": "5m_offset_4",
+      "bars": 55752,
+      "fragments": 3358,
+      "closed_trades": 3356,
+      "last_day": "2025-12-31"
+    }
+  ],
+  "new_policies": 0,
+  "data_2026": false
+}

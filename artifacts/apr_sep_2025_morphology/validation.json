@@ -1,0 +1,18 @@
+{
+  "original_pnl_and_position_unchanged": true,
+  "body_plus_gap_market_identity_passed": true,
+  "window_accounting_reconciled": true,
+  "new_account_replays": 0,
+  "observations": 504,
+  "data_2026_used": false,
+  "files": {
+    "data_usage.json": "92f27e9f6ae2c9a1c1611edf2b03e83ba3733fe6e5da1634c849c8ab50e3d8b3",
+    "examples.json": "7fbe944f217075dd6191948096f947cbc07069a14f541672dad7bcd69d18d0bf",
+    "examples.png": "87caf87a35a8e75c5b25e5e283d6877cc13ee4a322b99aac6b3f17b9b79f148e",
+    "initial_plot_executor.py": "091488e9c7050c519cdc3f944005acb198bae144ccc4ec15d88914991c4b4499",
+    "initial_plot_run.json": "fedca72e8498c4b8bf186141545de71e1f994499e724336a33f2a69fd2d69326",
+    "plot_incident.json": "74dc28defded0577cb9629e3250a9839c775a189a0131e696586dc75f28647c2",
+    "summary.json": "1dc7d0a79cfda7334e3c574cbb72960edb206dde71c0a5594c12766778a4cc3a",
+    "windows.csv": "4034d3042c7410e6113b4c95ffa2f9029f4b5f666c37a7ac5e2b489843c2ea38"
+  }
+}

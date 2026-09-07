@@ -1,0 +1,13 @@
+{
+  "controller": "Codex",
+  "year": 2023,
+  "baseline_receipt_sha256": "305bf8d5b4126883dd4909ddcb6c08fd92acd17445fd7331ddc897fe8caefb9b",
+  "observations": [
+    "零费原收益31.5338%、年度MDD11.8759%符合原指纹。",
+    "统一费用代理后收益-1.0677%，本年度MDD18.0141%，712笔均值-0.1657 log bp；这是成本使低单笔质量失效的实质反例。",
+    "需检查少交易能否改善质量并保留行情，而不只以减少费用掩盖原始捕获能力下降。"
+  ],
+  "challenger_results_read": false,
+  "family_may_execute": true,
+  "production_authority": false
+}

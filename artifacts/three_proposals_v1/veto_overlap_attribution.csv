@@ -1,0 +1,5 @@
+bucket,count,net_log_sum,mean_net_log_bp,mean_gross_log_bp,warning
+A_only,1054,-0.012328788992727158,-0.11697143256856886,3.883428620772765,existing-family attribution only; no intersection policy or its MDD tested
+B_only_added_after_A,96,0.054885157750842205,5.717203932379396,9.717603985720729,existing-family attribution only; no intersection policy or its MDD tested
+A_and_B_overlap,82,-0.0864645477980625,-10.544457048544206,-6.54405699520287,existing-family attribution only; no intersection policy or its MDD tested
+neither,2250,1.7524182442451,7.788525529978222,11.788925583319557,existing-family attribution only; no intersection policy or its MDD tested

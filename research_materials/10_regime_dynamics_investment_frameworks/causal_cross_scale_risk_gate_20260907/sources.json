@@ -1,0 +1,221 @@
+[
+  {
+    "id": "R01",
+    "title": "A Simple Approximate Long-Memory Model of Realized Volatility",
+    "authors": "Fulvio Corsi",
+    "year": 2009,
+    "doi": "10.1093/jjfinec/nbp001",
+    "file": "corsi_2009_har_rv.pdf",
+    "tokens": [
+      "turn17view8",
+      "turn15search9"
+    ],
+    "urls": [
+      "https://statmath.wu.ac.at/~hauser/LVs/FinEtricsQF/References/Corsi2009JFinEtrics_LMmodelRealizedVola.pdf"
+    ],
+    "version": "出版者排版，大学课程公开副本"
+  },
+  {
+    "id": "R02",
+    "title": "A Consistent and Robust Test for Autocorrelated Jump Occurrences",
+    "authors": "Simon Kwok",
+    "year": 2024,
+    "doi": "10.1093/jjfinec/nbac031",
+    "file": "kwok_2024_autocorrelated_jump_occurrences.pdf",
+    "tokens": [
+      "turn17view9"
+    ],
+    "urls": [
+      "https://academic.oup.com/jfec/article-pdf/22/1/157/56284201/nbac031.pdf",
+      "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID4099956_code2291575.pdf?abstractid=3680263&mirid=1"
+    ],
+    "version": "用户提供2024出版者全文；2026-09-07从桌面重命名移入；非本助手联网下载",
+    "acquisition": "user_provided"
+  },
+  {
+    "id": "R03",
+    "title": "Modelling price and variance jump clustering using the marked Hawkes process",
+    "authors": "Jian Chen; Michael P. Clements; Andrew Urquhart",
+    "year": 2024,
+    "doi": "10.1093/jjfinec/nbad007",
+    "file": "chen_clements_urquhart_2024_marked_hawkes.pdf",
+    "tokens": [
+      "turn17view1"
+    ],
+    "urls": [
+      "https://centaur.reading.ac.uk/110658/9/nbad007.pdf"
+    ],
+    "version": "Reading机构库，出版者开放版CC BY"
+  },
+  {
+    "id": "R04",
+    "title": "Jump Clustering, Information Flows, and Stock Price Efficiency",
+    "authors": "Jian Chen",
+    "year": 2024,
+    "doi": "10.1093/jjfinec/nbae009",
+    "file": "chen_2024_jump_clustering_forecasting.pdf",
+    "tokens": [
+      "turn18view0",
+      "turn18view3"
+    ],
+    "urls": [
+      "https://academic.oup.com/jfec/article-pdf/22/5/1588/60796940/nbae009.pdf"
+    ],
+    "version": "用户提供2024出版者全文；2026-09-07从桌面重命名移入；非本助手联网下载",
+    "acquisition": "user_provided"
+  },
+  {
+    "id": "R05",
+    "title": "An unbounded intensity model for point processes",
+    "authors": "Kim Christensen; Alexei Kolokolov",
+    "year": 2024,
+    "doi": "10.1016/j.jeconom.2024.105840",
+    "file": "christensen_kolokolov_2024_intensity_bursts.pdf",
+    "tokens": [
+      "turn17view3"
+    ],
+    "urls": [
+      "https://pure.au.dk/ws/files/443099321/1-s2.0-S0304407624001854-main.pdf",
+      "https://arxiv.org/pdf/2408.06519"
+    ],
+    "version": "优先Aarhus机构库出版者版；备选arXiv作者稿"
+  },
+  {
+    "id": "R06",
+    "title": "Estimation of an Order Book Dependent Hawkes Process for Large Datasets",
+    "authors": "Luca Mucciante; Alessio Sancetta",
+    "year": 2023,
+    "doi": "10.48550/arXiv.2307.09077",
+    "file": "mucciante_sancetta_order_book_hawkes.pdf",
+    "tokens": [
+      "turn17view2",
+      "turn18view4"
+    ],
+    "urls": [
+      "https://arxiv.org/pdf/2307.09077"
+    ],
+    "version": "arXiv作者稿，初稿2023；实际下载修订版本见PDF与回执"
+  },
+  {
+    "id": "R07",
+    "title": "Wavelet processes and adaptive estimation of the evolutionary wavelet spectrum",
+    "authors": "Guy P. Nason; Rainer von Sachs; Gerald Kroisandt",
+    "year": 2000,
+    "doi": "10.1111/1467-9868.00231",
+    "file": "nason_vonsachs_kroisandt_2000_wavelet_spectrum.pdf",
+    "tokens": [
+      "turn21view0"
+    ],
+    "urls": [
+      "https://www.ma.imperial.ac.uk/~gnason/Research/papers/WavProcEWS1.pdf"
+    ],
+    "version": "作者主页公开稿，1999-07-12；期刊版2000"
+  },
+  {
+    "id": "R08",
+    "title": "The Price Impact of Order Book Events",
+    "authors": "Rama Cont; Arseniy Kukanov; Sasha Stoikov",
+    "year": 2014,
+    "doi": "10.1093/jjfinec/nbt003",
+    "file": "cont_kukanov_stoikov_2014_order_book_impact.pdf",
+    "tokens": [
+      "turn21view3"
+    ],
+    "urls": [
+      "https://arxiv.org/pdf/1011.6402"
+    ],
+    "version": "arXiv作者稿；期刊版2014"
+  },
+  {
+    "id": "R09",
+    "title": "Queue Imbalance as a One-Tick-Ahead Price Predictor in a Limit Order Book",
+    "authors": "Martin D. Gould; Julius Bonart",
+    "year": 2016,
+    "doi": "10.48550/arXiv.1512.03492",
+    "file": "gould_bonart_queue_imbalance.pdf",
+    "tokens": [
+      "turn19search1"
+    ],
+    "urls": [
+      "https://arxiv.org/pdf/1512.03492"
+    ],
+    "version": "arXiv作者稿，初稿2015；期刊版2016"
+  },
+  {
+    "id": "R10",
+    "title": "Jumps in Financial Markets: A New Nonparametric Test and Jump Dynamics",
+    "authors": "Suzanne S. Lee; Per A. Mykland",
+    "year": 2008,
+    "doi": "10.1093/rfs/hhm056",
+    "file": "lee_mykland_2008_jump_detection.pdf",
+    "tokens": [
+      "turn17view7"
+    ],
+    "urls": [
+      "https://galton.uchicago.edu/~mykland/paperlinks/leemykland_103106.pdf"
+    ],
+    "version": "作者机构主页公开稿；期刊版2008"
+  },
+  {
+    "id": "R11",
+    "title": "Pricing Event Risk: Evidence from Concave Implied Volatility Curves",
+    "authors": "Lykourgos Alexiou; Amit Goyal; Alexandros Kostakis; Leonidas Rompolis",
+    "year": 2025,
+    "doi": "10.1093/rof/rfaf016",
+    "file": "alexiou_et_al_2025_pricing_event_risk.pdf",
+    "tokens": [
+      "turn21view1"
+    ],
+    "urls": [
+      "https://www.research.ed.ac.uk/files/510014292/AlexiouEtalRF2025PricingEventRisk.pdf",
+      "https://www.pure.ed.ac.uk/ws/portalfiles/portal/531177695/AlexiouEtal2025RFPricingEventRisk.pdf"
+    ],
+    "version": "Edinburgh机构库出版者版"
+  },
+  {
+    "id": "R12",
+    "title": "Power and Bipower Variation with Stochastic Volatility and Jumps",
+    "authors": "Ole E. Barndorff-Nielsen; Neil Shephard",
+    "year": 2004,
+    "doi": "10.1093/jjfinec/nbh001",
+    "file": "barndorff_nielsen_shephard_2004_bipower.pdf",
+    "tokens": [
+      "turn17view6"
+    ],
+    "urls": [
+      "https://public.econ.duke.edu/~get/browse/courses/883/Spr16/COURSE-MATERIALS/Z_Papers/BNSJFEC2004.pdf"
+    ],
+    "version": "大学课程公开副本；原文只指bipower体系，无法还原会话链接的唯一版本"
+  },
+  {
+    "id": "R13",
+    "title": "Fact or friction: Jumps at ultra high frequency",
+    "authors": "Kim Christensen; Roel C. A. Oomen; Mark Podolskij",
+    "year": 2014,
+    "doi": "10.1016/j.jfineco.2014.07.007",
+    "file": "christensen_oomen_podolskij_2014_fact_or_friction.pdf",
+    "tokens": [
+      "turn14search1"
+    ],
+    "urls": [
+      "https://arxiv.org/pdf/2602.10925"
+    ],
+    "version": "2014论文的2026年arXiv归档，非2026新研究结论"
+  },
+  {
+    "id": "R14",
+    "title": "Bayesian Online Changepoint Detection",
+    "authors": "Ryan Prescott Adams; David J. C. MacKay",
+    "year": 2007,
+    "doi": "10.48550/arXiv.0710.3742",
+    "file": "adams_mackay_2007_bocpd.pdf",
+    "tokens": [
+      "turn20search2"
+    ],
+    "urls": [
+      "https://arxiv.org/pdf/0710.3742"
+    ],
+    "existing": "../volatility_three_state_router_methods_20260828/adams_mackay_2007_bayesian_online_changepoint_detection.pdf",
+    "version": "复用资料库已有arXiv全文，以链接去重"
+  }
+]

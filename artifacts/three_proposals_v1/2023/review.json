@@ -1,0 +1,16 @@
+{
+  "controller": "Codex",
+  "year": 2023,
+  "prior_review_sha256": "2d174364877502d91692554205803d655727fa068a7402cca46678b3a890f5b8",
+  "account_receipt_sha256": "da7b85d09a52a176db1bd84825f8af38808511e080a23183ad022af92a819963",
+  "graph_reviewed": "accounts.png",
+  "observations": [
+    "费用代理基线-1.07%下，A14.35%、B2.64%、AB16.94%，三者本年MDD均更低、完成交易净均值更高。",
+    "AB交易471对基线712、均值3.30对-0.17 log bp；图上保留更多毛收益同时减少费用，不只是低资金占用造成低回撤。",
+    "C在本年反而明显有利，费用代理26.29%，说明不能把第三条一概说成无效；但其2022约25%回撤历史仍须纳入同一完整账户。",
+    "组合收益及风险不简单相加，C的ABC版本未超过AC或C，不据本年新增路由条件。"
+  ],
+  "promoted": false,
+  "next_year_may_open": 2024,
+  "production_authority": false
+}

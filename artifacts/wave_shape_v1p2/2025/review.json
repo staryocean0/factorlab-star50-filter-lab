@@ -1,0 +1,16 @@
+{
+  "controller": "Codex",
+  "year": 2025,
+  "prior_receipt_sha256": "76b6cac03d41a76cea849943845ae9d06e375251165ea2c7546bc57317571cb6",
+  "cycles_sha256": "d9754d042db0cf92431fe9cbf408c6fa3b74a1ddc0cf2f2317cfd75f001f6539",
+  "chart_reviewed": "examples.png",
+  "observations": [
+    "678周期覆盖98.35%区间；运动集中度对净损益和capture控制后均负，五年方向一致；幅度较前两强关联年份弱。",
+    "5月19日起的尖起再折返案例capture约-0.945，冲击先打击旧空头，随后多头又遇回落；与用户描述相容。",
+    "10月16日急跌发生在既有空头方向上，因此同样集中运动却盈利；6月12日较平缓的波也亏。",
+    "半高宽关联再变负，五年符号不稳；不得用尖窄程度一个数替代完整相位及历史状态。"
+  ],
+  "root_resolved": false,
+  "next_action": "aggregate_only_registered_eight_associations",
+  "production_authority": false
+}

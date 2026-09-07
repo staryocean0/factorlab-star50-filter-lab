@@ -1,0 +1,27 @@
+{
+  "original_sources_and_input_hashes_passed": true,
+  "original_account_mutations": 0,
+  "new_real_account_replays": 0,
+  "annual_cycle_tables_replayed_byte_identically": 5,
+  "annual_review_chain_passed": true,
+  "cycles": 3244,
+  "synthetic_executions_each_process": 450,
+  "synthetic_replayed_identical_files": [
+    "synthetic.csv",
+    "synthetic_summary.csv",
+    "filter_response.csv",
+    "synthetic_validation.json"
+  ],
+  "both_1999_draw_maxT_arrays_replayed_exactly": true,
+  "same_spectrum_example_power_error": 6.179952383167375e-18,
+  "same_spectrum_example_sigma_error": 2.168404344971009e-19,
+  "report_source_sha256": "306f3b75c8f5cf5167b624202a4b7e951474ee319ef4dd7d9efb3e36dd812d17",
+  "future_data_used": false,
+  "new_strategy_promoted": false,
+  "limitations": [
+    "hindsight cycles and shapes",
+    "finite linear controls and matched overlap",
+    "not all drawdown causes identified",
+    "no real-time veto tested"
+  ]
+}

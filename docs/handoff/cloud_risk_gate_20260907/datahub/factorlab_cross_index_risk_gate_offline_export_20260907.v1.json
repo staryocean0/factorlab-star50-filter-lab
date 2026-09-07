@@ -1,0 +1,20 @@
+{
+  "schema_version": "datahub.consumer_contract.v1",
+  "consumer_contract_id": "factorlab_cross_index_risk_gate_offline_export_20260907.v1",
+  "status": "owner_authorized_bounded_offline_export",
+  "authorization": "2026-09-07用户明确回复‘授权’，同意为纯历史K线/波动研究开放科创50、中证1000截至2025年底的3秒导出。",
+  "product_id": "market_index_transactions_cn_3s",
+  "active_dataset_version": "market_index_baidu_3s_20000714_20260821_cffex_underlyings_alias_repaired_v4_20260823",
+  "source_sha256": "a2abc93ef0975490aae73c606ca8157a15c44cd182626c7537a9a62494310540",
+  "symbols": ["000688.SH", "000852.SH"],
+  "start_by_symbol": {"000688.SH":"2020-07-23","000852.SH":"2014-10-17"},
+  "end": "2025-12-31",
+  "role": "consumed_development_material",
+  "allowed": ["fixed_bytes_local_export", "private_cloud_Kline_volatility_research"],
+  "denied": ["2026_rows", "other_symbols", "options_or_futures", "live_orders", "production", "implicit_latest", "alter_existing_consumer_contract"],
+  "old_contract_unchanged": "fixed_version_market_index_transactions.v1",
+  "online_serving_granted": false,
+  "shared_serving_registry_mutation": false,
+  "fresh_oos": false,
+  "production_authority": false
+}

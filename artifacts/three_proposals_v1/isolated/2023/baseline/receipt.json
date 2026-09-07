@@ -1,0 +1,14 @@
+{
+  "year": 2023,
+  "mode": "baseline",
+  "prepared_sha256": "fcc97fd28b2f47b39ef0a8c2670842bb3062afbf2af4c5d95480245423aa5137",
+  "policies": [
+    "F"
+  ],
+  "previous_review_sha256": "2d174364877502d91692554205803d655727fa068a7402cca46678b3a890f5b8",
+  "files": {
+    "F.parquet": "26be97864e1f279e618e65db7911fb35f439c0991e97f4562aff58cde79ab16e",
+    "F_state.json": "a4697387599926b51e1e9c958e9760e31210e8ff73656470962367d892e6799d",
+    "summary.csv": "e2d4d7c8decbbf2c027054dc7c469fc3cc9e33ad9d97a8997fc445fa365814b8"
+  }
+}

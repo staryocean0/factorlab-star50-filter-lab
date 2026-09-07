@@ -1,0 +1,13 @@
+{
+  "account_contract_may_open": true,
+  "status": "diagnostic_signal_present_account_contract_may_open",
+  "original_signal_and_pnl_exact": true,
+  "all_veto_prefix_checks_passed": true,
+  "channel_prefix_checks": [
+    400,
+    9254
+  ],
+  "asof_reads_future": false,
+  "new_signal_economics_success_assumed": false,
+  "production_authority": false
+}

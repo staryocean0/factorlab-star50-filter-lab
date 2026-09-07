@@ -1,0 +1,9 @@
+{
+  "numeric_and_key_checks_passed": true,
+  "units": "price=index points, amount=interval CNY turnover, volume=null",
+  "timestamp": "source Z suffix represents Shanghai wall-clock labels; not true UTC conversion",
+  "data_ready": true,
+  "evidence_ready": true,
+  "artifact_ready": true,
+  "production_granted": false
+}

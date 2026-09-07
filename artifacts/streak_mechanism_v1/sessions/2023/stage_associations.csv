@@ -1,0 +1,9 @@
+feature,outcome,rho
+eff_1d,win_rate,0.051162296332274107
+eff_1d,mean_trade_log,0.18736430742509769
+fast_share_1d,win_rate,-0.089452549956746771
+fast_share_1d,mean_trade_log,-0.1984368215371255
+slow_work_velocity_5d,win_rate,0.14213559395070205
+slow_work_velocity_5d,mean_trade_log,0.1276595744680851
+threshold_work_amplitude_5d,win_rate,-0.2147512947959786
+threshold_work_amplitude_5d,mean_trade_log,-0.15729483282674769

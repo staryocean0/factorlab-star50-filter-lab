@@ -1,0 +1,12 @@
+{
+  "trades": 3482,
+  "wins": 1337,
+  "losses": 2145,
+  "flats": 0,
+  "win_rate": 0.38397472716829406,
+  "mean_win_log": 0.009333833655054986,
+  "mean_loss_log": -0.004371974933813486,
+  "stage_count": 236,
+  "new_policy": false,
+  "fresh_oos": false
+}

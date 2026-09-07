@@ -1,0 +1,54 @@
+{
+  "schema": "star50_conditional_bucket_campaign@1",
+  "issue": "fl-qg35a",
+  "purpose": "execute one bounded conditional entry-veto family under two real BBO carriers",
+  "controller_assumptions_not_claimed_as_explicit_user_answers": {
+    "etf_fee_per_side": 0.0002,
+    "option_fee_rmb_per_contract_per_side": 4.5,
+    "primary_underlying": "588000",
+    "same_rule_replication_underlying": "588080",
+    "spot_direction_mapping": "long/cash, actual T+1 inventory",
+    "option_direction_mapping": "buy call for long; buy put for short; no short options",
+    "initial_cash_each_account_rmb": 100000,
+    "spot_fixed_order_shares": 10000,
+    "option_fixed_order_contracts": 1,
+    "sizing_rationale": "fixed units isolate signal/veto economics; identical capital and quantities for baseline/challengers inside each carrier; no leverage or sizing optimization; do not compare CAGR to the old fully-invested index account"
+  },
+  "roles": {
+    "2020": "warmup_only",
+    "2021-2023": "consumed development, entry-feature distribution calibration and diagnostic mechanism evidence only",
+    "2024": "consumed diagnostic support only; two missing spot BBO days prevent claiming complete full-year MDD",
+    "2025": "consumed retrospective primary full-account comparison; no threshold tuning or candidate-budget expansion after outcomes",
+    "2026": "no quote/return/feature discovery reads"
+  },
+  "signal": "original 000688 5m+0 causal LP12 and sigma48 ddof0 k1 hysteresis; no formula/parameter changes",
+  "calibration": "Fixed 25th/75th percentiles of original entry observations dated 2021-2023; no PnL enters thresholds. Apply these constants only after 2023.",
+  "family": {
+    "baseline": "no factor veto",
+    "small_work": "work_efficiency_48 <= calibration q25 AND threshold_work_amplitude_48 >= calibration q75",
+    "opposed_slow": "slow_opposition_strength_48 >= 1 AND slow_directional_efficiency_48 >= calibration q75",
+    "fast_without_progress": "fast_work_velocity_48 >= calibration q75 AND work_travel_threshold_12 <= calibration q25",
+    "reversal_chop": "reversal_count_48 >= 4 AND work_efficiency_48 <= calibration q25",
+    "union_four": "logical OR of the four frozen mechanism conditions; no outcome-selected combination"
+  },
+  "candidate_count": 5,
+  "entry_gate": "Evaluate only at original signal reversals, latch admission until next reversal. Prior positions still receive normal exits. No hindsight removal of realised losses.",
+  "execution": {
+    "decision_time": "completed original index bar time, interpreted as Shanghai wall clock according to the accepted source convention",
+    "order_not_before": "decision time + 1 millisecond; carried pending targets may act at next session open",
+    "fills": "first eligible actually observed best ask/bid event after order, before next decision; observed quantity must cover fixed order; no added spread/slippage/impact",
+    "cash": "no borrowing; reject entry if insufficient cash; same rule all policies",
+    "spot_T1": "new buys locked until next trading day; latest target supersedes stale target while blocked",
+    "option_selection": "at entry-time visible underlying price and contract chain: nearest unexpired month then closest strike, deterministic code tie-break; hold selected contract, not a rolling synthetic ATM price",
+    "expiry": "close held expiring option by 14:55 on expiry day; roll with explicit exit/new-entry orders and fees if current admitted direction remains; after cutoff exclude same-day expiry",
+    "marks": "observed best bid at common five-minute and session-boundary marks; no future quote marks; unmarked held asset is a coverage incident",
+    "final_positions": "retain and mark legitimate unclosed inventory; report it, do not force prohibited T+1 sales or read 2026 to close",
+    "corporate_actions": "cash entitlement and contract adjustment require bounded source evidence before the affected account is admitted"
+  },
+  "primary_comparison": "same carrier, same instrument, same period, capital, units, timing, inventory, and costs: MDD decreases AND average net PnL per completed trade increases",
+  "return_tradeoff": "Report CAGR, net PnL, MDD in cash and percent, Calmar, trading count and retained/foregone return; keep full Pareto frontier. Calmar is a diagnostic, not permission to assume leverage scales returns linearly.",
+  "promotion": "No automatic promotion from one complete economic year. Retain valid progression and distinguish failed/inconclusive conditions. Do not relax failed conditions or tune cutoffs after outcomes.",
+  "sequence": ["freeze sources and family", "causal feature/science diagnostics", "execution/account preflight and tests", "baseline-only account", "controller review", "frozen complete family", "independent replay and reporting"],
+  "fresh_oos": false,
+  "production_authority": false
+}

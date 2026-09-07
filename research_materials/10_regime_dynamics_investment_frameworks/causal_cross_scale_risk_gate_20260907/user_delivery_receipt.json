@@ -1,0 +1,55 @@
+{
+  "schema": "user_pdf_delivery@1.0",
+  "date": "2026-09-07",
+  "records": [
+    {
+      "source": "桌面/biomet%2F41.1-2.100.pdf",
+      "target": "10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/page_1954_continuous_inspection_schemes.pdf",
+      "title": "Continuous Inspection Schemes",
+      "doi": "10.1093/biomet/41.1-2.100",
+      "source_sha256_before_move": "d8912c002df77c41420ba70f0158bf8c5a7ef3a165a993e969c70e0f35acfd3d",
+      "byte_preserving_move": true,
+      "visual_title_author_verified": true,
+      "acquisition": "user_provided",
+      "pages": 16,
+      "sha256": "d8912c002df77c41420ba70f0158bf8c5a7ef3a165a993e969c70e0f35acfd3d",
+      "bytes": 971854,
+      "first_page_excerpt": "[ 100]\nCONTINUOUS INSPECTION SCHEMES\nB Y E. S. PAGE\nStatistical Laboratory, University of Cambridge\n1. iNTEODtronoN\n\nDownloaded from http://biomet.oxfordjournals.org/ at University of Toronto Library on August 11, 2014\n\n1-1. Preliminary remarks\nWhenever observations are taken in order it can happen that the whole set of observations\ncan be divided into subsets, each of which can be regarded as a r",
+      "last_page_text_chars": 4296
+    },
+    {
+      "source": "桌面/nbac031.pdf",
+      "target": "10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/kwok_2024_autocorrelated_jump_occurrences.pdf",
+      "title": "A Consistent and Robust Test for Autocorrelated Jump Occurrences",
+      "doi": "10.1093/jjfinec/nbac031",
+      "source_sha256_before_move": "56c059b335ce1c38049072a93c194758fdc158f92bc26c3d52b276ddb35fd95a",
+      "byte_preserving_move": true,
+      "visual_title_author_verified": true,
+      "acquisition": "user_provided",
+      "pages": 30,
+      "sha256": "56c059b335ce1c38049072a93c194758fdc158f92bc26c3d52b276ddb35fd95a",
+      "bytes": 1066283,
+      "first_page_excerpt": "Journal of Financial Econometrics, 2024, Vol. 22, No. 1, 157–186\nhttps://doi.org/10.1093/jjfinec/nbac031\nAdvance Access Publication Date: 29 August 2022\nArticle\n\nA Consistent and Robust Test for\nAutocorrelated Jump Occurrences*\nSchool of Economics, The University of Sydney, Australia\nAddress correspondence to Simon Kwok, School of Economics, The University of Sydney, Camperdown\nNSW 2006, Australia",
+      "last_page_text_chars": 2106
+    },
+    {
+      "source": "桌面/nbae009.pdf",
+      "target": "10_regime_dynamics_investment_frameworks/causal_cross_scale_risk_gate_20260907/chen_2024_jump_clustering_forecasting.pdf",
+      "title": "Jump Clustering, Information Flows, and Stock Price Efficiency",
+      "doi": "10.1093/jjfinec/nbae009",
+      "source_sha256_before_move": "9a186c3fdaface3107495c85529c40745329c194806c61e98ccc0a7ee76ec3b5",
+      "byte_preserving_move": true,
+      "visual_title_author_verified": true,
+      "acquisition": "user_provided",
+      "pages": 28,
+      "sha256": "9a186c3fdaface3107495c85529c40745329c194806c61e98ccc0a7ee76ec3b5",
+      "bytes": 2530725,
+      "first_page_excerpt": "Journal of Financial Econometrics, 2024, 22, 1588–1615\nhttps://doi.org/10.1093/jjfinec/nbae009\nAdvance access publication 26 April 2024\nArticle\n\nJump Clustering, Information Flows, and\nStock Price Efficiency†\nBusiness School, University of Sussex, Brighton, BN1 9SL, UK\n*Address correspondence to Jian Chen, University of Sussex Business School, Brighton, BN1 9SL, UK, or\ne-mail: jian.chen@sussex.ac.",
+      "last_page_text_chars": 1784
+    }
+  ],
+  "main_works_complete": "14/14",
+  "supplementary_works_complete": "1/1",
+  "missing_fulltexts": [],
+  "authority": "local_internal_research_only"
+}

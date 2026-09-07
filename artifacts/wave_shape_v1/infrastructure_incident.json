@@ -1,0 +1,10 @@
+{
+  "stage": "after dispatch, before reading any synthetic or annual results",
+  "finding": "A triangle pulse peak can fall between samples for period24,width0.25,peak0.25; nominal equal amplitude does not ensure sampled equal amplitude.",
+  "invalid_for": "fixed sampled-amplitude pulse comparison",
+  "repair": "normalize each sampled pulse by its own observed peak before applying fixed 0.002 log amplitude; keep period,width,peak,family,phase and research budget unchanged",
+  "original_sources_preserved": "frozen_source_before_discrete_amplitude_repair",
+  "frozen_manifest_unchanged": true,
+  "successor": "artifacts/wave_shape_v1p1",
+  "scientific_outcomes_not_used_to_choose_repair": true
+}

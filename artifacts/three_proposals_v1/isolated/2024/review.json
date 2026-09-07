@@ -1,0 +1,17 @@
+{
+  "controller": "Codex",
+  "year": 2024,
+  "prior_review_sha256": "856c22fc5a5073ffff67b7bac700c697cf7619158f9c7d24b18812949e45aa83",
+  "account_receipt_sha256": "c1c5a4a8cea5fa09fa82e59757c8371e6266478c4d3a7b44ca6e80280f50f81e",
+  "graph_reviewed": "accounts.png",
+  "observations": [
+    "A费用代理收益113.08%低于基线159.74%，MDD11.27%低于12.47%，交易473对680、均值16.16对14.15 log bp；这是明确的风险/机会交换，不是无损过滤。",
+    "AB本年收益97.08%，比A进一步误伤行情，单笔均值也低于A；不能把两条有道理的否决自动视为互补。",
+    "B大部分保留原行情但净收益略降，本年MDD没有改善。",
+    "C仍有约20%至24%回撤且捕获明显低于滤波；其组件原生15分钟尺度与STAR50五分钟基线的无条件优先组合并不合适。",
+    "保留2024盈利反例，不为追回这段收益调整Q阈值、实体σ门或通道参数。"
+  ],
+  "promoted": false,
+  "next_year_may_open": 2025,
+  "production_authority": false
+}

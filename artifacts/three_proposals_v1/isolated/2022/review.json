@@ -1,0 +1,16 @@
+{
+  "controller": "Codex",
+  "year": 2022,
+  "prior_review_sha256": "353e62e0594b88963d7aadef3398755c8b574f62f01340e4251aafbe4c0f0dbb",
+  "account_receipt_sha256": "c1531d83a67b27d9f1f3968be7e3c8ad59c90cca8c9f2e1c0b73af7fa793bfec",
+  "graph_reviewed": "accounts.png",
+  "observations": [
+    "A费用代理收益57.07%对基线32.37%，本年MDD11.90%对15.99%，交易684到425，单笔净4.37到11.05 log bp；图上保留主要趋势且减轻10月磨损。",
+    "B收益只微增，本年MDD反而到16.79%；第一年有效不意味着每年同时改善。AB在本年收益低于A，不能先认定组合必优。",
+    "C及其组合发生约24%至26%的回撤，明显高于原滤波。大范围通道认领在7月至9月形成持续回吐，不能用高单笔均值掩盖最坏路径。",
+    "本年度未调任何公式。保留B风险反例及C组合失败，不扩大第三条为更快通道试验。"
+  ],
+  "promoted": false,
+  "next_year_may_open": 2023,
+  "production_authority": false
+}

@@ -1,0 +1,38 @@
+{
+  "year": 2021,
+  "mode": "accounts",
+  "prepared_sha256": "fcc97fd28b2f47b39ef0a8c2670842bb3062afbf2af4c5d95480245423aa5137",
+  "policies": [
+    "F",
+    "A",
+    "B",
+    "AB",
+    "C",
+    "AC",
+    "BC",
+    "ABC",
+    "channel_only"
+  ],
+  "previous_review_sha256": "fc6c474f3b4355e3bd2c56bd0959d1a7110bb930b287d2940c34c69eec4b85a4",
+  "files": {
+    "A.parquet": "6581885cb8990f0921abab30bb1ccd0484d3577657c8d30fa20fd7c736546cf8",
+    "AB.parquet": "54e3377818fecf9cab7f5cc514ac98b53e43f921f29545ed0fa50e080a3f6c0f",
+    "ABC.parquet": "73c1fa171f4bc85b446eed345fac07f366e53af84ca794a588c6521a48796d68",
+    "ABC_state.json": "d8ba32b94ef438c0c97c42dce512b48531044d798154d601135ea679b1f343f3",
+    "AB_state.json": "6d25cb6b12ef1909810cb7061b536e2759f38bdcad2b2518263c444b464e43ff",
+    "AC.parquet": "acdbd55fce769f8a5763a45942cbb9c755be6ef3fadea79004c292fe10b9e615",
+    "AC_state.json": "7825caa5c07725a7a98ebb6c6c41adc80df88d0c47e25ed4af8e90eaf72d5e1f",
+    "A_state.json": "333c7a737a34a23a4f18a3ceeaa06a407aa8e6d5f227d2fe57175e4574fc34b9",
+    "B.parquet": "622b8909fb65dc622082d9e46488ecc0571e16b3e11003b4ef873a61cd6e2232",
+    "BC.parquet": "2ece1e061987a08527ff99595756c45f1fb9563eeb98b030ac6f681d0c382a51",
+    "BC_state.json": "34dbdc184783254259a8be4ef6e65725ed06f02cde58fad0ada4802070213103",
+    "B_state.json": "c36f5866047cf3a68e90cfab2e7a8fd0ee2ea411e222c1b66064a44d1f2b32bc",
+    "C.parquet": "9e2ef1a65fc7d910636ab0e56a2d1b5dd989bd7b21f97fd1af871e35e0132208",
+    "C_state.json": "c44f2e42a6b8ab695a4693310337288111fec19a8e83e5de03046975f7e73e1c",
+    "F.parquet": "7b892179be77a80430e9f4ff7529f874c99f8a45c3c67b805826926318dd70ce",
+    "F_state.json": "fc99d2ccfb11d914d7ad17de0de614d87aa9b52724a33de6efd6187cdbd5857a",
+    "channel_only.parquet": "00a04897649d7ca703fca11168fff67b9aef3e716c48369f3a6be1e1167c0192",
+    "channel_only_state.json": "7258b0ce141476855b65374707ba2d3d282a3026540995982da713e38e2a6c43",
+    "summary.csv": "2b497fa2c96e6dbcbd79052ad3d5cac238159872738982e253c6d037204944f1"
+  }
+}

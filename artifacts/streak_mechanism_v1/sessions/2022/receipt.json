@@ -1,0 +1,16 @@
+{
+  "year": 2022,
+  "prior_sha256": "40403d7d022acc8ba6b0be974355aba8aadc5854c4fe5cd0a00e0d0a9911aad7",
+  "files": {
+    "artifacts/streak_mechanism_v1/sessions/2022/annual.png": "fce934ab3c0d0d27772f98ca4ccab32df26b186296366e77e0fa415053ec06cf",
+    "artifacts/streak_mechanism_v1/sessions/2022/block5_shuffle.npy": "6f960af756b67d951b011ae0f19689fb6a4d4a2a9d613598b3c736b18cea5c45",
+    "artifacts/streak_mechanism_v1/sessions/2022/conditional_win_rate.csv": "ab8cec8c9ced8c09b52daccbb2686d8f3b9c469fb5208fda2bfc166a917c7a9d",
+    "artifacts/streak_mechanism_v1/sessions/2022/day_shuffle.npy": "48a435a59be29adbaf98853cc1045167037bfec7d558c69ecd807576d161d8d9",
+    "artifacts/streak_mechanism_v1/sessions/2022/review.json": "743f4d85514411f7d137670e2bf1437b8d2f467d87b6b20c351bc3403b59418d",
+    "artifacts/streak_mechanism_v1/sessions/2022/stage_associations.csv": "f0820d6e1d242499bb893c0615f4a8bff06bbe3e296ec41596948331f56d4709",
+    "artifacts/streak_mechanism_v1/sessions/2022/summary.json": "7d4b930028e6f7cf09f35d6474f2cb5daf24d5a7ceef24489a5a48e2eaf58c6c",
+    "artifacts/streak_mechanism_v1/sessions/2022/trade_shuffle.npy": "49e18537f2abbf967b6ed4ae6c52fe89f909732177d369b75998d4791f0db4aa"
+  },
+  "new_policy": false,
+  "production_authority": false
+}

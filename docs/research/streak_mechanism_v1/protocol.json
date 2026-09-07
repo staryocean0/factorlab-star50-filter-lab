@@ -1,0 +1,107 @@
+{
+  "schema": "star50_streak_mechanism@1",
+  "issue": "fl-wisxs",
+  "roles": {
+    "2020": "warmup_only",
+    "2021-2025": "development_material_already_consumed",
+    "2026": "excluded_no_price_or_return_reads"
+  },
+  "parent_research_commit": "4f9f01c69353e8e9ea15db341e39c967e5873359",
+  "prior_round4_source_incident_preserved": true,
+  "new_round_source_identity": "original_Git_bytes_verified_and_new_dependencies_frozen",
+  "original_root_bindings": {
+    "src/star50_filter/filters.py": "6e2c22adff111dba0e0dc17ed5e760399460772ec0bbe75816bda0b9379523da",
+    "src/star50_filter/backtest.py": "790ecc0a4434f848d3b6ba21a1f90a3439728eb3d5d3a1907551a5a4cee9303e"
+  },
+  "source_hashes": {
+    "src/star50_filter/filters.py": "6e2c22adff111dba0e0dc17ed5e760399460772ec0bbe75816bda0b9379523da",
+    "src/star50_filter/backtest.py": "790ecc0a4434f848d3b6ba21a1f90a3439728eb3d5d3a1907551a5a4cee9303e",
+    "src/star50_filter/cross_scale_root_cause.py": "f38b0afb1ca67e316f85567611d6e1571e3bfc13d7fd0c6717364c8469ca152b",
+    "scripts/reproduce_historical_baseline.py": "084a803426f610e9c66ea9b3d4b30ed7475ecd018c11b08309f5a8aa6cd95b8e",
+    "src/star50_filter/streak_mechanism.py": "ee52c62e97dcead1660061955e55eb60f41e6f83cb8a221504ff93fdf7a27ba5",
+    "scripts/run_streak_mechanism_v1.py": "ae4372b09aac727c70d33db6d63c4e4188ecb0cc36e1e7d4a5f62755c67578ab",
+    "tests/test_streak_mechanism.py": "5aecd542f179ebd247962778948be3e54b9fb758d45339e3ebe2e57a6950ab40",
+    "docs/research/streak_mechanism_v1/method.md": "2e950e338d51dfd6a42c680001296b0d124e0af9bedb406e4841880fd25c12e6"
+  },
+  "inputs": [
+    {
+      "view": "5m_offset_0",
+      "path": "artifacts/drawdown_material/5m_offset_0.parquet",
+      "sha256": "d4102ac8aacc69f47d7d8f28d419f65d2f41cacef3833f5123d79963a2255829",
+      "original_path": "data/development/5m_offset_0.parquet",
+      "original_sha256": "8f9e1e085e46bc04f3fe2446fc8aaedcf10c856f4c10bad2b842dce6fb660c57"
+    },
+    {
+      "view": "5m_offset_1",
+      "path": "artifacts/drawdown_material/5m_offset_1.parquet",
+      "sha256": "de10ed0cff21107bc9247fd75e760e34a27126eeb99d1308f28a699f01c5fe94",
+      "original_path": "data/development/5m_offset_1.parquet",
+      "original_sha256": "e90b301ffda5d7c1d2eb5514e87e4b25d27ba0b8a32787b91021495b802ef919"
+    },
+    {
+      "view": "5m_offset_2",
+      "path": "artifacts/drawdown_material/5m_offset_2.parquet",
+      "sha256": "ba16adf051af8b34da829c253c973f91b565677184140e118f35967f6f9bb0fb",
+      "original_path": "data/development/5m_offset_2.parquet",
+      "original_sha256": "d5dafd5e9835d5bb796da05c800fdff75f56a117efb0bd8c6e5da222ffac8340"
+    },
+    {
+      "view": "5m_offset_3",
+      "path": "artifacts/drawdown_material/5m_offset_3.parquet",
+      "sha256": "d7fe34fbe6c17e3fa28025dcca4de1cea5741164a3682fc7222c34c45690a28e",
+      "original_path": "data/development/5m_offset_3.parquet",
+      "original_sha256": "93a04de4fb00378b13cb0539f393ebd8397ef8bc8524e389af33a4ec4dc40b65"
+    },
+    {
+      "view": "5m_offset_4",
+      "path": "artifacts/drawdown_material/5m_offset_4.parquet",
+      "sha256": "1654211f11d99a7157a047f9c52857c795216c719a95d1bcf2fe09042aceec06",
+      "original_path": "data/development/5m_offset_4.parquet",
+      "original_sha256": "195283763e41f85ea00b3d803b5a4fafb4ed32299fb76702e9eb48f2526daae9"
+    }
+  ],
+  "draws": 1999,
+  "sequence_metrics": [
+    "longest_loss",
+    "longest_win",
+    "scan_low",
+    "scan_high"
+  ],
+  "sequence_nulls": [
+    "trade_shuffle",
+    "day_shuffle",
+    "block5_shuffle"
+  ],
+  "rolling_windows_trades": [
+    20,
+    50,
+    100
+  ],
+  "global_sequence_tests": 12,
+  "features": [
+    "eff_1d",
+    "fast_share_1d",
+    "slow_work_velocity_5d",
+    "threshold_work_amplitude_5d"
+  ],
+  "stage_days": 5,
+  "stage_tests": 8,
+  "synthetic_cases": 84,
+  "policy_candidates": 0,
+  "year_review_order": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "fresh_oos": false,
+  "production_authority": false,
+  "runtime": {
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "pyarrow": "19.0.1",
+    "matplotlib": "3.10.8"
+  }
+}

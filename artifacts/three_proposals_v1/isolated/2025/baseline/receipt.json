@@ -1,0 +1,14 @@
+{
+  "year": 2025,
+  "mode": "baseline",
+  "prepared_sha256": "fcc97fd28b2f47b39ef0a8c2670842bb3062afbf2af4c5d95480245423aa5137",
+  "policies": [
+    "F"
+  ],
+  "previous_review_sha256": "5f245138f4e893d63aa00dae316cdc67b5d28734f9b912d1fa325c73b1b526a0",
+  "files": {
+    "F.parquet": "f17f9fd38b33efbba7c792dabfc7e155836db11bd49611025819ad9b83322806",
+    "F_state.json": "d6dd1db1e5ffcdff3a3d6f77c0edd74ff73a47fd9eb3425443ebf822d5282620",
+    "summary.csv": "992862d29bcdbf4136b6f390e8d33d756719e9b673bc0156005044e7973768b6"
+  }
+}

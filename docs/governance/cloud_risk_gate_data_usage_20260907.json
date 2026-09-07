@@ -1,0 +1,23 @@
+{
+  "schema": "cross_index_risk_gate_cloud_transfer@1.0",
+  "owner_request": "本地为存储核心，原科创50私有仓库重新用于科创50与中证1000的底层K线、波动聚集及突发风险研究。上传最长已验证可消费历史、近期成果、完整文献和交接说明。",
+  "operation": "archive_and_transfer_only_no_new_strategy_research",
+  "destination": "staryocean0/factorlab-star50-filter-lab",
+  "repository_must_be_private": true,
+  "local_source_of_truth": true,
+  "minute_source": "factorlab_unified_index_kline_v3_20260824",
+  "minute_symbols": ["000688.SH", "000852.SH"],
+  "minute_intervals": [
+    {"symbol":"000688.SH","start":"2020-07-23","end":"2025-12-31","role":"consumed_development_material"},
+    {"symbol":"000852.SH","start":"2015-01-05","end":"2025-12-31","role":"consumed_development_material"}
+  ],
+  "seconds_selection": "longest_explicitly_granted_exact_version_history_per_benchmark; pending_DataHub_scope_resolution",
+  "seconds_current_index_contract_end": "2020-12-31",
+  "seconds_current_star50_etf_window": ["2024-01-02","2025-12-31"],
+  "excluded": ["new_2026_price_reads_or_exports", "options_and_futures_market_data", "unrelated_security_rows", "credentials", "other_three_theme_repositories", "production_registry_writes"],
+  "historical_2026_files_already_in_git": "preserve_immutable_but_not_in_active_data_catalog_and_not_authorized_for_research",
+  "fresh_oos": false,
+  "new_policy_training": false,
+  "trading_or_account_execution": false,
+  "production_authority": false
+}

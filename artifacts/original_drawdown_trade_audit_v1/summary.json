@@ -1,0 +1,70 @@
+[
+  {
+    "view": "5m_offset_0",
+    "peak": "2022-10-24 09:45:00",
+    "trough": "2022-11-11 10:55:00",
+    "recovery": "2023-01-16 09:40:00",
+    "mdd_pct": 14.323804733417234,
+    "fragments": 50,
+    "first_last_fragments_may_not_equal_completed_trades": true,
+    "positive_log_sum": 0.1220148857971127,
+    "negative_log_sum": -0.2766100529507619,
+    "long_log_sum": -0.04727616082942178,
+    "short_log_sum": -0.10731900632422749,
+    "outcome_comparison": [
+      {
+        "outcome": "loss",
+        "count": 35,
+        "net_log_sum": -0.2766100529507619,
+        "mean_mfe_log_bp": 27.59257673563583,
+        "mean_giveback_log_bp": 106.62402043585351,
+        "mean_bars": 9.657142857142857
+      },
+      {
+        "outcome": "profit",
+        "count": 15,
+        "net_log_sum": 0.1220148857971127,
+        "mean_mfe_log_bp": 151.1800271855375,
+        "mean_giveback_log_bp": 69.83676998746238,
+        "mean_bars": 23.2
+      }
+    ],
+    "accounting_reconciled": true,
+    "phase_market_open_return_pct": 6.188204243224038,
+    "recovery_intervals": 2145
+  },
+  {
+    "view": "5m_offset_2",
+    "peak": "2021-03-09 10:02:00",
+    "trough": "2021-07-20 13:32:00",
+    "recovery": "2021-08-31 11:02:00",
+    "mdd_pct": 19.751949008265456,
+    "fragments": 292,
+    "first_last_fragments_may_not_equal_completed_trades": true,
+    "positive_log_sum": 0.7719539902982203,
+    "negative_log_sum": -0.9920017012784709,
+    "long_log_sum": -0.0075688904368235235,
+    "short_log_sum": -0.2124788205434272,
+    "outcome_comparison": [
+      {
+        "outcome": "loss",
+        "count": 204,
+        "net_log_sum": -0.9920017012784709,
+        "mean_mfe_log_bp": 19.86223813805438,
+        "mean_giveback_log_bp": 68.48977251445002,
+        "mean_bars": 9.700980392156863
+      },
+      {
+        "outcome": "profit",
+        "count": 88,
+        "net_log_sum": 0.7719539902982203,
+        "mean_mfe_log_bp": 144.95196374107252,
+        "mean_giveback_log_bp": 57.22991938900202,
+        "mean_bars": 24.818181818181817
+      }
+    ],
+    "accounting_reconciled": true,
+    "phase_market_open_return_pct": 22.741450689048936,
+    "recovery_intervals": 1369
+  }
+]

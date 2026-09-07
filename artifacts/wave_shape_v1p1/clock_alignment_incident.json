@@ -1,0 +1,11 @@
+{
+  "stage": "2021 chart review, before opening2022",
+  "finding": "Shape endpoints a/c are close labels, but outcome slice[a+1,c] used open[a] to open[c], one bar earlier than the tradable post-close endpoints.",
+  "evidence": "original execute_next_open binds signal[i] to fill open[i+1] and first completed interval at i+2",
+  "repair": "map close[a]/close[c] to next open[a+1]/open[c+1], sum original pnl[a+2:c+2]; do not alter any original order or PnL",
+  "changed": "diagnostic interval alignment and plotted outcome labels only",
+  "retained": "synthetic scientific results are not affected; old results/sources remain preserved",
+  "source_backup": "frozen_source_before_clock_alignment",
+  "successor": "artifacts/wave_shape_v1p2",
+  "shape_family_and_test_budget_changed": false
+}

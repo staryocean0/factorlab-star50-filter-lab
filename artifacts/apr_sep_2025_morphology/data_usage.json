@@ -1,0 +1,16 @@
+{
+  "role": "repeat_audit_of_consumed_2025",
+  "start": "2025-04-01",
+  "end": "2025-09-30",
+  "2020_first_close": "original_filter_level_display_only",
+  "new_strategy_or_account_runs": 0,
+  "input_hashes": {
+    "artifacts/streak_mechanism_v1/5m_offset_0/bars.parquet": "e976f596d4c400cc0a860c0b9147e38496ad35f99020eec43c1ae909f29b2e29",
+    "artifacts/three_proposals_v1/2025/accounts/F.parquet": "f17f9fd38b33efbba7c792dabfc7e155836db11bd49611025819ad9b83322806",
+    "artifacts/drawdown_material/5m_offset_0.parquet": "d4102ac8aacc69f47d7d8f28d419f65d2f41cacef3833f5123d79963a2255829"
+  },
+  "method_sha256": "282d5015a9226b6fa615eac162ea3afff5975b4db3d90c9af1ad17c7fe4c70d2",
+  "source_sha256": "a7cb5ac6b962d225ae8da0e4fa52f1e5167d16176adf916ff101e86578775745",
+  "data_2026_used": false,
+  "production_authority": false
+}

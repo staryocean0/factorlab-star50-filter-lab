@@ -1,0 +1,14 @@
+{
+  "year": 2021,
+  "mode": "baseline",
+  "prepared_sha256": "fcc97fd28b2f47b39ef0a8c2670842bb3062afbf2af4c5d95480245423aa5137",
+  "policies": [
+    "F"
+  ],
+  "previous_review_sha256": "fc6c474f3b4355e3bd2c56bd0959d1a7110bb930b287d2940c34c69eec4b85a4",
+  "files": {
+    "F.parquet": "7b892179be77a80430e9f4ff7529f874c99f8a45c3c67b805826926318dd70ce",
+    "F_state.json": "fc99d2ccfb11d914d7ad17de0de614d87aa9b52724a33de6efd6187cdbd5857a",
+    "summary.csv": "ee54fb4957e1a6be99dac90cd67cca175f6b8d4861b3fbc8d6beeb29dd336fe5"
+  }
+}

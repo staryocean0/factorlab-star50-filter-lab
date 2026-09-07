@@ -1,0 +1,13 @@
+{
+  "controller": "Codex",
+  "year": 2021,
+  "baseline_receipt_sha256": "5f310a72d832969d51eed03b197183b82ad4dfca1898bf8e93a607d4b123455c",
+  "observations": [
+    "原零费2021收益75.8988%、MDD12.1068%，与原指纹一致；绝对仓位1。",
+    "统一每边万2成本代理后收益32.5130%、MDD16.3693%，707个完整结束交易平均净3.4836 log bp。不能拿零费和扣费回撤互比改善。",
+    "年度末仍持有多头，跨年状态和费用没有被强平/重置。先看本年度冻结家族，再判断过滤是否在相同口径中减少差交易。"
+  ],
+  "challenger_results_read": false,
+  "family_may_execute": true,
+  "production_authority": false
+}

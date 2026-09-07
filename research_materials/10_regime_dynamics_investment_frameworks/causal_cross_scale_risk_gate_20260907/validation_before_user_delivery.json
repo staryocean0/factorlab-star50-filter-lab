@@ -1,0 +1,195 @@
+{
+  "schema": "literature_archive_audit@1.0",
+  "source_sha256": "7c8182a5d145b8176b61da7de2c990f4a00886c5adab1a4b21d4c5a2fcea7d68",
+  "source_copy_identical": true,
+  "original_citation_tokens": [
+    "turn14search1",
+    "turn15search9",
+    "turn17view1",
+    "turn17view2",
+    "turn17view3",
+    "turn17view6",
+    "turn17view7",
+    "turn17view8",
+    "turn17view9",
+    "turn18view0",
+    "turn18view3",
+    "turn18view4",
+    "turn19search1",
+    "turn20search2",
+    "turn21view0",
+    "turn21view1",
+    "turn21view3"
+  ],
+  "citation_mapping_basis": "author/content reconstruction; original URLs absent; bipower version ambiguous",
+  "fulltext_count": 12,
+  "missing_ids": [
+    "R02",
+    "R04"
+  ],
+  "visual_review_accepted": true,
+  "records": [
+    {
+      "id": "R01",
+      "title": "A Simple Approximate Long-Memory Model of Realized Volatility",
+      "status": "fulltext",
+      "pages": 23,
+      "sha256": "18c305635feefc152a0522791de67677b5db037dd10958a09134c7d55cf222e5",
+      "bytes": 1058248,
+      "first_page_excerpt": "Journal of Financial Econometrics, 2009, Vol. 7, No. 2, 174–196\n\nFulvio Corsi\nUniversity of Lugano and Swiss Finance Institute\n\nabstract\nThe paper proposes an additive cascade model of volatility components\ndefined over different time periods. This volatility cascade leads to a simple\nAR-type model in the realized volatility with the feature of considering different\nvolatility components realized ",
+      "last_page_text_chars": 513,
+      "path": "corsi_2009_har_rv.pdf",
+      "first_three_pages_text_sha256": "df53d43a822f55f16e3023246a8a80dfdb70c8b7860c2d8769694e6585c227bc"
+    },
+    {
+      "id": "R02",
+      "title": "A Consistent and Robust Test for Autocorrelated Jump Occurrences",
+      "status": "missing"
+    },
+    {
+      "id": "R03",
+      "title": "Modelling price and variance jump clustering using the marked Hawkes process",
+      "status": "fulltext",
+      "pages": 32,
+      "sha256": "0c71ef6428bb8ae2ccb86b3135956aad2d55200c756bbc6fdac87c11baceaa67",
+      "bytes": 635187,
+      "first_page_excerpt": "Modelling price and variance jump\nclustering using the marked Hawkes\nprocess\nArticle\nPublished Version\nCreative Commons: Attribution 4.0 (CC-BY)\nOpen Access\n\nChen, J., Clements, M. P. ORCID: https://orcid.org/0000-00016329-1341 and Urquhart, A. ORCID: https://orcid.org/00000001-8834-4243 (2024) Modelling price and variance jump\nclustering using the marked Hawkes process. Journal of\nFinancial Econo",
+      "last_page_text_chars": 3615,
+      "path": "chen_clements_urquhart_2024_marked_hawkes.pdf",
+      "first_three_pages_text_sha256": "ff405a447cc5768ea1d756238702617cece51deb2c2eb7f269a2129075ebd74d"
+    },
+    {
+      "id": "R04",
+      "title": "Jump Clustering, Information Flows, and Stock Price Efficiency",
+      "status": "missing"
+    },
+    {
+      "id": "R05",
+      "title": "An unbounded intensity model for point processes",
+      "status": "fulltext",
+      "pages": 37,
+      "sha256": "eb7e51f7601f12a21a4e906862d6851a062ec71f5c64028c9693e99fe2007e31",
+      "bytes": 1603105,
+      "first_page_excerpt": "Journal of Econometrics 244 (2024) 105840\n\nContents lists available at ScienceDirect\n\nJournal of Econometrics\njournal homepage: www.elsevier.com/locate/jeconom\n\nAn unbounded intensity model for point processes✩\nKim Christensen a ,∗, Aleksey Kolokolov b\na\nb\n\nAarhus University, Department of Economics and Business Economics, Denmark\nUniversity of Manchester, Alliance Manchester Business School, Unit",
+      "last_page_text_chars": 8020,
+      "path": "christensen_kolokolov_2024_intensity_bursts.pdf",
+      "first_three_pages_text_sha256": "59aaf9712f6a016ef210b8c2ecd0f17d4cf49ea50a74c9425b62bb02baa6a0a6"
+    },
+    {
+      "id": "R06",
+      "title": "Estimation of an Order Book Dependent Hawkes Process for Large Datasets",
+      "status": "fulltext",
+      "pages": 42,
+      "sha256": "9969f9fddb3a3b122a0287d76662159d99b0f662b0ea8944acb87eee81ca7c0a",
+      "bytes": 648316,
+      "first_page_excerpt": "Estimation of an Order Book Dependent Hawkes Process for\nLarge Datasets∗\n\narXiv:2307.09077v2 [q-fin.TR] 10 May 2026\n\nLuca Mucciante†\n\nAlessio Sancetta‡\n\nJuly 20, 2023\n\nAbstract\nA point process for event arrivals in high frequency trading is presented. The intensity\nis the product of a Hawkes process and high dimensional functions of covariates derived\nfrom the order book. Conditions for stationari",
+      "last_page_text_chars": 1352,
+      "path": "mucciante_sancetta_order_book_hawkes.pdf",
+      "first_three_pages_text_sha256": "b0dc429482ed1f66cecd0bbf658000605e69f768c8b7ffeffa646928d55283f6"
+    },
+    {
+      "id": "R07",
+      "title": "Wavelet processes and adaptive estimation of the evolutionary wavelet spectrum",
+      "status": "fulltext",
+      "pages": 28,
+      "sha256": "3bce80a875e88961b454d8f9a267329ba149ee16e5f72b4ffa05921319ddb2ae",
+      "bytes": 824087,
+      "first_page_excerpt": "Wavelet processes and adaptive estimation of\nthe evolutionary wavelet spectrum\nGuy P. Nason \u0003\nUniversity of Bristol, UK\n\nRainer von Sachs\nUniversité catholique de Louvain, Belgium\n\nGerald Kroisandt\nUniversität Kaiserslautern, Germany\n[July 12, 1999]\nSummary. This article defines and studies a new class of non-stationary random processes\nconstructed from discrete non-decimated wavelets which gene",
+      "last_page_text_chars": 219,
+      "path": "nason_vonsachs_kroisandt_2000_wavelet_spectrum.pdf",
+      "first_three_pages_text_sha256": "b7abf4ba1dbed88b97ead31c5910025bee12491802013ec45474b871adabdfab"
+    },
+    {
+      "id": "R08",
+      "title": "The Price Impact of Order Book Events",
+      "status": "fulltext",
+      "pages": 26,
+      "sha256": "40d1d5f0baf7944a1b9f4c12d3644038e657acf4a3dfb500b2057c2269edd25f",
+      "bytes": 741640,
+      "first_page_excerpt": "The price impact of order book events\nRama Cont, Arseniy Kukanov and Sasha Stoikov\n\narXiv:1011.6402v3 [q-fin.TR] 13 Apr 2011\n\nMarch 2011\n\nAbstract\nWe study the price impact of order book events - limit orders, market orders and cancelations - using the NYSE TAQ data for 50 U.S. stocks. We show that, over short time\nintervals, price changes are mainly driven by the order flow imbalance, defined as ",
+      "last_page_text_chars": 2383,
+      "path": "cont_kukanov_stoikov_2014_order_book_impact.pdf",
+      "first_three_pages_text_sha256": "243df13c497da7556085d0f08cdc63c0839296513b4485e540909476fd4539b4"
+    },
+    {
+      "id": "R09",
+      "title": "Queue Imbalance as a One-Tick-Ahead Price Predictor in a Limit Order Book",
+      "status": "fulltext",
+      "pages": 30,
+      "sha256": "a5051285adfe2d8a2d7f46a758486f357d556a46a964bc89b245de7e7a0bc338",
+      "bytes": 1649240,
+      "first_page_excerpt": "arXiv:1512.03492v1 [q-fin.TR] 11 Dec 2015\n\nQueue Imbalance as a One-Tick-Ahead Price\nPredictor in a Limit Order Book\nMartin D. Gould∗‡ and Julius Bonart‡\n‡ CFM–Imperial Institute of Quantitative Finance, Department of\nMathematics, Imperial College, London SW7 2AZ\nDecember 14, 2015\n\nAbstract\nWe investigate whether the bid/ask queue imbalance in a limit order\nbook (LOB) provides significant predicti",
+      "last_page_text_chars": 1374,
+      "path": "gould_bonart_queue_imbalance.pdf",
+      "first_three_pages_text_sha256": "1d8688d003e28e33ca2b1f77bafa7096961bff65d3e03229b807f385e416e139"
+    },
+    {
+      "id": "R10",
+      "title": "Jumps in Financial Markets: A New Nonparametric Test and Jump Dynamics",
+      "status": "fulltext",
+      "pages": 43,
+      "sha256": "9802729132ddc02136d73542301ce38494f68ab7eeec753a8176ce14a4c1629c",
+      "bytes": 260327,
+      "first_page_excerpt": "Jumps in Financial Markets:\nA New Nonparametric Test and Jump Dynamics\nSuzanne S. Lee and Per A. Mykland ∗\n\nAbstract\n\nThis paper introduces a new nonparametric test to detect jump arrival times and\nrealized jump sizes in asset prices up to the intra-day level. We demonstrate that the\nlikelihood of misclassification of jumps becomes negligible when we use high-frequency\nreturns. Using our test, we ",
+      "last_page_text_chars": 568,
+      "path": "lee_mykland_2008_jump_detection.pdf",
+      "first_three_pages_text_sha256": "213d7c6dd2c4183f570798fed2cccffea0f5f3a5cc1742e1998620a825522e1e"
+    },
+    {
+      "id": "R11",
+      "title": "Pricing Event Risk: Evidence from Concave Implied Volatility Curves",
+      "status": "fulltext",
+      "pages": 46,
+      "sha256": "e5a2f9d5d857b5725e5e12f4880954edb6ddd54b0567cb7bcadf698dbca9393a",
+      "bytes": 2174535,
+      "first_page_excerpt": "Edinburgh Research Explorer\nPricing event risk\nEvidence from concave implied volatility curves\n\nCitation for published version:\nAlexiou, L, Goyal, A, Kostakis, A & Rompolis, L 2025, 'Pricing event risk: Evidence from concave implied\nvolatility curves', Review of Finance, vol. 29, no. 4, rfaf016, pp. 963–1007. https://doi.org/10.1093/rof/rfaf016\n\nDigital Object Identifier (DOI):\n10.1093/rof/rfaf016",
+      "last_page_text_chars": 1993,
+      "path": "alexiou_et_al_2025_pricing_event_risk.pdf",
+      "first_three_pages_text_sha256": "ae37d3fbca848424567067be270d6575285c43ee3ddc55ab9f6625cc69f7f126"
+    },
+    {
+      "id": "R12",
+      "title": "Power and Bipower Variation with Stochastic Volatility and Jumps",
+      "status": "fulltext",
+      "pages": 38,
+      "sha256": "21dd5a9fea25a9cbc6db38671fa45321bf2a0d89354effde03e97257c2f5e608",
+      "bytes": 896546,
+      "first_page_excerpt": "Power and Bipower Variation with Stochastic\nVolatility and Jumps\nOLE E. BARNDORFF-NIELSEN\nUniversity of Aarhus\nNEIL SHEPHARD\nUniversity of Oxford, Nuffield College\n\nabstract\nThis article shows that realized power variation and its extension, realized\nbipower variation, which we introduce here, are somewhat robust to rare\njumps. We demonstrate that in special cases, realized bipower variation estim",
+      "last_page_text_chars": 0,
+      "path": "barndorff_nielsen_shephard_2004_bipower.pdf",
+      "first_three_pages_text_sha256": "6530b9c3aff839fa3a32db4b6de8e9001a32bf441f3dbf64901093f4e6915788"
+    },
+    {
+      "id": "R13",
+      "title": "Fact or friction: Jumps at ultra high frequency",
+      "status": "fulltext",
+      "pages": 43,
+      "sha256": "c249c16c105f95cdc954c71306f15ac4950e78a5e1868c82f4c353cdd0fc414a",
+      "bytes": 6314402,
+      "first_page_excerpt": "Fact or friction: Jumps at ultra high frequency∗\nKim Christensen†\n\nRoel C. A. Oomen‡\n\nMark Podolskij§\n\narXiv:2602.10925v1 [econ.EM] 11 Feb 2026\n\nNovember 6, 2014\n\nAbstract\nThis paper shows that jumps in ﬁnancial asset prices are often erroneously identiﬁed and\nare, in fact, rare events accounting for a very small proportion of the total price variation. We\napply new econometric techniques to a com",
+      "last_page_text_chars": 1007,
+      "path": "christensen_oomen_podolskij_2014_fact_or_friction.pdf",
+      "first_three_pages_text_sha256": "69dacf289eb80a57cf9483598576f7da832db8e84a1b2f4613f0e1644cd063b8"
+    },
+    {
+      "id": "R14",
+      "title": "Bayesian Online Changepoint Detection",
+      "status": "fulltext",
+      "pages": 7,
+      "sha256": "b88ebb53033d361fe4b1feeca819a1b39a17dfb29f694d6ac2b71ed6a9fcde6f",
+      "bytes": 255274,
+      "first_page_excerpt": "Bayesian Online Changepoint Detection\n\narXiv:0710.3742v1 [stat.ML] 19 Oct 2007\n\nRyan Prescott Adams\nCavendish Laboratory\nCambridge CB3 0HE\nUnited Kingdom\n\nAbstract\nChangepoints are abrupt variations in the\ngenerative parameters of a data sequence.\nOnline detection of changepoints is useful in\nmodelling and prediction of time series in\napplication areas such as finance, biometrics, and robotics. Wh",
+      "last_page_text_chars": 1990,
+      "path": "../volatility_three_state_router_methods_20260828/adams_mackay_2007_bayesian_online_changepoint_detection.pdf",
+      "first_three_pages_text_sha256": "43cabc2004416aaf7153b464a0ba52e8f989a2e477d0142461b33243f62071f3"
+    }
+  ],
+  "duplicate_same_hash_ids": [
+    "R01",
+    "R08"
+  ],
+  "existing_library_reuse": [
+    "R14"
+  ],
+  "production_authority": false
+}

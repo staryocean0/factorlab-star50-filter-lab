@@ -1,0 +1,13 @@
+{
+  "controller": "Codex",
+  "year": 2025,
+  "baseline_receipt_sha256": "d46a274847414f9296e53ca8fcd14a5892c81ba12f486b3a70619cbf70f42e85",
+  "observations": [
+    "截至2025全期原零费CAGR86.7566%、MDD14.3238%、3482个完整交易全部复现；这就是本轮比较的原策略，不是低仓位ETF账户。",
+    "全期统一费用代理CAGR41.3358%、MDD18.0141%、单笔4.9067 log bp；本年收益25.1190%、MDD11.5668%。",
+    "终点实际已成交仓位为空头，未读取2026强平；完整交易均值剔除首尾未完整片段，但其损益与费用保留在NAV。"
+  ],
+  "challenger_results_read": false,
+  "family_may_execute": true,
+  "production_authority": false
+}

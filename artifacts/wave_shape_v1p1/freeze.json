@@ -1,0 +1,30 @@
+{
+  "sources": {
+    "src/star50_filter/filters.py": "6e2c22adff111dba0e0dc17ed5e760399460772ec0bbe75816bda0b9379523da",
+    "src/star50_filter/backtest.py": "790ecc0a4434f848d3b6ba21a1f90a3439728eb3d5d3a1907551a5a4cee9303e",
+    "src/star50_filter/wave_shape.py": "b5e49b7ccdec5ef625c66926ee040cb6b48c85811a03c3c89c2d127e1e478dbc",
+    "scripts/run_wave_shape_v1.py": "66208834703d87ccb664ebeaf8d0a63ab37fbaa26276b4b7e68143b638f951a4",
+    "tests/test_wave_shape.py": "8a1ae1a87be94f31d2f228333c904422365141bef7ca5217a852b4c80f85e227",
+    "docs/research/wave_shape_v1/method.md": "5a427dd8054ec51293b295f0f40b342b1ae6e2e5ebebb8af6079d88bf16214ad"
+  },
+  "input_path": "artifacts/streak_mechanism_v1/5m_offset_0/bars.parquet",
+  "input_sha256": "e976f596d4c400cc0a860c0b9147e38496ad35f99020eec43c1ae909f29b2e29",
+  "roles": {
+    "2021-2025": "consumed_development_material",
+    "2026": "excluded"
+  },
+  "original_signal_or_account_changed": false,
+  "new_real_account_replays": 0,
+  "synthetic_configurations": 90,
+  "synthetic_phase_replicates": 5,
+  "primary_associations": 8,
+  "annual_review_order": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "fresh_oos": false,
+  "production_authority": false
+}

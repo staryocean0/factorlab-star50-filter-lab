@@ -1,0 +1,20 @@
+{
+  "accepted_input_hashes": {
+    "artifacts/streak_mechanism_v1/5m_offset_0/bars.parquet": "e976f596d4c400cc0a860c0b9147e38496ad35f99020eec43c1ae909f29b2e29",
+    "artifacts/streak_mechanism_v1/5m_offset_2/bars.parquet": "5b390f7d33204695c7612e2de9fa3146e4cc4f7641af94b85cab7d82adb1ea24"
+  },
+  "accounting_passed": true,
+  "source": "scripts/inspect_original_drawdown_trades_v1.py",
+  "source_sha256": "6118726037b180b7912b7b21df4e10de577f66aecdf8fd5e40a73ad178b24afe",
+  "output_hashes": {
+    "5m_offset_0_ledger.md": "af7f3ab0968c5df101d4bf4d4064a2cb9bff75deb2ba89f646e8fe5159034c0f",
+    "5m_offset_0_trades.csv": "e84ff36f7fa2d5746a756211f67fdae64c1fc78a5504111ac1227424db6034db",
+    "5m_offset_2_ledger.md": "c852f7c67f33dc1e1ab522051ec16f53940b7ced69f7024fb1d48f1dface0862",
+    "5m_offset_2_trades.csv": "4a2fe98c6818c8c7ec730fc04687c09cdb41aab20b508fbaddaa73a69b15ce4e",
+    "data_usage.json": "13e1fe71caa71e75a76500d093d0620baadcacaf5712dd9c236afe7364c89155",
+    "summary.json": "61f00e9b61a6679c164be0f43e83708a4257c38e65c249620089357b3efa4cfe"
+  },
+  "manual_report_sha256": "f45b1a306c4d283e08829ed67984f3b168378e4fc31b04de6f3a7e78490f23de",
+  "new_backtest_calls": 0,
+  "per_trade_root_cause_complete": false
+}

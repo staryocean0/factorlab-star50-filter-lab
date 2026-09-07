@@ -1,0 +1,14 @@
+{
+  "schema":"cross_index_seconds_scope_amendment@1.0",
+  "amends_only":"cloud_risk_gate_data_usage_20260907.json seconds_selection and seconds_current_index_contract_end for the new offline export, not the old online consumer",
+  "owner_confirmation":"授权",
+  "authorized_question":"DataHub按仅历史K线/波动研究、无交易与生产权限的新范围，开放科创50与中证1000截至2025年底的3秒导出",
+  "new_contract":"factorlab_cross_index_risk_gate_offline_export_20260907.v1",
+  "selected_carriers":{"STAR50":"000688.SH","CSI1000":"000852.SH"},
+  "ETF_raw_upload":false,
+  "post_2025_rows":false,
+  "old_online_contract_mutation":false,
+  "shared_serving_registry_mutation":false,
+  "fresh_oos":false,
+  "production_authority":false
+}

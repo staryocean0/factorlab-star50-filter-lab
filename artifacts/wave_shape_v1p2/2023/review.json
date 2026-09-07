@@ -1,0 +1,16 @@
+{
+  "controller": "Codex",
+  "year": 2023,
+  "prior_receipt_sha256": "d0bff94882ce1d9e8b7f19a4180492c4c347430c27297759c6a670c7e1eef6ed",
+  "cycles_sha256": "8d4dac1764cf2be52acec1d4a39eddc1249fe0895fad31695075999a95ed2485",
+  "chart_reviewed": "examples.png",
+  "observations": [
+    "650周期覆盖98.38%区间；集中度调整后capture关联-0.130，与2022同向，2021同向较弱。",
+    "9月21日尖峰先上涨后回落，策略空转多位置错位，属于用户所说的急起急落可伤害原系统的直接案例。",
+    "2月8日后段快速下跌时已为空头，因此同样集中变化却盈利；不能将收益率跳跃本身作否决。",
+    "4月26日宽度较大、运动较分散的上涨后回落也亏；半高宽关联已翻为弱正，峰度/宽度单独不是稳定解释。"
+  ],
+  "root_resolved": false,
+  "next_year_may_open": 2024,
+  "production_authority": false
+}

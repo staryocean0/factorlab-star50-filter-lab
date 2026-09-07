@@ -1,0 +1,8 @@
+{
+  "status": "passed_owner_authorized_offline_export_only",
+  "consumer_contract": "factorlab_cross_index_risk_gate_offline_export_20260907.v1",
+  "manifest_sha256": "d832231dbb62be4d2209121222b29c82a1241e655f822c0d45b28c8b2cb8b223",
+  "fresh_oos": false,
+  "online_serving_granted": false,
+  "production_granted": false
+}

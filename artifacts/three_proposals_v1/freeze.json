@@ -1,0 +1,53 @@
+{
+  "sources": {
+    "src/star50_filter/filters.py": "6e2c22adff111dba0e0dc17ed5e760399460772ec0bbe75816bda0b9379523da",
+    "src/star50_filter/backtest.py": "790ecc0a4434f848d3b6ba21a1f90a3439728eb3d5d3a1907551a5a4cee9303e",
+    "scripts/reproduce_historical_baseline.py": "084a803426f610e9c66ea9b3d4b30ed7475ecd018c11b08309f5a8aa6cd95b8e",
+    "src/star50_filter/three_proposals.py": "72626715184a1928db13740de9443e4d1e52e314cb3c33bab735c357e5cba4dd",
+    "scripts/run_three_proposals_v1.py": "56d973efa3cf360c234d86f6b0df340586203eb718710740d8326439c1f1120b",
+    "tests/test_three_proposals.py": "b2b8b1797e7e5e18792176f302244df80a56c80399ba487ebb1cb6f3025c5396",
+    "docs/research/three_proposals_v1/method.md": "0a4be48e1731e6e197f7a98daad5daef0a42a5f4413cd4665fd1443f18c9229b"
+  },
+  "external_sources": {
+    "src/factor_lab/strategy/services/risk_off_v58_frequency_bollinger.py": "d71b3ea029c4dd66d9c75e8ee08f4acb061fc2af1ff05bb36c15ee147ae764fb",
+    "src/factor_lab/market_state/fda_explosive_channel_prototype.py": "10afd794491300918d4b41fb2bb89af3831bdfb5c61572dcfc9b1fcdb39e8119",
+    "src/factor_lab/market_state/fda_multiscale_channel_v1.py": "02f76b2c2ebeaad8ea7319646110166a608314e90334702d189e2a8c9aa10257",
+    "docs/ops/timing_strategy_identity_registry@2.0.json": "70362d5eaf93d196a247622cf1a8e0c06d69a466a5a2ee8b6f7a857dd14dcc67",
+    "src/factor_lab/strategy/research/timing/explosive_v3.py": "c140e984319b767b99e5b6f49725ee73cd6edad02e9aba6246422ac9c2394e1e",
+    "src/factor_lab/market_state/timing_explosive_layer_v2.py": "0a90b9975791109fb00700366169d84255f2a2dfd3a84cb87c058f9cb4cf27a0"
+  },
+  "inputs": {
+    "artifacts/drawdown_material/5m_offset_0.parquet": "d4102ac8aacc69f47d7d8f28d419f65d2f41cacef3833f5123d79963a2255829",
+    "artifacts/drawdown_material/15m_offset_5.parquet": "9475234735ea0634644defeb63b7973b6fe4b49d76144b6b8792c224f85bf859",
+    "artifacts/streak_mechanism_v1/5m_offset_0/bars.parquet": "e976f596d4c400cc0a860c0b9147e38496ad35f99020eec43c1ae909f29b2e29"
+  },
+  "policy_ids": [
+    "F",
+    "A",
+    "B",
+    "AB",
+    "C",
+    "AC",
+    "BC",
+    "ABC",
+    "channel_only"
+  ],
+  "roles": {
+    "2020": "warmup_and_price_only_q75_calibration",
+    "2021-2025": "consumed_development",
+    "2026": "excluded"
+  },
+  "a_lookback": 12,
+  "a_calibration_quantile": 0.75,
+  "b_prior_sigma_multiple": 1.0,
+  "channel_periods_native_15m": [
+    48,
+    96
+  ],
+  "channel_exit": "opposite_rail",
+  "position_when_admitted": "original full +1/-1; zero only conditional veto/unclaimed component",
+  "fee_proxy_per_side": 0.0002,
+  "fee_proxy_is_actual_etf_or_option_backtest": false,
+  "fresh_oos": false,
+  "production_authority": false
+}

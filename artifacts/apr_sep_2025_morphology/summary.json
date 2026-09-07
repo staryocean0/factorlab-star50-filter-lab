@@ -1,0 +1,64 @@
+{
+  "groups": [
+    {
+      "region": "apr_sep",
+      "outcome": "loss",
+      "windows": 237,
+      "top2_price_majority_count": 17,
+      "top2_body_majority_count": 16,
+      "large_body_pattern_count": 12,
+      "large_body_pattern_fraction": 0.05063291139240506,
+      "median_top2_price_share": 0.37889487947355105,
+      "median_top2_body_share": 0.38077084781906845,
+      "net_gross_log": -1.2468503194080256,
+      "pattern_gross_log": -0.07231683796870725,
+      "pattern_negative_or_positive_amount_share": 0.05799961458328177
+    },
+    {
+      "region": "apr_sep",
+      "outcome": "profit",
+      "windows": 267,
+      "top2_price_majority_count": 14,
+      "top2_body_majority_count": 17,
+      "large_body_pattern_count": 13,
+      "large_body_pattern_fraction": 0.04868913857677903,
+      "median_top2_price_share": 0.36902278790263315,
+      "median_top2_body_share": 0.3698642397262668,
+      "net_gross_log": 1.4414560099582783,
+      "pattern_gross_log": 0.06196256521632515,
+      "pattern_negative_or_positive_amount_share": 0.042986095162292605
+    },
+    {
+      "region": "original_september_drawdown",
+      "outcome": "loss",
+      "windows": 23,
+      "top2_price_majority_count": 0,
+      "top2_body_majority_count": 0,
+      "large_body_pattern_count": 0,
+      "large_body_pattern_fraction": 0.0,
+      "median_top2_price_share": 0.3580542504079282,
+      "median_top2_body_share": 0.35905465380917295,
+      "net_gross_log": -0.25547962284521786,
+      "pattern_gross_log": 0.0,
+      "pattern_negative_or_positive_amount_share": -0.0
+    },
+    {
+      "region": "original_september_drawdown",
+      "outcome": "profit",
+      "windows": 18,
+      "top2_price_majority_count": 1,
+      "top2_body_majority_count": 1,
+      "large_body_pattern_count": 1,
+      "large_body_pattern_fraction": 0.05555555555555555,
+      "median_top2_price_share": 0.3732305201890569,
+      "median_top2_body_share": 0.3634090458079806,
+      "net_gross_log": 0.16615509525045424,
+      "pattern_gross_log": 0.002531996736869687,
+      "pattern_negative_or_positive_amount_share": 0.015238754689123895
+    }
+  ],
+  "fee_only_losing_windows": 21,
+  "whole_range_gross_return": 0.2148318723492003,
+  "whole_range_net_proxy_return": 0.05399898661897487,
+  "interpretation": "post-hoc window accounting, not a causal explanation fraction or prediction test"
+}

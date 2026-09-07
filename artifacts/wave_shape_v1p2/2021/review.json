@@ -1,0 +1,17 @@
+{
+  "controller": "Codex",
+  "year": 2021,
+  "prior_receipt_sha256": "fc0022ec0e1693aab8c6bee6c807be7ae37011808cdd08bf1ad44fc6eae75f10",
+  "cycles_sha256": "a1a02691734b28968973587a26780ffcf024fe43efd33fbe3f35df2fab976b70",
+  "chart_reviewed": "examples.png",
+  "observations": [
+    "639个价格定义周期覆盖98.67%记账区间；原账户完全不变。",
+    "四形状控制后关联均弱负，不能支持峰靠右更好的预期。",
+    "2月25日尖起回落案例支持错位损失，但3月5日起的高集中度下行周期盈利；高集中度不是必亏条件。",
+    "11月26日变化较分散的短周期也亏，9月27日先短反弹再下行的周期盈利。直上直下不是所有损失的必要条件。",
+    "旧2021形状与记账差一根已修复，只接纳当前下一开盘端点映射；未调形状或检验菜单。"
+  ],
+  "root_resolved": false,
+  "next_year_may_open": 2022,
+  "production_authority": false
+}

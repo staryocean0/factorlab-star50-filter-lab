@@ -1,0 +1,16 @@
+{
+  "valid": true,
+  "new_source_closure_passed": true,
+  "old_round4_source_failure_not_rewritten": true,
+  "years_reviewed_in_order": 5,
+  "all_five_view_positions_and_pnl_rebuild_exact": true,
+  "all_15_null_matrices_rebuild_exact": true,
+  "stage_statistics_max_abs_error": 0.0,
+  "sequence_tests": 12,
+  "stage_tests_primary": 8,
+  "synthetic_cases": 84,
+  "data_2026_used": false,
+  "new_policies": 0,
+  "fresh_oos": false,
+  "production_authority": false
+}

@@ -1,0 +1,9 @@
+feature,target,adjusted_rank_rho,circular20_maxT_p,block20_maxT_p
+peak_fraction,net_log,-0.06732026457389557,0.0005,0.001
+peak_fraction,capture,-0.08924604263744848,0.0005,0.0005
+time_mass_skew,net_log,-0.0819646719982186,0.0005,0.0005
+time_mass_skew,capture,-0.07700293919865768,0.0005,0.001
+motion_concentration,net_log,-0.10617590042181774,0.0005,0.0005
+motion_concentration,capture,-0.09650088556692257,0.0005,0.0005
+half_height_width,net_log,-0.023760260043079382,0.6015,0.607
+half_height_width,capture,-0.022779343607218318,0.6485,0.656

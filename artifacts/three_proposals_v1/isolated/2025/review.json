@@ -1,0 +1,16 @@
+{
+  "controller": "Codex",
+  "year": 2025,
+  "prior_review_sha256": "5f245138f4e893d63aa00dae316cdc67b5d28734f9b912d1fa325c73b1b526a0",
+  "account_receipt_sha256": "e1bad60072c5bc4bc2be6a4977bc4de872f4b56ae637a26e255ec91a919ec760",
+  "graph_reviewed": "accounts.png",
+  "observations": [
+    "本年A/B/AB均未同时改善：A费用代理收益15.60%对基线25.12%、MDD15.18%对11.57%、完整交易均值2.84对3.05 log bp。不能隐藏近期失败年份。",
+    "B收益21.03%、MDD12.95%，AB收益14.94%、MDD15.61%；两条否决都存在误伤，合并不自动修复。",
+    "通道及组合在前半段较强，但后半段回吐；C全年未超基线，AC/ABC风险更高。",
+    "五年材料已按序审查，允许仅按冻结预算汇总、做不重叠聚集检验和等数量否决对照。所有参数、阈值、尺度、优先关系保持原冻结。"
+  ],
+  "promoted": false,
+  "next_action": "aggregate_and_reproduce_only",
+  "production_authority": false
+}

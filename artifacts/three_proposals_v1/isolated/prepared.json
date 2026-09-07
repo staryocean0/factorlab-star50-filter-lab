@@ -1,0 +1,11 @@
+{
+  "freeze_sha256": "8a6f4c2dd3ed761e47e029e6843cfd666d74fea9cdf1faeef11a020463a3b9a3",
+  "signals_sha256": "35033309ed95c2878f7e9f42780e0bd916b68a3dd58d27258695023f6d20070a",
+  "native_channel_sha256": "0c164fb57b3e752ccd11afddd49c1c96390b2cb534ad6c62fee5e9ac4577ce77",
+  "q75_2020": 1.7603048576336875,
+  "calibration_observations": 5268,
+  "rows": 63456,
+  "main_development_rows": 58176,
+  "native_channel_rows": 18508,
+  "candidate_real_account_results_computed": false
+}

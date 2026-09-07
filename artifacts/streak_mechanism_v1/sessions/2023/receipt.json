@@ -1,0 +1,16 @@
+{
+  "year": 2023,
+  "prior_sha256": "7870f539d45ec827e062789eff93f0ede55ea96db740ca912a81a600e8022c85",
+  "files": {
+    "artifacts/streak_mechanism_v1/sessions/2023/annual.png": "75c50e2dd0ae5a4e86fa387bb6cc9f95dea0c0ed523c2faebfb5562155cb9df8",
+    "artifacts/streak_mechanism_v1/sessions/2023/block5_shuffle.npy": "8b56637273f58af1600f4578072d532b4c11b88c2ed5a67253b0c04da32c915d",
+    "artifacts/streak_mechanism_v1/sessions/2023/conditional_win_rate.csv": "1cfec233ef0aa8ce66527742c095d912102d177a9932aa6420c8285ee796e1b0",
+    "artifacts/streak_mechanism_v1/sessions/2023/day_shuffle.npy": "8cec129366ef74770158f89e726f13374cb09c15a870171ceb8001b995bc11db",
+    "artifacts/streak_mechanism_v1/sessions/2023/review.json": "d0101dacfe0ddca27595507f01454126bc625c0d78e755f250ffb0ee80bd5555",
+    "artifacts/streak_mechanism_v1/sessions/2023/stage_associations.csv": "a26667b39eef7be164cce7392635a576d83b66523ec20efd4244ec099672ab0c",
+    "artifacts/streak_mechanism_v1/sessions/2023/summary.json": "becc7d2d91b9bf38080cc2f3e66e2442d9109403d0bafaa97beef919aa40aa1a",
+    "artifacts/streak_mechanism_v1/sessions/2023/trade_shuffle.npy": "4e0d94078f119c773dd6d72818ba2428197c21be2f67288d9937bf77bef91272"
+  },
+  "new_policy": false,
+  "production_authority": false
+}

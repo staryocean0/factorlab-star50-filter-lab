@@ -1,0 +1,14 @@
+{
+  "year": 2024,
+  "mode": "baseline",
+  "prepared_sha256": "fcc97fd28b2f47b39ef0a8c2670842bb3062afbf2af4c5d95480245423aa5137",
+  "policies": [
+    "F"
+  ],
+  "previous_review_sha256": "856c22fc5a5073ffff67b7bac700c697cf7619158f9c7d24b18812949e45aa83",
+  "files": {
+    "F.parquet": "f3b6a5390819fb74765730ce219da262cb7d6c70a5ef721b170ecd56dad9ae7d",
+    "F_state.json": "90b6c505cfb4679f646d03e416a96af0eb16b4d52aa565aede6ed5793cfe9db9",
+    "summary.csv": "1e886b07f0c1567f0b0cc40ab5de3d49e26b7dc3abc204d3c0892cb9cf13c24c"
+  }
+}

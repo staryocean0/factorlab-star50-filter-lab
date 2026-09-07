@@ -1,0 +1,16 @@
+{
+  "controller": "Codex",
+  "year": 2022,
+  "prior_receipt_sha256": "3cc6f1706c3da5c34c90b4c7ebb47dc8611eca42f089e3eb4a5fd0d8dcae3878",
+  "cycles_sha256": "fa12db6b2ba61aa6ee7a00160d74feeb70b8d876bbd8c6d76eb66650a1d02bd3",
+  "chart_reviewed": "examples.png",
+  "observations": [
+    "626周期覆盖98.81%区间；四控制项调整后运动集中度与capture为-0.1469，方向符合急起急落会增加损失的假说。",
+    "10月27日尾盘起的最差高集中度周期正处原最大回撤阶段，价格上冲时仍为空，转多后遇回落，形态与迟确认机制吻合。",
+    "4月8日高集中度盈利周期中，剧烈下跌发生时已为空头；急跌本身不是失败条件，持仓进入这次冲击时的方向与滤波历史状态必须保留。",
+    "8月15日较分散的波也显著亏损；半高宽关联接近0。不能把尖峰作为统一充分或必要原因。"
+  ],
+  "root_resolved": false,
+  "next_year_may_open": 2023,
+  "production_authority": false
+}

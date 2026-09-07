@@ -1,0 +1,12 @@
+[
+  {
+    "ratio": 120,
+    "identity_max_abs_error": 2.0785510899262727e-16,
+    "non_near_zero_signs_identical": true
+  },
+  {
+    "ratio": 24,
+    "identity_max_abs_error": 1.6885093583746125e-16,
+    "non_near_zero_signs_identical": true
+  }
+]

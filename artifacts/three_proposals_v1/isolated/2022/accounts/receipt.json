@@ -1,0 +1,38 @@
+{
+  "year": 2022,
+  "mode": "accounts",
+  "prepared_sha256": "fcc97fd28b2f47b39ef0a8c2670842bb3062afbf2af4c5d95480245423aa5137",
+  "policies": [
+    "F",
+    "A",
+    "B",
+    "AB",
+    "C",
+    "AC",
+    "BC",
+    "ABC",
+    "channel_only"
+  ],
+  "previous_review_sha256": "353e62e0594b88963d7aadef3398755c8b574f62f01340e4251aafbe4c0f0dbb",
+  "files": {
+    "A.parquet": "6d08bc34a1d8cf62abbf73fe24a76e69b82edbb9cd75e47c42b7f3fc3cb6d680",
+    "AB.parquet": "05bf9a340539949970a42aa21f63341526cde1559ad8a0b8fa6bdd4320081603",
+    "ABC.parquet": "592b0120fc8f6279714e566dfa00e930e1e916fe49712e36cc3308bfff853815",
+    "ABC_state.json": "e050e13511654af68d2f62dfb2dc6a65fa340907ba8010243106b22732464bf0",
+    "AB_state.json": "f403094c0a42b6ba67c8623fd26575fae098b19080964c5dd91a79c7f1974bac",
+    "AC.parquet": "5af91a32e4638bc084517f7922a85adb85d12b1d34252ac7412679d4dd895a08",
+    "AC_state.json": "ae027f9e0288e8aadb2c640721058845c6264269aa9f505465ab24ca4a34c453",
+    "A_state.json": "ddef3ea7f568753c727698cdb1fef86e0052eb5a62bcff1c3b696b3060e6f0c2",
+    "B.parquet": "9b70dc53c9ce9a620e6732ef65ef6a09a8ef5ddccf71532c266ae70710e0a25a",
+    "BC.parquet": "0ef19872e1a121098f27ea0b8f3fd5309e822835beaa53ec8075c98f2a38fb82",
+    "BC_state.json": "d53c2f31ec12ec60eb148b2b7946791cf3eb9f21297dd40f8ec848528df555b3",
+    "B_state.json": "fa8de6932e862e9b18bdc243ef3650366c85bb49f15d6049b4ad0f9961ef1a23",
+    "C.parquet": "4f8b68fc13c17d4809be6e8a4e4977b8b00349773993c6b1bf0f5f9bc203d8f9",
+    "C_state.json": "890a01f83fb53fa9551a9feeab78af3897370326fc1ca73b108f2ed226ae50f8",
+    "F.parquet": "d42c262022046e140ad1c2c064c2343d73a045b964c1e24e33e2435c05fe117a",
+    "F_state.json": "9619f904c931d7a69881b95def3a11db451cde47e6bc6855a25567ff3a15dbf9",
+    "channel_only.parquet": "c8533ec950acedebfa79b5058b871931972245cdec589fa12ac1f39c3ee6cd21",
+    "channel_only_state.json": "af20ae09b1f4d963fbed1e6e5847d4e87156e9ceb412b23eb7a15471c4976ed4",
+    "summary.csv": "43a01c7cbdf57536962078353179630a36c764b2acf38220a365298d408615e4"
+  }
+}

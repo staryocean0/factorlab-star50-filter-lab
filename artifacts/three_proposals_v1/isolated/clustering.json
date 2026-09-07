@@ -1,0 +1,24 @@
+[
+  {
+    "context": "within_day",
+    "pairs": 3636,
+    "past_high_count": 835,
+    "p_next_high_given_high": 0.18083832335329342,
+    "p_next_high_given_low": 0.17422349161013923,
+    "p_next_high_unconditional": 0.17574257425742573,
+    "year_centered_phi": 0.007425816956934351,
+    "circular20_maxT_p": 0.926,
+    "block20_maxT_p": 0.9285
+  },
+  {
+    "context": "next_trading_day",
+    "pairs": 1207,
+    "past_high_count": 215,
+    "p_next_high_given_high": 0.3627906976744186,
+    "p_next_high_given_low": 0.3326612903225806,
+    "p_next_high_unconditional": 0.3380281690140845,
+    "year_centered_phi": 0.026019848269726264,
+    "circular20_maxT_p": 0.4485,
+    "block20_maxT_p": 0.4285
+  }
+]

@@ -1,5 +1,10 @@
 # Continue here
 
+**Current entry supersedes the numbered historical steps below:**
+[Cloud risk-gate handoff, 2026-09-07](docs/handoff/cloud_risk_gate_20260907/HANDOFF.md).
+Run `python scripts/validate_cloud_risk_gate_package.py`. Current work is
+two-index Kline/volatility risk research, not a strategy/account continuation.
+
 1. Read `docs/user/cloud_execution_prompt.md` and `docs/governance/data_usage_declaration.json`.
 2. Validate `python scripts/validate_theme_package.py`.
 3. Current baseline: 5m+0, 1-hour 1st-order Butterworth lowpass, vol-scaled

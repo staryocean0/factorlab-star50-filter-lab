@@ -1,0 +1,14 @@
+{
+  "six_diagnostic_files_byte_identical": true,
+  "file_hashes": {
+    "response.csv": "4378865811fb904eabd5efd85176f7485368e015a4a2dde9b68dfe20f198fe4d",
+    "common_5m_grid.parquet": "9b7ba9f67e6eaff61585daa6f586d5f8ca09733ffd3a9e440ab46017a68ceef7",
+    "signal_diagnostics.csv": "3b0b9949d1e75cc646b83b0fbbe0038cc521813e7e2974d9ab22767ef4b4a395",
+    "alignment.csv": "332b5cad7f0e1a790351a8602b10b7198f6d7dd84e84097949e0a8e78ffb0500",
+    "slope_identity.json": "5f3eb68afc03c475e9e1aab784d4f7174f7fb099992f2b11b1cad335bb52bfbd",
+    "comparison.png": "8d69f49327838bf095ed353e3f8d2db0d6e137a271eb895991805642524639b2"
+  },
+  "no_financial_backtest": true,
+  "actual_seconds_data_tested": false,
+  "validator_sha256": "cd1f4b0b11ab3d8d78c5406623314472a59e0bd1223be25413c71b209c55e0ef"
+}

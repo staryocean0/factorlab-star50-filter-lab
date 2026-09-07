@@ -1,0 +1,24 @@
+{
+  "controller": "Codex",
+  "bounded_study_complete": true,
+  "candidate_identities_including_original_and_component_control": 9,
+  "index_account_same_exposure_and_clock_validated": true,
+  "original_baseline_cagr": 0.8675662509083046,
+  "original_baseline_mdd": 0.14323804733417234,
+  "clustering_hypothesis_supported_under_registered_measurement": false,
+  "retained_progress": {
+    "A": "cost-sensitive causal-observable veto material; lower full-period MDD/mean-quality improvement, but weaker zero-cost Calmar and failures in2024/2025",
+    "B": "small uniform-cost-proxy improvement; no same-count null significance and original-zero-cost MDD worsens",
+    "AB": "measured progression versus baseline under proxy; not superior to A in proxy return/MDD; no automatic combination promotion"
+  },
+  "channel_priority_verdict": "C/AC/BC/ABC fail lower-MDD goal at original native15m P48/P96 identity",
+  "intersection_observation": "82 overlapping A/B trades are retrospectively weak; no intersection strategy or MDD was tested",
+  "tests_passed": 88,
+  "byte_identical_replay_artifacts": 158,
+  "actual_etf_option_economic_audit_complete": false,
+  "strategy_promoted": false,
+  "owner_top_level_goal_complete": false,
+  "fresh_oos": false,
+  "production_authority": false,
+  "report": "docs/research/three_proposals_v1/report.md"
+}

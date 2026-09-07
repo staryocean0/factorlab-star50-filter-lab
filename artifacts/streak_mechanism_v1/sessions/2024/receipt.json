@@ -1,0 +1,16 @@
+{
+  "year": 2024,
+  "prior_sha256": "4c69370b25547631eb89f7440f33f3d49ea3c4cbd6b1274545eb53a31c8b25be",
+  "files": {
+    "artifacts/streak_mechanism_v1/sessions/2024/annual.png": "7f36f08bf80a7cfe491901c62503146d98cfae5a5d182aa96e557e35e558743f",
+    "artifacts/streak_mechanism_v1/sessions/2024/block5_shuffle.npy": "923d3e825b5f38f8d0c4297277b2adcdb8644a9e7d007a38c5e4c3fb59b77cdd",
+    "artifacts/streak_mechanism_v1/sessions/2024/conditional_win_rate.csv": "9b45c73aea278ef0d75fbf010c062397688f96af55374c2897eef860c3e35595",
+    "artifacts/streak_mechanism_v1/sessions/2024/day_shuffle.npy": "30825a626db635b9a453f18ff61f968a4352edfeb1c2e6cbfb7b5e6a34064ce7",
+    "artifacts/streak_mechanism_v1/sessions/2024/review.json": "6619acf5b025ae3a92972e5f5bb4980f4ea6e6e539824c3ef01104bc3b2de8e5",
+    "artifacts/streak_mechanism_v1/sessions/2024/stage_associations.csv": "ae829d16141211bb78486251f6dfaaa59c3c8f44ab9a1a02a5d76ced4642a666",
+    "artifacts/streak_mechanism_v1/sessions/2024/summary.json": "9bb848bed9eaba4d5285fca776b2ec97218613ee453beb35af2db74abd72f053",
+    "artifacts/streak_mechanism_v1/sessions/2024/trade_shuffle.npy": "4e8f4c3b691d83279c950362ceecc97974c1c8fe00aa3a65ee0c1bb3f6f27da8"
+  },
+  "new_policy": false,
+  "production_authority": false
+}

@@ -1,0 +1,13 @@
+{
+  "controller": "Codex",
+  "year": 2024,
+  "baseline_receipt_sha256": "d3dff53669da4eaac3ec997c1b11fb9c2d4d8db4e89f5bd1d3d144143a4ca6b7",
+  "observations": [
+    "原零费收益240.9375%、年度MDD12.4035%，与原指纹一致；9月底强趋势跳变事件不能与低效磨损型混为一谈。",
+    "费用代理收益159.7376%、年度MDD12.4736%，680笔完整交易净均值14.1503 log bp，明显强于2023。",
+    "本年是过滤是否误伤大行情的重要反例年，必须检查毛收益与完整账户，而非只报告减少交易。"
+  ],
+  "challenger_results_read": false,
+  "family_may_execute": true,
+  "production_authority": false
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "policy": "A",
+    "complete_baseline_trade_denominator": 3482,
+    "denied_complete_trades": 1136,
+    "avoided_net_log": 0.09879333679078989,
+    "random_location_mean": -0.5561418926505537,
+    "standardized_improvement": 2.2910498979018183,
+    "one_sided_three_test_maxT_p": 0.021,
+    "denied_mean_net_log_bp": -0.869659654848499,
+    "denied_profit_count": 384,
+    "denied_loss_count": 752,
+    "forgone_complete_gross_profit_log": 3.6086839154633874,
+    "avoided_complete_gross_loss_log": 3.2530318061946017
+  },
+  {
+    "policy": "B",
+    "complete_baseline_trade_denominator": 3482,
+    "denied_complete_trades": 178,
+    "avoided_net_log": 0.03157939004722028,
+    "random_location_mean": -0.09222804776850102,
+    "standardized_improvement": 0.8796352745358874,
+    "one_sided_three_test_maxT_p": 0.345,
+    "denied_mean_net_log_bp": -1.7741230363606908,
+    "denied_profit_count": 53,
+    "denied_loss_count": 125,
+    "forgone_complete_gross_profit_log": 0.4577412026198252,
+    "avoided_complete_gross_loss_log": 0.41811347171756974
+  },
+  {
+    "policy": "AB",
+    "complete_baseline_trade_denominator": 3482,
+    "denied_complete_trades": 1232,
+    "avoided_net_log": 0.04390817903994774,
+    "random_location_mean": -0.6093087346621004,
+    "standardized_improvement": 2.1778682548688315,
+    "one_sided_three_test_maxT_p": 0.03,
+    "denied_mean_net_log_bp": -0.35639755714243,
+    "denied_profit_count": 413,
+    "denied_loss_count": 819,
+    "forgone_complete_gross_profit_log": 3.8989597276728576,
+    "avoided_complete_gross_loss_log": 3.4500186201411527
+  }
+]

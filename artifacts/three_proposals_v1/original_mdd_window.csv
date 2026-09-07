@@ -1,0 +1,10 @@
+policy,original_peak_label,original_trough_label,window_gross_log,window_geometric_return,warning
+F,2022-10-24 09:45:00,2022-11-11 10:55:00,-0.15459516715364927,-0.14323804733417186,"fixed original window return, not this policy own maximum drawdown"
+A,2022-10-24 09:45:00,2022-11-11 10:55:00,-0.11586576606832426,-0.10940523668926086,"fixed original window return, not this policy own maximum drawdown"
+B,2022-10-24 09:45:00,2022-11-11 10:55:00,-0.16543066859211708,-0.1524713784794482,"fixed original window return, not this policy own maximum drawdown"
+AB,2022-10-24 09:45:00,2022-11-11 10:55:00,-0.11586576606832426,-0.10940523668926086,"fixed original window return, not this policy own maximum drawdown"
+C,2022-10-24 09:45:00,2022-11-11 10:55:00,0.044141409307710544,0.04513013556835385,"fixed original window return, not this policy own maximum drawdown"
+AC,2022-10-24 09:45:00,2022-11-11 10:55:00,0.04442673068451159,0.0454283760827443,"fixed original window return, not this policy own maximum drawdown"
+BC,2022-10-24 09:45:00,2022-11-11 10:55:00,0.044141409307710544,0.04513013556835385,"fixed original window return, not this policy own maximum drawdown"
+ABC,2022-10-24 09:45:00,2022-11-11 10:55:00,0.04442673068451159,0.0454283760827443,"fixed original window return, not this policy own maximum drawdown"
+channel_only,2022-10-24 09:45:00,2022-11-11 10:55:00,0.060049789824235436,0.06188941651656124,"fixed original window return, not this policy own maximum drawdown"

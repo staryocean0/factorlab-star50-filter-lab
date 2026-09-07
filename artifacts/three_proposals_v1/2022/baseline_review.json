@@ -1,0 +1,13 @@
+{
+  "controller": "Codex",
+  "year": 2022,
+  "baseline_receipt_sha256": "f888a989c78c2e3dbc1455446f8bdddd06cce3440f46a4c363d233b24fdbce88",
+  "observations": [
+    "本年零费收益74.0367%、MDD14.3238%，包含用户关注的10月至11月原最大回撤，原指纹复现。",
+    "同年统一费用代理收益32.3750%、MDD15.9869%，684个完整结束交易均值4.3674 log bp；2021至本年底累计MDD仍由2021的16.3693%主导。",
+    "不同年度峰谷与全期峰谷分别保留，不能将年度改善误报成全期风险已下降。继续固定家族，不改2021中表现较好的条件。"
+  ],
+  "challenger_results_read": false,
+  "family_may_execute": true,
+  "production_authority": false
+}

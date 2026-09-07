@@ -1,0 +1,21 @@
+{
+  "rows": 11616,
+  "cycles": 626,
+  "covered_intervals": 11478,
+  "coverage_fraction": 0.9881198347107438,
+  "covered_net_log": 0.5329521472096926,
+  "uncovered_net_log": 0.021143741714041556,
+  "full_net_log": 0.5540958889237344,
+  "undefined_shapes": [
+    {
+      "a": 563,
+      "c": 567,
+      "net_log": 0.0020301960657482135
+    },
+    {
+      "a": 9883,
+      "c": 9893,
+      "net_log": -0.03226748630195827
+    }
+  ]
+}

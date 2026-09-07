@@ -1,0 +1,16 @@
+{
+  "controller": "Codex",
+  "year": 2024,
+  "prior_receipt_sha256": "97c119f00345dc8a6e83a644e9fba25e98a0994e5a9ecd9f5eda225a32b84860",
+  "cycles_sha256": "faaa58c0f5a563b0952bedb4257efb5adf4560155d9a2674d4d47d65ef3eba52",
+  "chart_reviewed": "examples.png",
+  "observations": [
+    "651周期覆盖98.49%区间；集中度控制后capture关联-0.094，前三年方向延续。",
+    "8月28日快速上冲时为空，追确认转多后回落，capture约-0.986。7月29日先转空再出现后续急跌却盈利，说明冲击与既有状态的相对位置不同。",
+    "半高宽仍近零，峰位置与时间质量偏度为负向但未做总体多重检验，不能提前说显著。",
+    "原始集中度高低桶的均值和控制后方向不同，周期、振幅与趋势混杂不可忽略；不将未控制桶直接作过滤结论。"
+  ],
+  "root_resolved": false,
+  "next_year_may_open": 2025,
+  "production_authority": false
+}

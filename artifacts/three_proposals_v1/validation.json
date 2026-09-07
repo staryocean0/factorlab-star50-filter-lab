@@ -1,0 +1,848 @@
+{
+  "same_source_fresh_input_and_account_state_replay": true,
+  "source_frozen_and_original_baseline_passed": true,
+  "files_identical": 158,
+  "checks": [
+    {
+      "path": "2021/accounts/A.parquet",
+      "sha256": "6581885cb8990f0921abab30bb1ccd0484d3577657c8d30fa20fd7c736546cf8",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/AB.parquet",
+      "sha256": "54e3377818fecf9cab7f5cc514ac98b53e43f921f29545ed0fa50e080a3f6c0f",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/ABC.parquet",
+      "sha256": "73c1fa171f4bc85b446eed345fac07f366e53af84ca794a588c6521a48796d68",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/ABC_state.json",
+      "sha256": "d8ba32b94ef438c0c97c42dce512b48531044d798154d601135ea679b1f343f3",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/AB_state.json",
+      "sha256": "6d25cb6b12ef1909810cb7061b536e2759f38bdcad2b2518263c444b464e43ff",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/AC.parquet",
+      "sha256": "acdbd55fce769f8a5763a45942cbb9c755be6ef3fadea79004c292fe10b9e615",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/AC_state.json",
+      "sha256": "7825caa5c07725a7a98ebb6c6c41adc80df88d0c47e25ed4af8e90eaf72d5e1f",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/A_state.json",
+      "sha256": "333c7a737a34a23a4f18a3ceeaa06a407aa8e6d5f227d2fe57175e4574fc34b9",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/B.parquet",
+      "sha256": "622b8909fb65dc622082d9e46488ecc0571e16b3e11003b4ef873a61cd6e2232",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/BC.parquet",
+      "sha256": "2ece1e061987a08527ff99595756c45f1fb9563eeb98b030ac6f681d0c382a51",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/BC_state.json",
+      "sha256": "34dbdc184783254259a8be4ef6e65725ed06f02cde58fad0ada4802070213103",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/B_state.json",
+      "sha256": "c36f5866047cf3a68e90cfab2e7a8fd0ee2ea411e222c1b66064a44d1f2b32bc",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/C.parquet",
+      "sha256": "9e2ef1a65fc7d910636ab0e56a2d1b5dd989bd7b21f97fd1af871e35e0132208",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/C_state.json",
+      "sha256": "c44f2e42a6b8ab695a4693310337288111fec19a8e83e5de03046975f7e73e1c",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/F.parquet",
+      "sha256": "7b892179be77a80430e9f4ff7529f874c99f8a45c3c67b805826926318dd70ce",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/F_state.json",
+      "sha256": "fc99d2ccfb11d914d7ad17de0de614d87aa9b52724a33de6efd6187cdbd5857a",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/channel_only.parquet",
+      "sha256": "00a04897649d7ca703fca11168fff67b9aef3e716c48369f3a6be1e1167c0192",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/channel_only_state.json",
+      "sha256": "7258b0ce141476855b65374707ba2d3d282a3026540995982da713e38e2a6c43",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/receipt.json",
+      "sha256": "41cec1b81d1b9a2aba5262836bdc541f4ec628f492bcb61b7f22988f2cc11050",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts/summary.csv",
+      "sha256": "2b497fa2c96e6dbcbd79052ad3d5cac238159872738982e253c6d037204944f1",
+      "identical": true
+    },
+    {
+      "path": "2021/accounts.png",
+      "sha256": "0637743f8afea0ace2bd868ab971d3729610eecacf9aacc0acc9cf26592950d2",
+      "identical": true
+    },
+    {
+      "path": "2021/baseline/F.parquet",
+      "sha256": "7b892179be77a80430e9f4ff7529f874c99f8a45c3c67b805826926318dd70ce",
+      "identical": true
+    },
+    {
+      "path": "2021/baseline/F_state.json",
+      "sha256": "fc99d2ccfb11d914d7ad17de0de614d87aa9b52724a33de6efd6187cdbd5857a",
+      "identical": true
+    },
+    {
+      "path": "2021/baseline/receipt.json",
+      "sha256": "5f310a72d832969d51eed03b197183b82ad4dfca1898bf8e93a607d4b123455c",
+      "identical": true
+    },
+    {
+      "path": "2021/baseline/summary.csv",
+      "sha256": "ee54fb4957e1a6be99dac90cd67cca175f6b8d4861b3fbc8d6beeb29dd336fe5",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/A.parquet",
+      "sha256": "6d08bc34a1d8cf62abbf73fe24a76e69b82edbb9cd75e47c42b7f3fc3cb6d680",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/AB.parquet",
+      "sha256": "05bf9a340539949970a42aa21f63341526cde1559ad8a0b8fa6bdd4320081603",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/ABC.parquet",
+      "sha256": "592b0120fc8f6279714e566dfa00e930e1e916fe49712e36cc3308bfff853815",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/ABC_state.json",
+      "sha256": "e050e13511654af68d2f62dfb2dc6a65fa340907ba8010243106b22732464bf0",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/AB_state.json",
+      "sha256": "f403094c0a42b6ba67c8623fd26575fae098b19080964c5dd91a79c7f1974bac",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/AC.parquet",
+      "sha256": "5af91a32e4638bc084517f7922a85adb85d12b1d34252ac7412679d4dd895a08",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/AC_state.json",
+      "sha256": "ae027f9e0288e8aadb2c640721058845c6264269aa9f505465ab24ca4a34c453",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/A_state.json",
+      "sha256": "ddef3ea7f568753c727698cdb1fef86e0052eb5a62bcff1c3b696b3060e6f0c2",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/B.parquet",
+      "sha256": "9b70dc53c9ce9a620e6732ef65ef6a09a8ef5ddccf71532c266ae70710e0a25a",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/BC.parquet",
+      "sha256": "0ef19872e1a121098f27ea0b8f3fd5309e822835beaa53ec8075c98f2a38fb82",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/BC_state.json",
+      "sha256": "d53c2f31ec12ec60eb148b2b7946791cf3eb9f21297dd40f8ec848528df555b3",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/B_state.json",
+      "sha256": "fa8de6932e862e9b18bdc243ef3650366c85bb49f15d6049b4ad0f9961ef1a23",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/C.parquet",
+      "sha256": "4f8b68fc13c17d4809be6e8a4e4977b8b00349773993c6b1bf0f5f9bc203d8f9",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/C_state.json",
+      "sha256": "890a01f83fb53fa9551a9feeab78af3897370326fc1ca73b108f2ed226ae50f8",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/F.parquet",
+      "sha256": "d42c262022046e140ad1c2c064c2343d73a045b964c1e24e33e2435c05fe117a",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/F_state.json",
+      "sha256": "9619f904c931d7a69881b95def3a11db451cde47e6bc6855a25567ff3a15dbf9",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/channel_only.parquet",
+      "sha256": "c8533ec950acedebfa79b5058b871931972245cdec589fa12ac1f39c3ee6cd21",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/channel_only_state.json",
+      "sha256": "af20ae09b1f4d963fbed1e6e5847d4e87156e9ceb412b23eb7a15471c4976ed4",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/receipt.json",
+      "sha256": "c1531d83a67b27d9f1f3968be7e3c8ad59c90cca8c9f2e1c0b73af7fa793bfec",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts/summary.csv",
+      "sha256": "43a01c7cbdf57536962078353179630a36c764b2acf38220a365298d408615e4",
+      "identical": true
+    },
+    {
+      "path": "2022/accounts.png",
+      "sha256": "da1cfa89b9ee46c032aa63e94bc027b5ca138e3d608ba9e479ab5dd4fba45322",
+      "identical": true
+    },
+    {
+      "path": "2022/baseline/F.parquet",
+      "sha256": "d42c262022046e140ad1c2c064c2343d73a045b964c1e24e33e2435c05fe117a",
+      "identical": true
+    },
+    {
+      "path": "2022/baseline/F_state.json",
+      "sha256": "9619f904c931d7a69881b95def3a11db451cde47e6bc6855a25567ff3a15dbf9",
+      "identical": true
+    },
+    {
+      "path": "2022/baseline/receipt.json",
+      "sha256": "f888a989c78c2e3dbc1455446f8bdddd06cce3440f46a4c363d233b24fdbce88",
+      "identical": true
+    },
+    {
+      "path": "2022/baseline/summary.csv",
+      "sha256": "fed2bd53007dbf68fc81824f4d9d0464a5b76fe8331b494497a0b6c85ef2c2f7",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/A.parquet",
+      "sha256": "673a45e119d7cbd0f12f18d46e1e91779b9db08b56f4ef03a94c5ca3e75a63ad",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/AB.parquet",
+      "sha256": "2816f539f5ecaf8b68d025f4e31e08520c66e5ca9d2b19aebcd9019f1abf39d1",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/ABC.parquet",
+      "sha256": "dffc7764540e90b3492b3bfb504ef912fc5d050b6931b0aa13d91be90b4813f5",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/ABC_state.json",
+      "sha256": "17d6a1bfd36de6b55c523ba802934d2c3aa74e7fb9fb0fba40289e3a33f25be2",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/AB_state.json",
+      "sha256": "d56f2a9ba6c97389442f10e97ef304416330ae737f4b6ce66c4ad5cdd9a08984",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/AC.parquet",
+      "sha256": "1d8cc63d32bbc89e3b4d03bf52c3f20a195831c416b1f5383188665444e4f9a7",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/AC_state.json",
+      "sha256": "2f7c52286efb53081317b02ce879a8ab6eafad4cc80001a7571d495a6749a677",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/A_state.json",
+      "sha256": "0d6bad2b8b8aa1aadb10c85825889c291309a1eeb745e541d0c20d178e16d99c",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/B.parquet",
+      "sha256": "aca9be4268cd7ce2cc92f90e13c87a5b0fa65cc1258420dc6fe296812427186f",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/BC.parquet",
+      "sha256": "799db1cfe76352161b19dcdc9993a8f8e231332ab69ae3269d6762aef29917f8",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/BC_state.json",
+      "sha256": "b98c8030a3764c7140af2bcccbd375049d54b7f8ffa617a913035b20cb67bbe2",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/B_state.json",
+      "sha256": "051e52137dde05d68c30b9c8e68ea6e59d5a752f4c3e5c97df88f606ba2eebbe",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/C.parquet",
+      "sha256": "e0d8716a7c019dac0957835d344d7408f9680c5d9e3f09b47abdf3cffecb3dc3",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/C_state.json",
+      "sha256": "619db4a57421faa7a70efb80dac236de77111781311e170e3f3b945a6f7f1220",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/F.parquet",
+      "sha256": "26be97864e1f279e618e65db7911fb35f439c0991e97f4562aff58cde79ab16e",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/F_state.json",
+      "sha256": "a4697387599926b51e1e9c958e9760e31210e8ff73656470962367d892e6799d",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/channel_only.parquet",
+      "sha256": "13deb3462c1c5636655893760f284e95073e24fde8d2b179edd911f306097b39",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/channel_only_state.json",
+      "sha256": "c99935afed67b4e99c07bee41061cbb7add9ea3f30153d8ee16e6b1ec4f81569",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/receipt.json",
+      "sha256": "da7b85d09a52a176db1bd84825f8af38808511e080a23183ad022af92a819963",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts/summary.csv",
+      "sha256": "9b8b5f5249b2f126668c0fa73842bca680a755c3a6a2ccf990f09f03ae8248bb",
+      "identical": true
+    },
+    {
+      "path": "2023/accounts.png",
+      "sha256": "85b65d6a2e5231a1a0b8e7ebadde26d0c80bcce8de8ad0b710b4e127a2910a5d",
+      "identical": true
+    },
+    {
+      "path": "2023/baseline/F.parquet",
+      "sha256": "26be97864e1f279e618e65db7911fb35f439c0991e97f4562aff58cde79ab16e",
+      "identical": true
+    },
+    {
+      "path": "2023/baseline/F_state.json",
+      "sha256": "a4697387599926b51e1e9c958e9760e31210e8ff73656470962367d892e6799d",
+      "identical": true
+    },
+    {
+      "path": "2023/baseline/receipt.json",
+      "sha256": "305bf8d5b4126883dd4909ddcb6c08fd92acd17445fd7331ddc897fe8caefb9b",
+      "identical": true
+    },
+    {
+      "path": "2023/baseline/summary.csv",
+      "sha256": "e2d4d7c8decbbf2c027054dc7c469fc3cc9e33ad9d97a8997fc445fa365814b8",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/A.parquet",
+      "sha256": "2427992bd6ddb7369a57767f5270d3526d18cf5d21f255fb1195029247f320d8",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/AB.parquet",
+      "sha256": "36ff877c2fab3172a69daef31f64864622c90a46544ff38c3507d8b6586e745b",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/ABC.parquet",
+      "sha256": "9d724329ade3c0505c1c56c77dd4605bbd2da4718c12595c62485409f3203cf7",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/ABC_state.json",
+      "sha256": "75029994877f2bbf90fd8cdf8b4a1c5a865870af92faaffe3e161c76e8d213ca",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/AB_state.json",
+      "sha256": "47ecb80c8cc7a56079327c6c4986af787e167de7a9d04c8044bd157397eabe51",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/AC.parquet",
+      "sha256": "2bc6ecb1508b65981df1350b529857ddf4ad45b562c1aa635db6406515e2b76f",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/AC_state.json",
+      "sha256": "596cb7f04fdda7b0ce079de64757172aaff862d31cdc15bc7413a2e900a0e4f1",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/A_state.json",
+      "sha256": "93831a0e5ab427ffb0b100170273e7197697429b51049eeb5683dbea121b7760",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/B.parquet",
+      "sha256": "d19c0e3e6adbdc35e68b6cf29a8bbfd3390de8190727d01ee1723650a14506a5",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/BC.parquet",
+      "sha256": "39d9bd0f163db6888aca930dd36d020d470eb648b3a9a92163e728c86df1ff14",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/BC_state.json",
+      "sha256": "d373993401e6e77ebac119f6a2b2fbda3667247f4ea396b72fb9e7bc2c401b14",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/B_state.json",
+      "sha256": "4b0ab60618aef71dfcf5b701b084f2c88a4d364af23e118e324b1cfe0d6facfd",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/C.parquet",
+      "sha256": "4de4eac840fca3b39ffd56c295d0df67201e7c945d40ee32f920fb9035739a97",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/C_state.json",
+      "sha256": "072b03bb955e157adbe72bd3bcb53eb8244c3ceb0823a739881cddc88b2416e4",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/F.parquet",
+      "sha256": "f3b6a5390819fb74765730ce219da262cb7d6c70a5ef721b170ecd56dad9ae7d",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/F_state.json",
+      "sha256": "90b6c505cfb4679f646d03e416a96af0eb16b4d52aa565aede6ed5793cfe9db9",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/channel_only.parquet",
+      "sha256": "c33aa063cad0b56c87dc3bf2a28776e59b427a988b96035e2780d89f4a955403",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/channel_only_state.json",
+      "sha256": "3082bba2225dae19a5ed1035c90b88f2401c98caf9abff89b777ec7b95c121ca",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/receipt.json",
+      "sha256": "c1c5a4a8cea5fa09fa82e59757c8371e6266478c4d3a7b44ca6e80280f50f81e",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts/summary.csv",
+      "sha256": "2459b3e8044612b6cd13c3aa9a0c2ec92307c8bf46b8ed59a294edd2c65f1878",
+      "identical": true
+    },
+    {
+      "path": "2024/accounts.png",
+      "sha256": "d3df3449b755a9c6c4ba1ed695b075185e2dfdd19c69d9a71ce7032fd40ed632",
+      "identical": true
+    },
+    {
+      "path": "2024/baseline/F.parquet",
+      "sha256": "f3b6a5390819fb74765730ce219da262cb7d6c70a5ef721b170ecd56dad9ae7d",
+      "identical": true
+    },
+    {
+      "path": "2024/baseline/F_state.json",
+      "sha256": "90b6c505cfb4679f646d03e416a96af0eb16b4d52aa565aede6ed5793cfe9db9",
+      "identical": true
+    },
+    {
+      "path": "2024/baseline/receipt.json",
+      "sha256": "d3dff53669da4eaac3ec997c1b11fb9c2d4d8db4e89f5bd1d3d144143a4ca6b7",
+      "identical": true
+    },
+    {
+      "path": "2024/baseline/summary.csv",
+      "sha256": "1e886b07f0c1567f0b0cc40ab5de3d49e26b7dc3abc204d3c0892cb9cf13c24c",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/A.parquet",
+      "sha256": "03a0cce158154e2b76a2707dd4fb255d4611d65740201b56f3336828c1bd64c7",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/AB.parquet",
+      "sha256": "c4cfd75d580a382ad4f6f095fb9918b2b7d9eb953da71b6522fe30890139589c",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/ABC.parquet",
+      "sha256": "20ba4cc6ac0deefd853d65ae504be1c051ceaa848126f36d83414d27429a76cf",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/ABC_state.json",
+      "sha256": "37b534de5ca65c6ed660c4b41734b76deba5838ce84d2a6a8dd576ece8f91c98",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/AB_state.json",
+      "sha256": "e5c291374b54b94ef2ac8ac0a7077f66a3025baba69d7c3ad7b82bda40e8005e",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/AC.parquet",
+      "sha256": "e4f9010ea0be3a6efb040774780e6896e06ad33310d0888c03128624b4f413df",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/AC_state.json",
+      "sha256": "c9c1e9479f5882715aece4461bbc5946d00de020aeb957b856351e49149ac878",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/A_state.json",
+      "sha256": "3cac1b5bae1533c8f0607a6c2026cf6294e1a6e0a64289e5ae1f587251d09c2f",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/B.parquet",
+      "sha256": "21bf03609edddd852fa2d1e3479186c804edb2597a66127086272bbaa40c09ac",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/BC.parquet",
+      "sha256": "d52801b29b0bce6f317b292cbcb7193041adcdb327f153d081069b11e2cc4681",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/BC_state.json",
+      "sha256": "74f21a3a6d3691cbc9b9111acd392c93b29bae9171739868cfc7313f53c37f34",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/B_state.json",
+      "sha256": "344113957ac221b816e77d0339767462c42a56dc0c20f5a6f95774fcd82049e4",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/C.parquet",
+      "sha256": "225ae946fcdfede715e52e9133ec977fcf11ed3c4217bee4f7be39336fed7de2",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/C_state.json",
+      "sha256": "2954f3b9baf884687123c2bcf0602189712e1cff82305d7c38335e39620984eb",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/F.parquet",
+      "sha256": "f17f9fd38b33efbba7c792dabfc7e155836db11bd49611025819ad9b83322806",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/F_state.json",
+      "sha256": "d6dd1db1e5ffcdff3a3d6f77c0edd74ff73a47fd9eb3425443ebf822d5282620",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/channel_only.parquet",
+      "sha256": "511bb22fca90b4e5eb3ee8aeb7d71ccb5f5842ba381d7c45b4bc92dcb863664a",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/channel_only_state.json",
+      "sha256": "fcdcfc331f48b19ccf6404a1b8967efaae2b3503944e340ebc9e642c33f24998",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/receipt.json",
+      "sha256": "e1bad60072c5bc4bc2be6a4977bc4de872f4b56ae637a26e255ec91a919ec760",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts/summary.csv",
+      "sha256": "b5e8b75954e4e1c88f9c222b116be998921e0b9fe4f00afd44893ce1196e314c",
+      "identical": true
+    },
+    {
+      "path": "2025/accounts.png",
+      "sha256": "5c9f37c46fe9dd7c196b6f55d3493b26ebc559015319c853adb646f849008529",
+      "identical": true
+    },
+    {
+      "path": "2025/baseline/F.parquet",
+      "sha256": "f17f9fd38b33efbba7c792dabfc7e155836db11bd49611025819ad9b83322806",
+      "identical": true
+    },
+    {
+      "path": "2025/baseline/F_state.json",
+      "sha256": "d6dd1db1e5ffcdff3a3d6f77c0edd74ff73a47fd9eb3425443ebf822d5282620",
+      "identical": true
+    },
+    {
+      "path": "2025/baseline/receipt.json",
+      "sha256": "d46a274847414f9296e53ca8fcd14a5892c81ba12f486b3a70619cbf70f42e85",
+      "identical": true
+    },
+    {
+      "path": "2025/baseline/summary.csv",
+      "sha256": "992862d29bcdbf4136b6f390e8d33d756719e9b673bc0156005044e7973768b6",
+      "identical": true
+    },
+    {
+      "path": "annual.csv",
+      "sha256": "28fc1a09d7119bd8b3451cfd65a2bc8c0dae1561f710a8b6c6defc6217854c02",
+      "identical": true
+    },
+    {
+      "path": "cluster_block20.npy",
+      "sha256": "fb95e83cc235630472194fb9567d5abdc756231b0f9c942bd1395857a93731bc",
+      "identical": true
+    },
+    {
+      "path": "cluster_circular20.npy",
+      "sha256": "47159674f0f5914e60bd5929152eba823d89acdbda3a927d7ffd9b1a623a7b6d",
+      "identical": true
+    },
+    {
+      "path": "clustering.json",
+      "sha256": "760624ef5f9137530fb6ee273877e97852c984e31d66a61eb523c781bfe8a128",
+      "identical": true
+    },
+    {
+      "path": "comparison.csv",
+      "sha256": "cab32e25faae7d715d78f71a6b48c7fc8bfbb89d8dae9a396d3d78b71e08daff",
+      "identical": true
+    },
+    {
+      "path": "interval_decomposition.csv",
+      "sha256": "7c1bc124f035513b0ec8ca6a4a3d15024759aac56af00665022ad25ab1fae456",
+      "identical": true
+    },
+    {
+      "path": "ledgers/A/orders.parquet",
+      "sha256": "96a540f85641026487243c0d697334875f13a22cb888f413259c80e672bb2daa",
+      "identical": true
+    },
+    {
+      "path": "ledgers/A/trades.parquet",
+      "sha256": "28df10395c581e0313aeaf4e62fe006f892d4832437d9e2f0e3b87a2d786fe8d",
+      "identical": true
+    },
+    {
+      "path": "ledgers/AB/orders.parquet",
+      "sha256": "8ecf0e739aad91b8cfaf34b4449afa64ad7bbe1330be369b3e43f923f3a6cfe4",
+      "identical": true
+    },
+    {
+      "path": "ledgers/AB/trades.parquet",
+      "sha256": "615fbfb881bb95ddb4bf6b051f5294b7572b2b23853dfe4dcf069e77fc645d0f",
+      "identical": true
+    },
+    {
+      "path": "ledgers/ABC/orders.parquet",
+      "sha256": "90fd24db1cc200736b53b22aa513cb8f850c75f670d34b1fab21db550d164e5c",
+      "identical": true
+    },
+    {
+      "path": "ledgers/ABC/trades.parquet",
+      "sha256": "ab60fd4f6c306dade6fdd4cdb1839e0a0a81d25e976b549817ab26dc9973e7ce",
+      "identical": true
+    },
+    {
+      "path": "ledgers/AC/orders.parquet",
+      "sha256": "f750c8c7e01105eda0e7af96677a19dbbaaf3844baefbde96b7d4a604ec57598",
+      "identical": true
+    },
+    {
+      "path": "ledgers/AC/trades.parquet",
+      "sha256": "21f6180bd2aec2725975adae97ca229cd92ec85715ceaf8c9bd9919fde0b5ae3",
+      "identical": true
+    },
+    {
+      "path": "ledgers/B/orders.parquet",
+      "sha256": "1fe00e6de9ad93d898d73f0e732a99187549ab186fe85919c6a6a0558ed9daa7",
+      "identical": true
+    },
+    {
+      "path": "ledgers/B/trades.parquet",
+      "sha256": "d3ac54ecffb2aad26fc6671cbdbbdad03196a90605883db4afd5fc5507660494",
+      "identical": true
+    },
+    {
+      "path": "ledgers/BC/orders.parquet",
+      "sha256": "72d55c653f978f436c1a8b27fa419c41065cf55961a8ca3de234f1c19c1835ca",
+      "identical": true
+    },
+    {
+      "path": "ledgers/BC/trades.parquet",
+      "sha256": "863abe86b2753781dfe827abaec54953f038083f98e0dfafa0999770d3a7c949",
+      "identical": true
+    },
+    {
+      "path": "ledgers/C/orders.parquet",
+      "sha256": "de32e0f2917d7f0a8acf3f612f223610c88147e9ee099785359a9a01944b4fda",
+      "identical": true
+    },
+    {
+      "path": "ledgers/C/trades.parquet",
+      "sha256": "5ed4c18180740226359f041f668aa830122fe30173a321031a8626c437b2cf90",
+      "identical": true
+    },
+    {
+      "path": "ledgers/F/orders.parquet",
+      "sha256": "15c89bbd7047724e3a899d3eee61a2e49a69e8a50c8f7b24484dde9f79aca040",
+      "identical": true
+    },
+    {
+      "path": "ledgers/F/trades.parquet",
+      "sha256": "27e9ee834633eeabe043db7004f2ecf819770d3790bb53c6d4e5d388eb63f55c",
+      "identical": true
+    },
+    {
+      "path": "ledgers/channel_only/orders.parquet",
+      "sha256": "116db0d416c75fcb71be499ea84ab2e2bb829ace4729ff9dec7b9ba31554f797",
+      "identical": true
+    },
+    {
+      "path": "ledgers/channel_only/trades.parquet",
+      "sha256": "2dc7b63e3bf81fef8ec8dcadd206742b5965c08bb0c1d8136190a3627485acbb",
+      "identical": true
+    },
+    {
+      "path": "native_channel.parquet",
+      "sha256": "0c164fb57b3e752ccd11afddd49c1c96390b2cb534ad6c62fee5e9ac4577ce77",
+      "identical": true
+    },
+    {
+      "path": "nonoverlap_blocks.csv",
+      "sha256": "2c5aeda99dcf6c39fb26574ff3dd7fe69503a771087872efeb8c0dec9966b3ef",
+      "identical": true
+    },
+    {
+      "path": "nonoverlap_pairs.csv",
+      "sha256": "00514734128981dd02566d8899c14972bafd840e04bfa690e76d76c9e936888f",
+      "identical": true
+    },
+    {
+      "path": "prepared.json",
+      "sha256": "fcc97fd28b2f47b39ef0a8c2670842bb3062afbf2af4c5d95480245423aa5137",
+      "identical": true
+    },
+    {
+      "path": "quarterly.csv",
+      "sha256": "c43ee65959bc2292d37bdf49df5822d60c57587e1560ef2084a20c2bff6ef98a",
+      "identical": true
+    },
+    {
+      "path": "science_acceptance.json",
+      "sha256": "fc6c474f3b4355e3bd2c56bd0959d1a7110bb930b287d2940c34c69eec4b85a4",
+      "identical": true
+    },
+    {
+      "path": "signals.parquet",
+      "sha256": "35033309ed95c2878f7e9f42780e0bd916b68a3dd58d27258695023f6d20070a",
+      "identical": true
+    },
+    {
+      "path": "veto_location_null.npy",
+      "sha256": "64668cd470c6115785bb5e7ad71f4f256b76a31d2ea2827cac4be949daeace19",
+      "identical": true
+    },
+    {
+      "path": "veto_reference.json",
+      "sha256": "45ba47dd2c8aab4b1f05fcccf090882893a8487636c2a0a91132818fd5dc362d",
+      "identical": true
+    }
+  ],
+  "independent_account_equation_checks": [
+    {
+      "policy": "F",
+      "independent_cumulative_nav_max_error": 4.529709940470639e-14
+    },
+    {
+      "policy": "A",
+      "independent_cumulative_nav_max_error": 3.8191672047105385e-14
+    },
+    {
+      "policy": "B",
+      "independent_cumulative_nav_max_error": 4.085620730620576e-14
+    },
+    {
+      "policy": "AB",
+      "independent_cumulative_nav_max_error": 6.039613253960852e-14
+    },
+    {
+      "policy": "C",
+      "independent_cumulative_nav_max_error": 3.552713678800501e-14
+    },
+    {
+      "policy": "AC",
+      "independent_cumulative_nav_max_error": 4.618527782440651e-14
+    },
+    {
+      "policy": "BC",
+      "independent_cumulative_nav_max_error": 5.773159728050814e-14
+    },
+    {
+      "policy": "ABC",
+      "independent_cumulative_nav_max_error": 5.950795411990839e-14
+    },
+    {
+      "policy": "channel_only",
+      "independent_cumulative_nav_max_error": 6.039613253960852e-14
+    }
+  ],
+  "test_command": [
+    "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-q"
+  ],
+  "test_exit_code": 0,
+  "test_stdout": "........................................................................ [ 81%]\n................                                                         [100%]\n88 passed in 1.57s\n",
+  "replay_source_sha256": "ad89946192e5aa8302a781d55a0659e42babf4e9b1b1e6bcd3d1105f982fe481",
+  "report_source_sha256": "1ee027bbe38006641ba75989ae22e15d9d4203ad866333ab6da5bc59ff8b5ea3",
+  "actual_etf_option_execution_validated": false,
+  "fresh_oos": false,
+  "production_authority": false
+}

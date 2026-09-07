@@ -1,0 +1,9 @@
+table,cell,stages,trades,winning_trades,earliest_profitable_counterexample_start,earliest_profitable_counterexample_end,earliest_losing_example_start,earliest_losing_example_end
+eff_fast,00,39,607,226,2021-01-11,2021-01-15,2021-04-06,2021-04-12
+eff_fast,01,79,1139,448,2021-03-15,2021-03-19,2021-04-27,2021-05-06
+eff_fast,10,79,1128,435,2021-01-18,2021-01-22,2021-01-04,2021-01-08
+eff_fast,11,39,516,195,2021-03-22,2021-03-26,2021-03-01,2021-03-05
+slow_threshold,00,54,820,318,2021-01-11,2021-01-15,2021-04-27,2021-05-06
+slow_threshold,01,64,926,350,2021-03-15,2021-03-19,2021-07-12,2021-07-16
+slow_threshold,10,64,864,348,2021-02-08,2021-02-19,2021-03-08,2021-03-12
+slow_threshold,11,54,780,288,2021-02-22,2021-02-26,2021-01-04,2021-01-08
