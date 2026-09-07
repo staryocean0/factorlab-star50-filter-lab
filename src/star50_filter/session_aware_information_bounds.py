@@ -1,8 +1,8 @@
 """Results-blind session-aware information-set bounds (v0.6.17).
 
-This module deliberately does *not* reproduce DataHub bucket logic.  The
+This module deliberately does *not* reproduce DataHub bucket logic. The
 DataHub export must provide explicit leg/support membership and expected step
-ordinals.  That makes the archived DataHub contract the authority and prevents
+ordinals. That makes the archived DataHub contract the authority and prevents
 FactorLab from silently replacing actual support with adjacent-close or fixed-
 five assumptions.
 """
@@ -20,8 +20,6 @@ PROTOCOL_VERSION = "session_aware_information_set_bounds_v0.6.17"
 AUTHORITATIVE_SOURCE_ROWS = 349_923
 UNAUTHORIZED_FACTORSOURCE_ROWS = 350_561
 
-# Inputs carrying realised economic/trading outcomes are forbidden in this
-# preanalysis.  Geometry/support labels are permitted; future returns are not.
 FORBIDDEN_RESULT_TOKENS = (
     "pnl", "profit", "loss", "return", "ret_fwd", "future_ret", "forward_ret",
     "drawdown", "mdd", "sharpe", "trade_result", "oos_result", "target_y",
@@ -75,12 +73,7 @@ def adjudicate_source_identity(
     expected_sha256: str | None = None,
     authoritative: bool = True,
 ) -> SourceIdentity:
-    """Adjudicate source identity before any scientific replay.
-
-    Authoritative replay is fail-closed.  The known 350,561-row FactorLab
-    ``1m_official`` surface is explicitly rejected rather than silently treated
-    as the 349,923-row DataHub source surface.
-    """
+    """Adjudicate source identity before any scientific replay."""
     status = "accepted"
     if rows != expected_rows:
         if rows == UNAUTHORIZED_FACTORSOURCE_ROWS:
@@ -98,17 +91,17 @@ def adjudicate_source_identity(
     return identity
 
 
-def motion_concentration(prices: np.ndarray) -> float:
-    """Frozen displacement-concentration statistic inherited from wave_shape.
+def motion_concentration(log_prices: np.ndarray) -> float:
+    """Inherited displacement-concentration statistic from ``wave_shape.py``.
 
-    For n steps with absolute motions a_i, C = n * sum((a_i/sum(a))^2).
-    Thus C is 1 for evenly distributed motion and n when one step carries all
-    displacement.  A zero-motion path is undefined rather than coerced.
+    Input is a log-price path. For n steps with absolute log motions a_i,
+    C = n * sum((a_i/sum(a))^2). C=1 for evenly distributed displacement and
+    C=n when one step carries all displacement. Zero-motion paths are undefined.
     """
-    prices = np.asarray(prices, dtype=float)
-    if prices.ndim != 1 or len(prices) < 2 or not np.isfinite(prices).all():
-        raise IntakeError("prices must contain at least two finite observations")
-    motion = np.abs(np.diff(prices))
+    log_prices = np.asarray(log_prices, dtype=float)
+    if log_prices.ndim != 1 or len(log_prices) < 2 or not np.isfinite(log_prices).all():
+        raise IntakeError("log_prices must contain at least two finite observations")
+    motion = np.abs(np.diff(log_prices))
     total = float(motion.sum())
     if total <= 0:
         return float("nan")
@@ -142,18 +135,21 @@ def _validate_leg_support(leg: pd.Series, support: pd.DataFrame) -> tuple[pd.Dat
     return support, expected, observed_n
 
 
-def _support_path(observed: pd.DataFrame) -> np.ndarray:
-    """Build the supported close path without importing an adjacent bar close.
+def _support_log_path(observed: pd.DataFrame) -> np.ndarray:
+    """Build actual-support log path without importing an adjacent bar close.
 
-    Each supported source minute contributes one step: first source-minute open
-    -> first close, then source-minute closes in support order.  A session gap
-    before the first source row is therefore not smuggled into the native bar.
+    Each source minute contributes one step: first source-minute open -> first
+    close, then support-ordered closes. A prior-session/prior-bucket close is
+    never injected. This is the v0.6.17 fix for the v0.6.15 adjacency error.
     """
     if observed.empty:
         raise IntakeError("cannot build path from empty support")
     first_open = float(observed.iloc[0].open)
     closes = observed.close.to_numpy(float)
-    return np.r_[first_open, closes]
+    prices = np.r_[first_open, closes]
+    if not np.isfinite(prices).all() or np.any(prices <= 0):
+        raise IntakeError("supported prices must be finite and strictly positive")
+    return np.log(prices)
 
 
 def _ohlc_consistency(leg: pd.Series, observed: pd.DataFrame, tol: float) -> str:
@@ -184,8 +180,6 @@ def evaluate_information_set_bounds(
 
     Complete actual support collapses the interval to the oracle concentration.
     Any missing/dropped support step receives the full universal [1, n] interval.
-    This is intentionally conservative and prevents better-looking statistics by
-    deleting session-edge legs or inventing values inside unsupported gaps.
     """
     _require_columns(legs, REQUIRED_LEG_COLUMNS, "legs")
     _require_columns(support, REQUIRED_SUPPORT_COLUMNS, "support")
@@ -201,14 +195,22 @@ def evaluate_information_set_bounds(
 
     rows: list[dict] = []
     grouped = {key: value.copy() for key, value in support.groupby("leg_id", sort=False)}
-    overlay_cols = [c for c in ("published", "strict_pair", "qualified", "offset", "session_id", "boundary_class", "native_bar_id") if c in legs.columns]
+    overlay_cols = [c for c in (
+        "published", "strict_pair", "qualified", "offset", "session_id",
+        "boundary_class", "native_bar_id"
+    ) if c in legs.columns]
 
     for _, leg in legs.iterrows():
         leg_support = grouped.get(leg.leg_id, support.iloc[0:0].copy())
         leg_support, expected, observed_n = _validate_leg_support(leg, leg_support)
-        observed = leg_support.loc[leg_support.observed.astype(bool)].copy()
-        complete_ordinals = set(leg_support.loc[leg_support.observed.astype(bool), "step_ordinal"].astype(int)) == set(range(expected))
-        finite_ohlc = (not observed.empty and np.isfinite(observed[["open", "high", "low", "close"]].to_numpy(float)).all())
+        observed_mask = leg_support.observed.astype(bool) if not leg_support.empty else pd.Series(dtype=bool)
+        observed = leg_support.loc[observed_mask].copy() if not leg_support.empty else leg_support.copy()
+        complete_ordinals = set(leg_support.loc[observed_mask, "step_ordinal"].astype(int)) == set(range(expected)) if not leg_support.empty else False
+        finite_ohlc = (
+            not observed.empty
+            and np.isfinite(observed[["open", "high", "low", "close"]].to_numpy(float)).all()
+            and (observed[["open", "high", "low", "close"]].to_numpy(float) > 0).all()
+        )
         support_complete = bool(observed_n == expected and complete_ordinals and finite_ohlc)
         ohlc_status = _ohlc_consistency(leg, observed, ohlc_tolerance) if support_complete else "not_comparable"
 
@@ -220,10 +222,10 @@ def evaluate_information_set_bounds(
         reason = "support_gap"
 
         if support_complete and ohlc_status != "mismatch":
-            path = _support_path(observed)
-            motion = np.abs(np.diff(path))
+            log_path = _support_log_path(observed)
+            motion = np.abs(np.diff(log_path))
             total_motion = float(motion.sum())
-            oracle = motion_concentration(path)
+            oracle = motion_concentration(log_path)
             if np.isfinite(oracle):
                 lower = upper = oracle
                 oracle_comparable = True
@@ -243,7 +245,7 @@ def evaluate_information_set_bounds(
             "support_gap": not support_complete,
             "ohlc_consistency": ohlc_status,
             "oracle_comparable": oracle_comparable,
-            "motion_total": total_motion,
+            "motion_total_log": total_motion,
             "motion_concentration_oracle": oracle,
             "concentration_lower": float(lower),
             "concentration_upper": float(upper),
