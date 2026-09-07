@@ -1,0 +1,47 @@
+{
+  "by_year": {
+    "2024": {
+      "common_volatility_baseline": {
+        "events": {"all_frozen_quiet_events": 14, "complete_prewindow_events": 2, "complete_prewindow_hit_events": 0, "complete_prewindow_recall": 0.0, "event_recall": 0.46153846153846156, "events_with_any_eligible_prewindow": 13, "hit_events": 6, "mean_prewindow_support_fraction": 0.6171367094444017, "median_max_strict_lead_minutes": 10.0},
+        "rows": {"alarm_segments": 1849, "clean_label_rate": 0.0055567132041397516, "continuous_auc": 0.4439487000456528, "label_rate": 0.005160009923096006, "positive_rows": 104, "risk_coverage": 0.28568593401141157, "risk_difference_pp": -0.13885992756923743, "risk_label_rate": 0.004168113928447377, "risk_ratio": 0.7501042028482111, "risk_rows": 5758, "rows": 20155},
+        "session_permutation_reference": {"eligible_events": 13, "fraction_reference_recall_gte_observed_descriptive": 0.35, "observed_event_recall": 0.46153846153846156, "reference_recall_quantiles": [0.15384615384615385, 0.38461538461538464, 0.6153846153846154], "repeats": 5000, "status": "computed"}
+      },
+      "primary_scale": {
+        "events": {"all_frozen_quiet_events": 14, "complete_prewindow_events": 2, "complete_prewindow_hit_events": 2, "complete_prewindow_recall": 1.0, "event_recall": 0.46153846153846156, "events_with_any_eligible_prewindow": 13, "hit_events": 6, "mean_prewindow_support_fraction": 0.6171367094444017, "median_max_strict_lead_minutes": 14.5},
+        "rows": {"alarm_segments": 1364, "clean_label_rate": 0.00425531914893617, "continuous_auc": 0.634413495586255, "label_rate": 0.005160009923096006, "positive_rows": 104, "risk_coverage": 0.16050607789630364, "risk_difference_pp": 0.5636489197277122, "risk_label_rate": 0.009891808346213293, "risk_ratio": 2.3245749613601236, "risk_rows": 3235, "rows": 20155},
+        "session_permutation_reference": {"eligible_events": 13, "fraction_reference_recall_gte_observed_descriptive": 0.188, "observed_event_recall": 0.46153846153846156, "reference_recall_quantiles": [0.07692307692307693, 0.3076923076923077, 0.5384615384615384], "repeats": 5000, "status": "computed"}
+      },
+      "year": 2024
+    },
+    "2025": {
+      "common_volatility_baseline": {
+        "events": {"all_frozen_quiet_events": 2, "complete_prewindow_events": 0, "complete_prewindow_hit_events": 0, "complete_prewindow_recall": null, "event_recall": 1.0, "events_with_any_eligible_prewindow": 2, "hit_events": 2, "mean_prewindow_support_fraction": 0.5357142857142857, "median_max_strict_lead_minutes": 9.0},
+        "rows": {"alarm_segments": 2092, "clean_label_rate": 0.00026476039184537993, "continuous_auc": 0.7128543136526798, "label_rate": 0.0006957651096989656, "positive_rows": 15, "risk_coverage": 0.2992253815112018, "risk_difference_pp": 0.14404015985437071, "risk_label_rate": 0.0017051619903890869, "risk_ratio": 6.4403968376995815, "risk_rows": 6451, "rows": 21559},
+        "session_permutation_reference": {"eligible_events": 2, "fraction_reference_recall_gte_observed_descriptive": 0.2132, "observed_event_recall": 1.0, "reference_recall_quantiles": [0.0, 0.5, 1.0], "repeats": 5000, "status": "computed"}
+      },
+      "primary_scale": {
+        "events": {"all_frozen_quiet_events": 2, "complete_prewindow_events": 0, "complete_prewindow_hit_events": 0, "complete_prewindow_recall": null, "event_recall": 0.5, "events_with_any_eligible_prewindow": 2, "hit_events": 1, "mean_prewindow_support_fraction": 0.5357142857142857, "median_max_strict_lead_minutes": 4.0},
+        "rows": {"alarm_segments": 1544, "clean_label_rate": 0.0007923033389926429, "continuous_auc": 0.4317892065849734, "label_rate": 0.0006957651096989656, "positive_rows": 15, "risk_coverage": 0.1803887007746185, "risk_difference_pp": -0.05351678285786547, "risk_label_rate": 0.00025713551041398817, "risk_ratio": 0.3245417477867979, "risk_rows": 3889, "rows": 21559},
+        "session_permutation_reference": {"eligible_events": 2, "fraction_reference_recall_gte_observed_descriptive": 0.5524, "observed_event_recall": 0.5, "reference_recall_quantiles": [0.0, 0.5, 1.0], "repeats": 5000, "status": "computed"}
+      },
+      "year": 2025
+    }
+  },
+  "calibration_rows": 40581,
+  "calibration_uses_labels": false,
+  "calibration_years": [2022, 2023],
+  "classifier_fit": false,
+  "decision_minutes": [31, 105],
+  "evaluation_years": [2024, 2025],
+  "fresh_oos": false,
+  "frozen_primary_score": "0.5*((logE30-logE240)+(logE60-logE240))",
+  "future_event_window": [2, 15],
+  "new_morphology_feature_defined": false,
+  "read_2026": false,
+  "risk_quantile": 0.8,
+  "schema": "first_shock_quiet_precursor_gate_v3.3_results",
+  "symbol": "000688.SH",
+  "threshold_groups": 148,
+  "threshold_groups_available": 148,
+  "trading_or_production_evaluated": false
+}
