@@ -1,0 +1,31 @@
+{
+  "schema": "first_shock_morphology_history_support_v3.1",
+  "registered_before_results": true,
+  "inherits_taxonomy_from": "first_shock_morphology_v3.0",
+  "purpose": "determine whether already-authorized older history supplies enough independent quiet-first events; no model fit",
+  "symbols_and_ranges": {
+    "000688.SH": ["2020-07-23", "2023-12-31"],
+    "000852.SH": ["2015-01-05", "2023-12-31"]
+  },
+  "evaluation_years_excluded": [2024, 2025],
+  "event_definition": "same original minute first-tail label and V3 morphology thresholds without modification",
+  "primary_seconds_grid": 15,
+  "primary_gap_limit_seconds": 15,
+  "strict_sensitivity_gap_limit_seconds": 3,
+  "independent_event_minimum_for_future_modeling": 20,
+  "outputs": [
+    "year-by-year tail taxonomy counts",
+    "roundtrip-first counts",
+    "unknown-support counts",
+    "cumulative independent event readiness by symbol"
+  ],
+  "restrictions": [
+    "no model training",
+    "no threshold relaxation",
+    "no 2024-2025 reuse for readiness",
+    "no 2026 reads",
+    "CSI1000 older history may support own-history research but cannot be compared to STAR50 as same-era evidence"
+  ],
+  "fresh_oos": false,
+  "production_authority": false
+}
