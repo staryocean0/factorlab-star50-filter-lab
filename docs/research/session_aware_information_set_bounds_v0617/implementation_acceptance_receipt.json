@@ -1,0 +1,63 @@
+{
+  "task": "CL-STAR-RISK-20260907",
+  "protocol_version": "session_aware_information_set_bounds_v0.6.17",
+  "branch": "research/session-aware-information-set-bounds-v0617-20260907",
+  "base_commit": "b5504ba68053e22bcad11aa3149e761b445a64f8",
+  "implementation_commit_tested": "b6930dcd16bb47664b1edcbc13e2bdabf779cf4a",
+  "implementation_status": "PASS",
+  "real_authoritative_replay_status": "NOT_EXECUTED",
+  "results_blind": true,
+  "morphology_replication_status": "morphology_replication_not_yet_accepted",
+  "github_actions": {
+    "workflow": ".github/workflows/ci.yml",
+    "run_id": 34111701647,
+    "job_id": 101709204616,
+    "conclusion": "success",
+    "theme_validator": "success",
+    "pytest": {
+      "status": "success",
+      "passed": 159,
+      "skipped": 1,
+      "failed": 0,
+      "elapsed_seconds_reported": 2.35,
+      "skip_scope": "tests/test_three_proposals.py::test_exact_l3_prefix_and_scoped_module_restoration",
+      "skip_reason": "canonical local L3 source files are not mounted on GitHub-hosted runner; exact assertions remain mandatory when those sources are present"
+    },
+    "drawdown_validator": {
+      "status": "success",
+      "reported_status": "pass",
+      "files": 70,
+      "sessions": 5,
+      "baseline_reproduced": true,
+      "account_and_attribution_identities": true,
+      "fresh_oos": false,
+      "production_authority": false
+    }
+  },
+  "frozen_blobs": {
+    "src/star50_filter/session_aware_information_bounds.py": "87e02e7f56737da39d9a2976abe51b677859881b",
+    "scripts/run_session_aware_information_bounds_v0617.py": "07a050a53b4b5194c4b1efc08b909884b388a408",
+    "tests/test_session_aware_information_bounds.py": "bb0236d501c689c2f764601b94c8a92a437a5862",
+    "docs/research/session_aware_information_set_bounds_v0617/FROZEN_PROTOCOL.md": "8810e4d13474398a0fec0f092aa57863ce78be82",
+    "tests/test_three_proposals.py_cloud_portability_guard": "c479b41b3a926254b2d2c4c51768907c7f76a8ba"
+  },
+  "scientific_invariants": {
+    "metric": "n * sum((abs(delta_log_price) / sum(abs(delta_log_price)))^2)",
+    "complete_support": "collapse_to_oracle_if_source_bound_and_native_ohlc_consistent",
+    "missing_or_dropped_support": "retain_leg_and_use_universal_[1,n]_interval",
+    "previous_adjacent_native_close_injected": false,
+    "fixed_five_topology_assumed": false,
+    "authoritative_datahub_source_rows": 349923,
+    "known_factorlab_1m_official_rows_rejected_as_authority": 350561
+  },
+  "still_frozen": [
+    "morphology_replication_acceptance",
+    "direction_labels",
+    "third_wave_labels",
+    "returns_or_pnl",
+    "drawdown_effectiveness_claims",
+    "fresh_oos",
+    "trading_or_position_sizing",
+    "production"
+  ]
+}
