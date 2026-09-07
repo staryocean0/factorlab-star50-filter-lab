@@ -1,0 +1,89 @@
+{
+  "schema": "first_shock_event_support_census_v3.6",
+  "registered_before_outputs": true,
+  "purpose": "determine whether STAR50 and CSI1000 contain enough ordinary-state, cross-index-isolated first-tail events to justify a later model-free cross-index residual precursor-existence study; this census does not fit or evaluate a predictor",
+  "symbols": ["000688.SH", "000852.SH"],
+  "frequency": "1m authoritative bounded cloud surface",
+  "years": {
+    "historical_state_reference": [2022, 2023],
+    "primary_census": [2024, 2025],
+    "raw_event_count_context": [2022, 2023, 2024, 2025]
+  },
+  "fresh_oos": false,
+  "read_2026": false,
+  "event_definition": {
+    "inherits": "first_shock_gate_v1",
+    "tail_event": "abs(return_bp) > 30 and abs(return_bp) > 4 * sigma_pre",
+    "sigma_pre": "sqrt(trailing 30-minute mean squared return), shifted one minute so the current return is excluded",
+    "first_tail": "current tail_event and no tail_event in the prior 30 minutes within the same half-session",
+    "precursor_state_time": "e-2 close",
+    "precursor_eligible_event_minutes": [33, 120],
+    "reason": "e-2 must be after the first 30 half-session minutes; no e-1 or event-minute state is used for precursor support classification"
+  },
+  "cross_index_event_subtype": {
+    "descriptive_only_not_predictor": true,
+    "peer_tail_nearby": "peer index has any frozen V1 tail_event in the same half-session within event minute e +/- 2 minutes",
+    "isolated_first_tail": "no peer tail_event in e +/- 2 minutes",
+    "note": "this subtype is an ex-post census label only and may never be used as an input feature"
+  },
+  "historical_state_support": {
+    "state_dimensions": ["log_sigma_pre", "log_rv480"],
+    "rv480": "trailing 480-minute mean squared return with minimum 456 finite observations, same frozen state definition used by v3.5",
+    "reference": "2022-2023 exact same half-session/minute rows, minutes 31-118",
+    "neighbor_count": 100,
+    "standardization": "within-reference exact-group population standard deviation with 1e-8 floor",
+    "support_limit": "99th percentile of each reference row's leave-one-out 100th-neighbor distance",
+    "evaluation_supported": "100th-neighbor distance <= historical support limit",
+    "no_fallback_group": true,
+    "extrapolated_events_retained": true
+  },
+  "historical_upper_state_rank": {
+    "labels_used": false,
+    "marginal_percentiles": "midrank percentile of each e-2 log_sigma_pre and log_rv480 against its own index 2022-2023 exact half-session/minute reference",
+    "joint_upper_state_rank": "max(target_sigma_pct, target_rv480_pct, peer_sigma_pct, peer_rv480_pct)",
+    "fixed_bins": [
+      {"name": "q00_50", "lower_exclusive": null, "upper_inclusive": 0.50},
+      {"name": "q50_80", "lower_exclusive": 0.50, "upper_inclusive": 0.80},
+      {"name": "q80_95", "lower_exclusive": 0.80, "upper_inclusive": 0.95},
+      {"name": "q95_100", "lower_exclusive": 0.95, "upper_inclusive": 1.00}
+    ],
+    "ordinary_common_state": "both target and peer are historically supported at e-2 and joint_upper_state_rank <= 0.80",
+    "reason": "ordinary means neither index is already in the historical upper 20% of either frozen volatility-state coordinate; low-volatility states remain ordinary only if they are inside the historical support domain"
+  },
+  "support_classes": [
+    "both_supported",
+    "target_extrapolated_only",
+    "peer_extrapolated_only",
+    "both_extrapolated",
+    "peer_or_target_state_unavailable"
+  ],
+  "outputs": [
+    "raw frozen first-tail counts by symbol/year",
+    "precursor-eligible first-tail counts by symbol/year",
+    "event table containing only event identity, e-2 past-state/support descriptors and ex-post peer-tail subtype",
+    "counts by symbol/year/support class",
+    "counts by symbol/year/joint upper-state bin among both-supported events",
+    "ordinary-common-state event counts",
+    "ordinary-common-state isolated first-tail event counts",
+    "same outputs split by morning/afternoon and fixed event-minute bands 33-60,61-90,91-120",
+    "synchronized-state availability diagnostics"
+  ],
+  "downstream_admission_rule": {
+    "classifier_or_gate_model": "prohibited regardless of census result",
+    "model_free_cross_index_residual_precursor_existence_may_open_for_target_only_if": "ordinary-common-state isolated first-tail count >= 10 separately in 2024 and 2025 for that target",
+    "if_rule_passes": "a new research family may preregister one results-blind cross-index residual precursor score and test event-vs-matched-control existence only; no gate, no threshold scan",
+    "if_rule_fails": "do not fit a sparse-event predictor for that target on consumed 2024-2025 history; wait for additional genuinely new-period support or change the scientific question rather than lowering the count rule"
+  },
+  "fixed_event_minute_bands": [[33,60],[61,90],[91,120]],
+  "do_not": [
+    "use V3.2/V3.3/V3.4 morphology score or try to rescue that stopped route",
+    "fit a classifier, regression, Hawkes model or threshold gate",
+    "choose a state bin after seeing event counts",
+    "drop state-extrapolated or peer-nearby events",
+    "use e-1 or event-minute state as precursor support",
+    "treat cross-index peer-tail subtype as a causal input",
+    "read 2026",
+    "evaluate returns, PnL, trading, position sizing or production"
+  ],
+  "production_authority": false
+}
