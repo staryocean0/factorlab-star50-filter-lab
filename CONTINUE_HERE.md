@@ -1,15 +1,34 @@
 # Continue here
 
-**Current entry supersedes the numbered historical steps below:**
-[Cloud risk-gate handoff, 2026-09-07](docs/handoff/cloud_risk_gate_20260907/HANDOFF.md).
-Run `python scripts/validate_cloud_risk_gate_package.py`. Current work is
-two-index Kline/volatility risk research, not a strategy/account continuation.
+**Current entry supersedes the numbered historical steps below.**
+
+Read first:
+1. `docs/research/post_shock_recovery_v1/STABLE_STATE_SPEC.md`
+2. `docs/research/post_shock_recovery_2026/RESULTS.md`
+3. `docs/ops/data_requirements_star50_risk_research.md`
+4. `docs/handoff/cloud_risk_gate_20260907/HANDOFF.md`
+
+Current research line is now frozen as:
+
+`observed first shock -> Unsafe -> continuous Recovering score`
+
+Primary Recovering score: trailing completed-5m RMS divided by the frozen pre-shock `sigma_pre`.
+
+`Clean` is **not** an online validated transition. Do not re-open release-rule/threshold/model tuning on the already-consumed 2024-2025 data or the 2026-01-05..2026-08-21 validation snapshot. Re-open Clean research only with genuinely new independent events after the current same-semantics cutoff (`2026-08-21`) or a new preregistered materially different information layer.
+
+The core state line needs native 1m STAR50/CSI1000 data plus immutable manifest/quality receipts. 3s observations remain important for path/measurement research but are not required to compute the stable recovery score. See the data-requirements document for the shared data-tool contract.
+
+Current work remains market-state research, not strategy/account/production continuation.
+
+---
+
+## Historical steps retained for audit only
 
 1. Read `docs/user/cloud_execution_prompt.md` and `docs/governance/data_usage_declaration.json`.
 2. Validate `python scripts/validate_theme_package.py`.
-3. Current baseline: 5m+0, 1-hour 1st-order Butterworth lowpass, vol-scaled
-   hysteresis k=1. Remaining problem is working-band saw vs slower drift.
-4. Do not use 2026 to pick parameters.
+3. Historical baseline: 5m+0, 1-hour 1st-order Butterworth lowpass, vol-scaled
+   hysteresis k=1. Remaining problem was working-band saw vs slower drift.
+4. Historical instruction said not to use 2026 to pick parameters. A later explicit owner authorization allowed a bounded 2026 held-out recovery-state validation; that later authorization does not permit tuning on the validation outcomes.
 5. First takeover drawdown study: `docs/research/drawdown_conditions/report.md`.
    Baseline exactly reproduced (sigma population std, ddof=0). Fixed slow-conflict
    half-exposure diagnostic reduces zero-cost primary-view MDD 14.32% to10.68%,
@@ -27,4 +46,4 @@ two-index Kline/volatility risk research, not a strategy/account continuation.
    bars and first-observed quotes following synthetic missing-minute repair.
    Source publication semantics and tradable execution remain unresolved.
    Validate `python scripts/finalize_execution_audit.py --validate-only`.
-   The current scientific status remains `infrastructure or measurement gap`.
+   The historical scientific status was `infrastructure or measurement gap`.
