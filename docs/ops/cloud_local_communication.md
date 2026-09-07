@@ -19,7 +19,13 @@
 - tested scientific implementation commit：`b6930dcd16bb47664b1edcbc13e2bdabf779cf4a`。
 - GitHub Actions `34111701647` / job `101709204616`：完整 CI PASS；pytest `159 passed, 1 skipped`。唯一 skip 是 GitHub runner 未挂载 canonical local L3 三源码；该历史 exact-prefix 测试在本地源码存在时仍必须执行，未放宽科学断言。
 - implementation acceptance receipt：`docs/research/session_aware_information_set_bounds_v0617/implementation_acceptance_receipt.json`。
-- **当前本地请求已发出**：执行 exact DataHub 349,923-row authoritative replay，详见 `docs/ops/session_aware_information_set_bounds_v0617_LOCAL_REPLAY_REQUEST.md`。
-- local replay 必须 fail closed：prior authoritative source expected SHA-256 与 prior v0.6.15 leg-universe expected SHA-256 都必须是本请求之前已存在的 frozen receipts；不允许现场算 hash 后自证，也不允许用 350,561-row FactorLab `1m_official` 替代。
-- 本地回传建议分支：`local/session-aware-information-set-bounds-v0617-replay-20260907`；只回传 bounds/summary/receipts/deterministic boundary samples，不上传大型父数据，不看 returns/P&L/OOS。
-- real authoritative replay 在收到并云端复核本地 commit 前仍为 `NOT_EXECUTED`。`morphology_replication_not_yet_accepted`、direction、third-wave、returns、OOS、trading、production 全部继续冻结。
+- 原 local replay request：`docs/ops/session_aware_information_set_bounds_v0617_LOCAL_REPLAY_REQUEST.md`；其中两个 prior identity gates 继续具有约束力。
+- 云端进一步做 prior-identity preflight 后，**没有在当前仓库/可追溯 merge lineage/takeover receipts/communication records/handoff DataHub archive 中找到**：
+  1. 349,923-row authoritative DataHub source 的事前 SHA-256 receipt；
+  2. v0.6.15 实际 frozen published-leg universe + strict-pair / qualification overlays 的事前 SHA-256/manifest。
+- handoff `DATA.md` 中另有 000688.SH 1m 截止2025的 317,280-row 云消费面；它不是 v0.6.17 要求的 349,923-row authoritative source，禁止替代。
+- 云端 blocker receipt：`docs/research/session_aware_information_set_bounds_v0617/identity_preflight_blocker_receipt.json`，首次记录 commit `6992290aee43b0af1600061a205f70201daa4c8e`。
+- **当前本地请求已收窄为 IDENTITY ONLY**：先在本地 DataHub / 历史实验 evidence store 恢复上述两个“本请求之前已存在”的 receipt/manifest，只回传路径、receipt 自身身份、expected hash、创建/commit provenance 和最小非结果元数据；不得执行 v0.6.17 scientific runner，不得查看 v0.6.17 bounds 结果。
+- 若本地也找不到其中任一 prior receipt，按原 frozen request fail closed；不得现场对候选文件新算 hash 后同时当 expected/actual。若两者都能恢复，则先回云端做 identity adjudication，只有通过后才恢复 exact DataHub replay。
+- local replay return branch 当前仍未出现；real authoritative replay 仍为 `NOT_EXECUTED`。
+- `morphology_replication_not_yet_accepted`、direction、third-wave、returns、OOS、trading、production 全部继续冻结。
