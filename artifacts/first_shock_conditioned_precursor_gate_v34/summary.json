@@ -1,0 +1,107 @@
+{
+  "schema": "first_shock_conditioned_precursor_gate_v3.4_results",
+  "symbol": "000688.SH",
+  "historical_conditioning_years": [2022, 2023],
+  "evaluation_years": [2024, 2025],
+  "neighbor_count": 100,
+  "risk_percentile": 0.8,
+  "conditioning_dimensions": ["log_sigma_pre", "log_rv480"],
+  "labels_used_in_conditioning": false,
+  "classifier_fit": false,
+  "new_morphology_feature_defined": false,
+  "fresh_oos": false,
+  "read_2026": false,
+  "by_year": {
+    "2024": {
+      "conditioned_primary_scale": {
+        "rows": {
+          "rows": 20110,
+          "positive_rows": 104,
+          "label_rate": 0.0051715564395822975,
+          "risk_rows": 3602,
+          "risk_coverage": 0.1791148682247638,
+          "risk_label_rate": 0.010272071071626874,
+          "clean_label_rate": 0.004058638236006784,
+          "risk_difference_pp": 0.621343283562009,
+          "risk_ratio": 2.5309156604539766,
+          "continuous_auc": 0.6316561762240559,
+          "alarm_segments": 1543,
+          "state_extrapolated_rows": 1155,
+          "state_extrapolated_fraction": 0.05743411238189955,
+          "conditional_percentile_mean": 0.46624763799104924,
+          "conditional_percentile_median": 0.45,
+          "kth_neighbor_distance_median": 1.142289146464018
+        },
+        "events": {
+          "all_frozen_quiet_events": 14,
+          "events_with_any_eligible_prewindow": 13,
+          "event_recall": 0.46153846153846156,
+          "hit_events": 6,
+          "median_max_strict_lead_minutes": 14.5,
+          "mean_prewindow_support_fraction": 0.6171367094444017,
+          "complete_prewindow_events": 2,
+          "complete_prewindow_recall": 1.0,
+          "complete_prewindow_hit_events": 2
+        },
+        "session_permutation_reference": {
+          "status": "computed",
+          "repeats": 5000,
+          "eligible_events": 13,
+          "observed_event_recall": 0.46153846153846156,
+          "reference_recall_quantiles": [0.07692307692307693, 0.3076923076923077, 0.6153846153846154],
+          "fraction_reference_recall_gte_observed_descriptive": 0.2482
+        }
+      }
+    },
+    "2025": {
+      "conditioned_primary_scale": {
+        "rows": {
+          "rows": 21559,
+          "positive_rows": 15,
+          "label_rate": 0.0006957651096989656,
+          "risk_rows": 4187,
+          "risk_coverage": 0.1942112342873046,
+          "risk_label_rate": 0.0002388344877000239,
+          "clean_label_rate": 0.0008058945429426663,
+          "risk_difference_pp": -0.05670600552426425,
+          "risk_ratio": 0.29635948002320106,
+          "continuous_auc": 0.4622462557247184,
+          "alarm_segments": 1760,
+          "state_extrapolated_rows": 2711,
+          "state_extrapolated_fraction": 0.1257479474929264,
+          "conditional_percentile_mean": 0.4862734820724523,
+          "conditional_percentile_median": 0.48,
+          "kth_neighbor_distance_median": 1.4512758285439005
+        },
+        "events": {
+          "all_frozen_quiet_events": 2,
+          "events_with_any_eligible_prewindow": 2,
+          "event_recall": 0.5,
+          "hit_events": 1,
+          "median_max_strict_lead_minutes": 4.0,
+          "mean_prewindow_support_fraction": 0.5357142857142857,
+          "complete_prewindow_events": 0,
+          "complete_prewindow_recall": null,
+          "complete_prewindow_hit_events": 0
+        },
+        "session_permutation_reference": {
+          "status": "computed",
+          "repeats": 5000,
+          "eligible_events": 2,
+          "observed_event_recall": 0.5,
+          "reference_recall_quantiles": [0.0, 0.5, 1.0],
+          "fraction_reference_recall_gte_observed_descriptive": 0.5856
+        }
+      }
+    }
+  },
+  "decision_rule": {
+    "candidate_for_future_locked_validation": false,
+    "checks": [
+      {"year": 2024, "positive_risk_difference": true, "auc_above_half": true, "event_recall_not_below_reference_median": true, "state_support_ok": false},
+      {"year": 2025, "positive_risk_difference": false, "auc_above_half": false, "event_recall_not_below_reference_median": true, "state_support_ok": false}
+    ],
+    "if_failed": "stop this V3.2 scale-score route without parameter scanning on 2024/2025"
+  },
+  "trading_or_production_evaluated": false
+}
