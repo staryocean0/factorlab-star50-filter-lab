@@ -1,0 +1,87 @@
+name: first-shock-history-support-v31
+on:
+  push:
+    branches: ["research/first-shock-seconds-v2-actions-20260907"]
+    paths: [".github/workflows/first-shock-history-support-v31.yml"]
+permissions:
+  contents: read
+concurrency:
+  group: first-shock-history-support-v31
+  cancel-in-progress: false
+jobs:
+  history-support:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      RESEARCH_REF: 371e6ba659fc456da138f3cb7b1d2f76ab77092f
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - name: Checkout registered audit and pre-2024 bounded history only
+        uses: actions/checkout@v4
+        with:
+          ref: 371e6ba659fc456da138f3cb7b1d2f76ab77092f
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/research/first_shock_morphology_v3/
+            /docs/research/first_shock_seconds_v2/code/
+            /docs/research/first_shock_gate_v1/code/
+            /src/star50_filter/__init__.py
+            /src/star50_filter/cloud_market_data.py
+            /data/cross_index_risk_gate_v1/manifest.json
+            /data/cross_index_risk_gate_v1/1m/000688.SH/202[0-3].parquet
+            /data/cross_index_risk_gate_v1/1m/000852.SH/201[5-9].parquet
+            /data/cross_index_risk_gate_v1/1m/000852.SH/202[0-3].parquet
+            /data/cross_index_risk_gate_3s_v1/manifest.json
+            /data/cross_index_risk_gate_3s_v1/000688.SH_202[0-3].parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_201[5-9].parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_202[0-3].parquet
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install dependencies
+        run: |
+          mkdir -p evidence/history
+          python -m pip install numpy==2.3.5 pandas==2.2.3 scikit-learn==1.8.0 pyarrow pytest
+          python -m pip freeze > evidence/environment.txt
+      - name: Run V3 and history-support tests
+        run: |
+          set -o pipefail
+          python -m pytest -q docs/research/first_shock_morphology_v3/tests --junitxml=evidence/tests.xml | tee evidence/tests.log
+      - name: Run pre-2024 historical support audit
+        run: |
+          set -o pipefail
+          python docs/research/first_shock_morphology_v3/code/history_support_v31.py --repo-root . --out evidence/history | tee evidence/history.log
+      - name: Seal evidence
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib,json,os
+          from pathlib import Path
+          root=Path('evidence');files=[]
+          for p in sorted(root.rglob('*')):
+              if p.is_file():files.append({'path':str(p.relative_to(root)),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+          receipt={'workflow_sha':os.environ['GITHUB_SHA'],'research_ref':os.environ['RESEARCH_REF'],
+                   'run_id':os.environ['GITHUB_RUN_ID'],'files':files,'fresh_oos':False,'production_authority':False}
+          (root/'run_receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
+          p=root/'history/summary.json'
+          if p.exists(): print('HISTORY_SUPPORT_SUMMARY '+p.read_text())
+          PY
+      - name: Upload history support evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: first-shock-history-support-v31-${{ github.run_id }}
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            evidence/environment.txt
+            evidence/tests.xml
+            evidence/tests.log
+            evidence/history.log
+            evidence/run_receipt.json
+            evidence/history/*.json
+            evidence/history/*.csv
