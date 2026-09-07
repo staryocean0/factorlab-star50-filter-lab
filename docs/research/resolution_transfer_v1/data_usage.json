@@ -1,0 +1,25 @@
+{
+  "schema_id": "star50.resolution_transfer@1.0",
+  "seconds": {
+    "instruments": ["588000.SSE", "588080.SSE"],
+    "years": [2024, 2025],
+    "role": "consumed_descriptive_development",
+    "observation_grid_seconds": [3, 15, 30, 60, 300],
+    "horizon_minutes": [15, 30, 60],
+    "primary_horizon_minutes": 30,
+    "variance_horizon_minutes": 60,
+    "decision_grid_seconds": 300,
+    "new_OHLC_product": false
+  },
+  "migration": {
+    "instrument": "000852.SH",
+    "warmup_year": 2020,
+    "years": [2021, 2022, 2023, 2024, 2025],
+    "role": "frozen_policy_cross_instrument_repeat_audit",
+    "policy": "star50_half_day_lowpass_slope_union_v2",
+    "parameter_search": false
+  },
+  "excluded": "2026 and unrelated securities",
+  "fresh_oos": false,
+  "production_authority": false
+}

@@ -1,0 +1,47 @@
+{
+  "source_sha256": "8fffa17adf1b6517f2e5b07e63d90d24ea21af4b5d1e9f6976b7261a0c74676e",
+  "freeze_sha256": "61412c444273ac3e2173fde9ac29eca6e7f0d4c6fcfe6ee02b043142a2fc1003",
+  "all_annual_artifact_hashes_verified": true,
+  "migration_cash_share_replay": [
+    {
+      "year": 2021,
+      "cash_share_max_error": 1.5543122344752192e-15
+    },
+    {
+      "year": 2022,
+      "cash_share_max_error": 2.4424906541753444e-15
+    },
+    {
+      "year": 2023,
+      "cash_share_max_error": 2.6645352591003757e-15
+    },
+    {
+      "year": 2024,
+      "cash_share_max_error": 1.9984014443252818e-15
+    },
+    {
+      "year": 2025,
+      "cash_share_max_error": 1.5543122344752192e-15
+    }
+  ],
+  "rolling_variance_common_support_enforced": true,
+  "coarse_path_never_exceeds_nested_fine_path": true,
+  "seconds_is_etf_not_index": true,
+  "unseen_2026_rows": 0,
+  "production_authority": false,
+  "files": {
+    "report.html": "17bd43abcc7bbbaa0fe92d7e7672da34f149e88a5c622738c5b53f110ff673bf",
+    "CSI1000_V1_daily.csv": "216a1a5cfae18c1789b77b776af7fc30f18a47a79abd44713fb9d4eb90a2b6e5",
+    "retrospective_shape_windows.parquet": "44fbed70059a1c61e3aea4d076482b14aa2989d568bde37659f4fd68c48ebaa7",
+    "visible_path_ratio.csv": "cd56c4e4f014853a33f183e84a5b7df7633ce8c9bc98affa692623f306b0ec15",
+    "CSI1000_V2_daily.csv": "5a5724dac1bfedd4798995a5e361cd45b253e0aa3d591a69769bab1a0a39e34d",
+    "migration_annual.csv": "09e0285baddc08418be4f7402c66b31ad08a4f78d9e7fea7291fd2eaca592e08",
+    "resolution_summary.csv": "86aeda0e66fa0954dcbb4d4b8bc572ae54c6b6940a6e8a6e55d4343538cc9cc5",
+    "CSI1000_V1_trades.csv": "7497ab30d52682abed8b733ba6b5ef47482d8557c5d833a193041e07343afdb5",
+    "CSI1000_V2_trades.csv": "55e879f40a4e8dbc6aafcebeb1b75e65549c5530262f018086b16960a8e5ca34",
+    "migration_comparison.png": "27dc145c66718bb2d88f8074a6b94b1a3b8064d2a1f8582972820335e3e8c816",
+    "resolution_comparison.png": "9287742df07952ac4908fd8c34b450988015b77b33ccf6516c5723b0e5cf2dcf",
+    "retrospective_shapes.csv": "eb35e43b3cc67eadb859e9307de3d88304961e6c284caf92914b76d080fc4ec0",
+    "migration_summary.csv": "783a032208d392bc309d9d80ad2c82621c5d3a021eb00edee13b36f084f436bf"
+  }
+}

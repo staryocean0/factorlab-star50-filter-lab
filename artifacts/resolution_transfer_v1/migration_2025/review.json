@@ -1,0 +1,10 @@
+{
+  "year": 2025,
+  "reviewer": "Codex controller",
+  "receipt_sha256": "0b6b9da5ad5d8d1f26f72d68ce31ab885a5059f25299c3c2f31e49b648468ddd",
+  "parameter_change": false,
+  "observations": [
+    "固定V2 45笔19.94bp、年度收益8.50%、Sharpe0.70、MDD12.99%；V1为79笔12.49bp、收益7.97%。该年明显低于科创50V2收益，稳定ER不意味着跨标的收益总是更高。",
+    "1月13日至14日空头亏332.54bp，11月5日至10日空头亏308.44bp。五年迁移完成，未改参数、未读2026，接下来仅汇总与对账。"
+  ]
+}

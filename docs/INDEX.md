@@ -1,5 +1,7 @@
 # STAR50 filter lab index
 
+- Latest measurement: [秒级路径效率方差与中证1000半日低通迁移](research/resolution_transfer_v1/result.md) → [工作流](research/resolution_transfer_v1/workflow.md)。两项完成但未产生最优分辨率或因果路由，V2参数不变。
+
 - Current V2: [平均单笔质量优先回测](research/half_day_slope_union_v2/result.md) → [执行与图形工作流](research/half_day_slope_union_v2/workflow.md) → [冻结参数](research/half_day_slope_union_v2/selected_policy.json)。保留V1与完整324身份研究，指数模拟不授真实载体/生产权限。
 
 - Current version: [半日低通1分钟、1—5根斜率并集白皮书](research/half_day_slope_union_v1/whitepaper.md) → [工作流](research/half_day_slope_union_v1/workflow.md) → [线程接管](research/half_day_slope_union_v1/handoff.md)。Layer 3策略原型；未进行历史收益选参。

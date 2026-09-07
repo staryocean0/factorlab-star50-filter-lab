@@ -1,0 +1,10 @@
+{
+  "year": 2023,
+  "reviewer": "Codex controller",
+  "receipt_sha256": "5c431c31254202ce60d91b81a077262f2036d419acac278e107b2d1ebd831417",
+  "parameter_change": false,
+  "observations": [
+    "V2 44笔平均14.57bp、年度收益6.05%、Sharpe0.57；V1年度亏9.09%。明显弱于2021/2022，1m效率更稳定并不保证每年策略高Sharpe。",
+    "8月25日至28日空头亏409.71bp，与科创50同日期的缺口风险一致；11月空头亏182.10bp。保留跨日冲击反例，参数不变。"
+  ]
+}

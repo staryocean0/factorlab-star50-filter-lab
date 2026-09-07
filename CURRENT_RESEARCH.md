@@ -1,5 +1,9 @@
 # Current research entry
 
+## 最新测量：秒级分辨率与中证1000固定迁移
+
+[结果与图形](docs/research/resolution_transfer_v1/result.md) → [复现工作流](docs/research/resolution_transfer_v1/workflow.md)。两只科创50ETF2024/2025真实秒观测显示更细网格原始ER方差下降，但未识别交易最优分辨率；固定V2迁移中证1000的2021—2025研究已完成，无重选参数、无2026读取或生产权。V2仍是当前策略版本，因果路由尚未建立。
+
 ## 当前：V2单笔质量优先研究与回测完成
 
 [结果与图形](docs/research/half_day_slope_union_v2/result.md) → [工作流](docs/research/half_day_slope_union_v2/workflow.md) → [冻结参数](docs/research/half_day_slope_union_v2/selected_policy.json)。2021—2023有界324身份开发后冻结，2024/2025逐年原样检验；V2相对V1提高平均单笔与整体Sharpe，2025总收益/Sharpe仍有代价。AI自加交易次数硬门的开发后修订已公开。指数方向费用代理模拟，非真实ETF/期权账户；2026未读，无生产权。下述V1为前序原型。

@@ -1,0 +1,11 @@
+{
+  "year": 2021,
+  "reviewer": "Codex controller",
+  "receipt_sha256": "49033844f3ce2bf8c9e4e1bed63dec8566a73560c48eba6672553e57dcfa3aed",
+  "parameter_change": false,
+  "observations": [
+    "固定V2在中证1000为51笔、平均净52.36bp、Sharpe2.35、年度收益29.44%；V1控制为98笔17.07bp、Sharpe1.03。仅一年不据此评价可交易分辨率。",
+    "4月15日至19日空头亏203.56bp、10月多头亏183.68bp；2月9日至22日跨节长多赚700.49bp，仍有跨日与右尾结构。",
+    "全部参数保持STAR50原值，继续2022。"
+  ]
+}

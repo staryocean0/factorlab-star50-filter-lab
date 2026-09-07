@@ -1,0 +1,1360 @@
+{
+  "run_id": "1788744770622552029-91553-cpu-heavy-rf-grid",
+  "profile": "cpu-heavy-rf-grid",
+  "command": [
+    "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/.venv/bin/python",
+    "scripts/research_resolution_transfer_v1.py",
+    "seconds",
+    "--year",
+    "2025"
+  ],
+  "decision": {
+    "requested_workers": "1",
+    "decided_workers": 2,
+    "decision": "use_requested_workers",
+    "reason": "explicit_worker_request",
+    "active_job_count": 0,
+    "active_worker_count": 0,
+    "profile": "cpu-heavy-rf-grid",
+    "snapshot": {
+      "cpu_count": 32,
+      "load1": 2.854,
+      "cpu_busy_pct": 11.95,
+      "io_wait_pct": 0.0,
+      "mem_total_gb": 109.684,
+      "mem_available_gb": 100.08,
+      "swap_used_gb": 0.0
+    }
+  },
+  "dry_run": false,
+  "started_at": 1788744770.6225584,
+  "exit_code": 0,
+  "duration_s": 299.566,
+  "peak_rss_gb": 0.745,
+  "sample_count": 147,
+  "samples": [
+    {
+      "ts": 1788744770.7263756,
+      "process_running": true,
+      "process_rss_gb": 0.023,
+      "cpu_busy_pct": 17.284,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 99.986,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744772.7775273,
+      "process_running": true,
+      "process_rss_gb": 0.171,
+      "cpu_busy_pct": 9.375,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 99.782,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744774.828666,
+      "process_running": true,
+      "process_rss_gb": 0.172,
+      "cpu_busy_pct": 20.126,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 99.672,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744776.8796928,
+      "process_running": true,
+      "process_rss_gb": 0.172,
+      "cpu_busy_pct": 14.375,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 99.59,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744778.930843,
+      "process_running": true,
+      "process_rss_gb": 0.187,
+      "cpu_busy_pct": 10.909,
+      "io_wait_pct": 0.606,
+      "mem_available_gb": 101.25,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744780.9821122,
+      "process_running": true,
+      "process_rss_gb": 0.188,
+      "cpu_busy_pct": 12.025,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.212,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744783.0333214,
+      "process_running": true,
+      "process_rss_gb": 0.192,
+      "cpu_busy_pct": 11.95,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.102,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744785.0845149,
+      "process_running": true,
+      "process_rss_gb": 0.193,
+      "cpu_busy_pct": 11.18,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.131,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744787.1357188,
+      "process_running": true,
+      "process_rss_gb": 0.198,
+      "cpu_busy_pct": 13.58,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 100.964,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744789.186916,
+      "process_running": true,
+      "process_rss_gb": 0.201,
+      "cpu_busy_pct": 13.58,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.168,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744791.2380087,
+      "process_running": true,
+      "process_rss_gb": 0.203,
+      "cpu_busy_pct": 8.125,
+      "io_wait_pct": 1.25,
+      "mem_available_gb": 101.318,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744793.2892199,
+      "process_running": true,
+      "process_rss_gb": 0.205,
+      "cpu_busy_pct": 12.579,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.071,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744795.3404152,
+      "process_running": true,
+      "process_rss_gb": 0.208,
+      "cpu_busy_pct": 9.938,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.182,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744797.3913534,
+      "process_running": true,
+      "process_rss_gb": 0.21,
+      "cpu_busy_pct": 10.494,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.361,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744799.4424715,
+      "process_running": true,
+      "process_rss_gb": 0.213,
+      "cpu_busy_pct": 9.938,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.33,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744801.493679,
+      "process_running": true,
+      "process_rss_gb": 0.215,
+      "cpu_busy_pct": 13.497,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.305,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744803.544813,
+      "process_running": true,
+      "process_rss_gb": 0.218,
+      "cpu_busy_pct": 11.875,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.45,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744805.5959983,
+      "process_running": true,
+      "process_rss_gb": 0.22,
+      "cpu_busy_pct": 10.625,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.486,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744807.6471589,
+      "process_running": true,
+      "process_rss_gb": 0.223,
+      "cpu_busy_pct": 10.429,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.303,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744809.6982741,
+      "process_running": true,
+      "process_rss_gb": 0.226,
+      "cpu_busy_pct": 13.665,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.327,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744811.749458,
+      "process_running": true,
+      "process_rss_gb": 0.227,
+      "cpu_busy_pct": 12.579,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.252,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744813.800617,
+      "process_running": true,
+      "process_rss_gb": 0.23,
+      "cpu_busy_pct": 13.75,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.178,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744815.8517685,
+      "process_running": true,
+      "process_rss_gb": 0.233,
+      "cpu_busy_pct": 19.876,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.153,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744817.9026985,
+      "process_running": true,
+      "process_rss_gb": 0.234,
+      "cpu_busy_pct": 12.5,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.28,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744819.9538407,
+      "process_running": true,
+      "process_rss_gb": 0.237,
+      "cpu_busy_pct": 10.063,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.223,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744822.0050519,
+      "process_running": true,
+      "process_rss_gb": 0.24,
+      "cpu_busy_pct": 9.938,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.318,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744824.0561109,
+      "process_running": true,
+      "process_rss_gb": 0.243,
+      "cpu_busy_pct": 12.422,
+      "io_wait_pct": 0.621,
+      "mem_available_gb": 101.24,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744826.1072593,
+      "process_running": true,
+      "process_rss_gb": 0.245,
+      "cpu_busy_pct": 9.938,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.215,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744828.1583502,
+      "process_running": true,
+      "process_rss_gb": 0.247,
+      "cpu_busy_pct": 14.11,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.27,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744830.209477,
+      "process_running": true,
+      "process_rss_gb": 0.25,
+      "cpu_busy_pct": 8.805,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.377,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744832.2606025,
+      "process_running": true,
+      "process_rss_gb": 0.251,
+      "cpu_busy_pct": 13.58,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.327,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744834.3116896,
+      "process_running": true,
+      "process_rss_gb": 0.254,
+      "cpu_busy_pct": 13.665,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.305,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744836.3627448,
+      "process_running": true,
+      "process_rss_gb": 0.257,
+      "cpu_busy_pct": 9.375,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.333,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744838.4138186,
+      "process_running": true,
+      "process_rss_gb": 0.258,
+      "cpu_busy_pct": 10.559,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.331,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744840.4650042,
+      "process_running": true,
+      "process_rss_gb": 0.261,
+      "cpu_busy_pct": 11.18,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.292,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744842.5161753,
+      "process_running": true,
+      "process_rss_gb": 0.263,
+      "cpu_busy_pct": 9.877,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.361,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744844.5673423,
+      "process_running": true,
+      "process_rss_gb": 0.265,
+      "cpu_busy_pct": 11.25,
+      "io_wait_pct": 0.625,
+      "mem_available_gb": 101.399,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744846.6184287,
+      "process_running": true,
+      "process_rss_gb": 0.267,
+      "cpu_busy_pct": 14.375,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.33,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744848.66969,
+      "process_running": true,
+      "process_rss_gb": 0.271,
+      "cpu_busy_pct": 22.36,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.048,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744850.720828,
+      "process_running": true,
+      "process_rss_gb": 0.273,
+      "cpu_busy_pct": 8.75,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.098,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744852.7719424,
+      "process_running": true,
+      "process_rss_gb": 0.275,
+      "cpu_busy_pct": 12.422,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 100.97,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744854.8231184,
+      "process_running": true,
+      "process_rss_gb": 0.278,
+      "cpu_busy_pct": 12.346,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.101,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744856.8742137,
+      "process_running": true,
+      "process_rss_gb": 0.281,
+      "cpu_busy_pct": 9.317,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.235,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744858.925289,
+      "process_running": true,
+      "process_rss_gb": 0.282,
+      "cpu_busy_pct": 9.375,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.241,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744860.9764726,
+      "process_running": true,
+      "process_rss_gb": 0.285,
+      "cpu_busy_pct": 10.063,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.104,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744863.0275445,
+      "process_running": true,
+      "process_rss_gb": 0.288,
+      "cpu_busy_pct": 14.815,
+      "io_wait_pct": 0.617,
+      "mem_available_gb": 101.18,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744865.078603,
+      "process_running": true,
+      "process_rss_gb": 0.289,
+      "cpu_busy_pct": 12.5,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.218,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744867.1297035,
+      "process_running": true,
+      "process_rss_gb": 0.292,
+      "cpu_busy_pct": 11.111,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.335,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744869.1809185,
+      "process_running": true,
+      "process_rss_gb": 0.294,
+      "cpu_busy_pct": 6.211,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.224,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744871.2320695,
+      "process_running": true,
+      "process_rss_gb": 0.296,
+      "cpu_busy_pct": 9.938,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.255,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744873.2832103,
+      "process_running": true,
+      "process_rss_gb": 0.3,
+      "cpu_busy_pct": 8.696,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.176,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744875.3343353,
+      "process_running": true,
+      "process_rss_gb": 0.302,
+      "cpu_busy_pct": 8.176,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.215,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744877.3855417,
+      "process_running": true,
+      "process_rss_gb": 0.304,
+      "cpu_busy_pct": 6.832,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.171,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744879.4366972,
+      "process_running": true,
+      "process_rss_gb": 0.306,
+      "cpu_busy_pct": 10.976,
+      "io_wait_pct": 0.61,
+      "mem_available_gb": 101.286,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744881.487876,
+      "process_running": true,
+      "process_rss_gb": 0.309,
+      "cpu_busy_pct": 16.049,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 100.857,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744883.5388782,
+      "process_running": true,
+      "process_rss_gb": 0.311,
+      "cpu_busy_pct": 11.515,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.208,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744885.5899737,
+      "process_running": true,
+      "process_rss_gb": 0.314,
+      "cpu_busy_pct": 9.375,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.131,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744887.6411204,
+      "process_running": true,
+      "process_rss_gb": 0.316,
+      "cpu_busy_pct": 6.832,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.071,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744889.6923218,
+      "process_running": true,
+      "process_rss_gb": 0.318,
+      "cpu_busy_pct": 10.494,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.123,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744891.743373,
+      "process_running": true,
+      "process_rss_gb": 0.321,
+      "cpu_busy_pct": 11.111,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.077,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744893.794356,
+      "process_running": true,
+      "process_rss_gb": 0.323,
+      "cpu_busy_pct": 6.875,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.184,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744895.8455105,
+      "process_running": true,
+      "process_rss_gb": 0.325,
+      "cpu_busy_pct": 10.063,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.148,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744897.896684,
+      "process_running": true,
+      "process_rss_gb": 0.327,
+      "cpu_busy_pct": 8.125,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.274,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744899.9477086,
+      "process_running": true,
+      "process_rss_gb": 0.33,
+      "cpu_busy_pct": 10.127,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.174,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744901.9987442,
+      "process_running": true,
+      "process_rss_gb": 0.332,
+      "cpu_busy_pct": 9.877,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.154,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744904.0498993,
+      "process_running": true,
+      "process_rss_gb": 0.333,
+      "cpu_busy_pct": 11.728,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.254,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744906.1008785,
+      "process_running": true,
+      "process_rss_gb": 0.336,
+      "cpu_busy_pct": 6.25,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.317,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744908.1520777,
+      "process_running": true,
+      "process_rss_gb": 0.338,
+      "cpu_busy_pct": 8.642,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.115,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744910.2031505,
+      "process_running": true,
+      "process_rss_gb": 0.34,
+      "cpu_busy_pct": 10.559,
+      "io_wait_pct": 1.242,
+      "mem_available_gb": 101.085,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744912.2543077,
+      "process_running": true,
+      "process_rss_gb": 0.342,
+      "cpu_busy_pct": 9.375,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.05,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744914.3054588,
+      "process_running": true,
+      "process_rss_gb": 0.345,
+      "cpu_busy_pct": 8.176,
+      "io_wait_pct": 0.629,
+      "mem_available_gb": 100.89,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744916.35666,
+      "process_running": true,
+      "process_rss_gb": 0.348,
+      "cpu_busy_pct": 13.043,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 99.481,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744918.4076464,
+      "process_running": true,
+      "process_rss_gb": 0.349,
+      "cpu_busy_pct": 11.25,
+      "io_wait_pct": 0.625,
+      "mem_available_gb": 99.334,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744920.4588158,
+      "process_running": true,
+      "process_rss_gb": 0.352,
+      "cpu_busy_pct": 13.497,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 99.346,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744922.5098622,
+      "process_running": true,
+      "process_rss_gb": 0.354,
+      "cpu_busy_pct": 11.801,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 99.421,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744924.560947,
+      "process_running": true,
+      "process_rss_gb": 0.357,
+      "cpu_busy_pct": 12.579,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 99.402,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744926.6121218,
+      "process_running": true,
+      "process_rss_gb": 0.358,
+      "cpu_busy_pct": 10.191,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.015,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744928.6632798,
+      "process_running": true,
+      "process_rss_gb": 0.361,
+      "cpu_busy_pct": 11.043,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.094,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744930.714452,
+      "process_running": true,
+      "process_rss_gb": 0.363,
+      "cpu_busy_pct": 9.877,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.089,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744932.765553,
+      "process_running": true,
+      "process_rss_gb": 0.366,
+      "cpu_busy_pct": 9.938,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.117,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744934.8168824,
+      "process_running": true,
+      "process_rss_gb": 0.367,
+      "cpu_busy_pct": 9.146,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.071,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744936.8679566,
+      "process_running": true,
+      "process_rss_gb": 0.37,
+      "cpu_busy_pct": 9.877,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.162,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744938.918992,
+      "process_running": true,
+      "process_rss_gb": 0.373,
+      "cpu_busy_pct": 6.832,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.136,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744940.9701166,
+      "process_running": true,
+      "process_rss_gb": 0.375,
+      "cpu_busy_pct": 9.317,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.141,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744943.0212867,
+      "process_running": true,
+      "process_rss_gb": 0.377,
+      "cpu_busy_pct": 7.975,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.063,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744945.0725458,
+      "process_running": true,
+      "process_rss_gb": 0.38,
+      "cpu_busy_pct": 13.58,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.093,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744947.12359,
+      "process_running": true,
+      "process_rss_gb": 0.382,
+      "cpu_busy_pct": 10.494,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 100.839,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744949.1746604,
+      "process_running": true,
+      "process_rss_gb": 0.384,
+      "cpu_busy_pct": 7.5,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 100.818,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744951.225797,
+      "process_running": true,
+      "process_rss_gb": 0.386,
+      "cpu_busy_pct": 8.696,
+      "io_wait_pct": 0.621,
+      "mem_available_gb": 100.768,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744953.2768612,
+      "process_running": true,
+      "process_rss_gb": 0.388,
+      "cpu_busy_pct": 11.25,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 100.912,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744955.3278918,
+      "process_running": true,
+      "process_rss_gb": 0.391,
+      "cpu_busy_pct": 9.938,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 100.974,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744957.3789704,
+      "process_running": true,
+      "process_rss_gb": 0.393,
+      "cpu_busy_pct": 11.111,
+      "io_wait_pct": 0.617,
+      "mem_available_gb": 100.943,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744959.4300041,
+      "process_running": true,
+      "process_rss_gb": 0.395,
+      "cpu_busy_pct": 5.625,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.306,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744961.4810982,
+      "process_running": true,
+      "process_rss_gb": 0.398,
+      "cpu_busy_pct": 3.106,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.446,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744963.5321748,
+      "process_running": true,
+      "process_rss_gb": 0.401,
+      "cpu_busy_pct": 6.25,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.467,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744965.5831237,
+      "process_running": true,
+      "process_rss_gb": 0.404,
+      "cpu_busy_pct": 4.938,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.633,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744967.6341095,
+      "process_running": true,
+      "process_rss_gb": 0.405,
+      "cpu_busy_pct": 6.79,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.614,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744969.6851404,
+      "process_running": true,
+      "process_rss_gb": 0.408,
+      "cpu_busy_pct": 5.696,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.53,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744971.7362442,
+      "process_running": true,
+      "process_rss_gb": 0.411,
+      "cpu_busy_pct": 7.453,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.552,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744973.7872303,
+      "process_running": true,
+      "process_rss_gb": 0.414,
+      "cpu_busy_pct": 4.321,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.53,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744975.838295,
+      "process_running": true,
+      "process_rss_gb": 0.415,
+      "cpu_busy_pct": 6.25,
+      "io_wait_pct": 0.625,
+      "mem_available_gb": 101.578,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744977.8893518,
+      "process_running": true,
+      "process_rss_gb": 0.418,
+      "cpu_busy_pct": 8.696,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.402,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744979.9404879,
+      "process_running": true,
+      "process_rss_gb": 0.421,
+      "cpu_busy_pct": 4.348,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.552,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744981.9916453,
+      "process_running": true,
+      "process_rss_gb": 0.424,
+      "cpu_busy_pct": 4.969,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.492,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744984.0427666,
+      "process_running": true,
+      "process_rss_gb": 0.425,
+      "cpu_busy_pct": 6.832,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.515,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744986.0939837,
+      "process_running": true,
+      "process_rss_gb": 0.428,
+      "cpu_busy_pct": 3.727,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.423,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744988.1451333,
+      "process_running": true,
+      "process_rss_gb": 0.431,
+      "cpu_busy_pct": 4.43,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.5,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744990.1962414,
+      "process_running": true,
+      "process_rss_gb": 0.434,
+      "cpu_busy_pct": 5.59,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.53,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744992.2472317,
+      "process_running": true,
+      "process_rss_gb": 0.436,
+      "cpu_busy_pct": 4.969,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.6,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744994.298261,
+      "process_running": true,
+      "process_rss_gb": 0.438,
+      "cpu_busy_pct": 9.146,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.473,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744996.3494692,
+      "process_running": true,
+      "process_rss_gb": 0.441,
+      "cpu_busy_pct": 8.176,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.529,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788744998.4005628,
+      "process_running": true,
+      "process_rss_gb": 0.444,
+      "cpu_busy_pct": 6.79,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.596,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745000.4515553,
+      "process_running": true,
+      "process_rss_gb": 0.446,
+      "cpu_busy_pct": 7.407,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.631,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745002.5024135,
+      "process_running": true,
+      "process_rss_gb": 0.449,
+      "cpu_busy_pct": 2.5,
+      "io_wait_pct": 0.625,
+      "mem_available_gb": 101.546,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745004.5535767,
+      "process_running": true,
+      "process_rss_gb": 0.451,
+      "cpu_busy_pct": 5.66,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.483,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745006.6045632,
+      "process_running": true,
+      "process_rss_gb": 0.454,
+      "cpu_busy_pct": 3.704,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.573,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745008.6556973,
+      "process_running": true,
+      "process_rss_gb": 0.457,
+      "cpu_busy_pct": 10.0,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.565,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745010.70685,
+      "process_running": true,
+      "process_rss_gb": 0.459,
+      "cpu_busy_pct": 10.494,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.415,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745012.7578485,
+      "process_running": true,
+      "process_rss_gb": 0.461,
+      "cpu_busy_pct": 3.106,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.191,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745014.8088923,
+      "process_running": true,
+      "process_rss_gb": 0.464,
+      "cpu_busy_pct": 8.176,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.296,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745016.860041,
+      "process_running": true,
+      "process_rss_gb": 0.467,
+      "cpu_busy_pct": 3.727,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.411,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745018.911065,
+      "process_running": true,
+      "process_rss_gb": 0.47,
+      "cpu_busy_pct": 6.25,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.383,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745020.961954,
+      "process_running": true,
+      "process_rss_gb": 0.471,
+      "cpu_busy_pct": 7.453,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.423,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745023.0132349,
+      "process_running": true,
+      "process_rss_gb": 0.474,
+      "cpu_busy_pct": 3.106,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.536,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745025.0643532,
+      "process_running": true,
+      "process_rss_gb": 0.477,
+      "cpu_busy_pct": 6.173,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.524,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745027.115438,
+      "process_running": true,
+      "process_rss_gb": 0.48,
+      "cpu_busy_pct": 3.727,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.568,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745029.1665318,
+      "process_running": true,
+      "process_rss_gb": 0.483,
+      "cpu_busy_pct": 7.879,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.645,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745031.217623,
+      "process_running": true,
+      "process_rss_gb": 0.484,
+      "cpu_busy_pct": 7.407,
+      "io_wait_pct": 0.617,
+      "mem_available_gb": 101.467,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745033.268965,
+      "process_running": true,
+      "process_rss_gb": 0.487,
+      "cpu_busy_pct": 3.727,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.459,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745035.3199525,
+      "process_running": true,
+      "process_rss_gb": 0.49,
+      "cpu_busy_pct": 6.25,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.447,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745037.3710794,
+      "process_running": true,
+      "process_rss_gb": 0.493,
+      "cpu_busy_pct": 3.774,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.565,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745039.4220717,
+      "process_running": true,
+      "process_rss_gb": 0.495,
+      "cpu_busy_pct": 3.125,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.562,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745041.4732735,
+      "process_running": true,
+      "process_rss_gb": 0.497,
+      "cpu_busy_pct": 6.832,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.466,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745043.5244455,
+      "process_running": true,
+      "process_rss_gb": 0.5,
+      "cpu_busy_pct": 11.043,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.23,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745045.5754025,
+      "process_running": true,
+      "process_rss_gb": 0.502,
+      "cpu_busy_pct": 7.362,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.229,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745047.6264188,
+      "process_running": true,
+      "process_rss_gb": 0.504,
+      "cpu_busy_pct": 9.877,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.268,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745049.6776068,
+      "process_running": true,
+      "process_rss_gb": 0.507,
+      "cpu_busy_pct": 6.25,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.306,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745051.7287264,
+      "process_running": true,
+      "process_rss_gb": 0.509,
+      "cpu_busy_pct": 8.642,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.376,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745053.7798264,
+      "process_running": true,
+      "process_rss_gb": 0.512,
+      "cpu_busy_pct": 8.75,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.369,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745055.8307126,
+      "process_running": true,
+      "process_rss_gb": 0.513,
+      "cpu_busy_pct": 9.877,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.412,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745057.8818734,
+      "process_running": true,
+      "process_rss_gb": 0.516,
+      "cpu_busy_pct": 6.211,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.374,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745059.9328992,
+      "process_running": true,
+      "process_rss_gb": 0.518,
+      "cpu_busy_pct": 6.25,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.438,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745061.983952,
+      "process_running": true,
+      "process_rss_gb": 0.52,
+      "cpu_busy_pct": 9.877,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.483,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745064.0351906,
+      "process_running": true,
+      "process_rss_gb": 0.523,
+      "cpu_busy_pct": 7.407,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.419,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745066.0862768,
+      "process_running": true,
+      "process_rss_gb": 0.525,
+      "cpu_busy_pct": 7.407,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.522,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745068.1375067,
+      "process_running": true,
+      "process_rss_gb": 0.745,
+      "cpu_busy_pct": 9.375,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.427,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788745070.1886811,
+      "process_running": false,
+      "process_rss_gb": 0.0,
+      "cpu_busy_pct": 7.407,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.936,
+      "swap_used_gb": 0.0
+    }
+  ]
+}

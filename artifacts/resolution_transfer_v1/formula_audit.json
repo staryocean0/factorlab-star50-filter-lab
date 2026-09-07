@@ -1,0 +1,7 @@
+{
+  "scope": "two_real_ETF_days_direct_sums_and_no_future_observation_values",
+  "cases": 710,
+  "max_error": 5.340172748447003e-14,
+  "source_sha256": "2429e639499c5b09ab511bbd1e56825324e5156bc44d0b55611d5f7fca2cb9ac",
+  "full_seconds_replay": false
+}

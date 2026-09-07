@@ -1,0 +1,16 @@
+{
+  "sources": {
+    "src/star50_filter/resolution_measurement.py": "d5f07d0488b0a0e61328d51f7a48387324ddc30bb1128df3194b9dfd1d7e4129",
+    "src/star50_filter/slope_union.py": "a58d60251dcb90fab8cd9a3a644df6e8a63f4f6673c5bd5ac622cee5d9ace472",
+    "src/star50_filter/slope_union_v2.py": "0fe273e7317d5cdb6f428ddcd8b2008fb9158cf9b4cee66e0a0798989730f580",
+    "scripts/research_resolution_transfer_v1.py": "3efdc8e631d7b92b2767aec8782529cb44de0a96fc8111bb1f8760f3333c52ac",
+    "tests/test_resolution_measurement.py": "bbb7a2de9f28ccd54a98c18b5ea249a831eaa7b48f093e52133c1c3a7a906279",
+    "docs/research/resolution_transfer_v1/protocol.md": "558b256f48c6701c3fd0787bde2e317639549b166ca5cbea7a336e9b914335ff",
+    "docs/research/resolution_transfer_v1/data_usage.json": "47d65e8ae9ae0448ce8f477f83d629de2ce337d95282e252c80b2fd37f670d3a",
+    "docs/research/half_day_slope_union_v2/selected_policy.json": "28998ec529ef3f6144ec0e0d2c91acaa689de44ee97b80186093947e81008484"
+  },
+  "export_manifest_sha256": "c46f2da6c3df016ca054e183e37267dc472097450fcdd6644c22aa0084c15749",
+  "minute_source_sha256": "aeacff04b268c166faac333ec7ab9d840abcd347d82cb3bcee0218d058fc7423",
+  "spot_binding_sha256": "d9652b4c0e8f2fc33e6ca477d55057a471ca9295afbdb40c130e7f14d49d47fa",
+  "production_authority": false
+}

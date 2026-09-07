@@ -1,0 +1,10 @@
+{
+  "year": 2022,
+  "reviewer": "Codex controller",
+  "receipt_sha256": "54ad308af39c290cffec45cd33ff9eb4fbae6ec6f1fcd568059a9f5e29b4ac9b",
+  "parameter_change": false,
+  "observations": [
+    "V2原样51笔51.86bp，年度收益28.09%、Sharpe1.54、MDD10.15%；V1为88笔27.97bp、收益24.30%。均较STAR50同年强，但不能由此单独推断高频成分减少。",
+    "5月6日至10日空头亏376.39bp，3月9日48分钟空头亏296.10bp；仍有短时反弹与跨日损失。继续固定参数。"
+  ]
+}
