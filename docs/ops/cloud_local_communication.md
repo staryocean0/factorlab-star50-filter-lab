@@ -76,7 +76,7 @@ python "$D/code/run_split_market.py" --repo-root . --out artifacts/first_shock_v
 ## CL-STAR-RISK-20260907 / POST-SHOCK-RECOVERY-2026（本地已反馈，等待云端复核）
 
 - 任务：按 `docs/ops/post_shock_recovery_2026_data_request.md` 导出科创50/中证1000 的 2026 年 1 分钟与 3 秒，并推到本主题仓 `research/post-shock-recovery-2026-validation`。
-- 代码分支/提交：本反馈写入同一分支；推送后的 commit 以 git log 为准，基线请求提交为 `ba549e1e6b`。
+- 代码分支/提交：`research/post-shock-recovery-2026-validation`。数据包提交 `1e49e7b2cbab590981c86c36e31ef5e272f4e76f`；请求基线 `ba549e1e6b`。
 - 执行地点：本地 DataHub 父层切片，不是 Actions，不是云端重算。
 - 命令与退出码：`python3 scripts/export_post_shock_recovery_2026.py` 退出码 0。随后对父层做独立 DuckDB 对照，1m close/质量字段与 3s price 的 parent-child mismatch 均为 0。
 - 实际数据范围：`2026-01-05` 至 `2026-08-21`，两指数各 154 个完整交易日。请求上界是最新完整交易日、最多 `2026-09-07`；同语义父层只到 `2026-08-21`。未拼接 TDX 重建的 `2026-08-24/25`，未伪造 8 月 22 日之后的行情。
