@@ -57,7 +57,7 @@ def calibration_frame():
         for year,n in ((2023,200),(2024,50),(2025,50)):
             for i in range(n):
                 rows.append({'symbol':symbol,'year':year,'decision_ok':True,'fine_complete5':True,
-                    'pre5m_range_bp':10.,'M1':i,'M2':i+1.,'M3':i+2.,'M4':i+3.})
+                    'pre5m_range_bp':10.,'M1':float(i),'M2':float(i+1),'M3':float(i+2),'M4':float(i+3)})
     return pd.DataFrame(rows)
 
 
