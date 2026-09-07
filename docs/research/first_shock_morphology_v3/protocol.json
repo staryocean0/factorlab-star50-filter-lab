@@ -1,0 +1,62 @@
+{
+  "schema": "first_shock_morphology_v3.0",
+  "registered_before_v3_outputs": true,
+  "base_commit": "424a6b5a931cf610aa731125aa2081cdf3accbbb",
+  "scope": "event taxonomy and score-diagnostic only; no new model fit, no trading",
+  "symbols": ["000688.SH", "000852.SH"],
+  "years": [2021, 2022, 2023, 2024, 2025],
+  "inputs": ["1m official bounded archive", "3s source observations"],
+  "decision_and_score_source": "reuse frozen V2 exported B0/B1/B2 scores where available; do not refit",
+  "primary_measurement_grid_seconds": 15,
+  "primary_gap_limit_seconds": 15,
+  "endpoint_max_age_seconds": 3,
+  "quiet_precondition": {
+    "window_minutes_before_event_onset": 5,
+    "absolute_net_move_bp_lt": 15,
+    "observed_range_bp_lt": 30,
+    "max_absolute_15s_return_bp_lt": 15,
+    "requires_all_15s_returns_known": true
+  },
+  "active_precursor_condition": {
+    "absolute_net_move_bp_gte": 30,
+    "or_observed_range_bp_gte": 45,
+    "or_max_absolute_15s_return_bp_gte": 15
+  },
+  "tail_event_family": "retain V2/V1 first-tail label unchanged",
+  "tail_taxonomy": [
+    "quiet_first_tail: tail event and quiet_precondition",
+    "active_continuation_tail: tail event and active_precursor_condition",
+    "intermediate_tail: other fully measured tail events",
+    "unknown_tail: insufficient 15s pre-event support"
+  ],
+  "roundtrip_family": {
+    "minute_observed_range_bp_gte": 30,
+    "absolute_minute_net_bp_lte": 10,
+    "path_efficiency_lte": 0.25,
+    "requires_all_four_15s_returns_known": true,
+    "first_event_quiet_minutes": 30,
+    "quiet_roundtrip": "roundtrip first-event and quiet_precondition",
+    "note": "new descriptive event family; not a replacement for the original tail label"
+  },
+  "strict_lead_diagnostic": "for an event minute e, V2 alarm must occur no later than minute e-2; reuse existing event matching convention",
+  "score_diagnostic": {
+    "evaluation_years": [2024, 2025],
+    "models": ["B1", "B2"],
+    "modes": ["quota", "frozen"],
+    "report_by_taxonomy": ["event_count", "warned_count", "recall", "median_earliest_lead", "alarm burden unchanged from V2"],
+    "restriction": "diagnostic only because taxonomy is defined after V2 results; no promotion from subgroup performance"
+  },
+  "training_support_audit": "count independent event anchors by taxonomy in 2021-2023; do not convert overlapping positive windows into independent events",
+  "minimum_independent_events_for_future_modeling": 20,
+  "unknown_policy": "missing or stale observations are Unknown, never quiet",
+  "do_not": [
+    "optimize taxonomy thresholds on 2024-2025 performance",
+    "refit B0/B1/B2 in V3",
+    "replace old labels",
+    "call roundtrip events jumps",
+    "read 2026",
+    "modify production or trading state"
+  ],
+  "fresh_oos": false,
+  "production_authority": false
+}
