@@ -43,7 +43,10 @@ The ratio is the primary continuous Recovering score because:
 - richer fixed models did not dominate it stably across 2025 and 2026;
 - a two-minute window is materially noisier;
 - a ten-minute window has not produced stable enough improvement to justify the extra lag;
-- adding the other headline index's simultaneous five-minute volatility state did not show stable incremental benefit.
+- adding the other headline index's simultaneous five-minute volatility state did not show stable incremental benefit;
+- adding elapsed time since the shock or time since the latest Unsafe reading did not improve the fixed 2025 evaluation and was also worse in the already-opened 2026 replay (`STATE_SUFFICIENCY_RESULTS.md`).
+
+Do not add a separate hidden clock/dwell variable to the durable state representation from current evidence.
 
 ## State labels
 
@@ -59,7 +62,7 @@ For analysis/visualization only, Recovering may be split into:
 - `Recovering-high`: `1.0 <= recovery_ratio < 1.5`;
 - `Recovering-low`: `recovery_ratio < 1.0`.
 
-These are **not release states**. Historical transition evidence shows Recovering-low still has a non-zero reactivation tail back to Unsafe.
+These are **not release states**. Historical transition evidence shows Recovering-low still has a non-zero reactivation tail back to Unsafe. The high/low bands are not guaranteed to be strictly monotone on every longer horizon and therefore must not be promoted to separate causal states.
 
 ## Forward-state evidence
 
@@ -83,6 +86,8 @@ See `STATE_TRANSITION_EVIDENCE.md` for counts, event-cluster bootstrap and limit
 
 Minute-by-minute historical paths also show that recovery is frequently interrupted: among 2024-2025 episodes that first reach Recovering, about 64% later return to Unsafe at least once within the observed path, and about 38% reactivate within ten minutes of the first Recovering reading. See `REACTIVATION_DIAGNOSTIC.md`.
 
+The score also carries multi-step risk-burden information (`RISK_BURDEN_RESULTS.md`). In pooled 2025, current Unsafe checkpoints had at least one Unsafe block in the following 15 minutes about 69.6% of the time versus 11.1% for Recovering-low, and averaged about 1.43 versus 0.11 Unsafe five-minute blocks out of the next three. The already-opened 2026 replay was directionally similar but small. The 2024 15-minute high/low display-band ordering was not strictly monotone, reinforcing that the continuous ratio—not an expanded categorical state machine—should remain the primary output.
+
 ## What is explicitly NOT allowed
 
 - no monotone one-way lock from Unsafe into Recovering;
@@ -92,6 +97,7 @@ Minute-by-minute historical paths also show that recovery is frequently interrup
 - no static shock-severity grade promoted from event amplitude/path shape;
 - no cross-index headline-volatility term added without future independent evidence;
 - no substitution of trailing2 or trailing10 for the frozen trailing5 score from consumed results;
+- no elapsed-time/dwell-time hidden state added from consumed results;
 - no hysteresis boundary tuned from the already-observed state flips;
 - no threshold/feature search on the 2026 snapshot;
 - no trading/backtest conclusion from this state alone;
@@ -107,6 +113,12 @@ Research reference implementation:
 The implementation deliberately has no online Clean state, holds `sigma_pre` fixed, rejects same/prior-minute observations, treats invalid inputs as Unknown, allows Recovering -> Unsafe reactivation, and terminates rather than bridging a session boundary.
 
 Nine boundary/causality tests passed in the cloud session before the files were written to GitHub.
+
+Reusable diagnostics are also frozen for future replay:
+
+- `code/state_transition_eval.py` / transition evaluator tests;
+- `code/state_sufficiency.py` / `tests/test_state_sufficiency.py`;
+- `code/risk_burden.py` / `tests/test_risk_burden.py`.
 
 ## Evidence boundary
 
