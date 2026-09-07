@@ -1,0 +1,127 @@
+name: first-shock-authorized-minute-research
+on:
+  push:
+    branches: ["research/first-shock-actions-20260907"]
+    paths: [".github/workflows/first-shock-authorized.yml"]
+permissions:
+  contents: read
+concurrency:
+  group: first-shock-authorized-minute-research
+  cancel-in-progress: false
+jobs:
+  bounded-minute-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      PYTHONUNBUFFERED: "1"
+      RESEARCH_CODE_REF: b725544ff8fef9688877c6c7e1fd4d19081ea75c
+    steps:
+      - name: Checkout frozen research and only bounded minute inputs
+        uses: actions/checkout@v4
+        with:
+          ref: b725544ff8fef9688877c6c7e1fd4d19081ea75c
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/research/first_shock_gate_v1/
+            /src/star50_filter/__init__.py
+            /src/star50_filter/cloud_market_data.py
+            /data/cross_index_risk_gate_v1/manifest.json
+            /data/cross_index_risk_gate_v1/1m/000688.SH/202[1-5].parquet
+            /data/cross_index_risk_gate_v1/1m/000852.SH/202[1-5].parquet
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install research dependencies
+        run: |
+          mkdir -p evidence
+          python -m pip install numpy==2.3.5 pandas==2.2.3 scikit-learn==1.8.0 joblib pytest pyarrow
+          python -m pip freeze > evidence/environment.txt
+      - name: Validate delivered code and exact authorized input partitions
+        run: |
+          set -o pipefail
+          python docs/research/first_shock_gate_v1/code/verify_delivery.py | tee evidence/delivery_validation.log
+          python - <<'PY'
+          import hashlib,json,os,subprocess,sys
+          from pathlib import Path
+          import pyarrow.parquet as pq
+          root=Path('.').resolve()
+          mp=root/'data/cross_index_risk_gate_v1/manifest.json'
+          manifest=json.loads(mp.read_text())
+          items=[x for x in manifest['files'] if x['frequency']=='1m' and x['symbol'] in ('000688.SH','000852.SH') and 2021<=x['year']<=2025]
+          assert len(items)==10
+          audit=[]
+          for x in items:
+              p=root/x['path'];actual=hashlib.sha256(p.read_bytes()).hexdigest()
+              assert actual==x['sha256'],x['path']
+              f=pq.read_table(p).to_pandas()
+              assert len(f)==x['rows'] and set(f.symbol)=={x['symbol']}
+              assert f.trading_day.min()>=str(x['year'])+'-01-01' and f.trading_day.max()<=str(x['year'])+'-12-31'
+              audit.append({'path':x['path'],'sha256':actual,'rows':len(f),'first_day':f.trading_day.min(),'last_day':f.trading_day.max(),'repair_rows':int(f.causal_flat_fill.eq(True).sum()),'eligible_rows':int(f.high_frequency_analysis_eligible.eq(True).sum())})
+          physical=list((root/'data').rglob('*.parquet'))
+          assert len(physical)==10 and set(str(p.relative_to(root)) for p in physical)==set(x['path'] for x in items)
+          receipt={'execution_location':'GitHub Actions, explicitly authorized by owner after direct DNS failure','workflow_commit':os.environ['GITHUB_SHA'],'research_code_ref':os.environ['RESEARCH_CODE_REF'],'checkout_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'run_id':os.environ['GITHUB_RUN_ID'],'run_attempt':os.environ['GITHUB_RUN_ATTEMPT'],'python':sys.version,'manifest_sha256':hashlib.sha256(mp.read_bytes()).hexdigest(),'partitions':audit,'post_2025_inputs':False,'full_historical_package_validation':False,'fresh_oos':False,'production_authority':False,'visibility_note':'Owner changed repository to public; historical private-only manifests were not rewritten.'}
+          Path('evidence/actions_input_receipt.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n')
+          print('ACTIONS_INPUT_RECEIPT '+json.dumps(receipt,ensure_ascii=False))
+          PY
+      - name: Run only the 46 new research tests
+        run: |
+          set -o pipefail
+          python -m pytest -q docs/research/first_shock_gate_v1/tests --junitxml=evidence/tests.xml | tee evidence/tests.log
+      - name: Run frozen two-index minute comparison
+        run: |
+          set -o pipefail
+          python docs/research/first_shock_gate_v1/code/run_split_market.py --repo-root . --out evidence/market | tee evidence/market.log
+      - name: Expose small review summaries and preserve hashes
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib,json,os
+          from pathlib import Path
+          root=Path('evidence');root.mkdir(exist_ok=True)
+          review={}
+          for p in sorted((root/'market').glob('*_summary.json')):
+              x=json.loads(p.read_text());review[p.name]=x
+              print('MARKET_SUMMARY '+json.dumps({'file':p.name,'data':x},ensure_ascii=False))
+          p=root/'market/market_run_receipt.json'
+          if p.exists():
+              review['market_run_receipt']=json.loads(p.read_text())
+              print('MARKET_RUN_RECEIPT '+json.dumps(review['market_run_receipt'],ensure_ascii=False))
+          (root/'review_summary.json').write_text(json.dumps(review,ensure_ascii=False,indent=2)+'\n')
+          manifest=[]
+          for p in sorted(root.rglob('*')):
+              if p.is_file():manifest.append({'path':str(p.relative_to(root)),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+          (root/'output_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as h:
+              h.write('# Frozen first-shock minute experiment\n\nScope: 000688.SH and 000852.SH, 2021-2025; no trading; consumed development only.\n\n')
+              h.write('Completed annual/model summaries: '+str(len([k for k in review if k.endswith('_summary.json')]))+' / 8.\n\n')
+              h.write('Read the artifacts and job conclusion; absence of output is NOT success. Historical runner receipt says caller local environment; actual execution location is recorded in actions_input_receipt.json.\n')
+          PY
+      - name: Upload small summaries, event tables, tests and receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: first-shock-review-${{ github.run_id }}
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            evidence/*.json
+            evidence/*.log
+            evidence/*.txt
+            evidence/*.xml
+            evidence/market/*.json
+            evidence/market/*_events.csv
+      - name: Upload replay predictions and estimators separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: first-shock-replay-${{ github.run_id }}
+          retention-days: 7
+          if-no-files-found: ignore
+          path: |
+            evidence/market/*_decisions.csv.gz
+            evidence/market/*_estimators.joblib
