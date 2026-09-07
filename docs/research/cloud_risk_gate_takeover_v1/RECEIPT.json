@@ -1,0 +1,49 @@
+{
+  "schema": "cloud_risk_gate_takeover_receipt@1.0",
+  "date": "2026-09-07",
+  "task_id": "CL-STAR-RISK-20260907",
+  "base_commit": "8a07c422593c66e3d5669ebfd5b83586e1609411",
+  "branch": "research/risk-gate-takeover-20260907",
+  "status": "scope_and_method_review_complete_not_market_validation",
+  "files": [
+    {
+      "path": "docs/research/cloud_risk_gate_takeover_v1/TAKEOVER_PROTOCOL.md",
+      "sha256": "2872089a7ad1d1e144dfa6ce7b2fc40e548960a59e39de3a148c82a3625a33ec",
+      "git_blob_sha1": "cb0e30eb512e96712762c5a68b00537ea9674e26",
+      "bytes": 14356
+    },
+    {
+      "path": "docs/ops/cloud_local_communication_20260907_takeover.md",
+      "sha256": "8bd1903abb6e5b9b734dd2d19014a36cb1dc1c7bcdbf8692a9716b0f5b4f9396",
+      "git_blob_sha1": "17d10809b8ed6643e0ec6be41268cf65b805c5ed",
+      "bytes": 4656
+    }
+  ],
+  "execution": {
+    "location": "current_cloud_session",
+    "repository_text_review": true,
+    "selected_public_paper_method_review": true,
+    "all_15_archived_pdf_bytes_verified": false,
+    "binary_market_data_mounted": false,
+    "package_validator_executed": false,
+    "repository_pytest_executed": false,
+    "new_market_model_implemented": false,
+    "new_market_experiment_executed": false,
+    "local_task_automatically_dispatched": false,
+    "workflow_dispatch_called": false,
+    "post_2025_price_data_read": false
+  },
+  "blockers": [
+    "private_binary_files_not_mounted",
+    "container_external_DNS_unavailable",
+    "pyarrow_not_installed",
+    "large_package_manifest_body_not_retrieved"
+  ],
+  "authority": {
+    "fresh_oos": false,
+    "production_authority": false,
+    "main_modified": false,
+    "sealed_evidence_modified": false
+  },
+  "self_hash_policy": "This receipt does not include its own hash; bind it by the returned Git commit and delivery manifest."
+}
