@@ -1,0 +1,48 @@
+{
+  "schema": "first_shock_actions_evidence_index@1",
+  "run_id": 34091320590,
+  "job_id": 101645197275,
+  "workflow_url": "https://github.com/staryocean0/factorlab-star50-filter-lab/actions/runs/34091320590",
+  "run_conclusion": "success",
+  "attempt": 1,
+  "frozen_research_commit": "b725544ff8fef9688877c6c7e1fd4d19081ea75c",
+  "workflow_commit": "ed6ad5e86fdd76a891aedabd3ebdf3752c4d3e45",
+  "input_manifest_sha256": "7554feccb7a2cfae797d2d9acf139aeb845967a7e24cec4756fdb0d2f4dac059",
+  "input_partitions": 10,
+  "source_rows_per_index": 290880,
+  "paired_half_sessions": 2424,
+  "paired_valid_returns_per_index": 285791,
+  "new_tests_passed": 46,
+  "test_seconds": 1.80,
+  "small_evidence": {
+    "artifact_id": 10006954915,
+    "name": "first-shock-review-34091320590",
+    "bytes": 30003,
+    "sha256": "68adfa95d14b435c7872ee3e521efabcc2ab41aee237648c408b45cd8e36bca8",
+    "expires_at": "2026-09-21T06:34:29Z",
+    "downloaded_and_hash_verified_in_conversation": true,
+    "verified_internal_output_files": 24
+  },
+  "large_replay": {
+    "artifact_id": 10006956259,
+    "name": "first-shock-replay-34091320590",
+    "bytes": 69289902,
+    "sha256": "90b889d67b3e42184f3e1c33dd429f1405fd20e83df638227c5c23cc21780ab3",
+    "expires_at": "2026-09-14T06:34:30Z",
+    "downloaded_in_conversation": false
+  },
+  "commands": [
+    "python docs/research/first_shock_gate_v1/code/verify_delivery.py",
+    "python -m pytest -q docs/research/first_shock_gate_v1/tests --junitxml=evidence/tests.xml",
+    "python docs/research/first_shock_gate_v1/code/run_split_market.py --repo-root . --out evidence/market"
+  ],
+  "execution_place": "GitHub Actions, not the conversation terminal or user's local computer",
+  "independent_review_place": "conversation terminal, downloaded summaries and event tables only",
+  "event_table_cells_reconciled": 32,
+  "raw_data_replay_in_conversation": false,
+  "full_repository_tests": false,
+  "no_post_2025_input": true,
+  "fresh_oos": false,
+  "production_authority": false,
+  "scientific_promotion": false
+}
