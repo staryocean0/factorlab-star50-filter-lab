@@ -1,3 +1,4 @@
+# execution trigger only; scientific ref remains frozen below
 name: star50-e2-single-score-gate-v33
 on:
   push:
