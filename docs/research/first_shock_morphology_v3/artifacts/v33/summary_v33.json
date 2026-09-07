@@ -1,0 +1,46 @@
+{
+  "calibration_years": [
+    2022,
+    2023
+  ],
+  "evaluation_years": [
+    2024,
+    2025
+  ],
+  "fresh_oos": false,
+  "in_scope_quiet_first_events_2024_2025": 16,
+  "primary_decision": {
+    "lift_vs_time_share": 1.5453932010504814,
+    "primary_budget": 0.2,
+    "quiet_first_events_all": 16,
+    "quiet_first_events_unknown": 0,
+    "realized_flagged_time_share": 0.16177112713454572,
+    "recall_conservative": 0.25,
+    "status": "weak_descriptive_only"
+  },
+  "production_authority": false,
+  "results_blind_gate_thresholds": true,
+  "returns_or_pnl_evaluated": false,
+  "scope_limit": "score requires 30-minute scale; first 30 minutes after each half-session open are outside this gate's claim",
+  "score_formula": "0.5*((logE30-logE240)+(logE60-logE240))",
+  "status": "completed STAR50 e-2 single-score fixed-budget feasibility diagnostic",
+  "symbol": "000688.SH",
+  "thresholds": {
+    "10pct": {
+      "calibration_realized_flagged_share": 0.10001145278589017,
+      "nominal_budget": 0.1,
+      "threshold": 0.8400700188935322
+    },
+    "20pct": {
+      "calibration_realized_flagged_share": 0.2000085895894176,
+      "nominal_budget": 0.2,
+      "threshold": 0.4912942002945607
+    },
+    "30pct": {
+      "calibration_realized_flagged_share": 0.3000057263929451,
+      "nominal_budget": 0.3,
+      "threshold": 0.2252549262524357
+    }
+  },
+  "unknown_events_2024_2025": 0
+}
