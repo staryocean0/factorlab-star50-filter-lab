@@ -1,0 +1,3 @@
+minutes,basis,CSI_events,STAR_events,simultaneous,STAR_given_CSI,CSI_given_STAR,same_sign_given_both
+1,raw,824,2191,473,0.5740291262135923,0.21588315837517116,1.0
+1,standardized,616,442,160,0.2597402597402597,0.36199095022624433,1.0

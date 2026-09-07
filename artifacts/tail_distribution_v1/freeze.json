@@ -1,0 +1,21 @@
+{
+  "sources": {
+    "src/star50_filter/tail_distribution.py": "2c84d603877ca3f02943976b4935faf3cee428b337e2cf6e6f12bbd065238a4b",
+    "scripts/research_tail_distribution_v1.py": "b01d4ea069bc870bc5cecee9acf6ae464e8ecb1d40b1c691b575a949a13c00f6",
+    "tests/test_tail_distribution.py": "32cf31c82415d9527909ff8398b83164e8437a7cdb78c206da32f26dd9ceb3ec",
+    "docs/research/tail_distribution_v1/protocol.md": "770e03b1a48bfb79200fe34c0023da883c4bc93032fc73c03f056ab6752899a4",
+    "docs/research/tail_distribution_v1/data_usage.json": "698dce8842821dd3769f48202b9beb4b63d42ddb8e7d6533c6ff37dcc3d50cea"
+  },
+  "inputs": {
+    "1m_official.parquet": "aeacff04b268c166faac333ec7ab9d840abcd347d82cb3bcee0218d058fc7423",
+    "5m_offset_0.parquet": "d3101e6adf7a3e85b11f7c3503a6161f3ab363f7edd90ac8cba451ffe409c46a"
+  },
+  "manifest_sha256": "c46f2da6c3df016ca054e183e37267dc472097450fcdd6644c22aa0084c15749",
+  "symbols": [
+    "000852.SH",
+    "000688.SH"
+  ],
+  "parameter_search": false,
+  "fresh_oos": false,
+  "production_authority": false
+}

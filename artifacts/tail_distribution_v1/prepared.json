@@ -1,0 +1,30 @@
+{
+  "freeze_sha256": "834d9dd7964d06af502bff5f640b30c69225663f7f37df153757d2a0f8e86b1e",
+  "views": [
+    {
+      "minutes": 1,
+      "rows": 581760,
+      "days_per_symbol": {
+        "000688.SH": 1212,
+        "000852.SH": 1212
+      },
+      "min_day": "2021-01-04",
+      "max_day": "2025-12-31",
+      "panel_sha256": "fb5d275ba4fc9cf8ca3b9b65a2a6a499d8f11529e6fba5d1221768a1b79ab23b",
+      "cutoffs_sha256": "9502b70d60559cbfe8f05270436455652e560e5f47cf5298219c3831117cb449"
+    },
+    {
+      "minutes": 5,
+      "rows": 116352,
+      "days_per_symbol": {
+        "000688.SH": 1212,
+        "000852.SH": 1212
+      },
+      "min_day": "2021-01-04",
+      "max_day": "2025-12-31",
+      "panel_sha256": "504474df6781f5815cc1b8e856b24069901a5733606fefeea8dc079347d940b4",
+      "cutoffs_sha256": "decb57ea10e565e244066f9b573cc0e0ceff878776dc87d1bb27f5094ac08391"
+    }
+  ],
+  "no_strategy_returns": true
+}

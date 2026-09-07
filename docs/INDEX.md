@@ -1,5 +1,7 @@
 # STAR50 filter lab index
 
+- Latest: [中证1000与科创50同期同频尾部研究](research/tail_distribution_v1/result.md) → [工作流](research/tail_distribution_v1/workflow.md)。绝对尾部与超背景异常分开；未将结果直接注册为交易桶。
+
 - Latest measurement: [秒级路径效率方差与中证1000半日低通迁移](research/resolution_transfer_v1/result.md) → [工作流](research/resolution_transfer_v1/workflow.md)。两项完成但未产生最优分辨率或因果路由，V2参数不变。
 
 - Current V2: [平均单笔质量优先回测](research/half_day_slope_union_v2/result.md) → [执行与图形工作流](research/half_day_slope_union_v2/workflow.md) → [冻结参数](research/half_day_slope_union_v2/selected_policy.json)。保留V1与完整324身份研究，指数模拟不授真实载体/生产权限。

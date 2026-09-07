@@ -1,5 +1,9 @@
 # Current research entry
 
+## 最新：两指数同时间同级别尾部与事前条件研究完成
+
+[结论与图形](docs/research/tail_distribution_v1/result.md) → [工作流](docs/research/tail_distribution_v1/workflow.md)。1m/5m共同绝对与标准化尾部、时间聚集、事前波动条件及固定概率诊断已完成；高波动可识别很多绝对大幅变化，但科创50大且异常有显著非高波动部分。当前未形成交易路由，V2不变，无2026读取或生产权。
+
 ## 最新测量：秒级分辨率与中证1000固定迁移
 
 [结果与图形](docs/research/resolution_transfer_v1/result.md) → [复现工作流](docs/research/resolution_transfer_v1/workflow.md)。两只科创50ETF2024/2025真实秒观测显示更细网格原始ER方差下降，但未识别交易最优分辨率；固定V2迁移中证1000的2021—2025研究已完成，无重选参数、无2026读取或生产权。V2仍是当前策略版本，因果路由尚未建立。

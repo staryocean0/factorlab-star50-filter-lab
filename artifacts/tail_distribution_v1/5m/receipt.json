@@ -1,0 +1,35 @@
+{
+  "freeze_sha256": "834d9dd7964d06af502bff5f640b30c69225663f7f37df153757d2a0f8e86b1e",
+  "minutes": 5,
+  "elapsed_seconds": 3.3620205440001882,
+  "evaluation_years": [
+    2024,
+    2025
+  ],
+  "files": {
+    "000688.SH_raw_episodes.csv": "6ed6d734f4ce593c44555b7810670de0240b0e576b60c12ca0e6f590df2fd67c",
+    "000688.SH_raw_frozen_probability_cells.csv": "c8d166a5b136f69d27d00d570f03c1822cbf6766d1309013291eb0fc4bece32e",
+    "000688.SH_raw_null.npy": "0da9c245fc7c9d1c70646e4954e2aa2bb0c13902190f44ad3ff92342b3828c88",
+    "000688.SH_standardized_episodes.csv": "e2ae1df82b8bd9b7175ffafb5ef94b3f7c001782ccdd983538200d6598ff269b",
+    "000688.SH_standardized_frozen_probability_cells.csv": "28a08c3506dc9affca58ba05dbd5c8d83c8cb4af389c90fb4b6b19e93e09f851",
+    "000688.SH_standardized_null.npy": "a6de5f76486787a9a7c642a14630bea4004882db20f58ad1418d8399c5732e87",
+    "000852.SH_raw_episodes.csv": "88ac75ba3831dca33e847eb8e48f7817d55fe315b845b76d7f2d1edc0e471c22",
+    "000852.SH_raw_frozen_probability_cells.csv": "f78e680a53fe2fd384f4f8a88a12b8d5c012e87e860f26d3d67f9df5154133d8",
+    "000852.SH_raw_null.npy": "34df03a79941908a7c84118bf3bbad933a9c9f4521f132056cff251b73390b82",
+    "000852.SH_standardized_episodes.csv": "4a325368204f53fd2d19bc5db76aa608c47e46c7b87478d40c30c63b53d3387c",
+    "000852.SH_standardized_frozen_probability_cells.csv": "19de1bfd535dee0eaf9731c126947d764615dbe0ddf2b7f77493efa3b355d75a",
+    "000852.SH_standardized_null.npy": "c8ae271e9c3f6b1a88eb3f610d213776dfff1efc173e6261502423ea5952ecff",
+    "boundaries.csv": "1fc064c5324770a7f38bcfeec5ba2f88faf197b0e77ed65a17b740ab26dc26fd",
+    "clustering.csv": "86c9a75e3418622d81c6ab87d7e72f14c784d2e3af00e763923bc93ca331be9d",
+    "coincidences.csv": "85fcc46aa16181dd8a2edda6793417c4595d3bc946edcd8f65cee4620ba1c8e4",
+    "conditions.csv": "d7b5916ca8b23fe0a6e86f0711f604dc68c51e90ccf57c47fd25093b38562aee",
+    "forecasts.csv": "a71a14aaf84c7f47dd6b0f85ca6ad0acc63c96f3931da7fe11c0f6f9accfe762",
+    "largest_events.csv": "cb92105d2d8e504df37c93141ca2dd219bed5c75f1b674f74255edcf1dbc5fbc",
+    "marginals.csv": "21fd87e0cba51f4997697fc1aac5c0f5c45bc7cca4f89b3d875349b642778113",
+    "severity.csv": "dce6985cd9748aa6295aee2dca9b42ded86856915c9c43b83e30a7134d4ed0ec",
+    "tail_events.parquet": "e4e7c92672610d97834627112a352b7861b5b4b1cb9f50d8ad5d2040844978d3",
+    "tests.csv": "2f3db2eab848eac595e79fc9988daf507ccc12c0e0713d364dd4f8bcf2d0aae7"
+  },
+  "routing_authority": false,
+  "production_authority": false
+}

@@ -1,5 +1,7 @@
 # STAR50 filter lab AI entry
 
+Latest study: [两指数同频尾部与事前风险条件](docs/research/tail_distribution_v1/result.md). Matched 1m/5m absolute and volatility-standardized tails, seasonal permutation controls and frozen risk probabilities; candidate information only, no router or V2 change.
+
 Latest study: [秒级分辨率与中证1000固定迁移](docs/research/resolution_transfer_v1/result.md). Existing STAR50 ETF 3s observations; fixed-time ER diagnostics and unchanged V2 cross-index replay. Lower raw ER variance is not trading-resolution admission. V2 unchanged; no 2026 or production authority.
 
 Current V2: [单笔质量优先回测与图形](docs/research/half_day_slope_union_v2/result.md) → [selected policy](docs/research/half_day_slope_union_v2/selected_policy.json). Bounded 324-identity development, fixed 2024/2025 repeat audit; explicit post-development selection-rule amendment, index simulation only, no 2026 or production authority.

@@ -1,0 +1,64 @@
+{
+  "run_id": "1788748833125388537-153238-cpu-heavy-rf-grid",
+  "profile": "cpu-heavy-rf-grid",
+  "command": [
+    "/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab/.venv/bin/python",
+    "scripts/research_tail_distribution_v1.py",
+    "analyze",
+    "--minutes",
+    "5"
+  ],
+  "decision": {
+    "requested_workers": "1",
+    "decided_workers": 2,
+    "decision": "use_requested_workers",
+    "reason": "explicit_worker_request",
+    "active_job_count": 0,
+    "active_worker_count": 0,
+    "profile": "cpu-heavy-rf-grid",
+    "snapshot": {
+      "cpu_count": 32,
+      "load1": 2.003,
+      "cpu_busy_pct": 11.25,
+      "io_wait_pct": 0.0,
+      "mem_total_gb": 109.684,
+      "mem_available_gb": 102.092,
+      "swap_used_gb": 0.0
+    }
+  },
+  "dry_run": false,
+  "started_at": 1788748833.1253939,
+  "exit_code": 0,
+  "duration_s": 4.206,
+  "peak_rss_gb": 0.381,
+  "sample_count": 3,
+  "samples": [
+    {
+      "ts": 1788748833.2288518,
+      "process_running": true,
+      "process_rss_gb": 0.028,
+      "cpu_busy_pct": 16.561,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 102.085,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788748835.279879,
+      "process_running": true,
+      "process_rss_gb": 0.381,
+      "cpu_busy_pct": 12.963,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 100.996,
+      "swap_used_gb": 0.0
+    },
+    {
+      "ts": 1788748837.330916,
+      "process_running": false,
+      "process_rss_gb": 0.0,
+      "cpu_busy_pct": 7.407,
+      "io_wait_pct": 0.0,
+      "mem_available_gb": 101.314,
+      "swap_used_gb": 0.0
+    }
+  ]
+}

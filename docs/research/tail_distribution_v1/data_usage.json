@@ -1,0 +1,20 @@
+{
+  "schema_id": "two_index_tail_distribution@1.0",
+  "symbols": ["000852.SH", "000688.SH"],
+  "views": ["1m_official", "5m_offset_0"],
+  "roles": {
+    "2020-07-23/2020-12-31": "warmup_only",
+    "2021-01-01/2023-12-31": "consumed_calibration",
+    "2024-01-01/2025-12-31": "fixed_repeat_audit",
+    "2026": "excluded"
+  },
+  "tail_quantile": 0.995,
+  "volatility_lookback_minutes": 480,
+  "permutations": 999,
+  "random_seed": 20260907,
+  "primary_test_family_size": 24,
+  "multiple_testing": "Holm",
+  "new_strategy_or_router": false,
+  "fresh_oos": false,
+  "production_authority": false
+}
