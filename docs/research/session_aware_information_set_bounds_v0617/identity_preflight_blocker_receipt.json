@@ -1,0 +1,76 @@
+{
+  "schema": "session_aware_information_set_bounds_v0617_identity_preflight_blocker@1.0",
+  "date": "2026-09-07",
+  "task": "CL-STAR-RISK-20260907",
+  "protocol_version": "session_aware_information_set_bounds_v0.6.17",
+  "branch": "research/session-aware-information-set-bounds-v0617-20260907",
+  "scientific_runner_commit": "b6930dcd16bb47664b1edcbc13e2bdabf779cf4a",
+  "cloud_repository_head_before_receipt": "3498494f6cec3cd74a9ffbb530af7bb11e1733cf",
+  "status": "SCIENTIFIC_REPLAY_BLOCKED_PENDING_PRIOR_IDENTITY_RECOVERY",
+  "results_blind": true,
+  "real_authoritative_replay_executed": false,
+  "replay_outputs_created": false,
+  "authoritative_source": {
+    "required_rows": 349923,
+    "known_unauthorized_factorlab_rows": 350561,
+    "prior_expected_sha256_found_in_cloud_archive": false,
+    "cloud_blocker": "prior_authoritative_source_hash_receipt_not_found_in_cloud_archive",
+    "canonical_blocker_if_local_prior_receipt_is_also_absent": "prior_authoritative_source_hash_receipt_missing"
+  },
+  "v0615_leg_universe": {
+    "must_preserve": [
+      "published_leg_universe",
+      "strict_pair_overlay",
+      "qualification_overlay",
+      "session_edge_and_gap_legs"
+    ],
+    "prior_expected_sha256_or_manifest_found_in_cloud_archive": false,
+    "cloud_blocker": "prior_v0615_leg_universe_identity_not_found_in_cloud_archive",
+    "canonical_blocker_if_local_prior_receipt_is_also_absent": "prior_v0615_leg_universe_identity_missing"
+  },
+  "cloud_search_scope": [
+    "current v0.6.17 branch files and frozen protocol/local replay request",
+    "visible repository branch list",
+    "v0.6.17 commit ancestry through research/risk-gate-takeover-20260907",
+    "main merge second-parent lineage 5fe43ec904d8fa9ad33d20e7b94b2caae4ce872b -> bdbcf7dc2f613100ea7ceeb6968ab7fc2b5c9df9",
+    "docs/research/cloud_risk_gate_takeover_v1/RECEIPT.json",
+    "docs/ops/cloud_local_communication.md",
+    "docs/ops/cloud_local_communication_20260907_takeover.md",
+    "docs/handoff/cloud_risk_gate_20260907/DATA.md",
+    "docs/handoff/cloud_risk_gate_20260907/datahub directory listing",
+    "default-branch code searches for fine_concentration_identifiability and 349923/DataHub/SHA256"
+  ],
+  "important_non_substitutable_evidence": {
+    "handoff_cloud_000688_1m_rows_through_2025": 317280,
+    "note": "This handoff cloud consumption surface is not the 349923-row authoritative DataHub source required by v0.6.17 and must not be substituted."
+  },
+  "required_next_execution": {
+    "location": "local DataHub / prior experiment evidence store",
+    "mode": "IDENTITY_ONLY_NO_SCIENTIFIC_REPLAY",
+    "steps": [
+      "Locate a DataHub source identity receipt that demonstrably predates the v0.6.17 local replay request and binds the exact 349923-row authoritative source to a SHA-256 plus DataHub lineage/commit.",
+      "Locate the actual frozen v0.6.15 published-leg universe with strict-pair and qualification overlays plus a pre-existing SHA-256 or manifest from that failed experiment.",
+      "Return only the receipt/manifest paths, their own identities, expected hashes, creation/commit provenance, and minimal non-result-bearing metadata needed for cloud adjudication.",
+      "Do not hash a newly selected candidate and use that same new value as both expected and actual.",
+      "Do not run scripts/run_session_aware_information_bounds_v0617.py and do not inspect any v0.6.17 scientific result until both prior identities are cloud-adjudicated."
+    ]
+  },
+  "if_local_prior_receipts_are_absent": {
+    "action": "FAIL_CLOSED_AND_DO_NOT_RUN_V0617_SCIENTIFIC_REPLAY",
+    "blockers": [
+      "prior_authoritative_source_hash_receipt_missing",
+      "prior_v0615_leg_universe_identity_missing"
+    ],
+    "protocol_implication": "A new explicitly versioned protocol would be required to define any prospective identity establishment. The missing prior hashes cannot be backfilled under the v0.6.17 precommit claim."
+  },
+  "still_frozen": [
+    "morphology_replication_acceptance",
+    "direction_labels",
+    "third_wave_labels",
+    "returns_or_pnl",
+    "drawdown_effectiveness_claims",
+    "fresh_oos",
+    "trading_or_position_sizing",
+    "production"
+  ]
+}
