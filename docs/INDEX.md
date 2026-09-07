@@ -1,5 +1,7 @@
 # STAR50 filter lab index
 
+- Latest: [因果未来波动工具V1](research/causal_volatility_tool_v1/result.md) → [接口与复现](research/causal_volatility_tool_v1/workflow.md)。环境预测有进展，普通时段突变预警未通过；不授交易路由。
+
 - Latest: [中证1000与科创50同期同频尾部研究](research/tail_distribution_v1/result.md) → [工作流](research/tail_distribution_v1/workflow.md)。绝对尾部与超背景异常分开；未将结果直接注册为交易桶。
 
 - Latest measurement: [秒级路径效率方差与中证1000半日低通迁移](research/resolution_transfer_v1/result.md) → [工作流](research/resolution_transfer_v1/workflow.md)。两项完成但未产生最优分辨率或因果路由，V2参数不变。

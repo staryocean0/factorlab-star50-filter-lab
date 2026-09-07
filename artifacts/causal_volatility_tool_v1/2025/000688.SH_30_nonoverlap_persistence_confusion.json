@@ -1,0 +1,24 @@
+{
+  "rows_actual_columns_predicted": [
+    [
+      164,
+      76,
+      28
+    ],
+    [
+      49,
+      109,
+      149
+    ],
+    [
+      112,
+      113,
+      658
+    ]
+  ],
+  "states": [
+    "low",
+    "medium",
+    "high"
+  ]
+}

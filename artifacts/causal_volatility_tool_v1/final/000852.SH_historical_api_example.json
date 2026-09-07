@@ -1,0 +1,17 @@
+{
+  "example_type": "historical_prefix_not_live_market",
+  "symbol": "000852.SH",
+  "horizon_minutes": 15,
+  "timestamp": "2025-12-31 14:45:00+08:00",
+  "forecast_available": true,
+  "forecast_sigma": 0.0002447192661837584,
+  "sigma_p10": 0.0001515802426784882,
+  "sigma_p90": 0.0003292500794127135,
+  "p_future_high": 0.023061786698150333,
+  "predicted_sigma_ratio": 0.5798302431039217,
+  "forecast_bucket": "low",
+  "p_amplify_2": 0.00021645021645021645,
+  "p_amplify_3": 0.0,
+  "p_amplify_4": 0.0,
+  "production_authority": false
+}

@@ -1,0 +1,16 @@
+{
+  "schema_id": "causal_volatility_tool@1.0",
+  "input": "artifacts/tail_distribution_v1/panel_1m.parquet",
+  "roles": {"2021-2022": "fit_consumed_history", "2023": "calibration_consumed_history", "2024-2025": "fixed_repeat_audit", "2026": "excluded"},
+  "symbols": ["000852.SH", "000688.SH"],
+  "horizons_minutes": [5, 15, 30],
+  "primary_horizon_minutes": 15,
+  "model_family": "multiscale_log_variance_ridge_fixed_lambda1",
+  "baselines": ["persistence", "clock_only"],
+  "amplification_factors": [2, 3, 4],
+  "event_probability_alert": 0.5,
+  "prediction_interval": [0.1, 0.9],
+  "hyperparameter_search": false,
+  "fresh_oos": false,
+  "production_authority": false
+}

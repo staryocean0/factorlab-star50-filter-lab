@@ -1,0 +1,958 @@
+{
+  "source_sha256": "04f6010b8d069feadbf032a3091e25987fb59b077dea208aa23bbb26b47d550a",
+  "freeze_sha256": "3b7572ef65ea76da63235ee342bfd87b85aaff6e71e699600fb44cbe699690fe",
+  "fit_receipt_sha256": "bcb3cd13687399bd98e1d37b29f9fedb1973a413b16e0ab95061d675577d1ebf",
+  "future_window_direct_audits": [
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2024-01-02 09:31:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2024-01-30 10:18:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2024-03-06 11:06:00+08:00",
+      "target_error": 2.710505431213761e-19
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2024-04-03 13:29:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2024-05-08 14:17:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2024-06-06 09:40:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2024-07-05 10:28:00+08:00",
+      "target_error": 6.505213034913027e-19
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2024-08-02 11:16:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2024-08-30 13:39:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2024-10-08 14:26:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2024-11-06 09:49:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2024-12-04 10:37:00+08:00",
+      "target_error": 5.421010862427522e-20
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2025-01-02 11:25:00+08:00",
+      "target_error": 8.673617379884035e-19
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2025-02-07 13:48:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2025-03-07 14:36:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2025-04-08 09:59:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2025-05-09 10:47:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2025-06-09 13:09:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2025-07-07 13:57:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2025-08-04 14:45:00+08:00",
+      "target_error": 2.710505431213761e-20
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2025-09-02 10:08:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2025-09-30 10:56:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2025-11-05 13:19:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2025-12-03 14:07:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "timestamp": "2025-12-31 14:55:00+08:00",
+      "target_error": 1.0842021724855044e-19
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2024-01-02 09:31:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2024-01-30 10:14:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2024-03-06 10:58:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2024-04-03 13:27:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2024-05-08 14:10:00+08:00",
+      "target_error": 1.0842021724855044e-19
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2024-06-06 09:39:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2024-07-05 10:23:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2024-08-02 11:06:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2024-08-30 13:35:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2024-10-08 14:19:00+08:00",
+      "target_error": 2.168404344971009e-19
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2024-11-06 09:48:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2024-12-04 10:31:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2025-01-02 11:15:00+08:00",
+      "target_error": 5.421010862427522e-20
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2025-02-07 13:44:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2025-03-07 14:27:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2025-04-08 09:56:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2025-05-09 10:40:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2025-06-09 13:09:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2025-07-07 13:52:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2025-08-04 14:36:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2025-09-02 10:05:00+08:00",
+      "target_error": 2.168404344971009e-19
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2025-09-30 10:48:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2025-11-05 13:17:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2025-12-03 14:01:00+08:00",
+      "target_error": 5.421010862427522e-20
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "timestamp": "2025-12-31 14:45:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2024-01-02 09:31:00+08:00",
+      "target_error": 1.0842021724855044e-19
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2024-01-30 10:08:00+08:00",
+      "target_error": 1.0842021724855044e-19
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2024-03-06 10:45:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2024-04-03 13:23:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2024-05-08 14:00:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2024-06-06 09:38:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2024-07-05 10:15:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2024-08-02 10:53:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2024-08-30 13:30:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2024-10-08 14:08:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2024-11-06 09:45:00+08:00",
+      "target_error": 2.168404344971009e-19
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2024-12-04 10:23:00+08:00",
+      "target_error": 1.0842021724855044e-19
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2025-01-02 11:00:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2025-02-07 13:37:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2025-03-07 14:15:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2025-04-08 09:52:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2025-05-09 10:30:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2025-06-09 13:07:00+08:00",
+      "target_error": 2.710505431213761e-20
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2025-07-07 13:45:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2025-08-04 14:22:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2025-09-02 10:00:00+08:00",
+      "target_error": 2.168404344971009e-19
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2025-09-30 10:37:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2025-11-05 13:15:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2025-12-03 13:52:00+08:00",
+      "target_error": 5.421010862427522e-20
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "timestamp": "2025-12-31 14:30:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2024-01-02 09:31:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2024-01-30 10:18:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2024-03-06 11:06:00+08:00",
+      "target_error": 2.168404344971009e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2024-04-03 13:29:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2024-05-08 14:17:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2024-06-06 09:40:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2024-07-05 10:28:00+08:00",
+      "target_error": 2.168404344971009e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2024-08-02 11:16:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2024-08-30 13:39:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2024-10-08 14:26:00+08:00",
+      "target_error": 2.168404344971009e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2024-11-06 09:49:00+08:00",
+      "target_error": 4.336808689942018e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2024-12-04 10:37:00+08:00",
+      "target_error": 1.0842021724855044e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2025-01-02 11:25:00+08:00",
+      "target_error": 2.168404344971009e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2025-02-07 13:48:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2025-03-07 14:36:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2025-04-08 09:59:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2025-05-09 10:47:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2025-06-09 13:09:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2025-07-07 13:57:00+08:00",
+      "target_error": 2.710505431213761e-20
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2025-08-04 14:45:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2025-09-02 10:08:00+08:00",
+      "target_error": 2.168404344971009e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2025-09-30 10:56:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2025-11-05 13:19:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2025-12-03 14:07:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "timestamp": "2025-12-31 14:55:00+08:00",
+      "target_error": 5.421010862427522e-20
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2024-01-02 09:31:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2024-01-30 10:14:00+08:00",
+      "target_error": 1.0842021724855044e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2024-03-06 10:58:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2024-04-03 13:27:00+08:00",
+      "target_error": 1.0842021724855044e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2024-05-08 14:10:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2024-06-06 09:39:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2024-07-05 10:23:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2024-08-02 11:06:00+08:00",
+      "target_error": 1.0842021724855044e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2024-08-30 13:35:00+08:00",
+      "target_error": 1.0842021724855044e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2024-10-08 14:19:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2024-11-06 09:48:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2024-12-04 10:31:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2025-01-02 11:15:00+08:00",
+      "target_error": 1.0842021724855044e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2025-02-07 13:44:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2025-03-07 14:27:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2025-04-08 09:56:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2025-05-09 10:40:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2025-06-09 13:09:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2025-07-07 13:52:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2025-08-04 14:36:00+08:00",
+      "target_error": 5.421010862427522e-20
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2025-09-02 10:05:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2025-09-30 10:48:00+08:00",
+      "target_error": 2.168404344971009e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2025-11-05 13:17:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2025-12-03 14:01:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "timestamp": "2025-12-31 14:45:00+08:00",
+      "target_error": 5.421010862427522e-20
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2024-01-02 09:31:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2024-01-30 10:08:00+08:00",
+      "target_error": 1.0842021724855044e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2024-03-06 10:45:00+08:00",
+      "target_error": 1.0842021724855044e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2024-04-03 13:23:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2024-05-08 14:00:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2024-06-06 09:38:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2024-07-05 10:15:00+08:00",
+      "target_error": 1.0842021724855044e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2024-08-02 10:53:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2024-08-30 13:30:00+08:00",
+      "target_error": 1.0842021724855044e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2024-10-08 14:08:00+08:00",
+      "target_error": 1.0842021724855044e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2024-11-06 09:45:00+08:00",
+      "target_error": 2.168404344971009e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2024-12-04 10:23:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2025-01-02 11:00:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2025-02-07 13:37:00+08:00",
+      "target_error": 2.168404344971009e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2025-03-07 14:15:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2025-04-08 09:52:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2025-05-09 10:30:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2025-06-09 13:07:00+08:00",
+      "target_error": 2.710505431213761e-20
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2025-07-07 13:45:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2025-08-04 14:22:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2025-09-02 10:00:00+08:00",
+      "target_error": 2.168404344971009e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2025-09-30 10:37:00+08:00",
+      "target_error": 2.168404344971009e-19
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2025-11-05 13:15:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2025-12-03 13:52:00+08:00",
+      "target_error": 0.0
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "timestamp": "2025-12-31 14:30:00+08:00",
+      "target_error": 5.421010862427522e-20
+    }
+  ],
+  "all_model_and_evaluation_receipts_verified": true,
+  "new_router": false,
+  "production_authority": false,
+  "status": "level_forecast_progress_opening_dominated_surge_detection_interior_warning_insufficient",
+  "files": {
+    "000688.SH_15_dense_clock_only_confusion.json": "f234f3485b68d0148ac3da3d1246ecc434c4039d2fe54a53e8e28315d89968a9",
+    "000688.SH_15_dense_multiscale_confusion.json": "0784bb7351716e4d26b920c1f78b9f7fe1bf90d33e93b75eb06c8ee18b977cbc",
+    "000688.SH_15_dense_persistence_confusion.json": "8aa1a3afe0305409e709f888e08d4f886901dd2c541261e46894a2119569bcad",
+    "000688.SH_15_nonoverlap_clock_only_confusion.json": "b1a48c9ef791bc0c0fb63d7dd2ea58ec98eac3f3de431e4c53fb20a4224eddb8",
+    "000688.SH_15_nonoverlap_multiscale_confusion.json": "e014a73f05101796b61fbf8f0cf46024f707d291c46999488b60efaa02226155",
+    "000688.SH_15_nonoverlap_persistence_confusion.json": "92eda2308b75f1f17d56fdf310f6e576ba9e9d42fc51bea9a63c40fab39ed066",
+    "000688.SH_30_dense_clock_only_confusion.json": "65dcc9a90b61c9404154fdcdf0ed6a3fff2bf6d12ee18c861f3025321b99548b",
+    "000688.SH_30_dense_multiscale_confusion.json": "da485174476d14a30cef32433dce98d99f6b8e3e939d5f837ffc66f51b5a84a9",
+    "000688.SH_30_dense_persistence_confusion.json": "f8f969efbc597785a5a46df3ee58237f431be9ed13aefe982d9df5401cd402d2",
+    "000688.SH_30_nonoverlap_clock_only_confusion.json": "da58e0cedcd6259c6749aa1e5df7f78e602f6409b8e8a4fbbdce1616019ed182",
+    "000688.SH_30_nonoverlap_multiscale_confusion.json": "ac2d0ec4d4c2419ec0b7b51a60ddd670ce0024e107ce919513a271de8b2ea281",
+    "000688.SH_30_nonoverlap_persistence_confusion.json": "cc631056a8ce0631ea1933ae83aa14d64219b4c923a4a58651b2ebbe2573658c",
+    "000688.SH_5_dense_clock_only_confusion.json": "0ee2e6e339eb27f7d71e19662bae680c634038073cff12901e0c17bbd0ddd3c6",
+    "000688.SH_5_dense_multiscale_confusion.json": "fc01a6bc7191a96c3e3c9bc4303efe29635471ca7ff7fc7ba509e7dcdd9f2dc2",
+    "000688.SH_5_dense_persistence_confusion.json": "9c320672a42b413de7b7862a74cd1810c603ae3cadff16bc3c7569e29252a2d0",
+    "000688.SH_5_nonoverlap_clock_only_confusion.json": "168dcb2988f1d5608d62325d014750d7605d7843e23d8a21cce60f05a3fdfbe4",
+    "000688.SH_5_nonoverlap_multiscale_confusion.json": "6325463051cb0e6be9b74068365ba7f0e86ccde21b2669c39327857486a924f8",
+    "000688.SH_5_nonoverlap_persistence_confusion.json": "b347d0ea22b431228d1bf46466a0b89ba2c274f1bad888571f17f9951393a997",
+    "000688.SH_historical_api_example.json": "b8a2f64ceb39848cabccadecc94d87dc9978531e3d9374cbf32b08fff0d2fd76",
+    "000852.SH_15_dense_clock_only_confusion.json": "0b9eaf5969d452f02abc17c0bf81d5e51a83bd19816852f89c5c6b03d5af0050",
+    "000852.SH_15_dense_multiscale_confusion.json": "de54662dfd140d0f369c0f04949aee137f354d663ffcf7bb036683c497c1a811",
+    "000852.SH_15_dense_persistence_confusion.json": "08a408609df6c2af7391c2fe37342bb895185d748747af95cbd3683b94dfb777",
+    "000852.SH_15_nonoverlap_clock_only_confusion.json": "52d60e915a4cc01a078872e9e2b7622d479873d4f84116d83cd83d6b11e5bcd7",
+    "000852.SH_15_nonoverlap_multiscale_confusion.json": "8b4348549dd02472ec1f7091c0b1893bf7c3b0dd1e57d4a63d1a7d3c466c14dd",
+    "000852.SH_15_nonoverlap_persistence_confusion.json": "ea7c709819045438b54557f32d998325817f28078caa21847f25f01518e93e25",
+    "000852.SH_30_dense_clock_only_confusion.json": "e8d997a5bb7d6831ee16503eb9263184b9f726fc722618b061c911c1304cb7c9",
+    "000852.SH_30_dense_multiscale_confusion.json": "de503879bf4c05b064d8ecd6532ddfa818529ce42a814af0df1897369fc28693",
+    "000852.SH_30_dense_persistence_confusion.json": "45046dde3ef3835833404782f2edd0ddbdb49c20d6aeaf92051ca8009b5947f3",
+    "000852.SH_30_nonoverlap_clock_only_confusion.json": "77eb02f38da9595c03085001c30c988f6ba31e96f961b977f59319c01429ff20",
+    "000852.SH_30_nonoverlap_multiscale_confusion.json": "f0c8ed9fdbdc5c2ce3999268c5b9ae85c3381699eb7cef5642b0c3efb67b585e",
+    "000852.SH_30_nonoverlap_persistence_confusion.json": "cb55ca520f67fcb0a36a1333a0804e45424dfe9ccf1856b942a05aa5803e99f9",
+    "000852.SH_5_dense_clock_only_confusion.json": "05edea36674dcec6e1c942ee7ba9d1625a4f27f08110037c8ddb1382cd454c8d",
+    "000852.SH_5_dense_multiscale_confusion.json": "49a379b240a7a447dd32cb5a86a47796832565b5105ebd48766c20c7ac5d40f3",
+    "000852.SH_5_dense_persistence_confusion.json": "e3bce912015b08f1b947f91d8a073197600ef6da6cdec59cc8b6a97a5aa64306",
+    "000852.SH_5_nonoverlap_clock_only_confusion.json": "753e7ea0a8d0dedf3735d35de98006fc477ae8d800fabde42d2cbcbb36df6fc5",
+    "000852.SH_5_nonoverlap_multiscale_confusion.json": "63f89f021f2b5b133fcf70f4bdcf214a4bfe4eff52746b19b51ff91adaa8d7a0",
+    "000852.SH_5_nonoverlap_persistence_confusion.json": "dc4c26576ba3e6fc4a6beb5b1dc2cb33eeffea3ebe9e44e472f7fd4013f33c02",
+    "000852.SH_historical_api_example.json": "98508a246a9bb4f527a5da61f73ad03b17e0685e66500e27f43f00cebcc228ea",
+    "block_bootstrap.csv": "a3831d2c4ec01a2674d75a87a487a077c44a20477db69ce1623e14adece427a5",
+    "forecast_evaluation.png": "21de41a82cbc6ef9e42cb566c4286a5ba12d6deb4a8974541e932de337e32c97",
+    "intervals.csv": "721faca6876ed1b75a4c395e1cbcc2e7cc904286d529ab7cf31b6f76fd89a85f",
+    "metrics.csv": "a0c7a71514c336b8051e82f4465da71cd54e67252d1e27e398dd68937c1bbdc1",
+    "phase_sensitivity.csv": "43fe6061fb4058dd1d380f69139d6e7bfcb01394aef3c2f9087501bd4c47e676",
+    "report.html": "bf517477b42182759f0c166010669b4c96f724b280f52c8f602cc0e2b02197f4",
+    "surge_events.csv": "0ebad3674d98d4e762ef5bf8b4f69f9e84a0b51651cbdb891c7bba8f05683886"
+  }
+}

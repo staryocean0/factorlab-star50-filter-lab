@@ -1,5 +1,9 @@
 # Current research entry
 
+## 最新：因果未来波动工具V1已完成历史检验
+
+[结果与图形](docs/research/causal_volatility_tool_v1/result.md) → [接口与工作流](docs/research/causal_volatility_tool_v1/workflow.md)。未来波动水平预测有改善，但普通时段突变预警覆盖不足；不授交易路由，V2不变，无2026读取。
+
 ## 最新：两指数同时间同级别尾部与事前条件研究完成
 
 [结论与图形](docs/research/tail_distribution_v1/result.md) → [工作流](docs/research/tail_distribution_v1/workflow.md)。1m/5m共同绝对与标准化尾部、时间聚集、事前波动条件及固定概率诊断已完成；高波动可识别很多绝对大幅变化，但科创50大且异常有显著非高波动部分。当前未形成交易路由，V2不变，无2026读取或生产权。

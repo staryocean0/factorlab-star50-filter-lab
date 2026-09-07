@@ -1,0 +1,11 @@
+{
+  "input_sha256": "fb5d275ba4fc9cf8ca3b9b65a2a6a499d8f11529e6fba5d1221768a1b79ab23b",
+  "sources": {
+    "src/star50_filter/causal_volatility.py": "a470d82e44611f7884676e917b68664446034244da17779e154714046bef6eba",
+    "scripts/research_causal_volatility_v1.py": "fdd9688cc783479a003869543e7f3fc75409f12e90811175457448ca255219be",
+    "tests/test_causal_volatility.py": "82715262b86552aa1d00db4aa9c5ce70fb3a1269fddfa22d0fbab2f97a56c051",
+    "docs/research/causal_volatility_tool_v1/protocol.md": "502f4fa01677d9ea13daf33be1095cf7de211fc5ef63b548ad17c3dc47cc45f7",
+    "docs/research/causal_volatility_tool_v1/data_usage.json": "d8223602255d3d6c65eaae17325c4a37665b9afc7e43b680debd6a2cb8cc459a"
+  },
+  "production_authority": false
+}

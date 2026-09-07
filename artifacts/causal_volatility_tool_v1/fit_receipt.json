@@ -1,0 +1,90 @@
+{
+  "freeze_sha256": "3b7572ef65ea76da63235ee342bfd87b85aaff6e71e699600fb44cbe699690fe",
+  "models": [
+    {
+      "symbol": "000852.SH",
+      "horizon": 5,
+      "fit_rows": 111090,
+      "cal_rows": 55660,
+      "low_high_edges_sigma_bp": [
+        2.499626988127111,
+        4.067217643698011
+      ],
+      "fit_last_year": 2022,
+      "cal_last_year": 2023,
+      "metadata_sha256": "f8c85d2b1e09e83eb6b0bd6d145a861d69e7f4fa04202bd6b798da336703bcf6",
+      "parameters_sha256": "1c1ee9efa0a416137e174b57b78d2dc5b53179cdc831e854f63c371c7746fd98"
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 15,
+      "fit_rows": 101430,
+      "cal_rows": 50820,
+      "low_high_edges_sigma_bp": [
+        2.839000045734263,
+        4.149952868916521
+      ],
+      "fit_last_year": 2022,
+      "cal_last_year": 2023,
+      "metadata_sha256": "a14af52b97ef474ac46f0ed20f587993aeda0dfa19cb230d9753c95cc5fb3146",
+      "parameters_sha256": "ef7bf544165f6912628a7980b521d440a7ed06c10a21e4996d2a5ea7ffc32f13"
+    },
+    {
+      "symbol": "000852.SH",
+      "horizon": 30,
+      "fit_rows": 86940,
+      "cal_rows": 43560,
+      "low_high_edges_sigma_bp": [
+        2.9963666681172274,
+        4.170723641028049
+      ],
+      "fit_last_year": 2022,
+      "cal_last_year": 2023,
+      "metadata_sha256": "cf267758c152be4bb25ad9943f589fca90a7616e73687d7241ac69065e982cc3",
+      "parameters_sha256": "579837a55330118c658adba84f0764530a8533242e3430d16d109afd064cc63d"
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 5,
+      "fit_rows": 111090,
+      "cal_rows": 55660,
+      "low_high_edges_sigma_bp": [
+        3.9550094201972126,
+        6.551244308616227
+      ],
+      "fit_last_year": 2022,
+      "cal_last_year": 2023,
+      "metadata_sha256": "da5dbfd3ee1638380e1f82c28c6b527c9e6d40d208e4ae58a6d886bb387e412d",
+      "parameters_sha256": "60c3bcc8ed771ba63b7f89e79fb228149a849bd5a513491dbabd750b7a25661a"
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 15,
+      "fit_rows": 101430,
+      "cal_rows": 50820,
+      "low_high_edges_sigma_bp": [
+        4.39626601710411,
+        6.733333150550004
+      ],
+      "fit_last_year": 2022,
+      "cal_last_year": 2023,
+      "metadata_sha256": "ac65a489f22ee5f4f6e6805a8d9576fece3567785d189c4d3c4e6c3233fd43a0",
+      "parameters_sha256": "fc539296a1034949a5e30261f18e8fcb252c8f7d22a95bedd25b37cae769f836"
+    },
+    {
+      "symbol": "000688.SH",
+      "horizon": 30,
+      "fit_rows": 86940,
+      "cal_rows": 43560,
+      "low_high_edges_sigma_bp": [
+        4.566342273111567,
+        6.744862418623991
+      ],
+      "fit_last_year": 2022,
+      "cal_last_year": 2023,
+      "metadata_sha256": "fe3cb9a60584ec739676aa11f2addc11cf6c527c10384dc258607b2fac83f6f9",
+      "parameters_sha256": "f69e23c32dc07ecada04438f87398297b82c28fc6363c053b9bd5ac63ba7601b"
+    }
+  ],
+  "test_years_read": []
+}

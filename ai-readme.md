@@ -1,5 +1,7 @@
 # STAR50 filter lab AI entry
 
+Latest: [因果未来波动工具V1](docs/research/causal_volatility_tool_v1/result.md). Frozen 2021–22 fit / 2023 calibration / 2024–25 repeated audit. Volatility-level forecasting improves; ordinary-session surge warning is not validated. Research interface only; V2 unchanged.
+
 Latest study: [两指数同频尾部与事前风险条件](docs/research/tail_distribution_v1/result.md). Matched 1m/5m absolute and volatility-standardized tails, seasonal permutation controls and frozen risk probabilities; candidate information only, no router or V2 change.
 
 Latest study: [秒级分辨率与中证1000固定迁移](docs/research/resolution_transfer_v1/result.md). Existing STAR50 ETF 3s observations; fixed-time ER diagnostics and unchanged V2 cross-index replay. Lower raw ER variance is not trading-resolution admission. V2 unchanged; no 2026 or production authority.
