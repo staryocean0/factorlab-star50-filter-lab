@@ -1,0 +1,66 @@
+{
+  "schema": "post_shock_state_calibration_v2_inherited_event_universe@1.0",
+  "date": "2026-09-08",
+  "status": "accepted_historical_archive_copy_before_calibration_rerun",
+  "results_blind": true,
+  "calibration_results_seen": false,
+  "first_calibration_attempt_status": "failed_closed_before_scientific_outputs_on_universe_identity_mismatch",
+  "first_calibration_attempt_run": 34143161589,
+  "historical_authority": {
+    "v2_review_run": 34094586286,
+    "v2_review_workflow_head": "ef77800c8906b3482c28202219735af0efeedad3",
+    "review_artifact": {
+      "id": 10008240326,
+      "name": "seconds-v2-review-34094586286",
+      "artifact_digest": "sha256:a7699589a8da489612a68caf9937a149c49e67dbe763f79210b2f215e6183b73"
+    },
+    "review_summary_path": "docs/research/first_shock_seconds_v2/review/review_summary.json",
+    "review_summary_git_blob": "8874f149beb0ae70dff7384e64c711cd7849a747",
+    "operational_protocol_path": "docs/research/first_shock_seconds_v2/protocol.json",
+    "operational_protocol_git_blob": "8b1da2b1bfac2bfac34e595773711fb0c27642f0",
+    "operational_code_path": "docs/research/first_shock_seconds_v2/code/seconds_v2.py",
+    "operational_code_git_blob": "fb07081a4f42bcf9dda509fd3d16cb661fa45ce3",
+    "v1_recovery_protocol_commit": "b62782916958f8f3bfefc6bb8b86811a4e71d86f"
+  },
+  "historical_artifact_files": {
+    "000688.SH_anchors.csv": {
+      "sha256": "ff54c81093d7ae9afdb0cc3d38d6c80055c8db04253dfb0c093d6f682d30d962"
+    },
+    "000852.SH_anchors.csv": {
+      "sha256": "fc1f6ac5d669e138f796055208b1388718b1dec3c6706d8bb867d75445fb19c8"
+    },
+    "support.csv": {
+      "sha256": "b4a0e4b893e07a6ce397bb40312f2d1d4a2cbdab03dd8a941cc0cd7e05ce38ff"
+    }
+  },
+  "operational_support_semantics": {
+    "session_surface": "intersection of both indices' half-session identities",
+    "minute_support": "a minute return is set Unknown for both indices whenever either index minute return is non-finite",
+    "event_features": "first-event flags are computed after constructing the joint-minute surface",
+    "event_minute_floor": 33,
+    "source": "historical seconds_v2.py main() and support.csv; no event was removed using post-shock calibration outcomes"
+  },
+  "evaluation_event_counts": {
+    "000688.SH": {"2024": 35, "2025": 17, "total": 52},
+    "000852.SH": {"2024": 20, "2025": 5, "total": 25},
+    "total": 77
+  },
+  "archived_exact_universe": {
+    "path": "docs/research/post_shock_state_calibration_v2/inherited_event_universe_v2.csv",
+    "git_blob": "e319f6db8cca5154b4b7634cb65c6269902f624e",
+    "sha256": "08bed092f87f9f08d617c117b1d0f4584eea1006cdb390d53b353e91b07b47ff",
+    "rows": 77,
+    "commit_first_archived": "5f755181bea145bfb0bca5e77f8731f6760d0b41"
+  },
+  "anti_selection_statement": "The exact 77-event universe was recovered from the sealed historical V2 review artifact after the first calibration attempt failed closed at 26 versus 25 CSI1000 events and before any post-shock calibration transition output was produced. It is not selected from or modified using calibration outcomes.",
+  "still_forbidden": [
+    "changing 1.0/1.5 state thresholds",
+    "changing +5/+10/+15/+20 checkpoints",
+    "changing 5/10 minute horizons",
+    "deleting events after seeing calibration results",
+    "2026 data",
+    "returns_or_pnl",
+    "trading_or_production",
+    "online_Clean_promotion"
+  ]
+}
