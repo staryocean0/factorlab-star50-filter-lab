@@ -13,3 +13,5 @@
 - 两次前置导出修复留档：SQL建视图参数API错误（无数据行输出）；验重初用timestamp遗漏row_index，后按原writer真实主键修正并保留346条同秒额外源序列。没有删除或修价来通过。
 
 完整包SHA、文件复用/增量清单在`package_manifest.json`。按其中固定manifest验证，再将相同commit推送到原私有仓库，默认main仅允许fast-forward；不force push、不执行GitHub Actions。云端尚未进行科学复验。
+
+干净检出核验：提交072a3f9在不含DataHub目录的`/tmp`独立Git worktree中，包哈希验证通过、151项测试通过、两指数真实3s/1m/5m样本读取通过。随后第一次原子push因远端main独有的5fe43ec交接协议提交而被拒绝，远端未改变。已审阅并无冲突合并该协议，保留全部40行；重新封存及验证后再发布，不强推覆盖。

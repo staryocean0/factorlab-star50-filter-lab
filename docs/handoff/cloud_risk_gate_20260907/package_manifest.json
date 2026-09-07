@@ -85,9 +85,9 @@
     },
     {
       "path": "AGENTS.md",
-      "sha256": "8ddb1b1795596db241e21c88f873d069829904665f3eca909d7e907412f53794",
-      "bytes": 1696,
-      "git_blob": "e2b6276e2d5116f6dc041fb9beadde84717d7ac5",
+      "sha256": "b4d5c1a1192fb474f483a7fc29c0cde430950ef564b2443c47a7a01633028543",
+      "bytes": 6464,
+      "git_blob": "a9c05e9c101e1f0dee05f8a26a3cd2b832f6bd4d",
       "transfer": "new_or_changed"
     },
     {
@@ -31046,9 +31046,9 @@
     },
     {
       "path": "docs/handoff/cloud_risk_gate_20260907/LOCAL_VALIDATION.md",
-      "sha256": "020bf2b40a04b8820e7603e9a159dc4c6a02c2929bcfe286dfa64b784895b882",
-      "bytes": 2348,
-      "git_blob": "d75ac0862644c057ee78be247bea5732f8579957",
+      "sha256": "d3cf4cb76dfd856a4d35ff6c6b8152da06f10c544fac0b8cc2b3dad7ed7a1d34",
+      "bytes": 2746,
+      "git_blob": "6ee30a4a9c82ee51a83c28262d361fd7d8778462",
       "transfer": "new_or_changed"
     },
     {
@@ -33017,7 +33017,7 @@
   "excluded_reason": "option/account carrier artifacts and provider troubleshooting stay local; current Kline evidence/code/docs included",
   "new_or_changed_files": 769,
   "reused_remote_files": 3898,
-  "new_or_changed_bytes": 401950067,
+  "new_or_changed_bytes": 401955233,
   "fresh_oos": false,
   "production_authority": false
 }
