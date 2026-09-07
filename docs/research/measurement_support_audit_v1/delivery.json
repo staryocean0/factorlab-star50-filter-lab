@@ -1,0 +1,22 @@
+[
+  {
+    "path": "expected_support.csv",
+    "bytes": 2123,
+    "sha256": "b4a0e4b893e07a6ce397bb40312f2d1d4a2cbdab03dd8a941cc0cd7e05ce38ff"
+  },
+  {
+    "path": "protocol.json",
+    "bytes": 2068,
+    "sha256": "e407d57d29c2575b3307ac05ab18753747ef41c6dc260ec5362a240d29dd3d38"
+  },
+  {
+    "path": "support_audit.py",
+    "bytes": 15869,
+    "sha256": "51d8bbaf6f0dff493ad0c5450304b0b10bc2c8e3d2cb8c49d1a54f19e9444b75"
+  },
+  {
+    "path": "tests/test_support_audit.py",
+    "bytes": 2895,
+    "sha256": "ea4c427baec54d1df0ae6e3989b69a9e60724b04b24aedbc14d230036a79d71f"
+  }
+]

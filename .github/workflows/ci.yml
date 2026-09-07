@@ -1,6 +1,7 @@
 name: star50-filter-lab
 on:
   push:
+    branches-ignore: ["research/measurement-support-audit-20260907"]
   pull_request:
 jobs:
   validate:

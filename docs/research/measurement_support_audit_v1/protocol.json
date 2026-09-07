@@ -1,0 +1,21 @@
+{
+  "schema": "measurement_support_audit@1",
+  "date": "2026-09-07",
+  "base_ref": "424a6b5a931cf610aa731125aa2081cdf3accbbb",
+  "registration_role": "post-V2 outcome measurement diagnostic; registered before this audit's raw-data outputs",
+  "goal": "explain data attrition and count independent training events before choosing further models",
+  "inputs": "two indices 000688.SH/000852.SH; existing minute and 3s 2021-2025; twenty pinned physical partitions",
+  "reproduce": "frozen V2 primary support, known events and positive windows for all ten index-years",
+  "availability": "native gap histogram, timestamp second modulo60, 15s endpoint freshness, return run lengths, monthly usable decisions; no price filling",
+  "waterfall_order": ["base_ineligible", "short5m", "long15m", "scale_windows", "other_fine_fields", "partner_support", "retained"],
+  "waterfall_limit": "exclusive audit order, not economic or structural causal attribution",
+  "unique_event_bridge": "map each eligible actionable window to its unique first event within2..15m; quiet30m prevents double assignment",
+  "pre_event_context": "five-minute trailing path ending at min(event_close-2, half_session_minute105); available before earliest event-minute onset by at least1m",
+  "context_categories": ["net_absolute_at_least30bp", "range_at_least30bp_but_net_below30bp", "range_below30bp", "unknown"],
+  "context_measurements": ["six native minute endpoint prices via five returns", "complete3s source path with fresh endpoints<=3s, no duplicate-time increments or gap>3s"],
+  "context_limit": "descriptive labels only; low observed range not zero-risk or stationarity; no population incidence from outcome-selected events",
+  "no_change": ["event anchors", "event thresholds", "V2 source gap admission", "model weights", "train calibration years", "V2 historical artifacts"],
+  "no_claim": ["new forecasting performance", "structural causality", "vendor reason for gaps", "source real-time arrival", "new optimal sampling frequency"],
+  "fresh_oos": false,
+  "production_authority": false
+}
