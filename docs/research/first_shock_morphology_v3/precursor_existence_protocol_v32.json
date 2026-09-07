@@ -1,0 +1,45 @@
+{
+  "schema": "first_shock_precursor_existence_v3.2",
+  "registered_before_outputs": true,
+  "inherits_event_taxonomy": "first_shock_morphology_v3.0",
+  "purpose": "model-free test of whether reliably measured quiet-first tail events show a pre-onset cross-scale precursor; no classifier fit",
+  "symbols": ["000688.SH", "000852.SH"],
+  "years": [2022, 2023, 2024, 2025],
+  "reason_years_start_2022": "older 15s support is too sparse under authoritative missing-observation semantics; no carry-forward assumption",
+  "event_family": "quiet_first_tail only, using frozen V3 thresholds",
+  "feature_time": "minute e-2 close for event minute e; at least one minute before earliest possible event-minute onset",
+  "primary_score": "0.5*((logE30-logE240)+(logE60-logE240)) using trailing 15s endpoint-grid Haar energies smoothed over physical 5 minutes",
+  "secondary_scores": {
+    "short_vs_long_vol": "fine_log_rv5 - fine_log_rv15",
+    "max_short_move": "fine_log_max1",
+    "net5": "fine_abs_net5"
+  },
+  "controls": {
+    "eligibility": "same symbol/year/afternoon/exact minute, V3 quiet precondition, not a first-tail event, known minute sigma_pre and rv480, no first-tail event in +/-30 minutes within session",
+    "matching": "100 nearest eligible controls in standardized (log sigma_pre, log rv480) Euclidean distance; scale estimated from eligible controls within each symbol-year",
+    "minimum_controls_per_event": 30,
+    "no_replacement_requirement": false
+  },
+  "primary_statistic": "mean within-set percentile rank of event primary_score among its matched control pool; 0.5 is null center",
+  "random_reference": "10000 draws, one uniformly chosen matched control per event set, preserving event-specific control pools; seed 20260907",
+  "report": [
+    "number of reliable quiet-first events and excluded events",
+    "event primary-score percentiles",
+    "mean/median percentile",
+    "random-reference 2.5/50/97.5 percentiles",
+    "fraction reference mean >= observed (descriptive Monte Carlo tail fraction, not fresh-OOS p-value)",
+    "secondary score ranks",
+    "symbol/year breakdown and leave-one-year-out primary mean percentile"
+  ],
+  "interpretation": "post-V2 consumed-history mechanism diagnostic; can establish presence/absence of a measurable precursor pattern in this sample, not deployable predictive validity",
+  "do_not": [
+    "fit a classifier",
+    "optimize thresholds",
+    "use e-1 or event-minute features",
+    "treat missing observations as unchanged price",
+    "promote subgroup result as fresh validation",
+    "read 2026 or alter production/trading state"
+  ],
+  "fresh_oos": false,
+  "production_authority": false
+}
