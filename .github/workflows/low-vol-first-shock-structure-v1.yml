@@ -1,0 +1,64 @@
+name: low-vol-first-shock-structure-v1
+on:
+  push:
+    branches: ["research/low-vol-first-shock-structure-v1-20260907"]
+    paths: [".github/workflows/low-vol-first-shock-structure-v1.yml"]
+permissions:
+  contents: read
+concurrency:
+  group: low-vol-first-shock-structure-v1
+  cancel-in-progress: false
+jobs:
+  frozen-study:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/low-vol-first-shock-structure-v1.yml
+            /docs/research/low_vol_first_shock_structure_v1/
+            /docs/research/first_shock_gate_v1/code/
+            /docs/research/first_shock_seconds_v2/code/
+            /src/star50_filter/__init__.py
+            /src/star50_filter/cloud_market_data.py
+            /data/cross_index_risk_gate_v1/manifest.json
+            /data/cross_index_risk_gate_v1/1m/000688.SH/202[1-5].parquet
+            /data/cross_index_risk_gate_v1/1m/000852.SH/202[1-5].parquet
+            /data/cross_index_risk_gate_3s_v1/manifest.json
+            /data/cross_index_risk_gate_3s_v1/primary_acceptance.json
+            /data/cross_index_risk_gate_3s_v1/000688.SH_202[1-5].parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_202[1-5].parquet
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install bounded research dependencies
+        run: |
+          python -m pip install numpy==2.3.5 pandas==2.2.3 scikit-learn==1.8.0 scipy pytest pyarrow
+          mkdir -p evidence
+          python -m pip freeze > evidence/environment.txt
+      - name: Verify preregistered implementation tests
+        run: |
+          set -o pipefail
+          python -m pytest -q docs/research/low_vol_first_shock_structure_v1/tests \
+            --junitxml=evidence/tests.xml | tee evidence/tests.log
+      - name: Execute results-blind frozen structure study
+        run: |
+          set -o pipefail
+          python docs/research/low_vol_first_shock_structure_v1/run_study.py \
+            --root . --out evidence/study --bootstrap-repeats 2000 | tee evidence/study.log
+      - name: Preserve evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: low-vol-first-shock-structure-v1-${{ github.run_id }}
+          retention-days: 14
+          if-no-files-found: error
+          path: evidence/
