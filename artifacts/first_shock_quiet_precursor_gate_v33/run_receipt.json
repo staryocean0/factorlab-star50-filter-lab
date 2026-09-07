@@ -1,0 +1,33 @@
+{
+  "workflow_sha": "c4f456ae47109905aa9a9f3a9ceb6111f2c157be",
+  "research_ref": "baaffa2b3c75d304fa7604e2c81db27b9680e080",
+  "run_id": "34143072827",
+  "artifact_id": 10026673560,
+  "artifact_digest": "sha256:fef6df96e08170e43d98225b7c6172b54355d8c3aa90ee824e17e59f0c8b416a",
+  "tests": {"passed": 6, "failed": 0, "elapsed_seconds": 1.76},
+  "scientific_gate_status": "completed_successfully",
+  "scientific_decision": "not_promoted_due_to_nonreplication_in_2025",
+  "files": {
+    "summary.json": "61d86435ed44a8418a579324bdc2035dfc049f7f43883de4508f7d9c0946adbd",
+    "calibration_thresholds.csv": "06db9dd39b2427c81e9e3d29dcf5c13d96308bdf80b223b180678fb9537ee056",
+    "2024_primary_event_details.csv": "63e0889a3f1be995c550f127490467c648e1115f1a2e6e05395dd5a3e4f6f8db",
+    "2024_sigma_event_details.csv": "774963107b95e6f638bbf8c0ff311d0753076c0663637b68af32bcaee5a0234d",
+    "2025_primary_event_details.csv": "cf84a96c386eb0afecae8dce25882efc4d9527041e17a4b07f5fc54e65de5ee6",
+    "2025_sigma_event_details.csv": "4e9619e1c5992f6cb9a8126cb36ca246f3cab72c0075e24cb27f785f9a57d799",
+    "source_audit.json": "740ddd4325a8daafd003efdca76378c514847229c568d32dfe0bf0ce585a525f",
+    "tests.log": "9b276b02e81b31296e4e2999001ee1a72cd278b12dae638e74fa7bf3e5611b73"
+  },
+  "source_rows": {
+    "2022": 989168,
+    "2023": 1148626,
+    "2024": 1147726,
+    "2025": 1153429
+  },
+  "artifact_receipt_hash_check": "all_listed_files_matched_after_download",
+  "fresh_oos": false,
+  "read_2026": false,
+  "classifier_fit": false,
+  "new_morphology_feature_defined": false,
+  "trading_or_production_evaluated": false,
+  "production_authority": false
+}
