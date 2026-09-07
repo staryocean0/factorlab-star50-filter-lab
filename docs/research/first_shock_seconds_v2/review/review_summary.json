@@ -1,0 +1,31 @@
+{
+  "schema": "first_shock_seconds_v2_review_summary@1",
+  "forecast_commit": "7302e52e4e17092a31d1d7bd70b5d55998eaab71",
+  "ledger_commit": "c85775999b28dce0ff594a72735385f13185ac15",
+  "main_run": 34094586286,
+  "ledger_run": 34094969260,
+  "raw_data_scope": {
+    "minute_rows": 581760,
+    "seconds_rows": 10265397,
+    "partitions": 20,
+    "years": [2021, 2022, 2023, 2024, 2025]
+  },
+  "scientific_promotion": false,
+  "CSI1000": "not_fitted_insufficient_support_14_positive_windows",
+  "STAR50_effective_fit_years": [2022],
+  "STAR50_training_positive_overlapping_windows": 58,
+  "primary_quota_comparison": [
+    {"experiment":"000688.SH_primary_joint_gap15_2024","model":"B0","unfiltered_actionable_risk":0.0121538654303971,"risk_inside_clean":0.0135172305395103,"warned_events":5,"unique_first_events":35,"alarm_episodes":498},
+    {"experiment":"000688.SH_primary_joint_gap15_2024","model":"B1","unfiltered_actionable_risk":0.0121538654303971,"risk_inside_clean":0.0132028763409171,"warned_events":7,"unique_first_events":35,"alarm_episodes":765},
+    {"experiment":"000688.SH_primary_joint_gap15_2024","model":"B2","unfiltered_actionable_risk":0.0121538654303971,"risk_inside_clean":0.0130058939096267,"warned_events":9,"unique_first_events":35,"alarm_episodes":891},
+    {"experiment":"000688.SH_primary_joint_gap15_2025","model":"B0","unfiltered_actionable_risk":0.0069763899466869,"risk_inside_clean":0.0064590101280336,"warned_events":6,"unique_first_events":17,"alarm_episodes":444},
+    {"experiment":"000688.SH_primary_joint_gap15_2025","model":"B1","unfiltered_actionable_risk":0.0069763899466869,"risk_inside_clean":0.0066501051022358,"warned_events":6,"unique_first_events":17,"alarm_episodes":703},
+    {"experiment":"000688.SH_primary_joint_gap15_2025","model":"B2","unfiltered_actionable_risk":0.0069763899466869,"risk_inside_clean":0.0065736671125549,"warned_events":7,"unique_first_events":17,"alarm_episodes":812}
+  ],
+  "B2_minus_B1_CI_probability_units": {"2024":[-0.0005169914928546714,0.000053222998808926774],"2025":[-0.000684839332294283,0.00033281923853979603]},
+  "ledger":{"all_event_anchors":104,"matched_controls":300,"evaluation_events":77,"evaluation_concentrated_events":1,"evaluation_distributed_directional_or_mixed":76},
+  "review":{"output_manifest_files":63,"decision_rows_replayed":349200,"event_table_rows_replayed":936,"complete_paths_replayed":356,"raw_parquet_training_replay":false},
+  "verification_script_sha256":"30c8f860258c57708d2d8c869ff30499134de3b76b6494f8c369355a5b451796",
+  "fresh_oos":false,
+  "production_authority":false
+}

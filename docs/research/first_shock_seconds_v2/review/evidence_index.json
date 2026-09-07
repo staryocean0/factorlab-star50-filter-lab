@@ -1,0 +1,21 @@
+{
+  "schema":"seconds_v2_review_evidence_index@1",
+  "research_branch":"research/first-shock-seconds-v2-20260907",
+  "frozen_forecast_code":"7302e52e4e17092a31d1d7bd70b5d55998eaab71",
+  "isolated_ledger_code":"c85775999b28dce0ff594a72735385f13185ac15",
+  "artifacts":[
+    {"run_id":34094586286,"artifact_id":10008240326,"filename":"seconds_v2_review_34094586286.zip","bytes":143065,"sha256":"a7699589a8da489612a68caf9937a149c49e67dbe763f79210b2f215e6183b73","expires":"2026-09-21","downloaded_and_verified":true},
+    {"run_id":34094586286,"artifact_id":10008242216,"filename":"seconds_v2_replay_34094586286.zip","bytes":73150909,"sha256":"a704db4c68d4e4655e54983a4117f86c919fb9736ea70639a5e81dc8c73de83c","expires":"2026-09-14","downloaded_and_verified":true},
+    {"run_id":34094969260,"artifact_id":10008304105,"filename":"seconds_v2_ledger_corrected_34094969260.zip","bytes":1582985,"sha256":"3b440c97eed5e5d162b7b912319a5cfd186294752287e4a6c8d4cea2726b492e","expires":"2026-09-21","downloaded_and_verified":true}
+  ],
+  "input_identity":"See main artifact v2/input_receipt.json and ledger artifact ledger_lag2/input_receipt.json for 20 exact bounded partition identities; originals not rehashed in conversation review.",
+  "output_integrity":"65 extracted members byte-matched ZIPs;63 manifest files verified.",
+  "independent_replay":"6 files349200 rows;18 probability scoring tasks;36 model/year/threshold metric groups;936 event records;356 complete paths;6 block-bootstrap intervals;270 phase summaries.",
+  "maximum_probability_error":9.992007221626409e-16,
+  "maximum_path_metric_error":1.55946366930948e-11,
+  "verifier_sha256":"30c8f860258c57708d2d8c869ff30499134de3b76b6494f8c369355a5b451796",
+  "verifier_location":"Delivered review bundle independent_review/verify_outputs.py; exact script identity is bound above.",
+  "not_done":["new raw-Parquet pipeline replay in this conversation","retraining in this conversation","full per-draw random donor-map audit","recomputing control-neighbour distances","CSI1000 model fit below the frozen support threshold"],
+  "local_return":"Archive the three ZIPs before artifact expiry; source-of-truth acceptance remains with local FactorLab/DataHub. No duplicate full experiment requested.",
+  "fresh_oos":false,"production_authority":false,"scientific_promotion":false
+}
