@@ -1,0 +1,41 @@
+{
+  "schema": "state_measurement_support_audit_v3.5_results",
+  "future_labels_used": false,
+  "risk_gate_evaluated": false,
+  "symbols": ["000688.SH", "000852.SH"],
+  "reference_years": [2022, 2023],
+  "audit_years": [2024, 2025],
+  "state_transport_by_year": {
+    "000688.SH": {
+      "2024": {"rows": 35376, "state_extrapolated_fraction": 0.10524084124830393, "kth_neighbor_distance_median": 0.8171556604541116, "kth_neighbor_distance_p95": 3.2438268348586927, "sigma_outside_q01_q99_fraction": 0.08378561736770691, "rv480_outside_q01_q99_fraction": 0.1261589778380823, "sigma_center_z_mean": 0.5013387278673672, "rv480_center_z_mean": 0.521590436707141},
+      "2025": {"rows": 35964, "state_extrapolated_fraction": 0.15184629073517963, "kth_neighbor_distance_median": 1.0197986480737762, "kth_neighbor_distance_p95": 2.777107230334079, "sigma_outside_q01_q99_fraction": 0.13074185296407517, "rv480_outside_q01_q99_fraction": 0.21816260705149593, "sigma_center_z_mean": 0.2996250892073603, "rv480_center_z_mean": 0.31124614123068356}
+    },
+    "000852.SH": {
+      "2024": {"rows": 35816, "state_extrapolated_fraction": 0.09945275854366764, "kth_neighbor_distance_median": 0.9760685610827768, "kth_neighbor_distance_p95": 3.1992928921005506, "sigma_outside_q01_q99_fraction": 0.09009939691757873, "rv480_outside_q01_q99_fraction": 0.08624637033727943, "sigma_center_z_mean": 1.0824284892591163, "rv480_center_z_mean": 1.3409867792087222},
+      "2025": {"rows": 35964, "state_extrapolated_fraction": 0.02074296518740963, "kth_neighbor_distance_median": 0.7553975801427465, "kth_neighbor_distance_p95": 1.7790777173456644, "sigma_outside_q01_q99_fraction": 0.026665554443332223, "rv480_outside_q01_q99_fraction": 0.020186853520186853, "sigma_center_z_mean": 0.24882169023628872, "rv480_center_z_mean": 0.3711119474176565}
+    }
+  },
+  "star50_route_state_by_year": {
+    "2024": {"rows": 20110, "state_extrapolated_fraction": 0.05743411238189955, "kth_neighbor_distance_median": 1.142289146464018, "kth_neighbor_distance_p95": 2.6503151828837823, "sigma_outside_q01_q99_fraction": 0.04823470909995027, "rv480_outside_q01_q99_fraction": 0.0730979612133267},
+    "2025": {"rows": 21559, "state_extrapolated_fraction": 0.1257479474929264, "kth_neighbor_distance_median": 1.4512758285439005, "kth_neighbor_distance_p95": 3.0932093636307902, "sigma_outside_q01_q99_fraction": 0.13010807551370657, "rv480_outside_q01_q99_fraction": 0.17936824528039333}
+  },
+  "measurement_by_year": {
+    "000688.SH": {
+      "2022": {"primary_score_available_fraction": 0.6506887052341598},
+      "2023": {"primary_score_available_fraction": 0.998236914600551},
+      "2024": {"primary_score_available_fraction": 0.996831955922865, "fine_gap3_fraction5_mean": 0.0006104297867638935, "fine_max_age5_mean": 0.11214876033057851},
+      "2025": {"primary_score_available_fraction": 1.0, "fine_gap3_fraction5_mean": 0.0, "fine_max_age5_mean": 0.0}
+    },
+    "000852.SH": {
+      "2022": {"primary_score_available_fraction": 0.6506887052341598},
+      "2023": {"primary_score_available_fraction": 0.998236914600551},
+      "2024": {"primary_score_available_fraction": 0.9982644628099173, "fine_gap3_fraction5_mean": 0.0006095542806707855, "fine_max_age5_mean": 0.023966942148760332},
+      "2025": {"primary_score_available_fraction": 1.0, "fine_gap3_fraction5_mean": 0.0, "fine_max_age5_mean": 0.0}
+    }
+  },
+  "interpretation": "2024 state transport is broadly common across STAR50 and CSI1000; 2025 transport becomes STAR50-specific while the frozen fine measurement surface is fully available. The stopped V3.2 route is not rescued.",
+  "fresh_oos": false,
+  "read_2026": false,
+  "returns_or_pnl_evaluated": false,
+  "production_authority": false
+}
