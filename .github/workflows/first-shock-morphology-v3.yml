@@ -1,0 +1,96 @@
+name: first-shock-morphology-v3
+on:
+  push:
+    branches: ["research/first-shock-seconds-v2-actions-20260907"]
+    paths: [".github/workflows/first-shock-morphology-v3.yml"]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: first-shock-morphology-v3
+  cancel-in-progress: false
+jobs:
+  taxonomy-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      RESEARCH_REF: 5fe182a58e15068c6e1bd69a256e721354e3eac3
+      GH_TOKEN: ${{ github.token }}
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - name: Checkout frozen V3 code and bounded inputs only
+        uses: actions/checkout@v4
+        with:
+          ref: 5fe182a58e15068c6e1bd69a256e721354e3eac3
+          persist-credentials: false
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/research/first_shock_morphology_v3/
+            /docs/research/first_shock_seconds_v2/code/
+            /docs/research/first_shock_gate_v1/code/
+            /src/star50_filter/__init__.py
+            /src/star50_filter/cloud_market_data.py
+            /data/cross_index_risk_gate_v1/manifest.json
+            /data/cross_index_risk_gate_v1/1m/000688.SH/202[1-5].parquet
+            /data/cross_index_risk_gate_v1/1m/000852.SH/202[1-5].parquet
+            /data/cross_index_risk_gate_3s_v1/manifest.json
+            /data/cross_index_risk_gate_3s_v1/000688.SH_202[1-5].parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_202[1-5].parquet
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install bounded research dependencies
+        run: |
+          mkdir -p evidence/v2_replay evidence/v3
+          python -m pip install numpy==2.3.5 pandas==2.2.3 scikit-learn==1.8.0 pyarrow pytest
+          python -m pip freeze > evidence/environment.txt
+      - name: Retrieve frozen V2 replay artifact for score diagnostics
+        run: |
+          gh api -H "Accept: application/vnd.github+json" repos/${{ github.repository }}/actions/artifacts/10008242216/zip > evidence/v2_replay.zip
+          echo "a704db4c68d4e4655e54983a4117f86c919fb9736ea70639a5e81dc8c73de83c  evidence/v2_replay.zip" | sha256sum -c -
+          unzip -q evidence/v2_replay.zip -d evidence/v2_replay
+          test -s evidence/v2_replay/000688.SH_primary_joint_gap15_2024_decisions.csv.gz
+      - name: Run V3 boundary tests
+        run: |
+          set -o pipefail
+          python -m pytest -q docs/research/first_shock_morphology_v3/tests --junitxml=evidence/v3_tests.xml | tee evidence/v3_tests.log
+      - name: Execute taxonomy audit
+        run: |
+          set -o pipefail
+          python docs/research/first_shock_morphology_v3/code/morphology_v3.py --repo-root . --v2-replay-dir evidence/v2_replay --out evidence/v3 | tee evidence/v3.log
+      - name: Seal evidence
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib,json,os
+          from pathlib import Path
+          root=Path('evidence')
+          files=[]
+          for p in sorted(root.rglob('*')):
+              if p.is_file() and p.name != 'v2_replay.zip' and 'v2_replay/' not in str(p):
+                  files.append({'path':str(p.relative_to(root)),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+          receipt={'workflow_sha':os.environ['GITHUB_SHA'],'research_ref':os.environ['RESEARCH_REF'],
+                   'run_id':os.environ['GITHUB_RUN_ID'],'run_attempt':os.environ['GITHUB_RUN_ATTEMPT'],
+                   'files':files,'fresh_oos':False,'production_authority':False}
+          (root/'run_receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
+          summary=root/'v3/summary.json'
+          if summary.exists(): print('V3_SUMMARY '+summary.read_text())
+          PY
+      - name: Upload small V3 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: first-shock-morphology-v3-${{ github.run_id }}
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            evidence/environment.txt
+            evidence/v3_tests.xml
+            evidence/v3_tests.log
+            evidence/v3.log
+            evidence/run_receipt.json
+            evidence/v3/*.json
+            evidence/v3/*.csv
