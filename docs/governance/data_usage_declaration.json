@@ -1,34 +1,63 @@
 {
-  "study_id": "star50_filter_frequency_v1",
-  "instrument": "000688.SH",
+  "schema": "factorlab_star50_filter_lab_data_usage_v2",
+  "effective_date": "2026-09-08",
+  "policy": "docs/governance/DATA_USAGE_POLICY_V2.md",
+  "subjects": [
+    "000688.SH",
+    "000852.SH"
+  ],
   "roles": {
-    "2020-07-23/2020-12-31": "warmup_only_not_scored",
-    "2021-01-01/2025-12-31": "development_material",
-    "2026-01-01/2026-08-21": "consumed_repeat_audit_not_for_selection"
+    "warmup": {
+      "definition": "pre-2021 history used only when needed to initialize causal filters or rolling state",
+      "scored": false
+    },
+    "development": {
+      "date_start": "2021-01-01",
+      "date_end": "2023-12-31",
+      "detail_access": "open",
+      "fit_allowed": true,
+      "repeat_use": true,
+      "fresh_oos": false
+    },
+    "validation": {
+      "date_start": "2024-01-01",
+      "date_end": "2026-08-21",
+      "detail_access": "open_after_candidate_fit",
+      "fit_allowed_for_candidate_under_test": false,
+      "diagnostic_inspection_allowed": true,
+      "may_inform_next_iteration": true,
+      "repeat_use": true,
+      "fresh_oos": false
+    },
+    "blackbox_v1": {
+      "definition": "first_60_complete_trading_days_strictly_after_2026-08-21",
+      "status": "pending_data",
+      "exact_date_start": null,
+      "exact_date_end": null,
+      "required_complete_trading_days": 60,
+      "detail_access": "forbidden",
+      "fit_allowed": false,
+      "repeat_use": true,
+      "query_interface": "registered_aggregate_metrics_only",
+      "first_query_may_be_one_shot_blind_oos": true,
+      "later_queries_are_fresh_oos": false,
+      "unblind_transition": "reclassify_to_validation_not_destroyed"
+    }
   },
-  "working_views": [
-    "5m_offset_0"
+  "blackbox_forbidden_outputs": [
+    "date_or_timestamp_rows",
+    "year_month_week_day_breakdowns",
+    "event_or_session_rows",
+    "path_charts",
+    "best_or_worst_examples",
+    "top_contributors",
+    "error_cases",
+    "outcome_conditioned_feature_distributions",
+    "unregistered_threshold_sweeps",
+    "unregistered_posthoc_metrics",
+    "reconstructable_hidden_artifacts"
   ],
-  "available_views": [
-    "1m_official",
-    "5m_offset_0",
-    "5m_offset_1",
-    "5m_offset_2",
-    "5m_offset_3",
-    "5m_offset_4",
-    "15m_offset_5",
-    "15m_offset_10",
-    "30m_offset_15",
-    "60m_offset_30",
-    "60m_offset_45",
-    "daily_noon_close_1130",
-    "daily_proxy_close_1400",
-    "daily_proxy_close_1430"
-  ],
-  "forbidden_working_chart": [
-    "1m_official"
-  ],
-  "fresh_oos": false,
+  "historical_note": "Older sealed reports keep their original consumed/development/OOS wording as historical protocol evidence. This declaration governs future reuse and does not upgrade old claims.",
   "production_authority": false,
   "do_not_mix_with": [
     "factorlab-two-wave-strategy-lab",
