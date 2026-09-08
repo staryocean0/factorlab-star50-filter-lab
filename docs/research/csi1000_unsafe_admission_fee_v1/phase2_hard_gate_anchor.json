@@ -1,0 +1,18 @@
+{
+  "source_phase2_run": 34186970072,
+  "source_phase2_artifact_id": 10040864829,
+  "source_phase2_artifact_sha256": "9e479bcfc2b49d39a8521ab6fcb9a5a13cb56cdaba7959aba353a5506c866095",
+  "symbol": "000852.SH",
+  "family": "fixed_physical",
+  "scale_min": 3,
+  "gate": "Unsafe",
+  "annual": [
+    {"year": 2021, "gross_bp": 0.0, "one_way_turnover": 0.0, "exposure_bars": 0, "exposure_minutes": 0, "booked_returns": 0, "winning_returns": 0},
+    {"year": 2022, "gross_bp": 27.43571213437771, "one_way_turnover": 6.0, "exposure_bars": 4, "exposure_minutes": 12, "booked_returns": 4, "winning_returns": 3},
+    {"year": 2023, "gross_bp": 14.995843164175971, "one_way_turnover": 6.0, "exposure_bars": 9, "exposure_minutes": 27, "booked_returns": 9, "winning_returns": 5},
+    {"year": 2024, "gross_bp": 95.41318905774187, "one_way_turnover": 60.0, "exposure_bars": 66, "exposure_minutes": 198, "booked_returns": 66, "winning_returns": 34},
+    {"year": 2025, "gross_bp": 32.70034314613808, "one_way_turnover": 26.0, "exposure_bars": 27, "exposure_minutes": 81, "booked_returns": 27, "winning_returns": 13},
+    {"year": 2026, "gross_bp": 34.01187552264648, "one_way_turnover": 22.0, "exposure_bars": 14, "exposure_minutes": 42, "booked_returns": 14, "winning_returns": 10}
+  ],
+  "note": "Copied before Phase-3 market outputs from the accepted Phase-2 artifact for exact hard-gate gross/turnover anchoring."
+}
