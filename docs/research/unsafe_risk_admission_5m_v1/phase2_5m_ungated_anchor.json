@@ -1,0 +1,27 @@
+{
+  "source_phase2_run": 34186970072,
+  "source_phase2_artifact_id": 10040864829,
+  "source_phase2_artifact_sha256": "9e479bcfc2b49d39a8521ab6fcb9a5a13cb56cdaba7959aba353a5506c866095",
+  "family": "fixed_physical",
+  "scale_min": 5,
+  "gate": "Ungated",
+  "symbols": {
+    "000688.SH": [
+      {"year": 2021, "gross_bp": 3882.3486310202816, "one_way_turnover": 2120.0, "exposure_bars": 3638, "exposure_minutes": 18190, "booked_returns": 3638, "winning_returns": 1901},
+      {"year": 2022, "gross_bp": 1660.36365040801, "one_way_turnover": 2222.0, "exposure_bars": 3624, "exposure_minutes": 18120, "booked_returns": 3624, "winning_returns": 1865},
+      {"year": 2023, "gross_bp": 2831.996186750529, "one_way_turnover": 2120.0, "exposure_bars": 3630, "exposure_minutes": 18150, "booked_returns": 3630, "winning_returns": 1920},
+      {"year": 2024, "gross_bp": 2643.222489197778, "one_way_turnover": 2270.0, "exposure_bars": 3615, "exposure_minutes": 18075, "booked_returns": 3615, "winning_returns": 1883},
+      {"year": 2025, "gross_bp": -277.37210179295334, "one_way_turnover": 2318.0, "exposure_bars": 3645, "exposure_minutes": 18225, "booked_returns": 3645, "winning_returns": 1853},
+      {"year": 2026, "gross_bp": 1799.9347792096953, "one_way_turnover": 1448.0, "exposure_bars": 2310, "exposure_minutes": 11550, "booked_returns": 2310, "winning_returns": 1224}
+    ],
+    "000852.SH": [
+      {"year": 2021, "gross_bp": 2644.6378535776485, "one_way_turnover": 2138.0, "exposure_bars": 3638, "exposure_minutes": 18190, "booked_returns": 3638, "winning_returns": 1908},
+      {"year": 2022, "gross_bp": 4231.645029680108, "one_way_turnover": 2050.0, "exposure_bars": 3624, "exposure_minutes": 18120, "booked_returns": 3624, "winning_returns": 1952},
+      {"year": 2023, "gross_bp": 1484.15247517958, "one_way_turnover": 2078.0, "exposure_bars": 3630, "exposure_minutes": 18150, "booked_returns": 3630, "winning_returns": 1871},
+      {"year": 2024, "gross_bp": 2102.361648628948, "one_way_turnover": 2276.0, "exposure_bars": 3630, "exposure_minutes": 18150, "booked_returns": 3630, "winning_returns": 1851},
+      {"year": 2025, "gross_bp": 1190.707248871154, "one_way_turnover": 2208.0, "exposure_bars": 3645, "exposure_minutes": 18225, "booked_returns": 3645, "winning_returns": 1888},
+      {"year": 2026, "gross_bp": 1052.0939104582396, "one_way_turnover": 1354.0, "exposure_bars": 2310, "exposure_minutes": 11550, "booked_returns": 2310, "winning_returns": 1227}
+    ]
+  },
+  "note": "Copied before Phase-4 outputs from the accepted Phase-2 artifact for exact 5m Ungated anchoring."
+}
