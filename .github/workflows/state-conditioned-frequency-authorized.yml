@@ -1,0 +1,45 @@
+name: state-conditioned-frequency-economics
+on:
+  push:
+    branches:
+      - research/state-conditioned-frequency-actions-20260908
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout bounded research inputs
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            docs/research/state_conditioned_frequency_v1
+            docs/research/post_shock_recovery_v1/code/state_sufficiency.py
+            data/cross_index_risk_gate_v1/1m
+            data/cross_index_risk_gate_2026_v1/1m
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas pyarrow scikit-learn pytest
+      - name: Run frozen engineering tests
+        run: python -m pytest -q docs/research/state_conditioned_frequency_v1/tests
+      - name: Run frequency economics
+        run: python docs/research/state_conditioned_frequency_v1/code/run_frequency_economics.py --repo-root . --out artifacts/state_conditioned_frequency_v1
+      - name: Seal output manifest
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json
+          root=Path('artifacts/state_conditioned_frequency_v1')
+          rows=[]
+          for p in sorted(root.iterdir()):
+              if p.is_file():
+                  b=p.read_bytes(); rows.append({'name':p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+          (root/'output_manifest.json').write_text(json.dumps({'files':rows},indent=2)+'\n')
+          PY
+      - name: Upload evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: state-conditioned-frequency-${{ github.run_id }}
+          path: artifacts/state_conditioned_frequency_v1
+          retention-days: 14
