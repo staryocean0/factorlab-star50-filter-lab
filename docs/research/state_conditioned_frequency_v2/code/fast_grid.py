@@ -26,12 +26,13 @@ def build_minute_grid(native: pd.DataFrame, state_df: pd.DataFrame, symbol: str)
                     ratio=st.loc[(session,k),"recovery_ratio"]
                 except KeyError:
                     state="Unknown";ratio=np.nan
+                ok=bool(good.iloc[k-1])
                 rows.append({"symbol":symbol,"trading_day":day,"year":int(str(day)[:4]),"session":session,
-                    "minute":k,"timestamp":t,"open":float(numeric["open"].iloc[k-1]) if good.iloc[k-1] else np.nan,
-                    "high":float(numeric["high"].iloc[k-1]) if good.iloc[k-1] else np.nan,
-                    "low":float(numeric["low"].iloc[k-1]) if good.iloc[k-1] else np.nan,
-                    "close":float(numeric["close"].iloc[k-1]) if good.iloc[k-1] else np.nan,
-                    "valid":bool(good.iloc[k-1]),"route_state":state,"recovery_ratio":ratio})
+                    "minute":k,"timestamp":t,"open":float(numeric["open"].iloc[k-1]) if ok else np.nan,
+                    "high":float(numeric["high"].iloc[k-1]) if ok else np.nan,
+                    "low":float(numeric["low"].iloc[k-1]) if ok else np.nan,
+                    "close":float(numeric["close"].iloc[k-1]) if ok else np.nan,
+                    "valid":ok,"route_state":state,"recovery_ratio":ratio})
     return pd.DataFrame(rows)
 
 
@@ -46,15 +47,16 @@ def aggregate_scale(minute: pd.DataFrame, scale: int) -> pd.DataFrame:
     out=g.agg(
         minute_count=("minute","size"),
         valid=("valid","all"),
-        timestamp=("timestamp","last"),
         open=("open","first"),
         high=("high","max"),
         low=("low","min"),
         close=("close","last"),
-        route_state=("route_state","last"),
-        recovery_ratio=("recovery_ratio","last"),
-        bar_close_minute=("minute","last"),
     ).reset_index()
+    # groupby.last skips NaN. Routing semantics require the exact final source
+    # minute, including a NaN recovery_ratio during the initial Unsafe window.
+    tail=g.tail(1)[keys+["timestamp","route_state","recovery_ratio","minute"]].copy()
+    tail=tail.rename(columns={"minute":"bar_close_minute"})
+    out=out.merge(tail,on=keys,how="left",sort=False,validate="one_to_one")
     out["valid"]=out.valid.astype(bool)&out.minute_count.eq(scale)
     bad=~out.valid
     out.loc[bad,["open","high","low","close"]]=np.nan

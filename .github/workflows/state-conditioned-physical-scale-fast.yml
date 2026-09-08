@@ -25,7 +25,7 @@ jobs:
       - name: Run frozen boundary and equivalence tests
         run: python -m pytest -q docs/research/state_conditioned_frequency_v2/tests
       - name: Run optimized exact-equivalent physical-scale surface
-        run: python docs/research/state_conditioned_frequency_v2/code/run_physical_scale_strategy.py --repo-root . --out artifacts/state_conditioned_frequency_v2
+        run: python docs/research/state_conditioned_frequency_v2/code/run_physical_scale_strategy_fast.py --repo-root . --out artifacts/state_conditioned_frequency_v2
       - name: Seal output manifest
         run: |
           python - <<'PY'
