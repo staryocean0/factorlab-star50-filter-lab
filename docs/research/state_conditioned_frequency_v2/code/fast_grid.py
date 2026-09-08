@@ -5,35 +5,37 @@ import pandas as pd
 
 
 def build_minute_grid(native: pd.DataFrame, state_df: pd.DataFrame, symbol: str) -> pd.DataFrame:
-    """Build the same session-local 1m grid used by session_grid, once per symbol."""
-    st = state_df.set_index(["session", "minute"])
-    rows=[]
-    need=("open","high","low","close")
-    for day,zday in native.groupby("trading_day",sort=True):
-        indexed=zday.set_index("ts")
-        for afternoon,start in [(0,pd.Timestamp(f"{day} 09:30:00")),(1,pd.Timestamp(f"{day} 13:00:00"))]:
-            session=f"{day}/{afternoon}"
-            times=pd.date_range(start,periods=120,freq="1min")
-            z=indexed.reindex(times)
-            good=z.high_frequency_analysis_eligible.eq(True)&z.causal_flat_fill.eq(False)
-            numeric={}
-            for c in need:
-                numeric[c]=pd.to_numeric(z[c],errors="coerce")
-                good &= np.isfinite(numeric[c])&(numeric[c]>0)
-            for k,t in enumerate(times,1):
-                try:
-                    state=st.loc[(session,k),"route_state"]
-                    ratio=st.loc[(session,k),"recovery_ratio"]
-                except KeyError:
-                    state="Unknown";ratio=np.nan
-                ok=bool(good.iloc[k-1])
-                rows.append({"symbol":symbol,"trading_day":day,"year":int(str(day)[:4]),"session":session,
-                    "minute":k,"timestamp":t,"open":float(numeric["open"].iloc[k-1]) if ok else np.nan,
-                    "high":float(numeric["high"].iloc[k-1]) if ok else np.nan,
-                    "low":float(numeric["low"].iloc[k-1]) if ok else np.nan,
-                    "close":float(numeric["close"].iloc[k-1]) if ok else np.nan,
-                    "valid":ok,"route_state":state,"recovery_ratio":ratio})
-    return pd.DataFrame(rows)
+    """Vectorized exact equivalent of the session-local 1m grid used by session_grid."""
+    days=pd.Index(sorted(native.trading_day.astype(str).str[:10].unique()),name="trading_day")
+    parts=[]
+    for half,base_minute in ((0,9*60+30),(1,13*60)):
+        q=pd.MultiIndex.from_product([days,np.arange(1,121)],names=["trading_day","minute"]).to_frame(index=False)
+        q["half"]=half
+        q["session"]=q.trading_day.astype(str)+f"/{half}"
+        q["timestamp"]=pd.to_datetime(q.trading_day)+pd.to_timedelta(base_minute+q.minute-1,unit="m")
+        parts.append(q)
+    grid=pd.concat(parts,ignore_index=True).sort_values(["trading_day","half","minute"],kind="stable").reset_index(drop=True)
+    src=native.copy()
+    src["trading_day"]=src.trading_day.astype(str).str[:10]
+    keep=["trading_day","ts","open","high","low","close","high_frequency_analysis_eligible","causal_flat_fill"]
+    src=src[keep].rename(columns={"ts":"timestamp"})
+    grid=grid.merge(src,on=["trading_day","timestamp"],how="left",sort=False,validate="one_to_one")
+    for c in ("open","high","low","close"):
+        grid[c]=pd.to_numeric(grid[c],errors="coerce")
+    good=grid.high_frequency_analysis_eligible.eq(True)&grid.causal_flat_fill.eq(False)
+    for c in ("open","high","low","close"):
+        good &= np.isfinite(grid[c])&(grid[c]>0)
+    grid["valid"]=good.astype(bool)
+    grid.loc[~good,["open","high","low","close"]]=np.nan
+    st=state_df[["session","minute","route_state","recovery_ratio"]].copy()
+    if st.duplicated(["session","minute"]).any():
+        raise ValueError("duplicate route state key")
+    grid=grid.merge(st,on=["session","minute"],how="left",sort=False,validate="one_to_one")
+    grid["route_state"]=grid.route_state.fillna("Unknown")
+    grid["symbol"]=symbol
+    grid["year"]=grid.trading_day.str[:4].astype(int)
+    return grid[["symbol","trading_day","year","session","minute","timestamp","open","high","low","close",
+                 "valid","route_state","recovery_ratio"]].reset_index(drop=True)
 
 
 def aggregate_scale(minute: pd.DataFrame, scale: int) -> pd.DataFrame:
