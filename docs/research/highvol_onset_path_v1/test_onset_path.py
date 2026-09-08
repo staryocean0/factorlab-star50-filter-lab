@@ -49,13 +49,14 @@ def test_trade_enters_next_open_and_exits_after_hold():
 
 
 def test_efficiency_gate_filters_candidate():
-    # zigzag path gives low efficiency
-    r=[0,0.001,-0.001,0.001,-0.001,0.0002,0.001,0.001,0.001,0.001]
+    # The five returns ending at the onset are +10,-10,+10,-10,+2 bp: low efficiency.
+    r=[0,0,0,0,0,0.001,-0.001,0.001,-0.001,0.0002,0.001,0.001,0.001,0.001,0.001]
     closes=100*np.exp(np.cumsum(r))
-    states=["NormalVol"]*9+["HighVol"]+["HighVol"]*4
+    states=["NormalVol"]*9+["HighVol"]*6
     z=minute_fixture(states,closes)
     on=m.build_onsets(z)
     assert len(on)==1
+    assert on.iloc[0].eff5 < 0.1
     assert len(m.candidate_trade_rows(z,on,"momentum",0.8,1))==0
     assert len(m.candidate_trade_rows(z,on,"reversal",0.6,1))==1
 
