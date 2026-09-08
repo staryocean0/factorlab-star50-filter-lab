@@ -27,8 +27,12 @@ def test_invalid_delayed_path_is_missing_not_candidate_drop():
     assert np.isnan(q[q.delay_min==3].gross_bp.iloc[0])
 
 def test_pair_difference_sign():
-    rows=pd.DataFrame({'candidate_id':[0,0,1,1],'trading_day':['2022-01-04','2022-01-04','2022-01-05','2022-01-05'],'year':[2022]*4,'role':['Development']*4,'delay_min':[0,1,0,1],'gross_bp':[4.,1.,2.,3.]})
-    p,w=m.paired(rows);x=p[(p.role=='Development')&(p.delay_min==1)].iloc[0]
+    rows=[]
+    gross={0:(4.,2.),1:(1.,3.),2:(4.,2.),3:(4.,2.),5:(4.,2.)}
+    for d in m.DELAYS:
+        for cid,(day,g) in enumerate(zip(('2022-01-04','2022-01-05'),gross[d])):
+            rows.append({'candidate_id':cid,'trading_day':day,'year':2022,'role':'Development','delay_min':d,'gross_bp':g})
+    p,w=m.paired(pd.DataFrame(rows));x=p[(p.role=='Development')&(p.delay_min==1)].iloc[0]
     assert x['pairs']==2 and abs(x['mean_delay_minus_immediate_bp']+1.0)<1e-12
 
 def test_bootstrap_deterministic():
