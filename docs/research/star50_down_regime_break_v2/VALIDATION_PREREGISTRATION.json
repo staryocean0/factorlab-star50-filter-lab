@@ -1,0 +1,32 @@
+{
+  "schema": "star50_down_regime_break_v2_validation_preregistration_v1",
+  "candidate_id": "star50_downside_accelerated_regime_break_v2",
+  "candidate_sha256": "6ed7e13804d27d375e5efe388bf0c6414e7a08cf01eeec65cfe7e4079da7a1fd",
+  "development_evidence": {
+    "workflow_run_id": 34225994735,
+    "head_sha": "0711c1cdbad20eda5ce489f3c4de2871e19cde80",
+    "all_primary_pass": true,
+    "trades": 82,
+    "mean_net_1bp_per_leg": 1.5090692831195232,
+    "one_way_break_even_bp": 1.7545346415597616
+  },
+  "validation_role": "reusable_validation_tuning_evidence",
+  "validation_start": "2024-01-01",
+  "validation_end": "2026-08-21",
+  "years": [2024, 2025, 2026],
+  "candidate_must_be_unchanged": true,
+  "primary_acceptance": {
+    "total_trades_ge": 30,
+    "pooled_mean_net_1bp_per_leg_gt": 0.0,
+    "positive_year_slices_ge": 2,
+    "pooled_one_way_break_even_bp_gt": 1.0
+  },
+  "secondary_report_only": {
+    "trading_day_block_bootstrap_net1_95pct_interval": true,
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 20260908,
+    "is_acceptance_gate": false
+  },
+  "failure_policy": "Do not rescue tail2>=0.50, efficiency>=0.60, or hold=3m in Validation. Diagnostics may only nominate a next hypothesis to return to Development.",
+  "blackbox_query": false
+}
