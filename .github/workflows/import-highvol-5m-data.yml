@@ -1,0 +1,73 @@
+name: import-highvol-5m-data
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/import-highvol-5m-data.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Import byte-identical annual 5m files
+        shell: bash
+        run: |
+          set -euo pipefail
+          SRC='https://raw.githubusercontent.com/staryocean0/factorlab-trend-reversion-regime-lab/main/data/market/5m'
+          mkdir -p data/market/5m/000688.SH data/market/5m/000852.SH
+
+          declare -A SHA688=(
+            [2020]=36fdf5c907eaaa5d7b8eacaff24f601c539cc302
+            [2021]=804d49ec5338b1e3b8dd65e640ed49231c927ce9
+            [2022]=c3c343f53f7323656815950f54bb962dfab5b703
+            [2023]=02c3a9474dff4e5203cec12ca7a24a3b2be8994b
+            [2024]=2d75a6ba7623c5fe9e3b36cb0904ee542d33110c
+            [2025]=32d6d1754f965dd6298c885e30b244b877d694ed
+          )
+          declare -A SHA852=(
+            [2021]=aba298f940c7992ec8814dd8ece197477d106fa9
+            [2022]=fe6eed805f7237091813c32d25011848fc29b705
+            [2023]=0b17d76b150bfd15d45158f100748898e72089b1
+            [2024]=ba45837375d8a3ca64cb3faa7750bf51e9760796
+            [2025]=85159b9fa1b2b6854b1a0f04faa9f963e9d04c13
+          )
+
+          for y in 2020 2021 2022 2023 2024 2025; do
+            f="data/market/5m/000688.SH/${y}.parquet"
+            curl -fsSL "$SRC/000688.SH/${y}.parquet" -o "$f"
+            got=$(git hash-object "$f")
+            test "$got" = "${SHA688[$y]}" || { echo "000688 $y blob mismatch: $got"; exit 1; }
+          done
+
+          for y in 2021 2022 2023 2024 2025; do
+            f="data/market/5m/000852.SH/${y}.parquet"
+            curl -fsSL "$SRC/000852.SH/${y}.parquet" -o "$f"
+            got=$(git hash-object "$f")
+            test "$got" = "${SHA852[$y]}" || { echo "000852 $y blob mismatch: $got"; exit 1; }
+          done
+
+          cat > data/market/5m/000688.SH/PROVENANCE.md <<'EOF'
+# Provenance
+
+Byte-identical copies from `staryocean0/factorlab-trend-reversion-regime-lab` main branch,
+`data/market/5m/000688.SH/`, imported for the HighVol state mechanism study.
+Years: 2020-2025. Git blob identity is checked during import.
+EOF
+
+      - name: Commit imported data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/market/5m/000688.SH data/market/5m/000852.SH
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: import 2020-2025 highvol 5m inputs'
+            git push
+          fi
