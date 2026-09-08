@@ -1,0 +1,46 @@
+name: state-conditioned-physical-scale-strategy
+on:
+  push:
+    branches:
+      - research/state-conditioned-physical-scale-actions-20260908
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frozen strategy study inputs
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            docs/research/state_conditioned_frequency_v2
+            docs/research/post_shock_recovery_v1/code/state_sufficiency.py
+            src/star50_filter/filters.py
+            data/cross_index_risk_gate_v1/1m
+            data/cross_index_risk_gate_2026_v1/1m
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas pyarrow scipy scikit-learn pytest
+      - name: Run frozen boundary tests
+        run: python -m pytest -q docs/research/state_conditioned_frequency_v2/tests
+      - name: Run physical-scale strategy surface
+        run: python docs/research/state_conditioned_frequency_v2/code/run_physical_scale_strategy.py --repo-root . --out artifacts/state_conditioned_frequency_v2
+      - name: Seal output manifest
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json
+          root=Path('artifacts/state_conditioned_frequency_v2')
+          rows=[]
+          for p in sorted(root.iterdir()):
+              if p.is_file():
+                  b=p.read_bytes(); rows.append({'name':p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+          (root/'output_manifest.json').write_text(json.dumps({'files':rows},indent=2)+'\n')
+          PY
+      - name: Upload evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: state-conditioned-physical-scale-${{ github.run_id }}
+          path: artifacts/state_conditioned_frequency_v2
+          retention-days: 14
