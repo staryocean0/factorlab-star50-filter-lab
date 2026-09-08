@@ -89,3 +89,28 @@ def test_pool_break_even_is_gross_over_turnover():
     q=m.pool_years(df,(2024,2025)).iloc[0]
     assert abs(q.break_even_one_way_cost_bp-2.0)<1e-12
     assert abs(q["net_bp_cost_2"]-0.0)<1e-12
+
+
+def test_single_pass_settlement_matches_reference_path_exactly():
+    bars=pd.DataFrame({
+        "session":["2024-01-02/0"]*7+["2025-01-03/1"]*8,
+        "year":[2024]*7+[2025]*8,
+        "open":np.exp(np.array([0,.001,.002,.0015,.0025,.003,.0027, 0,.001,-.001,0,.002,.001,.003,.002])*1.0),
+        "valid":[True,True,True,False,True,True,True]+[True]*8,
+        "route_state":["NoEpisode","Unsafe","Unsafe","Recovering","Recovering","Unsafe","Unsafe",
+                       "NoEpisode","NoEpisode","Unsafe","Unsafe","Recovering","Recovering","Unsafe","Recovering"],
+    })
+    signal=np.array([1,1,-1,1,-1,-1,1, 1,-1,-1,1,1,-1,1,-1],float)
+    fast=pd.DataFrame(m.summarize_all_gates(bars,signal,"scaled_clock",1,"X"))
+    for year in (2024,2025):
+        for gate in m.GATES:
+            ref=m.summarize_one(bars,signal,"scaled_clock",1,gate,"X",year)
+            q=fast[(fast.year==year)&(fast.gate==gate)].iloc[0]
+            for col in ("gross_bp","one_way_turnover","exposure_bars","booked_returns","winning_returns",
+                        "exposure_minutes","gross_bp_per_exposure_min","break_even_one_way_cost_bp","hit_rate"):
+                a=ref[col];b=q[col]
+                if pd.isna(a) and pd.isna(b): continue
+                assert np.isclose(a,b,atol=1e-12,rtol=0), (year,gate,col,a,b)
+            for c in m.COSTS:
+                col=f"net_bp_cost_{c:g}"
+                assert np.isclose(ref[col],q[col],atol=1e-12,rtol=0), (year,gate,col)
