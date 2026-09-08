@@ -1,19 +1,47 @@
 # Cross-index Kline Risk Research (legacy repository name: STAR50 Filter Lab)
 
+## Repository-level data-use governance (effective 2026-09-08)
+
+Read `docs/governance/DATA_USAGE_POLICY_V2.md` and
+`docs/governance/data_usage_declaration.json` before any new research. These
+files supersede older one-shot/"consumed data" instructions for **future data
+use**, while old sealed reports remain historical evidence and are not rewritten.
+
+Current three-pool assignment:
+
+- Development: 2021-01-01 through 2023-12-31. Open workbench; fitting,
+  parameter search and detailed inspection are allowed.
+- Validation: 2024-01-01 through 2026-08-21. Do not fit the candidate under
+  test on these rows. After development freeze, repeated evaluation and full
+  year/day/event/session/path diagnostics are allowed; findings may guide the
+  next development iteration. This pool is reusable and is not fresh OOS.
+- BlackBox-V1: first 60 complete trading days strictly after 2026-08-21, once
+  available and manifest-frozen. Repeated queries are allowed only through a
+  pre-registered aggregate interface. Never expose dates, events, sessions,
+  paths, best/worst examples or other reconstructable black-box detail.
+
+If black-box detail is ever exposed, do not call the data burned or destroyed:
+record the exposure and reclassify that snapshot to Validation. Only the owner
+may deliberately authorize unblinding. Every black-box query must be logged in
+`docs/governance/blackbox_query_ledger.json` and use a frozen candidate protocol.
+Run `python scripts/validate_data_usage_policy.py` after governance changes.
+
 Current owner scope (2026-09-07): read
 `docs/handoff/cloud_risk_gate_20260907/HANDOFF.md`, then
 `docs/ops/cloud_local_communication.md` and the two cloud risk-gate data-usage
-contracts. This private cloud repository is a research venue; local FactorLab
-and DataHub remain the storage authority. Current subjects are STAR50 and CSI1000
-index candlesticks, cross-scale volatility, clustering, isolated shocks and causal
-risk gating. No new trading/account/option task. No 2026 research.
+contracts. This cloud repository is a research venue; local FactorLab and
+DataHub remain the storage authority. Current subjects are STAR50 and CSI1000
+index candlesticks, cross-scale volatility, clustering, isolated shocks and
+causal risk gating. Trading/routing research must remain explicitly isolated
+from production authority and obey the three-pool policy above.
 
 Use `scripts/validate_cloud_risk_gate_package.py` and the bounded cloud data loader.
 Never infer online/production serving from an owner-authorized offline export.
-Do not alter old sealed evidence or treat consumed history as fresh OOS.
+Do not alter old sealed evidence or upgrade old validation/consumed history into
+fresh OOS merely because the forward reuse policy changed.
 The following older task description is historical and cannot override this scope.
 
-One private research task. Do not mix with two-wave, overnight-open, or
+One research task. Do not mix with two-wave, overnight-open, or
 multifactor-stock labs.
 
 Read `CURRENT_RESEARCH.md` first for the latest user corrections and task scope.
@@ -23,9 +51,12 @@ cross-lookback/cross-band candlestick root-cause attribution, including hindsigh
 analysis and chance controls; do not substitute position reduction for that task.
 
 Follow `.codex/skills/strategy-slice-rebuild/SKILL.md` for any strategy change.
-2021-2025 are development. 2026 is consumed and must not rank candidates.
-The old working chart was 5-minute; the current scope explicitly compares 3s/1m/5m. Production authority is false.
-Do not mutate FactorLab live registries.
+Forward data roles are governed by DATA_USAGE_POLICY_V2: 2021-2023 Development,
+2024 through 2026-08-21 reusable Validation, and the next fixed 60 complete
+trading days after 2026-08-21 reserved for BlackBox-V1. Historical reports that
+used different labels remain valid records of their original protocol. The old
+working chart was 5-minute; the current scope explicitly compares 3s/1m/5m.
+Production authority is false. Do not mutate FactorLab live registries.
 
 ## 云端—本地交接协议（默认不生效）
 
