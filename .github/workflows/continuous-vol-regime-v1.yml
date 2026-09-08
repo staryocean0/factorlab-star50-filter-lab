@@ -22,10 +22,12 @@ jobs:
           python-version: '3.11'
       - name: Install fixed dependencies
         run: python -m pip install --disable-pip-version-check numpy pandas pyarrow scipy scikit-learn pytest
-      - name: Run frozen tests
-        run: python -m pytest -q docs/research/continuous_vol_regime_v1/test_continuous_vol_regime.py
+      - name: Run frozen tests and single-pass equivalence guard
+        run: |
+          python -m pytest -q docs/research/continuous_vol_regime_v1/test_continuous_vol_regime.py
+          python -m pytest -q docs/research/state_conditioned_frequency_v2/tests/test_physical_scale_strategy.py::test_single_pass_settlement_matches_reference_path_exactly
       - name: Run development-selection and validation surface
-        run: python docs/research/continuous_vol_regime_v1/run_continuous_vol_regime.py --repo-root . --out artifacts/continuous_vol_regime_v1
+        run: python docs/research/continuous_vol_regime_v1/run_continuous_vol_regime_fast.py --repo-root . --out artifacts/continuous_vol_regime_v1
       - name: Seal output manifest
         run: |
           python - <<'PY'
