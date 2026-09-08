@@ -1,0 +1,20 @@
+{
+  "schema": "factorlab_blackbox_candidate_protocol_v1",
+  "candidate_id": "REPLACE_ME",
+  "research_question": "REPLACE_ME",
+  "code_sha": "REPLACE_ME",
+  "config_hash": "REPLACE_ME",
+  "blackbox_id": "blackbox_v1",
+  "data_manifest_sha256": "REPLACE_WHEN_BLACKBOX_IS_FROZEN",
+  "registered_metrics": [
+    {
+      "name": "REPLACE_ME",
+      "scope": "pooled_or_preregistered_symbol",
+      "direction": "higher_or_lower_is_better",
+      "acceptance_rule": "REPLACE_ME"
+    }
+  ],
+  "forbid_unregistered_outputs": true,
+  "forbid_detail_artifacts": true,
+  "notes": "Freeze this file before every black-box query. A failed black-box query returns to Development + Validation for diagnosis; do not open black-box details."
+}
