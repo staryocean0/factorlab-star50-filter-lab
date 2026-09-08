@@ -24,7 +24,7 @@ jobs:
       - name: Run frozen engineering tests
         run: python -m pytest -q docs/research/state_conditioned_frequency_v1/tests
       - name: Run frequency economics
-        run: python docs/research/state_conditioned_frequency_v1/code/run_frequency_economics.py --repo-root . --out artifacts/state_conditioned_frequency_v1
+        run: python docs/research/state_conditioned_frequency_v1/code/run_frequency_economics_fast.py --repo-root . --out artifacts/state_conditioned_frequency_v1
       - name: Seal output manifest
         run: |
           python - <<'PY'
