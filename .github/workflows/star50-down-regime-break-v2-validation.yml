@@ -1,0 +1,114 @@
+name: star50-down-regime-break-v2-validation
+on:
+  push:
+    branches:
+      - research/star50-down-regime-break-v2-20260908
+    paths:
+      - .github/workflows/star50-down-regime-break-v2-validation.yml
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frozen candidate and Validation-only inputs
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            docs/research/star50_down_regime_break_v2/candidate.json
+            docs/research/star50_down_regime_break_v2/VALIDATION_PREREGISTRATION.json
+            docs/research/star50_down_regime_break_v2/run_dev.py
+            docs/research/star50_down_regime_break_v2/run_validation.py
+            docs/research/star50_down_regime_break_v2/test_dev.py
+            docs/research/star50_down_regime_break_v2/test_validation.py
+            docs/research/star50_highvol_mechanism_dev_v1/run_mechanism.py
+            docs/research/continuous_vol_regime_v1/run_continuous_vol_regime.py
+            docs/research/state_conditioned_frequency_v2/code/run_physical_scale_strategy.py
+            docs/research/state_conditioned_frequency_v2/code/fast_grid.py
+            src/star50_filter/filters.py
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/cross_index_risk_gate_v1/manifest.json
+            data/cross_index_risk_gate_v1/1m/000688.SH/2024.parquet
+            data/cross_index_risk_gate_v1/1m/000688.SH/2025.parquet
+            data/cross_index_risk_gate_2026_v1/manifest.json
+            data/cross_index_risk_gate_2026_v1/1m/000688.SH/2026.parquet
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas pyarrow scipy scikit-learn pytest
+      - name: Validate three-pool governance
+        run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Guard physical Validation-only checkout and cutoff
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          hist=sorted(p.name for p in Path('data/cross_index_risk_gate_v1/1m/000688.SH').glob('*.parquet'))
+          cur=sorted(p.name for p in Path('data/cross_index_risk_gate_2026_v1/1m/000688.SH').glob('*.parquet'))
+          assert hist == ['2024.parquet','2025.parquet'], hist
+          assert cur == ['2026.parquet'], cur
+          m=json.load(open('data/cross_index_risk_gate_2026_v1/manifest.json'))
+          assert m['actual_last_day']=='2026-08-21'
+          assert m['post_snapshot_rows']==0
+          print('physical Validation checkout:',hist+cur,'cutoff',m['actual_last_day'])
+          PY
+      - name: Recheck frozen selector and Validation guards
+        run: python -m pytest -q docs/research/star50_down_regime_break_v2/test_dev.py docs/research/star50_down_regime_break_v2/test_validation.py
+      - name: Verify candidate hash before opening Validation
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          b=open('docs/research/star50_down_regime_break_v2/candidate.json','rb').read()
+          h=hashlib.sha256(b).hexdigest()
+          p=json.load(open('docs/research/star50_down_regime_break_v2/VALIDATION_PREREGISTRATION.json'))
+          assert h=='6ed7e13804d27d375e5efe388bf0c6414e7a08cf01eeec65cfe7e4079da7a1fd'
+          assert p['candidate_sha256']==h
+          assert p['development_evidence']['all_primary_pass'] is True
+          assert p['blackbox_query'] is False
+          print('frozen candidate hash:',h)
+          PY
+      - name: Run frozen reusable Validation
+        run: python docs/research/star50_down_regime_break_v2/run_validation.py --repo-root . --out artifacts/star50_down_regime_break_v2_validation
+      - name: Guard Validation role, exact identity, and BlackBox absence
+        run: |
+          python - <<'PY'
+          import json
+          import pandas as pd
+          root='artifacts/star50_down_regime_break_v2_validation'
+          s=json.load(open(root+'/summary.json'))
+          z=pd.read_csv(root+'/validation_trades.csv')
+          a=pd.read_csv(root+'/annual.csv')
+          assert s['validation_role']=='reusable_validation_tuning_evidence'
+          assert s['candidate_fit_on_validation'] is False
+          assert s['blackbox_queried'] is False
+          assert s['candidate_sha256']=='6ed7e13804d27d375e5efe388bf0c6414e7a08cf01eeec65cfe7e4079da7a1fd'
+          assert s['candidate']=={
+            'direction':'short','slow30_sign':'positive','net5_sign':'negative',
+            'efficiency5_min':0.6,'tail2_share_min':0.5,'tail1_condition':None,'hold_min':3}
+          assert list(a['year']) == [2024,2025,2026]
+          if len(z):
+            d=z.trading_day.astype(str)
+            assert d.min()>='2024-01-01' and d.max()<='2026-08-21'
+          print(json.dumps({'acceptance':s['acceptance'],'positive_year_slices':s['positive_year_slices'],'pooled':s['pooled'],'bootstrap':s['bootstrap_net1_day_block']},indent=2))
+          print(a.to_csv(index=False))
+          PY
+      - name: Seal output manifest
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          root=Path('artifacts/star50_down_regime_break_v2_validation');rows=[]
+          for p in sorted(root.iterdir()):
+              if p.is_file():
+                  b=p.read_bytes();rows.append({'name':p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+          (root/'output_manifest.json').write_text(json.dumps({'files':rows},indent=2)+'\n')
+          PY
+      - name: Upload Validation evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: star50-down-regime-break-v2-validation-${{ github.run_id }}
+          path: artifacts/star50_down_regime_break_v2_validation
+          retention-days: 14
