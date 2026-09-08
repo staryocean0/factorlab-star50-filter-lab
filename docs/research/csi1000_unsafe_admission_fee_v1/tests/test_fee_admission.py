@@ -61,10 +61,12 @@ def test_no_cross_lunch_return_is_booked():
         "route_state":["Unsafe"]*8,
     })
     r=m.session_policy_rows(bars,np.ones(8))
-    # First half books only its two post-latency returns; 1.03 -> 100 lunch gap is never booked.
     expected=np.log(1.03/1.01)*1e4
-    for q in r.itertuples(index=False):
-        assert abs(q.gross_bp-expected)<1e-8
+    # Morning books only its two post-latency returns; afternoon is flat-price.
+    # For each policy the two half-sessions together must exclude the 1.03 -> 100 lunch jump.
+    for policy,z in r.groupby("policy"):
+        assert abs(z.gross_bp.sum()-expected)<1e-8, policy
+        assert abs(z.loc[z.session.str.endswith("/1"),"gross_bp"].iloc[0])<1e-12
 
 
 def test_extra_friction_is_per_execution_leg():
