@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - research/star50-down-regime-break-v2-20260908
+    paths:
+      - docs/research/star50_down_regime_break_v2/candidate.json
+      - docs/research/star50_down_regime_break_v2/run_dev.py
+      - docs/research/star50_down_regime_break_v2/test_dev.py
 jobs:
   development:
     runs-on: ubuntu-latest
