@@ -1,0 +1,25 @@
+name: highvol-state-analysis
+
+on:
+  workflow_dispatch:
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: |
+          pip install pandas pyarrow numpy
+      - name: Run highvol state analysis
+        run: |
+          python research/highvol_state_v1/run_analysis.py
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: highvol-state-results
+          path: research/highvol_state_v1/outputs/
