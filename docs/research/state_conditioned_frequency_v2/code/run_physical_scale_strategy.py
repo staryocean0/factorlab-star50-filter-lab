@@ -169,6 +169,59 @@ def summarize_one(bars,signal,family,scale,gate,symbol,year):
     return q
 
 
+def summarize_all_gates(bars:pd.DataFrame,signal:np.ndarray,family:str,scale:int,symbol:str)->list[dict]:
+    """Exact single-pass equivalent of repeated summarize_one calls.
+
+    It preserves session order, contiguous-valid-run boundaries, two-bar latency,
+    gate-at-decision semantics, forced-flat turnover, and floating summation order.
+    The only change is avoiding 24 repeated scans of the same bar path.
+    """
+    acc={(year,gate):{"gross_bp":0.0,"one_way_turnover":0.0,"exposure_bars":0,
+                     "booked_returns":0,"winning_returns":0}
+         for year in YEARS_EVAL for gate in GATES}
+    opens=bars.open.to_numpy(float)
+    valid_all=bars.valid.to_numpy(bool)
+    states=bars.route_state.to_numpy(object)
+    years=bars.year.to_numpy(int)
+    for _,idx in bars.groupby("session",sort=False).indices.items():
+        ix=np.asarray(idx,int)
+        year=int(years[ix[0]])
+        if year not in YEARS_EVAL: continue
+        op=opens[ix];valid=np.isfinite(op)&(op>0)&valid_all[ix]
+        sig=signal[ix];st=states[ix]
+        for a,b in contiguous_runs(valid):
+            oo=op[a:b];ss=sig[a:b];state_run=st[a:b];n=len(oo)
+            if n==0: continue
+            fwd=np.zeros(n,float)
+            if n>1: fwd[1:]=np.log(oo[1:]/oo[:-1])*1e4
+            for gate in GATES:
+                desired=ss if gate=="Ungated" else np.where(state_run==gate,ss,0.0)
+                ep=np.zeros(n,float)
+                if n>2: ep[2:]=desired[:-2]
+                pnl=ep*fwd
+                q=acc[(year,gate)]
+                q["gross_bp"]+=float(np.sum(pnl))
+                q["one_way_turnover"]+=float(np.sum(np.abs(np.diff(np.r_[0.0,ep,0.0]))))
+                active=ep!=0
+                count=int(active.sum())
+                q["exposure_bars"]+=count;q["booked_returns"]+=count
+                q["winning_returns"]+=int((pnl[active]>0).sum())
+    rows=[]
+    for year in YEARS_EVAL:
+        for gate in GATES:
+            q=dict(acc[(year,gate)])
+            q.update({"symbol":symbol,"year":year,"family":family,"scale_min":scale,"gate":gate})
+            q["exposure_minutes"]=q["exposure_bars"]*scale
+            q["gross_bp_per_exposure_min"]=q["gross_bp"]/q["exposure_minutes"] if q["exposure_minutes"] else np.nan
+            q["break_even_one_way_cost_bp"]=q["gross_bp"]/q["one_way_turnover"] if q["one_way_turnover"] else np.nan
+            q["hit_rate"]=q["winning_returns"]/q["booked_returns"] if q["booked_returns"] else np.nan
+            for c in COSTS:
+                q[f"net_bp_cost_{c:g}"]=q["gross_bp"]-c*q["one_way_turnover"]
+                q[f"net_bp_per_exposure_min_cost_{c:g}"]=q[f"net_bp_cost_{c:g}"]/q["exposure_minutes"] if q["exposure_minutes"] else np.nan
+            rows.append(q)
+    return rows
+
+
 def pool_years(df:pd.DataFrame,years)->pd.DataFrame:
     x=df[df.year.isin(years)].copy()
     keys=["symbol","family","scale_min","gate"]
@@ -193,16 +246,13 @@ def run(root:Path,out:Path):
             bars=session_grid(native,states,symbol,scale).reset_index(drop=True)
             bar_receipts.append({"symbol":symbol,"scale_min":scale,"rows":len(bars),"valid":int(bars.valid.sum()),
                 "first_day":bars.trading_day.min(),"last_day":bars.trading_day.max()})
-            family_signals={}
             for family in FAMILIES:
-                sig,low,sigma=base_signal(filters,bars,family,scale);family_signals[family]=sig
+                sig,low,sigma=base_signal(filters,bars,family,scale)
                 if scale==5:
                     anchor.append({"symbol":symbol,"family":family,"signal_sha":__import__('hashlib').sha256(np.asarray(sig,dtype='<f8').tobytes()).hexdigest(),
                         "low_sha":__import__('hashlib').sha256(np.asarray(low,dtype='<f8').tobytes()).hexdigest(),
                         "sigma_sha":__import__('hashlib').sha256(np.asarray(sigma,dtype='<f8').tobytes()).hexdigest()})
-                for year in YEARS_EVAL:
-                    for gate in GATES:
-                        rows.append(summarize_one(bars,sig,family,scale,gate,symbol,year))
+                rows.extend(summarize_all_gates(bars,sig,family,scale,symbol))
     annual=pd.DataFrame(rows)
     pool=pool_years(annual,(2021,2022,2023,2024,2025))
     replay=pool_years(annual,(2026,))
@@ -220,7 +270,8 @@ def run(root:Path,out:Path):
     result={"schema":"state_conditioned_physical_scale_v2","scales":list(SCALES),"families":list(FAMILIES),"gates":list(GATES),
         "costs_one_way_bp":list(COSTS),"five_minute_anchor_identical":bool(anchor_ok),
         "guardrails":["2021-2025 consumed exploratory history","2026 already-opened consistency replay only",
-            "NoEpisode is pre-trigger reference, not Clean","half-session positions forced flat","no scale selection"]}
+            "NoEpisode is pre-trigger reference, not Clean","half-session positions forced flat","no scale selection",
+            "single-pass settlement is exact-equivalent engineering optimization only"]}
     (out/"summary.json").write_text(json.dumps(result,indent=2)+"\n")
     if not anchor_ok: raise RuntimeError("5m family anchor mismatch")
     print(json.dumps(result))
