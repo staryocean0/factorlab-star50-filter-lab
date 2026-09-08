@@ -1,0 +1,59 @@
+name: star50-slow-trend-quality-dev-v4
+on:
+  push:
+    branches:
+      - research/star50-slow-trend-quality-dev-v4-20260908
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Development-only inputs
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            docs/research/star50_slow_trend_quality_dev_v4
+            docs/research/star50_highvol_mechanism_dev_v1
+            docs/research/continuous_vol_regime_v1
+            docs/research/state_conditioned_frequency_v2
+            src/star50_filter/filters.py
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/cross_index_risk_gate_v1/1m/000688.SH/2020.parquet
+            data/cross_index_risk_gate_v1/1m/000688.SH/2021.parquet
+            data/cross_index_risk_gate_v1/1m/000688.SH/2022.parquet
+            data/cross_index_risk_gate_v1/1m/000688.SH/2023.parquet
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas pyarrow scipy scikit-learn pytest
+      - name: Validate governance
+        run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Guard Development-only data
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files=sorted(p.name for p in Path('data/cross_index_risk_gate_v1/1m/000688.SH').glob('*.parquet'))
+          assert files==['2020.parquet','2021.parquet','2022.parquet','2023.parquet'],files
+          assert not Path('data/cross_index_risk_gate_2026_v1').exists()
+          PY
+      - name: Run tests
+        run: python -m pytest -q docs/research/star50_slow_trend_quality_dev_v4/test_slow_quality_dev.py
+      - name: Run Development slow-trend-quality map
+        run: python docs/research/star50_slow_trend_quality_dev_v4/run_slow_quality_dev.py --repo-root . --out artifacts/star50_slow_trend_quality_dev_v4
+      - name: Guard semantics and print gates
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/star50_slow_trend_quality_dev_v4/summary.json'))
+          assert s['development_only'] is True and s['validation_queried'] is False and s['blackbox_queried'] is False
+          print(json.dumps({'candidate_nominated':s['candidate_nominated'],'threshold_gates':s['threshold_gates']},indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: star50-slow-trend-quality-dev-v4-${{ github.run_id }}
+          path: artifacts/star50_slow_trend_quality_dev_v4
+          retention-days: 14
