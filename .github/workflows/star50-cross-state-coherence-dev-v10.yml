@@ -1,0 +1,28 @@
+name: star50-cross-state-coherence-dev-v10
+on:
+  push:
+    branches:
+      - research/star50-cross-state-coherence-dev-v10-20260908
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pytest pandas numpy
+      - run: python -m pytest -q docs/research/star50_cross_state_coherence_dev_v10/test_cross_state.py
+      - run: python docs/research/star50_cross_state_coherence_dev_v10/run_cross_state.py --repo-root . --out artifacts/star50_cross_state_coherence_dev_v10
+      - run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/star50_cross_state_coherence_dev_v10/summary.json'))
+          assert s['development_only']
+          assert not s['validation_queried']
+          assert not s['blackbox_queried']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: star50-cross-state-coherence-dev-v10-${{ github.run_id }}
+          path: artifacts/star50_cross_state_coherence_dev_v10
