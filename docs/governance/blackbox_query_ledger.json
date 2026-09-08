@@ -1,0 +1,10 @@
+{
+  "schema": "factorlab_blackbox_query_ledger_v1",
+  "policy": "docs/governance/DATA_USAGE_POLICY_V2.md",
+  "blackbox_id": "blackbox_v1",
+  "status": "pending_data",
+  "frozen_manifest_sha256": null,
+  "exact_date_start": null,
+  "exact_date_end": null,
+  "queries": []
+}
