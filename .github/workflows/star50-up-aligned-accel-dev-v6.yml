@@ -1,0 +1,56 @@
+name: star50-up-aligned-accel-dev-v6
+on:
+  push:
+    branches:
+      - research/star50-up-aligned-accel-dev-v6-20260908
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Development-only inputs
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            docs/research/star50_up_aligned_accel_dev_v6
+            docs/research/star50_highvol_mechanism_dev_v1
+            docs/research/continuous_vol_regime_v1
+            docs/research/state_conditioned_frequency_v2
+            src/star50_filter/filters.py
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/cross_index_risk_gate_v1/1m/000688.SH/2020.parquet
+            data/cross_index_risk_gate_v1/1m/000688.SH/2021.parquet
+            data/cross_index_risk_gate_v1/1m/000688.SH/2022.parquet
+            data/cross_index_risk_gate_v1/1m/000688.SH/2023.parquet
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install --disable-pip-version-check numpy pandas pyarrow scipy scikit-learn pytest
+      - run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Guard Development-only data
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          f=sorted(p.name for p in Path('data/cross_index_risk_gate_v1/1m/000688.SH').glob('*.parquet'))
+          assert f==['2020.parquet','2021.parquet','2022.parquet','2023.parquet'],f
+          assert not Path('data/cross_index_risk_gate_2026_v1').exists()
+          PY
+      - run: python -m pytest -q docs/research/star50_up_aligned_accel_dev_v6/test_dev.py
+      - run: python docs/research/star50_up_aligned_accel_dev_v6/run_dev.py --repo-root . --out artifacts/star50_up_aligned_accel_dev_v6
+      - name: Guard semantics and print result
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          s=json.load(open('artifacts/star50_up_aligned_accel_dev_v6/summary.json'));a=pd.read_csv('artifacts/star50_up_aligned_accel_dev_v6/annual.csv')
+          assert s['development_only'] is True and s['validation_queried'] is False and s['blackbox_queried'] is False
+          assert s['validation_informed_hypothesis'] is True
+          assert list(a.year)==[2021,2022,2023]
+          print(json.dumps({'acceptance':s['acceptance'],'pooled':s['pooled'],'candidate_identity_sha256':s['candidate_identity_sha256']},indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: star50-up-aligned-accel-dev-v6-${{ github.run_id }}
+          path: artifacts/star50_up_aligned_accel_dev_v6
+          retention-days: 14
