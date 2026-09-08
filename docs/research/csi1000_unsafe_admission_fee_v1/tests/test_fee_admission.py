@@ -61,8 +61,8 @@ def test_no_cross_lunch_return_is_booked():
         "route_state":["Unsafe"]*8,
     })
     r=m.session_policy_rows(bars,np.ones(8))
-    # The enormous 1.03 -> 100 lunch gap is outside both independently flat half-sessions.
-    expected=2*np.log(1.03/1.02)*1e4
+    # First half books only its two post-latency returns; 1.03 -> 100 lunch gap is never booked.
+    expected=np.log(1.03/1.01)*1e4
     for q in r.itertuples(index=False):
         assert abs(q.gross_bp-expected)<1e-8
 
