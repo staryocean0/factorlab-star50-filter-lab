@@ -1,0 +1,32 @@
+{
+  "source_phase4_run": 34188439709,
+  "source_phase4_artifact_id": 10041343483,
+  "source_phase4_artifact_sha256": "dbe5afc4c99caa152f094ee2bb9a3e633d66e02d2c8d9e5d6de30f912c861cdf",
+  "symbols": {
+    "000688.SH": {
+      "2021_2025": {
+        "baseline_ungated": {"gross_bp": 10740.55885558365, "one_way_turnover": 11050.0, "exposure_bars": 18152, "exposure_minutes": 90760, "booked_returns": 18152, "winning_returns": 9422},
+        "unsafe_hard_off": {"gross_bp": 10683.81915897946, "one_way_turnover": 11066.0, "exposure_bars": 18049, "exposure_minutes": 90245, "booked_returns": 18049, "winning_returns": 9367},
+        "unsafe_entry_block": {"gross_bp": 11025.12757683716, "one_way_turnover": 11020.0, "exposure_bars": 18103, "exposure_minutes": 90515, "booked_returns": 18103, "winning_returns": 9399}
+      },
+      "2026": {
+        "baseline_ungated": {"gross_bp": 1799.934779209695, "one_way_turnover": 1448.0, "exposure_bars": 2310, "exposure_minutes": 11550, "booked_returns": 2310, "winning_returns": 1224},
+        "unsafe_hard_off": {"gross_bp": 1885.7648280864903, "one_way_turnover": 1444.0, "exposure_bars": 2292, "exposure_minutes": 11460, "booked_returns": 2292, "winning_returns": 1217},
+        "unsafe_entry_block": {"gross_bp": 1856.4735341070373, "one_way_turnover": 1440.0, "exposure_bars": 2297, "exposure_minutes": 11485, "booked_returns": 2297, "winning_returns": 1219}
+      }
+    },
+    "000852.SH": {
+      "2021_2025": {
+        "baseline_ungated": {"gross_bp": 11653.504255937443, "one_way_turnover": 10750.0, "exposure_bars": 18167, "exposure_minutes": 90835, "booked_returns": 18167, "winning_returns": 9470},
+        "unsafe_hard_off": {"gross_bp": 11811.285814118635, "one_way_turnover": 10756.0, "exposure_bars": 18112, "exposure_minutes": 90560, "booked_returns": 18112, "winning_returns": 9446},
+        "unsafe_entry_block": {"gross_bp": 11751.482747613589, "one_way_turnover": 10738.0, "exposure_bars": 18136, "exposure_minutes": 90680, "booked_returns": 18136, "winning_returns": 9458}
+      },
+      "2026": {
+        "baseline_ungated": {"gross_bp": 1052.0939104582394, "one_way_turnover": 1354.0, "exposure_bars": 2310, "exposure_minutes": 11550, "booked_returns": 2310, "winning_returns": 1227},
+        "unsafe_hard_off": {"gross_bp": 1023.1763815339036, "one_way_turnover": 1354.0, "exposure_bars": 2305, "exposure_minutes": 11525, "booked_returns": 2305, "winning_returns": 1223},
+        "unsafe_entry_block": {"gross_bp": 1060.2856356198915, "one_way_turnover": 1352.0, "exposure_bars": 2308, "exposure_minutes": 11540, "booked_returns": 2308, "winning_returns": 1226}
+      }
+    }
+  },
+  "note": "Copied before Phase-5 outcomes from accepted Phase-4 outputs for perfect-state anchoring."
+}
