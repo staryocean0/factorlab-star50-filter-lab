@@ -81,7 +81,7 @@ def test_no_trade_is_valid_empty_ledger():
 def test_exact_l3_prefix_and_scoped_module_restoration():
     from pathlib import Path
     import sys
-    root = Path('/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab')
+    root = Path(__file__).resolve().parent / 'fixtures' / 'factor_lab_l3'
     before = {k: v for k, v in sys.modules.items() if k.startswith('factor_lab')}
     build, spec = load_l3_channel(root)
     after = {k: v for k, v in sys.modules.items() if k.startswith('factor_lab')}
