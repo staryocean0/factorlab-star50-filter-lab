@@ -1,0 +1,65 @@
+{
+  "schema": "star50_down_regime_break_v2_candidate_v1",
+  "candidate_id": "star50_downside_accelerated_regime_break_v2",
+  "symbol": "000688.SH",
+  "research_role": "Development-frozen candidate; Validation unopened until Development acceptance passes",
+  "state_trigger": {
+    "transition": "NormalVol->HighVol",
+    "highvol_definition": "trailing completed 5m RMS / preceding non-overlapping 30m RMS >= 1.5"
+  },
+  "signal": {
+    "slow30_net_bp": ">0",
+    "net5_bp": "<0",
+    "efficiency5": ">=0.60",
+    "tail2_share": ">=0.50",
+    "tail1_condition": null
+  },
+  "execution": {
+    "direction": "short",
+    "entry": "next minute open after HighVol onset",
+    "hold_minutes": 3,
+    "exit": "open exactly 3 minutes after entry",
+    "same_half_day_session": true,
+    "complete_valid_path_required": true,
+    "non_overlapping_trades": true,
+    "mechanical_stop": false,
+    "confirmation_wait": false
+  },
+  "economics": {
+    "primary_cost_bp_per_leg": 1.0,
+    "round_trip_legs": 2,
+    "break_even_definition": "mean gross bp / 2"
+  },
+  "development": {
+    "start": "2021-01-01",
+    "end": "2023-12-31",
+    "acceptance": {
+      "pooled_trades_ge": 60,
+      "each_year_trades_ge": 15,
+      "each_year_mean_net_1bp_per_leg_gt": 0.0,
+      "pooled_mean_net_1bp_per_leg_gt": 0.0,
+      "pooled_one_way_break_even_bp_gt": 1.0
+    }
+  },
+  "validation": {
+    "start": "2024-01-01",
+    "end": "2026-08-21",
+    "open_only_if_development_passes": true,
+    "acceptance": {
+      "total_trades_ge": 30,
+      "pooled_mean_net_1bp_per_leg_gt": 0.0,
+      "positive_year_slices_ge": 2,
+      "pooled_one_way_break_even_bp_gt": 1.0
+    }
+  },
+  "blackbox": {
+    "query": false,
+    "status": "do_not_touch"
+  },
+  "anti_rescue": [
+    "do not retune tail2 threshold after Validation",
+    "do not retune efficiency threshold after Validation",
+    "do not retune 3-minute hold after Validation",
+    "do not add tail1 or confirmation filters to rescue a failed Validation"
+  ]
+}
