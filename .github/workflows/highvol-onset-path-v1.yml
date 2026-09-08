@@ -1,0 +1,46 @@
+name: highvol-onset-path-v1
+on:
+  push:
+    branches:
+      - research/highvol-onset-path-v1-20260908
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frozen onset inputs
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            docs/research/highvol_onset_path_v1
+            docs/research/continuous_vol_regime_v1
+            docs/research/state_conditioned_frequency_v2
+            src/star50_filter/filters.py
+            data/cross_index_risk_gate_v1/1m
+            data/cross_index_risk_gate_2026_v1/1m
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas pyarrow scipy scikit-learn pytest
+      - name: Run frozen tests
+        run: python -m pytest -q docs/research/highvol_onset_path_v1/test_onset_path.py docs/research/continuous_vol_regime_v1/test_continuous_vol_regime.py
+      - name: Run development selection and validation
+        run: python docs/research/highvol_onset_path_v1/run_onset_path.py --repo-root . --out artifacts/highvol_onset_path_v1
+      - name: Seal output manifest
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          root=Path('artifacts/highvol_onset_path_v1'); rows=[]
+          for p in sorted(root.iterdir()):
+              if p.is_file():
+                  b=p.read_bytes(); rows.append({'name':p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+          (root/'output_manifest.json').write_text(json.dumps({'files':rows},indent=2)+'\n')
+          PY
+      - name: Upload evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: highvol-onset-path-v1-${{ github.run_id }}
+          path: artifacts/highvol_onset_path_v1
+          retention-days: 14
