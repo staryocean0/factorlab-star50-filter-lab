@@ -1,0 +1,60 @@
+{
+  "schema": "highvol_recovery_calibration_v4_freeze",
+  "candidate_id": "shared_unsafe_recovering_age_recovery_probability_v4",
+  "frozen_after_development_before_validation": true,
+  "production_authority": false,
+  "blackbox_queried": false,
+  "target": "P(NORMAL within next 15 minutes | current state, episode age)",
+  "symbols_shared": ["000688.SH", "000852.SH"],
+  "state_engine": {
+    "rv_window_bars": 12,
+    "background_window_bars": 48,
+    "highvol_ratio": 1.5,
+    "extreme_ratio": 2.25,
+    "recovery_normal_ratio": 1.1,
+    "shock_sigma": 3.0,
+    "overnight_returns_excluded": true,
+    "day_reset": true
+  },
+  "landmark_bars": [1, 3, 6, 9],
+  "future_hazard_bars": 3,
+  "estimator": "Beta(1,1) posterior mean / Laplace frequency (successes+1)/(n+2)",
+  "development": {
+    "period": "2021-01-01/2023-12-31",
+    "warmup_year": 2020,
+    "run_id": 34414610302,
+    "job_id": 102676572166,
+    "head_commit_sha": "49c22af742f522c6ccd7ca843a8a5dd0fec02ad0",
+    "artifact_id": 10128564382,
+    "artifact_zip_sha256": "0e67c583ed00d36b369bb9c2f1edcac3e5bce6e88caf54c5ad90f961bdc65ab2",
+    "fit_rows": 2480,
+    "global_probability": 0.14907332796132153,
+    "brier_state_age": 0.07976952098632314,
+    "brier_global": 0.12665184257903817,
+    "logloss_state_age": 0.26747946402017714,
+    "logloss_global": 0.4206053446724039,
+    "eligible": true
+  },
+  "probability_map": [
+    {"state":"UNSAFE","landmark_bars":1,"landmark_minutes":5,"n":108,"successes":0,"probability":0.00909090909090909},
+    {"state":"RECOVERING","landmark_bars":1,"landmark_minutes":5,"n":554,"successes":35,"probability":0.06474820143884892},
+    {"state":"UNSAFE","landmark_bars":3,"landmark_minutes":15,"n":127,"successes":1,"probability":0.015503875968992248},
+    {"state":"RECOVERING","landmark_bars":3,"landmark_minutes":15,"n":501,"successes":18,"probability":0.03777335984095427},
+    {"state":"UNSAFE","landmark_bars":6,"landmark_minutes":30,"n":211,"successes":0,"probability":0.004694835680751174},
+    {"state":"RECOVERING","landmark_bars":6,"landmark_minutes":30,"n":397,"successes":21,"probability":0.05513784461152882},
+    {"state":"UNSAFE","landmark_bars":9,"landmark_minutes":45,"n":221,"successes":61,"probability":0.27802690582959644},
+    {"state":"RECOVERING","landmark_bars":9,"landmark_minutes":45,"n":361,"successes":233,"probability":0.6446280991735537}
+  ],
+  "validation_preregistered": {
+    "available_native_5m_coverage": "2024-01-01/2025-12-31",
+    "known_coverage_gap": "no authorized native cross-index 5m shard for 2026-01-01/2026-08-21 in current repository; do not resample 1m to fill it",
+    "fit_or_refit_allowed": false,
+    "acceptance": {
+      "scored_rows_min": 1000,
+      "state_age_brier_lt_frozen_global_baseline": true,
+      "state_age_logloss_lt_frozen_global_baseline": true,
+      "brier_improvement_over_global_required_each_year": [2024, 2025],
+      "observed_recovering_gt_unsafe_landmarks_min_per_symbol": 3
+    }
+  }
+}
