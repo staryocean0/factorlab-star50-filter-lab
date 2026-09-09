@@ -1,5 +1,7 @@
 # STAR50 filter lab index
 
+- **Current authority evidence:** [HighVol Router V1 reusable Validation result](research/highvol_router_v1/VALIDATION_RESULTS.md) → [frozen router identity](research/highvol_router_v1/FROZEN_ROUTER_V1.json) → [decisive receipt](research/highvol_router_v1/DECISIVE_RECEIPT.json). CSI1000 is the only active HighVol payoff module; STAR50 and unsupported contexts are `NO_TRADE`. Validation: 129 trades, pooled net +0.5463 bp/trade @1bp/leg, BE 1.2731 bp, 2/3 positive annual slices. Research-only; `production_authority=false`; BlackBox queries=0.
+
 - Current cloud entry: [两指数底层K线风险研究交接](handoff/cloud_risk_gate_20260907/HANDOFF.md) → [数据口径](handoff/cloud_risk_gate_20260907/DATA.md) → [云端—本地记录](ops/cloud_local_communication.md)。15项文献全文和有界指数3s/1m/5m；本地为存储核心，不开启交易/期权或2026研究。
 
 - Latest: [因果未来波动工具V1](research/causal_volatility_tool_v1/result.md) → [接口与复现](research/causal_volatility_tool_v1/workflow.md)。环境预测有进展，普通时段突变预警未通过；不授交易路由。
