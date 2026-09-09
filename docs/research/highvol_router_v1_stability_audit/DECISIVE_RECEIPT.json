@@ -1,0 +1,59 @@
+{
+  "schema": "highvol_router_v1_stability_audit_receipt_v1",
+  "candidate_id": "highvol_router_v1_csi1000_active_star50_no_trade",
+  "role": "diagnostic_only",
+  "candidate_changed": false,
+  "routing_changed": false,
+  "production_authority": false,
+  "blackbox_queried": false,
+  "run": {
+    "run_id": 34346275786,
+    "job_id": 102448499259,
+    "head_commit_sha": "ba17c5ee5fdb05e60fb6790c80207f3d4072ffe7",
+    "artifact_id": 10101828676,
+    "artifact_zip_sha256": "730af4ad3667698ae106b1c49795ae664b07558de96ff73ab1a290ac46acca5a"
+  },
+  "trade_identity": {
+    "development_trades": 104,
+    "validation_trades": 129,
+    "frozen_router_receipt_blob_sha": "ea9b00736369f75b8dd5df2661e54afd24516e3b",
+    "frozen_dev_runner_blob_sha": "52aa0db330b3489c4196b6e718f8c7f6f8628d13"
+  },
+  "primary_cost_1bp_per_leg": {
+    "development_mean_net_bp_per_trade": 0.7377457110922672,
+    "validation_mean_net_bp_per_trade": 0.5462552570516053
+  },
+  "validation_cost_stress": {
+    "0_5bp_per_leg_mean_net": 1.5462552570516053,
+    "1_0bp_per_leg_mean_net": 0.5462552570516053,
+    "1_5bp_per_leg_mean_net": -0.45374474294839473,
+    "2_0bp_per_leg_mean_net": -1.4537447429483947,
+    "one_way_break_even_bp": 1.2731276285258026
+  },
+  "validation_day_block_bootstrap": {
+    "draws": 10000,
+    "seed": 20260909,
+    "mean_net_bp_per_trade": 0.5536902851873372,
+    "ci_2_5_bp": -1.985520829413833,
+    "ci_97_5_bp": 3.058996318817884,
+    "probability_mean_net_gt_zero": 0.6704
+  },
+  "validation_top_day_sensitivity": {
+    "remove_top1_mean_net_bp_per_trade": 0.2395668697317137,
+    "remove_top3_mean_net_bp_per_trade": -0.283332425858007,
+    "remove_top5_mean_net_bp_per_trade": -0.7509805715900454
+  },
+  "validation_leave_one_year_out_mean_net_bp_per_trade": {
+    "exclude_2024": 0.8123096095603342,
+    "exclude_2025": 0.12067726133910739,
+    "exclude_2026": 0.6879036741439428
+  },
+  "preset_fragility_reasons": [
+    "validation_day_block_bootstrap_interval_crosses_zero",
+    "validation_mean_net_nonpositive_at_1_5bp_per_leg",
+    "validation_mean_net_nonpositive_after_removing_top5_positive_days",
+    "validation_2026_slice_nonpositive"
+  ],
+  "diagnostic_conclusion": "PRIMARY_COST_EDGE_POSITIVE_WITH_MATERIAL_STABILITY_FRAGILITY",
+  "authority_effect": "does_not_reverse_prior_reusable_validation_pass; forbids upgrade to production-quality stability claim"
+}
