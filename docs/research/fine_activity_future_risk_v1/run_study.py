@@ -80,34 +80,29 @@ def attach_clock_z(frame: pd.DataFrame, raw_col: str, out_col: str, min_history:
                     v = np.asarray(prior, float)
                     med = float(np.median(v))
                     mad = float(np.median(np.abs(v - med)))
-                    scale = max(1.4826 * mad, 1e-8)
-                    out.at[i, out_col] = (lx - med) / scale
+                    out.at[i, out_col] = (lx - med) / max(1.4826 * mad, 1e-8)
                 prior.append(lx)
     return out.drop(columns="_day_order")
 
 
 def minute_panel(native: pd.DataFrame, symbol: str) -> pd.DataFrame:
-    q = native.copy()
-    q = q[q["symbol"] == symbol].copy()
-    local = q["market_time_shanghai"].dt.tz_localize(None)
+    q = native[native.symbol == symbol].copy()
+    local = q.market_time_shanghai.dt.tz_localize(None)
     q["afternoon"] = (local.dt.hour >= 13).astype(int)
-    q["day"] = q["trading_day"].astype(str)
-    q["session"] = q["day"] + "/" + q["afternoon"].astype(str)
-    q = q.sort_values(["market_time_shanghai"], kind="stable").reset_index(drop=True)
+    q["day"] = q.trading_day.astype(str)
+    q["session"] = q.day + "/" + q.afternoon.astype(str)
+    q = q.sort_values("market_time_shanghai", kind="stable").reset_index(drop=True)
     q["minute"] = q.groupby("session", sort=False).cumcount() + 1
     counts = q.groupby("session").size()
-    keep = set(counts[counts == 120].index)
-    q = q[q.session.isin(keep)].copy().reset_index(drop=True)
+    q = q[q.session.isin(set(counts[counts == 120].index))].copy().reset_index(drop=True)
     if q.duplicated(["session", "minute"]).any():
         raise ValueError("duplicate minute key")
-    q["eligible"] = q.get("high_frequency_analysis_eligible", True)
-    q["eligible"] = q["eligible"].fillna(False).astype(bool)
+    q["eligible"] = q["high_frequency_analysis_eligible"].fillna(False).astype(bool) if "high_frequency_analysis_eligible" in q else True
     q["return_bp"] = np.nan
     for _, ix in q.groupby("session", sort=False).groups.items():
         idx = np.asarray(list(ix))
         close = q.loc[idx, "close"].to_numpy(float)
-        ret = np.r_[np.nan, np.diff(np.log(close)) * 1e4]
-        q.loc[idx, "return_bp"] = ret
+        q.loc[idx, "return_bp"] = np.r_[np.nan, np.diff(np.log(close)) * 1e4]
     return q
 
 
@@ -129,14 +124,13 @@ def build_fine(root: Path, panel: pd.DataFrame, symbol: str) -> pd.DataFrame:
         pyear = panel[pd.to_datetime(panel.day).dt.year == year]
         for session, part in pyear.groupby("session", sort=False):
             raw = groups.get(session)
-            if raw is None:
-                sample = sample_session([], [], [])
-            else:
-                sample = sample_session(raw.second.to_numpy(float), raw.price.to_numpy(float), raw.row_index.to_numpy())
+            sample = sample_session([], [], []) if raw is None else sample_session(
+                raw.second.to_numpy(float), raw.price.to_numpy(float), raw.row_index.to_numpy())
             price = sample["price"]
             r15 = sample["return_bp"]
-            coarse = part.sort_values("minute").return_bp.to_numpy(float)
-            elig = part.sort_values("minute").eligible.to_numpy(bool)
+            part = part.sort_values("minute")
+            coarse = part.return_bp.to_numpy(float)
+            elig = part.eligible.to_numpy(bool)
             for minute in range(1, 121):
                 item = {"symbol": symbol, "session": session, "day": str(part.day.iloc[0]),
                         "afternoon": int(part.afternoon.iloc[0]), "minute": minute,
@@ -156,8 +150,7 @@ def build_fine(root: Path, panel: pd.DataFrame, symbol: str) -> pd.DataFrame:
                         rel = np.log(px / px[0]) * 1e4
                         item["pre5m_range_bp"] = float(rel.max() - rel.min())
                         item["A5"] = float(np.sqrt(np.mean(fine * fine)))
-                        rvf = float(np.sum(fine * fine))
-                        rvc = float(np.sum(c * c))
+                        rvf, rvc = float(np.sum(fine * fine)), float(np.sum(c * c))
                         item["M1"] = float(np.log((rvf + EPS) / (rvc + EPS)))
                         item["rms1m5"] = float(np.sqrt(np.mean(c * c)))
                 rows.append(item)
@@ -167,12 +160,13 @@ def build_fine(root: Path, panel: pd.DataFrame, symbol: str) -> pd.DataFrame:
 
 def attach_future_targets(panel: pd.DataFrame) -> pd.DataFrame:
     q = panel[["symbol", "session", "day", "afternoon", "minute", "return_bp", "eligible"]].copy()
-    q["future_rms15_bp"] = np.nan
-    q["future_mean_abs15_bp"] = np.nan
-    q["future_any_unsafe15"] = np.nan
-    q["current_vol_ratio"] = np.nan
-    for _, ix in q.groupby("session", sort=False).groups.items():
+    for col in ("future_rms15_bp", "future_mean_abs15_bp", "future_any_unsafe15", "current_vol_ratio"):
+        q[col] = np.nan
+    # Session names are shared across symbols, so symbol must be part of the key.
+    for _, ix in q.groupby(["symbol", "session"], sort=False).groups.items():
         idx = np.asarray(list(ix))
+        if len(idx) != 120:
+            raise ValueError(f"expected 120 rows per symbol/session, got {len(idx)}")
         r = q.loc[idx, "return_bp"].to_numpy(float)
         e = q.loc[idx, "eligible"].to_numpy(bool)
         z = np.full(120, np.nan)
@@ -186,9 +180,7 @@ def attach_future_targets(panel: pd.DataFrame) -> pd.DataFrame:
                 z[u] = rr / bb
         q.loc[idx, "current_vol_ratio"] = z
         for t in range(34, 105):
-            fut = r[t + 1 : t + 16]
-            ef = e[t + 1 : t + 16]
-            zf = z[t + 1 : t + 16]
+            fut, ef, zf = r[t + 1 : t + 16], e[t + 1 : t + 16], z[t + 1 : t + 16]
             if len(fut) == 15 and np.isfinite(fut).all() and ef.all() and np.isfinite(zf).all():
                 q.loc[idx[t], "future_rms15_bp"] = float(np.sqrt(np.mean(fut * fut)))
                 q.loc[idx[t], "future_mean_abs15_bp"] = float(np.mean(np.abs(fut)))
@@ -197,25 +189,20 @@ def attach_future_targets(panel: pd.DataFrame) -> pd.DataFrame:
 
 
 def band_label(x: float) -> str | None:
-    if not np.isfinite(x):
-        return None
-    if x <= 0:
-        return "<=0"
-    if x <= 1:
-        return "(0,1]"
-    if x <= 2:
-        return "(1,2]"
+    if not np.isfinite(x): return None
+    if x <= 0: return "<=0"
+    if x <= 1: return "(0,1]"
+    if x <= 2: return "(1,2]"
     return ">2"
 
 
-def summarize(frame: pd.DataFrame, score: str = "M3") -> pd.DataFrame:
+def summarize(frame: pd.DataFrame, score: str) -> pd.DataFrame:
     x = frame.copy()
     x["band"] = x[score].map(band_label)
     rows = []
-    order = [b[2] for b in M3_BANDS]
     for symbol in SYMBOLS:
         s = x[x.symbol == symbol]
-        for band in order:
+        for band in [b[2] for b in M3_BANDS]:
             z = s[s.band == band]
             rows.append({"symbol": symbol, "score": score, "band": band, "n": int(len(z)),
                          "median_future_rms15_bp": float(z.future_rms15_bp.median()) if len(z) else None,
@@ -228,7 +215,7 @@ def summarize(frame: pd.DataFrame, score: str = "M3") -> pd.DataFrame:
 def incremental_control(frame: pd.DataFrame) -> pd.DataFrame:
     rows = []
     for symbol in SYMBOLS:
-        s = frame[(frame.symbol == symbol) & (frame.C1z < 1)].copy()
+        s = frame[(frame.symbol == symbol) & (frame.C1z < 1)]
         for group, z in (("M3<1", s[s.M3 < 1]), ("M3>=1", s[s.M3 >= 1])):
             rows.append({"symbol": symbol, "group": group, "n": int(len(z)),
                          "median_future_rms15_bp": float(z.future_rms15_bp.median()) if len(z) else None,
@@ -245,7 +232,7 @@ def adjudicate(summary_m3: pd.DataFrame, control: pd.DataFrame) -> dict:
         n = s.n.to_numpy(int)
         unsafe = s.future_any_unsafe15_prob.to_numpy(float)
         c = control[control.symbol == symbol].set_index("group")
-        ok = {
+        checks = {
             "all_bands_n_ge_100": bool((n >= 100).all()),
             "median_rms_nondecreasing": bool(np.all(np.diff(med) >= -1e-12)),
             "top_bottom_median_rms_ratio_ge_1_10": bool(med[-1] / med[0] >= 1.10),
@@ -254,7 +241,7 @@ def adjudicate(summary_m3: pd.DataFrame, control: pd.DataFrame) -> dict:
             "within_c1_m3_higher_rms": bool(c.loc["M3>=1", "median_future_rms15_bp"] > c.loc["M3<1", "median_future_rms15_bp"]),
             "within_c1_m3_higher_unsafe": bool(c.loc["M3>=1", "future_any_unsafe15_prob"] > c.loc["M3<1", "future_any_unsafe15_prob"]),
         }
-        per_symbol[symbol] = {"checks": ok, "pass": bool(all(ok.values()))}
+        per_symbol[symbol] = {"checks": checks, "pass": bool(all(checks.values()))}
     verdict = "development_structure_supported" if all(v["pass"] for v in per_symbol.values()) else "development_structure_not_established"
     return {"verdict": verdict, "per_symbol": per_symbol}
 
@@ -264,15 +251,12 @@ def main() -> int:
     ap.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[3])
     ap.add_argument("--out", type=Path, required=True)
     args = ap.parse_args()
-    root = args.repo_root.resolve()
-    out = args.out.resolve()
+    root, out = args.repo_root.resolve(), args.out.resolve()
     out.mkdir(parents=True, exist_ok=False)
-
     sys.path.insert(0, str(root / "src"))
     from star50_filter.cloud_market_data import load_market_data
 
-    panels = []
-    fines = []
+    panels, fines = [], []
     for symbol in SYMBOLS:
         native = load_market_data(symbol, "1m", WARMUP_START, DEV_END, root=root)
         p = minute_panel(native, symbol)
@@ -298,17 +282,15 @@ def main() -> int:
     if len(dev) < 1000:
         raise RuntimeError(f"insufficient development rows: {len(dev)}")
 
-    s3 = summarize(dev, "M3")
-    s4 = summarize(dev, "M4")
+    s3, s4 = summarize(dev, "M3"), summarize(dev, "M4")
     ctl = incremental_control(dev)
     decision = adjudicate(s3, ctl)
-
     s3.to_csv(out / "m3_band_summary.csv", index=False)
     s4.to_csv(out / "m4_band_summary.csv", index=False)
     ctl.to_csv(out / "incremental_control.csv", index=False)
-    dev[["symbol", "day", "session", "minute", "pre5m_range_bp", "M1", "M3", "M4", "C1z",
-         "current_vol_ratio", "future_rms15_bp", "future_mean_abs15_bp", "future_any_unsafe15"]].to_csv(
-             out / "development_rows.csv.gz", index=False, compression={"method": "gzip", "mtime": 0})
+    cols = ["symbol", "day", "session", "minute", "pre5m_range_bp", "M1", "M3", "M4", "C1z",
+            "current_vol_ratio", "future_rms15_bp", "future_mean_abs15_bp", "future_any_unsafe15"]
+    dev[cols].to_csv(out / "development_rows.csv.gz", index=False, compression={"method": "gzip", "mtime": 0})
 
     summary = {
         "schema": "fine_activity_future_risk_v1",
@@ -327,10 +309,7 @@ def main() -> int:
         "run_id": os.getenv("GITHUB_RUN_ID"),
     }
     write_json(out / "summary.json", summary)
-    files = []
-    for p in sorted(out.iterdir()):
-        if p.is_file():
-            files.append({"name": p.name, "bytes": p.stat().st_size, "sha256": sha256(p)})
+    files = [{"name": p.name, "bytes": p.stat().st_size, "sha256": sha256(p)} for p in sorted(out.iterdir()) if p.is_file()]
     write_json(out / "output_manifest.json", {"files": files})
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     print(s3.to_string(index=False))
