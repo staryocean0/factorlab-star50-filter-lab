@@ -18,8 +18,6 @@ def test_sample_session_requires_strict_gap():
     assert np.isfinite(x["return_bp"][1:49]).all()
     keep = t != 360
     y = study.sample_session(t[keep], p[keep], r[keep])
-    # A missing 3-second source row creates a >3s crossed gap and invalidates
-    # at least one sampled return; it is never filled as zero.
     assert np.isnan(y["return_bp"]).sum() > np.isnan(x["return_bp"]).sum()
 
 
@@ -38,17 +36,30 @@ def test_clock_z_is_strictly_past_only():
     assert abs(z.loc[2, "M3"] - expected) < 1e-12
 
 
-def test_future_target_does_not_cross_session():
+def synthetic_panel(symbols=("X",), sessions=("2023-01-03/0", "2023-01-03/1")):
     rows = []
-    for session in ("2023-01-03/0", "2023-01-03/1"):
-        for m in range(1, 121):
-            rows.append({"symbol": "X", "session": session, "day": "2023-01-03",
-                         "afternoon": int(session[-1]), "minute": m,
-                         "return_bp": 2.0 if m > 1 else np.nan, "eligible": True})
-    q = study.attach_future_targets(pd.DataFrame(rows))
-    # Protocol evaluates t<=105; exactly 15 future rows are available there.
+    for symbol in symbols:
+        for session in sessions:
+            for m in range(1, 121):
+                rows.append({"symbol": symbol, "session": session, "day": "2023-01-03",
+                             "afternoon": int(session[-1]), "minute": m,
+                             "return_bp": 2.0 if m > 1 else np.nan, "eligible": True})
+    return pd.DataFrame(rows)
+
+
+def test_future_target_does_not_cross_session():
+    q = study.attach_future_targets(synthetic_panel())
     assert np.isfinite(q.loc[(q.session == "2023-01-03/0") & (q.minute == 105), "future_rms15_bp"]).all()
     assert np.isnan(q.loc[(q.session == "2023-01-03/0") & (q.minute == 106), "future_rms15_bp"]).all()
+
+
+def test_future_target_separates_symbols_with_same_session_name():
+    q = study.attach_future_targets(synthetic_panel(symbols=("X", "Y"), sessions=("2023-01-03/0",)))
+    assert len(q) == 240
+    for symbol in ("X", "Y"):
+        z = q[(q.symbol == symbol) & (q.session == "2023-01-03/0")]
+        assert len(z) == 120
+        assert np.isfinite(z.loc[z.minute == 105, "future_rms15_bp"]).all()
 
 
 def test_fixed_band_edges():
