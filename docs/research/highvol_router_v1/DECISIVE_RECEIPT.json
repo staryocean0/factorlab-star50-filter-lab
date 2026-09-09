@@ -1,0 +1,64 @@
+{
+  "schema": "highvol_router_v1_decisive_receipt_v1",
+  "candidate_id": "highvol_router_v1_csi1000_active_star50_no_trade",
+  "status": "validation_supported_research_only",
+  "production_authority": false,
+  "blackbox_queried": false,
+  "fresh_oos": false,
+  "routes": {
+    "000852.SH": "ACTIVE_LONG_3M",
+    "000688.SH": "NO_TRADE",
+    "other_highvol_contexts": "NO_TRADE"
+  },
+  "frozen_identity": {
+    "router_receipt_blob_sha": "ea9b00736369f75b8dd5df2661e54afd24516e3b",
+    "development_runner_blob_sha": "52aa0db330b3489c4196b6e718f8c7f6f8628d13",
+    "development_code_commit_sha": "33b2654e31ea8ac09711aeb77248ddfe68d9dea5"
+  },
+  "development": {
+    "run_id": 34300072928,
+    "artifact_id": 10084593028,
+    "artifact_zip_sha256": "ff73b10e04a429d68cf7b383f138699137f3d9cba83fb541dd49567376223145",
+    "trades": 104,
+    "mean_net_1bp_per_leg_bp": 0.737745711092268,
+    "one_way_break_even_bp": 1.368872855546134,
+    "star50_route_trade_count": 0,
+    "max_concurrent_positions": 1,
+    "overlap_rejected": 0
+  },
+  "validation": {
+    "period_start": "2024-01-01",
+    "period_end": "2026-08-21",
+    "technical_failed_run_id": 34300476501,
+    "technical_failure": "strict JSON serialization of non-finite diagnostic NaN; no candidate or data change",
+    "decisive_run_id": 34300569936,
+    "head_commit_sha": "c8994b251323662abb65fe73d3d80123a5502a5e",
+    "artifact_id": 10084769189,
+    "artifact_zip_sha256": "4e7d1aea626936c1170ee26d4f9787ff26edd66236241c62be5ac90807a91d71",
+    "restored_2026_blob_sha": "8de5cd3caab99dbacae229a2c87f15c4ff2f8558",
+    "trades": 129,
+    "positive_year_slices": 2,
+    "mean_net_1bp_per_leg_bp": 0.5462552570516053,
+    "one_way_break_even_bp": 1.2731276285258026,
+    "total_net_bp": 70.46692815965706,
+    "star50_route_trade_count": 0,
+    "max_concurrent_positions": 1,
+    "overlap_rejected": 0,
+    "annual": {
+      "2024": {"trades": 58, "mean_net_1bp_per_leg_bp": 0.22056803242885037},
+      "2025": {"trades": 49, "mean_net_1bp_per_leg_bp": 1.2410764745413978},
+      "2026_through_2026_08_21": {"trades": 22, "mean_net_1bp_per_leg_bp": -0.14267113517021546}
+    }
+  },
+  "acceptance": {
+    "pooled_completed_trades_min_30": true,
+    "pooled_mean_net1_positive": true,
+    "at_least_2_of_3_year_slices_positive_net1": true,
+    "pooled_one_way_break_even_gt_1bp": true,
+    "star50_route_trade_count_zero": true,
+    "nonoverlap_ok": true,
+    "max_concurrent_positions_lte_1": true,
+    "candidate_parameters_unchanged": true
+  },
+  "decision": "retain Router V1 as Validation-supported research candidate; do not grant production authority; do not query BlackBox yet"
+}
