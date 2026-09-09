@@ -1,0 +1,92 @@
+name: highvol-recovery-calibration-v4-validation
+
+on:
+  push:
+    branches:
+      - research/highvol-recovery-calibration-v4-validation-20260910
+    paths:
+      - research/highvol_recovery_hazard_v3/**
+      - research/highvol_recovery_calibration_v4/**
+      - .github/workflows/highvol-recovery-calibration-v4-validation.yml
+
+jobs:
+  validation-calibration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frozen model and native 5m Validation coverage
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/highvol_recovery_hazard_v3
+            research/highvol_recovery_calibration_v4
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/market/5m/000688.SH/2023.parquet
+            data/market/5m/000688.SH/2024.parquet
+            data/market/5m/000688.SH/2025.parquet
+            data/market/5m/000852.SH/2023.parquet
+            data/market/5m/000852.SH/2024.parquet
+            data/market/5m/000852.SH/2025.parquet
+          sparse-checkout-cone-mode: false
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+      - run: python scripts/validate_data_usage_policy.py --repo-root .
+
+      - name: Guard native 5m Validation coverage and no synthetic 2026
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for symbol in ['000688.SH','000852.SH']:
+              base=Path('data/market/5m')/symbol
+              got=sorted(p.name for p in base.glob('*.parquet'))
+              assert got == ['2023.parquet','2024.parquet','2025.parquet'], (symbol,got)
+          assert not list(Path('data').rglob('2026.parquet'))
+          print('native 5m Validation coverage: 2024-2025; 2026 absent by design')
+          PY
+
+      - run: python -m pytest -q research/highvol_recovery_hazard_v3/test_hazard.py research/highvol_recovery_calibration_v4/test_calibration.py research/highvol_recovery_calibration_v4/test_validation.py
+
+      - name: Run frozen reusable Validation
+        run: python research/highvol_recovery_calibration_v4/run_validation.py --repo-root . --out artifacts/highvol_recovery_calibration_v4_validation
+
+      - name: Guard risk-only semantics
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/highvol_recovery_calibration_v4_validation/summary.json'))
+          assert s['fit_performed'] is False
+          assert s['parameter_change_performed'] is False
+          assert s['state_thresholds_unchanged'] is True
+          assert s['pnl_computed'] is False
+          assert s['trading_rule_created'] is False
+          assert s['blackbox_queried'] is False
+          assert s['production_authority'] is False
+          assert s['coverage_complete_through_policy_end'] is False
+          print('available-coverage supported:',s['available_coverage_validation_supported'])
+          print(json.dumps(s['acceptance'],sort_keys=True))
+          PY
+
+      - name: Seal output manifest
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          root=Path('artifacts/highvol_recovery_calibration_v4_validation'); files=[]
+          for p in sorted(root.iterdir()):
+              if p.is_file():
+                  b=p.read_bytes(); files.append({'name':p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+          (root/'output_manifest.json').write_text(json.dumps({'schema':'highvol_recovery_calibration_v4_validation_manifest','files':files},indent=2)+'\n')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: highvol-recovery-calibration-v4-validation-${{ github.run_id }}
+          path: artifacts/highvol_recovery_calibration_v4_validation
+          retention-days: 30
