@@ -1,0 +1,59 @@
+name: star50-highvol-sign-flip-dev-v15
+on:
+  push:
+    branches:
+      - research/star50-highvol-sign-flip-dev-v15-20260908
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            docs/research/star50_highvol_sign_flip_dev_v15
+            docs/research/star50_turnover_pressure_dev_v12
+            docs/research/continuous_vol_regime_v1
+            docs/research/state_conditioned_frequency_v2
+            src/star50_filter/filters.py
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/cross_index_risk_gate_v1/1m/000688.SH/2020.parquet
+            data/cross_index_risk_gate_v1/1m/000688.SH/2021.parquet
+            data/cross_index_risk_gate_v1/1m/000688.SH/2022.parquet
+            data/cross_index_risk_gate_v1/1m/000688.SH/2023.parquet
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check numpy pandas pyarrow scipy scikit-learn pytest
+      - run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Guard Development-only data
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('data/cross_index_risk_gate_v1/1m/000688.SH')
+          files=sorted(x.name for x in p.glob('*.parquet'))
+          assert files==['2020.parquet','2021.parquet','2022.parquet','2023.parquet'],files
+          assert not Path('data/cross_index_risk_gate_2026_v1').exists()
+          PY
+      - run: python -m pytest -q docs/research/star50_highvol_sign_flip_dev_v15/test_highvol_sign_flip.py
+      - run: python docs/research/star50_highvol_sign_flip_dev_v15/run_highvol_sign_flip.py --repo-root . --out artifacts/star50_highvol_sign_flip_dev_v15
+      - name: Guard V15 semantics
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          s=json.load(open('artifacts/star50_highvol_sign_flip_dev_v15/summary.json'))
+          q=pd.read_csv('artifacts/star50_highvol_sign_flip_dev_v15/summary.csv')
+          assert s['development_only'] and not s['validation_queried'] and not s['blackbox_queried']
+          assert not s['candidate_nominated'] and s['event_count']>0
+          assert set(s['flip_counts'])=={'UpToDown','DownToUp'}
+          assert set(q['view'])==set(s['views'])
+          print(json.dumps(s,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: star50-highvol-sign-flip-dev-v15-${{ github.run_id }}
+          path: artifacts/star50_highvol_sign_flip_dev_v15
+          retention-days: 14
