@@ -1,5 +1,17 @@
 # Current research entry
 
+## 2026-09-09：HighVol Router V1 已通过 reusable Validation
+
+**状态：VALIDATION-SUPPORTED / RESEARCH-ONLY。** 权威证据见 [`docs/research/highvol_router_v1/VALIDATION_RESULTS.md`](docs/research/highvol_router_v1/VALIDATION_RESULTS.md)、[`FROZEN_ROUTER_V1.json`](docs/research/highvol_router_v1/FROZEN_ROUTER_V1.json) 与 [`DECISIVE_RECEIPT.json`](docs/research/highvol_router_v1/DECISIVE_RECEIPT.json)。
+
+当前 router 是稀疏路由，而不是通用 HighVol 策略：仅 CSI1000 (`000852.SH`) 激活已冻结的 `NormalVol→HighVol + slow30 up + recent5 up + tail2>=0.60 + tail1<0.60` 多头3分钟模块；STAR50 (`000688.SH`) 与其余未支持 HighVol context 均为 `NO_TRADE`。Development 2021–2023 组合审计精确复现 104 笔，pooled net@1bp/leg `+0.737746 bp/trade`、BE `1.368873 bp`；reusable Validation 2024-01-01 至 2026-08-21 共129笔，pooled net `+0.546255 bp/trade`、BE `1.273128 bp`，2024/2025为正、2026截至08-21轻微为负，因此按预注册门槛 2/3 正年度切片正式 PASS。
+
+组合机械约束同样通过：Development 与 Validation 均 overlap reject=0、最大并发仓位=1、STAR50 route trade count=0。Validation 首次 run `34300476501` 只因严格 JSON 无法序列化描述性 `NaN` 而技术失败；修复仅将非有限诊断值映射为 `null`，未改候选、数据、门槛或 route。决定性 run `34300569936` 成功，artifact `10084769189`，ZIP SHA256 `4e7d1aea626936c1170ee26d4f9787ff26edd66236241c62be5ac90807a91d71`。
+
+这项结果不授予更强稳定性结论：2026切片略负、收益仍具有事件/强日集中性，因此不得扩写成“HighVol普遍可交易”，不得借此追加 tail/hold/confirmation/stop/仓位/杠杆等改动。任何 materially new payoff 必须回 Development。`production_authority=false`。BlackBox-V1 **查询数仍为0**，ledger 仍 pending data；本次通过 Validation 不构成自动开启 BlackBox 的授权。
+
+下述 STAR50 V10–V17 sign-flip 程序的“NO EMPIRICAL CANDIDATE”仍然成立，它关闭的是独立 STAR50 sign-flip 路线，不得与当前 CSI1000 Router V1 的 Validation-supported 结论互相覆盖。
+
 ## 2026-09-09：HighVol sign-flip 机制程序正式收口
 
 **状态：CLOSED — NO EMPIRICAL CANDIDATE。** 完整证据见 [`docs/research/star50_highvol_sign_flip_closeout_20260909.md`](docs/research/star50_highvol_sign_flip_closeout_20260909.md)。
@@ -131,7 +143,6 @@ the second-round research manifest. Preserve that file and both old bundles.
 1. Third round: `docs/research/market_admission/report.md`.
    Official realtime STAR50 publication exists since2020-07-23; historical
    DataHub first/revised versions and actual reception clocks remain unproven.
-   Official historical-data route identified; external market files received:0.
 2. Cash ETF mapping is mechanically different:54.22% of frozen primary minute
     targets are short. After clipping shorts to cash, T+1 inventory still misses
     targets27.93% of minutes for baseline and29.36% for slow-conflict half.
