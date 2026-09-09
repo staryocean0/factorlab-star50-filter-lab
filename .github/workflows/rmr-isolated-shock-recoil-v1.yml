@@ -1,0 +1,61 @@
+name: rmr-isolated-shock-recoil-v1
+on:
+  push:
+    branches:
+      - research/rmr-isolated-shock-recoil-v1-20260909
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            docs/research/rmr_isolated_shock_recoil_v1
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            src/star50_filter/__init__.py
+            src/star50_filter/cloud_market_data.py
+            data/cross_index_risk_gate_v1/manifest.json
+            data/cross_index_risk_gate_v1/1m/000688.SH/2021.parquet
+            data/cross_index_risk_gate_v1/1m/000688.SH/2022.parquet
+            data/cross_index_risk_gate_v1/1m/000688.SH/2023.parquet
+            data/cross_index_risk_gate_v1/1m/000852.SH/2021.parquet
+            data/cross_index_risk_gate_v1/1m/000852.SH/2022.parquet
+            data/cross_index_risk_gate_v1/1m/000852.SH/2023.parquet
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+      - run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Guard Development-only inputs
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files=sorted(str(p) for p in Path('data').rglob('*.parquet'))
+          expected=sorted([f'data/cross_index_risk_gate_v1/1m/{s}/{y}.parquet' for s in ('000688.SH','000852.SH') for y in (2021,2022,2023)])
+          assert files==expected,(files,expected)
+          assert not Path('data/cross_index_risk_gate_2026_v1').exists()
+          PY
+      - run: python -m py_compile docs/research/rmr_isolated_shock_recoil_v1/run_study.py
+      - run: python -m pytest -q docs/research/rmr_isolated_shock_recoil_v1/test_study.py
+      - name: Execute frozen shallow discovery
+        run: |
+          mkdir -p artifacts
+          python docs/research/rmr_isolated_shock_recoil_v1/run_study.py --repo-root . --out artifacts/rmr_isolated_shock_recoil_v1
+      - name: Guard scientific role
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/rmr_isolated_shock_recoil_v1/summary.json'))
+          assert s['development_years']==[2021,2022,2023]
+          assert not s['validation_queried'] and not s['blackbox_queried']
+          assert not s['returns_or_pnl_evaluated'] and not s['production_authority']
+          print(json.dumps(s,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rmr-isolated-shock-recoil-v1-${{ github.run_id }}
+          path: artifacts/rmr_isolated_shock_recoil_v1
+          retention-days: 14
