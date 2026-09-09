@@ -7,8 +7,7 @@ Before any new research, read:
 1. `docs/governance/DATA_USAGE_POLICY_V2.md`
 2. `docs/governance/data_usage_declaration.json`
 3. `docs/governance/blackbox_query_ledger.json`
-4. `docs/research/star50_highvol_sign_flip_closeout_20260909.md`
-5. `AGENTS.md`
+4. `AGENTS.md`
 
 Then run:
 
@@ -26,20 +25,7 @@ Historical sealed reports retain their historical protocol wording. The V2 polic
 
 ## Current research interpretation
 
-### HighVol sign-flip program closed — no empirical candidate
-
-The V10–V17 bounded mechanism program is closed. V15, V16, and V17 each passed the pre-registered three-year Development gate, were frozen before Validation, and were formally rejected on the reusable Validation pool. The detailed record is `docs/research/star50_highvol_sign_flip_closeout_20260909.md`.
-
-Current authority state:
-
-- HighVol remains meaningful causal state/risk evidence.
-- The tested HighVol directional sign-flip and cross-state routes are **not validated trading candidates**.
-- `empirical_candidate=none` for this program.
-- `production_authority=false`.
-- BlackBox-V1 has **0 queries**; its ledger is unchanged and remains pending data.
-- Do **not** manufacture a V18 by retrospectively slicing the V15–V17 Validation failures. Reopen only for a genuinely new, pre-specified Development hypothesis or a materially different payoff object.
-
-The broader state/routing work remains research-only. `Unsafe` is a useful causal risk annotation, but current historical routing improvements are sparse and year-concentrated. Reuse the pools deliberately: Development to invent/fit, Validation to diagnose/iterate, BlackBox only to answer whether a frozen candidate survives the blinded test.
+The latest state/routing work remains research-only. `Unsafe` is a useful causal risk annotation, but current historical routing improvements are sparse and year-concentrated. Do not continue retrospective parameter/policy search merely because Development/Validation remain reusable. Reuse the pools deliberately: Development to invent/fit, Validation to diagnose/iterate, BlackBox only to answer whether a frozen candidate survives the blinded test.
 
 ## Historical handoff entry
 
