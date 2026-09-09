@@ -1,0 +1,93 @@
+name: fine-activity-future-risk-v1
+
+on:
+  push:
+    branches:
+      - research/fine-activity-future-risk-v1-20260909
+    paths:
+      - '.github/workflows/fine-activity-future-risk-v1.yml'
+      - 'docs/research/fine_activity_future_risk_v1/**'
+
+permissions:
+  contents: read
+
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/research/fine_activity_future_risk_v1/
+            /docs/governance/DATA_USAGE_POLICY_V2.md
+            /docs/governance/data_usage_declaration.json
+            /docs/governance/blackbox_query_ledger.json
+            /scripts/validate_data_usage_policy.py
+            /src/star50_filter/__init__.py
+            /src/star50_filter/cloud_market_data.py
+            /data/cross_index_risk_gate_v1/manifest.json
+            /data/cross_index_risk_gate_v1/1m/000688.SH/2022.parquet
+            /data/cross_index_risk_gate_v1/1m/000688.SH/2023.parquet
+            /data/cross_index_risk_gate_v1/1m/000852.SH/2022.parquet
+            /data/cross_index_risk_gate_v1/1m/000852.SH/2023.parquet
+            /data/cross_index_risk_gate_3s_v1/manifest.json
+            /data/cross_index_risk_gate_3s_v1/000688.SH_2022.parquet
+            /data/cross_index_risk_gate_3s_v1/000688.SH_2023.parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_2022.parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_2023.parquet
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+      - name: Validate repository data governance
+        run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Guard Development-only physical price inputs
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files=sorted(str(p) for p in Path('data').rglob('*.parquet'))
+          expected=sorted([
+            'data/cross_index_risk_gate_v1/1m/000688.SH/2022.parquet',
+            'data/cross_index_risk_gate_v1/1m/000688.SH/2023.parquet',
+            'data/cross_index_risk_gate_v1/1m/000852.SH/2022.parquet',
+            'data/cross_index_risk_gate_v1/1m/000852.SH/2023.parquet',
+            'data/cross_index_risk_gate_3s_v1/000688.SH_2022.parquet',
+            'data/cross_index_risk_gate_3s_v1/000688.SH_2023.parquet',
+            'data/cross_index_risk_gate_3s_v1/000852.SH_2022.parquet',
+            'data/cross_index_risk_gate_3s_v1/000852.SH_2023.parquet',
+          ])
+          assert files==expected,(files,expected)
+          assert not Path('data/cross_index_risk_gate_2026_v1').exists()
+          print('development-only data guard: OK')
+          PY
+      - name: Static compile
+        run: python -m py_compile docs/research/fine_activity_future_risk_v1/run_study.py
+      - name: Run frozen unit tests
+        run: python -m pytest -q docs/research/fine_activity_future_risk_v1/test_study.py
+      - name: Execute frozen Development study
+        run: |
+          mkdir -p artifacts
+          python docs/research/fine_activity_future_risk_v1/run_study.py --repo-root . --out artifacts/fine_activity_future_risk_v1
+      - name: Guard scientific role
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/fine_activity_future_risk_v1/summary.json'))
+          assert s['development_evaluation_year']==2023
+          assert s['validation_queried'] is False
+          assert s['blackbox_queried'] is False
+          assert s['fresh_oos'] is False
+          assert s['returns_or_pnl_evaluated'] is False
+          assert s['candidate_nominated'] is False
+          assert s['production_authority'] is False
+          print(json.dumps(s,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fine-activity-future-risk-v1-${{ github.run_id }}
+          path: artifacts/fine_activity_future_risk_v1
+          retention-days: 14
+          if-no-files-found: error
