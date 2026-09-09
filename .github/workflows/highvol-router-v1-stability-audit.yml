@@ -1,0 +1,89 @@
+name: highvol-router-v1-stability-audit
+on:
+  push:
+    branches:
+      - research/highvol-router-v1-stability-audit-20260909
+jobs:
+  stability-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frozen router and bounded Development/Validation inputs
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            docs/research/highvol_router_v1_dev
+            docs/research/highvol_router_v1_validation
+            docs/research/highvol_router_v1_stability_audit
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/cross_index_risk_gate_v1/1m/000852.SH/2020.parquet
+            data/cross_index_risk_gate_v1/1m/000852.SH/2021.parquet
+            data/cross_index_risk_gate_v1/1m/000852.SH/2022.parquet
+            data/cross_index_risk_gate_v1/1m/000852.SH/2023.parquet
+            data/cross_index_risk_gate_v1/1m/000852.SH/2024.parquet
+            data/cross_index_risk_gate_v1/1m/000852.SH/2025.parquet
+          sparse-checkout-cone-mode: false
+          fetch-depth: 1
+      - name: Restore exact historical 2026 Validation bytes
+        run: |
+          git fetch --depth=1 origin refs/heads/research/csi1000-long-accel-validation-diag-v1-20260908:refs/remotes/origin/router-validation-data
+          git checkout refs/remotes/origin/router-validation-data -- data/cross_index_risk_gate_2026_v1/1m/000852.SH/2026.parquet
+          test "$(git hash-object data/cross_index_risk_gate_2026_v1/1m/000852.SH/2026.parquet)" = "8de5cd3caab99dbacae229a2c87f15c4ff2f8558"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+      - name: Validate three-pool governance
+        run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Guard physical data boundary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          base=Path('data/cross_index_risk_gate_v1/1m/000852.SH')
+          got=sorted(p.name for p in base.glob('*.parquet'))
+          assert got == [f'{y}.parquet' for y in range(2020,2026)], got
+          p=Path('data/cross_index_risk_gate_2026_v1/1m/000852.SH/2026.parquet')
+          d=pd.read_parquet(p,columns=['trading_day']).trading_day.astype(str).str[:10]
+          assert d.min() >= '2026-01-01' and d.max() <= '2026-08-21', (d.min(),d.max())
+          assert not list(Path('data').rglob('2027.parquet'))
+          print('bounded data roles: OK', got, d.min(), d.max())
+          PY
+      - name: Test frozen stability-audit contract
+        run: python -m pytest -q docs/research/highvol_router_v1_stability_audit/test_stability_audit.py
+      - name: Run Router V1 stability audit
+        run: python docs/research/highvol_router_v1_stability_audit/run_stability_audit.py --repo-root . --out artifacts/highvol_router_v1_stability_audit
+      - name: Guard diagnostic role and exact trade identity
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/highvol_router_v1_stability_audit/summary.json'))
+          assert s['diagnostic_only'] is True
+          assert s['candidate_changed'] is False
+          assert s['routing_changed'] is False
+          assert s['production_authority'] is False
+          assert s['blackbox_queried'] is False
+          assert s['development_accepted_trades'] == 104
+          assert s['validation_accepted_trades'] == 129
+          print('stability audit role guard: OK')
+          PY
+      - name: Seal output manifest
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          root=Path('artifacts/highvol_router_v1_stability_audit'); files=[]
+          for p in sorted(root.iterdir()):
+              if p.is_file():
+                  b=p.read_bytes(); files.append({'name':p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+          (root/'output_manifest.json').write_text(json.dumps({'schema':'highvol_router_v1_stability_audit_manifest','files':files},indent=2)+'\n')
+          PY
+      - name: Upload stability evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: highvol-router-v1-stability-audit-${{ github.run_id }}
+          path: artifacts/highvol_router_v1_stability_audit
+          retention-days: 30
