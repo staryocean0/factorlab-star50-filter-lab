@@ -27,14 +27,17 @@ def test_move_bp_inverse_sign():
 
 
 def test_causal_engine_finds_confirmation_and_overshoot():
-    # 120-minute path: quiet, then >20bp rise, another >20bp extension, then decline.
+    # Quiet start, then >20bp confirmation followed by a further >20bp extension.
+    # 1.5bp/min for 40 minutes gives roughly 60bp total directional movement.
     p=np.ones(120)*100.0
-    for i in range(10,30): p[i]=100*np.exp((i-9)*0.00012)
-    p[30:]=p[29]
+    for i in range(10,50):
+        p[i]=100*np.exp((i-9)*0.00015)
+    p[50:]=p[49]
     e=study.dc_events_for_session(synthetic_session(p),"X",20.0)
     kinds=[x["event_type"] for x in e]
     assert "confirmation" in kinds
     assert "overshoot" in kinds
+    assert kinds.index("confirmation") < kinds.index("overshoot")
 
 
 def test_synthetic_summary_can_pass_common_scale():
