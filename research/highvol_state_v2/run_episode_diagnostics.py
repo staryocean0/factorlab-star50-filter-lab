@@ -93,13 +93,15 @@ def survival_curve(ledger: pd.DataFrame) -> pd.DataFrame:
     rows = []
     for symbol in SYMBOLS:
         x = ledger[ledger["symbol"].eq(symbol)].copy()
-        n = len(x)
         for h in SURVIVAL_HORIZONS:
-            # Episode is known to remain unrecovered at h only when h is within observed session support.
+            # An episode is evaluable at h if it is observed through h, or if it
+            # already reached Normal by h. Use a union so episodes recovering
+            # exactly at h are never counted twice in the denominator.
             observed_at_h = x["available_bars_after_start"] >= h
             recovered_by_h = x["same_session_normal_recovered"] & x["bars_to_normal"].le(h)
-            denom = int(observed_at_h.sum() + recovered_by_h.sum())
-            not_normal = int((observed_at_h & ~recovered_by_h).sum())
+            evaluable = observed_at_h | recovered_by_h
+            denom = int(evaluable.sum())
+            not_normal = int((evaluable & ~recovered_by_h).sum())
             rows.append(
                 {
                     "symbol": symbol,
