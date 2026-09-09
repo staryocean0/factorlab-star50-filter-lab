@@ -1,8 +1,16 @@
 from __future__ import annotations
 
 from pathlib import Path
+import sys
+
 import numpy as np
 import pandas as pd
+
+# Allow direct execution from the repository root while reusing the frozen v1
+# measurement implementation without duplicating its state definitions.
+REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 from research.highvol_state_v1.run_analysis import (
     SYMBOLS,
