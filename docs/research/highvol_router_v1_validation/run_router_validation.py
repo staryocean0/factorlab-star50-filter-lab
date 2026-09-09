@@ -20,6 +20,20 @@ def load_dev():
     return mod
 
 
+def json_safe(value):
+    if isinstance(value, dict):
+        return {k: json_safe(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [json_safe(v) for v in value]
+    if isinstance(value, (float, np.floating)) and not np.isfinite(value):
+        return None
+    if isinstance(value, np.integer):
+        return int(value)
+    if isinstance(value, np.bool_):
+        return bool(value)
+    return value
+
+
 def load_validation_native(root: Path) -> pd.DataFrame:
     paths = [
         root / "data/cross_index_risk_gate_v1/1m/000852.SH/2024.parquet",
@@ -127,8 +141,9 @@ def run(root: Path, out: Path) -> dict:
     trades.to_csv(out / "validation_trades.csv", index=False)
     daily.to_csv(out / "daily_router_pnl.csv", index=False)
     annual.to_csv(out / "annual_validation.csv", index=False)
-    (out / "summary.json").write_text(json.dumps(summary, indent=2, default=str, allow_nan=False) + "\n")
-    print(json.dumps(summary, default=str, allow_nan=False))
+    safe_summary = json_safe(summary)
+    (out / "summary.json").write_text(json.dumps(safe_summary, indent=2, default=str, allow_nan=False) + "\n")
+    print(json.dumps(safe_summary, default=str, allow_nan=False))
     return summary
 
 
