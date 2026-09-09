@@ -12,6 +12,8 @@ Current data roles are:
 
 The V10–V17 HighVol sign-flip program is closed with **no empirical candidate** after three Development-passed frozen formulations (V15/V16/V17) were rejected on Validation. See [`docs/research/star50_highvol_sign_flip_closeout_20260909.md`](docs/research/star50_highvol_sign_flip_closeout_20260909.md).
 
+Separately, **HighVol Router V1 is now Validation-supported as a research candidate**: CSI1000 (`000852.SH`) is the only active HighVol payoff module, while STAR50 (`000688.SH`) and all unsupported HighVol contexts remain `NO_TRADE`. Reusable Validation produced 129 trades, pooled net `+0.5463 bp/trade` after 1 bp per leg, one-way break-even `1.2731 bp`, and 2/3 positive annual slices; the 2026-through-08-21 slice was slightly negative. See [`docs/research/highvol_router_v1/VALIDATION_RESULTS.md`](docs/research/highvol_router_v1/VALIDATION_RESULTS.md) and the [decisive receipt](docs/research/highvol_router_v1/DECISIVE_RECEIPT.json). This does not reopen the rejected STAR50 sign-flip line and does not grant production authority.
+
 `production_authority=false`. No trading, options, or production authority is implied by this research workspace.
 
 ```bash
