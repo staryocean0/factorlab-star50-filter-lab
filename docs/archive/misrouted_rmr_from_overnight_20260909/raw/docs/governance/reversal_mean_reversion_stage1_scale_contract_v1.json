@@ -1,0 +1,56 @@
+{
+  "schema_id": "factorlab_reversal_mean_reversion_stage1_scale_contract@1.0",
+  "session_date": "2026-09-08",
+  "program_identity": "broad_reversal_mean_reversion_discovery_program_v1",
+  "stage": "results_blind_scale_freeze_before_R1_R2_R3_empirical_probe",
+  "source": "data/high_open_dev_2015_2025/1m_official.parquet",
+  "base_observation": "raw_DataHub_1m_close_no_new_wall_clock_resampling",
+  "scale_reference": {
+    "definition": "median_of_lagged_20_session_close_to_close_volatility_over_STAGE1_DEV_2015_2019",
+    "outcome_fields_used_to_set_scale": false,
+    "STAGE1_STABILITY_2020_2022_used_to_set_scale": false,
+    "STAGE1_RESERVE_2023_2025_used_to_set_scale": false
+  },
+  "directional_change_scales": {
+    "S1": "0.25 * DEV_median_rvol20",
+    "S2": "0.50 * DEV_median_rvol20",
+    "S3": "1.00 * DEV_median_rvol20"
+  },
+  "pairings": {
+    "PAIR_A": {"lower": "S1", "parent": "S2"},
+    "PAIR_B": {"lower": "S2", "parent": "S3"}
+  },
+  "wave_rule": {
+    "representation": "causal_directional_change_completed_wave",
+    "completion_available_only_at_reversal_confirmation": true,
+    "future_extreme_labeling_forbidden": true,
+    "threshold_search_after_results": false
+  },
+  "first_passage_horizon": {
+    "maximum_observed_1m_bars": 1200,
+    "interpretation": "approximately_five_full_A_share_sessions",
+    "horizon_search_allowed": false,
+    "unresolved_events": "censored_not_forced_to_failure"
+  },
+  "R1_boundary_rule": {
+    "event": "causally_confirmed_lower_scale_wave_opposite_to_two_completed_parent_wave_net_drift",
+    "recovery": "regain_the_lower_counter_wave_origin",
+    "parent_failure": "break_the_latest_causally_available_parent_structural_trough_or_peak",
+    "overlapping_event_policy": "do_not_start_new_same_pair_event_until_prior_event_resolves_or_censors"
+  },
+  "R2_boundary_rule": {
+    "event": "first_close_outside_the_two_parent_wave_envelope_by_one_lower_scale_threshold",
+    "reentry": "cross_back_through_the_breached_parent_envelope_edge",
+    "continuation": "extend_from_the_parent_edge_by_one_parent_scale_threshold",
+    "overlapping_event_policy": "do_not_start_new_same_pair_event_until_prior_event_resolves_or_censors"
+  },
+  "R3_sampling_rule": {
+    "observation": "official_15_00_close_only_not_resampled_bar",
+    "state_time": "parent_state_frozen_at_previous_session_15_00",
+    "current_move": "current_close_to_close_return",
+    "first_pass_target": "next_session_return_for_shallow_residual_reversion_screen",
+    "parent_scales_reported": ["S2", "S3"],
+    "horizon_search_allowed": false
+  },
+  "production_authority": false
+}

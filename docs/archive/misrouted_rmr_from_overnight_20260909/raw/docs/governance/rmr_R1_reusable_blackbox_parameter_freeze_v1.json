@@ -1,0 +1,100 @@
+{
+  "DEV_median_rvol20": 0.013783308018456928,
+  "blackbox_gate": {
+    "candidate_Brier_strictly_lower_than_final_frozen_severity_baseline": true,
+    "candidate_logloss_strictly_lower_than_final_frozen_severity_baseline": true,
+    "minimum_resolved": {"PAIR_A": 80, "PAIR_B": 30}
+  },
+  "blackbox_used_in_fit": false,
+  "blackbox_window": {"end": "2026-08-21", "start": "2026-01-05"},
+  "data_policy": "docs/governance/reusable_three_role_data_policy_v1.json",
+  "directional_change_thresholds": {
+    "S1": 0.003445827004614232,
+    "S2": 0.006891654009228464,
+    "S3": 0.013783308018456928
+  },
+  "final_refit_window": {"end": "2025-12-31", "start": "2015-01-05"},
+  "historical_source_sha256": "11f4a5e78381371680fbcf6e01891216f645a8de869646ced6a623970727bcce",
+  "pairings": {
+    "PAIR_A": {
+      "n_final_refit_resolved": 3013,
+      "parent_feature_scaler": {
+        "features": ["abs_drift", "overlap", "parent_eff"],
+        "mean": [0.31660582735294, 1.0, 0.14423267294991493],
+        "orientation": [1, -1, 1],
+        "scale": [0.1961624014692367, 1.0, 0.1208943681063229],
+        "var": [0.038479687750177995, 0.0, 0.014615448239827102]
+      },
+      "selected_candidate_model": {
+        "features": ["severity", "parent_integrity"],
+        "logistic": {
+          "classes": [0, 1],
+          "coef": [-0.9984357670110512, 0.4796694236760096],
+          "intercept": 1.0457206313174656
+        },
+        "scaler": {
+          "mean": [0.6916461421877391, 7.546421355566946e-17],
+          "scale": [0.3667858116430322, 0.6288846728867663],
+          "var": [0.1345318316226379, 0.3954959317918951]
+        }
+      },
+      "severity_baseline_model": {
+        "features": ["severity"],
+        "logistic": {
+          "classes": [0, 1],
+          "coef": [-0.8964615709315523],
+          "intercept": 0.99135160455069
+        },
+        "scaler": {
+          "mean": [0.6916461421877391],
+          "scale": [0.3667858116430322],
+          "var": [0.1345318316226379]
+        }
+      }
+    },
+    "PAIR_B": {
+      "n_final_refit_resolved": 1202,
+      "parent_feature_scaler": {
+        "features": ["abs_drift", "overlap", "parent_eff"],
+        "mean": [0.28696131590074797, 1.0, 0.08948904229100674],
+        "orientation": [1, -1, 1],
+        "scale": [0.1891553059137172, 1.0, 0.08809577986053782],
+        "var": [0.03577972975531194, 0.0, 0.00776086642923634]
+      },
+      "selected_candidate_model": {
+        "features": ["severity", "parent_integrity"],
+        "logistic": {
+          "classes": [0, 1],
+          "coef": [-0.9483846851161087, 0.44920254358936407],
+          "intercept": 1.2007293381308528
+        },
+        "scaler": {
+          "mean": [1.2546760146305735, -3.54680234156456e-17],
+          "scale": [0.6431656937166674, 0.6207949548675495],
+          "var": [0.4136621095740421, 0.38538637598900294]
+        }
+      },
+      "severity_baseline_model": {
+        "features": ["severity"],
+        "logistic": {
+          "classes": [0, 1],
+          "coef": [-0.8650865002808636],
+          "intercept": 1.1515890880947004
+        },
+        "scaler": {
+          "mean": [1.2546760146305735],
+          "scale": [0.6431656937166674],
+          "var": [0.4136621095740421]
+        }
+      }
+    }
+  },
+  "parameter_bundle_sha256": "41072c78a6e657aec01d7da95d9c00bff23ff01829ada6afe256d7c254107fcb",
+  "production_authority": false,
+  "protocol": "docs/governance/reversal_mean_reversion_R1_reusable_blackbox_protocol_v1.json",
+  "public_blackbox_output_only": ["PASS", "FAIL", "INSUFFICIENT"],
+  "research_identity": "rmr_cross_scale_pullback_parent_integrity_v2",
+  "schema_id": "factorlab_rmr_R1_reusable_blackbox_parameter_freeze@1.0",
+  "selected_candidate_id": "R1_PARENT_COMPOSITE_1D",
+  "session_date": "2026-09-08"
+}

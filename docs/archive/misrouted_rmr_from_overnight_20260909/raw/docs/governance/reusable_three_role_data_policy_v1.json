@@ -1,0 +1,101 @@
+{
+  "schema_id": "factorlab_reusable_three_role_data_policy@1.0",
+  "effective_date": "2026-09-08",
+  "canonical_repository": "staryocean0/factorlab-overnight-open-lab",
+  "policy_status": "repository_wide_authority",
+  "principle": "Historical market data is a reusable research asset, not a consumable one. Separate detailed development/validation access from low-bandwidth reusable blackbox certification.",
+  "roles": {
+    "DEV": {
+      "window": {"start": "2015-01-05", "end": "2020-12-31"},
+      "purpose": "model_and_mechanism_development",
+      "detail_access": "full",
+      "reuse": "unlimited",
+      "allowed": [
+        "fit_models",
+        "inspect_rows_events_subperiods",
+        "feature_engineering",
+        "diagnostics",
+        "ablation",
+        "bounded_hyperparameter_or_representation_search"
+      ]
+    },
+    "VALIDATION": {
+      "window": {"start": "2021-01-01", "end": "2025-12-31"},
+      "purpose": "verify_DEV_results_and_support_detailed_diagnosis_after_validation",
+      "detail_access": "full_after_or_during_validation",
+      "reuse": "unlimited",
+      "allowed": [
+        "evaluate_frozen_or_provisional_candidates",
+        "inspect_rows_events_years_regimes_after_validation",
+        "diagnose_failures",
+        "return_to_DEV_and_iterate",
+        "support_a_predeclared_final_refit_on_DEV_plus_VALIDATION_before_blackbox"
+      ],
+      "interpretation": "VALIDATION is not permanently consumed by one use. It remains reusable detailed research evidence."
+    },
+    "BLACKBOX": {
+      "window": {"start": "2026-01-05", "end": "2026-08-21"},
+      "purpose": "latest_available_reusable_final_certification",
+      "physical_source": "archive/data/gap_fill_repeat_2026/csi1000_1m_20260105_to_20260821.parquet",
+      "detail_access": "forbidden_for_current_research_workflows",
+      "reuse": "reusable_across_frozen_candidate_certifications",
+      "allowed_output": ["PASS", "FAIL", "INSUFFICIENT"],
+      "forbidden_output": [
+        "row_or_event_level_results",
+        "daily_weekly_monthly_quarterly_or_annual_breakdowns",
+        "subgroup_or_regime_breakdowns",
+        "exact_primary_metric_values",
+        "threshold_sensitivity",
+        "feature_attribution",
+        "error_examples",
+        "prediction_probabilities",
+        "plots_or_tables_that_reveal_blackbox_structure"
+      ],
+      "direct_manual_inspection_for_current_research": false
+    }
+  },
+  "blackbox_submission_rule": {
+    "candidate_identity_and_parameters_frozen_before_query": true,
+    "success_failure_and_sample_gates_frozen_before_query": true,
+    "candidate_changes_after_blackbox_must_be_justified_from_DEV_or_VALIDATION_only": true,
+    "blackbox_failure_may_trigger_return_to_DEV_VALIDATION": true,
+    "blackbox_failure_details_may_not_be_requested": true,
+    "each_query_must_be_logged_with_candidate_fingerprint_and_three_state_result": true
+  },
+  "reusability_and_multiplicity": {
+    "same_blackbox_may_be_reused": true,
+    "blackbox_is_not_consumed_by_a_query": true,
+    "repeated_queries_are_not_independent_new_OOS_samples": true,
+    "certification_applies_to_each_submitted_frozen_identity_not_to_an_unbounded_adaptive_family": true,
+    "low_bandwidth_output_is_required_to_limit_adaptive_information_leakage": true,
+    "query_count_must_remain_visible_in_the_ledger": true
+  },
+  "final_fit_rule": {
+    "allowed": true,
+    "when": "after_candidate_structure_and_fit_recipe_are_fixed_using_DEV_and_VALIDATION_only",
+    "training_pool": "DEV_plus_VALIDATION",
+    "blackbox_used_in_fit": false,
+    "fit_recipe_must_be_frozen_before_blackbox_query": true
+  },
+  "legacy_and_transition": {
+    "prior_2021_2025_holdout_or_reserve_labels": "superseded_for_future_repository_wide_work_by_VALIDATION_role",
+    "prior_detailed_2023_2025_R1_results": "retained_as_validation_evidence_not_relabelled_as_blackbox",
+    "legacy_identities_that_already_inspected_2026_details": "retain_their_historical_labels_and_do_not_gain_new_freshness_claims",
+    "current_blackbox_label": "reusable_blackbox_after_2026_09_08_governance_reset_not_never_seen_global_freshness"
+  },
+  "future_data": {
+    "user_will_explicitly_announce_when_new_data_is_ready": true,
+    "do_not_wait_for_or_assume_unannounced_new_data": true,
+    "on_new_data_arrival": "create_a_new_versioned_role_map_without_destroying_prior_blackbox_history",
+    "old_blackbox_may_remain_reusable": true
+  },
+  "forbidden": [
+    "treat_validation_as_consumed_after_one_use",
+    "open_blackbox_details_after_certification",
+    "tune_features_thresholds_or_rules_from_blackbox_breakdowns",
+    "claim_each_repeated_blackbox_query_is_an_independent_confirmation",
+    "silently_move_blackbox_rows_into_DEV_or_VALIDATION",
+    "wait_for_future_data_when_current_DEV_and_VALIDATION_can_support_research"
+  ],
+  "production_authority": false
+}
