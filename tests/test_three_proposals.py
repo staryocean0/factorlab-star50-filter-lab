@@ -1,7 +1,10 @@
+import os
+
 import numpy as np
 import pandas as pd
+import pytest
 
-from star50_filter.three_proposals import (SIDE_FEE, asof_channel, causal_features,
+from star50_filter.three_proposals import (L3_SOURCES, SIDE_FEE, asof_channel, causal_features,
     compose, execution_fields, trade_ledger, load_l3_channel)
 
 
@@ -81,7 +84,13 @@ def test_no_trade_is_valid_empty_ledger():
 def test_exact_l3_prefix_and_scoped_module_restoration():
     from pathlib import Path
     import sys
-    root = Path('/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab')
+
+    default_root = '/home/starryocean/桌面/量化/baylum terminal 0.4.1/factor_lab'
+    root = Path(os.environ.get('FACTORLAB_ROOT', default_root))
+    missing = [relative for relative in L3_SOURCES if not (root / relative).is_file()]
+    if missing:
+        pytest.skip(f'external canonical FactorLab sources unavailable: {missing}')
+
     before = {k: v for k, v in sys.modules.items() if k.startswith('factor_lab')}
     build, spec = load_l3_channel(root)
     after = {k: v for k, v in sys.modules.items() if k.startswith('factor_lab')}

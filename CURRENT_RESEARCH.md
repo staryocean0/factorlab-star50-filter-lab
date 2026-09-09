@@ -1,5 +1,19 @@
 # Current research entry
 
+## 2026-09-09：HighVol sign-flip 机制程序正式收口
+
+**状态：CLOSED — NO EMPIRICAL CANDIDATE。** 完整证据见 [`docs/research/star50_highvol_sign_flip_closeout_20260909.md`](docs/research/star50_highvol_sign_flip_closeout_20260909.md)。
+
+V10–V14 的 cross-state / 成交额活跃度 / 成交额方向 / price-impact / 固定日内阶段均未形成可晋级机制。V15、V16、V17 均在 2021–2023 Development 达到冻结门槛后原样进入 2024-01-01 至 2026-08-21 Validation，三者均被正式拒绝：
+
+- V15 `HighVol Up→Down recent5 sign flip → 3m continuation`：Development 三年均过 2bp 毛收益门；Validation 2024/2025 失败，仅 2026 通过。
+- V16 `V15 + CSI1000 NormalVol`：Development 三年均过门；Validation 2024/2025 失败，仅 2026 通过。
+- V17 `HighVol episode first Up→Down flip`：Development 三年均过门；修复一次纯技术 Validation runner 错误后，正式 Validation 2024/2025 失败，仅 2026 通过。
+
+因此 HighVol 仍保留为有意义的因果状态/风险证据，但本轮 directional sign-flip / cross-state 路由关闭，不产生经验候选，不继续用已打开的 Validation 细节制造 V18。`production_authority=false`。BlackBox-V1 **查询数为 0**，ledger 未修改、仍为 pending data。未来只有在出现真正新的、预先规定的 Development 机制或 materially different payoff object 时才可重开。
+
+以下均为既有研究成果或历史任务，不能覆盖上述当前收口状态。
+
 ## 当前：交接云端进行科创50/中证1000底层K线风险研究
 
 先读[2026-09-07交接说明](docs/handoff/cloud_risk_gate_20260907/HANDOFF.md)与[数据说明](docs/handoff/cloud_risk_gate_20260907/DATA.md)。用户将任务扩展为两指数的跨尺度波动、聚集/孤立冲击与因果风险分桶；当前不做交易/期权，V2不改。15项文献全文已补齐并随包上传。DataHub新离线导出只开放截至2025年的两指数3秒，旧线上合同不变。以下均为既有研究成果或历史任务，不能覆盖当前范围。
