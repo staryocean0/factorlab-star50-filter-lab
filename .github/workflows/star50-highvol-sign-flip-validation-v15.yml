@@ -1,0 +1,86 @@
+name: star50-highvol-sign-flip-validation-v15
+on:
+  push:
+    branches:
+      - research/star50-highvol-sign-flip-validation-v15-20260909
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            docs/research/star50_highvol_sign_flip_validation_v15
+            docs/research/star50_highvol_sign_flip_dev_v15
+            docs/research/star50_turnover_pressure_dev_v12
+            docs/research/continuous_vol_regime_v1
+            docs/research/state_conditioned_frequency_v2
+            src/star50_filter/filters.py
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/cross_index_risk_gate_v1/1m/000688.SH/2024.parquet
+            data/cross_index_risk_gate_v1/1m/000688.SH/2025.parquet
+            data/cross_index_risk_gate_2026_v1/1m/000688.SH/2026.parquet
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check numpy pandas pyarrow scipy scikit-learn pytest
+      - run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Guard frozen candidate and Validation-only checkout
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          freeze=json.load(open('docs/research/star50_highvol_sign_flip_dev_v15/candidate_freeze.json'))
+          assert freeze['candidate_id']=='star50_v15_up_to_down_continuation_3m'
+          assert freeze['candidate_code_commit_sha']=='285a429d96dd7c92afce86d4859f111ae9b8961d'
+          assert freeze['config_sha256']=='7053f5000ff0d04da62a82781a86c5f518cb135396d88a9d178fd95cf41cf704'
+          p=Path('data/cross_index_risk_gate_v1/1m/000688.SH')
+          assert sorted(x.name for x in p.glob('*.parquet'))==['2024.parquet','2025.parquet']
+          assert Path('data/cross_index_risk_gate_2026_v1/1m/000688.SH/2026.parquet').exists()
+          PY
+      - name: Guard 2026 file contains no post-Validation rows
+        run: |
+          python - <<'PY'
+          import pyarrow.parquet as pq
+          p='data/cross_index_risk_gate_2026_v1/1m/000688.SH/2026.parquet'
+          pf=pq.ParquetFile(p)
+          names=pf.schema.names
+          assert 'trading_day' in names
+          j=names.index('trading_day')
+          bounds=[]
+          for i in range(pf.metadata.num_row_groups):
+              st=pf.metadata.row_group(i).column(j).statistics
+              assert st is not None and st.has_min_max
+              lo,hi=st.min,st.max
+              if isinstance(lo,bytes): lo=lo.decode()
+              if isinstance(hi,bytes): hi=hi.decode()
+              bounds.append((str(lo)[:10],str(hi)[:10]))
+          assert bounds
+          assert min(x[0] for x in bounds)>='2026-01-01'
+          assert max(x[1] for x in bounds)<='2026-08-21'
+          PY
+      - run: python -m pytest -q docs/research/star50_highvol_sign_flip_validation_v15/test_validation.py
+      - run: python docs/research/star50_highvol_sign_flip_validation_v15/run_validation.py --repo-root . --out artifacts/star50_highvol_sign_flip_validation_v15
+      - name: Guard Validation verdict semantics
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          s=json.load(open('artifacts/star50_highvol_sign_flip_validation_v15/summary.json'))
+          q=pd.read_csv('artifacts/star50_highvol_sign_flip_validation_v15/summary.csv')
+          assert s['candidate_nominated'] and s['development_frozen']
+          assert s['validation_queried'] and not s['blackbox_queried']
+          assert not s['production_authority']
+          assert s['candidate_id']=='star50_v15_up_to_down_continuation_3m'
+          assert set(s['year_passes'])=={'2024','2025','2026'}
+          assert set(q['year'].astype(str))=={'2024','2025','2026','pooled'}
+          print(json.dumps(s,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: star50-highvol-sign-flip-validation-v15-${{ github.run_id }}
+          path: artifacts/star50_highvol_sign_flip_validation_v15
+          retention-days: 14
