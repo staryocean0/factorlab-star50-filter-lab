@@ -1,0 +1,61 @@
+name: highvol-recovery-clock-v6-development
+on:
+  push:
+    branches: [research/highvol-recovery-clock-v6-20260910]
+    paths:
+      - research/highvol_recovery_hazard_v3/**
+      - research/highvol_recovery_clock_v6/**
+      - .github/workflows/highvol-recovery-clock-v6-dev.yml
+jobs:
+  compare-clocks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/highvol_recovery_hazard_v3
+            research/highvol_recovery_clock_v6
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/market/5m/000688.SH/2020.parquet
+            data/market/5m/000688.SH/2021.parquet
+            data/market/5m/000688.SH/2022.parquet
+            data/market/5m/000688.SH/2023.parquet
+            data/market/5m/000852.SH/2020.parquet
+            data/market/5m/000852.SH/2021.parquet
+            data/market/5m/000852.SH/2022.parquet
+            data/market/5m/000852.SH/2023.parquet
+          sparse-checkout-cone-mode: false
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+      - run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Guard Development-only data
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for s in ['000688.SH','000852.SH']:
+              got=sorted(p.name for p in (Path('data/market/5m')/s).glob('*.parquet'))
+              assert got==['2020.parquet','2021.parquet','2022.parquet','2023.parquet'],(s,got)
+          assert not list(Path('data').rglob('2024.parquet')); assert not list(Path('data').rglob('2025.parquet')); assert not list(Path('data').rglob('2026.parquet'))
+          PY
+      - run: python -m pytest -q research/highvol_recovery_hazard_v3/test_hazard.py research/highvol_recovery_clock_v6/test_clock_compare.py
+      - run: python research/highvol_recovery_clock_v6/run_clock_compare.py --repo-root . --out artifacts/highvol_recovery_clock_v6
+      - name: Guard role
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/highvol_recovery_clock_v6/summary.json'))
+          assert s['development_only'] and s['state_thresholds_unchanged']
+          assert not s['pnl_computed'] and not s['trading_rule_created'] and not s['validation_queried'] and not s['blackbox_queried'] and not s['production_authority']
+          print('recent clock candidate eligible:',s['recent_shock_clock_candidate_eligible'])
+          print(json.dumps(s['acceptance'],sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: highvol-recovery-clock-v6-${{ github.run_id }}
+          path: artifacts/highvol_recovery_clock_v6
+          retention-days: 30
