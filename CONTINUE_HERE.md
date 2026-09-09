@@ -25,7 +25,13 @@ Historical sealed reports retain their historical protocol wording. The V2 polic
 
 ## Current research interpretation
 
-The latest state/routing work remains research-only. `Unsafe` is a useful causal risk annotation, but current historical routing improvements are sparse and year-concentrated. Do not continue retrospective parameter/policy search merely because Development/Validation remain reusable. Reuse the pools deliberately: Development to invent/fit, Validation to diagnose/iterate, BlackBox only to answer whether a frozen candidate survives the blinded test.
+**Current supported payoff router:** HighVol Router V1 is Validation-supported as a research candidate. It routes only the frozen CSI1000 (`000852.SH`) long 3-minute continuation module and explicitly routes STAR50 (`000688.SH`) plus all unsupported HighVol contexts to `NO_TRADE`. Development reproduced 104 trades; reusable Validation produced 129 trades with pooled net `+0.5463 bp/trade` after 1 bp per leg, one-way break-even `1.2731 bp`, and 2/3 positive annual slices. The 2026-through-2026-08-21 slice was slightly negative. Read `docs/research/highvol_router_v1/VALIDATION_RESULTS.md`, `FROZEN_ROUTER_V1.json`, and `DECISIVE_RECEIPT.json` before modifying this lane.
+
+The separate STAR50 V10–V17 sign-flip program remains closed with no empirical candidate. Do not reinterpret the CSI1000 Router V1 result as a rescue of that STAR50 line, and do not generalize Router V1 into a generic HighVol strategy.
+
+The router remains research-only. `production_authority=false`. Do not add sizing, leverage, ETF/options mapping, confirmation waits, stops, tail thresholds, hold changes, or other payoff changes under the name Router V1. Any materially new payoff hypothesis must return to Development first. BlackBox-V1 remains untouched and query count remains zero; do not query it merely because reusable Validation passed.
+
+`Unsafe` and HighVol remain useful causal risk annotations, but historical routing improvements can be sparse and year-concentrated. Reuse the pools deliberately: Development to invent/fit, Validation to diagnose/iterate, BlackBox only when a separately frozen blinded test is explicitly authorized.
 
 ## Historical handoff entry
 
