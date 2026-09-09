@@ -27,13 +27,26 @@ def load_module(path:Path,name:str):
     return mod
 
 
+def build_validation_minute(root:Path)->pd.DataFrame:
+    reg=load_module(root/'docs/research/continuous_vol_regime_v1/run_continuous_vol_regime.py','v17val_reg')
+    orig=load_module(root/'docs/research/state_conditioned_frequency_v2/code/run_physical_scale_strategy.py','v17val_orig')
+    fg=load_module(root/'docs/research/state_conditioned_frequency_v2/code/fast_grid.py','v17val_fg')
+    native=orig.load_native(root,SYMBOL).copy()
+    native['trading_day']=native.trading_day.astype(str).str[:10]
+    native=native[(native.trading_day>=START)&(native.trading_day<=END)].copy()
+    if native.empty:
+        raise RuntimeError('no Validation rows')
+    assert native.trading_day.min()>=START and native.trading_day.max()<=END
+    state=reg.build_continuous_state(native,SYMBOL)
+    minute=fg.build_minute_grid(native,state.rename(columns={'vol_ratio':'recovery_ratio'}),SYMBOL).reset_index(drop=True)
+    minute['trading_day']=minute.trading_day.astype(str).str[:10]
+    return minute[(minute.trading_day>=START)&(minute.trading_day<=END)].reset_index(drop=True)
+
+
 def run(root:Path,out:Path):
     v15=load_module(root/'docs/research/star50_highvol_sign_flip_dev_v15/run_highvol_sign_flip.py','v17val_v15')
     v17=load_module(root/'docs/research/star50_highvol_flip_ordinal_dev_v17/run_flip_ordinal.py','v17val_v17')
-    minute=v15.build_minute(root)
-    minute['trading_day']=minute.trading_day.astype(str).str[:10]
-    minute=minute[(minute.trading_day>=START)&(minute.trading_day<=END)].reset_index(drop=True)
-    assert not minute.empty and minute.trading_day.min()>=START and minute.trading_day.max()<=END
+    minute=build_validation_minute(root)
     events,raw=v17.build_events(minute)
     candidate=events[events.ordinal_state=='FirstUpToDown'].copy().reset_index(drop=True)
     rows=[]
