@@ -1,0 +1,91 @@
+name: star50-cross-state-sign-flip-validation-v16
+on:
+  push:
+    branches:
+      - research/star50-cross-state-sign-flip-validation-v16-20260909
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            docs/research/star50_cross_state_sign_flip_validation_v16
+            docs/research/star50_cross_state_sign_flip_dev_v16
+            docs/research/star50_highvol_sign_flip_dev_v15
+            docs/research/continuous_vol_regime_v1
+            docs/research/state_conditioned_frequency_v2
+            src/star50_filter/filters.py
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/cross_index_risk_gate_v1/1m/000688.SH/2024.parquet
+            data/cross_index_risk_gate_v1/1m/000688.SH/2025.parquet
+            data/cross_index_risk_gate_v1/1m/000852.SH/2024.parquet
+            data/cross_index_risk_gate_v1/1m/000852.SH/2025.parquet
+            data/cross_index_risk_gate_2026_v1/1m/000688.SH/2026.parquet
+            data/cross_index_risk_gate_2026_v1/1m/000852.SH/2026.parquet
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check numpy pandas pyarrow scipy scikit-learn pytest
+      - run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Guard frozen candidate and Validation-only checkout
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          freeze=json.load(open('docs/research/star50_cross_state_sign_flip_dev_v16/candidate_freeze.json'))
+          assert freeze['candidate_id']=='star50_v16_up_to_down_csi_normal_continuation_3m'
+          assert freeze['candidate_code_commit_sha']=='358430c30a207e083e04e7cdfd8215aee8711411'
+          assert freeze['config_sha256']=='a36b5998653a526f4b1eba8f4b5c71efa7474597006c86c0a0b6d6ac37095a9c'
+          for code in ('000688.SH','000852.SH'):
+              p=Path('data/cross_index_risk_gate_v1/1m')/code
+              assert sorted(x.name for x in p.glob('*.parquet'))==['2024.parquet','2025.parquet']
+              assert (Path('data/cross_index_risk_gate_2026_v1/1m')/code/'2026.parquet').exists()
+          PY
+      - name: Guard both 2026 files contain no post-Validation rows
+        run: |
+          python - <<'PY'
+          import pyarrow.parquet as pq
+          for code in ('000688.SH','000852.SH'):
+              p=f'data/cross_index_risk_gate_2026_v1/1m/{code}/2026.parquet'
+              pf=pq.ParquetFile(p)
+              names=pf.schema.names
+              assert 'trading_day' in names
+              j=names.index('trading_day')
+              bounds=[]
+              for i in range(pf.metadata.num_row_groups):
+                  st=pf.metadata.row_group(i).column(j).statistics
+                  assert st is not None and st.has_min_max
+                  lo,hi=st.min,st.max
+                  if isinstance(lo,bytes): lo=lo.decode()
+                  if isinstance(hi,bytes): hi=hi.decode()
+                  bounds.append((str(lo)[:10],str(hi)[:10]))
+              assert bounds
+              assert min(x[0] for x in bounds)>='2026-01-01'
+              assert max(x[1] for x in bounds)<='2026-08-21'
+          PY
+      - run: python -m pytest -q docs/research/star50_cross_state_sign_flip_validation_v16/test_validation.py
+      - run: python docs/research/star50_cross_state_sign_flip_validation_v16/run_validation.py --repo-root . --out artifacts/star50_cross_state_sign_flip_validation_v16
+      - name: Guard Validation verdict semantics
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          s=json.load(open('artifacts/star50_cross_state_sign_flip_validation_v16/summary.json'))
+          q=pd.read_csv('artifacts/star50_cross_state_sign_flip_validation_v16/summary.csv')
+          assert s['candidate_nominated'] and s['development_frozen']
+          assert s['validation_queried'] and not s['blackbox_queried']
+          assert not s['production_authority']
+          assert s['candidate_id']=='star50_v16_up_to_down_csi_normal_continuation_3m'
+          assert set(s['year_passes'])=={'2024','2025','2026'}
+          assert set(q['year'].astype(str))=={'2024','2025','2026','pooled'}
+          print(json.dumps(s,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: star50-cross-state-sign-flip-validation-v16-${{ github.run_id }}
+          path: artifacts/star50_cross_state_sign_flip_validation_v16
+          retention-days: 14
