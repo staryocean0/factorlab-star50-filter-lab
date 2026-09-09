@@ -1,0 +1,20 @@
+{
+  "schema": "star50_validation_receipt_v1",
+  "candidate_id": "star50_v16_up_to_down_csi_normal_continuation_3m",
+  "candidate_code_commit_sha": "358430c30a207e083e04e7cdfd8215aee8711411",
+  "config_sha256": "a36b5998653a526f4b1eba8f4b5c71efa7474597006c86c0a0b6d6ac37095a9c",
+  "validation_run_id": 34295746455,
+  "validation_artifact_id": 10083055834,
+  "validation_date_start": "2024-01-01",
+  "validation_date_end": "2026-08-21",
+  "year_results": {
+    "2024": {"n": 64, "mean_continuation_3m_bp": 0.5408726882570957, "pass": false},
+    "2025": {"n": 50, "mean_continuation_3m_bp": -0.6856514138281057, "pass": false},
+    "2026": {"n": 21, "mean_continuation_3m_bp": 10.773091233786907, "pass": true}
+  },
+  "pooled": {"n": 135, "mean_continuation_3m_bp": 1.678282942715362},
+  "validation_pass": false,
+  "verdict": "VALIDATION_REJECT",
+  "blackbox_queried": false,
+  "production_authority": false
+}
