@@ -1,0 +1,37 @@
+{
+  "schema": "star50_candidate_freeze_v1",
+  "candidate_id": "star50_v15_up_to_down_continuation_3m",
+  "frozen_on": "2026-09-09",
+  "candidate_code_commit_sha": "285a429d96dd7c92afce86d4859f111ae9b8961d",
+  "config_sha256": "7053f5000ff0d04da62a82781a86c5f518cb135396d88a9d178fd95cf41cf704",
+  "symbol": "000688.SH",
+  "development_pool": {
+    "date_start": "2021-01-01",
+    "date_end": "2023-12-31"
+  },
+  "candidate": {
+    "state_condition": "current route_state == HighVol and previous route_state == HighVol",
+    "signal": "recent 5 one-minute log-return sum flips from positive to negative",
+    "entry": "next eligible minute open",
+    "exit": "open exactly 3 minutes after entry",
+    "direction": "short, i.e. continuation in the new down direction",
+    "overlap": "within each session, next event entry index must be >= prior event exit index",
+    "cost_bp_per_leg": 1.0
+  },
+  "development_evidence": {
+    "2021": {"n": 52, "mean_continuation_3m_bp": 3.341061938345852, "net_after_1bp_per_leg": 1.341061938345852},
+    "2022": {"n": 59, "mean_continuation_3m_bp": 2.557928698424382, "net_after_1bp_per_leg": 0.5579286984243819},
+    "2023": {"n": 90, "mean_continuation_3m_bp": 2.1943871854595547, "net_after_1bp_per_leg": 0.1943871854595547},
+    "pooled": {"n": 201, "mean_continuation_3m_bp": 2.5977505507083714, "net_after_1bp_per_leg": 0.5977505507083714}
+  },
+  "validation_pool": {
+    "date_start": "2024-01-01",
+    "date_end": "2026-08-21",
+    "fit_allowed_for_candidate_under_test": false
+  },
+  "validation_primary_endpoint": "mean new-direction continuation over 3 minutes, bp",
+  "validation_acceptance_rule": "for each calendar slice 2024, 2025, and 2026 through 2026-08-21: n >= 15 and mean_continuation_3m_bp > 2.0",
+  "validation_detail_access_after_evaluation": true,
+  "blackbox_query": false,
+  "production_authority": false
+}
