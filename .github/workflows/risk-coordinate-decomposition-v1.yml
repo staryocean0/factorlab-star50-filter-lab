@@ -1,0 +1,71 @@
+name: risk-coordinate-decomposition-v1
+on:
+  push:
+    branches: [research/risk-coordinate-decomposition-v1-20260909]
+    paths:
+      - '.github/workflows/risk-coordinate-decomposition-v1.yml'
+      - 'docs/research/risk_coordinate_decomposition_v1/**'
+permissions:
+  contents: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /docs/research/risk_coordinate_decomposition_v1/
+            /docs/research/fine_activity_future_risk_v1/run_study.py
+            /docs/research/fine_activity_future_risk_v1/test_study.py
+            /docs/governance/DATA_USAGE_POLICY_V2.md
+            /docs/governance/data_usage_declaration.json
+            /docs/governance/blackbox_query_ledger.json
+            /scripts/validate_data_usage_policy.py
+            /src/star50_filter/__init__.py
+            /src/star50_filter/cloud_market_data.py
+            /data/cross_index_risk_gate_v1/manifest.json
+            /data/cross_index_risk_gate_v1/1m/000688.SH/2022.parquet
+            /data/cross_index_risk_gate_v1/1m/000688.SH/2023.parquet
+            /data/cross_index_risk_gate_v1/1m/000852.SH/2022.parquet
+            /data/cross_index_risk_gate_v1/1m/000852.SH/2023.parquet
+            /data/cross_index_risk_gate_3s_v1/manifest.json
+            /data/cross_index_risk_gate_3s_v1/000688.SH_2022.parquet
+            /data/cross_index_risk_gate_3s_v1/000688.SH_2023.parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_2022.parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_2023.parquet
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+      - run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Guard Development-only physical inputs
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files=sorted(str(p) for p in Path('data').rglob('*.parquet'))
+          assert all('/2022.parquet' in x or '/2023.parquet' in x or '_2022.parquet' in x or '_2023.parquet' in x for x in files),files
+          assert len(files)==8,files
+          assert not Path('data/cross_index_risk_gate_2026_v1').exists()
+          PY
+      - run: python -m py_compile docs/research/risk_coordinate_decomposition_v1/run_diagnostic.py docs/research/fine_activity_future_risk_v1/run_study.py
+      - run: python -m pytest -q docs/research/fine_activity_future_risk_v1/test_study.py
+      - name: Execute frozen diagnostic
+        run: |
+          mkdir -p artifacts
+          python docs/research/risk_coordinate_decomposition_v1/run_diagnostic.py --repo-root . --out artifacts/risk_coordinate_decomposition_v1
+      - name: Guard scientific role
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/risk_coordinate_decomposition_v1/summary.json'))
+          assert not s['validation_queried'] and not s['blackbox_queried'] and not s['fresh_oos']
+          assert not s['returns_or_pnl_evaluated'] and not s['candidate_nominated'] and not s['production_authority']
+          print(json.dumps(s,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: risk-coordinate-decomposition-v1-${{ github.run_id }}
+          path: artifacts/risk_coordinate_decomposition_v1
+          retention-days: 14
+          if-no-files-found: error
