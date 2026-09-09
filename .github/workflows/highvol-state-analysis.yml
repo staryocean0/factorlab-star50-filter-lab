@@ -8,6 +8,7 @@ on:
       - 'research/highvol_state_v1/run_analysis.py'
       - 'data/market/5m/000688.SH/**'
       - 'data/market/5m/000852.SH/**'
+      - '.github/workflows/highvol-state-analysis.yml'
 
 permissions:
   contents: write
