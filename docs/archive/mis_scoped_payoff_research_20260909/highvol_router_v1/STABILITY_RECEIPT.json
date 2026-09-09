@@ -1,0 +1,30 @@
+{
+  "schema": "highvol_router_v1_stability_audit_receipt_v1",
+  "candidate_id": "highvol_router_v1_csi1000_active_star50_no_trade",
+  "role": "diagnostic_only",
+  "candidate_changed": false,
+  "routing_changed": false,
+  "production_authority": false,
+  "blackbox_queried": false,
+  "run_id": 34346275786,
+  "job_id": 102448499259,
+  "artifact_id": 10101828676,
+  "artifact_zip_sha256": "730af4ad3667698ae106b1c49795ae664b07558de96ff73ab1a290ac46acca5a",
+  "development_trades": 104,
+  "validation_trades": 129,
+  "validation_primary_mean_net_bp_per_trade": 0.5462552570516053,
+  "validation_one_way_break_even_bp": 1.2731276285258026,
+  "validation_1_5bp_per_leg_mean_net": -0.45374474294839473,
+  "validation_bootstrap": {
+    "draws": 10000,
+    "seed": 20260909,
+    "ci_2_5_bp": -1.985520829413833,
+    "ci_97_5_bp": 3.058996318817884,
+    "probability_mean_net_gt_zero": 0.6704
+  },
+  "validation_remove_top3_positive_days_mean_net": -0.283332425858007,
+  "validation_remove_top5_positive_days_mean_net": -0.7509805715900454,
+  "diagnostic_conclusion": "PRIMARY_COST_EDGE_POSITIVE_WITH_MATERIAL_STABILITY_FRAGILITY",
+  "authority_effect": "historical validation pass retained; production-quality stability not supported",
+  "scope_repair_20260909": "archived_from_current_STAR50_authority"
+}
