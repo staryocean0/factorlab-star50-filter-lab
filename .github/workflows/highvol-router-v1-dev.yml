@@ -1,0 +1,86 @@
+name: highvol-router-v1-development-audit
+on:
+  push:
+    branches:
+      - research/highvol-router-v1-dev-20260909
+  workflow_dispatch:
+
+jobs:
+  development-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout physically bounded Development inputs
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            docs/research/highvol_router_v1_dev
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            docs/governance/blackbox_candidate_protocol.template.json
+            scripts/validate_data_usage_policy.py
+            data/cross_index_risk_gate_v1/1m/000852.SH/2020.parquet
+            data/cross_index_risk_gate_v1/1m/000852.SH/2021.parquet
+            data/cross_index_risk_gate_v1/1m/000852.SH/2022.parquet
+            data/cross_index_risk_gate_v1/1m/000852.SH/2023.parquet
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed audit dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+      - name: Validate three-pool governance
+        run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Guard physical Development boundary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          base=Path('data/cross_index_risk_gate_v1/1m/000852.SH')
+          got=sorted(p.name for p in base.glob('*.parquet'))
+          expected=['2020.parquet','2021.parquet','2022.parquet','2023.parquet']
+          assert got == expected, (got, expected)
+          assert not list(Path('data').rglob('2024.parquet'))
+          assert not list(Path('data').rglob('2025.parquet'))
+          assert not list(Path('data').rglob('2026.parquet'))
+          print('Development physical boundary: OK', got)
+          PY
+      - name: Test frozen Router identity
+        run: python -m pytest -q docs/research/highvol_router_v1_dev/test_router_dev.py
+      - name: Run Router V1 Development execution audit
+        run: python docs/research/highvol_router_v1_dev/run_router_dev.py --repo-root . --out artifacts/highvol_router_v1_dev
+      - name: Guard audit verdict
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/highvol_router_v1_dev/summary.json'))
+          assert s['development_only'] is True
+          assert s['validation_queried'] is False
+          assert s['blackbox_queried'] is False
+          assert s['production_authority'] is False
+          assert s['accepted_nonoverlap_trades'] == 104
+          assert s['star50_route_trade_count'] == 0
+          assert s['max_concurrent_positions'] <= 1
+          assert s['nonoverlap_ok'] is True
+          assert s['router_freeze_eligible'] is True
+          assert s['reproduction_errors'] == []
+          print('Router V1 Development audit: PASS')
+          PY
+      - name: Seal audit artifact manifest
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          root=Path('artifacts/highvol_router_v1_dev')
+          files=[]
+          for p in sorted(root.iterdir()):
+              if p.is_file():
+                  b=p.read_bytes()
+                  files.append({'name':p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+          (root/'output_manifest.json').write_text(json.dumps({'schema':'highvol_router_v1_dev_artifact_manifest','files':files},indent=2)+'\n')
+          PY
+      - name: Upload Development audit evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: highvol-router-v1-dev-${{ github.run_id }}
+          path: artifacts/highvol_router_v1_dev
+          retention-days: 30

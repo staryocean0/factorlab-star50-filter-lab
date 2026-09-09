@@ -1,0 +1,65 @@
+{
+  "schema": "highvol_router_v1_contract",
+  "status": "development_execution_audit",
+  "research_date": "2026-09-09",
+  "production_authority": false,
+  "data_roles": {
+    "development": "2021-01-01/2023-12-31",
+    "validation_queried": false,
+    "blackbox_queried": false
+  },
+  "routes": {
+    "000852.SH": {
+      "route": "ACTIVE_LONG_3M",
+      "candidate_name": "CSI1000 long slow-aligned HighVol acceleration V1",
+      "provenance_branch": "research/csi1000-long-accel-dev-v1-20260908",
+      "frozen_candidate_blob_sha": "a1c0ee87f7fb34bcb3f2265e11fe7815e4de44e8",
+      "conditions": {
+        "transition": "NormalVol->HighVol",
+        "highvol_fast_window_min": 5,
+        "highvol_background_window_min": 30,
+        "highvol_background_floor_bp": 1.0,
+        "highvol_ratio_min": 1.5,
+        "recent5_net_sign": "positive",
+        "prior_nonoverlap_slow30_net_sign": "positive",
+        "tail2_share_min": 0.6,
+        "tail1_share_max_exclusive": 0.6
+      },
+      "execution": {
+        "entry": "next_minute_open",
+        "hold_min": 3,
+        "exit": "following_open_after_3_minutes",
+        "same_half_session": true,
+        "complete_valid_path": true,
+        "nonoverlap": true,
+        "legs_per_trade": 2,
+        "primary_cost_bp_per_leg": 1.0,
+        "confirmation_wait": false,
+        "mechanical_stop": false,
+        "early_exit": false
+      }
+    },
+    "000688.SH": {
+      "route": "NO_TRADE",
+      "reason": "STAR50 HighVol directional program V2-V17 closed with no empirical candidate"
+    },
+    "other_highvol_contexts": {
+      "route": "NO_TRADE"
+    }
+  },
+  "development_reproduction_receipt": {
+    "2021": {"trades": 37, "mean_gross_bp": 2.7611, "mean_net1_bp": 0.7611},
+    "2022": {"trades": 31, "mean_gross_bp": 3.1565, "mean_net1_bp": 1.1565},
+    "2023": {"trades": 36, "mean_gross_bp": 2.3531, "mean_net1_bp": 0.3531},
+    "pooled": {"trades": 104, "mean_gross_bp": 2.7377, "mean_net1_bp": 0.7377, "one_way_break_even_bp": 1.3689}
+  },
+  "audit_decision": {
+    "parameter_search_allowed": false,
+    "expected_trade_count_must_reproduce": true,
+    "gross_mean_tolerance_bp": 0.01,
+    "star50_trade_count_must_equal": 0,
+    "max_concurrent_positions": 1,
+    "if_pass": "eligible_to_freeze_router_v1_identity_before_reusable_validation_replay",
+    "if_fail": "implementation_or_portfolio_mechanics_issue; do_not_retune_candidate"
+  }
+}
