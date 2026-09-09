@@ -1,0 +1,42 @@
+{
+  "schema": "highvol_router_v1_decisive_receipt_v1",
+  "candidate_id": "highvol_router_v1_csi1000_active_star50_no_trade",
+  "status": "validation_supported_research_only",
+  "production_authority": false,
+  "blackbox_queried": false,
+  "fresh_oos": false,
+  "routes": {"000852.SH": "ACTIVE_LONG_3M", "000688.SH": "NO_TRADE", "other_highvol_contexts": "NO_TRADE"},
+  "frozen_identity": {
+    "router_receipt_blob_sha": "ea9b00736369f75b8dd5df2661e54afd24516e3b",
+    "development_runner_blob_sha": "52aa0db330b3489c4196b6e718f8c7f6f8628d13",
+    "development_code_commit_sha": "33b2654e31ea8ac09711aeb77248ddfe68d9dea5"
+  },
+  "development": {
+    "run_id": 34300072928,
+    "artifact_id": 10084593028,
+    "artifact_zip_sha256": "ff73b10e04a429d68cf7b383f138699137f3d9cba83fb541dd49567376223145",
+    "trades": 104,
+    "mean_net_1bp_per_leg_bp": 0.737745711092268,
+    "one_way_break_even_bp": 1.368872855546134,
+    "star50_route_trade_count": 0,
+    "max_concurrent_positions": 1,
+    "overlap_rejected": 0
+  },
+  "validation": {
+    "period_start": "2024-01-01",
+    "period_end": "2026-08-21",
+    "decisive_run_id": 34300569936,
+    "artifact_id": 10084769189,
+    "artifact_zip_sha256": "4e7d1aea626936c1170ee26d4f9787ff26edd66236241c62be5ac90807a91d71",
+    "trades": 129,
+    "positive_year_slices": 2,
+    "mean_net_1bp_per_leg_bp": 0.5462552570516053,
+    "one_way_break_even_bp": 1.2731276285258026,
+    "total_net_bp": 70.46692815965706,
+    "star50_route_trade_count": 0,
+    "max_concurrent_positions": 1,
+    "overlap_rejected": 0
+  },
+  "historical_decision": "validation-supported research candidate; no production or BlackBox authority",
+  "scope_repair_20260909": "archived_from_current_STAR50_authority_as_mis_scoped_payoff_research"
+}
