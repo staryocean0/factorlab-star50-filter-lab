@@ -1,0 +1,27 @@
+{
+  "schema": "highvol_exact_age_composition_v13_decisive_receipt_v1",
+  "branch": "research/highvol-exact-age-composition-v13-20260910",
+  "execution_commit": "0468f359ccb997c7509746f95cabf0b6ace789d4",
+  "actions_run_id": 34453481183,
+  "artifact_id": 10142490057,
+  "artifact_sha256": "431e6ad640a4a2b7b8d1fc0f41e2084efccbae9ff26034eb51a1887cac70a897",
+  "development_years": [2021, 2022, 2023],
+  "row_count": 7327,
+  "primary_horizon_minutes": 60,
+  "pooled_raw_common_support_recovering_minus_unsafe": -0.05794304643937365,
+  "pooled_exact_age_standardized_recovering_minus_unsafe": -0.02696271127262151,
+  "annual_exact_age_standardized_recovering_minus_unsafe": {
+    "2021": -0.03154964893428491,
+    "2022": -0.021047032787045672,
+    "2023": -0.04285533739555569
+  },
+  "exact_age_composition_explains_60m_crossover": false,
+  "decision": "REJECT_SIMPLE_EXACT_AGE_COMPOSITION_EXPLANATION; TREAT_STATE_ORDER_AS_HORIZON_DEPENDENT",
+  "validation_authorized": false,
+  "validation_queried": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "production_authority": false,
+  "next_development_question": "Does current_state add predictive information beyond recent-shock age separately at each fixed 15m/30m/60m horizon?"
+}
