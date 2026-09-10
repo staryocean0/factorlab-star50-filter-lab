@@ -1,0 +1,43 @@
+{
+  "schema": "highvol_shock_expiry_mechanism_v12_decisive_receipt_v1",
+  "branch": "research/highvol-shock-expiry-mechanism-v12-20260910",
+  "execution_head": "d73a0c320fbe6bc130a0be13b7abc33e7ffe22df",
+  "run_id": 34450670358,
+  "job_id": 102785446168,
+  "artifact_id": 10141425271,
+  "artifact_zip_sha256": "1dad9361257feb006656550ee4557db9425e7961ed29c03d9104ba4cd4db1829",
+  "row_count": 7274,
+  "pooled_in_window": {
+    "unsafe_n": 1822,
+    "recovering_n": 4849,
+    "unsafe_p60": 0.9298245614035088,
+    "recovering_p60": 0.8622964337250052,
+    "recovering_minus_unsafe_gap": -0.06752812767850358
+  },
+  "pooled_expired": {
+    "unsafe_n": 5,
+    "recovering_n": 598,
+    "unsafe_p60": 0.8571428571428571,
+    "recovering_p60": 0.9833333333333333,
+    "recovering_minus_unsafe_gap": 0.1261904761904762
+  },
+  "post_expiry_15m_conditional": {
+    "unsafe_n": 1736,
+    "unsafe_probability": 0.7243958573072498,
+    "recovering_n": 4350,
+    "recovering_probability": 0.7833180147058824,
+    "unsafe_minus_recovering_gap": -0.0589221573986326,
+    "annual_gap_unsafe_minus_recovering": {
+      "2021": -0.03249727658122348,
+      "2022": -0.06751757684761273,
+      "2023": -0.08433381443900168
+    }
+  },
+  "shock_expiry_mechanism_supported": false,
+  "validation_queried": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "production_authority": false,
+  "decision": "REJECT_SIMPLE_EXPIRY_SPIKE_EXPLANATION; TEST_EXACT_RECENT_SHOCK_AGE_COMPOSITION_NEXT"
+}
