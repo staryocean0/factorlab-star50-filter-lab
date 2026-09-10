@@ -1,0 +1,50 @@
+{
+  "schema": "highvol_realtime_detection_v8_validation_decisive_receipt_v1",
+  "source_development_commit": "07bfa63018fe4d1a1afa4f108a14d9be5ae86777",
+  "source_development_run_id": 34426934097,
+  "source_development_artifact_id": 10133063809,
+  "validation_execution_commit": "98a2c2ace8bc070506f2d6f8ea8b949f559104cd",
+  "validation_run_id": 34438385207,
+  "validation_job_id": 102748118248,
+  "validation_artifact_id": 10137043121,
+  "validation_artifact_zip_sha256": "db8f97e7fec5bfc073fa350b282f0746aab243e0568c2eef473c868e9f4aefbd",
+  "validation_subset": ["2024-01-01", "2025-12-31"],
+  "validation_complete_through_2026_08_21": false,
+  "validation_2026_queried": false,
+  "blackbox_queried": false,
+  "primary_lead_seconds": 3,
+  "primary_pooled": {
+    "coverage": 1.0,
+    "eligible_reference_bars": 45590,
+    "exact_state_accuracy": 0.9998903268260584,
+    "unsafe_precision": 0.9994453688297282,
+    "unsafe_recall": 0.9977851605758582,
+    "recovering_precision": 0.9994753410283316,
+    "recovering_recall": 0.9997376016793492,
+    "shock_precision": 1.0,
+    "shock_recall": 0.9970104633781763,
+    "unsafe_onset_precision": 0.9987623762376238,
+    "unsafe_onset_recall": 0.9962962962962963
+  },
+  "annual_primary": {
+    "2024": {"coverage": 1.0, "unsafe_precision": 0.9989327641408752, "unsafe_recall": 0.997867803837953},
+    "2025": {"coverage": 1.0, "unsafe_precision": 1.0, "unsafe_recall": 0.9976958525345622}
+  },
+  "lead_curve_pooled_unsafe": {
+    "60": {"precision": 0.9012032932235592, "recall": 0.7879291251384275},
+    "30": {"precision": 0.9515550239234449, "recall": 0.8809523809523809},
+    "15": {"precision": 0.9703872437357631, "recall": 0.9435215946843853},
+    "6": {"precision": 0.9860413176996091, "recall": 0.9778516057585825},
+    "3": {"precision": 0.9994453688297282, "recall": 0.9977851605758582}
+  },
+  "available_2024_2025_validation_subset_pass": true,
+  "complete_validation_pass": false,
+  "complete_validation_failure_reason": "not evaluated: repository 3s contract ends 2025-12-31 and 2026 Validation data was not queried",
+  "threshold_search_performed": false,
+  "state_thresholds_unchanged": true,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "candidate_nominated": false,
+  "production_authority": false,
+  "decision": "FREEZE_AS_VALIDATED_2024_2025_REALTIME_RISK_DETECTOR_COMPONENT; DO_NOT_CLAIM_FULL_2024_2026_VALIDATION; DO_NOT_QUERY_BLACKBOX"
+}
