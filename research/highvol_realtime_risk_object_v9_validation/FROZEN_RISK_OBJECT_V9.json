@@ -1,0 +1,42 @@
+{
+  "schema": "highvol_realtime_risk_object_v9_frozen_validation_v1",
+  "source_branch": "research/highvol-realtime-risk-object-v9-20260910",
+  "source_commit": "e01b293dcfc3100a02265315376bc63a9137c3d3",
+  "source_protocol_path": "research/highvol_realtime_risk_object_v9/PROTOCOL.md",
+  "source_protocol_blob_sha": "64bdbaa7624fed5cdf3c6fa167c1ab64a2c547d7",
+  "source_runner_path": "research/highvol_realtime_risk_object_v9/run_v9.py",
+  "source_runner_blob_sha": "ae2a7e095df58692ef9df0dfee5856cac727ca44",
+  "development_run_id": 34443013548,
+  "development_artifact_id": 10138625380,
+  "development_artifact_sha256": "70abd300bfc2c66eba758b2d7fca0f51f91102d9e06db6be574af2958091ba07",
+  "validation_years": [2024, 2025],
+  "symbols": ["000688.SH", "000852.SH"],
+  "primary_lead_seconds": 3,
+  "rv_window": 12,
+  "bg_window": 48,
+  "highvol_ratio": 1.5,
+  "recovery_normal_ratio": 1.1,
+  "shock_sigma": 3.0,
+  "probability_table": {
+    "UNSAFE/LT15": 0.007067137809187279,
+    "UNSAFE/M15_25": 0.007751937984496124,
+    "UNSAFE/M30_40": 0.01340033500837521,
+    "UNSAFE/GE45": 0.5284210526315789,
+    "RECOVERING/LT15": 0.05555555555555555,
+    "RECOVERING/M15_25": 0.04879679144385027,
+    "RECOVERING/M30_40": 0.08446215139442231,
+    "RECOVERING/GE45": 0.7555919258046918
+  },
+  "acceptance": {
+    "pooled_coverage_min": 0.98,
+    "annual_coverage_min": 0.95,
+    "pooled_probability_mae_max": 0.01,
+    "pooled_brier_degradation_max": 0.002,
+    "annual_brier_degradation_max": 0.005
+  },
+  "probability_fit_performed": false,
+  "threshold_search_performed": false,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "production_authority": false
+}
