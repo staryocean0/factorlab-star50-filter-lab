@@ -1,0 +1,88 @@
+name: highvol-exact-age-v13-development
+on:
+  push:
+    branches:
+      - research/highvol-exact-age-standardization-v13-20260910
+    paths:
+      - .github/workflows/highvol-exact-age-v13-dev.yml
+      - research/highvol_exact_age_v13/**
+jobs:
+  exact-age:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout V13 lineage and Development-only inputs
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/highvol_exact_age_v13
+            research/highvol_shock_expiry_v12/run_expiry.py
+            research/highvol_recovery_survival_v11/run_survival.py
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/market/5m/000688.SH/2020.parquet
+            data/market/5m/000688.SH/2021.parquet
+            data/market/5m/000688.SH/2022.parquet
+            data/market/5m/000688.SH/2023.parquet
+            data/market/5m/000852.SH/2020.parquet
+            data/market/5m/000852.SH/2021.parquet
+            data/market/5m/000852.SH/2022.parquet
+            data/market/5m/000852.SH/2023.parquet
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+      - name: Validate three-pool governance
+        run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Guard Development boundary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for s in ['000688.SH','000852.SH']:
+              got=sorted(p.name for p in (Path('data/market/5m')/s).glob('*.parquet'))
+              assert got==['2020.parquet','2021.parquet','2022.parquet','2023.parquet'],(s,got)
+          assert not list(Path('data').rglob('2024.parquet'))
+          assert not list(Path('data').rglob('2025.parquet'))
+          assert not list(Path('data').rglob('2026.parquet'))
+          print('V13 Development physical boundary: OK')
+          PY
+      - name: Test frozen V13 contract
+        run: python -m pytest -q research/highvol_exact_age_v13/test_exact_age.py
+      - name: Run V13 exact-age standardization
+        run: python research/highvol_exact_age_v13/run_exact_age.py --repo-root . --out artifacts/highvol_exact_age_v13
+      - name: Guard diagnostic-only role
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/highvol_exact_age_v13/summary.json'))
+          assert s['development_only'] is True
+          assert s['exact_ages_bars']==list(range(1,12))
+          assert s['threshold_search_performed'] is False
+          assert s['validation_queried'] is False
+          assert s['blackbox_queried'] is False
+          assert s['pnl_computed'] is False
+          assert s['trading_rule_created'] is False
+          assert s['production_authority'] is False
+          print('V13 broad-bucket composition explanation:',s['broad_bucket_composition_explanation_supported'])
+          print(json.dumps(s['acceptance'],sort_keys=True))
+          PY
+      - name: Seal output manifest
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          root=Path('artifacts/highvol_exact_age_v13'); files=[]
+          for p in sorted(root.iterdir()):
+              if p.is_file():
+                  b=p.read_bytes(); files.append({'name':p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+          (root/'output_manifest.json').write_text(json.dumps({'schema':'highvol_exact_age_v13_dev_manifest','files':files},indent=2)+'\n')
+          PY
+      - name: Upload V13 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: highvol-exact-age-v13-${{ github.run_id }}
+          path: artifacts/highvol_exact_age_v13
+          retention-days: 30
