@@ -1,0 +1,49 @@
+{
+  "schema": "highvol_recovery_clock_v6_full_validation_receipt",
+  "candidate_id": "unsafe_recovering_recent_shock_clock_v6",
+  "decision": "SUPPORTED",
+  "validation_period": ["2024-01-01", "2026-08-21"],
+  "actual_2026_support": ["2026-01-05", "2026-08-21"],
+  "user_authorized_1m_to_5m": true,
+  "synthesis_equivalence_2023": {
+    "000688.SH": {"days": 242, "rows": 11616, "max_abs_close_diff": 0.0},
+    "000852.SH": {"days": 242, "rows": 11616, "max_abs_close_diff": 0.0}
+  },
+  "synthesis_2026": {
+    "000688.SH": {"source_1m_rows": 36960, "synth_5m_rows": 7392, "days": 154},
+    "000852.SH": {"source_1m_rows": 36960, "synth_5m_rows": 7392, "days": 154}
+  },
+  "source_2026_blob_sha": {
+    "000688.SH": "4626fb307bbcae1c417ddcd69ac694cf322c8bbc",
+    "000852.SH": "8de5cd3caab99dbacae229a2c87f15c4ff2f8558"
+  },
+  "scored_rows": 6334,
+  "pooled": {
+    "model_brier": 0.08419258596326808,
+    "baseline_brier": 0.18739212373292677,
+    "model_log_loss": 0.2910978313290918,
+    "baseline_log_loss": 0.562103243953272,
+    "observed_rate": 0.24976318282286075
+  },
+  "annual_brier": {
+    "2024": {"model": 0.08533709323693467, "baseline": 0.17997379948440043},
+    "2025": {"model": 0.07726594894273149, "baseline": 0.19319219720679348},
+    "2026": {"model": 0.09327540638187268, "baseline": 0.1908771078074765}
+  },
+  "ordering": {
+    "000688.SH": "4_of_4_recent_shock_age_buckets_RECOVERING_gt_UNSAFE",
+    "000852.SH": "4_of_4_recent_shock_age_buckets_RECOVERING_gt_UNSAFE"
+  },
+  "development_run": 34415326314,
+  "development_artifact_id": 10128833197,
+  "development_artifact_sha256": "b4d3a1c7dabf9b52c8c13e28355c9fa3fe2e7934768312ab7a13ec8efc326150",
+  "validation_run": 34421316655,
+  "validation_artifact_id": 10130997291,
+  "validation_artifact_sha256": "62e46478cec42658bb7d756f9537ba817c1465bb8c24a8dd4ff96a89cdffb61c",
+  "fit_performed_in_validation": false,
+  "parameter_change_performed_in_validation": false,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "blackbox_queried": false,
+  "production_authority": false
+}
