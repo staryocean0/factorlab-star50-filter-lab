@@ -24,49 +24,31 @@ Age buckets are fixed as `<15m`, `15-25m`, `30-40m`, `>=45m`.
 
 ### Current realtime risk object
 
-The current cross-scale authority is V9:
+The current cross-scale authority is V10 at the preregistered `E-15s` checkpoint:
 
-`E-3s causal state + time since most recent shock -> P(Normal within next 15 minutes)`
+`E-15s causal state + time since most recent shock -> P(Normal within next 15 minutes)`
 
-It composes the frozen V8 3s partial-bar state detector with the frozen V6 shock-reset probability table. No new probability fit or state-threshold search is used.
+It composes the frozen V8 partial-bar state detector with the frozen V6 shock-reset probability table. No new probability fit or state-threshold search is used.
 
-- V7 1m partial-bar detector: **not eligible** for Validation. At the last full minute before 5m close, UNSAFE precision was about `90.6%` but recall only about `77.2%`; newly forming shock/UNSAFE in the final minute was the principal miss source.
+- V7 1m partial-bar detector: **not eligible** for Validation. At the last full minute before 5m close, UNSAFE precision was about `90.6%` but recall only about `77.2%`.
 - V8 3s partial-bar detector: **Development PASS and 2024-2025 reusable Validation subset PASS** at frozen `E-3s`.
 - V9 unified realtime risk object: **Development PASS and 2024-2025 reusable Validation subset PASS** at frozen `E-3s`.
+- V10 fixed probability lead study: **Development PASS and 2024-2025 reusable Validation subset PASS** at the preregistered `E-15s` primary checkpoint.
 
-V8 pooled 2024-2025 `E-3s` state metrics:
+V10 pooled 2024-2025 `E-15s` probability metrics:
 
-- eligible reference bars: `45590`;
-- usable coverage: `1.0`;
-- exact 3-state accuracy: `0.9998903`;
-- UNSAFE precision: `0.9994454`;
-- UNSAFE recall: `0.9977852`;
-- RECOVERING precision: `0.9994753`;
-- RECOVERING recall: `0.9997376`;
-- shock precision: `1.0`;
-- shock recall: `0.9970105`;
-- UNSAFE-onset precision: `0.9987624`;
-- UNSAFE-onset recall: `0.9962963`.
+- reference rows: `4859`;
+- realtime scored rows: `4833`;
+- probability coverage: `0.9946491`;
+- exact state / probability-cell agreement: `0.9921374`;
+- probability MAE vs final-5m V6 reference: `0.00080676`;
+- realtime Brier on matched rows: `0.0805427` vs frozen reference `0.0805477`;
+- Brier degradation: `-0.0000050`;
+- 2024 and 2025 separately passed all frozen coverage/MAE/Brier gates.
 
-V9 pooled 2024-2025 realtime probability metrics:
+The full fixed lead curve is retained as descriptive evidence only. The earlier checkpoints were not allowed to replace a failure at `E-15s`; therefore neither 30s nor 60s is promoted post hoc from the same Validation pool.
 
-- scored rows: `4859`;
-- realtime probability coverage: `1.0`;
-- exact state / probability-cell agreement: `0.9997942`;
-- probability MAE vs frozen V6 reference: `0.00001462`;
-- realtime Brier: `0.0814419` vs final-5m frozen reference `0.0814433`;
-- realtime LogLoss: `0.2828851` vs reference `0.2829005`;
-- all frozen support gates passed separately in 2024 and 2025.
-
-The frozen pooled V8 UNSAFE lead curve remains:
-
-- 60s before close: precision `0.9012`, recall `0.7879`;
-- 30s: precision `0.9516`, recall `0.8810`;
-- 15s: precision `0.9704`, recall `0.9435`;
-- 6s: precision `0.9860`, recall `0.9779`;
-- 3s: precision `0.9994`, recall `0.9978`.
-
-The repository 3s physical contract ends at 2025-12-31, so V8/V9 realtime support is **not** complete Validation through 2026-08-21. No 2026 3s Validation data was queried.
+The repository 3s physical contract ends at 2025-12-31, so V8/V9/V10 realtime support is **not** complete Validation through 2026-08-21. No 2026 3s Validation data was queried.
 
 ### Evidence chain
 
@@ -78,6 +60,7 @@ The repository 3s physical contract ends at 2025-12-31, so V8/V9 realtime suppor
 - V7 1m realtime measurement: failed the preregistered UNSAFE recall gate and was not promoted.
 - V8 3s realtime measurement: passed Development and the available 2024-2025 3s Validation subset.
 - V9 realtime risk object: passed Development and the available 2024-2025 3s Validation subset while reproducing the final-5m V6 probability object essentially losslessly at `E-3s`.
+- V10 realtime probability lead study: preregistered `E-15s` passed Development and the available 2024-2025 3s Validation subset, establishing a validated 15-second-early probability annotation.
 
 V6 full Validation metrics:
 
@@ -95,6 +78,8 @@ Primary sealed evidence:
 - `docs/research/highvol_realtime_detection_v8_validation_receipt_20260910.json`
 - `docs/research/highvol_realtime_risk_object_v9_validation_20260910.md`
 - `docs/research/highvol_realtime_risk_object_v9_validation_receipt_20260910.json`
+- `docs/research/highvol_realtime_probability_lead_v10_validation_20260910.md`
+- `docs/research/highvol_realtime_probability_lead_v10_validation_receipt_20260910.json`
 
 `blackbox_queried=false`.
 
@@ -134,6 +119,7 @@ The complete pre-repair current snapshot remains at `4232d20b143a9c532e14a397613
 - `docs/research/highvol_recovery_clock_v6_full_validation_20260910.md`
 - `docs/research/highvol_realtime_detection_v8_validation_20260910.md`
 - `docs/research/highvol_realtime_risk_object_v9_validation_20260910.md`
+- `docs/research/highvol_realtime_probability_lead_v10_validation_20260910.md`
 - tail distribution / resolution-transfer / cross-scale root-cause material where the result is a K-line risk property rather than a payoff rule.
 
 ## Data and governance
@@ -153,8 +139,10 @@ No prior payoff or risk-state Validation result automatically authorizes BlackBo
 
 ## Next research direction
 
-Do not reopen R1/R2 or payoff routing here. V9 has established that the frozen recovery probability object can be emitted essentially losslessly at `E-3s` on available 3s coverage.
+Do not reopen R1/R2 or payoff routing here. V10 has established a validated `E-15s` realtime recovery-probability annotation on the available 3s Validation coverage.
 
-The next risk-state task is a **fixed realtime probability lead-curve study** at `E-60s / E-30s / E-15s / E-6s / E-3s` using the same V6 table and V8 state machine. It must measure probability coverage, probability-cell agreement, MAE, Brier and LogLoss degradation versus final 5m reference at every lead. No lead may be selected post hoc to rescue another lead; no threshold or probability refit is authorized.
+The next bottom-layer task is to move from a single `P(Normal within 15m)` target to a **fixed recovery survival curve** using the unchanged `UNSAFE/RECOVERING + recent-shock age` state. Development should estimate and test fixed horizons `15m / 30m / 60m` as one coherent risk object, with monotonic cumulative recovery probabilities and no trading variables. Realtime transfer should only be attempted after that multi-horizon 5m object is frozen.
+
+Do not promote `E-30s` or `E-60s` from V10 post hoc using the already-inspected Validation curve.
 
 `production_authority=false`.
