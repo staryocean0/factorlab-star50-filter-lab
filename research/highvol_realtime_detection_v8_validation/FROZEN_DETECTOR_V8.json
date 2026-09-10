@@ -1,0 +1,39 @@
+{
+  "schema": "highvol_realtime_detection_v8_frozen_detector_v1",
+  "source_branch": "research/highvol-realtime-detection-v8-3s-20260910",
+  "source_commit": "07bfa63018fe4d1a1afa4f108a14d9be5ae86777",
+  "source_runner_path": "research/highvol_realtime_detection_v8/run_detection.py",
+  "source_runner_blob_sha": "9e1828a8e7ff6b45eba0b4d1e31e79c1f9c1568a",
+  "source_protocol_path": "research/highvol_realtime_detection_v8/protocol.md",
+  "source_protocol_blob_sha": "a23728a029c17c28384d8ce372e73dac0d312944",
+  "development_run_id": 34426934097,
+  "development_artifact_id": 10133063809,
+  "symbols": ["000688.SH", "000852.SH"],
+  "leads_seconds": [60, 30, 15, 6, 3],
+  "primary_lead_seconds": 3,
+  "rv_window": 12,
+  "bg_window": 48,
+  "highvol_ratio": 1.5,
+  "recovery_normal_ratio": 1.1,
+  "shock_sigma": 3.0,
+  "selection": "latest same-block 3s observation at-or-before checkpoint; same timestamp greatest row_index",
+  "development_acceptance": {
+    "pooled_coverage_min": 0.95,
+    "annual_coverage_min": 0.95,
+    "pooled_unsafe_precision_min": 0.9,
+    "pooled_unsafe_recall_min": 0.9,
+    "annual_unsafe_precision_min": 0.85,
+    "annual_unsafe_recall_min": 0.85
+  },
+  "development_primary_result": {
+    "coverage": 1.0,
+    "unsafe_precision": 0.9996562392574768,
+    "unsafe_recall": 0.9979409746053535,
+    "eligible": true
+  },
+  "threshold_search_performed": false,
+  "state_thresholds_unchanged": true,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "production_authority": false
+}
