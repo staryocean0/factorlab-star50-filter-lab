@@ -1,0 +1,32 @@
+{
+  "schema": "highvol_realtime_risk_object_v9_validation_decisive_receipt_v1",
+  "verdict": "SUPPORTED_AVAILABLE_2024_2025_3S_VALIDATION_SUBSET",
+  "complete_validation_through_2026_08_21": false,
+  "validation_2026_queried": false,
+  "run_id": 34445445737,
+  "artifact_id": 10139480476,
+  "artifact_sha256": "432c88ad4799834b0698e6c2db48f694e252da47da64b95e7077ae813bcae386",
+  "frozen_source_commit": "e01b293dcfc3100a02265315376bc63a9137c3d3",
+  "development_run_id": 34443013548,
+  "development_artifact_id": 10138625380,
+  "primary_checkpoint_seconds_before_5m_close": 3,
+  "pooled": {
+    "n": 4859,
+    "coverage": 1.0,
+    "exact_state_agreement": 0.9997941963366948,
+    "exact_probability_cell_agreement": 0.9997941963366948,
+    "probability_mae_vs_reference": 0.000014624782133370469,
+    "reference_brier": 0.08144334313214832,
+    "realtime_brier": 0.08144191191460566,
+    "brier_degradation": -0.0000014312175426606233
+  },
+  "all_frozen_support_gates_pass": true,
+  "v6_probability_table_changed": false,
+  "v8_state_thresholds_changed": false,
+  "probability_fit_performed": false,
+  "threshold_search_performed": false,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "blackbox_queried": false,
+  "production_authority": false
+}
