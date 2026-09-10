@@ -1,0 +1,110 @@
+name: highvol-horizon-specific-state-value-v14-validation
+on:
+  push:
+    branches:
+      - research/highvol-horizon-specific-state-value-v14-validation-20260910
+    paths:
+      - .github/workflows/highvol-horizon-specific-state-value-v14-validation.yml
+      - research/highvol_horizon_state_value_v14_validation/**
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frozen V14 and Validation inputs
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/highvol_recovery_survival_v11
+            research/highvol_horizon_state_value_v14
+            research/highvol_horizon_state_value_v14_validation
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/market/5m/000688.SH/2020.parquet
+            data/market/5m/000688.SH/2021.parquet
+            data/market/5m/000688.SH/2022.parquet
+            data/market/5m/000688.SH/2023.parquet
+            data/market/5m/000688.SH/2024.parquet
+            data/market/5m/000688.SH/2025.parquet
+            data/market/5m/000852.SH/2020.parquet
+            data/market/5m/000852.SH/2021.parquet
+            data/market/5m/000852.SH/2022.parquet
+            data/market/5m/000852.SH/2023.parquet
+            data/market/5m/000852.SH/2024.parquet
+            data/market/5m/000852.SH/2025.parquet
+            data/cross_index_risk_gate_v1/1m/000688.SH/2023.parquet
+            data/cross_index_risk_gate_v1/1m/000688.SH/2026.parquet
+            data/cross_index_risk_gate_v1/1m/000852.SH/2023.parquet
+            data/cross_index_risk_gate_v1/1m/000852.SH/2026.parquet
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+      - name: Validate three-pool governance
+        run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Guard physical Validation boundary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          expected={
+            '000688.SH':'4626fb307bbcae1c417ddcd69ac694cf322c8bbc',
+            '000852.SH':'8de5cd3caab99dbacae229a2c87f15c4ff2f8558',
+          }
+          import hashlib
+          def blob_sha(p):
+              b=p.read_bytes(); return hashlib.sha1(f'blob {len(b)}\0'.encode()+b).hexdigest()
+          for s,sha in expected.items():
+              base=Path('data/market/5m')/s
+              got=sorted(p.name for p in base.glob('*.parquet'))
+              assert got==[f'{y}.parquet' for y in range(2020,2026)],(s,got)
+              p=Path('data/cross_index_risk_gate_v1/1m')/s/'2026.parquet'
+              assert blob_sha(p)==sha,(s,blob_sha(p),sha)
+              x=pd.read_parquet(p,columns=['trading_day'])
+              mx=str(pd.to_datetime(x.trading_day).dt.strftime('%Y-%m-%d').max())
+              assert mx<='2026-08-21',(s,mx)
+          assert not list(Path('data').rglob('*2027*.parquet'))
+          print('V14 Validation physical boundary: OK')
+          PY
+      - name: Test frozen V14 Validation contract
+        run: python -m pytest -q research/highvol_horizon_state_value_v14_validation/test_validation.py
+      - name: Run frozen V14 full Validation
+        run: python research/highvol_horizon_state_value_v14_validation/run_validation.py --repo-root . --out artifacts/highvol_horizon_state_value_v14_validation
+      - name: Guard research-only authority
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/highvol_horizon_state_value_v14_validation/summary.json'))
+          assert s['fit_performed'] is False
+          assert s['parameter_change_performed'] is False
+          assert s['threshold_search_performed'] is False
+          assert s['posthoc_horizon_selection'] is False
+          assert s['pnl_computed'] is False
+          assert s['trading_rule_created'] is False
+          assert s['blackbox_queried'] is False
+          assert s['production_authority'] is False
+          print('V14 full Validation supported:',s['full_validation_supported'])
+          print('row_count:',s['row_count'])
+          print('pooled:',json.dumps(s['pooled_scores'],sort_keys=True))
+          print('annual_brier_win_count:',s['annual_brier_win_count'])
+          PY
+      - name: Seal output manifest
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          root=Path('artifacts/highvol_horizon_state_value_v14_validation'); files=[]
+          for p in sorted(root.iterdir()):
+              if p.is_file():
+                  b=p.read_bytes(); files.append({'name':p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+          (root/'output_manifest.json').write_text(json.dumps({'schema':'highvol_horizon_state_value_v14_validation_manifest','files':files},indent=2)+'\n')
+          PY
+      - name: Upload V14 Validation evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: highvol-horizon-state-value-v14-validation-${{ github.run_id }}
+          path: artifacts/highvol_horizon_state_value_v14_validation
+          retention-days: 30
