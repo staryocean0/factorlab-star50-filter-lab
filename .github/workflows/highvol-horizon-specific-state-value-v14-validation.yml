@@ -34,10 +34,9 @@ jobs:
             data/market/5m/000852.SH/2024.parquet
             data/market/5m/000852.SH/2025.parquet
             data/cross_index_risk_gate_v1/1m/000688.SH/2023.parquet
-            data/cross_index_risk_gate_v1/1m/000688.SH/2026.parquet
             data/cross_index_risk_gate_v1/1m/000852.SH/2023.parquet
-            data/cross_index_risk_gate_v1/1m/000852.SH/2026.parquet
           sparse-checkout-cone-mode: false
+          fetch-depth: 1
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -45,16 +44,27 @@ jobs:
         run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
       - name: Validate three-pool governance
         run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Restore sealed 2026 one-minute Validation inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin research/post-shock-recovery-2026-validation
+          STAR_BLOB=$(git rev-parse FETCH_HEAD:data/cross_index_risk_gate_2026_v1/1m/000688.SH/2026.parquet)
+          CSI_BLOB=$(git rev-parse FETCH_HEAD:data/cross_index_risk_gate_2026_v1/1m/000852.SH/2026.parquet)
+          test "$STAR_BLOB" = "4626fb307bbcae1c417ddcd69ac694cf322c8bbc"
+          test "$CSI_BLOB" = "8de5cd3caab99dbacae229a2c87f15c4ff2f8558"
+          mkdir -p data/cross_index_risk_gate_v1/1m/000688.SH data/cross_index_risk_gate_v1/1m/000852.SH
+          git show FETCH_HEAD:data/cross_index_risk_gate_2026_v1/1m/000688.SH/2026.parquet > data/cross_index_risk_gate_v1/1m/000688.SH/2026.parquet
+          git show FETCH_HEAD:data/cross_index_risk_gate_2026_v1/1m/000852.SH/2026.parquet > data/cross_index_risk_gate_v1/1m/000852.SH/2026.parquet
       - name: Guard physical Validation boundary
         run: |
           python - <<'PY'
           from pathlib import Path
-          import pandas as pd
+          import pandas as pd, hashlib
           expected={
             '000688.SH':'4626fb307bbcae1c417ddcd69ac694cf322c8bbc',
             '000852.SH':'8de5cd3caab99dbacae229a2c87f15c4ff2f8558',
           }
-          import hashlib
           def blob_sha(p):
               b=p.read_bytes(); return hashlib.sha1(f'blob {len(b)}\0'.encode()+b).hexdigest()
           for s,sha in expected.items():
@@ -64,8 +74,9 @@ jobs:
               p=Path('data/cross_index_risk_gate_v1/1m')/s/'2026.parquet'
               assert blob_sha(p)==sha,(s,blob_sha(p),sha)
               x=pd.read_parquet(p,columns=['trading_day'])
-              mx=str(pd.to_datetime(x.trading_day).dt.strftime('%Y-%m-%d').max())
-              assert mx<='2026-08-21',(s,mx)
+              d=pd.to_datetime(x.trading_day).dt.strftime('%Y-%m-%d')
+              assert d.min()>='2026-01-01',(s,d.min())
+              assert d.max()<='2026-08-21',(s,d.max())
           assert not list(Path('data').rglob('*2027*.parquet'))
           print('V14 Validation physical boundary: OK')
           PY
