@@ -1,0 +1,77 @@
+name: highvol-realtime-probability-lead-v10-validation
+on:
+  push:
+    branches:
+      - research/highvol-realtime-probability-lead-v10-validation-20260910
+    paths:
+      - .github/workflows/highvol-realtime-probability-lead-v10-validation.yml
+      - research/highvol_realtime_probability_lead_v10_validation/**
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/highvol_realtime_probability_lead_v10
+            research/highvol_realtime_probability_lead_v10_validation
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/market/5m/000688.SH/2020.parquet
+            data/market/5m/000688.SH/2021.parquet
+            data/market/5m/000688.SH/2022.parquet
+            data/market/5m/000688.SH/2023.parquet
+            data/market/5m/000688.SH/2024.parquet
+            data/market/5m/000688.SH/2025.parquet
+            data/market/5m/000852.SH/2020.parquet
+            data/market/5m/000852.SH/2021.parquet
+            data/market/5m/000852.SH/2022.parquet
+            data/market/5m/000852.SH/2023.parquet
+            data/market/5m/000852.SH/2024.parquet
+            data/market/5m/000852.SH/2025.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2024.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2025.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2024.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2025.parquet
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+      - run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Guard Validation subset
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for s in ['000688.SH','000852.SH']:
+              assert sorted(p.name for p in (Path('data/market/5m')/s).glob('*.parquet')) == [f'{y}.parquet' for y in range(2020,2026)]
+          got=sorted(p.name for p in Path('data/cross_index_risk_gate_3s_v1').glob('*.parquet'))
+          exp=sorted([f'{s}_{y}.parquet' for s in ['000688.SH','000852.SH'] for y in [2024,2025]])
+          assert got==exp,(got,exp)
+          assert not list(Path('data').rglob('2026.parquet'))
+          PY
+      - name: Materialize exact frozen V9 runner
+        run: |
+          git fetch --depth=1 origin e01b293dcfc3100a02265315376bc63a9137c3d3
+          git show e01b293dcfc3100a02265315376bc63a9137c3d3:research/highvol_realtime_risk_object_v9/run_v9.py > research/highvol_realtime_probability_lead_v10/frozen_v9.py
+          test "$(git hash-object research/highvol_realtime_probability_lead_v10/frozen_v9.py)" = "ae2a7e095df58692ef9df0dfee5856cac727ca44"
+          test "$(git hash-object research/highvol_realtime_probability_lead_v10/run_v10.py)" = "783b5bb474758956b7b86a0e8c72a1264ab2e1e5"
+      - run: python -m pytest -q research/highvol_realtime_probability_lead_v10_validation/test_validation.py
+      - run: python research/highvol_realtime_probability_lead_v10_validation/run_validation.py --repo-root . --out artifacts/highvol_realtime_probability_lead_v10_validation
+      - name: Guard verdict
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/highvol_realtime_probability_lead_v10_validation/summary.json'))
+          assert s['available_validation_subset_pass'] is True
+          assert s['validation_2026_queried'] is False
+          assert s['blackbox_queried'] is False
+          assert s['production_authority'] is False
+          print(json.dumps(s['acceptance'],sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: highvol-realtime-probability-lead-v10-validation-${{ github.run_id }}
+          path: artifacts/highvol_realtime_probability_lead_v10_validation
+          retention-days: 30
