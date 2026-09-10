@@ -1,0 +1,41 @@
+name: highvol-realtime-detection-v8-time-semantics
+on:
+  push:
+    branches:
+      - research/highvol-realtime-detection-v8-3s-20260910
+    paths:
+      - .github/workflows/highvol-realtime-detection-v8-time-semantics.yml
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            data/cross_index_risk_gate_v1/1m/000688.SH/2021.parquet
+            data/market/5m/000688.SH/2021.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2021.parquet
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pandas pyarrow
+      - name: Compare first and last session labels
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          day='2021-01-04'
+          one=pd.read_parquet('data/cross_index_risk_gate_v1/1m/000688.SH/2021.parquet')
+          five=pd.read_parquet('data/market/5m/000688.SH/2021.parquet')
+          sec=pd.read_parquet('data/cross_index_risk_gate_3s_v1/000688.SH_2021.parquet')
+          one=one[one.trading_day.astype(str)==day].copy()
+          five=five[five.trading_day.astype(str)==day].copy()
+          sec=sec[sec.trading_day.astype(str)==day].copy()
+          def keep(df,cols): return df[[c for c in cols if c in df.columns]]
+          print('1m first10',keep(one,['timestamp','open','high','low','close','available_at']).head(10).to_dict('records'))
+          print('1m last10',keep(one,['timestamp','open','high','low','close','available_at']).tail(10).to_dict('records'))
+          print('5m first5',keep(five,['timestamp','bar_end_shanghai','open','high','low','close','available_at']).head(5).to_dict('records'))
+          print('5m last5',keep(five,['timestamp','bar_end_shanghai','open','high','low','close','available_at']).tail(5).to_dict('records'))
+          print('3s 0933-0936',sec[(sec.observation_time>='09:33:00')&(sec.observation_time<='09:36:00')][['observation_time','price','session_phase','row_index']].to_dict('records'))
+          print('3s close tail',sec[sec.observation_time>='14:55:00'][['observation_time','price','session_phase','row_index']].tail(80).to_dict('records'))
+          PY
