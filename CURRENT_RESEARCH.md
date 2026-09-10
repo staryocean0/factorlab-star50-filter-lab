@@ -22,6 +22,38 @@ Current frozen probability object:
 
 Age buckets are fixed as `<15m`, `15-25m`, `30-40m`, `>=45m`.
 
+### Current realtime measurement layer
+
+The validated 5m state machine can be reconstructed causally inside the final minute of the reference bar without changing any state threshold.
+
+- V7 1m partial-bar detector: **not eligible** for Validation. At the last full minute before 5m close, UNSAFE precision was about `90.6%` but recall only about `77.2%`; the main miss source was newly forming shock/UNSAFE during the final minute.
+- V8 3s partial-bar detector: **Development PASS and 2024-2025 reusable Validation subset PASS** at the preregistered `E-3s` checkpoint.
+- V8 does not forecast shocks before they begin. It establishes near-close causal recognition of the same frozen 5m state.
+
+V8 pooled 2024-2025 `E-3s` metrics:
+
+- eligible reference bars: `45590`;
+- usable coverage: `1.0`;
+- exact 3-state accuracy: `0.9998903`;
+- UNSAFE precision: `0.9994454`;
+- UNSAFE recall: `0.9977852`;
+- RECOVERING precision: `0.9994753`;
+- RECOVERING recall: `0.9997376`;
+- shock precision: `1.0`;
+- shock recall: `0.9970105`;
+- UNSAFE-onset precision: `0.9987624`;
+- UNSAFE-onset recall: `0.9962963`.
+
+The frozen pooled UNSAFE lead curve is:
+
+- 60s before close: precision `0.9012`, recall `0.7879`;
+- 30s: precision `0.9516`, recall `0.8810`;
+- 15s: precision `0.9704`, recall `0.9435`;
+- 6s: precision `0.9860`, recall `0.9779`;
+- 3s: precision `0.9994`, recall `0.9978`.
+
+V8 3s data physically ends at 2025-12-31, so this is **not** complete Validation through 2026-08-21. No 2026 3s Validation data was queried.
+
 ### Evidence chain
 
 - V3 recovery-hazard study: `UNSAFE` vs `RECOVERING` separates near-term normalization probability across Development years; recurrence hazard itself is not a stable monotone state discriminator.
@@ -29,6 +61,8 @@ Age buckets are fixed as `<15m`, `15-25m`, `30-40m`, `>=45m`.
 - V5 re-shock study: a recurrent shock sharply lowers near-term normalization probability and effectively restarts the recovery process; a separate universal `CLUSTERED` state was not supported.
 - V6 clock comparison: recent-shock age beat episode-start age in leave-one-year-out Development Brier in all 3 years and LogLoss in all 3 years.
 - V6 full reusable Validation through 2026-08-21: **SUPPORTED**. 2026 5m bars were deterministically constructed from the sealed 1m Validation pack only after exact 2023 1m->5m equivalence was confirmed for both indices (`max_abs_close_diff=0.0`).
+- V7 1m realtime measurement: failed the preregistered UNSAFE recall gate and was not promoted.
+- V8 3s realtime measurement: passed Development and the available 2024-2025 3s Validation subset with the frozen `E-3s` checkpoint.
 
 V6 full Validation metrics:
 
@@ -42,6 +76,8 @@ Primary sealed evidence:
 
 - `docs/research/highvol_recovery_clock_v6_full_validation_20260910.md`
 - `docs/research/highvol_recovery_clock_v6_full_validation_receipt_20260910.json`
+- `docs/research/highvol_realtime_detection_v8_validation_20260910.md`
+- `docs/research/highvol_realtime_detection_v8_validation_receipt_20260910.json`
 
 `blackbox_queried=false`.
 
@@ -91,6 +127,7 @@ Reusable bottom-layer findings extracted from archived strategy work are recorde
 - `docs/research/highvol_recovery_calibration_v4_20260910.md`
 - `docs/research/highvol_reshock_cluster_v5_20260910.md`
 - `docs/research/highvol_recovery_clock_v6_full_validation_20260910.md`
+- `docs/research/highvol_realtime_detection_v8_validation_20260910.md`
 - tail distribution / resolution-transfer / cross-scale root-cause material where the result is a K-line risk property rather than a payoff rule.
 
 ## Data and governance
@@ -110,6 +147,10 @@ No prior payoff or risk-state Validation result automatically authorizes BlackBo
 
 ## Next research direction
 
-Do not reopen R1/R2 or payoff routing here. The next risk-state work should improve **real-time state measurement**, especially cross-resolution detection/latency of the supported shock-reset recovery process, while preserving the frozen 5m recovery object as the reference state.
+Do not reopen R1/R2 or payoff routing here. The next risk-state task is to combine the two validated components into one **unified realtime risk annotation object**:
+
+`3s causal state now + time since most recent shock -> P(Normal within next 15 minutes)`
+
+The study must preserve the frozen V6 probability table and frozen V8 state detector. It should measure how much probability error is introduced when the V6 recovery object is driven by realtime V8 state/clock inputs before the 5m bar closes. No new threshold search is authorized.
 
 `production_authority=false`.
