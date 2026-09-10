@@ -1,0 +1,25 @@
+{
+  "schema": "highvol_horizon_adaptive_surface_v16_development_decisive_receipt_v1",
+  "branch": "research/highvol-horizon-adaptive-surface-v16-20260910",
+  "execution_commit": "bcdc18d5886869865c6454fa323ebc6858090249",
+  "run_id": 34497737506,
+  "job_id": 102940376435,
+  "artifact_id": 10160511846,
+  "artifact_sha256": "3124ceb9bbeb48379f5469b979b6590468e26d8d5a3c9d16fa202ae19d07b077",
+  "row_count": 7327,
+  "min_state_age_training_cell_n": 166,
+  "oof_monotonic_adjustment_counts": {"15m": 0, "30m": 0},
+  "pooled_improvement_over_age_only": {
+    "15m": {"brier": 0.002820966312336956, "log_loss": 0.00940939653971068},
+    "30m": {"brier": 0.0014218092982553332, "log_loss": 0.004547626969935714},
+    "60m": {"brier": 0.0, "log_loss": 0.0}
+  },
+  "annual_brier_win_count": {"15m": 3, "30m": 3, "60m": 0},
+  "adaptive_surface_supported": true,
+  "decision": "FREEZE_EXACT_SURFACE_AND_RUN_REUSABLE_VALIDATION",
+  "validation_queried": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "production_authority": false
+}
