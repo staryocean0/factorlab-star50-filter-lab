@@ -30,7 +30,7 @@ Before any 2026 Validation score is computed, this construction must be verified
 
 Build the unchanged V3/V6 risk process and score every supported active non-shock episode row using the frozen recent-shock 8-cell probability table. Report pooled and annual Brier/LogLoss for 2024, 2025, and 2026 through 2026-08-21, plus observed `RECOVERING > UNSAFE` ordering by age bucket and symbol.
 
-Compare the frozen V6 table against the frozen Development global event rate `0.24425812345034582` as a simple probability baseline. No refit is permitted.
+Compare the frozen V6 table against the frozen Development global event rate `0.24650920005219887` as a simple probability baseline. This is the exact weighted event rate over the 7,663 Development scoring rows reported by the frozen leave-one-year-out run. No refit is permitted.
 
 ## Acceptance
 
