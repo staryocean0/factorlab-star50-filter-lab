@@ -1,0 +1,31 @@
+{
+  "schema": "highvol_recovery_survival_v11_development_decisive_receipt_v1",
+  "branch": "research/highvol-recovery-survival-v11-20260910",
+  "execution_head": "325363f6ebd25c284fcf9333cce61e84eb76e22e",
+  "run_id": 34450053409,
+  "job_id": 102783507788,
+  "artifact_id": 10141174485,
+  "artifact_zip_sha256": "69b486865b89d92c4ac210f6d684af7c221b79f0dbaf39668044d4ae76ff7286",
+  "development_years": [2021, 2022, 2023],
+  "row_count": 7327,
+  "horizons_minutes": [15, 30, 60],
+  "all_8_base_cells_n_ge_100": true,
+  "all_cells_p15_le_p30_le_p60": true,
+  "pooled_loo_brier_better_all_3_horizons": true,
+  "annual_brier_better_at_least_2_of_3_each_horizon": true,
+  "pooled_loo_logloss_better_all_3_horizons": true,
+  "recovering_gt_unsafe_all_12_horizon_age_views": false,
+  "failure_detail": {
+    "horizon_minutes": 60,
+    "age_buckets_with_reversed_order": ["LT15", "M15_25", "M30_40", "GE45"],
+    "unsafe_p60": [0.7978339350180506, 0.9076620825147348, 0.9659284497444633, 0.9828693790149893],
+    "recovering_p60": [0.6996587030716723, 0.8488453463960812, 0.9326513213981245, 0.9786003470213996]
+  },
+  "validation_eligible": false,
+  "validation_queried": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "production_authority": false,
+  "decision": "REJECT_COHERENT_15_30_60_ORDINAL_SURVIVAL_OBJECT; INVESTIGATE_60M_STATE_RANK_CROSSOVER_IN_DEVELOPMENT"
+}
