@@ -1,0 +1,101 @@
+name: highvol-recovery-clock-v6-full-validation
+on:
+  push:
+    branches:
+      - research/highvol-recovery-clock-v6-full-validation-20260910
+jobs:
+  full-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frozen V6 and historical validation inputs
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/highvol_recovery_hazard_v3
+            research/highvol_recovery_clock_v6
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/cross_index_risk_gate_v1/1m/000688.SH/2023.parquet
+            data/cross_index_risk_gate_v1/1m/000852.SH/2023.parquet
+            data/market/5m/000688.SH/2023.parquet
+            data/market/5m/000688.SH/2024.parquet
+            data/market/5m/000688.SH/2025.parquet
+            data/market/5m/000852.SH/2023.parquet
+            data/market/5m/000852.SH/2024.parquet
+            data/market/5m/000852.SH/2025.parquet
+          sparse-checkout-cone-mode: false
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install fixed dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+      - name: Validate three-pool governance
+        run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Restore sealed 2026 one-minute Validation inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin research/post-shock-recovery-2026-validation
+          STAR_BLOB=$(git rev-parse FETCH_HEAD:data/cross_index_risk_gate_2026_v1/1m/000688.SH/2026.parquet)
+          CSI_BLOB=$(git rev-parse FETCH_HEAD:data/cross_index_risk_gate_2026_v1/1m/000852.SH/2026.parquet)
+          test "$STAR_BLOB" = "4626fb307bbcae1c417ddcd69ac694cf322c8bbc"
+          test "$CSI_BLOB" = "8de5cd3caab99dbacae229a2c87f15c4ff2f8558"
+          mkdir -p data/_validation_2026_1m/000688.SH data/_validation_2026_1m/000852.SH
+          git show FETCH_HEAD:data/cross_index_risk_gate_2026_v1/1m/000688.SH/2026.parquet > data/_validation_2026_1m/000688.SH/2026.parquet
+          git show FETCH_HEAD:data/cross_index_risk_gate_2026_v1/1m/000852.SH/2026.parquet > data/_validation_2026_1m/000852.SH/2026.parquet
+      - name: Guard 2026 Validation cutoff
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          from pathlib import Path
+          for s in ['000688.SH','000852.SH']:
+              p=Path('data/_validation_2026_1m')/s/'2026.parquet'
+              x=pd.read_parquet(p, columns=['trading_day'])
+              d=pd.to_datetime(x.trading_day).dt.strftime('%Y-%m-%d')
+              assert d.min() >= '2026-01-01', (s,d.min())
+              assert d.max() <= '2026-08-21', (s,d.max())
+              print(s, d.min(), d.max(), len(x))
+          PY
+      - name: Test frozen construction and scoring contract
+        run: python -m pytest -q research/highvol_recovery_hazard_v3/test_hazard.py research/highvol_recovery_clock_v6/test_clock_compare.py research/highvol_recovery_clock_v6/test_full_validation.py
+      - name: Run frozen full reusable Validation
+        run: python research/highvol_recovery_clock_v6/run_full_validation.py --repo-root . --out artifacts/highvol_recovery_clock_v6_full_validation
+      - name: Guard risk-only semantics
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/highvol_recovery_clock_v6_full_validation/summary.json'))
+          assert s['candidate_id']=='unsafe_recovering_recent_shock_clock_v6'
+          assert s['user_authorized_1m_to_5m'] is True
+          assert s['fit_performed'] is False
+          assert s['parameter_change_performed'] is False
+          assert s['state_thresholds_unchanged'] is True
+          assert s['pnl_computed'] is False
+          assert s['trading_rule_created'] is False
+          assert s['blackbox_queried'] is False
+          assert s['production_authority'] is False
+          assert s['synthesis_equivalence']['passed'] is True
+          print('full validation supported:', s['full_validation_supported'])
+          print(json.dumps(s['acceptance'], sort_keys=True))
+          PY
+      - name: Seal output manifest
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          root=Path('artifacts/highvol_recovery_clock_v6_full_validation')
+          files=[]
+          for p in sorted(root.iterdir()):
+              if p.is_file():
+                  b=p.read_bytes(); files.append({'name':p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+          (root/'output_manifest.json').write_text(json.dumps({'schema':'highvol_recovery_clock_v6_full_validation_manifest','files':files},indent=2)+'\n')
+          PY
+      - name: Upload full Validation evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: highvol-recovery-clock-v6-full-validation-${{ github.run_id }}
+          path: artifacts/highvol_recovery_clock_v6_full_validation
+          retention-days: 30
