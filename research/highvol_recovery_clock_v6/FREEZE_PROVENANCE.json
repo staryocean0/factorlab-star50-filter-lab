@@ -1,0 +1,10 @@
+{
+  "candidate_id":"unsafe_recovering_recent_shock_clock_v6",
+  "freeze_head":"526c377b7dc81c0f8c91f5a2206d9b8a21c13987",
+  "development_run":34415326314,
+  "development_artifact_id":10128833197,
+  "development_artifact_sha256":"b4d3a1c7dabf9b52c8c13e28355c9fa3fe2e7934768312ab7a13ec8efc326150",
+  "validation_protocol":"VALIDATION_PROTOCOL_SYNTH5M.md",
+  "blackbox_queried":false,
+  "production_authority":false
+}
