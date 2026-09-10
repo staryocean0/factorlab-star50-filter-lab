@@ -1,0 +1,27 @@
+{
+  "schema": "highvol_horizon_state_value_v14_development_decisive_receipt_v1",
+  "branch": "research/highvol-horizon-specific-state-value-v14-20260910",
+  "execution_commit": "a9223748933fc842a68865a3837e24f49f014691",
+  "actions_run_id": 34454169246,
+  "artifact_id": 10142758729,
+  "artifact_sha256": "129271138720dcf972345006ea7e938aed0356531d2fa2d872e2aaa8d06d7f9f",
+  "row_count": 7327,
+  "development_years": [2021, 2022, 2023],
+  "horizons_minutes": [15, 30, 60],
+  "min_state_age_training_cell_n": 166,
+  "annual_brier_win_count": {"15": 3, "30": 3, "60": 3},
+  "pooled_loyo_improvement_state_over_age": {
+    "15": {"brier": 0.002820966312336956, "log_loss": 0.00940939653971068},
+    "30": {"brier": 0.0014218092982553332, "log_loss": 0.004547626969935714},
+    "60": {"brier": 0.0004914737592283669, "log_loss": 0.001782494701638604}
+  },
+  "horizon_specific_state_value_supported": true,
+  "decision": "NOMINATE_HORIZON_SPECIFIC_RECOVERY_SURFACE_FOR_FROZEN_VALIDATION",
+  "frozen_surface_path": "research/highvol_horizon_state_value_v14/FROZEN_HORIZON_SURFACE.json",
+  "validation_authorized": true,
+  "validation_queried": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "production_authority": false
+}
