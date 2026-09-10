@@ -1,0 +1,45 @@
+{
+  "schema": "highvol_horizon_specific_state_value_v14_validation_decisive_receipt_v1",
+  "status": "REJECTED_AS_JOINT_15_30_60M_SURFACE",
+  "development_authority": {
+    "execution_commit": "a9223748933fc842a68865a3837e24f49f014691",
+    "run_id": 34454169246,
+    "artifact_id": 10142758729,
+    "frozen_surface_blob": "be06a4988fb4a602e2b72d115268c926421aa1f5"
+  },
+  "validation_authority": {
+    "execution_commit": "b93f9eb6129e12c49987a75f7af122f8d161c111",
+    "run_id": 34493954221,
+    "artifact_id": 10158985790,
+    "artifact_sha256": "513821db8709a128f2d3bcb30d368ecd951b8e3d8511eb7d4a20b2c63d0e2271",
+    "period": ["2024-01-01", "2026-08-21"],
+    "row_count": 5908,
+    "year_row_counts": {"2024": 2339, "2025": 2201, "2026": 1368}
+  },
+  "pooled_improvement_state_plus_age_over_age_only": {
+    "15m": {"brier": 0.002688367807109057, "log_loss": 0.008904340010353728},
+    "30m": {"brier": 0.003056596014699209, "log_loss": 0.009806934051160565},
+    "60m": {"brier": -0.0009336778106417143, "log_loss": -0.004823204540437553}
+  },
+  "annual_brier_win_count": {"15m": 3, "30m": 3, "60m": 0},
+  "acceptance": {
+    "pooled_common_cohort_rows_ge_3000": true,
+    "each_validation_year_nonempty": true,
+    "pooled_state_plus_age_brier_better_all_horizons": false,
+    "pooled_state_plus_age_logloss_better_all_horizons": false,
+    "annual_brier_better_at_least_2_of_3_each_horizon": false,
+    "synthesis_equivalence_passed": true,
+    "sealed_2026_source_and_cutoff_passed": true,
+    "fit_performed_false": true,
+    "parameter_change_performed_false": true,
+    "threshold_search_performed_false": true,
+    "posthoc_horizon_selection_false": true,
+    "pnl_computed_false": true,
+    "trading_rule_created_false": true,
+    "blackbox_queried_false": true
+  },
+  "full_validation_supported": false,
+  "scientific_interpretation": "Current UNSAFE/RECOVERING state adds stable incremental recovery information beyond recent-shock age at 15m and 30m, but not at 60m. Because V14 was preregistered as a joint 15/30/60m surface, it is rejected. 15m/30m may motivate a new Development hypothesis but cannot be post-hoc promoted from this Validation.",
+  "production_authority": false,
+  "blackbox_queried": false
+}
