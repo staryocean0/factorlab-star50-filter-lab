@@ -1,0 +1,45 @@
+name: highvol-realtime-detection-v8-schema-probe
+on:
+  push:
+    branches:
+      - research/highvol-realtime-detection-v8-3s-20260910
+    paths:
+      - .github/workflows/highvol-realtime-detection-v8-schema-probe.yml
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            data/cross_index_risk_gate_3s_v1/000688.SH_2021.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2021.parquet
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pandas pyarrow
+      - name: Probe schema and temporal semantics
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          from pathlib import Path
+          for symbol in ['000688.SH','000852.SH']:
+              p=Path('data/cross_index_risk_gate_3s_v1')/f'{symbol}_2021.parquet'
+              x=pd.read_parquet(p)
+              print('===',symbol,'===')
+              print('columns',list(x.columns))
+              print('dtypes', {c:str(x[c].dtype) for c in x.columns})
+              print('rows',len(x))
+              print('head',x.head(5).to_dict('records'))
+              print('tail',x.tail(5).to_dict('records'))
+              for c in x.columns:
+                  lc=c.lower()
+                  if any(k in lc for k in ['time','date','day']):
+                      s=pd.to_datetime(x[c],errors='coerce')
+                      if s.notna().any(): print('time_candidate',c,'min',s.min(),'max',s.max(),'nat',int(s.isna().sum()),'dups',int(s.duplicated().sum()))
+              for c in x.columns:
+                  if c.lower() in ['price','last','close','index','value','last_price']:
+                      s=pd.to_numeric(x[c],errors='coerce')
+                      print('price_candidate',c,'finite',int(s.notna().sum()),'min',float(s.min()),'max',float(s.max()))
+          PY
