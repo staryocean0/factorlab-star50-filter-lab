@@ -142,7 +142,7 @@ def clustered_bootstrap(oof: pd.DataFrame, horizon: int) -> dict:
     counts = day["count"].to_numpy(float)
     if len(sums) < 2:
         raise RuntimeError("too few trading-day clusters")
-    rng = np.random.default_rng(BOOTSTRAP_SEED + horizon)
+    rng = np.random.default_rng(BOOTSTRAP_SEED)
     draws = np.empty(BOOTSTRAP_REPS, float)
     n_days = len(sums)
     for i in range(BOOTSTRAP_REPS):
@@ -155,7 +155,7 @@ def clustered_bootstrap(oof: pd.DataFrame, horizon: int) -> dict:
         "cluster_key": "trading_day",
         "clusters": int(n_days),
         "repetitions": BOOTSTRAP_REPS,
-        "seed": BOOTSTRAP_SEED + horizon,
+        "seed": BOOTSTRAP_SEED,
         "point_brier_improvement": point,
         "ci95_lower": float(lo),
         "ci95_upper": float(hi),
@@ -236,7 +236,7 @@ def run(root: Path, out: Path) -> dict:
         "bootstrap": {
             "cluster_key": "trading_day",
             "repetitions": BOOTSTRAP_REPS,
-            "base_seed": BOOTSTRAP_SEED,
+            "seed": BOOTSTRAP_SEED,
             "results": boot,
         },
         "min_state_age_training_cell_n": min_cell,
