@@ -1,0 +1,28 @@
+{
+  "schema": "highvol_recovery_clock_v6_frozen_candidate",
+  "candidate_id": "unsafe_recovering_recent_shock_clock_v6",
+  "source_development_run": 34415326314,
+  "source_development_commit": "b89902f15e82970e095f13854048b1b0c71474d6",
+  "target": "normal_within_next_15_minutes",
+  "state_thresholds_unchanged": true,
+  "age_buckets": ["LT15", "M15_25", "M30_40", "GE45"],
+  "probability_table": [
+    {"current_state":"UNSAFE","age_bucket":"LT15","n":281,"successes":1,"probability":0.007067137809187279},
+    {"current_state":"UNSAFE","age_bucket":"M15_25","n":514,"successes":3,"probability":0.007751937984496124},
+    {"current_state":"UNSAFE","age_bucket":"M30_40","n":595,"successes":7,"probability":0.01340033500837521},
+    {"current_state":"UNSAFE","age_bucket":"GE45","n":473,"successes":250,"probability":0.5284210526315789},
+    {"current_state":"RECOVERING","age_bucket":"LT15","n":1222,"successes":67,"probability":0.05555555555555555},
+    {"current_state":"RECOVERING","age_bucket":"M15_25","n":1494,"successes":72,"probability":0.04879679144385027},
+    {"current_state":"RECOVERING","age_bucket":"M30_40","n":1253,"successes":105,"probability":0.08446215139442231},
+    {"current_state":"RECOVERING","age_bucket":"GE45","n":1831,"successes":1384,"probability":0.7555919258046918}
+  ],
+  "development_acceptance": {
+    "recent_clock_brier_better_all_3_years": true,
+    "recent_clock_logloss_better_at_least_2_of_3": true,
+    "all_8_final_cells_n_ge_100": true,
+    "recovering_gt_unsafe_all_4_buckets": true
+  },
+  "validation_queried": false,
+  "blackbox_queried": false,
+  "production_authority": false
+}
