@@ -1,10 +1,12 @@
 # STAR50 filter lab index
 
-- **Current risk-state authority:** [V16 reusable Validation authority](research/highvol_horizon_adaptive_v16_validation_20260911.md) → [decisive receipt](research/highvol_horizon_adaptive_v16_validation_receipt_20260911.json) → `research/highvol_horizon_adaptive_v16/FROZEN_HORIZON_ADAPTIVE_SURFACE.json`. The validated 5m recovery object is horizon-adaptive: 15m/30m use `current_state + recent-shock age`; 60m uses recent-shock age only. Reusable Validation: 5,908 rows through 2026-08-21; 15m/30m beat age-only in pooled Brier/LogLoss and in all 3 annual Brier slices; 60m is exactly the age-only anchor. `production_authority=false`; BlackBox queries=0.
+- **Current realtime risk-state authority:** `research/highvol_realtime_horizon_adaptive_v17_validation/VALIDATION_RESULTS.md` → `research/highvol_realtime_horizon_adaptive_v17_validation/DECISIVE_RECEIPT.json` → `research/highvol_realtime_horizon_adaptive_v17/FROZEN_REALTIME_TRANSFER.json`. At exactly `E-15s`, 15m/30m use the frozen V16 `state + recent-shock age` surface with the frozen V9 provisional state; 60m uses the frozen V16 recent-shock-age-only anchor. Reusable 3s Validation is limited to 2024-2025: 4,540 cohort rows, 4,516 realtime-scored, coverage 0.994714; 15m/30m probability MAE 0.000825/0.000638; 60m is exactly unchanged. `queried_2026_3s=false`; `production_authority=false`; BlackBox queries=0.
 
-- **Current scope:** bottom-layer K-line risk-state annotation/gating only. Historical payoff/router material below is retained as archive evidence and is not current authority after the scope repair.
+- **Current final-5m risk-state authority:** V16 frozen horizon-adaptive recovery surface in `research/highvol_horizon_adaptive_v16/FROZEN_HORIZON_ADAPTIVE_SURFACE.json` with reusable Validation in `research/highvol_horizon_adaptive_v16_validation/VALIDATION_RESULTS.md`. The 5m object is validated through 2026-08-21: 15m/30m use `current_state + recent-shock age`; 60m uses recent-shock age only. V16's 2026 5m authority does not create 2026 3s realtime authority.
 
-- Current cloud entry: [两指数底层K线风险研究交接](handoff/cloud_risk_gate_20260907/HANDOFF.md) → [数据口径](handoff/cloud_risk_gate_20260907/DATA.md) → [云端—本地记录](ops/cloud_local_communication.md)。15项文献全文和有界指数3s/1m/5m；本地为存储核心，不开启交易/期权或2026研究。
+- **Current scope:** bottom-layer K-line risk-state annotation/gating only. Historical payoff/router material below is retained as archive evidence and is not current authority after the scope repair. The historical payoff V17 branches are unrelated to the current risk-state V17.
+
+- Current cloud entry: [两指数底层K线风险研究交接](handoff/cloud_risk_gate_20260907/HANDOFF.md) → [数据口径](handoff/cloud_risk_gate_20260907/DATA.md) → [云端—本地记录](ops/cloud_local_communication.md)。15项文献全文和有界指数3s/1m/5m；本地为存储核心，不开启交易/期权研究。
 
 - Latest: [因果未来波动工具V1](research/causal_volatility_tool_v1/result.md) → [接口与复现](research/causal_volatility_tool_v1/workflow.md)。环境预测有进展，普通时段突变预警未通过；不授交易路由。
 
@@ -32,12 +34,13 @@
 - Prior local result: [第五轮连败与频段机制](research/streak_mechanism_v1/report.md)
 
 - Current task and corrections: `CURRENT_RESEARCH.md`
+- Continue here: `CONTINUE_HERE.md`
 - available_at semantics: `docs/governance/available_at_owner_clarification_20260906.json`
 
 - Data: `data/README.md`
 - Roles: `docs/governance/data_usage_declaration.json`
 - Scope: `docs/governance/package_scope.json`
-- Receipts: `docs/research/`
+- Receipts: `docs/research/` and `research/highvol_realtime_horizon_adaptive_v17_validation/`
 - Skill: `.codex/skills/strategy-slice-rebuild/SKILL.md`
 
 ## 第四轮：固定策略跨尺度根因（历史保留）
