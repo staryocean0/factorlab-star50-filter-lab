@@ -1,13 +1,11 @@
-# 本地接续入口：D2 云端回放已验收，D3 尚未执行
+# 本地接续入口：D3 已完成，实际增量未晋升
 
-以CURRENT_RESEARCH.md、CONTINUE_HERE.md及docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md为准。当前执行状态在research/causal_state_delivery_d2/PROGRAM_STATE.json和EXECUTION_RECEIPT.json。
+以CURRENT_RESEARCH.md、CONTINUE_HERE.md与docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md为准；当前进度在research/causal_state_utility_d3/PROGRAM_STATE.json，正式结果D3_INCREMENTAL_UTILITY_NOT_SUPPORTED。
 
-D2原始行情回放在有界Actions执行：run34620317766，artifact10271634055。当前会话完成标准库单元测试及完整JSONL账本独立核验。两者不等于本地FactorLab/DataHub已回迁、执行或接入。
+D3拟合/评分、24项测试及96030条结果/损失独立复核在本会话完成。Actions成功run34623937960、artifact10273059875只转运十二份既有5m输入，不是D3统计run。原D2 raw replay run34620317766仍为历史工程证据。
 
-本地回迁先核对指定提交、回执中的代码/数据/产物身份，阅读D2 RESULTS.md的新鲜度和日初不可用限制，再执行CONTINUE_HERE的检查。不要无意义重跑V19；不要把云端结果当成本地独立全量复验。
+本地接续先核对协议、FIT_FREEZE_RECEIPT、EXECUTION_RECEIPT、DECISIVE_RECEIPT以及完整会话结果包哈希，按REPRODUCE.md检查现有结果。模型文件SHA256 f5a33a71969a18f2e7aa0aad45cd83903943d86962f2a92f5206e348667a2db0；不要覆盖模型或把重复验证称为新独立证据。完整包是否已本地回迁/运行由本地回执确认，本会话不冒称。
 
-下一研究任务D3须先注册非PnL风险分桶效用协议，尚无结果。生产接入、接收延迟、断线恢复/修订策略和经济验收均未通过；不接生产registry。
+6项主比较有小增量但低于预注册实际门槛，不能改判；V19/D2保留。下一方向为独立预注册连续风险属性用途，D4未启动，不续做三状态accuracy微调。没有生产流、真实延迟、断线恢复或策略收益验收，不改registry。
 
-V19基线、D1原始契约和历史源码事件保持不变。旧2026-09-06本地接管说明及hash缺口保存在commit766dd6f5293a1fa8588edabe368088f63981fa1a；旧任务/数据标签不覆盖当前V2政策。
-
-production_authority=false。
+旧本地接管/源码hash事件仍在历史commit766dd6f5293a1fa8588edabe368088f63981fa1a及原文中，不因新结果消失。V2数据政策、研究桶边界与production_authority=false不变。

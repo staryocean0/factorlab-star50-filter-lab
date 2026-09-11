@@ -1,0 +1,16 @@
+{
+  "schema": "d3_result_bundle_receipt_v1",
+  "archive_name": "D3_risk_bucket_utility_evidence.zip",
+  "archive_sha256": "ee634995477c6a6c043ccb452175b142e20161d932e26a0dc391ff48e186b533",
+  "bytes": 27031679,
+  "manifest_sha256": "31fd936367443154d5e27e062299fca0bb0a7cad01b70334fe1527f9680d10ff",
+  "verified_file_entries": 53,
+  "full_results_in_archive": true,
+  "includes_original_input_zips": true,
+  "statistical_execution_location": "current_chat_container",
+  "github_actions_statistical_artifact": false,
+  "frozen_probes_sha256": "f5a33a71969a18f2e7aa0aad45cd83903943d86962f2a92f5206e348667a2db0",
+  "summary_sha256": "8414d6920cf29166e3599dd90dd5f6c8e6cf9c23d2580e0db2500530793684d5",
+  "result_source_commit": "0267b52e2b6d4a5d6a854cd33a55a3b8f75c22a6",
+  "production_authority": false
+}

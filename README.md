@@ -1,32 +1,28 @@
 # 科创50 / 中证1000：因果 K 线风险属性模块
 
-**识别行情演变中当时可知的K线风险属性变化，为下游状态识别、策略分桶和适用环境判断提供可按时点消费的信息。** 本仓不开发买卖、方向、仓位或收益路由，不以事后解释或准确率小数点为终点。
+**识别行情演变中当时可知的K线风险属性及其变化，为下游状态识别、策略分桶和适用环境判断提供可按时点消费的信息。** 本仓不开发具体策略动作、方向、仓位或收益路由。
 
-## 当前阶段：D2 已通过，D3 尚未执行
+## 当前状态：D3 已执行，实际增量用途未获晋升
 
-V19基线及残差审计保持冻结。交付路线为：契约 → 因果双时钟事件回放/消费者验收 → 非PnL风险分桶效用评价；不是新模型V20。
+**D3_COMPLETED_NO_PRACTICAL_INCREMENTAL_PROMOTION**。
 
-D2完成独立原始价格回放：113,928个原可用E-15行全部保留、状态与概率零漂移；生成232,704个E-15/CLOSE事件，固定市场未来扰动20/20通过。D1原20项和D2新38项测试通过。
+V19有冻结参考定义下的识别证据；D2因果E15/CLOSE回放与研究消费者交付已通过。D3现在已单独检验后续15/30/60分钟风险信息：相对上一确认状态及简单历史波动，状态/转移/恢复属性带来小幅正改善，但6项主比较均低于预注册1%相对误差改善门槛；加入已有实时连续强度后，状态额外增量更小且区间跨0。**D3_INCREMENTAL_UTILITY_NOT_SUPPORTED**，不是执行失败，不推翻V19/D2，也不宣称已经证明强预测门控。
 
-开始阅读：[当前任务](CURRENT_RESEARCH.md) → [方向](docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md) → [接续入口](CONTINUE_HERE.md) → [当前机器进度](research/causal_state_delivery_d2/PROGRAM_STATE.json) → [D2结果](research/causal_state_delivery_d2/RESULTS.md) / [回执](research/causal_state_delivery_d2/EXECUTION_RECEIPT.json)。
+阅读：[当前任务](CURRENT_RESEARCH.md) → [方向](docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md) → [接续入口](CONTINUE_HERE.md) → [机器进度](research/causal_state_utility_d3/PROGRAM_STATE.json) → [D3结果](research/causal_state_utility_d3/RESULTS.md) / [判定回执](research/causal_state_utility_d3/DECISIVE_RECEIPT.json) / [复现](research/causal_state_utility_d3/REPRODUCE.md)。
 
-完整网格状态覆盖97.9167%，不把日初不可用补NORMAL。日末15:00 bar的E-15观察有已披露新鲜度限制；15秒提前量是历史实时可得假设，不是实测延迟。工程回放通过不证明分桶增量效用或生产就绪。
+下一合理方向为独立预注册连续风险属性的实际用途，不继续挤三状态accuracy；D4和V20均未启动。描述性风险区分不等于有足够增量，更不等于策略盈利。
 
-下一步D3先预注册后续波动、再次冲击、持续/恢复的风险效用评价，再与匹配的简单已知基准比较；当前没有D3结果。
+## 保留的基线及适用边界
 
-## 冻结基线与范围
+[V19 Validation](research/highvol_risk_episode_state_machine_v19_validation/VALIDATION_RESULTS.md)、[残差审计](research/v19_residual_failure_audit/RESULTS.md)、[D2结果](research/causal_state_delivery_d2/RESULTS.md)与原代码/surface/回执保持不变。D2原可用113928行零漂移；完整网格可用率97.9167%，日初缺参考与日末观察新鲜度限制保留。历史假设下15秒提前量不是实测延迟。
 
-V18：E-15 switch-on；V19：UNSAFE/RECOVERING连续性与收盘确认退出；V16/V17：冻结多horizon恢复对象。[V19 Validation](research/highvol_risk_episode_state_machine_v19_validation/VALIDATION_RESULTS.md)和[残差审计](research/v19_residual_failure_audit/RESULTS.md)保持原样。D1封存切片在research/causal_state_delivery_v1/。
+D3未来窗口不含当前bar、不跨午休/隔夜；缺窗口不补无风险。NORMAL非安全保证，UNSAFE非看空，UNAVAILABLE非NORMAL。后验只用于评价；available_at仍是历史检索时钟。
 
-NORMAL不保证交易安全，UNSAFE不代表看空，UNAVAILABLE不是NORMAL。后验标签只能评价，不能进入消费者输入。available_at仍是历史检索时钟。
-
-Range/UpTrend/DownTrend属于two-wave仓，具体策略经济验收属于对应策略仓；旧payoff/router仅历史证据。[研究桶边界](docs/governance/BUCKET_SCOPE_REPAIR_20260909.md)不变。
-
-Development为2021–2023；Validation为2024–2026-08-21的可复用池，不是fresh OOS。实际3s验证覆盖仍止于2025；V16 final-5m覆盖不替代2026 realtime authority。遵守[V2数据政策](docs/governance/DATA_USAGE_POLICY_V2.md)，不查询BlackBox，不改生产权限。
+Development2021–2023；Validation2024–2026-08-21按[V2政策](docs/governance/DATA_USAGE_POLICY_V2.md)复用，非fresh OOS；实际实时证据/本次评价止于2025。无2026 3s、BlackBox或生产权限。[研究桶边界](docs/governance/BUCKET_SCOPE_REPAIR_20260909.md)不变，旧payoff/router只作历史证据。
 
 ```bash
 python scripts/validate_data_usage_policy.py
-python -m unittest discover -s research/causal_state_delivery_d2 -p 'test_*.py' -v
+python -m unittest discover -s research/causal_state_utility_d3 -p 'test_*.py' -v
 ```
 
-`D2_CAUSAL_REPLAY_SUPPORTED_D3_NOT_EXECUTED`；`production_authority=false`。
+`d3_executed=true`; `d3_practical_incremental_promotion=false`; `d4_started=false`; `v20_started=false`; `production_authority=false`。

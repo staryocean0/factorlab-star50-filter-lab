@@ -1,0 +1,53 @@
+# Transport retry only: strip authorization on cross-host redirect; protocol unchanged.
+name: d3-input-transport
+on:
+  push:
+    branches: [research/d3-risk-bucket-utility-20260912]
+    paths: [.github/workflows/d3-input-transport.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  transport:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            research/causal_state_utility_d3
+            scripts/validate_data_usage_policy.py
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            data/market/5m/000688.SH/2020.parquet
+            data/market/5m/000688.SH/2021.parquet
+            data/market/5m/000688.SH/2022.parquet
+            data/market/5m/000688.SH/2023.parquet
+            data/market/5m/000688.SH/2024.parquet
+            data/market/5m/000688.SH/2025.parquet
+            data/market/5m/000852.SH/2020.parquet
+            data/market/5m/000852.SH/2021.parquet
+            data/market/5m/000852.SH/2022.parquet
+            data/market/5m/000852.SH/2023.parquet
+            data/market/5m/000852.SH/2024.parquet
+            data/market/5m/000852.SH/2025.parquet
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install conversion-only dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 pyarrow==19.0.1
+      - name: Validate unchanged data governance
+        run: python scripts/validate_data_usage_policy.py
+      - name: Verify original identities and losslessly export CSV only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python research/causal_state_utility_d3/export_inputs.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: d3-input-transport-${{ github.run_id }}
+          path: artifacts/d3_input_transport
+          retention-days: 90
+          if-no-files-found: error

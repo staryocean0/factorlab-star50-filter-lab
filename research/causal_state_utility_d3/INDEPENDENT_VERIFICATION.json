@@ -1,0 +1,13 @@
+{
+  "schema": "d3_independent_target_and_metric_check_v1",
+  "execution_location": "current_chat_container",
+  "verified_validation_rows_across_three_horizons": 96030,
+  "future_tail_mismatches": 0,
+  "max_abs_log_sigma_difference": 2.0827783941967937e-12,
+  "max_saved_metric_difference": 0.0,
+  "model_hash_unchanged": "f5a33a71969a18f2e7aa0aad45cd83903943d86962f2a92f5206e348667a2db0",
+  "same_day_same_session_future_nodes": true,
+  "block_counts_match": true,
+  "refit_performed": false,
+  "all_passed": true
+}
