@@ -4,7 +4,6 @@ on:
   pull_request:
 jobs:
   validate:
-    if: github.ref != 'refs/heads/research/d3-risk-bucket-utility-20260912'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
