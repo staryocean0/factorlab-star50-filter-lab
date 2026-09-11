@@ -1,0 +1,41 @@
+{
+  "schema": "highvol_horizon_adaptive_surface_v16_validation_decisive_receipt_v1",
+  "branch": "research/highvol-horizon-adaptive-v16-validation-20260910",
+  "development_source_branch": "research/highvol-horizon-adaptive-surface-v16-20260910",
+  "development_execution_commit": "bcdc18d5886869865c6454fa323ebc6858090249",
+  "development_run_id": 34497737506,
+  "development_artifact_id": 10160511846,
+  "frozen_surface_blob": "1f88966cf5dd3fb102f0d75746d5d00434555647",
+  "validation_execution_commit": "198c3040182f500e7e8c576ee7fa5ade3b30c9fa",
+  "validation_run_id": 34602527314,
+  "validation_job_id": 103273044422,
+  "validation_artifact_id": 10264689647,
+  "validation_artifact_sha256": "e28a877d40c3bd2464b4f09b1078cdfae83a7ecebcc8bbd34fdb7bad4e8d82f5",
+  "validation_period": ["2024-01-01", "2026-08-21"],
+  "row_count": 5908,
+  "year_row_counts": {"2024": 2339, "2025": 2201, "2026": 1368},
+  "pooled_improvement_over_age_only": {
+    "15m": {"brier": 0.002688367807109057, "log_loss": 0.008904340010353728},
+    "30m": {"brier": 0.003056596014699209, "log_loss": 0.009806934051160565},
+    "60m": {"brier": 0.0, "log_loss": 0.0}
+  },
+  "annual_brier_win_count": {"15m": 3, "30m": 3, "60m": 0},
+  "rowwise_monotone": true,
+  "max_abs_60m_anchor_diff": 0.0,
+  "synthesis_equivalence_2023": {
+    "000688.SH": {"days": 242, "rows": 11616, "max_abs_close_diff": 0.0},
+    "000852.SH": {"days": 242, "rows": 11616, "max_abs_close_diff": 0.0}
+  },
+  "synthesized_2026_5m_rows_per_symbol": 7392,
+  "full_validation_supported": true,
+  "decision": "V16_REUSABLE_VALIDATION_SUPPORTED",
+  "fit_performed": false,
+  "parameter_change_performed": false,
+  "threshold_search_performed": false,
+  "posthoc_horizon_selection": false,
+  "projection_change_performed": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "production_authority": false
+}
