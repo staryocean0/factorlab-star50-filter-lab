@@ -1,3 +1,4 @@
+# Transport retry only: strip authorization on cross-host redirect; protocol unchanged.
 name: d3-input-transport
 on:
   push:
