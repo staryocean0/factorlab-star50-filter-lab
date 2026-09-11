@@ -1,0 +1,62 @@
+{
+  "schema": "d3_execution_receipt_v1",
+  "execution_location": "current_chat_container",
+  "scope": "fixed Development-only information-probe fitting; reusable Validation evaluation; independent saved target and metric verification",
+  "protocol_commit": "43d46e211656e086a40c7a61c622674baa7b6011",
+  "fit_freeze_commit_before_validation": "78c12f27f43107b0b1f08902b75be4af09e9c638",
+  "protocol_sha256": "5d0952521553c5650cb4ce7bce28f13f324755c2c21bd6c4d6dd2d72ddfe9b64",
+  "runner_sha256": "faac8b14888f94cb963dcf0d92a4452d10fa533f6ebc4a61b283924c78ecb3f9",
+  "test_sha256": "2fbd54a5d18ab43a5530afedf224292a59967cb3e263a520a816553949d5804a",
+  "verifier_sha256": "07768ab7b01f0eef421ea2096674bb5de290545a18973d66aa680a3a966d9a7b",
+  "python": "3.13.5",
+  "numpy": "2.3.5",
+  "pandas": "2.2.3",
+  "commands": [
+    {"command":"python -m unittest discover -s research/causal_state_utility_d3 -p 'test_*.py' -v","exit_code":0,"tests":24},
+    {"command":"python scripts/validate_data_usage_policy.py","exit_code":0},
+    {"command":"python -m compileall -q research/causal_state_utility_d3","exit_code":0},
+    {"command":"OPENBLAS_NUM_THREADS=1 python research/causal_state_utility_d3/run_d3.py --phase fit --transport INPUT_TRANSPORT.zip --ledger D2_LEDGER.zip --out results","exit_code":0},
+    {"command":"OPENBLAS_NUM_THREADS=1 python research/causal_state_utility_d3/run_d3.py --phase evaluate --transport INPUT_TRANSPORT.zip --ledger D2_LEDGER.zip --out results","exit_code":0},
+    {"command":"python research/causal_state_utility_d3/verify_d3.py --transport INPUT_TRANSPORT.zip --out results","exit_code":0}
+  ],
+  "command_path_aliases": {"INPUT_TRANSPORT.zip":"d3_input_transport_34623937960.zip","D2_LEDGER.zip":"d2_causal_state_replay_34620317766.zip"},
+  "fit_years": [2021,2022,2023],
+  "validation_years": [2024,2025],
+  "probe_count": 30,
+  "model_sha256_before_after": "f5a33a71969a18f2e7aa0aad45cd83903943d86962f2a92f5206e348667a2db0",
+  "input_transport": {
+    "execution_location":"github_actions_transport_only","successful_run":34623937960,"artifact":10273059875,
+    "execution_commit":"073abd7ffbeb75833369a681d02edcf0130848ca",
+    "zip_sha256":"cc37a181782ea25e61329285641739a2284e77a0f1a4c3672783d8ee23b78b84",
+    "statistical_analysis_performed":false,"parquet_files":12,"price_roundtrips_exact":true
+  },
+  "d2_input": {"artifact":10271634055,"zip_sha256":"cf1c89e1412fd70f27992d9077af10dd7887a6843072e03ef808902bf5a84096"},
+  "failures_before_fit": [
+    {"run":34623485077,"stage":"transport","cause":"HTTP401 from forwarded Authorization header on cross-host signed archive redirect","repair":"strip cross-host Authorization/Accept on HTTPS redirect","statistical_output":false},
+    {"stage":"local input parsing","cause":"mixed ISO8601 fractional seconds in expiry timestamp","repair":"explicit ISO8601 parser; preserve microseconds","statistical_output":false}
+  ],
+  "checks": {"unit_tests":24,"independent_validation_rows":96030,"future_tail_mismatches":0,"max_abs_log_sigma_difference":2.0827783941967937e-12,"max_saved_metric_difference":0.0,"fixed_market_history_prefix_checks":20},
+  "outputs": {
+    "SUMMARY.json":{"bytes":24170,"sha256":"8414d6920cf29166e3599dd90dd5f6c8e6cf9c23d2580e0db2500530793684d5"},
+    "FROZEN_PROBES.json":{"bytes":244257,"sha256":"f5a33a71969a18f2e7aa0aad45cd83903943d86962f2a92f5206e348667a2db0"},
+    "UNIT_TEST_OUTPUT.txt":{"bytes":2357,"sha256":"c12728da85fb1607c3d65ed0ed7e2467fd00a4fb481da3ca9ffd7597932f214c"},
+    "GOVERNANCE_TEST_OUTPUT.txt":{"bytes":25,"sha256":"e1d3b7ca186d81e625595897e4796ae64b3091d1da10642a0038b150623ae2a1"},
+    "INDEPENDENT_VERIFICATION.json":{"bytes":516,"sha256":"d5af124a340a3c331832124f22295cd33029f3312822eb8c266a685246401a17"},
+    "MARKET_FEATURE_PREFIX_CHECKS.json":{"bytes":3377,"sha256":"d7b84f312db81ef096a0b5897bcd7b9f35540e5a13c59d91fe395c6ad6145192"}
+  },
+  "full_repository_tests_run": false,
+  "local_factorlab_execution": false,
+  "live_latency_measured": false,
+  "d3_statistics_actions_run": null,
+  "ci_restored_original_blob": "1e12c717985ac92b55420c924ef74e0b68262216",
+  "no_post_validation_fit_or_gate_change": true,
+  "fresh_oos": false,
+  "d4_started": false,
+  "v20_started": false,
+  "queried_2026": false,
+  "raw_3s_reread": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "production_authority": false,
+  "decision": "D3_INCREMENTAL_UTILITY_NOT_SUPPORTED"
+}

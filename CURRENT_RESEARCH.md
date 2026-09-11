@@ -1,71 +1,63 @@
-# 当前任务：面向下游分桶的因果 K 线风险属性交付
+# 当前任务：D3 已完成，未获实际增量用途晋升
 
-更新：2026-09-11，D2 已执行并验收。用户要求风险属性服务于跟踪行情演变、下游状态识别和策略适用条件分桶；本仓不开发具体交易策略。数学、统计和研究判定由执行者负责。
+更新：2026-09-12。用户要求因果K线风险属性服务行情跟踪与下游状态/策略分桶，数学与统计决策由执行者负责；本仓不开发具体交易策略。
 
-## 当前权威链
+## 权威链
 
-1. 数据治理：`docs/governance/DATA_USAGE_POLICY_V2.md`、`data_usage_declaration.json`；研究桶边界：`BUCKET_SCOPE_REPAIR_20260909.md`。
-2. 方向：`docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md`。
-3. 当前执行状态：`research/causal_state_delivery_d2/PROGRAM_STATE.json`、`EXECUTION_RECEIPT.json`、`RESULTS.md`。
-4. D1 原始契约与执行回执保留在 `research/causal_state_delivery_v1/`，不是当前待执行状态。
-5. 科学基线回溯原 V19/V18/V17/V16 报告、代码、surface 和 receipt，不改封存字节。
+数据治理以 `docs/governance/DATA_USAGE_POLICY_V2.md` / `data_usage_declaration.json` 为准，桶边界沿用 `BUCKET_SCOPE_REPAIR_20260909.md`。
+方向以 `docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md` 为准。
+**当前执行状态：`research/causal_state_utility_d3/PROGRAM_STATE.json` → `RESULTS.md` → `DECISIVE_RECEIPT.json` / `EXECUTION_RECEIPT.json` → `PROTOCOL.md` / `FIT_FREEZE_RECEIPT.json`。**
+D1、D2和V16—V19的报告、原始程序状态与回执仍是封存历史，不把其中“D3未执行”当作当前断点。
 
-## 使命与当前阶段
+## 三层结论
 
-**把行情演变中已经发生、在当时可以知道的 K 线风险属性及其变化，转为下游可按时点消费的状态、转移和适用性信息。**
+1. 科学基线：V19在冻结参考语义下具有reusable Validation支持；残差优化路径已关闭，不开accuracy微调V20。
+2. 工程交付：D2因果E15/CLOSE回放已通过，113928原可用行零状态/概率漂移，232704事件与已声明范围的前缀测试通过。
+3. 实际风险信息：**D3_INCREMENTAL_UTILITY_NOT_SUPPORTED**。D3已实际执行，但未达到本协议最小实际效应，不晋升为已证实有足够增量预测用途的风险门控。
 
-历史科学断点：`V19_VALIDATED_RESIDUAL_PATH_CLOSED_NO_V20`。
-当前交付断点：**`D2_CAUSAL_REPLAY_SUPPORTED_D3_NOT_EXECUTED`**。
+当前工作状态：**D3_COMPLETED_NO_PRACTICAL_INCREMENTAL_PROMOTION**。这不是执行失败，也不是V19作废。
 
-D1 契约与 E-15 原型的 20 项测试保留通过。D2 已增加独立顺序价格计算内核、E-15/CLOSE 事件、冻结恢复概率、不可变事件账本与 as-of 研究消费者；38 项新测试通过。
+## D3结果和含义
 
-## D2 已完成的真实证据
+协议先提交于43d46e211656e086a40c7a61c622674baa7b6011；30个固定信息探针仅在2021–2023拟合，78c12f27f43107b0b1f08902b75be4af09e9c638先封存模型哈希，再执行2024–2025评分。Validation可复用，非fresh OOS。V19/恢复表未重拟合。
 
-- raw replay run `34620317766`，job `103332375643`，执行 commit `2102642cc18fe17b577f818e4f31e2a6e8f4ad7e`。
-- artifact `10271634055`，SHA256 `cf1c89e1412fd70f27992d9077af10dd7887a6843072e03ef808902bf5a84096`。
-- 2021–2025 两指数完整网格 `116,352` 个 bar；原可用 E-15 行 `113,928` 全部保留。
-- 原可用行的状态、冲击、观察时点、冲击年龄、概率 gating 与冻结概率：**零不一致**。
-- E-15/CLOSE 事件 `232,704`；市场未来扰动锚点 `20/20` 通过。
-- 当前会话独立核验全部事件、哈希链及18个输出文件，不冒充会话内又重算原始 Parquet。
+在上一确认状态、已知冲击年龄、时点/指数及简单历史波动基准上加入当前状态/转移/冻结恢复属性：
 
-执行地点：标准库单元测试和产物复核在本会话；全量原始价格回放在有界 Actions。会话数据传输/Parquet依赖不可用、没有可调用本地执行器，已在协议和回执记录 fallback 理由。本地 FactorLab/DataHub 未自动执行；完整仓库测试与生产服务未验收。
+| H | log未来RMS MSE相对减少 | 未来尾部Brier相对减少 |
+|---|---:|---:|
+| 15m | 0.46336% | 0.81010% |
+| 30m | 0.74191% | 0.79116% |
+| 60m | 0.91026% | 0.65491% |
 
-## 交付限制必须随结果传递
+6项都有正增量、12项调整后的5日块区间为正、年度/指数方向一致，但全部低于事前1%相对门槛。15/30m尾部还未达到0.0005绝对Brier门槛。不降低门槛，不用20日块结果或未注册比较改判。
 
-原可用 cohort 的覆盖是100%；完整网格覆盖是 **97.9167%**。每天第一根09:35 bar缺少同日上一收盘参考，两指数共 `2,424` 个bar在两种时钟上都明确不可用，不补NORMAL，不跨夜造收益。
+基准再加入同一E15时点连续冲击强度/波动比率后，状态字段额外改善约0.003%–0.058%，全部调整区间跨0。这是固定探针下的结果，不是状态永远无用的定理。
 
-E-15 输出中，恢复曲线 `12,660` 条，对机器风险行覆盖 `80.8171%`；不可评分保留原 gate，不补概率0/1。CLOSE 可评分 `12,662` 条。所有曲线保持冻结单调性和60m anchor。
+描述性风险区分仍存在：15m尾部窗口占比NORMAL2.8136%、RECOVERING3.9807%、UNSAFE10.0386%。但独立未来事件捕获不是V19现有episode捕获；15m527个可评价唯一未来冲击中134个被前置风险窗口覆盖，不能冒称约99.8%的提前风险捕获。
 
-观察新鲜度不等于可用性：最大观察年龄165秒；超过120秒的2,424条全部集中在15:00 bar的E-15；其他时点另有30条超过15秒。D2不据此删样本或更换checkpoint。下游应保留 observation_time/observation_age_seconds；D3要在结果前明确时段、窗口和新鲜度解释。
+## 因果与适用边界
 
-15秒是 owner_realtime_assumption 下的理想发布提前量，不是实测端到端延迟。冲击年龄按日内交易bar步数，跨午休不跨日；冻结概率标签与参考起点不改造成任意墙钟的新目标。
+未来标签只用当前bar结束后完整15/30/60分钟收益，不含当前正在形成的bar、不跨午休/隔夜。各H评分39770/33950/22310行，时间可行网格覆盖97.6190%/97.2222%/95.8333%。日初缺参考和未来缺窗口不补零；15:00因没有完整日内未来窗口不评分，其他陈旧观察按原样保留，不事后删样本。
 
-## 下一项直接任务：D3
+Causal指当时可得、单边计算，不代表干预因果。NORMAL非安全保证、UNSAFE非看空、UNAVAILABLE非NORMAL。历史available_at仍是检索时钟；D2观察新鲜度限制与理想15秒提前量的假设性质不变。原冻结概率不重命名为D3的新墙钟概率。
 
-**先预注册非PnL风险分桶效用协议，再评价。** 检查因果状态/转移是否区分后续实现波动、再次冲击、风险持续和恢复，并且是否提供超越上一已确认状态、简单历史波动等匹配基准的信息。
+## 真实执行位置与证据
 
-在看结果前明确 endpoint、未来窗口与输入不重叠、bar-time与墙钟/午休/收盘边界、覆盖口径、最小实际效应、依赖块不确定性；报告桶占用、NORMAL风险泄漏、误报、转换时点与年度/指数稳定性。不要把自身标签的一致性或D2零漂移当作效用证明。
+D3统计、24项测试、治理/编译及独立复核在本会话；Actions只做12份已核验旧5m数据的格式转换，成功run34623937960/artifact10273059875，不是D3统计run。一次转运401和一次拟合前ISO8601解析失败均已记录，无统计择优重跑。
 
-D3尚未执行。D2不能证明下游增量效用或盈利，不自动授予实盘、交易路由、仓位或生产权限。
+独立核验全部96030条评价标签，尾部零差异，log-RMS最大差2.083e-12，保存损失零差异；20个新增历史特征真实前缀扰动检查通过。模型Validation前后SHA256 f5a33a71969a18f2e7aa0aad45cd83903943d86962f2a92f5206e348667a2db0。完整结果包、系数/预测/块统计及哈希见回执和REPRODUCE.md；不声称本地FactorLab/DataHub、完整仓库、线上服务或策略经济验收通过。
 
-## 保持冻结的基线
+## 下一方向，不混作已执行
 
-V19 runner：`ee2fce299d5ee21abf1ab2c2c5183bac101ae822`。Development run `34611126345` / artifact `10267923594`；Validation run `34612330970` / artifact `10268853374`。
+保留V19/D2为因果描述与状态组织基线，不继续挤三状态识别率，不把D3失败解释成不需要实用评价。
 
-V19 residual audit run `34614008432` / artifact `10270156874`；`NO_V20_FROM_V19_RESIDUALS`保留。这是研究优先级，不是不可改进性定理，也不是Validation永不能再用的数据禁令。
+下一合理工作：**独立预注册连续风险强度属性的实际用途评价**，保留状态作为描述轴，检验增量是否来自现有实时数值。B3对B1的描述性log-RMS改善约1.91%/2.75%/2.88%仅是动机，不是D3注册晋升路径，不据此宣布通过。D4尚未启动；不自动选阈值、映射交易动作或恢复旧router。
 
-原始证据在 `research/highvol_risk_episode_state_machine_v19/`、`research/highvol_risk_episode_state_machine_v19_validation/`、`research/v19_residual_failure_audit/`。
+1%是本次事前研究门槛，不是所有下游应用的经济定律。后续必须有具体消费者问题、同信息基准和单独协议，不能改写D3。
 
-架构：V18 switch-on → V19 UNSAFE/RECOVERING连续性 → V17/V16恢复信息 → 收盘确认NORMAL。对应原始组件见 `research/highvol_unsafe_switch_on_v18_validation/`、`research/highvol_realtime_horizon_adaptive_v17_validation/`、`research/highvol_horizon_adaptive_v16/`。
+## 数据与权限
 
-## 解释、范围与治理
+Development2021–2023；Validation2024–2026-08-21按V2复用，不能直接拟合当前候选或称fresh OOS；本次实际评价到2025，不读取2026/new3s/保护期或BlackBox。V16的2026 final-5m证据不创建2026 realtime证据。
+不接管Range/UpTrend/DownTrend父结构，不开发方向、开平仓、仓位、止损止盈、成本收益优化或payoff/router，不修改其他仓/live registry。
 
-Causal指当时可得、单边计算，不代表干预因果证明。整体风险recall不等于新风险提前recall；episode重叠不等于全程无遗漏；零提前退出部分由定义保证。NORMAL不保证交易安全，UNSAFE不等于看空，UNAVAILABLE不是NORMAL。
-
-历史available_at仍是历史检索可得时间，不是盘中延迟。E-15不得输入未收盘final_state/未来路径，CLOSE不得回写早先快照。输出不含后验episode结束时间或交易动作。
-
-不接管Range/UpTrend/DownTrend父结构；不恢复payoff/router、方向、持仓、止损止盈、成本收益优化；不修改其他仓或live registry。
-
-Development 2021–2023可开发拟合；Validation 2024–2026-08-21可按冻结协议复用/诊断并启发下一Development，不直接拟合当前受测候选，也不是fresh OOS。实际3s证据仍止于2025；V16 final-5m到2026-08-21不创建2026 realtime证据。
-
-`v19_frozen=true`; `d2_supported=true`; `d3_executed=false`; `v20_started=false`; `queried_2026_3s=false`; `blackbox_queried=false`; `pnl_computed=false`; `production_authority=false`。
+`v19_frozen=true`; `d2_supported=true`; `d3_executed=true`; `d3_practical_incremental_promotion=false`; `d4_started=false`; `v20_started=false`; `blackbox_queried=false`; `pnl_computed=false`; `production_authority=false`。

@@ -1,0 +1,29 @@
+test_60m_future_horizon (test_d3.D3Tests.test_60m_future_horizon) ... ok
+test_bg_uses_only_predecision_returns (test_d3.D3Tests.test_bg_uses_only_predecision_returns) ... ok
+test_binary_prediction_is_bounded (test_d3.D3Tests.test_binary_prediction_is_bounded) ... ok
+test_bootstrap_constant_gain (test_d3.D3Tests.test_bootstrap_constant_gain) ... ok
+test_bootstrap_preserves_same_day_both_symbols (test_d3.D3Tests.test_bootstrap_preserves_same_day_both_symbols) ... ok
+test_bootstrap_reproducible (test_d3.D3Tests.test_bootstrap_reproducible) ... ok
+test_complete_future_window (test_d3.D3Tests.test_complete_future_window) ... ok
+test_day_end_not_zero_risk (test_d3.D3Tests.test_day_end_not_zero_risk) ... ok
+test_design_ignores_current_close_and_evaluator (test_d3.D3Tests.test_design_ignores_current_close_and_evaluator) ... ok
+test_design_schema_fixed_across_slices (test_d3.D3Tests.test_design_schema_fixed_across_slices) ... ok
+test_excludes_current_return (test_d3.D3Tests.test_excludes_current_return) ... ok
+test_fixed_ridge_is_deterministic (test_d3.D3Tests.test_fixed_ridge_is_deterministic) ... ok
+test_frozen_probabilities_are_features_with_mask (test_d3.D3Tests.test_frozen_probabilities_are_features_with_mask) ... ok
+test_future_observation_not_usable (test_d3.D3Tests.test_future_observation_not_usable) ... ok
+test_future_price_cannot_change_history_prefix (test_d3.D3Tests.test_future_price_cannot_change_history_prefix) ... ok
+test_lunch_is_not_a_complete_window (test_d3.D3Tests.test_lunch_is_not_a_complete_window) ... ok
+test_missing_probability_not_claimed_scored (test_d3.D3Tests.test_missing_probability_not_claimed_scored) ... ok
+test_nested_comparators (test_d3.D3Tests.test_nested_comparators) ... ok
+test_no_overnight_return (test_d3.D3Tests.test_no_overnight_return) ... ok
+test_nonfinite_input_refused (test_d3.D3Tests.test_nonfinite_input_refused) ... ok
+test_prepublication_not_usable (test_d3.D3Tests.test_prepublication_not_usable) ... ok
+test_rms_uses_only_previous_returns (test_d3.D3Tests.test_rms_uses_only_previous_returns) ... ok
+test_role_filter_excludes_validation (test_d3.D3Tests.test_role_filter_excludes_validation) ... ok
+test_slot_and_horizon_contract (test_d3.D3Tests.test_slot_and_horizon_contract) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.218s
+
+OK
