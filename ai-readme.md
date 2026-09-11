@@ -1,12 +1,10 @@
-# STAR50 / CSI1000 AI entry — D4 completed with endpoint-limited continuous utility
+# STAR50 / CSI1000 AI entry — D5 bounded consumer accepted
 
-Read AGENTS.md, CURRENT_RESEARCH.md, CONTINUE_HERE.md and docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md.
-Current evidence: research/continuous_risk_utility_d4/PROGRAM_STATE.json, RESULTS.md, DECISIVE_RECEIPT.json, EXECUTION_RECEIPT.json, PROTOCOL.md and FIT_FREEZE_RECEIPT.json.
+Read AGENTS.md, CURRENT_RESEARCH.md and CONTINUE_HERE.md. Direction: docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md.
+Current authority: research/state_degree_consumer_d5/PROGRAM_STATE.json, RESULTS.md, EXECUTION_RECEIPT.json, INDEPENDENT_VERIFICATION.json, PROTOCOL.md and SOURCE_IDENTITY.json.
 
-D4_COMPLETED_CONTINUOUS_ATTRIBUTES_PARTIALLY_SUPPORTED. Four of six endpoint/horizon pairs jointly pass both the historical H and complexity-matched lagged L controls: 15/30/60m log-future-RMS and 30m future-tail Brier. 15m and 60m tails do not pass. D3 prior hints were known; this is adaptive reusable Validation, not new blind OOS. D3's negative practical-utility decision remains unchanged.
+D5_BOUNDED_RESEARCH_CONSUMER_ACCEPTED_EXTERNAL_INTEGRATION_PENDING. All232704 D2 events and116352 D4 E15 enrichments joined; zero source/numeric mismatch;930816 as-of checks,40 unit tests and20 consumer prefix checks passed. Sample commands actually executed. All in current chat, stdlib only, no Actions or new market data.
 
-Keep V19/D2 baseline. Deliver interpretable state context plus continuous intensity/volatility and timing/availability. Delta fields and quantile keys are descriptive; no standalone predictive gate or action utility was admitted. No V20, payoff/router, parent Range/UpTrend/DownTrend classifier, or production.
+E15 and CLOSE must not share E15-only enrichments. Publication and receipt are separate; no backfill, expired fallback, missing-as-NORMAL or fake probability. Quantile encoding is not delivered. D5 is bounded consumer engineering evidence, not new utility/OOS or production. D3 negative and D4 endpoint-limited decisions remain unchanged; V19 and D1-D4 sealed bytes are preserved.
 
-D4 ran in the chat container: 23 synthetic tests, 20 fixed history-prefix checks, 113928 independent scalar checks and 96030 target/loss checks passed. No Actions, newraw3s,2026,BlackBox or PnL. Original source/evidence and V2 unchanged.
-
-Next: CONSUMER_CONTRACT.md defines a bounded no-trade as-of research consumer; actual integration is not executed (D5=false). Preserve unavailable snapshots, day-end freshness, Asia/Shanghai clocks and distinction between retrospectively applied Development quantiles and deployable configuration availability. Do not rerun completed research to browse it. production_authority=false.
+Next is genuine external research-process acceptance under LOCAL_HANDOFF.md, not a new D6/V20 model. No external execution has been dispatched or accepted. No live registry, strategy actions, parent-structure takeover, raw3s,2026,BlackBox or PnL. production_authority=false。

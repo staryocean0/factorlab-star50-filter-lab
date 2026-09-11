@@ -1,0 +1,17 @@
+{
+  "schema": "d5_bundle_receipt_v1",
+  "authority_commit": "9d0997fccdbf54f73b5ed894c9544cde3ab75d71",
+  "bundle_name": "D5_state_degree_consumer_evidence.zip",
+  "bytes": 107408837,
+  "sha256": "afbe4333803a21ea74c512f93005ab9599cf79459501031d5ed078dc52cf2d9d",
+  "manifest_entries_verified": 42,
+  "total_zip_entries": 43,
+  "contains_original_D2_D4_inputs": true,
+  "input_copies_new_authority": false,
+  "bundle_not_github_actions_artifact": true,
+  "small_handoff_name": "D5_consumer_handoff.zip",
+  "small_handoff_bytes": 55481,
+  "small_handoff_sha256": "1427b91316089d5583818d304ed4896f660ad69e28ba7e13cb8428b0b3b72971",
+  "small_handoff_requires_prior_input_zips": true,
+  "production_authority": false
+}
