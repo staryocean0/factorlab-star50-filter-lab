@@ -1,0 +1,31 @@
+{
+  "published_code_commit": "3fb64e91b5a35c399d5c7c31dc69d8bae76dea10",
+  "matches_executed_bytes": true,
+  "files": {
+    "consumer.py": {
+      "git_blob": "b8454ee2a3970c1349496c2bf3997ff0cd209f23",
+      "sha256": "39407fd1ddea248230e97ad53ce2c07e62802f2e838a9f67599b5a6b452d7eae",
+      "bytes": 13980
+    },
+    "example_consumer.py": {
+      "git_blob": "27127d47660510b9214016b48a8ff94aab6811a4",
+      "sha256": "e36a4df8ffdb32e60392e98ffbf18e7403eb4e22c2072bc6e72c0f3474bd070b",
+      "bytes": 2131
+    },
+    "run_acceptance.py": {
+      "git_blob": "64f57450022fb328c4c1e25882b1ee6150b4150e",
+      "sha256": "49c405df9a78abd4c223c7bedbd16203e9bed2b5b178aa6f04babce135795de9",
+      "bytes": 9518
+    },
+    "test_consumer.py": {
+      "git_blob": "0ad7218c9492cfe549a7b6dafdea3470e016ac40",
+      "sha256": "aff12a5e2e1c9036f122fe9b40c031b6327d1dad71e3c5609e7e464df47c3476",
+      "bytes": 13653
+    },
+    "verify_acceptance.py": {
+      "git_blob": "a3722b1b96f337ac258d0030a2e64ec2e43aef4f",
+      "sha256": "650d9a3de8bd754e83277b6daa3e603bd3976595f5ad13e8afc71cdbe3e52746",
+      "bytes": 7981
+    }
+  }
+}

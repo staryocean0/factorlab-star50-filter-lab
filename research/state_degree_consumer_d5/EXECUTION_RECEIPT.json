@@ -1,0 +1,74 @@
+{
+  "schema": "d5_execution_receipt_v1",
+  "source_main": "11ade25e0ea7a25321955015e327854915cc211a",
+  "protocol_commit": "e0eb6d0006c326430aa6429ce52a24df60d65e3f",
+  "protocol_blob": "322ed712c4aaa136315c1ae182d3f9290861f2c4",
+  "tested_code_commit": "3fb64e91b5a35c399d5c7c31dc69d8bae76dea10",
+  "execution_location": "current_chat_container",
+  "python": "3.13.5",
+  "dependencies": "stdlib_and_system_timezone_database_only",
+  "commands": [
+    {
+      "command": "python -m unittest discover -s research/state_degree_consumer_d5 -p 'test_*.py' -v",
+      "exit_code": 0,
+      "tests_passed": 40
+    },
+    {
+      "command": "python scripts/validate_data_usage_policy.py",
+      "location": "verified D4 bundle governance snapshot",
+      "exit_code": 0
+    },
+    {
+      "command": "python research/state_degree_consumer_d5/run_acceptance.py --d2-zip D2.zip --d4-zip D4.zip --out NEW_DIR",
+      "completion": "complete",
+      "summary_sha256": "b621e95393ca4207dcfbad44451bbe6acec0a7cc54dfd4cfda1cfefe3f201cb9"
+    },
+    {
+      "command": "python research/state_degree_consumer_d5/verify_acceptance.py --d2-zip D2.zip --d4-zip D4.zip --out NEW_DIR --report independent.json",
+      "completion": "complete",
+      "passed": true
+    },
+    {
+      "command": "python -m compileall -q research/state_degree_consumer_d5",
+      "exit_code": 0
+    },
+    {
+      "command": "example_consumer.py at 2024-01-02T10:00:00+08:00, delays=0 and 2 seconds",
+      "exit_code": 0,
+      "asserted_results": [
+        "AVAILABLE/CLOSE",
+        "NO_CURRENT_SNAPSHOT/LATEST_EVENT_EXPIRED"
+      ]
+    }
+  ],
+  "interrupted_attempts": [
+    {
+      "cause": "120-second tool walltime limit",
+      "complete_result_produced": false,
+      "implementation_only_change": "gzip output level9 to1 and progress logging",
+      "input_or_acceptance_rule_change": false
+    }
+  ],
+  "input_zip_sha256": {
+    "D2": "cf1c89e1412fd70f27992d9077af10dd7887a6843072e03ef808902bf5a84096",
+    "D4": "347abb143e3c56ddb0b41a6e3c1cd1b4c2362329f8fd25e23e21e28151cba903"
+  },
+  "output_manifest_sha256": "d052d10b15f10d1e051ec81381065bd2368ace9da2c93f09c152a00e15d192a7",
+  "source_identity": "research/state_degree_consumer_d5/SOURCE_IDENTITY.json",
+  "limits": [
+    "not a new statistical Validation",
+    "full repository suite not run",
+    "raw price engine not rerun",
+    "external FactorLab/DataHub not executed",
+    "measured feed latency and production reconnect/revision not accepted",
+    "D3/D4 evidence grades unchanged"
+  ],
+  "actions_dispatched": false,
+  "new_models_fit": 0,
+  "raw_market_files_opened": false,
+  "future_target_files_parsed_for_consumer": false,
+  "queried_2026": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "production_authority": false
+}

@@ -1,46 +1,45 @@
-# 当前任务：D4已完成，连续风险程度信息获得分目标支持
+# 当前任务：D5样例消费者已验收，转入有界外部研究接入
 
-更新2026-09-12。使命不变：把当时可知的K线风险属性及变化交给下游，用于跟踪行情、环境分桶与策略适用性研究；本仓不开发具体交易策略。数学判断由执行者负责。
+更新：2026-09-12。使命：把当时可知的K线状态、连续风险程度与适用性信息交给下游，支持行情跟踪、环境分桶和策略适用性研究。本仓不开发交易动作。
 
 ## 当前权威链
 
 V2数据治理和BUCKET_SCOPE_REPAIR_20260909.md优先；方向见docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md。
-当前状态：research/continuous_risk_utility_d4/PROGRAM_STATE.json → RESULTS.md → DECISIVE_RECEIPT.json / EXECUTION_RECEIPT.json → PROTOCOL.md / FIT_FREEZE_RECEIPT.json。消费者接续见同目录CONSUMER_CONTRACT.md。
+当前执行状态：research/state_degree_consumer_d5/PROGRAM_STATE.json → RESULTS.md → EXECUTION_RECEIPT.json / INDEPENDENT_VERIFICATION.json → PROTOCOL.md / SOURCE_IDENTITY.json。
+可运行例子与回迁：同目录REPRODUCE.md、example_consumer.py、LOCAL_HANDOFF.md。旧D4/D3/D2/D1的PROGRAM_STATE是各阶段封存状态，不覆盖本入口。
 
-**D4_COMPLETED_CONTINUOUS_ATTRIBUTES_PARTIALLY_SUPPORTED**。
-D3的D3_INCREMENTAL_UTILITY_NOT_SUPPORTED保持原判，D2工程与V19识别证据保持原样。旧PROGRAM_STATE和旧报告中的“D4未开始”是历史状态，不是当前断点。
+**D5_BOUNDED_RESEARCH_CONSUMER_ACCEPTED_EXTERNAL_INTEGRATION_PENDING。**
+本仓样例接入已实际执行并通过；外部FactorLab/DataHub或策略研究进程尚未接入，生产未授权。不是D5待执行，也不是又开新统计模型。
 
-## D4实际回答
+## D5完成情况
 
-在固定E15，当前连续冲击强度/波动比率，是否比上一确认历史信息更有用？H是原D3简单历史基准；L是与当前数值C相同列数/非线性项/正则规则但仅使用已确认收益的对照。要求同一目标同时胜过H与L，不只选择弱基准。
+232704条D2 E15/CLOSE事件完整接入；116352条D4 E15属性一对一匹配。每种时钟113928可用、2424原不可用均保留。源状态、转移、确认性质、时间、裸值、概率及缺失传递零差异；D4增强数值最大差0。
+930816次固定边界查询与独立选择器逐项一致；20个消费者历史前缀检查、40项合成测试、治理/编译及两个CLI样例通过。全部在当前会话执行，使用标准库，无Actions、模型拟合、新行情或统计Validation。
 
-| 目标 | H | 对H误差减少 | 对L误差减少 | 联合结论 |
-|---|---|---:|---:|---|
-| log未来RMS | 15m | 1.91064% | 1.60561% | 支持 |
-| log未来RMS | 30m | 2.74830% | 2.45514% | 支持 |
-| log未来RMS | 60m | 2.87781% | 2.80259% | 支持 |
-| 未来尾部Brier | 15m | 1.10989% | 1.03193% | 绝对改善不足，不晋升 |
-| 未来尾部Brier | 30m | 1.20514% | 1.10829% | 窄幅支持 |
-| 未来尾部Brier | 60m | 0.96885% | 0.89253% | 相对改善不足，不晋升 |
+E15只接同事件D4裸值和描述性lag/delta；CLOSE只用D2确认字段，不跨时钟复制E15增强或推广D4效用。numeric_bucket不交付，不把训练期分位配置当历史部署事实。V16概率保留原目标与可用性门控，不生产新概率。
 
-这是预测损失改善，不是收益或风险本身下降。4/6目标组合、8/12单独比较通过。全部年度/指数方向正，12项调整5日块区间及20日敏感性区间正。30m尾部只是pooled点估计窄幅达到门槛，不能声称每切片或区间下界都达到实际幅度。
+published_at与received_at分开，收到前不能消费；晚到不能回填；过期/最新不可用不能回退旧状态；午休/日终明确无当前快照。上午确认可按原D2有效期作为午后首个E15前的上下文，但不是新的午后观察。
 
-协议ef865110aee6c1c3b300d27c38a578c2b8882a67先于本轮新比较；模型冻结643671b7ca6bf0e7a0c3a975a383c8029a8ee92d先于Validation。H/C已有D3描述线索和系数被明确复用，新增复杂度对照及2023前向开发检查不刷新数据独立性。**这是自适应可复用Validation证据，不是fresh OOS。**
+四种结果：AVAILABLE、STATE_ONLY、UNAVAILABLE、NO_CURRENT_SNAPSHOT。缺失不是NORMAL，空概率不是0/1。日初缺参考与日末旧观察保留，最大观察年龄165秒；新鲜度不等于实测网络延迟。默认即时收到与2秒延迟样例均为历史/合成假设。
 
-## 当前用途定位
+## 不被D5改写的科学结论
 
-交付三轴：V19状态上下文 + 连续I_t/V_t程度信息 + 确认/时钟/新鲜度/缺失约束。D4只支持固定信息集在指定风险目标上的有限增量，不给三状态改判，不把所有分桶都升级为预测门控。
-delta_I/delta_V和Development固定3×3分位键仅是描述字段，未单独证明预测或交易效用。高分位窗口可能覆盖更多事件，也占用大量时段且多数没有后续尾部；不能据此直接禁交易、看空或降仓。
+V19：冻结参考语义下的风险状态识别支持，残差路线关闭，不启动accuracy微调V20。
+D2：因果双时钟工程回放支持，不代表所有未来风险被提前识别。
+D3：D3_INCREMENTAL_UTILITY_NOT_SUPPORTED原判保留，三状态小增量未达原实际门槛。
+D4：连续I/V仅对15/30/60m log未来RMS、30m尾部在H/L双基准下获有限支持；15/60m尾部未晋升，delta与分位门控未独立验收。这是已知线索后的自适应可复用Validation，不是fresh OOS。
+D5：消费者字节/时钟/来源接对，不提高D3/D4证据等级，不证明策略收益。
 
-## 实际执行与边界
+## 下一项实际工作与停止线
 
-D4全部在本会话执行，无Actions。23项测试、20真实历史前缀检查、治理/编译通过；独立重算113928可用属性与96030未来记录，尾部/保存损失/块汇总零差异；原D3 H/C逐行预测零差异。模型SHA256 30edb34a68bd7b6010f57128177d5500558b7af1803cc8b279abeb9df80ddd18前后不变。
+按research/state_degree_consumer_d5/LOCAL_HANDOFF.md进行外部研究消费者回迁和独立进程验收；任务CL-D5-RESEARCH-CONSUMER-20260912。回执必须说明实际本地环境、commit/输入SHA、命令/退出码及差异。没有可调用的本地执行通道，不声称自动派发或已回迁。
 
-2020仅5m预热，Development2021–2023，Validation2024–2025。15/30/60m行数39770/33950/22310，同H同cohort。当前bar不进入未来标签，不跨午休/隔夜；缺窗口不补零；日初缺参考、日末新鲜度和其余陈旧观察保留。属性表116352网格，2424不可用。CSV时区Asia/Shanghai，理想15秒发布不是实测feed延迟。原V16概率目标不冒充D4未来墙钟目标。
+本仓此阶段完成，保持冻结维护；不为版本号启动D6或V20。若尚无实际外部消费需求，不需要继续造模型。真实feed、持久化/断线重连/修订策略、完整仓库suite和经济验收均未通过本次验收。
 
-## 直接下一步
+## 数据、权限与历史
 
-按research/continuous_risk_utility_d4/CONSUMER_CONTRACT.md建立本仓无交易动作的样例消费者，对状态+裸值进行有界as-of接入验收。契约已记录，真实接入未执行；不要重新拟合或为了版本号开模型。D5未启动、V20未启动。
+Development2021–2023；V2 Validation至2026-08-21可复用，不能拟合当前受测候选或称fresh OOS。D5只消费原2021–2025封存派生产物；无raw3s/5m重读，无2026、保护期、BlackBox、PnL或生产扩权。V16的2026 final-5m覆盖不生成2026 realtime证据。
 
-保留V16—V19、D1/D2/D3原代码/surface/报告/receipt。旧入口快照在4844ca27006bc187ee4d4ecb6262b903f4d798f0，不删除历史。
-V2允许重复Validation与Development迭代，不拟合当前受测候选、不称fresh OOS。本轮无2026、newraw3s、保护期、BlackBox、PnL；不接管Range/UpTrend/DownTrend，不开发买卖/仓位/止盈止损/payoff/router，不改其他仓或生产registry。production_authority=false。
+NORMAL非安全保证、UNSAFE非看空，状态/强度不是买卖许可。不接管父结构Range/UpTrend/DownTrend，不开发仓位/方向/payoff/router，不改其他仓或live registry。
+原V16—V19与D1—D4代码、surface、报告、回执原样保留；原入口在11ade25e0ea7a25321955015e327854915cc211a。数学判定继续由执行者负责，权限不扩大。
+d5_completed=true；external_consumer_accepted=false；d6_started=false；v20_started=false；production_authority=false。

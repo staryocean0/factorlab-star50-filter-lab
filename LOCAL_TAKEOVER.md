@@ -1,11 +1,10 @@
-# 本地接续入口：D4完成，外部回迁/消费者接入未执行
+# 本地接续：D5样例已验收，真实外部消费待回执
 
-当前任务见CURRENT_RESEARCH.md、CONTINUE_HERE.md及docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md。证据在research/continuous_risk_utility_d4/，状态D4_COMPLETED_CONTINUOUS_ATTRIBUTES_PARTIALLY_SUPPORTED。
+当前权威见CURRENT_RESEARCH.md、CONTINUE_HERE.md及research/state_degree_consumer_d5/PROGRAM_STATE.json。D5_BOUNDED_RESEARCH_CONSUMER_ACCEPTED_EXTERNAL_INTEGRATION_PENDING。
 
-D4在当前会话完成，未触发Actions。23测试、20市场历史前缀检查、113928属性和96030未来记录独立核验通过；不是本地FactorLab/DataHub执行回执。D3未通过结论、D2回放和V19冻结基线原样保留。
+本会话完成232704条事件、930816次边界查询、40测试、20消费者前缀和样例命令，未运行本地FactorLab/DataHub。具体最小交接、代码/输入身份、可运行命令与回执要求见research/state_degree_consumer_d5/LOCAL_HANDOFF.md和REPRODUCE.md，任务CL-D5-RESEARCH-CONSUMER-20260912。
 
-本地接续先核对协议commit ef865110aee6c1c3b300d27c38a578c2b8882a67、评分前冻结643671b7ca6bf0e7a0c3a975a383c8029a8ee92d以及结果包SHA，按REPRODUCE.md复核现有预测/属性，不随意重拟合。消费者契约见CONSUMER_CONTRACT.md：只接状态+裸值+时钟/缺失，不映射交易动作。实际本地回迁/运行/接入须本地回执确认，本轮不冒称。
+本地先核对SOURCE_IDENTITY、输入/输出manifest，独立复核已有结果，再从研究进程接入。必须真实回传环境、commit、命令、退出码与差异，不能把本会话结果转述为本地已通过；不连接生产registry。
 
-D4只有15/30/60m波动与30m尾部的有限可复用Validation支持，15/60m尾部不晋升；分位键、delta和任何策略收益未独立验收。下一有界研究消费者接入未执行，不为版本号开新预测器。
-
-保留Asia/Shanghai时区、日初/日末和旧观察限制、训练分位配置可得时间与非fresh OOS标签。不修改生产registry。旧本地源码hash事件与历史入口见commit766dd6f5293a1fa8588edabe368088f63981fa1a、4844ca27006bc187ee4d4ecb6262b903f4d798f0，历史证据不抹除。production_authority=false。
+不重拟合V19/D3/D4，不改D3未晋升或D4有限用途结论。保留缺失、过期、时区、新鲜度与原概率目标；不跨时钟复制增强，不交付训练分位门控。外部/实时/经济验收尚未完成。旧本地源码hash事件及历史记录在原Git历史中保留。
+production_authority=false；d6_started=false；v20_started=false。

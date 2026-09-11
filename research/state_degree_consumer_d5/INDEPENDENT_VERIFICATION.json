@@ -1,0 +1,18 @@
+{
+  "schema": "d5_independent_acceptance_verification_v1",
+  "passed": true,
+  "counts": {
+    "events": 232704,
+    "matched_E15": 116352,
+    "asof_probes": 930816
+  },
+  "mismatches": {},
+  "mismatch_examples": [],
+  "max_enrichment_abs_difference": 0.0,
+  "prefix_receipts_checked": 20,
+  "output_files_sha256_verified": 6,
+  "consumer_imported": false,
+  "raw_prices_read": false,
+  "new_predictive_utility_claim": false,
+  "production_authority": false
+}
