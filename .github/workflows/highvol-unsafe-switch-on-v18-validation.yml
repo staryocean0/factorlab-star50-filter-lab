@@ -1,0 +1,115 @@
+name: highvol-unsafe-switch-on-v18-validation
+on:
+  push:
+    branches:
+      - research/highvol-unsafe-switch-on-v18-validation-20260911
+    paths:
+      - .github/workflows/highvol-unsafe-switch-on-v18-validation.yml
+      - research/highvol_unsafe_switch_on_v18_validation/**
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frozen V18 and 2024-2025 reusable Validation inputs
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/highvol_unsafe_switch_on_v18_validation
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/market/5m/000688.SH/2020.parquet
+            data/market/5m/000688.SH/2021.parquet
+            data/market/5m/000688.SH/2022.parquet
+            data/market/5m/000688.SH/2023.parquet
+            data/market/5m/000688.SH/2024.parquet
+            data/market/5m/000688.SH/2025.parquet
+            data/market/5m/000852.SH/2020.parquet
+            data/market/5m/000852.SH/2021.parquet
+            data/market/5m/000852.SH/2022.parquet
+            data/market/5m/000852.SH/2023.parquet
+            data/market/5m/000852.SH/2024.parquet
+            data/market/5m/000852.SH/2025.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2024.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2025.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2024.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2025.parquet
+          sparse-checkout-cone-mode: false
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+      - name: Validate three-pool governance
+        run: python scripts/validate_data_usage_policy.py --repo-root .
+      - name: Guard physical reusable Validation boundary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for s in ['000688.SH','000852.SH']:
+              got=sorted(p.name for p in (Path('data/market/5m')/s).glob('*.parquet'))
+              assert got==[f'{y}.parquet' for y in range(2020,2026)],(s,got)
+          got=sorted(p.name for p in Path('data/cross_index_risk_gate_3s_v1').glob('*.parquet'))
+          exp=sorted([f'{s}_{y}.parquet' for s in ['000688.SH','000852.SH'] for y in [2024,2025]])
+          assert got==exp,(got,exp)
+          assert not list(Path('data').rglob('*2026*.parquet'))
+          assert not list(Path('data').rglob('*2027*.parquet'))
+          print('V18 reusable Validation physical boundary: 2024-2025 3s only')
+          PY
+      - name: Materialize exact frozen V18 and V9 runners
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 542b11857baeaebd43d93dc5ac866c6c3316e477
+          git show 542b11857baeaebd43d93dc5ac866c6c3316e477:research/highvol_unsafe_switch_on_v18/run_v18.py > research/highvol_unsafe_switch_on_v18_validation/frozen_v18.py
+          test "$(git hash-object research/highvol_unsafe_switch_on_v18_validation/frozen_v18.py)" = "62c207badff1c3e37cbb1a8e17ef89feeea611d8"
+          git fetch --no-tags --depth=1 origin e01b293dcfc3100a02265315376bc63a9137c3d3
+          git show e01b293dcfc3100a02265315376bc63a9137c3d3:research/highvol_realtime_risk_object_v9/run_v9.py > research/highvol_unsafe_switch_on_v18_validation/frozen_v9.py
+          test "$(git hash-object research/highvol_unsafe_switch_on_v18_validation/frozen_v9.py)" = "ae2a7e095df58692ef9df0dfee5856cac727ca44"
+      - name: Test frozen V18 Validation contract
+        run: python -m pytest -q research/highvol_unsafe_switch_on_v18_validation/test_validation.py
+      - name: Run frozen V18 reusable Validation
+        run: python research/highvol_unsafe_switch_on_v18_validation/run_validation.py --repo-root . --out artifacts/highvol_unsafe_switch_on_v18_validation
+      - name: Guard research-only authority
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/highvol_unsafe_switch_on_v18_validation/summary.json'))
+          assert s['reusable_validation'] is True
+          assert s['validation_years']==[2024,2025]
+          assert s['queried_3s_years']==[2024,2025]
+          assert s['queried_2026_3s'] is False
+          assert s['primary_lead_seconds']==15
+          assert s['threshold_search_performed'] is False
+          assert s['feature_search_performed'] is False
+          assert s['probability_fit_performed'] is False
+          assert s['lead_time_selection_performed'] is False
+          assert s['posthoc_subgroup_selection'] is False
+          assert s['blackbox_queried'] is False
+          assert s['pnl_computed'] is False
+          assert s['trading_rule_created'] is False
+          assert s['production_authority'] is False
+          print('V18 full Validation supported:',s['full_validation_supported'])
+          print('candidate_rows:',s['candidate_rows'],'true_switch_on_events:',s['true_switch_on_events'])
+          print('E15:',json.dumps(s['pooled_by_lead']['15'],sort_keys=True))
+          print('acceptance:',json.dumps(s['acceptance'],sort_keys=True))
+          PY
+      - name: Seal output manifest
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          root=Path('artifacts/highvol_unsafe_switch_on_v18_validation'); files=[]
+          for p in sorted(root.iterdir()):
+              if p.is_file():
+                  b=p.read_bytes(); files.append({'name':p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+          (root/'output_manifest.json').write_text(json.dumps({'schema':'highvol_unsafe_switch_on_v18_validation_manifest','files':files},indent=2)+'\n')
+          PY
+      - name: Upload V18 Validation evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: highvol-unsafe-switch-on-v18-validation-${{ github.run_id }}
+          path: artifacts/highvol_unsafe_switch_on_v18_validation
+          retention-days: 30

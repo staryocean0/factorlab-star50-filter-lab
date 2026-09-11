@@ -1,0 +1,73 @@
+{
+  "schema": "highvol_unsafe_switch_on_v18_reusable_validation_decisive_receipt_v1",
+  "branch": "research/highvol-unsafe-switch-on-v18-validation-20260911",
+  "execution_commit": "35af3b86082791155ae1ba3bf96345c492214d86",
+  "run_id": 34607566312,
+  "job_id": 103289664712,
+  "artifact_id": 10265993683,
+  "artifact_sha256": "55a9a3873ce7fb2514183736a5eadb9ce5dfe7e85f2c77162e5f6aa5992398e6",
+  "source_development_execution_commit": "542b11857baeaebd43d93dc5ac866c6c3316e477",
+  "source_development_run_id": 34606023820,
+  "source_development_artifact_id": 10266486662,
+  "frozen_v18_runner_blob": "62c207badff1c3e37cbb1a8e17ef89feeea611d8",
+  "frozen_v9_runner_blob": "ae2a7e095df58692ef9df0dfee5856cac727ca44",
+  "validation_years": [2024, 2025],
+  "queried_3s_years": [2024, 2025],
+  "queried_2026_3s": false,
+  "candidate_rows": 43793,
+  "year_row_counts": {
+    "2024": 21816,
+    "2025": 21977
+  },
+  "true_switch_on_events": 810,
+  "switch_pathway_counts": {
+    "shock_entry": 612,
+    "recovery_reescalation": 198
+  },
+  "primary_lead_seconds": 15,
+  "e15": {
+    "checkpoint_coverage": 1.0,
+    "tp": 720,
+    "fp": 37,
+    "fn": 90,
+    "tn": 42946,
+    "precision": 0.9511228533685601,
+    "recall": 0.8888888888888888,
+    "false_positive_rate": 0.0008608054347067445
+  },
+  "annual_e15": {
+    "2024": {
+      "precision": 0.9518987341772152,
+      "recall": 0.8995215311004785,
+      "false_positive_rate": 0.0008879334517244602
+    },
+    "2025": {
+      "precision": 0.9502762430939227,
+      "recall": 0.8775510204081632,
+      "false_positive_rate": 0.0008339124391938846
+    }
+  },
+  "fixed_curve_recall": {
+    "e60": 0.5876543209876544,
+    "e30": 0.7641975308641975,
+    "e15": 0.8888888888888888,
+    "e6": 0.9592592592592593,
+    "e3": 0.9962962962962963
+  },
+  "earliest_detection_counts": {
+    "e60": 476,
+    "e30": 171,
+    "e15": 99,
+    "e6": 46,
+    "e3": 15,
+    "undetected": 3
+  },
+  "persistent_after_first_detection_rate": 0.9368029739776952,
+  "late_forming_first_after_e15_count": 87,
+  "full_validation_supported": true,
+  "decision": "V18_E15S_UNSAFE_SWITCH_ON_REUSABLE_VALIDATION_SUPPORTED_2024_2025",
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "production_authority": false
+}
