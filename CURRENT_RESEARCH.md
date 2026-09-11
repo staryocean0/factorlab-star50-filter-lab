@@ -6,101 +6,137 @@
 
 The research product of this bucket is a causal risk annotation/gate. It is not a directional trading strategy.
 
-## Current validated realtime multi-horizon recovery object — V17
+## Current switch-on research authority — V18 Development
 
-V17 is complete through Development and its single authorized reusable Validation.
+V18 fills the entry-side gap in the risk-state machine. It asks when causal evidence already available **inside a still-forming 5m bar** is sufficient for the unchanged frozen V9 state machine to switch from final previous state `NORMAL` or `RECOVERING` into `UNSAFE`.
 
-At exactly the preregistered `E-15s` checkpoint before each 5m close, the realtime risk annotation is:
+V18 does **not** reopen the failed ordinary-session first-shock forecasting problem. It does not claim to predict the shock before any within-bar evidence appears.
+
+### Frozen V18 authority
+
+- branch: `research/highvol-unsafe-switch-on-v18-20260911`;
+- execution commit: `542b11857baeaebd43d93dc5ac866c6c3316e477`;
+- run: `34606023820`;
+- job: `103284525209`;
+- artifact: `10266486662`;
+- artifact SHA256: `7071121c24c65f877f5e76faf875a86ee25da051fde0ffbf8e1d35934933d8ec`;
+- exact frozen V9 runner blob: `ae2a7e095df58692ef9df0dfee5856cac727ca44`;
+- Development: 2021-2023 only;
+- `development_supported=true`;
+- `validation_queried=false`;
+- `validation_eligible_but_not_authorized=true`.
+
+The causal-evaluable cohort contains **65,431** bars. There are **1,361** true new `UNSAFE` entries:
+
+- shock entry: `970`;
+- `RECOVERING` re-escalation without a final shock: `391`.
+
+The first 5m bar of a trading day remains outside the V18 evaluable cohort whenever the frozen V9 same-day previous-close/reference chain is unavailable. V18 does not import an overnight previous close and does not create an opening-bar exception.
+
+### Frozen E-15s primary result
+
+At the preregistered primary checkpoint `E-15s`:
+
+- checkpoint coverage: `1.0`;
+- TP / FP / FN / TN: `1257 / 38 / 104 / 64032`;
+- precision: **`0.9706564`**;
+- recall: **`0.9235856`**;
+- false-positive rate: **`0.0005931`**;
+- specificity: `0.9994069`.
+
+All preregistered annual gates passed:
+
+- 2021: 490 events; precision `1.0000`, recall `0.9918`, FPR `0.000000`;
+- 2022: 469 events; precision `0.9729`, recall `0.9190`, FPR `0.000566`;
+- 2023: 402 events; precision `0.9290`, recall `0.8458`, FPR `0.001203`.
+
+Both symbols passed with nonzero events and true positives:
+
+- `000688.SH`: 720 events; precision `0.9661`, recall `0.9097`, FPR `0.000723`;
+- `000852.SH`: 641 events; precision `0.9757`, recall `0.9392`, FPR `0.000465`.
+
+Source-state decomposition at E-15s:
+
+- from `NORMAL`: 876 true entries; precision `0.9636`, recall `0.9064`;
+- from `RECOVERING`: 485 true entries; precision `0.9830`, recall `0.9546`.
+
+### Fixed evidence-accumulation curve
+
+The full fixed curve is descriptive only and cannot be used to replace a failure at E-15s:
+
+| Checkpoint | Precision | Recall | FPR |
+|---|---:|---:|---:|
+| E-60s | 0.8078 | 0.5805 | 0.002934 |
+| E-30s | 0.9277 | 0.8486 | 0.001405 |
+| E-15s | **0.9707** | **0.9236** | **0.000593** |
+| E-6s | 0.9849 | 0.9603 | 0.000312 |
+| E-3s | 0.9993 | 0.9956 | 0.000016 |
+
+Earliest first detection among the 1,361 true switch-ons:
+
+- E-60s: `790`;
+- E-30s: `389`;
+- E-15s: `103`;
+- E-6s: `45`;
+- E-3s: `28`;
+- undetected by E-3s: `6`.
+
+Among events detected at any checkpoint, `96.75%` remain `UNSAFE` at every later fixed checkpoint after first detection. There are `98` true switch-ons not yet signalled at E-15s that form only at E-6s or E-3s.
+
+Primary sealed V18 evidence:
+
+- `research/highvol_unsafe_switch_on_v18/PROTOCOL.md`;
+- `research/highvol_unsafe_switch_on_v18/DEVELOPMENT_RESULTS.md`;
+- `research/highvol_unsafe_switch_on_v18/DECISIVE_RECEIPT.json`.
+
+The decisive V18 action is:
+
+`FREEZE_E15S_SWITCH_ON_MEASUREMENT_AND_STOP_BEFORE_VALIDATION`
+
+A reusable Validation is scientifically eligible but has **not** been authorized or run.
+
+## Current validated realtime recovery authority — V17
+
+V17 remains the validated **recovery-side** realtime authority on available 2024-2025 3s coverage. At exactly `E-15s`, it transfers the frozen V16 multi-horizon recovery object without refit:
 
 - `15m = frozen V16 state + recent-shock age`, using the frozen V9 provisional partial-bar state;
 - `30m = frozen V16 state + recent-shock age`, using the frozen V9 provisional partial-bar state;
 - `60m = frozen V16 recent-shock-age-only anchor`.
 
-Realtime gating is unchanged from the frozen V9/V10 semantics:
+V17 reusable Validation authority:
 
-- fresh partial shock => annotation unavailable;
-- provisional `NORMAL` => annotation unavailable;
-- missing 3s checkpoint/reference window => annotation unavailable;
-- otherwise emit the frozen V16 15/30/60m probabilities with no refit.
-
-Every emitted curve must satisfy `p15 <= p30 <= p60` and the realtime 60m probability must equal the frozen V16 age-only anchor exactly.
-
-### V17 Development authority
-
-- branch: `research/highvol-realtime-horizon-adaptive-v17-20260911`;
-- execution commit: `5ae8d6adab6c4afb617ed14ae44327d722e3db49`;
-- run: `34603682244`;
-- job: `103276864733`;
-- artifact: `10265262086`;
-- artifact SHA256: `759eda3d30900742bedd9494fef9c64ed91af66068892aceaa01e610a684101c`;
-- frozen transfer blob: `5aca30ff398f73173a5424aa14b535bd461df5b4`;
-- exact V11 cohort: `7327` rows;
-- realtime-scored rows: `7310`;
-- coverage: `0.9976798144`;
-- exact realtime/final state agreement: `0.9954856361`;
-- Development decision: `FREEZE_EXACT_E15S_TRANSFER_AND_RUN_REUSABLE_2024_2025_VALIDATION`.
-
-Pooled Development transfer error versus frozen final-5m V16:
-
-- 15m probability MAE `0.000381438`, Brier degradation `+0.000042377`;
-- 30m probability MAE `0.000406241`, Brier degradation `+0.000099892`;
-- 60m probability MAE/Brier/LogLoss degradation exactly `0.0`.
-
-### V17 reusable Validation authority
-
-- branch: `research/highvol-realtime-horizon-adaptive-v17-validation-20260911`;
-- execution commit: `a35a9f496c7772bf9a81a7b85b0cd0b3d6fccfe2`;
 - run: `34604089926`;
 - job: `103278189791`;
 - artifact: `10265472702`;
 - artifact SHA256: `65783daff1ca83217ad8159b52e2c4f9d6c79f8195a11aa4b1c4af80aa2d1714`;
-- Validation period: `2024-01-01` through `2025-12-31`;
-- common cohort: `4540` rows (`2024=2339`, `2025=2201`);
+- Validation period: 2024-2025 only;
+- common cohort: `4540` rows;
 - realtime-scored rows: `4516`;
 - coverage: `0.9947136564`;
 - exact realtime/final state agreement: `0.9918069088`;
+- 15m probability MAE `0.000824551`, Brier degradation `-0.000006965`;
+- 30m probability MAE `0.000637991`, Brier degradation `+0.000171425`;
+- 60m probability/Brier/LogLoss difference exactly `0.0`;
 - `full_validation_supported=true`.
 
-Pooled reusable Validation transfer error versus frozen final-5m V16:
+All emitted Validation curves satisfy `p15 <= p30 <= p60`.
 
-- 15m probability MAE `0.000824551`, Brier degradation `-0.000006965`, LogLoss degradation `+0.000006648`;
-- 30m probability MAE `0.000637991`, Brier degradation `+0.000171425`, LogLoss degradation `+0.000543736`;
-- 60m probability MAE/Brier/LogLoss degradation exactly `0.0`.
-
-Annual coverage and Brier guards also passed:
-
-- 2024 coverage `0.9961522018`; 15m/30m Brier degradation `+0.000109419 / +0.000317005`;
-- 2025 coverage `0.9931849159`; 15m/30m Brier degradation `-0.000131016 / +0.000016254`.
-
-All `4516` emitted Validation curves are monotone and the row-level 60m anchor difference is exactly `0.0`.
+The authorized 3s physical contract ends at `2025-12-31`. V17 therefore has no 2026 realtime authority and no 2026 3s data was queried or synthesized.
 
 Primary sealed V17 evidence:
 
-- `research/highvol_realtime_horizon_adaptive_v17/PROTOCOL.md`;
-- `research/highvol_realtime_horizon_adaptive_v17/DEVELOPMENT_RESULTS.md`;
 - `research/highvol_realtime_horizon_adaptive_v17/FROZEN_REALTIME_TRANSFER.json`;
 - `research/highvol_realtime_horizon_adaptive_v17/DECISIVE_RECEIPT.json`;
-- `research/highvol_realtime_horizon_adaptive_v17_validation/PROTOCOL.md`;
 - `research/highvol_realtime_horizon_adaptive_v17_validation/VALIDATION_RESULTS.md`;
 - `research/highvol_realtime_horizon_adaptive_v17_validation/DECISIVE_RECEIPT.json`.
 
-## Important realtime boundary
+## Current validated final-5m recovery authority — V16
 
-The repository's authorized 3s physical contract ends at `2025-12-31`.
+V16 remains the final-5m recovery authority through `2026-08-21`:
 
-Therefore V17 establishes realtime multi-horizon authority on available **2024-2025 3s reusable Validation coverage only**. It does **not** establish any 2026 realtime claim, and no 2026 3s data was queried or synthesized.
-
-Do not extrapolate V17's realtime authority to 2026 merely because the final-5m V16 object has 2026 Validation support.
-
-## Current validated final-5m recovery object — V16
-
-V16 remains the final-5m multi-horizon authority through `2026-08-21`:
-
-- `15m = current_state {UNSAFE, RECOVERING} + time-since-most-recent-shock`;
-- `30m = current_state {UNSAFE, RECOVERING} + time-since-most-recent-shock`;
-- `60m = time-since-most-recent-shock only`.
-
-Age buckets remain fixed as `<15m`, `15-25m`, `30-40m`, `>=45m`. Every new shock resets the recovery clock.
+- 15m = `current_state + time-since-most-recent-shock`;
+- 30m = `current_state + time-since-most-recent-shock`;
+- 60m = `time-since-most-recent-shock only`.
 
 V16 reusable Validation authority:
 
@@ -111,61 +147,34 @@ V16 reusable Validation authority:
 - year rows: `2024=2339`, `2025=2201`, `2026=1368` through `2026-08-21`;
 - `full_validation_supported=true`.
 
-Pooled frozen improvement over age-only:
+V16's authorized 2026 final-5m construction does not create 2026 3s realtime data for V17 or V18.
 
-- 15m: Brier `+0.00268837`, LogLoss `+0.00890434`;
-- 30m: Brier `+0.00305660`, LogLoss `+0.00980693`;
-- 60m: exactly the age-only anchor.
+## Current supported causal risk process
 
-V11-V16 are a completed causal evidence chain and must not be rerun merely to reconfirm V17.
+The supported architecture is now:
 
-## Why V16/V17 have this structure
+`causal switch-on evidence -> UNSAFE -> RECOVERING -> Normal`
 
-- V11: unified 15/30/60m `state + age` survival surface rejected in Development;
-- V12: simple shock-expiry explanation rejected;
-- V13: exact recent-shock-age sample composition did not explain the 60m crossover;
-- V14: established horizon-dependent incremental state value — useful at 15m/30m, unstable at 60m;
-- V15: Development block/bootstrap adjudication supported the same conclusion;
-- V16: froze horizon-adaptive 5m surface and passed reusable Validation through 2026-08-21;
-- V17: transferred that exact surface to the frozen `E-15s` realtime measurement and passed Development plus reusable 2024-2025 3s Validation.
+with two distinct authorities:
 
-The scientific conclusion is now two-layered:
+1. **entry / switch-on:** V18 Development supports the frozen E-15s partial-state measurement for new `UNSAFE` entries, but Validation is not yet authorized;
+2. **recovery:** V16 final-5m and V17 E-15s realtime recovery surfaces are already validated within their stated data boundaries.
 
-1. final-5m recovery probability is horizon-adaptive: state adds stable information at 15m/30m but not 60m;
-2. this exact 15/30/60m object can be emitted 15 seconds before the 5m close with very small degradation on the available 3s coverage.
-
-## 2026 5m construction authority
-
-2026 final-5m Validation bars were deterministically synthesized from sealed one-minute Validation inputs only after the historical 2023 equivalence guard passed exactly for both indices:
-
-- 242 common 2023 days per symbol;
-- 11,616 rows per symbol;
-- `max_abs_close_diff=0.0` for both symbols.
-
-The authorized 2026 one-minute inputs contain 154 complete trading days through `2026-08-21` and synthesize to 7,392 5m rows per symbol.
-
-This construction authority applies to V16's final-5m object; it does not create 2026 3s data for V17.
-
-## Earlier supported risk process
-
-The supported post-shock mechanism remains:
-
-`shock -> UNSAFE / RECOVERING -> Normal`
-
-with the clock rule:
+The recovery clock rule remains:
 
 > Every new shock resets the recovery clock. Recovery risk is indexed by time since the most recent shock, not time since the first shock of the episode.
 
-Relevant prior authority:
+## Completed evidence chain that must not be casually reopened
 
-- V3: `UNSAFE` vs `RECOVERING` separates near-term normalization probability;
-- V4: state×age recovery calibration passed Development and reusable Validation;
-- V5: recurrent shock sharply lowers near-term normalization probability and resets recovery; no universal separate `CLUSTERED` state was supported;
-- V6: recent-shock age beat episode-start age and passed full reusable Validation through 2026-08-21;
-- V7: 1m realtime detector failed preregistered UNSAFE recall and was not promoted;
-- V8: frozen 3s detector passed Development and available 2024-2025 reusable Validation subset;
-- V9: unified realtime risk object passed the same subset;
-- V10: preregistered `E-15s` realtime 15m probability annotation passed Development and available 2024-2025 reusable Validation subset.
+- V3-V6 established and validated the post-shock recovery-state / recent-shock-age mechanism;
+- V7 failed the frozen 1m realtime recall gate;
+- V8-V10 established the 3s realtime state/probability transfer and E-15s checkpoint;
+- V11-V15 established horizon-dependent state value and rejected a unified state+age 60m surface;
+- V16 froze and validated the horizon-adaptive 5m surface;
+- V17 validated its E-15s realtime transfer on 2024-2025 3s;
+- V18 now supports the entry-side E-15s switch-on measurement in Development only.
+
+Do not rerun these versions merely to reconfirm them.
 
 ## Scope-repaired bucket authority
 
@@ -179,7 +188,7 @@ This repository owns bottom-layer causal K-line risk-state research only, includ
 
 The current task is **not** to optimize a directional trading strategy, holding period, stop/target, sizing, account overlay or payoff router.
 
-Historical HighVol Router V1, historical directional STAR50 V10-V17 sign-flip work, half-day slope work, drawdown/account/payoff diagnostics and misplaced R1/R2 material remain preserved but are not current authority. The historical payoff V17 branches are unrelated to the current risk-state V17 and must not be revived.
+Historical HighVol Router V1, historical directional STAR50 V10-V17 sign-flip work, half-day slope work, drawdown/account/payoff diagnostics and misplaced R1/R2 material remain preserved but are not current authority. Historical payoff V17 branches are unrelated to the risk-state V17 and must not be revived.
 
 Correct neighboring buckets:
 
@@ -199,22 +208,24 @@ Forward data roles:
 
 - 2020: warm-up only where needed;
 - Development: 2021-2023;
-- reusable Validation: 2024 through 2026-08-21 for authorized 5m work;
-- 3s realtime Validation coverage: 2024-2025 only under the physical contract;
+- reusable 5m Validation: 2024 through 2026-08-21 only under separately authorized protocols;
+- realtime 3s Validation coverage: 2024-2025 only under separately authorized protocols;
 - protected BlackBox-V1: strictly after the cutoff under its frozen aggregate-only protocol.
 
-No prior payoff or risk-state Validation result automatically authorizes BlackBox access.
+No prior payoff or risk-state result automatically authorizes BlackBox access.
 
 ## Current breakpoint
 
-V17 is complete and sealed. The current decisive state is:
+The current decisive state is:
 
-`V17_E15S_MULTI_HORIZON_REALTIME_VALIDATION_SUPPORTED_2024_2025`
+`V18_E15S_UNSAFE_SWITCH_ON_DEVELOPMENT_SUPPORTED_VALIDATION_NOT_AUTHORIZED`
 
-Do **not** rerun V11-V17, refit V16, alter V17 gating, test E-30s/E-60s post hoc on the inspected Validation pool, fabricate/synthesize 2026 3s coverage, or query BlackBox.
+Do **not** run V18 Validation unless separately authorized. Do not alter the frozen E-15s checkpoint, target, cohort boundary, V9 state thresholds, or opening-bar exclusion after seeing the Development result.
 
-No V18 protocol has been authorized or started.
+Do not rerun V11-V17, refit V16, alter V17 gating, synthesize/fabricate 2026 3s coverage, inspect protected post-2026-08-21 data, or query BlackBox.
 
+`v18_validation_queried=false`.
 `queried_2026_3s=false`.
 `blackbox_queried=false`.
+`pnl_computed=false`.
 `production_authority=false`.
