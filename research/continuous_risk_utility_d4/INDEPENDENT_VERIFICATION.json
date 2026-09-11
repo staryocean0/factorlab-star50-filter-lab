@@ -1,0 +1,18 @@
+{
+  "schema": "d4_independent_verification_v1",
+  "verified_attribute_rows": 113928,
+  "explicit_unavailable_rows": 2424,
+  "verified_validation_rows": 96030,
+  "max_lag_intensity_difference": 1.8050907990563303e-12,
+  "max_lag_ratio_difference": 2.7966517990307693e-13,
+  "future_tail_mismatches": 0,
+  "max_log_future_RMS_difference": 2.0827783941967937e-12,
+  "max_saved_loss_difference": 0.0,
+  "max_joint_block_sum_difference": 0.0,
+  "frozen_model_sha256": "30edb34a68bd7b6010f57128177d5500558b7af1803cc8b279abeb9df80ddd18",
+  "quantile_assignments_verified": true,
+  "causal_export_contains_no_outcomes": true,
+  "joint_decision_verified": true,
+  "no_refit": true,
+  "all_passed": true
+}

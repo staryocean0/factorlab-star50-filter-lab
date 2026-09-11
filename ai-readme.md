@@ -1,12 +1,12 @@
-# STAR50 / CSI1000 AI entry — D3 completed, no practical incremental promotion
+# STAR50 / CSI1000 AI entry — D4 completed with endpoint-limited continuous utility
 
 Read AGENTS.md, CURRENT_RESEARCH.md, CONTINUE_HERE.md and docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md.
-Current authority: research/causal_state_utility_d3/PROGRAM_STATE.json, RESULTS.md, DECISIVE_RECEIPT.json, EXECUTION_RECEIPT.json, PROTOCOL.md and FIT_FREEZE_RECEIPT.json.
+Current evidence: research/continuous_risk_utility_d4/PROGRAM_STATE.json, RESULTS.md, DECISIVE_RECEIPT.json, EXECUTION_RECEIPT.json, PROTOCOL.md and FIT_FREEZE_RECEIPT.json.
 
-D3_COMPLETED_NO_PRACTICAL_INCREMENTAL_PROMOTION. Formal decision D3_INCREMENTAL_UTILITY_NOT_SUPPORTED. Six primary comparisons show small positive gains and adjusted positive intervals, but all fail the frozen 1% practical relative-effect gate. Six stronger same-time numeric-baseline comparisons have intervals crossing zero. Do not lower gates, change horizons, or switch to exploratory B3/B1 to rescue promotion.
+D4_COMPLETED_CONTINUOUS_ATTRIBUTES_PARTIALLY_SUPPORTED. Four of six endpoint/horizon pairs jointly pass both the historical H and complexity-matched lagged L controls: 15/30/60m log-future-RMS and 30m future-tail Brier. 15m and 60m tails do not pass. D3 prior hints were known; this is adaptive reusable Validation, not new blind OOS. D3's negative practical-utility decision remains unchanged.
 
-Keep V19 frozen and D2 engineering evidence intact. State-definition fidelity, delivery parity, future-risk utility and strategy economics are different conclusions. Do not confuse future shock-event capture with V19 existing-episode overlap capture. No renewed V19 accuracy tuning, V20, payoff/router, parent Range/UpTrend/DownTrend classification or production.
+Keep V19/D2 baseline. Deliver interpretable state context plus continuous intensity/volatility and timing/availability. Delta fields and quantile keys are descriptive; no standalone predictive gate or action utility was admitted. No V20, payoff/router, parent Range/UpTrend/DownTrend classifier, or production.
 
-D3 fitting/evaluation and independent 96030-row checks actually ran in this chat; Actions only converted twelve old 5m inputs. 24 tests and 20 new-history-feature prefix checks passed. Next direction is a separately preregistered continuous risk-attribute utility question, not started (D4=false).
+D4 ran in the chat container: 23 synthetic tests, 20 fixed history-prefix checks, 113928 independent scalar checks and 96030 target/loss checks passed. No Actions, newraw3s,2026,BlackBox or PnL. Original source/evidence and V2 unchanged.
 
-D1/D2 PROGRAM_STATE files remain immutable historical stage receipts, not the current breakpoint. Data-use V2 remains authoritative: dev2021–2023, reusable non-fresh-OOS Validation; this evaluation2024–2025 only. No2026/newraw3s/BlackBox/PnL. production_authority=false.
+Next: CONSUMER_CONTRACT.md defines a bounded no-trade as-of research consumer; actual integration is not executed (D5=false). Preserve unavailable snapshots, day-end freshness, Asia/Shanghai clocks and distinction between retrospectively applied Development quantiles and deployable configuration availability. Do not rerun completed research to browse it. production_authority=false.

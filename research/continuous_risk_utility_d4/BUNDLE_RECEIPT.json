@@ -1,0 +1,15 @@
+{
+  "schema": "d4_evidence_bundle_receipt_v1",
+  "file_name": "D4_continuous_risk_utility_evidence.zip",
+  "bytes": 46905642,
+  "sha256": "347abb143e3c56ddb0b41a6e3c1cd1b4c2362329f8fd25e23e21e28151cba903",
+  "manifest_sha256": "15c14265401913422b028f93be070fea39334cb293c32e991b77ead552f711ee",
+  "file_entries": 66,
+  "verified_manifest_entries": 65,
+  "result_authority_commit": "61411a9eb9edc135268fa2a1dec04083861bca2d",
+  "all_entries_verified": true,
+  "nested_D3_input_bundle_verified": true,
+  "artifact_origin": "current_chat_container_not_github_actions",
+  "protocol_authority": "immutable GitHub commit ef865110aee6c1c3b300d27c38a578c2b8882a67, blob a377e60eea7681182427262d576bddcafe448ef5",
+  "production_authority": false
+}
