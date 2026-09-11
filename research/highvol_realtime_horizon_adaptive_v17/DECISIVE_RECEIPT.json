@@ -1,0 +1,32 @@
+{
+  "schema": "highvol_realtime_horizon_adaptive_v17_development_decisive_receipt_v1",
+  "branch": "research/highvol-realtime-horizon-adaptive-v17-20260911",
+  "execution_commit": "5ae8d6adab6c4afb617ed14ae44327d722e3db49",
+  "run_id": 34603682244,
+  "job_id": 103276864733,
+  "artifact_id": 10265262086,
+  "artifact_sha256": "759eda3d30900742bedd9494fef9c64ed91af66068892aceaa01e610a684101c",
+  "row_count": 7327,
+  "realtime_scored_rows": 7310,
+  "coverage": 0.9976798143851509,
+  "exact_state_agreement": 0.995485636114911,
+  "probability_mae_vs_v16": {
+    "15m": 0.00038143785088958404,
+    "30m": 0.0004062408962034444,
+    "60m": 0.0
+  },
+  "brier_degradation": {
+    "15m": 0.00004237739776040417,
+    "30m": 0.0000998915597395511,
+    "60m": 0.0
+  },
+  "rowwise_monotone": true,
+  "sixty_minute_anchor_exact": true,
+  "validation_eligible": true,
+  "decision": "FREEZE_EXACT_E15S_TRANSFER_AND_RUN_REUSABLE_2024_2025_VALIDATION",
+  "validation_queried": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "production_authority": false
+}
