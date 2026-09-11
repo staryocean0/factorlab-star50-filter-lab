@@ -1,12 +1,38 @@
+from __future__ import annotations
+
+import importlib.util
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-import run_validation as rv
+HERE = Path(__file__).resolve().parent
+RUNNER = HERE / "run_validation.py"
+
+
+def load_runner():
+    spec = importlib.util.spec_from_file_location("v16_validation", RUNNER)
+    assert spec is not None and spec.loader is not None
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def test_validation_boundary_is_frozen():
+    rv = load_runner()
+    assert rv.SYMBOLS == ("000688.SH", "000852.SH")
+    assert rv.VAL_YEARS == (2024, 2025, 2026)
+    assert rv.REF_YEARS == (2020, 2021, 2022, 2023, 2024, 2025, 2026)
+    assert rv.HORIZONS == (15, 30, 60)
+    assert rv.CUTOFF == "2026-08-21"
+    assert rv.EXPECTED_2026_BLOBS == {
+        "000688.SH": "4626fb307bbcae1c417ddcd69ac694cf322c8bbc",
+        "000852.SH": "8de5cd3caab99dbacae229a2c87f15c4ff2f8558",
+    }
 
 
 def test_frozen_v16_authority_and_surface_contract():
+    rv = load_runner()
     frozen = rv.frozen_authority()
     adaptive, age_only = rv.prediction_maps(frozen)
     assert frozen["validation_authorized"] is True
@@ -19,6 +45,7 @@ def test_frozen_v16_authority_and_surface_contract():
 
 
 def test_rowwise_guard_requires_monotone_and_exact_60m_anchor():
+    rv = load_runner()
     frozen = rv.frozen_authority()
     adaptive, age_only = rv.prediction_maps(frozen)
     rows = pd.DataFrame(
@@ -34,6 +61,7 @@ def test_rowwise_guard_requires_monotone_and_exact_60m_anchor():
 
 
 def test_synthesis_uses_end_of_each_five_minute_block():
+    rv = load_runner()
     day = "2023-01-03"
     am = pd.date_range(f"{day} 09:31:00", periods=120, freq="min")
     pm = pd.date_range(f"{day} 13:01:00", periods=120, freq="min")
