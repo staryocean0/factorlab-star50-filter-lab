@@ -1,11 +1,13 @@
-# 本地接续入口：因果 K 线风险属性交付
+# 本地接续入口：D2 云端回放已验收，D3 尚未执行
 
-当前任务、状态和待执行命令以 [CURRENT_RESEARCH.md](CURRENT_RESEARCH.md)、[CONTINUE_HERE.md](CONTINUE_HERE.md) 及 [下一阶段权威叙事](docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md) 为准。
+以CURRENT_RESEARCH.md、CONTINUE_HERE.md及docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md为准。当前执行状态在research/causal_state_delivery_d2/PROGRAM_STATE.json和EXECUTION_RECEIPT.json。
 
-V19 已阶段性收口且保持冻结；当前走 causal state delivery V1，不重开旧滤波/payoff研究。本次仅更新研究仓权威入口并增加状态接口原型/合成测试，不声称本地 FactorLab/DataHub 已回迁、复核或接入成功。
+D2原始行情回放在有界Actions执行：run34620317766，artifact10271634055。当前会话完成标准库单元测试及完整JSONL账本独立核验。两者不等于本地FactorLab/DataHub已回迁、执行或接入。
 
-本地回迁时先核对提交和 `research/causal_state_delivery_v1/EXECUTION_RECEIPT.json` 的代码身份与测试范围，再运行接续入口给出的命令。完整因果事件回放、close事件、恢复概率接入、消费者验收与风险分桶效用仍为待完成项；不接生产 registry。
+本地回迁先核对指定提交、回执中的代码/数据/产物身份，阅读D2 RESULTS.md的新鲜度和日初不可用限制，再执行CONTINUE_HERE的检查。不要无意义重跑V19；不要把云端结果当成本地独立全量复验。
 
-原2026-09-06本地接管记录及源码hash缺口原样保存在 [历史快照](https://github.com/staryocean0/factorlab-star50-filter-lab/blob/766dd6f5293a1fa8588edabe368088f63981fa1a/LOCAL_TAKEOVER.md)。该记录中的旧“当前任务”、旧数据角色与“CONTINUE_HERE不得更新”不覆盖现行入口及 DATA_USAGE_POLICY_V2；历史源码事件不因新阶段而消失。
+下一研究任务D3须先注册非PnL风险分桶效用协议，尚无结果。生产接入、接收延迟、断线恢复/修订策略和经济验收均未通过；不接生产registry。
 
-`production_authority=false`。
+V19基线、D1原始契约和历史源码事件保持不变。旧2026-09-06本地接管说明及hash缺口保存在commit766dd6f5293a1fa8588edabe368088f63981fa1a；旧任务/数据标签不覆盖当前V2政策。
+
+production_authority=false。

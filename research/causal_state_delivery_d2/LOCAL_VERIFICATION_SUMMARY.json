@@ -1,0 +1,21 @@
+{
+  "schema": "d2_independent_ledger_verification_summary_v1",
+  "note": "Normalized summary of the independently executed verifier; raw output SHA256 is in EXECUTION_RECEIPT.json. This file is not claimed byte-identical to the raw pretty-printed output.",
+  "execution_location": "current_chat_container",
+  "events_verified": 232704,
+  "output_files_sha256_verified": 18,
+  "ledger_hash_chain_verified": true,
+  "timing_and_no_backdating_verified": true,
+  "e15_mapping_and_confirmed_shock_age_verified": true,
+  "probabilities_match_frozen_v16_table": true,
+  "complete_grid_state_coverage": 0.9791666666666666,
+  "unavailable_first_daily_bar_per_clock": 2424,
+  "e15_observation_staleness_seconds": {"min":0.0,"max":165.0,"mean":6.574099431219718},
+  "stale_observation_counts_gt_seconds": {"3":32539,"15":2454,"30":2439,"60":2426,"120":2424},
+  "all_gt_120s_observations_at_bar_end": "15:00",
+  "gt_120s_observation_times": {"14:57:00":27,"14:57:03":549,"14:57:06":1735,"14:57:09":103,"14:57:12":10},
+  "gt_15s_outside_1500_count": 30,
+  "raw_parquet_replay_repeated_in_current_container": false,
+  "measured_latency": false,
+  "passed": true
+}

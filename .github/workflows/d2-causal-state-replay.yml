@@ -1,0 +1,94 @@
+name: d2-causal-state-replay
+on:
+  push:
+    branches: ['delivery/causal-kline-state-v1-20260911']
+    paths:
+      - 'research/causal_state_delivery_d2/**'
+      - '.github/workflows/d2-causal-state-replay.yml'
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: d2-causal-state-replay
+  cancel-in-progress: false
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            research/causal_state_delivery_d2
+            research/causal_state_delivery_v1/adapter.py
+            research/causal_state_delivery_v1/test_adapter.py
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/market/5m/000688.SH/2020.parquet
+            data/market/5m/000688.SH/2021.parquet
+            data/market/5m/000688.SH/2022.parquet
+            data/market/5m/000688.SH/2023.parquet
+            data/market/5m/000688.SH/2024.parquet
+            data/market/5m/000688.SH/2025.parquet
+            data/market/5m/000852.SH/2020.parquet
+            data/market/5m/000852.SH/2021.parquet
+            data/market/5m/000852.SH/2022.parquet
+            data/market/5m/000852.SH/2023.parquet
+            data/market/5m/000852.SH/2024.parquet
+            data/market/5m/000852.SH/2025.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2021.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2022.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2023.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2024.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2025.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2021.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2022.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2023.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2024.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2025.parquet
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install recorded numeric dependencies
+        run: python -m pip install --disable-pip-version-check numpy==2.4.6 pandas==3.0.5 pyarrow==25.0.1
+      - name: Governance and D1 D2 contract tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/d2_causal_replay
+          python scripts/validate_data_usage_policy.py | tee artifacts/d2_causal_replay/governance_test.txt
+          python -m unittest discover -s research/causal_state_delivery_v1 -p 'test_*.py' -v 2>&1 | tee artifacts/d2_causal_replay/d1_tests.txt
+          python -m unittest discover -s research/causal_state_delivery_d2 -p 'test_*.py' -v 2>&1 | tee artifacts/d2_causal_replay/d2_tests.txt
+          python -m compileall -q research/causal_state_delivery_d2
+      - name: Independent chronological raw replay versus frozen upstream
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python research/causal_state_delivery_d2/run_replay.py --repo-root . --out artifacts/d2_causal_replay
+      - name: Seal all outputs including failure evidence
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib,json,os
+          from pathlib import Path
+          root=Path('artifacts/d2_causal_replay');root.mkdir(parents=True,exist_ok=True)
+          files=[]
+          for p in sorted(root.rglob('*')):
+              if p.is_file() and p.name!='output_manifest.json':
+                  b=p.read_bytes();files.append({'name':str(p.relative_to(root)),'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+          code=[]
+          for p in sorted(Path('research/causal_state_delivery_d2').glob('*')):
+              if p.is_file():
+                  b=p.read_bytes();code.append({'path':str(p),'sha256':hashlib.sha256(b).hexdigest(),'git_blob':hashlib.sha1(f'blob {len(b)}\0'.encode()+b).hexdigest()})
+          (root/'output_manifest.json').write_text(json.dumps({'schema':'d2_output_manifest_v1','execution_commit':os.environ['GITHUB_SHA'],'files':files,'code':code},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: d2-causal-state-replay-${{ github.run_id }}
+          path: artifacts/d2_causal_replay
+          if-no-files-found: error
+          retention-days: 90

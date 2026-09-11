@@ -1,0 +1,33 @@
+# D2 — causal E-15 / close event delivery acceptance
+
+Date: 2026-09-11. Owner authorized execution of D2; mathematical decisions delegated. Engineering delivery, not V20 or D3. Baseline: main ef7fedc0345c0e895b278a3f5448f85c132d5b98, V19 ee2fce299d5ee21abf1ab2c2c5183bac101ae822, V9 ae2a7e095df58692ef9df0dfee5856cac727ca44, V16 surface 1f88966cf5dd3fb102f0d75746d5d00434555647. D1 remains sealed historical contract slice.
+
+## Inputs frozen before replay
+
+Two symbols only: 000688.SH and 000852.SH. Raw 5m paths data/market/5m/{symbol}/{year}.parquet for 2020–2025; raw 3s paths data/cross_index_risk_gate_3s_v1/{symbol}_{year}.parquet for 2021–2025. Source commit above. 2020 is rolling-history warmup, never scored. No 2026 inputs, no post-cutoff inputs, no BlackBox query. File Git blob identities and SHA256 are sealed before evaluation in input_manifest.json.
+
+Original frozen reference artifacts (evaluation side only): Development run 34611126345 artifact 10267923594 ZIP SHA256 3d64999976ca5ad001e7924aa4d6e668e412411e58e1bb10daebb747f4ee5aea; Validation run 34612330970 artifact 10268853374 ZIP SHA256 5989514df544ffc26c0559a185829f5c027df954a311dd9a43f3f0c9912238af. Their internal output manifests must verify before reading expected records. Expected available E-15 rows are 68338 and 45590; this is an identity guard, not a newly selected statistical threshold.
+
+## Required architecture
+
+Independent chronological kernel processes completed 5m returns only. Rolling valid-return buffers persist across days exactly as V9; previous close, risk state, and most-recent-shock position reset at trading-day boundaries. Morning/afternoon belong to one frozen trading day. No overnight return, no lunch reset and no missing-bar imputation. Last 48 prior valid returns form background sigma; last 11 plus current partial return form provisional RV12. The frozen shock and state thresholds are unchanged. Select last observation <= E-15 sorted stably by observation_time,row_index, exactly as frozen V9; observations at bar_start are inclusive as in the upstream implementation. This explicitly resolves D1's stricter synthetic start-boundary rule in favor of frozen upstream parity, not parameter optimization.
+
+E-15 emission has no final-state or future-outcome parameter. Current final close becomes an input only to the separate CLOSE event at/after close. No backwards replacement of E-15 snapshots. On missing reference/checkpoint emit UNAVAILABLE, never NORMAL. First daily bar remains excluded from E-15 state admission, but its close initializes the frozen causal reference for the next bar; no synthetic price is created.
+
+Recovery attachment uses frozen V16 lookup and V17 gates: missing reference/checkpoint, fresh partial shock, provisional NORMAL, or absent prior finalized shock => probabilities null with reason. At close use confirmed state and confirmed recent-shock clock; a new confirmed shock resets age to zero and probabilities remain unavailable. No provisional shock mutates the confirmed clock. Age is 5m trading-bar steps within day, not elapsed wall time. Probability horizons retain frozen V16 labels/target origin; attachment does not establish a new forecast calibration.
+
+Snapshots are immutable, with decision_time, published_at, observation time, state basis, transition, exit_pending, recovery status, source identities, and descriptive attribute key. No trade_allowed, direction, order, position, or hindsight episode fields. Late input/publication is not backdated. Duplicate identical event IDs are idempotent; conflicting duplicates and out-of-order publication are rejected. As-of consumer selects only published, unexpired snapshots; E-15 expires at close. Close snapshots expire at the next scheduled E-15 and are never carried overnight. Session-break queries are UNAVAILABLE; prior morning confirmation may remain internal causal context after lunch, not a newly observed fact.
+
+## Fixed acceptance (all required for D2 full replay support)
+
+1. Exact input/code/artefact identities and governance guards; raw rows restricted to their declared years; every original reference row preserved.
+2. On all original available E-15 rows: partial state, shock flag, selected observation, V19 delivered state, confirmed shock age, probability gating and three frozen probabilities match sealed reference records. States/reasons/timestamps exact; probabilities tolerance 1e-15. Report every mismatch and missing/excess key. Numeric sigma/ratio tolerance 1e-10 is diagnostic only; it cannot rescue a state mismatch.
+3. On all evaluable closes: chronological final state/shock equals unchanged V9 reference calculation; close probabilities equal the frozen lookup at the confirmed state/age. First-bar missingness reported separately, not changed into a larger eligible cohort.
+4. Consumer current-time/as-of outputs agree with emitted records, no E-15 leakage at/after close, no premature close visibility, no missing-data safety default. Report coverage with both original eligible and complete-grid denominators, recovery coverage/reasons, transitions, session/day boundaries, and assumed lead time. No statistical accuracy or downstream utility promotion.
+5. Synthetic causal-prefix, late input/close, exact/conflicting duplicate, out-of-order, missing checkpoint/reference, session/day gap, close-confirmed exit, and shock-reset tests pass. Market prefix checks at fixed calendar-selected checkpoints verify later raw price/close perturbations do not change earlier emissions. Report tested cases; do not describe tests as a universal proof.
+
+## Execution and failure policy
+
+Current chat container first: stdlib contract tests. Raw GitHub binary fetch failed; container DNS/network fetch failed; pyarrow/fastparquet absent and install unavailable. Two original artifacts downloaded and ZIP digests checked, but this container cannot decode their Parquet rows. Plugin discovery found no relevant callable local FactorLab/DataHub executor. Hence use bounded GitHub Actions as last available execution venue, with contents:read and actions:read, exact raw paths only and original artifacts. Do not dispatch local work or claim local execution. No secrets, production registries, or other repositories modified.
+
+A failed implementation run is preserved and classified; repairs may fix implementation only, not adjust model, cohort, or acceptance thresholds. If full replay cannot be completed, report partial execution honestly and keep D2 pending. D3 is not executed. No new Validation estimator test, fit, threshold search, lead-time optimization, PnL or production authority.

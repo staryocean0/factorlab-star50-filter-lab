@@ -1,0 +1,19 @@
+{
+  "schema":"causal_state_delivery_d2_inputs_v1",
+  "source_commit":"ef7fedc0345c0e895b278a3f5448f85c132d5b98",
+  "symbols":["000688.SH","000852.SH"],
+  "warmup_years":[2020],
+  "score_years":[2021,2022,2023,2024,2025],
+  "frozen_v9":{"commit":"e01b293dcfc3100a02265315376bc63a9137c3d3","path":"research/highvol_realtime_risk_object_v9/run_v9.py","blob":"ae2a7e095df58692ef9df0dfee5856cac727ca44"},
+  "frozen_v19":{"commit":"6fad49e5dc674d9a48b5c1719e060eceabc166d2","path":"research/highvol_risk_episode_state_machine_v19/run_v19.py","blob":"ee2fce299d5ee21abf1ab2c2c5183bac101ae822"},
+  "frozen_surface":{"commit":"a64a89696d03ac4cf7109b1b0918cadbaa43724a","path":"research/highvol_horizon_adaptive_v16/FROZEN_HORIZON_ADAPTIVE_SURFACE.json","blob":"1f88966cf5dd3fb102f0d75746d5d00434555647"},
+  "artifacts":[
+    {"role":"development","run":34611126345,"id":10267923594,"rows":68338,"sha256":"3d64999976ca5ad001e7924aa4d6e668e412411e58e1bb10daebb747f4ee5aea"},
+    {"role":"validation","run":34612330970,"id":10268853374,"rows":45590,"sha256":"5989514df544ffc26c0559a185829f5c027df954a311dd9a43f3f0c9912238af"}
+  ],
+  "probability_tolerance":1e-15,
+  "timing_basis":"owner_realtime_assumption",
+  "fresh_oos":false,
+  "blackbox_queried":false,
+  "production_authority":false
+}
