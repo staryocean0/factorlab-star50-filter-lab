@@ -1,0 +1,23 @@
+{
+  "schema": "highvol_unsafe_switch_on_v18_reusable_validation_contract_v1",
+  "source_development_execution_commit": "542b11857baeaebd43d93dc5ac866c6c3316e477",
+  "source_development_run_id": 34606023820,
+  "source_development_artifact_id": 10266486662,
+  "source_v18_runner_blob": "62c207badff1c3e37cbb1a8e17ef89feeea611d8",
+  "frozen_v9_runner_blob": "ae2a7e095df58692ef9df0dfee5856cac727ca44",
+  "validation_years": [2024, 2025],
+  "queried_3s_years": [2024, 2025],
+  "primary_lead_seconds": 15,
+  "fixed_leads_seconds": [60, 30, 15, 6, 3],
+  "source_states": ["NORMAL", "RECOVERING"],
+  "signal": "partial_state == UNSAFE",
+  "target": "final risk_state == UNSAFE given final prev_state in {NORMAL, RECOVERING}",
+  "threshold_search_permitted": false,
+  "feature_search_permitted": false,
+  "probability_fit_permitted": false,
+  "lead_time_selection_permitted": false,
+  "subgroup_selection_permitted": false,
+  "queried_2026_3s": false,
+  "blackbox_query_permitted": false,
+  "production_authority": false
+}
