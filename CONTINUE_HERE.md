@@ -1,122 +1,50 @@
-# Continue here — STAR50 / CSI1000 K-line risk-state bucket
+# 接续入口：因果 K 线风险属性交付 V1
 
-## Read first
+## 当前不是重开 V19，而是完成交付与实用性验收
 
-1. `CURRENT_RESEARCH.md`
-2. `research/v19_residual_failure_audit/RESULTS.md`
-3. `research/v19_residual_failure_audit/DECISIVE_RECEIPT.json`
-4. `research/highvol_risk_episode_state_machine_v19_validation/VALIDATION_RESULTS.md`
-5. `research/highvol_risk_episode_state_machine_v19_validation/DECISIVE_RECEIPT.json`
-6. `research/highvol_risk_episode_state_machine_v19_validation/FROZEN_VALIDATION_CONTRACT.json`
-7. `research/highvol_risk_episode_state_machine_v19/DEVELOPMENT_RESULTS.md`
-8. `research/highvol_unsafe_switch_on_v18_validation/VALIDATION_RESULTS.md`
-9. `research/highvol_realtime_horizon_adaptive_v17_validation/VALIDATION_RESULTS.md`
-10. `research/highvol_horizon_adaptive_v16/FROZEN_HORIZON_ADAPTIVE_SURFACE.json`
-11. `docs/governance/BUCKET_SCOPE_REPAIR_20260909.md`
-12. `docs/governance/DATA_USAGE_POLICY_V2.md`
-13. `docs/governance/data_usage_declaration.json`
-14. `docs/governance/blackbox_query_ledger.json`
-15. `AGENTS.md`
+当前阶段：`CAUSAL_KLINE_STATE_DELIVERY_V1_CONTRACT_TESTED_REPLAY_PENDING`。
+V19 的历史科学断点 `V19_VALIDATED_RESIDUAL_PATH_CLOSED_NO_V20` 保留。
 
-Then run:
+先读：
 
-`python scripts/validate_data_usage_policy.py`
+1. `AGENTS.md` 与 `CURRENT_RESEARCH.md`。
+2. `docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md`。
+3. `research/causal_state_delivery_v1/PROGRAM_STATE.json`、`CONTRACT.md`、`EXECUTION_RECEIPT.json`。
+4. `docs/governance/DATA_USAGE_POLICY_V2.md`、`data_usage_declaration.json`、`blackbox_query_ledger.json`。
+5. `docs/governance/BUCKET_SCOPE_REPAIR_20260909.md`、`available_at_owner_clarification_20260906.json`。
+6. 原始 V19 Validation、V19 residual audit 与 V16/V17/V18 冻结对象。
 
-## Current breakpoint
+## 已实现且已执行
 
-The integrated V19 causal realtime risk-episode state machine is reusable-Validation supported on existing 2024-2025 3s coverage, and its residual failure path has now been audited and closed.
+`research/causal_state_delivery_v1/adapter.py` 是状态层 E-15 适配原型：严格输入、因果时钟、临时/上一已确认状态区分、退出待确认、缺失原因、不可变输出及描述性 bucket_key。
 
-Current decisive state:
+20 项合成测试通过。这个结果不是行情回放、完整源端算法等价性、接收延迟、实用风险区分或策略收益证明。原型尚不生成 close 事件或恢复概率。
 
-`V19_VALIDATED_RESIDUAL_PATH_CLOSED_NO_V20`
+```bash
+python scripts/validate_data_usage_policy.py
+python -m unittest discover -s research/causal_state_delivery_v1 -p 'test_*.py' -v
+```
 
-Frozen V19 primary rule at exactly E-15s:
+## 直接继续的下一任务：D2
 
-1. frozen V9 partial `UNSAFE` or `RECOVERING` is emitted immediately;
-2. if partial state is `NORMAL` while the previous completed 5m state remains `UNSAFE` or `RECOVERING`, retain that previous risk state until bar close;
-3. otherwise emit `NORMAL`.
+实现冻结 V9/V19 状态到 E-15/close 双时钟事件流的因果回放，接入冻结 V16/V17 概率与原有 gating，再做消费者 as-of 接入验收。
 
-There is no fitted persistence length and no post-hoc checkpoint selection.
+先绑定输入 manifest、代码/配置身份和协议；不要重跑旧科学版本以重获 PASS。对已验可用行检查逐行基线一致性，报告全部偏差/不可用与边界情况；不能改变 cohort、阈值或时点来修复工程测试。
 
-## V19 reusable Validation authority
+确保：未来输入改变不改已发布前缀；当前 final_state 不能进入 E-15；收盘确认不能回写 E-15；迟到/缺失不冒充 NORMAL；开市/午休/日终与同秒重复记录语义有定义；发布后才可消费，过期快照不无限沿用。
 
-- execution commit `b4527e2f431f5dfb2ef801f262d39f509253820f`;
-- run `34612330970`;
-- job `103305638445`;
-- artifact `10268853374`;
-- artifact SHA256 `5989514df544ffc26c0559a185829f5c027df954a311dd9a43f3f0c9912238af`;
-- frozen V19 runner blob `ee2fce299d5ee21abf1ab2c2c5183bac101ae822`;
-- Validation years `2024-2025` only;
-- E-15s evaluable checkpoints `45,590`;
-- pooled precision `0.9945937090`;
-- pooled recall `0.9892455597`;
-- pooled FPR `0.0008364383`;
-- exact three-state agreement `0.9963149814`;
-- reference episodes `542`;
-- episode capture `0.9981549815`;
-- fragmentation `0.0018450185`;
-- `full_validation_supported=true`.
+数学与统计判定已委托执行者，不再逐项询问是否可设计协议/验收。按 AGENTS 的实际执行位置优先级工作，不默认派发 Actions，不创建生产任务。
 
-## Residual audit closure
+## 随后 D3：风险分桶的实际信息价值
 
-Diagnostic audit authority:
+单独预注册后续波动、冲击再发生、风险持续/恢复的 endpoint、未来窗口、基准、最小实际效应与不确定性方法，再执行评价。不能只用自身状态标签的一致性证明“有用”。不做方向/PnL/开平仓/仓位/router。
 
-- successful execution commit `a066a64ee22cf6e23911f5bccc1a90eafe2de9e4`;
-- run `34614008432`;
-- job `103311278481`;
-- artifact `10270156874`;
-- artifact SHA256 `b49c61d8b2345e0441c69fa7d94d25bf9425d572d13953e40e83aede72f4d0fb`.
+已有 Validation 可复用诊断并启发后续 Development，但不是 fresh OOS，不能直接拟合当前受测候选。无新独立 holdout 不等于禁止合理工程交付或有用途的新 Development 问题。
 
-The first audit run `34613545773` produced no scientific output because of an implementation-only pandas dtype error. The rerun changed only temporary column dtype handling; the scientific protocol and decision rule were unchanged.
+## 不得越过的边界
 
-The audit found:
+不覆盖 V11–V19 冻结代码、surface、报告或 receipt；不为提高残差 accuracy 启动 V20；不把 E-6/E-3 事后替换 E-15；不合成 2026 3s，不读取保护期数据或查询 BlackBox。
 
-- 66 Validation risk FNs: all final `NORMAL -> UNSAFE` shocks still below 3σ at E-15; 48 form by E-6, 16 by E-3, 2 later/by close;
-- 33 Validation risk FPs: all transient E-15 partial shocks that finish `NORMAL`; 27 resolve by E-6, 6 by E-3;
-- all 99 binary risk errors are exhausted by these mirror-image threshold-timing effects;
-- 69 `UNSAFE/RECOVERING` mismatches are only `0.00151349` of Validation checkpoints, and 62/69 converge by E-3;
-- the single uncaptured episode and single fragmented episode are tied to FN timing;
-- all 28 false machine episodes are one-checkpoint transients, resolving by E-6 or E-3;
-- Development 2021-2023 reproduces the same residual structure.
+V19 realtime 验证覆盖 2024–2025；V16 final-5m 到 2026-08-21，两者不能混同。NORMAL 不是“允许交易”，UNSAFE 不是“看空”，UNAVAILABLE 不是 NORMAL。
 
-Mathematical decision:
-
-`NO_V20_FROM_V19_RESIDUALS`
-
-Do **not** start V20 to optimize these errors. Such an attempt would require moving the validated 3σ threshold, moving the product checkpoint after inspection, or fitting new features/persistence rules on already-consumed Validation data. There is also no fresh authorized realtime 3s holdout after 2025 for clean validation of such a model.
-
-A future version requires a qualitatively new causal question or genuinely new independent realtime data.
-
-## Existing validated component authorities
-
-V18 remains the validated E-15s entry-side switch-on component on 2024-2025 3s coverage.
-
-V17 remains the validated E-15s realtime recovery component on 2024-2025 3s coverage, transferring frozen V16 without refit.
-
-V16 remains the validated final-5m recovery authority through `2026-08-21`:
-
-- 15m/30m = state + recent-shock age;
-- 60m = recent-shock age only.
-
-## Do not reopen
-
-Do not rerun/refit V11-V19 merely to reconfirm them. Do not alter V19 E-15s, V9 thresholds, V18 switch-on, V16/V17 recovery probabilities, or close-confirmed-exit semantics.
-
-Do not choose E-6s/E-3s post hoc, introduce a tuned persistence length, or use 2024-2025 again as a fresh realtime holdout.
-
-Do not synthesize 2026 3s coverage or query BlackBox merely to improve current metrics.
-
-## Data-use regime
-
-- Development: 2021-2023;
-- reusable 5m Validation: through 2026-08-21 under frozen protocols;
-- realtime 3s reusable Validation: 2024-2025 only;
-- BlackBox-V1: separate protected aggregate-only regime.
-
-`v19_validation_queried=true`.
-`v19_residual_audit_completed=true`.
-`v20_started=false`.
-`queried_2026_3s=false`.
-`blackbox_queried=false`.
-`pnl_computed=false`.
-`production_authority=false`.
+`production_authority=false`。详细实际进度与未完成项见 PROGRAM_STATE.json，不能把路线图当完成回执。

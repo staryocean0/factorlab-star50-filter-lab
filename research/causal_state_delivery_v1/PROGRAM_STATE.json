@@ -1,0 +1,54 @@
+{
+  "schema": "causal_kline_state_delivery_program_v1",
+  "authority_date": "2026-09-11",
+  "purpose": "causal_kline_risk_attribute_changes_for_downstream_bucketing",
+  "authority_document": "docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md",
+  "scientific_baseline": "V19_VALIDATED_RESIDUAL_PATH_CLOSED_NO_V20",
+  "current_stage": "CAUSAL_KLINE_STATE_DELIVERY_V1_CONTRACT_TESTED_REPLAY_PENDING",
+  "source_main_commit": "766dd6f5293a1fa8588edabe368088f63981fa1a",
+  "v19_runner_blob": "ee2fce299d5ee21abf1ab2c2c5183bac101ae822",
+  "mathematical_decisions_delegated": true,
+  "v19_frozen": true,
+  "v20_started": false,
+  "milestones": {
+    "D1_contract_and_state_adapter": {
+      "status": "implemented_unit_tested",
+      "unit_tests_passed": 20,
+      "market_evidence": false,
+      "recovery_probabilities_implemented": false,
+      "close_event_implemented": false
+    },
+    "D2_causal_event_replay_and_consumer_acceptance": {
+      "status": "next_not_executed",
+      "baseline_parity_verified": false,
+      "published_prefix_invariance_verified_on_market_data": false
+    },
+    "D3_practical_risk_bucket_utility": {
+      "status": "protocol_required_not_executed",
+      "utility_demonstrated": false,
+      "pnl_in_scope": false
+    }
+  },
+  "next_action": "FREEZE_D2_REPLAY_CONTRACT_AND_IMPLEMENT_E15_CLOSE_CONSUMER_REPLAY",
+  "data_policy": "docs/governance/DATA_USAGE_POLICY_V2.md",
+  "development_years": [
+    2021,
+    2022,
+    2023
+  ],
+  "reusable_validation_date_end": "2026-08-21",
+  "realtime_validation_years": [
+    2024,
+    2025
+  ],
+  "validation_reusable": true,
+  "validation_is_fresh_oos": false,
+  "this_phase_market_data_queried": false,
+  "this_phase_new_validation_run": false,
+  "queried_2026_3s": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "production_authority": false,
+  "other_repositories_modified": false,
+  "evidence_warning": "Unit contract tests do not establish source authenticity, full engine parity, measured live latency, market utility or strategy profitability."
+}
