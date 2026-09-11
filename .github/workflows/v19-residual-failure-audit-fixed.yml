@@ -1,0 +1,147 @@
+name: v19-residual-failure-audit-fixed
+
+on:
+  push:
+    branches:
+      - research/v19-residual-failure-audit-20260911
+    paths:
+      - 'research/v19_residual_failure_audit_fixed/**'
+      - '.github/workflows/v19-residual-failure-audit-fixed.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout diagnostic and consumed inputs
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          fetch-depth: 1
+          sparse-checkout: |
+            research/v19_residual_failure_audit
+            research/v19_residual_failure_audit_fixed
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/market/5m/000688.SH/2020.parquet
+            data/market/5m/000688.SH/2021.parquet
+            data/market/5m/000688.SH/2022.parquet
+            data/market/5m/000688.SH/2023.parquet
+            data/market/5m/000688.SH/2024.parquet
+            data/market/5m/000688.SH/2025.parquet
+            data/market/5m/000852.SH/2020.parquet
+            data/market/5m/000852.SH/2021.parquet
+            data/market/5m/000852.SH/2022.parquet
+            data/market/5m/000852.SH/2023.parquet
+            data/market/5m/000852.SH/2024.parquet
+            data/market/5m/000852.SH/2025.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2021.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2022.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2023.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2024.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2025.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2021.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2022.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2023.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2024.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2025.parquet
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+
+      - name: Validate governance
+        run: python scripts/validate_data_usage_policy.py --repo-root .
+
+      - name: Guard diagnostic boundary
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for s in ['000688.SH','000852.SH']:
+              got=sorted(p.name for p in (Path('data/market/5m')/s).glob('*.parquet'))
+              assert got==[f'{y}.parquet' for y in range(2020,2026)],(s,got)
+          got=sorted(p.name for p in Path('data/cross_index_risk_gate_3s_v1').glob('*.parquet'))
+          exp=sorted([f'{s}_{y}.parquet' for s in ['000688.SH','000852.SH'] for y in range(2021,2026)])
+          assert got==exp,(got,exp)
+          assert not list(Path('data').rglob('*2026*.parquet'))
+          assert not list(Path('data').rglob('*2027*.parquet'))
+          print('diagnostic boundary OK')
+          PY
+
+      - name: Materialize exact frozen authority
+        shell: bash
+        run: |
+          set -euo pipefail
+          d=research/v19_residual_failure_audit
+          git fetch --no-tags --depth=1 origin 6fad49e5dc674d9a48b5c1719e060eceabc166d2
+          git show 6fad49e5dc674d9a48b5c1719e060eceabc166d2:research/highvol_risk_episode_state_machine_v19/run_v19.py > "$d/frozen_v19.py"
+          test "$(git hash-object "$d/frozen_v19.py")" = "ee2fce299d5ee21abf1ab2c2c5183bac101ae822"
+          git fetch --no-tags --depth=1 origin e01b293dcfc3100a02265315376bc63a9137c3d3
+          git show e01b293dcfc3100a02265315376bc63a9137c3d3:research/highvol_realtime_risk_object_v9/run_v9.py > "$d/frozen_v9.py"
+          test "$(git hash-object "$d/frozen_v9.py")" = "ae2a7e095df58692ef9df0dfee5856cac727ca44"
+          git fetch --no-tags --depth=1 origin 542b11857baeaebd43d93dc5ac866c6c3316e477
+          git show 542b11857baeaebd43d93dc5ac866c6c3316e477:research/highvol_unsafe_switch_on_v18/run_v18.py > "$d/frozen_v18.py"
+          test "$(git hash-object "$d/frozen_v18.py")" = "62c207badff1c3e37cbb1a8e17ef89feeea611d8"
+          git fetch --no-tags --depth=1 origin 5ae8d6adab6c4afb617ed14ae44327d722e3db49
+          git show 5ae8d6adab6c4afb617ed14ae44327d722e3db49:research/highvol_realtime_horizon_adaptive_v17/run_v17.py > "$d/frozen_v17.py"
+          test "$(git hash-object "$d/frozen_v17.py")" = "397d80037806ba11cadf7f77717d36d55fbafc91"
+          git fetch --no-tags --depth=1 origin a64a89696d03ac4cf7109b1b0918cadbaa43724a
+          git show a64a89696d03ac4cf7109b1b0918cadbaa43724a:research/highvol_horizon_adaptive_v16/FROZEN_HORIZON_ADAPTIVE_SURFACE.json > "$d/frozen_v16_surface.json"
+          test "$(git hash-object "$d/frozen_v16_surface.json")" = "1f88966cf5dd3fb102f0d75746d5d00434555647"
+
+      - name: Test original frozen audit contract
+        run: python -m pytest -q research/v19_residual_failure_audit/test_audit.py
+
+      - name: Run residual audit with dtype-only implementation fix
+        run: python research/v19_residual_failure_audit_fixed/run_audit.py --repo-root . --out artifacts/v19_residual_failure_audit
+
+      - name: Guard diagnostic-only authority
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/v19_residual_failure_audit/summary.json'))
+          assert s['diagnostic_only'] is True
+          assert s['v20_started'] is False
+          assert s['queried_2026_3s'] is False
+          assert s['blackbox_queried'] is False
+          assert s['threshold_search_performed'] is False
+          assert s['lead_time_selection_performed'] is False
+          assert s['persistence_length_search_performed'] is False
+          assert s['feature_search_performed'] is False
+          assert s['probability_fit_performed'] is False
+          assert s['pnl_computed'] is False
+          assert s['trading_rule_created'] is False
+          assert s['production_authority'] is False
+          print('decision:',s['decision'])
+          print('validation rows:',json.dumps(s['row_diagnostics']['validation'],sort_keys=True))
+          print('validation episodes:',json.dumps(s['episode_diagnostics']['validation'],sort_keys=True))
+          PY
+
+      - name: Seal output manifest
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          root=Path('artifacts/v19_residual_failure_audit'); files=[]
+          for p in sorted(root.iterdir()):
+              if p.is_file():
+                  b=p.read_bytes(); files.append({'name':p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+          (root/'output_manifest.json').write_text(json.dumps({'schema':'v19_residual_failure_audit_manifest','files':files},indent=2)+'\n')
+          PY
+
+      - name: Upload diagnostic evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: v19-residual-failure-audit-fixed-${{ github.run_id }}
+          path: artifacts/v19_residual_failure_audit
+          retention-days: 30
