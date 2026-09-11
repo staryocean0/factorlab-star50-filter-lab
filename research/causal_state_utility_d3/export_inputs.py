@@ -9,8 +9,8 @@ import io
 import json
 import os
 from pathlib import Path
-import shutil
 import urllib.request
+import urllib.parse
 import zipfile
 
 import numpy as np
@@ -21,6 +21,17 @@ D2_MANIFEST_SHA = "aa31cf36b09a4708be98c6867ee1db81063855d0fa87885ec52685c3e5fdd
 SYMBOLS = ("000688.SH", "000852.SH")
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "artifacts/d3_input_transport"
+
+
+class SafeArtifactRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        if urllib.parse.urlsplit(newurl).scheme != "https":
+            raise RuntimeError("artifact redirect must remain HTTPS")
+        redirected = super().redirect_request(req, fp, code, msg, headers, newurl)
+        if redirected is not None and urllib.parse.urlsplit(req.full_url).netloc != urllib.parse.urlsplit(newurl).netloc:
+            redirected.remove_header("Authorization")
+            redirected.remove_header("Accept")
+        return redirected
 
 
 def sha(b: bytes) -> str:
@@ -34,7 +45,7 @@ def main() -> None:
         "https://api.github.com/repos/staryocean0/factorlab-star50-filter-lab/actions/artifacts/10271634055/zip",
         headers={"Authorization": "Bearer " + token, "Accept": "application/vnd.github+json"},
     )
-    with urllib.request.urlopen(request, timeout=120) as response:
+    with urllib.request.build_opener(SafeArtifactRedirect()).open(request, timeout=120) as response:
         archive = response.read()
     assert sha(archive) == D2_SHA, "D2 ZIP identity mismatch"
     with zipfile.ZipFile(io.BytesIO(archive)) as z:
@@ -66,7 +77,6 @@ def main() -> None:
         assert day.value_counts().eq(48).all()
         result = pd.DataFrame({"symbol": symbol, "trading_day": day, "bar_end": wall.dt.strftime("%Y-%m-%dT%H:%M:%S"), "close": close})
         data = result.to_csv(index=False, float_format="%.17g").encode()
-        # Verify serialization does not change any original close double.
         roundtrip = pd.read_csv(io.BytesIO(data), float_precision="round_trip")
         assert np.array_equal(roundtrip.close.to_numpy(), close.to_numpy())
         filename = f"{symbol}_{year}.csv.gz"
