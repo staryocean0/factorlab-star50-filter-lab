@@ -16,9 +16,16 @@ This is not a return forecast and not a renewed attempt to predict the first sho
 
 Validation, 2024+, 2026, and BlackBox are physically excluded.
 
-## Frozen target
+## Frozen evaluable cohort and target
 
-For every final 5m bar whose **final previous state** is `NORMAL` or `RECOVERING`:
+The V18 causal-evaluable cohort is every final 5m bar in Development whose:
+
+1. final previous state is `NORMAL` or `RECOVERING`;
+2. frozen V9 has the required prior return window, previous close and background volatility needed to form the partial-bar state.
+
+The first 5m bar of a trading day is therefore outside the V18 evaluable cohort because frozen V9 deliberately resets the same-day previous-close chain. V18 will report these boundary exclusions separately and will **not** import an overnight previous close or invent a new opening-bar rule.
+
+Within the frozen evaluable cohort:
 
 - positive switch-on target: final 5m `risk_state == UNSAFE`;
 - negative control: final 5m `risk_state != UNSAFE`.
@@ -64,7 +71,8 @@ Across the fixed checkpoint curve, also report:
 - cumulative fraction of true switch-ons detected by each checkpoint;
 - earliest checkpoint at which each true event first becomes `UNSAFE`;
 - whether a signalled event remains `UNSAFE` at all later checkpoints;
-- late-forming events that are first detected after E-15s.
+- late-forming events that are first detected after E-15s;
+- opening / missing-reference boundary exclusions.
 
 These are diagnostics only; no checkpoint selection is allowed.
 
