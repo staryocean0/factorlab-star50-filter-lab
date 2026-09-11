@@ -1,0 +1,43 @@
+{
+  "schema": "highvol_horizon_composite_v15_development_decisive_receipt_v1",
+  "branch": "research/highvol-horizon-composite-v15-20260910",
+  "execution_commit": "5442effec9d821fcbe58b333df2f242bd9bcc031",
+  "run_id": 34497176574,
+  "job_id": 102938483827,
+  "artifact_id": 10160290575,
+  "artifact_sha256": "b8ba6881326a8570c0920c41e43a219661643dd4087d2e20d43351a843cd703b",
+  "development_years": [2021, 2022, 2023],
+  "row_count": 7327,
+  "trading_day_clusters": 427,
+  "bootstrap_repetitions": 10000,
+  "bootstrap_seed": 20260910,
+  "brier_improvement_state_plus_age_over_age_only": {
+    "15m": {
+      "point": 0.0028209663123369456,
+      "ci95_lower": 0.0012981133914375294,
+      "ci95_upper": 0.004411084423257889,
+      "probability_positive": 0.9999
+    },
+    "30m": {
+      "point": 0.0014218092982553434,
+      "ci95_lower": 0.00018817148523003546,
+      "ci95_upper": 0.002680709403418238,
+      "probability_positive": 0.9876
+    },
+    "60m": {
+      "point": 0.0004914737592283698,
+      "ci95_lower": -0.00014254466814802558,
+      "ci95_upper": 0.0011122215925236218,
+      "probability_positive": 0.9352
+    }
+  },
+  "annual_brier_win_count": {"15m": 3, "30m": 3, "60m": 3},
+  "horizon_dependence_supported": true,
+  "decision": "AUTHORIZE_NEW_DEVELOPMENT_CONSTRUCTION_OF_MONOTONE_HORIZON_ADAPTIVE_SURFACE",
+  "validation_informed_hypothesis": true,
+  "validation_queried": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "production_authority": false
+}
