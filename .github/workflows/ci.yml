@@ -4,9 +4,6 @@ on:
   pull_request:
 jobs:
   validate:
-    # Temporary execution-branch guard; restore original bytes after D2 evidence.
-    # D2 uses its own bounded checkout and explicit tests, not the whole data tree.
-    if: github.ref != 'refs/heads/delivery/causal-kline-state-v1-20260911' && github.head_ref != 'delivery/causal-kline-state-v1-20260911'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
