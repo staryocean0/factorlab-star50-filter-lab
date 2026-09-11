@@ -1,0 +1,25 @@
+test_current_final_label_not_accepted (test_adapter.DeliveryContractTests.test_current_final_label_not_accepted) ... ok
+test_exit_is_pending_not_safe (test_adapter.DeliveryContractTests.test_exit_is_pending_not_safe) ... ok
+test_explicit_state_change (test_adapter.DeliveryContractTests.test_explicit_state_change) ... ok
+test_future_event_cannot_be_used (test_adapter.DeliveryContractTests.test_future_event_cannot_be_used) ... ok
+test_future_inputs_are_unavailable (test_adapter.DeliveryContractTests.test_future_inputs_are_unavailable) ... ok
+test_future_path_not_accepted (test_adapter.DeliveryContractTests.test_future_path_not_accepted) ... ok
+test_historical_available_at_not_accepted (test_adapter.DeliveryContractTests.test_historical_available_at_not_accepted) ... ok
+test_immutable_no_repaint (test_adapter.DeliveryContractTests.test_immutable_no_repaint) ... ok
+test_invalid_timestamp_order_rejected (test_adapter.DeliveryContractTests.test_invalid_timestamp_order_rejected) ... ok
+test_missing_fields_fail_closed (test_adapter.DeliveryContractTests.test_missing_fields_fail_closed) ... ok
+test_naive_times_rejected (test_adapter.DeliveryContractTests.test_naive_times_rejected) ... ok
+test_nine_frozen_state_combinations (test_adapter.DeliveryContractTests.test_nine_frozen_state_combinations) ... ok
+test_no_2026_realtime_authority (test_adapter.DeliveryContractTests.test_no_2026_realtime_authority) ... ok
+test_no_probability_or_trading_claim (test_adapter.DeliveryContractTests.test_no_probability_or_trading_claim) ... ok
+test_old_observation_not_carried_forward (test_adapter.DeliveryContractTests.test_old_observation_not_carried_forward) ... ok
+test_publication_not_backdated (test_adapter.DeliveryContractTests.test_publication_not_backdated) ... ok
+test_snapshot_expires_at_close (test_adapter.DeliveryContractTests.test_snapshot_expires_at_close) ... ok
+test_symbols_and_identity (test_adapter.DeliveryContractTests.test_symbols_and_identity) ... ok
+test_unknown_is_not_normal (test_adapter.DeliveryContractTests.test_unknown_is_not_normal) ... ok
+test_vocabulary_and_flags (test_adapter.DeliveryContractTests.test_vocabulary_and_flags) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.002s
+
+OK

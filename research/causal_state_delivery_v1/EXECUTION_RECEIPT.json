@@ -1,0 +1,77 @@
+{
+  "schema": "causal_state_delivery_v1_execution_receipt",
+  "session_date": "2026-09-11",
+  "source_main_commit": "766dd6f5293a1fa8588edabe368088f63981fa1a",
+  "execution_location": "current_chat_container",
+  "python_version": "3.13.5",
+  "scope": "state-only adapter synthetic tests and unchanged governance validator; no market replay",
+  "commands": [
+    {
+      "command": "python -m unittest discover -s research/causal_state_delivery_v1 -p 'test_*.py' -v",
+      "exit_code": 0,
+      "tests_run": 20,
+      "passed": 20
+    },
+    {
+      "command": "python scripts/validate_data_usage_policy.py",
+      "exit_code": 0,
+      "stdout": "data usage policy V2: OK"
+    },
+    {
+      "command": "python -m compileall -q research/causal_state_delivery_v1",
+      "exit_code": 0
+    }
+  ],
+  "governance_materialization": "Exact connector-returned text copied into current container; script/declaration/ledger/policy Git blob hashes verified against GitHub. No full repository checkout.",
+  "scope_limits": [
+    "full repository test suite not run",
+    "cloud data package not revalidated",
+    "market replay not run",
+    "close events and recovery probabilities not implemented in this slice",
+    "source authenticity and numeric engine parity not established",
+    "live latency not measured",
+    "practical risk-bucket utility not yet evaluated",
+    "no local FactorLab/DataHub execution or production serving claimed"
+  ],
+  "files": {
+    "adapter.py": {
+      "sha256": "ecf45feb406555f3cb1ed404bbbf92cd666312d0acb6057de988335f4d439075",
+      "git_blob_sha": "51a17cb17dc926c9258cc0be7f4d7928a70d264f",
+      "bytes": 7273
+    },
+    "test_adapter.py": {
+      "sha256": "cbdd7d0882d66e994b19313b22f69e3860ce06d0493470eae62be0329713fa1d",
+      "git_blob_sha": "b489bb7e457b48118748fe494f652af78e3580eb",
+      "bytes": 6883
+    },
+    "UNIT_TEST_OUTPUT.txt": {
+      "sha256": "65e748ba704e52b9c3f44a96d8ad63fac726e27c2e968b07e8a0fb51b425d5df",
+      "git_blob_sha": "d3a74c15bbb85afa73e0c3272b1965725e58d224",
+      "bytes": 2267
+    },
+    "GOVERNANCE_TEST_OUTPUT.txt": {
+      "sha256": "e1d3b7ca186d81e625595897e4796ae64b3091d1da10642a0038b150623ae2a1",
+      "git_blob_sha": "ec4077752dfb74048ec8f2d4bccd6c53433b24c3",
+      "bytes": 25
+    },
+    "CONTRACT.md": {
+      "sha256": "cb18e3a4d62e462b2183a35010cd66069f512d9dfddd3b56e818205f2da56f03",
+      "git_blob_sha": "2d969a0960bc6c2dd6da9cc0afab9243b4c5fe11",
+      "bytes": 5630
+    },
+    "PROGRAM_STATE.json": {
+      "sha256": "4859a44729a768bbd2fbeca94d6e5814997033a80585004e460421572cedba9c",
+      "git_blob_sha": "72bc40f52135dda6b635fbdc2088d4966c907621",
+      "bytes": 2049
+    }
+  },
+  "actions_dispatched": false,
+  "market_data_read": false,
+  "validation_run": false,
+  "queried_2026_3s": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "v20_started": false,
+  "production_authority": false,
+  "decision": "PROCEED_TO_D2_CAUSAL_EVENT_REPLAY_NOT_PRODUCTION"
+}
