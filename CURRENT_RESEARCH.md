@@ -6,6 +6,58 @@
 
 The research product of this bucket is a causal risk annotation/state machine. It is not a directional trading strategy.
 
+## Current mathematical stopping decision — V19 residual audit
+
+The validated V19 object remains the current integrated realtime authority. A post-validation residual audit has now closed the question of whether the remaining V19 errors justify V20.
+
+**Decision: `NO_V20_FROM_V19_RESIDUALS`.**
+
+Sealed diagnostic evidence:
+
+- `research/v19_residual_failure_audit/PROTOCOL.md`;
+- `research/v19_residual_failure_audit/RESULTS.md`;
+- `research/v19_residual_failure_audit/DECISIVE_RECEIPT.json`.
+
+Successful audit authority:
+
+- execution commit: `a066a64ee22cf6e23911f5bccc1a90eafe2de9e4`;
+- run: `34614008432`;
+- job: `103311278481`;
+- artifact: `10270156874`;
+- artifact SHA256: `b49c61d8b2345e0441c69fa7d94d25bf9425d572d13953e40e83aede72f4d0fb`.
+
+The first audit run `34613545773` failed only because a temporary diagnostic boolean column was initialized with float dtype. It produced no scientific output. The successful rerun used a dtype-only implementation wrapper; the preregistered taxonomy, thresholds, diagnostic checkpoints and decision rule were unchanged.
+
+### What the residuals actually are
+
+On the already-consumed 2024-2025 Validation pool:
+
+- **66 risk false negatives:** all `NORMAL -> UNSAFE` final shocks; all were below the frozen 3σ shock threshold at E-15 and above it by close. Of these, `48` become risk by E-6, `16` by E-3, and only `2` form after E-3/by close.
+- **33 risk false positives:** all transient E-15 partial shocks from `NORMAL` that finish `NORMAL`; `27` resolve by E-6 and `6` by E-3. None persists through E-3 and only resolves at close.
+- These `66 + 33 = 99` rows exhaust the binary risk errors. The false negatives and false positives are mirror-image threshold crossings around the same unchanged 3σ boundary.
+- **69 `UNSAFE`/`RECOVERING` state mismatches** occur while both reference and machine already agree that the market is risky. They are only `0.00151349` of all 45,590 checkpoints; `46/69` converge by E-6 and `62/69` by E-3.
+
+Episode residuals are equally bounded:
+
+- uncaptured reference episodes: `1`, caused by a risk FN;
+- fragmented reference episodes: `1`, caused by an FN at a `SWITCH_ON` transition;
+- false machine episodes: `28`, all exactly one checkpoint/bar long;
+- `23/28` false episodes resolve by E-6 and `5/28` by E-3.
+
+Development 2021-2023 reproduces the same mechanism: 82 late-forming FN shocks, 30 transient E-15 FP shocks, and one-checkpoint false episodes. Therefore this is not a new Validation-only pathology.
+
+### Why V20 is not mathematically justified
+
+Repairing these residuals would require at least one of:
+
+1. moving the already-validated 3σ shock threshold, which trades late false negatives against transient false positives;
+2. moving the product checkpoint from E-15 to E-6/E-3 after those later checkpoints have already been inspected;
+3. fitting new features, persistence rules or exceptions on already-consumed Validation data.
+
+None constitutes a distinct causal state mechanism. In addition, there is no authorized fresh realtime 3s holdout after 2025 for clean validation of a newly fitted V20.
+
+Therefore **do not open V20 to optimize V19 residuals**. A future version requires either genuinely new independent realtime data or a qualitatively new causal research question.
+
 ## Current integrated episode-level authority — V19 reusable Validation supported
 
 V19 integrates the already frozen entry and recovery components into one coherent causal realtime risk-episode state machine at the unchanged `E-15s` checkpoint.
@@ -35,9 +87,8 @@ There is no fitted persistence length. This is deterministic close-confirmed-exi
 
 ### V19 reusable Validation authority
 
-The exact frozen V19 machine has passed reusable Validation on existing 2024-2025 3s coverage with the Development scientific thresholds unchanged.
+The exact frozen V19 machine passed reusable Validation on existing 2024-2025 3s coverage with the Development scientific thresholds unchanged.
 
-- branch: `research/highvol-risk-episode-state-machine-v19-validation-20260911`;
 - execution commit: `b4527e2f431f5dfb2ef801f262d39f509253820f`;
 - run: `34612330970`;
 - job: `103305638445`;
@@ -59,63 +110,27 @@ Pooled Validation:
 - false-positive rate: **`0.0008364383`**;
 - exact three-state agreement: **`0.9963149814`**.
 
-Raw frozen V9 E-15s partial state, diagnostic only, had risk recall `0.9023953072` and exact three-state agreement `0.9848651020`. The close-confirmed rule therefore reproduces out of sample as the main continuity mechanism.
+Episode Validation:
 
-Annual Validation stability:
-
-- 2024: precision `0.994318`, recall `0.991189`, FPR `0.000920`, exact three-state agreement `0.996351`;
-- 2025: precision `0.994891`, recall `0.987158`, FPR `0.000754`, exact three-state agreement `0.996279`.
-
-Both symbols passed:
-
-- `000688.SH`: precision `0.994464`, recall `0.988350`, FPR `0.000863`;
-- `000852.SH`: precision `0.994725`, recall `0.990154`, FPR `0.000810`.
-
-### V19 episode continuity — Validation
-
-Reference episodes: `542`.
-Machine episodes: `570`.
-
-- captured reference episodes: `541 / 542`;
-- capture rate: **`0.9981549815`**;
-- fragmented reference episodes: `1 / 542`;
-- fragmentation rate: **`0.0018450185`**;
-- false machine episodes: `28 / 570`;
-- false machine-episode rate: **`0.0491228070`**;
-- same-checkpoint onset: `477 / 542`;
-- same-checkpoint onset rate: **`0.8800738007`**;
+- reference episodes: `542`;
+- machine episodes: `570`;
+- capture: `541 / 542 = 0.9981549815`;
+- fragmentation: `1 / 542 = 0.0018450185`;
+- false machine-episode rate: `0.0491228070`;
+- same-checkpoint onset rate: `0.8800738007`;
 - onset-lag median: `0` checkpoints;
 - maximum onset lag among captured episodes: `1` checkpoint.
 
-Annual episode capture / same-checkpoint onset:
+Transition continuity at E-15s:
 
-- 2024: `0.996296 / 0.896296`;
-- 2025: `1.000000 / 0.863971`.
-
-### V19 transition continuity — Validation
-
-At the unchanged E-15s checkpoint:
-
-- `NORMAL -> UNSAFE`: `484 / 550`, recall **`0.880000`**;
-- `RECOVERING -> UNSAFE`: `236 / 260`, recall **`0.907692`**;
-- `UNSAFE -> RECOVERING`: `637 / 662`, recall **`0.962236`**.
-
-Close-confirmed exits remain the decisive hysteresis result:
-
-- exit rows: `520`;
-- V19 primary-machine premature `NORMAL`: **`0 / 520`**;
+- `NORMAL -> UNSAFE`: recall `0.880000`;
+- `RECOVERING -> UNSAFE`: recall `0.907692`;
+- `UNSAFE -> RECOVERING`: recall `0.962236`;
+- close-confirmed exit rows: `520`;
+- V19 premature `NORMAL`: `0 / 520`;
 - raw partial state was already `NORMAL` on `514 / 520` exit rows.
 
-Thus provisional E-15s `NORMAL` is not sufficient evidence to terminate an already-confirmed risk episode, while E-15s risk transitions remain informative.
-
-### V16/V17 recovery attachment inside validated V19
-
-- scored recovery-probability rows: `4,944`;
-- coverage of machine risk rows: `0.8099606815`;
-- every scored curve satisfies `p15 <= p30 <= p60`;
-- maximum absolute 60m frozen age-anchor difference: `0.0`.
-
-No V16/V17 probability was refitted or changed.
+Frozen V16/V17 recovery attachment remains intact: 4,944 probability rows were scored, all satisfy `p15 <= p30 <= p60`, and the 60m age-only anchor matches exactly.
 
 Primary sealed V19 evidence:
 
@@ -132,52 +147,25 @@ Primary sealed V19 evidence:
 
 ### V18 — switch-on
 
-V18 remains the validated entry-side component on 2024-2025 3s coverage:
-
-- run `34607566312`;
-- artifact `10265993683`;
-- evaluable bars `43,793`;
-- true switch-ons `810`;
-- E-15s precision / recall / FPR: `0.9511228534 / 0.8888888889 / 0.0008608054`;
-- `full_validation_supported=true`.
+V18 remains the validated entry-side component on 2024-2025 3s coverage: E-15s precision / recall / FPR = `0.9511228534 / 0.8888888889 / 0.0008608054`; `full_validation_supported=true`.
 
 V18 does not claim to predict the first shock before within-bar evidence exists.
 
 ### V17 — realtime recovery
 
-V17 remains the validated E-15s realtime recovery authority on 2024-2025 3s coverage. It transfers the frozen V16 horizon-adaptive object without refit:
-
-- 15m = frozen V16 `state + recent-shock age` using frozen V9 provisional state;
-- 30m = frozen V16 `state + recent-shock age` using frozen V9 provisional state;
-- 60m = frozen V16 recent-shock-age-only anchor.
-
-V17 reusable Validation: run `34604089926`, artifact `10265472702`, `full_validation_supported=true`.
+V17 remains the validated E-15s realtime recovery authority on 2024-2025 3s coverage. It transfers frozen V16 without refit: 15m/30m use state + recent-shock age; 60m uses the recent-shock-age-only anchor.
 
 ### V16 — final-5m recovery
 
-V16 remains the final-5m recovery authority through `2026-08-21`:
+V16 remains the final-5m recovery authority through `2026-08-21`: 15m/30m use current state + recent-shock age; 60m uses recent-shock age only.
 
-- 15m = `current_state + time-since-most-recent-shock`;
-- 30m = `current_state + time-since-most-recent-shock`;
-- 60m = `time-since-most-recent-shock only`.
-
-V16 reusable Validation: run `34602527314`, artifact `10264689647`, `full_validation_supported=true`.
-
-The recovery clock rule remains:
-
-> Every new shock resets the recovery clock. Recovery risk is indexed by time since the most recent shock, not time since the first shock of the episode.
+The recovery clock rule remains: every new shock resets the recovery clock; recovery risk is indexed by time since the most recent shock.
 
 ## Current validated causal risk architecture
 
-The integrated realtime risk-state architecture is now reusable-Validation supported on available 2024-2025 3s coverage:
-
 `V18 switch-on -> V19 close-confirmed UNSAFE / RECOVERING continuity -> V17/V16 recovery surface -> close-confirmed Normal`
 
-Important data-boundary distinction:
-
-1. V19/V18/V17 realtime 3s authority ends at `2025-12-31`;
-2. V16 final-5m authority extends through `2026-08-21`;
-3. V16's 2026 final-5m authority does not create 2026 3s realtime authority.
+Realtime V19/V18/V17 3s authority ends at `2025-12-31`. V16 final-5m authority extends through `2026-08-21`; that does not create 2026 realtime authority.
 
 ## Completed evidence chain that must not be casually reopened
 
@@ -188,40 +176,36 @@ Important data-boundary distinction:
 - V16: frozen and validated horizon-adaptive final-5m recovery surface;
 - V17: validated E-15s realtime recovery transfer;
 - V18: validated E-15s causal UNSAFE switch-on;
-- V19: validated E-15s close-confirmed episode-level state machine.
+- V19: validated E-15s close-confirmed episode-level state machine;
+- V19 residual audit: remaining errors diagnosed as final-15s threshold timing, with `NO_V20_FROM_V19_RESIDUALS`.
 
 Do not rerun these versions merely to reconfirm them.
 
-## Scope-repaired bucket authority
+## Scope and governance
 
-This repository owns bottom-layer causal K-line risk-state research only, including volatility level/expansion, shock isolation/recurrence, `Unsafe / Recovering / HighVol` state evolution, switch-on, persistence/hysteresis, recovery, recovery probability, and cross-scale 3s/1m/5m risk attributes.
-
-It does **not** own directional payoff optimization, holding period, stop/target, sizing, leverage, account overlays, or payoff routers. Historical payoff/router material remains archive evidence only.
-
-## Data and governance
+This repository owns bottom-layer causal K-line risk-state research only. It does not own directional payoff optimization, holding period, stop/target, sizing, leverage, account overlays, or payoff routers.
 
 Forward data roles:
 
 - 2020: warm-up only where needed;
 - Development: 2021-2023;
-- reusable 5m Validation: 2024 through 2026-08-21 under separately frozen protocols;
-- realtime 3s reusable Validation coverage: 2024-2025 only;
-- protected BlackBox-V1: strictly after the cutoff under its frozen aggregate-only protocol.
+- reusable 5m Validation: 2024 through 2026-08-21 under frozen protocols;
+- realtime 3s reusable Validation: 2024-2025 only;
+- protected BlackBox-V1: strictly under its separate frozen aggregate-only protocol.
 
 No validated result automatically authorizes BlackBox access.
 
 ## Current breakpoint
 
-The current decisive state is:
+Current decisive state:
 
-`V19_E15S_CLOSE_CONFIRMED_RISK_EPISODE_MACHINE_REUSABLE_VALIDATION_SUPPORTED_2024_2025`
+`V19_VALIDATED_RESIDUAL_PATH_CLOSED_NO_V20`
 
-Do **not** rerun/refit V19, alter E-15s, select a persistence length post hoc, replace the primary machine with raw partial state, alter V18/V17/V16/V9 frozen rules, synthesize 2026 3s coverage, inspect protected post-2026-08-21 data, or query BlackBox merely to reconfirm the result.
-
-No V20 protocol has been started.
+Do not rerun/refit V19, alter E-15s, move the 3σ threshold, select E-6/E-3 post hoc, tune persistence/features against consumed Validation, synthesize 2026 3s, or query BlackBox merely to improve residual metrics.
 
 `v19_validation_queried=true`.
-`queried_3s_years_for_v19=[2024,2025]`.
+`v19_residual_audit_completed=true`.
+`v20_started=false`.
 `queried_2026_3s=false`.
 `blackbox_queried=false`.
 `pnl_computed=false`.
