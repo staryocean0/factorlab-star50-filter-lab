@@ -1,0 +1,148 @@
+name: highvol-risk-episode-state-machine-v19-development
+
+on:
+  push:
+    branches:
+      - research/highvol-risk-episode-state-machine-v19-20260911
+    paths:
+      - '.github/workflows/highvol-risk-episode-state-machine-v19-development.yml'
+      - 'research/highvol_risk_episode_state_machine_v19/**'
+
+permissions:
+  contents: read
+
+jobs:
+  develop:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout V19 and Development-only inputs
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/highvol_risk_episode_state_machine_v19
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/market/5m/000688.SH/2020.parquet
+            data/market/5m/000688.SH/2021.parquet
+            data/market/5m/000688.SH/2022.parquet
+            data/market/5m/000688.SH/2023.parquet
+            data/market/5m/000852.SH/2020.parquet
+            data/market/5m/000852.SH/2021.parquet
+            data/market/5m/000852.SH/2022.parquet
+            data/market/5m/000852.SH/2023.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2021.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2022.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2023.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2021.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2022.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2023.parquet
+          sparse-checkout-cone-mode: false
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install fixed dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+
+      - name: Validate three-pool governance
+        run: python scripts/validate_data_usage_policy.py --repo-root .
+
+      - name: Guard physical Development boundary
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for s in ['000688.SH','000852.SH']:
+              got=sorted(p.name for p in (Path('data/market/5m')/s).glob('*.parquet'))
+              exp=[f'{y}.parquet' for y in range(2020,2024)]
+              assert got==exp,(s,got,exp)
+          got=sorted(p.name for p in Path('data/cross_index_risk_gate_3s_v1').glob('*.parquet'))
+          exp=sorted([f'{s}_{y}.parquet' for s in ['000688.SH','000852.SH'] for y in [2021,2022,2023]])
+          assert got==exp,(got,exp)
+          assert not list(Path('data').rglob('*2024*.parquet'))
+          assert not list(Path('data').rglob('*2025*.parquet'))
+          assert not list(Path('data').rglob('*2026*.parquet'))
+          assert not list(Path('data').rglob('*2027*.parquet'))
+          print('V19 Development physical boundary: 2021-2023 3s only; 2020 5m warm-up only')
+          PY
+
+      - name: Materialize exact frozen upstream authority
+        shell: bash
+        run: |
+          set -euo pipefail
+          d=research/highvol_risk_episode_state_machine_v19
+          git fetch --no-tags --depth=1 origin e01b293dcfc3100a02265315376bc63a9137c3d3
+          git show e01b293dcfc3100a02265315376bc63a9137c3d3:research/highvol_realtime_risk_object_v9/run_v9.py > "$d/frozen_v9.py"
+          test "$(git hash-object "$d/frozen_v9.py")" = "ae2a7e095df58692ef9df0dfee5856cac727ca44"
+
+          git fetch --no-tags --depth=1 origin 542b11857baeaebd43d93dc5ac866c6c3316e477
+          git show 542b11857baeaebd43d93dc5ac866c6c3316e477:research/highvol_unsafe_switch_on_v18/run_v18.py > "$d/frozen_v18.py"
+          test "$(git hash-object "$d/frozen_v18.py")" = "62c207badff1c3e37cbb1a8e17ef89feeea611d8"
+
+          git fetch --no-tags --depth=1 origin 5ae8d6adab6c4afb617ed14ae44327d722e3db49
+          git show 5ae8d6adab6c4afb617ed14ae44327d722e3db49:research/highvol_realtime_horizon_adaptive_v17/run_v17.py > "$d/frozen_v17.py"
+          test "$(git hash-object "$d/frozen_v17.py")" = "397d80037806ba11cadf7f77717d36d55fbafc91"
+
+          git fetch --no-tags --depth=1 origin a64a89696d03ac4cf7109b1b0918cadbaa43724a
+          git show a64a89696d03ac4cf7109b1b0918cadbaa43724a:research/highvol_horizon_adaptive_v16/FROZEN_HORIZON_ADAPTIVE_SURFACE.json > "$d/frozen_v16_surface.json"
+          test "$(git hash-object "$d/frozen_v16_surface.json")" = "1f88966cf5dd3fb102f0d75746d5d00434555647"
+
+      - name: Test frozen V19 contract
+        run: python -m pytest -q research/highvol_risk_episode_state_machine_v19/test_v19.py
+
+      - name: Run frozen V19 Development
+        run: python research/highvol_risk_episode_state_machine_v19/run_v19.py --repo-root . --out artifacts/highvol_risk_episode_state_machine_v19
+
+      - name: Guard research-only authority
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/highvol_risk_episode_state_machine_v19/summary.json'))
+          assert s['development_only'] is True
+          assert s['development_years']==[2021,2022,2023]
+          assert s['queried_3s_years']==[2021,2022,2023]
+          assert s['validation_queried'] is False
+          assert s['queried_post_2023_3s'] is False
+          assert s['queried_2026_3s'] is False
+          assert s['blackbox_queried'] is False
+          assert s['pnl_computed'] is False
+          assert s['trading_rule_created'] is False
+          assert s['production_authority'] is False
+          assert s['threshold_search_performed'] is False
+          assert s['lead_time_search_performed'] is False
+          assert s['persistence_length_search_performed'] is False
+          assert s['probability_fit_performed'] is False
+          print('V19 Development supported:',s['development_supported'])
+          print('decision:',s['decision'])
+          print('candidate_rows:',s['candidate_rows'])
+          print('pooled:',json.dumps(s['pooled'],sort_keys=True))
+          print('episodes:',json.dumps(s['episodes']['pooled'],sort_keys=True))
+          print('transitions:',json.dumps(s['transitions'],sort_keys=True))
+          print('acceptance:',json.dumps(s['acceptance'],sort_keys=True))
+          PY
+
+      - name: Seal output manifest
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          root=Path('artifacts/highvol_risk_episode_state_machine_v19'); files=[]
+          for p in sorted(root.iterdir()):
+              if p.is_file():
+                  b=p.read_bytes(); files.append({'name':p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+          (root/'output_manifest.json').write_text(json.dumps({'schema':'highvol_risk_episode_state_machine_v19_development_manifest','files':files},indent=2)+'\n')
+          PY
+
+      - name: Upload V19 Development evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: highvol-risk-episode-state-machine-v19-development-${{ github.run_id }}
+          path: artifacts/highvol_risk_episode_state_machine_v19
+          retention-days: 30
