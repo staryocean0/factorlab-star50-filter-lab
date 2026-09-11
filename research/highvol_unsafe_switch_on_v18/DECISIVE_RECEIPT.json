@@ -1,0 +1,51 @@
+{
+  "schema": "highvol_unsafe_switch_on_v18_development_decisive_receipt_v1",
+  "branch": "research/highvol-unsafe-switch-on-v18-20260911",
+  "execution_commit": "542b11857baeaebd43d93dc5ac866c6c3316e477",
+  "run_id": 34606023820,
+  "job_id": 103284525209,
+  "artifact_id": 10266486662,
+  "artifact_sha256": "7071121c24c65f877f5e76faf875a86ee25da051fde0ffbf8e1d35934933d8ec",
+  "frozen_v9_runner_blob": "ae2a7e095df58692ef9df0dfee5856cac727ca44",
+  "candidate_rows": 65431,
+  "true_switch_on_events": 1361,
+  "switch_pathway_counts": {
+    "shock_entry": 970,
+    "recovery_reescalation": 391
+  },
+  "primary_lead_seconds": 15,
+  "e15": {
+    "checkpoint_coverage": 1.0,
+    "tp": 1257,
+    "fp": 38,
+    "fn": 104,
+    "tn": 64032,
+    "precision": 0.9706563706563707,
+    "recall": 0.9235855988243938,
+    "false_positive_rate": 0.0005931012954580927
+  },
+  "fixed_curve_recall": {
+    "e60": 0.5804555473916239,
+    "e30": 0.8486407053637032,
+    "e15": 0.9235855988243938,
+    "e6": 0.9603232916972814,
+    "e3": 0.9955914768552535
+  },
+  "earliest_detection_counts": {
+    "e60": 790,
+    "e30": 389,
+    "e15": 103,
+    "e6": 45,
+    "e3": 28,
+    "undetected": 6
+  },
+  "persistent_after_first_detection_rate": 0.9675276752767528,
+  "development_supported": true,
+  "validation_eligible_but_not_authorized": true,
+  "decision": "FREEZE_E15S_SWITCH_ON_MEASUREMENT_AND_STOP_BEFORE_VALIDATION",
+  "validation_queried": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "production_authority": false
+}
