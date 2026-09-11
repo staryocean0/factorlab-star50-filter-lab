@@ -1,0 +1,38 @@
+{
+  "schema": "highvol_realtime_horizon_adaptive_v17_reusable_validation_decisive_receipt_v1",
+  "branch": "research/highvol-realtime-horizon-adaptive-v17-validation-20260911",
+  "execution_commit": "a35a9f496c7772bf9a81a7b85b0cd0b3d6fccfe2",
+  "run_id": 34604089926,
+  "job_id": 103278189791,
+  "artifact_id": 10265472702,
+  "artifact_sha256": "65783daff1ca83217ad8159b52e2c4f9d6c79f8195a11aa4b1c4af80aa2d1714",
+  "frozen_transfer_blob": "5aca30ff398f73173a5424aa14b535bd461df5b4",
+  "row_count": 4540,
+  "realtime_scored_rows": 4516,
+  "coverage": 0.9947136563876652,
+  "exact_state_agreement": 0.9918069087688219,
+  "probability_mae_vs_v16": {
+    "15m": 0.000824550864230056,
+    "30m": 0.0006379911966920189,
+    "60m": 0.0
+  },
+  "brier_degradation": {
+    "15m": -0.000006965462743188655,
+    "30m": 0.0001714247361110227,
+    "60m": 0.0
+  },
+  "year_coverage": {
+    "2024": 0.9961522017956391,
+    "2025": 0.9931849159472966
+  },
+  "rowwise_monotone": true,
+  "sixty_minute_anchor_exact": true,
+  "full_validation_supported": true,
+  "decision": "PROMOTE_V17_E15S_REALTIME_MULTI_HORIZON_RISK_ANNOTATION_ON_2024_2025_3S_COVERAGE",
+  "queried_3s_years": [2024, 2025],
+  "queried_2026_3s": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "production_authority": false
+}
