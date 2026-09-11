@@ -1,15 +1,13 @@
-# STAR50 / CSI1000 AI entry — causal state delivery
+# STAR50 / CSI1000 AI entry — D2 accepted, D3 preregistration next
 
-Read `AGENTS.md`, then `CURRENT_RESEARCH.md` and `CONTINUE_HERE.md`.
-Next-phase authority: `docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md`.
-Actual status: `research/causal_state_delivery_v1/PROGRAM_STATE.json` and `EXECUTION_RECEIPT.json`.
+Read AGENTS.md, CURRENT_RESEARCH.md and CONTINUE_HERE.md. Direction: docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md. Current status: research/causal_state_delivery_d2/PROGRAM_STATE.json, RESULTS.md and EXECUTION_RECEIPT.json.
 
-The purpose is causal K-line risk-attribute changes usable by downstream state/strategy bucketing. No strategy actions, payoff routing, generic Range/UpTrend/DownTrend parent classifier, or production serving in this repository.
+D2_CAUSAL_REPLAY_SUPPORTED_D3_NOT_EXECUTED. Independent chronological raw-price replay preserved all 113928 original E15 rows with zero state/probability mismatch; 232704 E15/CLOSE events and 20 market prefix checks passed. D1's 20 and D2's 38 tests passed. Original D1 files/receipt remain sealed, not the current breakpoint.
 
-V19 remains the frozen scientific baseline; its residual optimization path is closed. Delivery V1 is not V20. The current slice has only an E-15 state adapter and synthetic unit tests; close events, frozen recovery attachment, real event replay and practical risk-separation evidence remain pending.
+Purpose: causal K-line risk-attribute changes for downstream state/strategy bucketing. No strategy actions, payoff routing, parent Range/UpTrend/DownTrend classifier or production serving. V19 remains frozen; no residual-optimization V20.
 
-DATA_USAGE_POLICY_V2 governs forward use: Development may fit; reusable Validation may diagnose/guide the next Development but is not fresh OOS and must not fit the candidate under test. Do not synthesize 2026 3s or access protected data/BlackBox in this phase. Historical available_at is not intraday latency.
+Next task is D3 protocol-first non-PnL incremental risk-bucket utility evaluation. Account for first-bar unavailability, lunch/day-end/forward-window boundaries, and observation freshness: all 2424 E15 observations older than120s occur at the15:00 bar. Do not erase them or change the baseline after inspection. Ideal15s publication timing is an assumption, not measured live latency.
 
-Older AI-entry text is preserved in [the pre-delivery snapshot](https://github.com/staryocean0/factorlab-star50-filter-lab/blob/766dd6f5293a1fa8588edabe368088f63981fa1a/ai-readme.md). Its old "Current/Latest" payoff and handoff tasks are historical, not current authority. Sealed research files are unchanged.
+V2 permits Development fitting and reusable Validation diagnostics but no fitting the candidate under test on Validation and no fresh-OOS claim. No2026 3s, protected data, BlackBox or production authority. Historical available_at is not intraday latency.
 
-`production_authority=false`.
+Older entry text remains at commit766dd6f5293a1fa8588edabe368088f63981fa1a. Historical Current/Latest instructions do not override this entry. production_authority=false.

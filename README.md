@@ -1,40 +1,32 @@
 # 科创50 / 中证1000：因果 K 线风险属性模块
 
-本仓的目的：**识别行情演变中当时可知的 K 线风险属性变化，为下游状态识别、策略分桶和适用环境判断提供可按时点消费的信息。** 不以事后解释或准确率小数点为终点，也不在本仓开发买卖、方向、仓位或收益路由。
+**识别行情演变中当时可知的K线风险属性变化，为下游状态识别、策略分桶和适用环境判断提供可按时点消费的信息。** 本仓不开发买卖、方向、仓位或收益路由，不以事后解释或准确率小数点为终点。
 
-## 当前阶段
+## 当前阶段：D2 已通过，D3 尚未执行
 
-V19 风险状态基线及残差审计已经阶段性收口，保持冻结；不启动为了修补边界残差的 V20。
+V19基线及残差审计保持冻结。交付路线为：契约 → 因果双时钟事件回放/消费者验收 → 非PnL风险分桶效用评价；不是新模型V20。
 
-现在进入 **causal state delivery V1**：契约 → 因果事件回放 → 消费者接入 → 非 PnL 的风险分桶效用评价。交付版本不是新模型版本。
+D2完成独立原始价格回放：113,928个原可用E-15行全部保留、状态与概率零漂移；生成232,704个E-15/CLOSE事件，固定市场未来扰动20/20通过。D1原20项和D2新38项测试通过。
 
-开始阅读：
+开始阅读：[当前任务](CURRENT_RESEARCH.md) → [方向](docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md) → [接续入口](CONTINUE_HERE.md) → [当前机器进度](research/causal_state_delivery_d2/PROGRAM_STATE.json) → [D2结果](research/causal_state_delivery_d2/RESULTS.md) / [回执](research/causal_state_delivery_d2/EXECUTION_RECEIPT.json)。
 
-- [当前任务与证据](CURRENT_RESEARCH.md)
-- [下一阶段权威叙事](docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md)
-- [继续执行入口](CONTINUE_HERE.md)
-- [机器可读进度](research/causal_state_delivery_v1/PROGRAM_STATE.json)
-- [接口契约](research/causal_state_delivery_v1/CONTRACT.md)
+完整网格状态覆盖97.9167%，不把日初不可用补NORMAL。日末15:00 bar的E-15观察有已披露新鲜度限制；15秒提前量是历史实时可得假设，不是实测延迟。工程回放通过不证明分桶增量效用或生产就绪。
 
-首个 E-15 状态适配切片及合成测试已实现；收盘事件、恢复概率接入、真实序列回放与实际分桶效用尚待验收。不得称为完整生产服务。
+下一步D3先预注册后续波动、再次冲击、持续/恢复的风险效用评价，再与匹配的简单已知基准比较；当前没有D3结果。
 
-## 已冻结的基线
+## 冻结基线与范围
 
-V18：E-15 switch-on；V19：UNSAFE / RECOVERING 连续性与收盘确认退出；V16/V17：多 horizon 恢复对象。
+V18：E-15 switch-on；V19：UNSAFE/RECOVERING连续性与收盘确认退出；V16/V17：冻结多horizon恢复对象。[V19 Validation](research/highvol_risk_episode_state_machine_v19_validation/VALIDATION_RESULTS.md)和[残差审计](research/v19_residual_failure_audit/RESULTS.md)保持原样。D1封存切片在research/causal_state_delivery_v1/。
 
-[原始 V19 Validation](research/highvol_risk_episode_state_machine_v19_validation/VALIDATION_RESULTS.md) 与 [残差审计](research/v19_residual_failure_audit/RESULTS.md) 保留不变。标签复现好不等于新风险全部提前可知，更不等于盈利得到证明。
+NORMAL不保证交易安全，UNSAFE不代表看空，UNAVAILABLE不是NORMAL。后验标签只能评价，不能进入消费者输入。available_at仍是历史检索时钟。
 
-## 不可混淆的边界
+Range/UpTrend/DownTrend属于two-wave仓，具体策略经济验收属于对应策略仓；旧payoff/router仅历史证据。[研究桶边界](docs/governance/BUCKET_SCOPE_REPAIR_20260909.md)不变。
 
-NORMAL 不代表交易安全保证；UNSAFE 不代表看空；不可用不是 NORMAL。后验标签只能评价，不能进入消费者输入。历史 available_at 不是盘中可得性时钟。
-
-Range/UpTrend/DownTrend 父结构属于 two-wave 仓；具体交易策略及经济验收属于对应策略仓。旧 payoff/router 材料只是历史证据，参见 [研究桶边界](docs/governance/BUCKET_SCOPE_REPAIR_20260909.md)。
-
-Development 为 2021–2023；Validation 为 2024–2026-08-21 的可复用池，不是 fresh OOS。实时 3s 的现有验证覆盖限于 2024–2025；V16 final-5m 覆盖不能替代 2026 realtime authority。适用 [V2 数据政策](docs/governance/DATA_USAGE_POLICY_V2.md)，不查询 BlackBox，不更改生产权限。
+Development为2021–2023；Validation为2024–2026-08-21的可复用池，不是fresh OOS。实际3s验证覆盖仍止于2025；V16 final-5m覆盖不替代2026 realtime authority。遵守[V2数据政策](docs/governance/DATA_USAGE_POLICY_V2.md)，不查询BlackBox，不改生产权限。
 
 ```bash
 python scripts/validate_data_usage_policy.py
-python -m unittest discover -s research/causal_state_delivery_v1 -p 'test_*.py' -v
+python -m unittest discover -s research/causal_state_delivery_d2 -p 'test_*.py' -v
 ```
 
-`production_authority=false`。研究识别支持、工程交付通过和下游经济有效是三个不同结论。
+`D2_CAUSAL_REPLAY_SUPPORTED_D3_NOT_EXECUTED`；`production_authority=false`。
