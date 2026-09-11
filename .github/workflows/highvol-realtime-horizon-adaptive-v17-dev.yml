@@ -1,0 +1,128 @@
+name: highvol-realtime-horizon-adaptive-v17-development
+on:
+  push:
+    branches:
+      - research/highvol-realtime-horizon-adaptive-v17-20260911
+    paths:
+      - .github/workflows/highvol-realtime-horizon-adaptive-v17-dev.yml
+      - research/highvol_realtime_horizon_adaptive_v17/**
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frozen V16 and Development-only realtime inputs
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            research/highvol_realtime_horizon_adaptive_v17
+            research/highvol_horizon_adaptive_v16
+            docs/governance/DATA_USAGE_POLICY_V2.md
+            docs/governance/data_usage_declaration.json
+            docs/governance/blackbox_query_ledger.json
+            scripts/validate_data_usage_policy.py
+            data/market/5m/000688.SH/2020.parquet
+            data/market/5m/000688.SH/2021.parquet
+            data/market/5m/000688.SH/2022.parquet
+            data/market/5m/000688.SH/2023.parquet
+            data/market/5m/000852.SH/2020.parquet
+            data/market/5m/000852.SH/2021.parquet
+            data/market/5m/000852.SH/2022.parquet
+            data/market/5m/000852.SH/2023.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2021.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2022.parquet
+            data/cross_index_risk_gate_3s_v1/000688.SH_2023.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2021.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2022.parquet
+            data/cross_index_risk_gate_3s_v1/000852.SH_2023.parquet
+          sparse-checkout-cone-mode: false
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install fixed dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+
+      - name: Validate three-pool governance
+        run: python scripts/validate_data_usage_policy.py --repo-root .
+
+      - name: Guard physical Development boundary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for s in ['000688.SH','000852.SH']:
+              got=sorted(p.name for p in (Path('data/market/5m')/s).glob('*.parquet'))
+              assert got==[f'{y}.parquet' for y in range(2020,2024)],(s,got)
+          got=sorted(p.name for p in Path('data/cross_index_risk_gate_3s_v1').glob('*.parquet'))
+          exp=sorted([f'{s}_{y}.parquet' for s in ['000688.SH','000852.SH'] for y in [2021,2022,2023]])
+          assert got==exp,(got,exp)
+          assert not list(Path('data').rglob('2024.parquet'))
+          assert not list(Path('data').rglob('2025.parquet'))
+          assert not list(Path('data').rglob('2026.parquet'))
+          assert not list(Path('data').rglob('*2027*.parquet'))
+          print('V17 Development physical boundary: OK')
+          PY
+
+      - name: Materialize exact frozen V9 and V11 runners
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin e01b293dcfc3100a02265315376bc63a9137c3d3
+          git show e01b293dcfc3100a02265315376bc63a9137c3d3:research/highvol_realtime_risk_object_v9/run_v9.py > research/highvol_realtime_horizon_adaptive_v17/frozen_v9.py
+          test "$(git hash-object research/highvol_realtime_horizon_adaptive_v17/frozen_v9.py)" = "ae2a7e095df58692ef9df0dfee5856cac727ca44"
+          git fetch --no-tags --depth=1 origin research/highvol-recovery-survival-v11-20260910
+          test "$(git rev-parse FETCH_HEAD)" = "30fda623af5c9461ffe60c4985e6150f01eec8f8"
+          git show FETCH_HEAD:research/highvol_recovery_survival_v11/run_survival.py > research/highvol_realtime_horizon_adaptive_v17/frozen_v11.py
+          test "$(git hash-object research/highvol_realtime_horizon_adaptive_v17/frozen_v11.py)" = "713f0dcc41e7f32f75934fc7709a406ff71579e6"
+
+      - name: Test frozen V17 contract
+        run: python -m pytest -q research/highvol_realtime_horizon_adaptive_v17/test_v17.py
+
+      - name: Run V17 E-15s multi-horizon Development transfer
+        run: python research/highvol_realtime_horizon_adaptive_v17/run_v17.py --repo-root . --out artifacts/highvol_realtime_horizon_adaptive_v17
+
+      - name: Guard research-only authority
+        run: |
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/highvol_realtime_horizon_adaptive_v17/summary.json'))
+          assert s['development_only'] is True
+          assert s['row_count']==7327
+          assert s['primary_lead_seconds']==15
+          assert s['horizons_minutes']==[15,30,60]
+          assert s['probability_fit_performed'] is False
+          assert s['threshold_search_performed'] is False
+          assert s['lead_time_search_performed'] is False
+          assert s['projection_change_performed'] is False
+          assert s['posthoc_horizon_selection'] is False
+          assert s['validation_queried'] is False
+          assert s['blackbox_queried'] is False
+          assert s['pnl_computed'] is False
+          assert s['trading_rule_created'] is False
+          assert s['production_authority'] is False
+          print('V17 validation eligible:',s['validation_eligible'])
+          print('pooled:',json.dumps(s['pooled'],sort_keys=True))
+          print('rowwise_guard:',json.dumps(s['rowwise_guard'],sort_keys=True))
+          print('acceptance:',json.dumps(s['acceptance'],sort_keys=True))
+          PY
+
+      - name: Seal output manifest
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          root=Path('artifacts/highvol_realtime_horizon_adaptive_v17'); files=[]
+          for p in sorted(root.iterdir()):
+              if p.is_file():
+                  b=p.read_bytes(); files.append({'name':p.name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+          (root/'output_manifest.json').write_text(json.dumps({'schema':'highvol_realtime_horizon_adaptive_v17_dev_manifest','files':files},indent=2)+'\n')
+          PY
+
+      - name: Upload V17 Development evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: highvol-realtime-horizon-adaptive-v17-${{ github.run_id }}
+          path: artifacts/highvol_realtime_horizon_adaptive_v17
+          retention-days: 30
