@@ -1,93 +1,124 @@
 # Current research entry
 
-## 2026-09-10 current authority
+## 2026-09-11 current authority
 
 **Current task: STAR50 / CSI1000 bottom-layer K-line risk-state research only.**
 
 The research product of this bucket is a causal risk annotation/gate. It is not a directional trading strategy.
 
-### Current supported risk process
+## Current validated 5m recovery object — V16
 
-The current best-supported post-shock process is:
+The decisive V16 action is complete.
 
-`shock -> UNSAFE / RECOVERING -> Normal`
+Frozen horizon-adaptive object:
 
-with an important clock rule:
+- `15m = current_state {UNSAFE, RECOVERING} + time-since-most-recent-shock`;
+- `30m = current_state {UNSAFE, RECOVERING} + time-since-most-recent-shock`;
+- `60m = time-since-most-recent-shock only`.
 
-> **Every new shock resets the recovery clock.** Recovery risk is better indexed by time since the most recent shock than by time since the first shock of the episode.
+Age buckets remain fixed as `<15m`, `15-25m`, `30-40m`, `>=45m`. Every new shock resets the recovery clock.
 
-Frozen probability object:
+Development authority:
 
-`current_state {UNSAFE, RECOVERING} × recent_shock_age -> P(Normal within next 15 minutes)`
+- branch: `research/highvol-horizon-adaptive-surface-v16-20260910`;
+- execution commit: `bcdc18d5886869865c6454fa323ebc6858090249`;
+- run: `34497737506`;
+- artifact: `10160511846`;
+- frozen surface blob: `1f88966cf5dd3fb102f0d75746d5d00434555647`;
+- Development decision: `FREEZE_EXACT_SURFACE_AND_RUN_REUSABLE_VALIDATION`.
 
-Age buckets are fixed as `<15m`, `15-25m`, `30-40m`, `>=45m`.
+Reusable Validation authority:
 
-### Current realtime risk object
+- branch: `research/highvol-horizon-adaptive-v16-validation-20260910`;
+- execution commit: `198c3040182f500e7e8c576ee7fa5ade3b30c9fa`;
+- run: `34602527314`;
+- artifact: `10264689647`;
+- artifact SHA256: `e28a877d40c3bd2464b4f09b1078cdfae83a7ecebcc8bbd34fdb7bad4e8d82f5`;
+- common scored rows: `5908`;
+- year rows: `2024=2339`, `2025=2201`, `2026=1368` through `2026-08-21`;
+- `full_validation_supported=true`.
 
-The current cross-scale authority is V10 at the preregistered `E-15s` checkpoint:
+Pooled frozen improvement over age-only:
 
-`E-15s causal state + time since most recent shock -> P(Normal within next 15 minutes)`
+- 15m: Brier `+0.00268837`, LogLoss `+0.00890434`;
+- 30m: Brier `+0.00305660`, LogLoss `+0.00980693`;
+- 60m: Brier `0.0`, LogLoss `0.0` because V16 is exactly the age-only anchor at 60m.
 
-It composes the frozen V8 partial-bar state detector with the frozen V6 shock-reset probability table. No new probability fit or state-threshold search is used.
+Annual Brier wins versus age-only:
 
-- V7 1m partial-bar detector: **not eligible** for Validation. At the last full minute before 5m close, UNSAFE precision was about `90.6%` but recall only about `77.2%`.
-- V8 3s partial-bar detector: **Development PASS and 2024-2025 reusable Validation subset PASS** at frozen `E-3s`.
-- V9 unified realtime risk object: **Development PASS and 2024-2025 reusable Validation subset PASS** at frozen `E-3s`.
-- V10 fixed probability lead study: **Development PASS and 2024-2025 reusable Validation subset PASS** at the preregistered `E-15s` primary checkpoint.
+- 15m: `3/3`;
+- 30m: `3/3`;
+- 60m: exact equality by construction.
 
-V10 pooled 2024-2025 `E-15s` probability metrics:
-
-- reference rows: `4859`;
-- realtime scored rows: `4833`;
-- probability coverage: `0.9946491`;
-- exact state / probability-cell agreement: `0.9921374`;
-- probability MAE vs final-5m V6 reference: `0.00080676`;
-- realtime Brier on matched rows: `0.0805427` vs frozen reference `0.0805477`;
-- Brier degradation: `-0.0000050`;
-- 2024 and 2025 separately passed all frozen coverage/MAE/Brier gates.
-
-The full fixed lead curve is retained as descriptive evidence only. The earlier checkpoints were not allowed to replace a failure at `E-15s`; therefore neither 30s nor 60s is promoted post hoc from the same Validation pool.
-
-The repository 3s physical contract ends at 2025-12-31, so V8/V9/V10 realtime support is **not** complete Validation through 2026-08-21. No 2026 3s Validation data was queried.
-
-### Evidence chain
-
-- V3 recovery-hazard study: `UNSAFE` vs `RECOVERING` separates near-term normalization probability across Development years; recurrence hazard itself is not a stable monotone state discriminator.
-- V4 probability calibration: the state×age recovery table passed Development and 2024-2025 reusable Validation.
-- V5 re-shock study: a recurrent shock sharply lowers near-term normalization probability and effectively restarts the recovery process; a separate universal `CLUSTERED` state was not supported.
-- V6 clock comparison: recent-shock age beat episode-start age in leave-one-year-out Development Brier and LogLoss in all 3 years.
-- V6 full reusable Validation through 2026-08-21: **SUPPORTED**. 2026 5m bars were deterministically constructed from the sealed 1m Validation pack only after exact 2023 1m->5m equivalence was confirmed for both indices (`max_abs_close_diff=0.0`).
-- V7 1m realtime measurement: failed the preregistered UNSAFE recall gate and was not promoted.
-- V8 3s realtime measurement: passed Development and the available 2024-2025 3s Validation subset.
-- V9 realtime risk object: passed Development and the available 2024-2025 3s Validation subset while reproducing the final-5m V6 probability object essentially losslessly at `E-3s`.
-- V10 realtime probability lead study: preregistered `E-15s` passed Development and the available 2024-2025 3s Validation subset, establishing a validated 15-second-early probability annotation.
-
-V6 full Validation metrics:
-
-- scored rows: `6334`;
-- pooled Brier: `0.0841926` vs frozen global-rate baseline `0.1873921`;
-- pooled LogLoss: `0.2910978` vs baseline `0.5621032`;
-- annual Brier improved vs baseline in 2024, 2025, and 2026 through 2026-08-21;
-- observed `P(Normal next15 | RECOVERING) > P(Normal next15 | UNSAFE)` in all 4 fixed age buckets for both STAR50 and CSI1000.
+All scored rows satisfy `p15 <= p30 <= p60`. The 60m row-level prediction difference from frozen age-only is exactly `0.0`.
 
 Primary sealed evidence:
 
-- `docs/research/highvol_recovery_clock_v6_full_validation_20260910.md`
-- `docs/research/highvol_recovery_clock_v6_full_validation_receipt_20260910.json`
-- `docs/research/highvol_realtime_detection_v8_validation_20260910.md`
-- `docs/research/highvol_realtime_detection_v8_validation_receipt_20260910.json`
-- `docs/research/highvol_realtime_risk_object_v9_validation_20260910.md`
-- `docs/research/highvol_realtime_risk_object_v9_validation_receipt_20260910.json`
-- `docs/research/highvol_realtime_probability_lead_v10_validation_20260910.md`
-- `docs/research/highvol_realtime_probability_lead_v10_validation_receipt_20260910.json`
+- `docs/research/highvol_horizon_adaptive_v16_validation_20260911.md`;
+- `docs/research/highvol_horizon_adaptive_v16_validation_receipt_20260911.json`;
+- `research/highvol_horizon_adaptive_v16/FROZEN_HORIZON_ADAPTIVE_SURFACE.json`;
+- `research/highvol_horizon_adaptive_v16_validation/VALIDATION_RESULTS.md`;
+- `research/highvol_horizon_adaptive_v16_validation/DECISIVE_RECEIPT.json`.
 
-`blackbox_queried=false`.
+## Why V16 exists
 
-`production_authority=false`.
+The multi-horizon path is already complete and must not be rerun:
+
+- V11: one unified 15/30/60m `state + age` survival surface was rejected in Development;
+- V12: simple shock-expiry explanation was rejected;
+- V13: exact recent-shock-age sample composition did not explain the 60m crossover;
+- V14: established horizon-dependent incremental state value: useful at 15m and 30m, not stable at 60m; reusable Validation showed the same 15m/30m gains and 60m reversal;
+- V15: Development block/bootstrap adjudication again supported state increment at 15m/30m and not 60m;
+- V16: froze the horizon-adaptive surface and has now passed reusable Validation.
+
+Do not reopen V11-V15 merely to reconfirm this chain.
+
+## 2026 5m construction authority
+
+2026 5m Validation bars were deterministically synthesized from sealed one-minute Validation inputs only after the historical 2023 equivalence guard passed exactly for both indices:
+
+- 242 common 2023 days per symbol;
+- 11,616 rows per symbol;
+- `max_abs_close_diff=0.0` for both symbols.
+
+The authorized 2026 one-minute inputs contain 154 complete trading days through `2026-08-21` and synthesize to 7,392 5m rows per symbol.
+
+No data after `2026-08-21` was used.
+
+## Current realtime risk object
+
+The current cross-scale realtime authority remains V10 at the preregistered `E-15s` checkpoint:
+
+`E-15s causal state + time since most recent shock -> P(Normal within next 15 minutes)`.
+
+V8/V9/V10 realtime support uses available 3s Validation coverage through 2025; the repository 3s physical contract ends at 2025-12-31, so there is no claimed 2026 3s Validation authority.
+
+V16 validates the 5m multi-horizon recovery surface. It does **not** by itself validate a realtime 15/30/60m transfer.
+
+## Earlier supported risk process
+
+The supported post-shock mechanism remains:
+
+`shock -> UNSAFE / RECOVERING -> Normal`
+
+with the clock rule:
+
+> Every new shock resets the recovery clock. Recovery risk is indexed by time since the most recent shock, not time since the first shock of the episode.
+
+Relevant prior authority:
+
+- V3: `UNSAFE` vs `RECOVERING` separates near-term normalization probability;
+- V4: state×age recovery calibration passed Development and reusable Validation;
+- V5: recurrent shock sharply lowers near-term normalization probability and resets recovery; no universal separate `CLUSTERED` state was supported;
+- V6: recent-shock age beat episode-start age in all Development leave-one-year-out folds and passed full reusable Validation through 2026-08-21;
+- V7: 1m realtime detector failed preregistered UNSAFE recall and was not promoted;
+- V8: frozen 3s detector passed Development and available 2024-2025 reusable Validation subset;
+- V9: unified realtime risk object passed the same subset;
+- V10: preregistered `E-15s` realtime probability annotation passed Development and available 2024-2025 reusable Validation subset.
 
 ## Scope-repaired bucket authority
 
-The repository owns bottom-layer causal K-line risk-state research only, including:
+This repository owns bottom-layer causal K-line risk-state research only, including:
 
 - volatility level / expansion;
 - shock isolation and recurrence;
@@ -97,52 +128,40 @@ The repository owns bottom-layer causal K-line risk-state research only, includi
 
 The current task is **not** to optimize a directional trading strategy, holding period, stop/target, sizing, account overlay or payoff router.
 
-## Correct neighboring buckets
+Historical HighVol Router V1, directional STAR50 V10-V17 sign-flip work, half-day slope work, drawdown/account/payoff diagnostics and misplaced R1/R2 material remain preserved but are not current authority.
 
-- `factorlab-two-wave-strategy-lab`: causal parent-structure classification into range / uptrend / downtrend from completed same-scale waves.
+Correct neighboring buckets:
+
+- `factorlab-two-wave-strategy-lab`: causal parent-structure classification into range / uptrend / downtrend from completed same-scale waves;
 - `factorlab-trend-reversion-regime-lab`: concrete reversal / mean-reversion strategy research including R1/R2.
-
-## Historical material retained but no longer current authority
-
-This repository contains extensive historical strategy/payoff research, including HighVol Router V1, STAR50 V10-V17 directional sign-flip research, half-day slope and earlier payoff variants, drawdown/account/payoff diagnostics, and previously misplaced R1/R2 material. These remain recoverable in Git but do not regain current authority in this bucket.
-
-The complete pre-repair current snapshot remains at `4232d20b143a9c532e14a39761370bf1eca8d084`. Reusable bottom-layer findings extracted from archived strategy work are recorded in `docs/research/RISK_STATE_LEGACY_FINDINGS_20260909.md`.
-
-## Current valid risk-research anchors
-
-- `docs/handoff/cloud_risk_gate_20260907/`
-- `docs/research/causal_volatility_tool_v1/`
-- `docs/research/highvol_unsafe_recovery_v2_anchor_20260910.md`
-- `docs/research/highvol_recovery_hazard_v3_20260910.md`
-- `docs/research/highvol_recovery_calibration_v4_20260910.md`
-- `docs/research/highvol_reshock_cluster_v5_20260910.md`
-- `docs/research/highvol_recovery_clock_v6_full_validation_20260910.md`
-- `docs/research/highvol_realtime_detection_v8_validation_20260910.md`
-- `docs/research/highvol_realtime_risk_object_v9_validation_20260910.md`
-- `docs/research/highvol_realtime_probability_lead_v10_validation_20260910.md`
-- tail distribution / resolution-transfer / cross-scale root-cause material where the result is a K-line risk property rather than a payoff rule.
 
 ## Data and governance
 
-Read `docs/governance/BUCKET_SCOPE_REPAIR_20260909.md` and `docs/governance/DATA_USAGE_POLICY_V2.md` before new work.
+Read before new work:
+
+- `docs/governance/BUCKET_SCOPE_REPAIR_20260909.md`;
+- `docs/governance/DATA_USAGE_POLICY_V2.md`;
+- `docs/governance/data_usage_declaration.json`;
+- `docs/governance/blackbox_query_ledger.json`.
 
 Forward data roles:
 
 - 2020: warm-up only where needed;
 - Development: 2021-2023;
 - reusable Validation: 2024 through 2026-08-21;
-- protected BlackBox-V1: strictly after the cutoff under its aggregate-only protocol.
-
-Deterministic 1m->5m construction is allowed when explicitly authorized and protected by a frozen construction contract plus historical equivalence guard where overlapping 5m exists. See `data/README.md`.
+- protected BlackBox-V1: strictly after the cutoff under its frozen aggregate-only protocol.
 
 No prior payoff or risk-state Validation result automatically authorizes BlackBox access.
 
-## Next research direction
+## Current breakpoint
 
-Do not reopen R1/R2 or payoff routing here. V10 has established a validated `E-15s` realtime recovery-probability annotation on the available 3s Validation coverage.
+The requested V16 decisive action is finished and sealed. The new breakpoint is:
 
-The next bottom-layer task is to move from a single `P(Normal within 15m)` target to a **fixed recovery survival curve** using the unchanged `UNSAFE/RECOVERING + recent-shock age` state. Development should estimate and test fixed horizons `15m / 30m / 60m` as one coherent risk object, with monotonic cumulative recovery probabilities and no trading variables. Realtime transfer should only be attempted after that multi-horizon 5m object is frozen.
+`V16_REUSABLE_VALIDATION_SUPPORTED`
 
-Do not promote `E-30s` or `E-60s` from V10 post hoc using the already-inspected Validation curve.
+Do **not** rerun V11-V16, refit the frozen surface, or query BlackBox.
 
+A future realtime transfer of the validated multi-horizon 5m object is scientifically eligible only as a separately preregistered next protocol; it has **not** been started here.
+
+`blackbox_queried=false`.
 `production_authority=false`.
