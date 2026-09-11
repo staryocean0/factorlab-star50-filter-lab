@@ -1,0 +1,57 @@
+{
+  "schema": "highvol_realtime_horizon_adaptive_v17_frozen_transfer_v1",
+  "source_branch": "research/highvol-realtime-horizon-adaptive-v17-20260911",
+  "source_execution_commit": "5ae8d6adab6c4afb617ed14ae44327d722e3db49",
+  "source_run_id": 34603682244,
+  "source_job_id": 103276864733,
+  "source_artifact_id": 10265262086,
+  "source_artifact_sha256": "759eda3d30900742bedd9494fef9c64ed91af66068892aceaa01e610a684101c",
+  "source_runner_blob_sha": "397d80037806ba11cadf7f77717d36d55fbafc91",
+  "source_protocol_blob_sha": "e99c56394699642bf86fbe316ff2b05338f23896",
+  "v16_surface_blob_sha": "1f88966cf5dd3fb102f0d75746d5d00434555647",
+  "v9_runner_blob_sha": "ae2a7e095df58692ef9df0dfee5856cac727ca44",
+  "v11_runner_blob_sha": "713f0dcc41e7f32f75934fc7709a406ff71579e6",
+  "symbols": ["000688.SH", "000852.SH"],
+  "development_years": [2021, 2022, 2023],
+  "horizons_minutes": [15, 30, 60],
+  "checkpoint_seconds_before_5m_close": 15,
+  "construction": {
+    "15m": "frozen_v16_state_plus_age_using_partial_state",
+    "30m": "frozen_v16_state_plus_age_using_partial_state",
+    "60m": "frozen_v16_age_only_anchor"
+  },
+  "gating": {
+    "fresh_partial_shock": "unavailable",
+    "provisional_normal": "unavailable",
+    "missing_3s_checkpoint": "unavailable",
+    "missing_reference_window": "unavailable"
+  },
+  "development_row_count": 7327,
+  "development_realtime_scored_rows": 7310,
+  "development_coverage": 0.9976798143851509,
+  "development_exact_state_agreement": 0.995485636114911,
+  "development_probability_mae_vs_v16": {
+    "15m": 0.00038143785088958404,
+    "30m": 0.0004062408962034444,
+    "60m": 0.0
+  },
+  "development_brier_degradation": {
+    "15m": 0.00004237739776040417,
+    "30m": 0.0000998915597395511,
+    "60m": 0.0
+  },
+  "development_rowwise_monotone": true,
+  "development_60m_anchor_exact": true,
+  "validation_authorized": true,
+  "validation_scope": "2024-2025 existing 3s coverage only",
+  "probability_fit_performed": false,
+  "threshold_search_performed": false,
+  "lead_time_search_performed": false,
+  "projection_change_performed": false,
+  "posthoc_horizon_selection": false,
+  "validation_queried": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "production_authority": false
+}
