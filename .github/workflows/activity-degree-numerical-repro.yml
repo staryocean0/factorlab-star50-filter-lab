@@ -1,0 +1,133 @@
+name: activity-degree-numerical-repro
+
+on:
+  push:
+    branches:
+      - research/activity-degree-incremental-utility-v1-20260912
+    paths:
+      - .github/workflows/activity-degree-numerical-repro.yml
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/activity-degree-incremental-utility-v1-20260912
+          fetch-depth: 1
+      - name: Download prior successful Development freeze
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/prior-fit
+          mkdir -p /tmp/prior-fit
+          gh run download 34670136889 \
+            --repo staryocean0/factorlab-star50-filter-lab \
+            --name activity-degree-v1-frozen-models-34670136889 \
+            --dir /tmp/prior-fit
+          test "$(sha256sum /tmp/prior-fit/FROZEN_MODELS.json | awk '{print $1}')" = "25314e5eb6d063f9520b1fecd186e091800ee2253c64c4b34fd585c64519685d"
+          test "$(sha256sum research/activity_degree_incremental_utility_v1/evidence/FROZEN_MODELS.json | awk '{print $1}')" = "89660f0825373b5afd8d1d9c51642424fe79fae925f44d0f25a6f2f96ca78d8d"
+      - name: Compare model objects numerically
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, math
+          from pathlib import Path
+          import numpy as np
+
+          old=json.load(open('/tmp/prior-fit/FROZEN_MODELS.json'))
+          new=json.load(open('research/activity_degree_incremental_utility_v1/evidence/FROZEN_MODELS.json'))
+
+          assert old['schema']==new['schema']
+          assert old['source_main']==new['source_main']
+          assert old['protocol_git_blob']==new['protocol_git_blob']
+          assert old['m3_runner_git_blob']==new['m3_runner_git_blob']
+          assert old['m3_protocol_git_blob']==new['m3_protocol_git_blob']
+          assert old['v9_runner_git_blob']==new['v9_runner_git_blob']
+          assert old['ridge_lambda']==new['ridge_lambda']
+          assert old['input_sha256']==new['input_sha256']
+          assert old['training_years']==new['training_years']
+          assert old['feature_identity']==new['feature_identity']
+          assert set(old['models'])==set(new['models'])
+
+          maxima={'mean':0.0,'scale':0.0,'beta':0.0,'intercept':0.0,'forward_metric':0.0,'coverage_metric':0.0}
+          per_probe={}
+          for k in sorted(old['models']):
+              a,b=old['models'][k],new['models'][k]
+              assert a['names']==b['names']
+              assert a['n']==b['n']
+              d={}
+              for field in ('mean','scale','beta'):
+                  x=np.asarray(a[field],float); y=np.asarray(b[field],float)
+                  z=float(np.max(np.abs(x-y))) if len(x) else 0.0
+                  d[field]=z; maxima[field]=max(maxima[field],z)
+              z=abs(float(a['intercept'])-float(b['intercept']))
+              d['intercept']=z; maxima['intercept']=max(maxima['intercept'],z)
+              per_probe[k]=d
+
+          assert set(old['development_forward'])==set(new['development_forward'])
+          forward_diffs={}
+          for k in sorted(old['development_forward']):
+              forward_diffs[k]={}
+              for f in ('n','absolute_gain','relative_gain'):
+                  if f=='n':
+                      assert old['development_forward'][k][f]==new['development_forward'][k][f]
+                      continue
+                  z=abs(float(old['development_forward'][k][f])-float(new['development_forward'][k][f]))
+                  forward_diffs[k][f]=z; maxima['forward_metric']=max(maxima['forward_metric'],z)
+
+          def walk(a,b,path=''):
+              vals=[]
+              if isinstance(a,dict):
+                  assert set(a)==set(b)
+                  for k in a: vals += walk(a[k],b[k],path+'/'+str(k))
+              elif isinstance(a,(int,float)) and isinstance(b,(int,float)):
+                  vals.append((path,abs(float(a)-float(b))))
+              else:
+                  assert a==b
+              return vals
+          cov=walk(old['development_coverage'],new['development_coverage'])
+          maxima['coverage_metric']=max((x[1] for x in cov),default=0.0)
+
+          out={
+            'schema':'activity_degree_incremental_utility_v1_numerical_reproducibility@1.0',
+            'prior_run_id':34670136889,
+            'prior_head_sha':'fd16a6ee94474eff2ba7c6f8a0b4d9c9b7043451',
+            'prior_model_sha256':'25314e5eb6d063f9520b1fecd186e091800ee2253c64c4b34fd585c64519685d',
+            'prior_artifact_id':10289968493,
+            'prior_artifact_zip_sha256':'200bbe120d5fdb16e10a951c5f48b7b19bec333cd6dadf4f1584919750ccde7c',
+            'decisive_run_id':34670357953,
+            'decisive_head_sha':'5fa76723d5142b96d53822343faad6bd046f9df6',
+            'decisive_model_sha256':'89660f0825373b5afd8d1d9c51642424fe79fae925f44d0f25a6f2f96ca78d8d',
+            'decisive_artifact_id':10290482080,
+            'decisive_artifact_zip_sha256':'0c71f4d1c9605819ca92d742cbeabf36d1aaa4bbdb6e08e2c29e708796087965',
+            'bitwise_identical':False,
+            'structural_identity':True,
+            'same_input_sha256':True,
+            'same_feature_schema_and_n':True,
+            'max_abs_differences':maxima,
+            'per_probe_max_abs_differences':per_probe,
+            'development_forward_differences':forward_diffs,
+            'within_1e_10_all_numeric':all(v <= 1e-10 for v in maxima.values()),
+            'interpretation':'Repeated numpy.linalg ridge fits are structurally/input identical but not byte-identical; decisive Validation used the exact in-run frozen model and therefore freeze-before-Validation remains intact. This reproducibility audit is engineering evidence and is not a scientific promotion gate.'
+          }
+          p=Path('research/activity_degree_incremental_utility_v1/NUMERICAL_REPRODUCIBILITY.json')
+          p.write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print(json.dumps({'max_abs_differences':maxima,'within_1e_10_all_numeric':out['within_1e_10_all_numeric']},indent=2))
+          PY
+      - name: Commit reproducibility receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/activity_degree_incremental_utility_v1/NUMERICAL_REPRODUCIBILITY.json
+          git commit -m 'evidence: record numerical reproducibility of repeated M3 fit [skip ci]'
+          git push origin HEAD:research/activity-degree-incremental-utility-v1-20260912
