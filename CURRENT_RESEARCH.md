@@ -1,4 +1,4 @@
-# 当前任务：12-bar historical shock-burden 增量路径已关闭
+# 当前任务：one-step degree trajectory 增量路径已关闭
 
 更新：2026-09-12。使命不变：研究并交付**当时可知**的 K 线风险状态、连续风险程度、适用性和时间/缺失语义；本仓不开发交易动作、方向、仓位、收益 router 或生产策略。
 
@@ -6,143 +6,145 @@
 
 最新科学决定：
 
-**`HISTORICAL_SHOCK_BURDEN_INCREMENTAL_UTILITY_NOT_SUPPORTED`**。
+**`ONE_STEP_DEGREE_TRAJECTORY_INCREMENTAL_UTILITY_NOT_SUPPORTED`**。
 
 前置科学决定继续保留：
 
-- **`CROSS_INDEX_CURRENT_DEGREE_INCREMENTAL_UTILITY_NOT_SUPPORTED`**；
-- **`CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`**。
+- `HISTORICAL_SHOCK_BURDEN_INCREMENTAL_UTILITY_NOT_SUPPORTED`；
+- `CROSS_INDEX_CURRENT_DEGREE_INCREMENTAL_UTILITY_NOT_SUPPORTED`；
+- `CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`。
 
-并行 reception 工程状态：
+并行 reception 工程状态仍是：
 
 **`DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING`**。
 
-历史研究队列：
+历史 research backlog 仍是：
 
 **`RESEARCH_BACKLOG_20260912_CLOSED_NO_EXECUTABLE_LEGACY_BRANCH`**。
-
-这些状态互不覆盖。
 
 ## 当前权威链
 
 最新科学主链：
 
-`research/historical_shock_burden_utility_v1/PROGRAM_STATE.json` → `RESULTS.md` → `DECISIVE_RECEIPT.json` → `EXECUTION_RECEIPT.json` → `evidence/VALIDATION_RESULTS.json` / `evidence/FROZEN_MODELS.json` / `evidence/SHA256SUMS.txt` → frozen `PROTOCOL.md` / `run_study.py`。
+`research/degree_trajectory_utility_v1/PROGRAM_STATE.json` → `RESULTS.md` → `DECISIVE_RECEIPT.json` → `EXECUTION_RECEIPT.json` → `evidence/VALIDATION_RESULTS.json` / `evidence/FROZEN_MODELS.json` / `evidence/SHA256SUMS.txt` → frozen `PROTOCOL.md` / `run_study.py`。
 
-前置科学链继续保留：
+前置权威继续保留：
 
+- 12-bar shock memory：`research/historical_shock_burden_utility_v1/`；
 - cross-index current degree：`research/cross_index_degree_transfer_utility_v1/`；
 - current M3 refresh：`research/activity_degree_incremental_utility_v1/`；
-- D4 / D3 / D2 / V19；
-- 历史 backlog closeout：`docs/research/RESEARCH_BACKLOG_CLOSEOUT_20260912.json`；
-- reception 并行链：`research/prospective_reception_recorder_v1/` → D5R。
+- D4 / D3 / D2 / V19 / D5；
+- backlog closeout：`docs/research/RESEARCH_BACKLOG_CLOSEOUT_20260912.json`；
+- reception：`research/prospective_reception_recorder_v1/` → D5R。
 
 治理以 `docs/governance/DATA_USAGE_POLICY_V2.md` 为准。
 
-## 最新科学结果：Historical shock-burden incremental utility V1
+## 最新科学结果：One-step degree-trajectory incremental utility V1
 
-问题：在 target 自己的 confirmed history、previous state / recent-shock age、以及 current E15 D4-style I/V 都已经知道后，过去最近 12 个**有效已完成交易 return bars** 中累计出现多少次 3σ shock、超出 3σ 多少，是否仍有独立且实用的未来风险信息。
+D4/D5 已经传输 `lag_intensity`、`lag_ratio`、`delta_intensity`、`delta_ratio`，但原 contract 明确没有给 delta 独立预测效用验收。本轮正式补上这个科学问题。
 
-固定三模型：
+由于 current E15 I/V 已经在 baseline C 中，加入上一根 confirmed degree 与加入 `current - lag1` delta 在**原始信息层面一一等价**。因此冻结比较为：
 
-- C：84-column own-index D4-style causal baseline；
-- S：C + 12-bar confirmed shock count / excess 的 20-column fixed nonlinear/state-interaction block；
-- H：C + 完全同复杂度的 confirmed high-vol count / excess control block。
+- C：84-column own-index D4-style current-I/V baseline；
+- T：C + lag1 confirmed degree 的固定20-column nonlinear/state-interaction block；
+- O：C + 完全同复杂度的 lag2 confirmed degree control；
+- T/O 都是104 columns，schema、scaling、ridge 完全一致。
 
-S/H 都是 104 columns，schema、scaling、ridge penalty 完全一致。只有 `S vs C` 和 `S vs H` **同时过门槛**，才能说 shock-specific memory 值得晋升。
+只有 `T vs C` 与 `T vs O` 同时通过，才承认最近一步 trajectory 有独立实用价值。
 
-决定性 Action run `34679293167`：Development 先 fit/freeze，随后才由同一 run 的 exact frozen artifact 解锁 2024–2025 reusable Validation。冻结模型 SHA256：
+决定性 Action run：`34680352701`。Development 2021–2023 先 fit/freeze，随后同一 run 的 exact frozen artifact 才解锁 2024–2025 reusable Validation。
 
-`65f9403e3aae00873432403f833c1d8772429c5172fc7f3fd76581a19a4222d3`。
+冻结模型 SHA256：
 
-Validation artifact `10294046103`，ZIP SHA256：
+`04b49e8613cad5b24822f8e827f8d6513f6fef74da5c2df0851e03473b4db188`。
 
-`943d44b741888307c978b4504edeb704ecdeedb75ecdf8f521eec07a4809f215`。
+Validation artifact：`10294052627`，ZIP SHA256：
+
+`60c9133dbf6632b2f7dcf9795c70038ed50f4d18718fc54aaf2378010ceaeba8`。
 
 `VALIDATION_RESULTS.json` SHA256：
 
-`8fa3f332a033e8f57ebf3240e3891295444dd9b48a8e2f699e2244928eb2f8bd`。
+`16e7db8b780f64cfa0fcc5091d3ab1feed4c63658465697381b2ae9dda390763`。
 
-完整 36-file Action evidence 已按原字节持久化到 `research/historical_shock_burden_utility_v1/evidence/`。
+完整决定性 evidence 已按原字节持久化进 `research/degree_trajectory_utility_v1/evidence/`。
 
-### Cohort 与 coverage
+### Cohort / coverage
 
-- 15m：Development 59,614；Validation 39,770；memory coverage 100%；
+- 15m：Development 59,614；Validation 39,770；trajectory coverage 100%；
 - 30m：50,890 / 33,950 / 100%；
 - 60m：33,442 / 22,310 / 100%。
 
 ### 正式比较
 
-S 的 pooled relative squared-loss reduction：
+T 的 pooled relative squared-loss reduction：
 
-| Horizon | Endpoint | S vs C | S vs H |
+| Horizon | Endpoint | T vs C | T vs O |
 |---|---|---:|---:|
-| 15m | log future RMS | +0.16994% | +0.16951% |
-| 15m | future tail | +0.03773% | +0.02048% |
-| 30m | log future RMS | +0.18307% | +0.19834% |
-| 30m | future tail | +0.03925% | +0.03670% |
-| 60m | log future RMS | +0.24096% | +0.34717% |
-| 60m | future tail | +0.03330% | +0.04419% |
+| 15m | log future RMS | +0.11415% | +0.11321% |
+| 15m | future tail | +0.03753% | -0.00340% |
+| 30m | log future RMS | **+0.14957%** | **+0.15160%** |
+| 30m | future tail | +0.03919% | -0.03684% |
+| 60m | log future RMS | +0.02416% | -0.04063% |
+| 60m | future tail | +0.04523% | +0.01985% |
 
 **12/12 formal comparisons 全部低于冻结 1% practical gate；六个 endpoint×horizon joint promotion 全部 false。**
 
-Tail absolute Brier gains 约 `0.000006`–`0.000037`，全部远低于冻结 `0.0005` gate。
+Tail absolute Brier gains 全部远低于 `0.0005`。
 
-15m log-RMS 是最值得解释但仍不能晋升的结果：
+30m log-RMS 是最值得解释、但仍不能晋升的一项：
 
-- S vs C +0.16994%，5-day adjusted CI lower `+0.00001510`，两个指数和两个年份符号均非负，2023 forward 也为正；
-- 但 S vs H 仍只有 +0.16951%，5-day adjusted CI lower `-0.00003330`，并且两者都远低于 1%。
+- T vs C +0.14957%，5-day adjusted CI lower `+0.00002614`，2024/2025 与两个指数符号均非负，2023 forward 也为正；
+- T vs O +0.15160%，但 5-day adjusted CI lower `-0.00004682`，跨0；
+- 两个点估计都只有约 **0.15%**，约为冻结 1% practical gate 的七分之一。
 
-因此不能说“完全没有统计信息”；更准确的是：**有一点短期统计信号，但没有达到独立且实用的 shock-specific memory 增量门槛。**
+因此不能说 trajectory/delta 完全没有信息；更准确的是：**最近一步 confirmed degree 对30m future RMS 含少量统计信息，但没有稳定打赢同复杂度 lag2，也没有足够实用幅度。**
 
-30/60m 的主区间跨0，且多个 `S vs C` 2023 forward 为负。tail 全部明显失败。Validation 的 shock memory 本身也很稀疏：15m cohort 中 33,316 行过去12 bar无 shock，5,464 行仅1次，990 行>=2次；这个描述绝不能被事后转成 multi-shock 子样本筛选。
+15m RMS 约0.11%，区间跨0；60m T-vs-O RMS 已转负。tail 全部明显不支持独立预测 promotion。
 
-### 科学解释
+### D4/D5 delta 的正式解释
 
-这不推翻 V5 的“recurrent shock resets recovery clock”。recent-shock age 已经进入现有 recovery/state ancestry。本轮问的是：**在 timing + current degree 已经知道后，累计 shock burden 是否还应该成为新的风险坐标。** 冻结答案是不支持。
+本轮不删除 D4/D5 的 `lag_intensity`、`lag_ratio`、`delta_intensity`、`delta_ratio`。它们继续可以作为**描述/诊断/可观测消费字段**存在于原 contract 中。
 
-12-bar specification 到此关闭。禁止用本次 reusable Validation 结果去调：
+但本轮明确冻结：
 
-- 12 → 6/24 或其他窗口；
-- decay；
-- 3σ / 1.5 threshold；
-- 单指数、状态、时段、episode 筛选；
-- ridge / horizon / bootstrap family；
-- 删除 H control。
+- `delta_independent_predictive_promotion=false`；
+- 不把 delta 变成 D5 decision gate；
+- 不修改 V19；
+- 不创建新 risk state / threshold / production field。
 
-S 不进入 D5 consumer，也不修改 V19 state machine。
+## Fixed path 已关闭
+
+lag1-vs-lag2 trajectory V1 到此关闭。禁止使用本次 reusable Validation 结果去做：
+
+- lag3/lag4 搜索；
+- smoothing / decay；
+- alternate normalization；
+- 单指数、state、slot、episode 筛选；
+- 改 nonlinear transform / ridge / horizon / bootstrap family；
+- 删除 O control。
+
+未来若研究 degree dynamics，必须是**真正不同的因果机制假设**，重新事前冻结，而不是围绕本轮小正信号做参数救援。
 
 ## 前置科学结果保持不变
 
-### Cross-index current degree
-
-`CROSS_INDEX_CURRENT_DEGREE_INCREMENTAL_UTILITY_NOT_SUPPORTED`。other-current I/V 在 own current I/V 已知后，12项 frozen comparison 全部低于1%，不进入D5/V19，不做单向/lag/state救援。
-
-### Current M3
-
-`CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`。M3 相对 own current-I/V 对 future RMS 有额外信息，但相对等复杂度 lagged-M3 的 current-refresh 实用增量未达到冻结1%门槛，不进入D5/V19。
+- 12-bar cumulative shock burden：有少量统计信号但没有实用、稳定的 shock-specific increment，不进D5/V19；
+- cross-index current degree：other-current I/V 在 own-current 已知后不支持增量 promotion；
+- current M3：相对 D4 baseline 有信息，但 current-refresh 相对 lagged-M3 未过 practical gate；
+- D4 own current I/V：指定 endpoint 有限支持；
+- D3 practical negative；
+- V19 frozen；
+- D5 bounded consumer contract 不变。
 
 ## 历史 backlog 与 reception
 
-历史 research backlog 仍是 **remaining executable legacy backlog = 0**。旧 detector/RMR/router/v0.6.17 等 closeout 不重开。
+历史 research backlog 仍是 **remaining executable legacy backlog = 0**，旧 detector/RMR/router/v0.6.17 不重开。
 
-`DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING` 不变。历史没有逐条真实本机 `received_at`；未来真实 reception evidence 只能由未来物理 feed 产生并服从 V2 治理。
-
-## 保持不变的核心结论
-
-- `RISK_COORDINATE_VALIDATION_NOT_FULLY_REPLICATED_NO_THRESHOLD_RETUNE`；
-- V19 冻结，不为 accuracy 开 V20；
-- D3 practical negative；
-- D4 own current I/V endpoint-limited support；
-- D5 bounded consumer contract；
-- D5R 历史 true-reception clock 不可恢复。
+reception 仍是 `DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING`。历史不存在可恢复的逐条真实本机 `received_at`，未来证据只能由未来物理 feed 产生并服从 V2 治理。
 
 ## 下一步边界
 
-本轮 12-bar shock-memory fixed specification 已关闭。**不允许**把下一步做成 window/decay/threshold/subgroup rescue。
-
-只有出现与 V19 / D4 / M3 / cross-index / 本轮 memory 证据真正不同、并能在结果前冻结的独立因果风险机制时才开新科学实验；否则维持并审计当前 authority。
+本轮 trajectory fixed specification 已关闭。下一科学题必须是与 V19 / D4 / M3 / cross-index / shock-memory / trajectory 都真正不同的因果风险机制，并能在结果前冻结；否则正确动作是维持并审计现有 authority，而不是继续调 lag/window/threshold。
 
 仍然：不读受保护2026逐行数据，不查BlackBox，不算PnL，不恢复router，不开D6/V20，不提高production authority。
 
-`historical_shock_burden_incremental_supported=false`; `historical_shock_burden_consumer_promotion=false`; `cross_index_current_degree_incremental_supported=false`; `current_m3_consumer_promotion=false`; `historical_research_backlog_closed=true`; `remaining_executable_legacy_backlog=0`; `validation_reused=true`; `fresh_oos=false`; `blackbox_queried=false`; `d6_started=false`; `v20_started=false`; `production_authority=false`.
+`degree_trajectory_incremental_supported=false`; `delta_independent_predictive_promotion=false`; `d5_contract_unchanged=true`; `historical_shock_burden_incremental_supported=false`; `cross_index_current_degree_incremental_supported=false`; `current_m3_consumer_promotion=false`; `historical_research_backlog_closed=true`; `remaining_executable_legacy_backlog=0`; `validation_reused=true`; `fresh_oos=false`; `blackbox_queried=false`; `d6_started=false`; `v20_started=false`; `production_authority=false`.
