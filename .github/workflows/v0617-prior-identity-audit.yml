@@ -20,15 +20,17 @@ jobs:
         run: |
           git fetch origin '+refs/heads/*:refs/remotes/origin/*' '+refs/tags/*:refs/tags/*' --force
           git fsck --no-reflogs --unreachable --no-progress > unreachable.txt || true
-      - name: Exhaustive pre-freeze text-blob scan
+      - name: Exhaustive strict-pre-v0617 text-blob scan
         run: |
           mkdir -p artifacts/v0617_prior_identity_audit
+          # First v0.6.17 implementation commit was 2026-09-07T10:20:26Z.
+          # A qualifying identity must already exist strictly before it.
           python scripts/audit_v0617_prior_identity.py \
-            --cutoff '2026-09-07T10:25:32Z' \
+            --cutoff '2026-09-07T10:20:25Z' \
             --output artifacts/v0617_prior_identity_audit/audit.json \
             | tee artifacts/v0617_prior_identity_audit/stdout.txt
           cp unreachable.txt artifacts/v0617_prior_identity_audit/unreachable.txt
-      - name: Search commit diffs before freeze using pickaxe
+      - name: Independent pickaxe search before first v0617 commit
         shell: bash
         run: |
           set -euo pipefail
@@ -36,9 +38,20 @@ jobs:
           : > "$OUT"
           for term in '349923' '0.6.15' 'v0615' 'leg_universe' 'leg-universe' 'strict_pair' 'strict-pair' 'expected_source_sha' 'source_sha256' 'identity_manifest'; do
             echo "===== TERM: $term =====" >> "$OUT"
-            git log --all --before='2026-09-07T10:25:32Z' --date=iso-strict --format='%H %cI %s' -S"$term" --name-status -- . >> "$OUT" || true
+            git log --all --before='2026-09-07T10:20:25Z' --date=iso-strict --format='%H %cI %s' -S"$term" --name-status -- . >> "$OUT" || true
           done
           cat "$OUT"
+      - name: Assert fail-closed result unless both exact prior identities exist
+        run: |
+          python - <<'PY'
+          import json
+          x=json.load(open('artifacts/v0617_prior_identity_audit/audit.json'))
+          print(json.dumps({
+            'source_candidates':len(x['authoritative_source_candidates']),
+            'leg_candidates':len(x['v06115_leg_universe_candidates']) if 'v06115_leg_universe_candidates' in x else len(x['v0615_leg_universe_candidates']),
+            'recovered':x['required_precommit_identity_recovered'],
+          },indent=2))
+          PY
       - name: Hash evidence
         run: |
           cd artifacts/v0617_prior_identity_audit
