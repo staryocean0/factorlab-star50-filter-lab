@@ -85,7 +85,7 @@ def main() -> int:
     results = (BASE / "RESULTS.md").read_text(encoding="utf-8")
     assert DECISION in results
     assert "1%" in results
-    assert "不进入 D5" in results
+    assert "D5" in results and ("No D5 field is added" in results or "不进入 D5" in results)
 
     print("historical shock-burden utility V1 authority: OK")
     return 0
