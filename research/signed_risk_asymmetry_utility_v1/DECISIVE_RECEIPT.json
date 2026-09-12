@@ -1,0 +1,59 @@
+{
+  "schema": "signed_risk_asymmetry_utility_v1_decisive_receipt",
+  "decision": "SIGNED_RETURN_ASYMMETRY_INCREMENTAL_UTILITY_NOT_SUPPORTED",
+  "frozen_model_sha256": "92a5fdd5a75a57a1ca3adb567e8a12d03309c7de4ef33a601fc67cbb8c38f4d2",
+  "decisive_run_id": 34681733485,
+  "validation_artifact_id": 10293179281,
+  "validation_results_sha256": "c0ffac04a70fed796bfb766876bd51f1781c788e4648b202eefd3b9ef01b203b",
+  "relative_gains": {
+    "15|log_future_sigma|A_vs_C": 0.003515961114862836,
+    "15|log_future_sigma|A_vs_M": 0.0019345324011041686,
+    "15|future_tail|A_vs_C": 0.0019927899674529034,
+    "15|future_tail|A_vs_M": 0.0011585658429365453,
+    "30|log_future_sigma|A_vs_C": 0.008981253222351555,
+    "30|log_future_sigma|A_vs_M": 0.007057746170833253,
+    "30|future_tail|A_vs_C": 0.003081907317883972,
+    "30|future_tail|A_vs_M": 0.002331439859098899,
+    "60|log_future_sigma|A_vs_C": 0.01355925535726075,
+    "60|log_future_sigma|A_vs_M": 0.01028221498895039,
+    "60|future_tail|A_vs_C": 0.005451961042270828,
+    "60|future_tail|A_vs_M": 0.004329840982067963
+  },
+  "joint_endpoint_support": {
+    "15|log_future_sigma": false,
+    "15|future_tail": false,
+    "30|log_future_sigma": false,
+    "30|future_tail": false,
+    "60|log_future_sigma": false,
+    "60|future_tail": false
+  },
+  "strongest_60m_rms": {
+    "A_vs_C": {
+      "relative_gain": 0.01355925535726075,
+      "absolute_gain": 0.0016150634791540668,
+      "primary_ci_low": -0.0016721298128465787,
+      "star50_absolute_gain": -0.0014313887449799766,
+      "csi1000_absolute_gain": 0.00466151570328811,
+      "supported": false
+    },
+    "A_vs_M": {
+      "relative_gain": 0.01028221498895039,
+      "absolute_gain": 0.0012206750419079722,
+      "primary_ci_low": -0.0019976749339485705,
+      "star50_absolute_gain": -0.0019827228783220884,
+      "csi1000_absolute_gain": 0.004424072962138033,
+      "supported": false
+    }
+  },
+  "decisive_failure": "POOLED_60M_RMS_CLEARS_ONE_PERCENT_POINT_GATE_BUT_MULTIPLICITY_ADJUSTED_INTERVAL_CROSSES_ZERO_AND_SYMBOL_SIGNS_CONFLICT",
+  "tail_absolute_gate_pass_count": 0,
+  "asymmetry_coverage": 1.0,
+  "cross_symbol_robustness_supported": false,
+  "single_index_rescue_forbidden": true,
+  "posthoc_rescue_forbidden": true,
+  "consumer_logic_change": false,
+  "read_2026": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "production_authority": false
+}
