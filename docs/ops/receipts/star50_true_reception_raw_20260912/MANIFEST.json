@@ -1,0 +1,40 @@
+{
+  "package_id": "STAR50_TRUE_RECEPTION_RAW_20260912",
+  "verdict": "NO_TRUE_RECEPTION_TIMESTAMP_AVAILABLE",
+  "quote_data_files": [],
+  "files": [
+    {
+      "relative_path": "README.md",
+      "bytes": 5561,
+      "sha256": "b7ef5c117b781cee15dcdf2048e38ccfa23bf2852eab42882a3d776e65a2602d",
+      "row_count": null,
+      "symbol": null,
+      "first_market_timestamp": null,
+      "last_market_timestamp": null,
+      "first_received_timestamp": null,
+      "last_received_timestamp": null
+    },
+    {
+      "relative_path": "SCHEMA.json",
+      "bytes": 2862,
+      "sha256": "745bd346f0088f8a909d9d7aa5fa1c6dc99e91941e723e6eddfb7762a3b9a97d",
+      "row_count": null,
+      "symbol": null,
+      "first_market_timestamp": null,
+      "last_market_timestamp": null,
+      "first_received_timestamp": null,
+      "last_received_timestamp": null
+    },
+    {
+      "relative_path": "SOURCE_INFO.json",
+      "bytes": 1476,
+      "sha256": "c47e04db9b1a517b9f68c2ca533eacccff41f25c65d19687ef96803119945989",
+      "row_count": null,
+      "symbol": null,
+      "first_market_timestamp": null,
+      "last_market_timestamp": null,
+      "first_received_timestamp": null,
+      "last_received_timestamp": null
+    }
+  ]
+}

@@ -25,3 +25,13 @@
 - 数据角色：Development载体数据仅用于选择/校验执行映射和冻结费用/撮合语义；Validation载体数据只在执行映射冻结后原样评估；2026只到2026-08-21。post-2026-08-21继续属于BlackBox，禁止为本请求读取。
 - 回传验收：manifest须列每个文件SHA256、symbol、venue、frequency、first/last day、行数、字段schema、source identity、consumer authorization；同时给coverage/gap报告。优先回传小型有界执行包，不搬无关全市场数据。
 - 云端收到数据后的固定输出：每笔index gross、carrier mid/last tracking gross、marketable fill gross、费用、all-in net；按Development/Validation分别报告trade count、mean/median、BE、cost decomposition、unfillable/missing比例、年度切片和day-block bootstrap。此步骤不得改变Router V1 selector、hold、route或日期。
+
+## CL-STAR50-TRUE-RECEPTION-RAW-20260912
+
+- 任务：按云端要求检索 `000688.SH` / `000852.SH` 带真实本地接收时间的原始行情；只做只读查找、最小导出与打包，不跑 V19/D2–D5、不改 DataHub/FactorLab 科学代码。
+- 本地结论：`NO_TRUE_RECEPTION_TIMESTAMP_AVAILABLE`。DataHub `recording_datasets`/`recording_runtime`/`subscriptions` 均为 0 行，`lake/recording` 与 `ticks.parquet` 不存在。未伪造 `received_at`。
+- 交付包（无行情行）：[docs/ops/receipts/star50_true_reception_raw_20260912/](receipts/star50_true_reception_raw_20260912/)
+- ZIP：`docs/ops/receipts/star50_true_reception_raw_20260912/STAR50_TRUE_RECEPTION_RAW_20260912.zip`
+- ZIP SHA256：`63badecf70405452674831f41a6aef0de174ca8d10b113fc32c91a8e1ca24cf0`
+- ZIP 大小：5446 bytes
+- 云端待复核：本包只证明本地没有逐笔 reception clock；不是风险状态或 consumer 结论。

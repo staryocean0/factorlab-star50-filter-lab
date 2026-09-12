@@ -1,0 +1,98 @@
+{
+  "verdict": "NO_TRUE_RECEPTION_TIMESTAMP_AVAILABLE",
+  "note": "No reception-log dataset exists. Fields below are the closest persisted market-index observation schema. They are not local reception clocks.",
+  "closest_dataset": "market_index_transactions",
+  "closest_dataset_versions": [
+    "market_index_baidu_3s_20000714_20260821_v1",
+    "market_index_baidu_3s_20000714_20260821_cffex_underlyings_alias_repaired_v4_20260823"
+  ],
+  "fields": {
+    "symbol": {
+      "dtype": "string",
+      "meaning": "canonical index id, e.g. 000688.SH / 000852.SH"
+    },
+    "index_code": {
+      "dtype": "string",
+      "meaning": "numeric code without exchange suffix"
+    },
+    "market": {
+      "dtype": "string",
+      "meaning": "cn_index"
+    },
+    "instrument_type": {
+      "dtype": "string",
+      "meaning": "market_index"
+    },
+    "exchange": {
+      "dtype": "string",
+      "meaning": "SSE for both requested names"
+    },
+    "observation_datetime": {
+      "dtype": "string",
+      "meaning": "market/event timestamp as stored (ISO text). Not local reception.",
+      "timezone": "literal Z suffix on Shanghai session wall-clock labels; not a proven UTC reception instant"
+    },
+    "trading_day": {
+      "dtype": "string",
+      "meaning": "CN trading date YYYY-MM-DD"
+    },
+    "observation_time": {
+      "dtype": "string",
+      "meaning": "session wall-clock HH:MM:SS",
+      "timezone": "naive; interpreted as Asia/Shanghai session clock"
+    },
+    "price": {
+      "dtype": "double",
+      "meaning": "vendor index price / 价位"
+    },
+    "amount": {
+      "dtype": "double",
+      "meaning": "fragment turnover, not share volume"
+    },
+    "volume": {
+      "dtype": "int32|null",
+      "meaning": "null for index 3s; not share volume"
+    },
+    "session_phase": {
+      "dtype": "string",
+      "meaning": "open_call_auction / continuous / etc."
+    },
+    "timestamp_mode": {
+      "dtype": "string",
+      "meaning": "source_exact_3s or minute_protocol_plus_stable_sequence_rank_3s"
+    },
+    "source_kind": {
+      "dtype": "string",
+      "meaning": "baidu_netdisk_market_index_transaction_3s or tdx incremental"
+    },
+    "source_file": {
+      "dtype": "string",
+      "meaning": "vendor file name, e.g. 000688.csv"
+    },
+    "source_archive_sha256": {
+      "dtype": "string",
+      "meaning": "source zip digest"
+    },
+    "row_index": {
+      "dtype": "int64",
+      "meaning": "order inside source file; not host arrival sequence"
+    },
+    ".dataset_version": {
+      "dtype": "string",
+      "meaning": "DataHub dataset version"
+    },
+    "trading_month": {
+      "dtype": "string",
+      "meaning": "YYYY-MM partition"
+    }
+  },
+  "absent_fields": [
+    "received_at",
+    "receive_time",
+    "ingest_time",
+    "local_received_at",
+    "arrival_time",
+    "recv_timestamp",
+    "collector_timestamp"
+  ]
+}

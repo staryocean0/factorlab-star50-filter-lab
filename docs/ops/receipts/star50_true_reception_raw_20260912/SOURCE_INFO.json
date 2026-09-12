@@ -1,0 +1,24 @@
+{
+  "source_project": "unified_datahub",
+  "datahub_component": "history/market_index_transactions + market-stream recording (empty)",
+  "source_path_or_table": [
+    "/home/starryocean/桌面/量化/unified_datahub/.runtime/live/lake/market_index_transactions",
+    "/home/starryocean/桌面/量化/unified_datahub/.runtime/live/datahub.db#recording_datasets",
+    "/home/starryocean/桌面/量化/unified_datahub/.runtime/live/datahub.db#recording_runtime",
+    "/home/starryocean/桌面/量化/factorlab-star50-filter-lab/data/cross_index_risk_gate_3s_v1"
+  ],
+  "vendor": "Baidu Netdisk index tick CSV (时间,价位,成交额); TDX history_transaction incrementals. No live collector vendor receipt for these two indices.",
+  "export_command_or_query": [
+    "read-only schema inspect via pyarrow on market_index_transactions and 000688.SH_2025.parquet",
+    "sqlite3 read-only: SELECT COUNT(*) FROM recording_datasets/recording_runtime/subscriptions/source_receipts",
+    "find live/lake/recording and ticks.parquet (absent)",
+    "source grep for received_at/recv_timestamp/local_received_at in DataHub, FactorLab, terminal_trading_v2"
+  ],
+  "export_time": "2026-09-12T08:19:40+08:00",
+  "read_only": true,
+  "original_data_changed": false,
+  "datahub_git_commit": "4b4d36a16076c347ed7810eeed37391571a3cc3d",
+  "factor_lab_git_commit": "b39bb12f43a46b165d18db93191a669234077444",
+  "credentials_included": false,
+  "verdict": "NO_TRUE_RECEPTION_TIMESTAMP_AVAILABLE"
+}
