@@ -72,7 +72,11 @@ jobs:
         run: |
           set -euo pipefail
           cd cloud_acceptance_output
-          sha256sum * | sort > SHA256SUMS.txt
+          for f in *; do
+            if [ "$f" != "SHA256SUMS.txt" ]; then
+              sha256sum "$f"
+            fi
+          done | sort > SHA256SUMS.txt
           cat SHA256SUMS.txt
 
       - name: Upload cloud acceptance evidence
