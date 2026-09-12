@@ -117,20 +117,29 @@ def main() -> int:
     summary = {}
     for row in rows:
         summary[row["classification"]] = summary.get(row["classification"], 0) + 1
+    unresolved_classes = {
+        "EXECUTED_RESULT_NOT_PERSISTED",
+        "FROZEN_NOT_SUCCESSFULLY_EXECUTED",
+        "FROZEN_DESIGN_ONLY",
+        "EXECUTED_NO_RESULT_MARKER",
+    }
     out = {
         "schema": "research_backlog_audit_v1",
         "research_branches_scanned": len(rows),
         "classification_counts": summary,
-        "priority_candidates": [x for x in rows if x["classification"] in {
-            "EXECUTED_RESULT_NOT_PERSISTED", "FROZEN_NOT_SUCCESSFULLY_EXECUTED", "FROZEN_DESIGN_ONLY"
-        }],
+        "priority_candidates": [x for x in rows if x["classification"] in unresolved_classes],
         "branches": rows,
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(out, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps({"research_branches_scanned": len(rows), "classification_counts": summary}, indent=2, sort_keys=True))
     for row in out["priority_candidates"]:
-        print(row["classification"], row["branch"], "success_runs=", row["actions"].get("scientific_success_runs"))
+        print(
+            row["classification"], row["branch"],
+            "success_runs=", row["actions"].get("scientific_success_runs"),
+            "latest_run=", row["actions"].get("latest_scientific_run_id"),
+            "workflow=", row["actions"].get("latest_scientific_workflow"),
+        )
     return 0
 
 
