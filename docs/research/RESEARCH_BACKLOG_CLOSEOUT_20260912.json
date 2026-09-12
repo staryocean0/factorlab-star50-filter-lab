@@ -1,0 +1,253 @@
+{
+  "schema": "research_backlog_closeout_20260912@1.0",
+  "date": "2026-09-12",
+  "source_backlog_audit": {
+    "run_id": 34669336390,
+    "job_id": 103487572727,
+    "research_branches_scanned": 112,
+    "priority_backlog_branches": 12,
+    "original_classification_counts": {
+      "EXECUTED_RESULT_NOT_PERSISTED": 8,
+      "FROZEN_NOT_SUCCESSFULLY_EXECUTED": 1,
+      "FROZEN_DESIGN_ONLY": 2,
+      "EXECUTED_NO_RESULT_MARKER": 1
+    }
+  },
+  "authority_rule": "This closeout ledger is authoritative for whether these twelve historical branches are current executable backlog. Historical branches and original verdicts remain immutable and are not deleted or rewritten.",
+  "current_scientific_breakpoint_unchanged": "CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED",
+  "closed_count": 12,
+  "remaining_executable_backlog_count": 0,
+  "branches": [
+    {
+      "branch": "research/first-shock-actions-20260907",
+      "original_classification": "EXECUTED_RESULT_NOT_PERSISTED",
+      "closeout_state": "COMPLETED_DEVELOPMENT_NO_PROMOTION_SUPERSEDED_BY_LATER_FIRST_SHOCK_AND_STATE_WORK",
+      "run_id": 34091320590,
+      "job_id": 101645197275,
+      "artifacts": [
+        {"id": 10006954915, "role": "review", "zip_sha256": "68adfa95d14b435c7872ee3e521efabcc2ab41aee237648c408b45cd8e36bca8"},
+        {"id": 10006956259, "role": "replay", "zip_sha256": "90b889d67b3e42184f3e1c33dd429f1405fd20e83df638227c5c23cc21780ab3"}
+      ],
+      "historical_result": "Minute Development experiment completed under bounded inputs; matched-quota first-shock effects were weak/unstable and did not support general scientific promotion. Later seconds/event-support/state work supersedes this branch.",
+      "validation_queried": false,
+      "blackbox_queried": false,
+      "production_authority": false,
+      "rerun_required": false
+    },
+    {
+      "branch": "research/highvol-realtime-detection-v7-20260910",
+      "original_classification": "EXECUTED_RESULT_NOT_PERSISTED",
+      "closeout_state": "COMPLETED_DEVELOPMENT_NOT_VALIDATION_ELIGIBLE_SUPERSEDED_BY_V8_PLUS",
+      "run_id": 34425687318,
+      "job_id": 102710309410,
+      "artifact": {"id": 10131806061, "zip_sha256": "b5c375fd014783e361d12bc6962c9a5907c1321eb83092872e2fd3fbdcc04946"},
+      "historical_result": {
+        "validation_eligible": false,
+        "primary_lead_seconds": 60,
+        "pooled_unsafe_precision": 0.9061786732522796,
+        "pooled_unsafe_recall": 0.772093023255814,
+        "failed_gate": "primary_pooled_unsafe_recall_ge_0_90"
+      },
+      "successor": "V8 3s detector and later V9/V17/V19 realtime chain",
+      "rerun_required": false
+    },
+    {
+      "branch": "research/highvol-realtime-detection-v8-3s-20260910",
+      "original_classification": "EXECUTED_RESULT_NOT_PERSISTED",
+      "closeout_state": "COMPLETED_DEVELOPMENT_VALIDATION_ELIGIBLE_VALIDATED_ON_AVAILABLE_2024_2025_SUBSET_AND_SUPERSEDED_BY_V9_V17_V19",
+      "run_id": 34426934097,
+      "job_id": 102714059873,
+      "artifact": {"id": 10133063809, "zip_sha256": "77f5354a36acea114cab987cd45ed5e04d879b213906e315dfca9b283acd3fb67"},
+      "historical_result": {
+        "validation_eligible": true,
+        "primary_lead_seconds": 3,
+        "pooled_unsafe_precision": 0.9996898262480625,
+        "pooled_unsafe_recall": 0.9978344663576229,
+        "pooled_exact_3state_accuracy": 0.9995691168241003
+      },
+      "successor_validation": {
+        "branch": "research/highvol-realtime-detection-v8-validation-20260910",
+        "run_id": 34438385207,
+        "job_id": 102748118248,
+        "artifact_id": 10137043121,
+        "artifact_zip_sha256": "db8f97e7fec5bfc073fa350b282f0746aab243e0568c2eef473c868e9f4aefbd",
+        "available_2024_2025_validation_subset_pass": true,
+        "complete_2024_2026_validation_pass": false,
+        "validation_2026_queried": false,
+        "decision": "FREEZE_AS_VALIDATED_2024_2025_REALTIME_RISK_DETECTOR_COMPONENT; DO_NOT_CLAIM_FULL_2024_2026_VALIDATION; DO_NOT_QUERY_BLACKBOX"
+      },
+      "rerun_required": false
+    },
+    {
+      "branch": "research/highvol-realtime-risk-object-v9-20260910",
+      "original_classification": "EXECUTED_RESULT_NOT_PERSISTED",
+      "closeout_state": "COMPLETED_DEVELOPMENT_VALIDATION_ELIGIBLE_SUPERSEDED_BY_VALIDATED_V9_V17_V19_CHAIN",
+      "run_id": 34443013548,
+      "job_id": 102761783075,
+      "artifact": {"id": 10138296506, "zip_sha256": "7062ff31b294820e03e5422f2c31323b20ae6eccbb880dfdeec5eff946b6fe66"},
+      "historical_result": {
+        "validation_eligible": true,
+        "primary_lead_seconds": 3,
+        "pooled_unsafe_precision": 0.9996898262480625,
+        "pooled_unsafe_recall": 0.9978344663576229,
+        "probability_coverage": 1.0,
+        "probability_mae": 0.0000063375268260839465,
+        "brier_degradation": -0.00000039687299911717044
+      },
+      "successor": "V9 Validation, V17 E15 transfer, V19 integrated state machine",
+      "rerun_required": false
+    },
+    {
+      "branch": "research/highvol-realtime-probability-lead-v10-20260910",
+      "original_classification": "EXECUTED_RESULT_NOT_PERSISTED",
+      "closeout_state": "COMPLETED_DEVELOPMENT_VALIDATION_ELIGIBLE_LINKED_TO_V10_VALIDATION_AND_SUPERSEDED_BY_V17_V19",
+      "run_id": 34445913929,
+      "job_id": 102770551638,
+      "artifact": {"id": 10139657807, "zip_sha256": "c11c5bd1003a49cd878ad3e19a6be3dcb2c60c1ace34ec0cb66800a1d66c1d47"},
+      "historical_result": {
+        "lead15_validation_eligible": true,
+        "primary_lead_seconds": 15,
+        "pooled_probability_coverage": 0.9976473663573389,
+        "pooled_probability_mae": 0.00038950321744744875,
+        "pooled_brier_degradation": 0.00004102862096587445
+      },
+      "rerun_required": false
+    },
+    {
+      "branch": "research/highvol-realtime-probability-lead-v10-validation-20260910",
+      "original_classification": "EXECUTED_RESULT_NOT_PERSISTED",
+      "closeout_state": "AVAILABLE_2024_2025_VALIDATION_SUBSET_PASS_COMPLETE_ORIGINAL_VALIDATION_NOT_EXECUTED_SUPERSEDED_BY_V17_V19",
+      "run_id": 34446224846,
+      "job_id": 102771493983,
+      "artifact": {"id": 10139762592, "zip_sha256": "5b2d1349d7243084981fe5171438eeab9fc4da574bcf7b3c11397416ac1e3ebd"},
+      "historical_result": {
+        "available_validation_subset_pass": true,
+        "complete_validation_pass": false,
+        "validation_subset_years": [2024, 2025],
+        "validation_complete_through_2026_08_21": false,
+        "validation_2026_queried": false,
+        "lead15_pooled_coverage": 0.9946491047540647,
+        "lead15_probability_mae": 0.0008067636242397704,
+        "lead15_brier_degradation": -0.000004999464640387252
+      },
+      "successor": "V17 froze and validated the E15 transfer on the available 2024-2025 3s contract; V19 is current integrated realtime state authority",
+      "blackbox_queried": false,
+      "rerun_required": false
+    },
+    {
+      "branch": "research/rmr-activity-pressure-reversal-v1-20260909",
+      "original_classification": "EXECUTED_RESULT_NOT_PERSISTED",
+      "closeout_state": "COMPLETED_DEVELOPMENT_BROAD_SIGNAL_NOT_ESTABLISHED_RETIRED_NONSTATE_REVERSAL_LINE",
+      "run_id": 34325386413,
+      "job_id": 102381333641,
+      "artifact": {"id": 10093542846, "zip_sha256": "8e33bfdc53b949159c87be87729b818f429a20759747081bcac58ecdb4d2576f"},
+      "historical_result": {
+        "event_count": 5851,
+        "verdict": "broad_signal_source_not_established",
+        "reason": "high-activity support and year-stability/severity-control gates failed"
+      },
+      "validation_queried": false,
+      "pnl_computed": false,
+      "current_scope": "retired because reversal/directional signal mining is outside the current risk-attribute program",
+      "rerun_required": false
+    },
+    {
+      "branch": "research/rmr-lunch-boundary-normalization-v1-20260909",
+      "original_classification": "EXECUTED_RESULT_NOT_PERSISTED",
+      "closeout_state": "COMPLETED_DEVELOPMENT_BROAD_SIGNAL_NOT_ESTABLISHED_RETIRED_NONSTATE_REVERSAL_LINE",
+      "run_id": 34344494379,
+      "job_id": 102442755897,
+      "artifact": {"id": 10101118334, "zip_sha256": "25dead8692318b6145bcf9e90c84a8850a685ede9f83babff4f4fad9013d1de4"},
+      "historical_result": {
+        "verdict": "broad_signal_source_not_established",
+        "material_day_support": {"000688.SH": 40, "000852.SH": 5},
+        "reason": "support, annual consistency and reversal-direction gates failed"
+      },
+      "validation_queried": false,
+      "pnl_computed": false,
+      "current_scope": "retired because reversal/directional signal mining is outside the current risk-attribute program",
+      "rerun_required": false
+    },
+    {
+      "branch": "research/session-aware-information-set-bounds-v0617-20260907",
+      "original_classification": "FROZEN_NOT_SUCCESSFULLY_EXECUTED",
+      "closeout_state": "V0617_PRIOR_IDENTITY_IRRECOVERABLE_REPLAY_PERMANENTLY_BLOCKED_UNDER_FROZEN_PROTOCOL",
+      "implementation_acceptance_run_id": 34111701647,
+      "strict_identity_audit": {
+        "run_id": 34670259559,
+        "job_id": 103490176002,
+        "artifact_id": 10290877670,
+        "artifact_zip_sha256": "3cf780df23a430cb07519e30d1e01850ae4287f79ab0d57cc4cb86698605f347",
+        "commits_scanned": 70,
+        "text_blobs_scanned": 4412,
+        "authoritative_source_candidates": 0,
+        "v0615_leg_universe_candidates": 0,
+        "required_precommit_identity_recovered": false
+      },
+      "scientific_replay_executed": false,
+      "scientific_result_inferred": false,
+      "rerun_required": false,
+      "reopen_condition": "only a new explicitly versioned prospective identity protocol; it cannot be called completion of v0.6.17"
+    },
+    {
+      "branch": "research/highvol-recovery-survival-v11-20260911",
+      "original_classification": "FROZEN_DESIGN_ONLY",
+      "closeout_state": "DUPLICATE_FROZEN_DESIGN_SUPERSEDED_BY_COMPLETED_V11_20260910_AND_V12_MECHANISM_FOLLOWUP",
+      "historical_result": {
+        "duplicate_protocol_role": "15_30_60m recovery survival table extension",
+        "completed_v11_branch": "research/highvol-recovery-survival-v11-20260910",
+        "completed_v11_run_id": 34450053409,
+        "completed_v11_job_id": 102783507788,
+        "completed_v11_artifact_id": 10141174485,
+        "completed_v11_artifact_zip_sha256": "69b486865b89d92c4ac210f6d684af7c221b79f0dbaf39668044d4ae76ff7286",
+        "completed_v11_validation_eligible": false,
+        "completed_v11_decision": "REJECT_COHERENT_15_30_60_ORDINAL_SURVIVAL_OBJECT; INVESTIGATE_60M_STATE_RANK_CROSSOVER_IN_DEVELOPMENT",
+        "v12_run_id": 34450670358,
+        "v12_job_id": 102785446168,
+        "v12_artifact_id": 10141425271,
+        "v12_artifact_zip_sha256": "1dad9361257feb006656550ee4557db9425e7961ed29c03d9104ba4cd4db1829",
+        "v12_shock_expiry_mechanism_supported": false,
+        "v12_decision": "REJECT_SIMPLE_EXPIRY_SPIKE_EXPLANATION; TEST_EXACT_RECENT_SHOCK_AGE_COMPOSITION_NEXT"
+      },
+      "rerun_required": false
+    },
+    {
+      "branch": "research/risk-gate-takeover-20260907",
+      "original_classification": "FROZEN_DESIGN_ONLY",
+      "closeout_state": "COORDINATION_HANDOFF_SUPERSEDED_BY_LATER_CAUSAL_RISK_AUTHORITY_CHAIN",
+      "historical_role": "takeover/handoff coordination branch for cross-index K-line risk research, not a single missing standalone experiment",
+      "successor_authority": ["V16", "V17", "V18", "V19", "D2", "D3", "D4", "D5", "D5R", "CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED"],
+      "rerun_required": false
+    },
+    {
+      "branch": "research/highvol-router-v1-dev-20260909",
+      "original_classification": "EXECUTED_NO_RESULT_MARKER",
+      "closeout_state": "HISTORICAL_DEVELOPMENT_ROUTER_AUDIT_RETIRED_OUT_OF_CURRENT_SCOPE",
+      "run_id": 34300072928,
+      "job_id": 102304902835,
+      "artifact": {"id": 10084593028, "zip_sha256": "ff73b10e04a429d68cf7b383f138699137f3d9cba83fb541dd49567376223145"},
+      "historical_result": {
+        "router_freeze_eligible": true,
+        "route": "000852.SH ACTIVE_LONG_3M; 000688.SH NO_TRADE",
+        "accepted_nonoverlap_trades": 104,
+        "pooled_mean_net1_bp": 0.737745711092268,
+        "pooled_max_drawdown_net_bp": 44.210856470983416,
+        "development_only": true,
+        "validation_queried": false
+      },
+      "current_scope": "retired: this object contains trade routing, hold period, cost, PnL, Sharpe and drawdown economics, all outside the current causal risk-attribute repository scope",
+      "production_authority": false,
+      "rerun_required": false
+    }
+  ],
+  "program_conclusion": {
+    "historical_backlog_closed": true,
+    "remote_historical_branches_preserved": true,
+    "historical_verdicts_rewritten": false,
+    "new_scientific_candidate_created": false,
+    "blackbox_queried": false,
+    "pnl_newly_computed": false,
+    "production_authority": false,
+    "next_action": "Do not re-open any of these twelve branches as pending work. Open new science only for a distinct causal risk mechanism consistent with current scope and V2 governance."
+  }
+}
