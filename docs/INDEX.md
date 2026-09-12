@@ -1,38 +1,44 @@
 # STAR50 / CSI1000 当前权威索引
 
-## 当前主断点：DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING
+## 最新科学状态：CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED
 
-[当前任务](../CURRENT_RESEARCH.md) → [接续](../CONTINUE_HERE.md) → [reception程序状态](../research/prospective_reception_recorder_v1/PROGRAM_STATE.json) → [云端验收结果](../research/prospective_reception_recorder_v1/CLOUD_ACCEPTANCE_RESULTS.md) → [云端执行回执](../research/prospective_reception_recorder_v1/CLOUD_ACCEPTANCE_EXECUTION_RECEIPT.json)。
+[当前任务](../CURRENT_RESEARCH.md) → [接续](../CONTINUE_HERE.md) → [M3程序状态](../research/activity_degree_incremental_utility_v1/PROGRAM_STATE.json) → [正式结果](../research/activity_degree_incremental_utility_v1/RESULTS.md) → [执行回执](../research/activity_degree_incremental_utility_v1/EXECUTION_RECEIPT.json) → [原始Validation结果](../research/activity_degree_incremental_utility_v1/evidence/VALIDATION_RESULTS.json)。
 
-## 最新历史研究收口
+## Activity-degree incremental utility V1
 
-[risk-coordinate Validation正式结果](research/risk_coordinate_validation_v1/RESULT.md) → [执行回执](research/risk_coordinate_validation_v1/EXECUTION_RECEIPT.json) → 原冻结协议/runner。
+决定性Action `34670357953`完成Development fit/freeze与2024–2025 reusable Validation。冻结模型 SHA256 `89660f0825373b5afd8d1d9c51642424fe79fae925f44d0f25a6f2f96ca78d8d`。
 
-正式结论：**RISK_COORDINATE_VALIDATION_NOT_FULLY_REPLICATED_NO_THRESHOLD_RETUNE**。
+核心解释：
 
-原Action `34303912251` 与复现Action `34667783528` 在110,911个2024/2025 Validation rows及所有检查上逐项一致。state-persistence轴四个index×year池全部复制；M3极端band的未来15m RMS effect-size gate全部通过，但三个Unsafe极端格未达到冻结最小n门槛，因此M3完整amplitude axis不晋升。不得事后调门槛、合并年份或移动M3 bands救结果。
+- current M3 相对 D4-style C 对future log-RMS有额外信息；15m `A vs C` +2.1750%，单项全部gate通过；
+- 但相对等复杂度lagged-M3 N，15/30/60m只有 +0.4330% / +0.5793% / +0.1832%，全部低于冻结1% practical gate；
+- 15/30m 2023 forward `A vs N`为负；30/60m Development n低于20,000；60m Validation coverage 92.4378%低于95%；
+- tail端点全部未晋升；
+- 因此六个 endpoint×horizon joint promotion 全部 false。
 
-## Reception云端验收
+完整Action证据已原字节保存于 `research/activity_degree_incremental_utility_v1/evidence/`。数值复现audit `34670797290` 证明重复fit输入/schema/n完全一致，最大系数差 `8.16e-15`；决定性Validation使用同一run内精确冻结模型。
 
-Action `34666927078` 成功：handoff ZIP与20个manifest文件全量校验；9,492行完整审计；两指数4,746点observation grid exact match；41项recorder/adapter测试PASS；真实DataHub源码seam与V2治理validator通过。
+禁止把“M3有信息”解释成“current M3 refresh值得进入consumer/state machine”，也禁止调M3 band、30bp surface、ridge、horizon、block、sample gate或删除lagged control救结果。
 
-DataHub最早可控采集边界是 **TDX Python SDK `get_security_quotes()`返回后、DataHub `parse_quotes()`之前**，不是wire-level arrival。历史行情有效性不受historical received_at缺失影响。
+## 前置科学证据
 
-## 历史backlog接管
+[risk-coordinate frozen Validation](research/risk_coordinate_validation_v1/RESULT.md) → [执行回执](research/risk_coordinate_validation_v1/EXECUTION_RECEIPT.json)：`RISK_COORDINATE_VALIDATION_NOT_FULLY_REPLICATED_NO_THRESHOLD_RETUNE`。state-persistence轴复制，但完整M3 amplitude axis因三个Unsafe极端格样本门槛失败，不允许事后调门槛。
 
-Action `34668006394` 扫描112个research分支：81 RESULT_PRESENT；8 EXECUTED_RESULT_NOT_PERSISTED；1 FROZEN_NOT_SUCCESSFULLY_EXECUTED；2 FROZEN_DESIGN_ONLY；1 EXECUTED_NO_RESULT_MARKER；19 OTHER。
+- [D4](../research/continuous_risk_utility_d4/RESULTS.md)：current I/V 对指定endpoint有限支持；
+- [D3](../research/causal_state_utility_d3/RESULTS.md)：离散状态实用增量未支持；
+- [D2](../research/causal_state_delivery_d2/RESULTS.md)：双时钟因果回放；
+- [V19](../research/highvol_risk_episode_state_machine_v19_validation/VALIDATION_RESULTS.md)：冻结状态机。
 
-下一优先审计：`research/session-aware-information-set-bounds-v0617-20260907`，先判断是否已被后续证据取代，再决定是否按冻结协议原样执行。
+## Reception并行状态
 
-## 保持原样的历史阶段证据
+`DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING` 不变。
 
-- [D5R](../research/reception_clock_adjudication_d5r/RESULTS.md)：历史真实received_at不可用；
-- [D5](../research/state_degree_consumer_d5/RESULTS.md)：bounded consumer工程验收；
-- [D4](../research/continuous_risk_utility_d4/RESULTS.md)：连续属性分目标有限支持；
-- [D3](../research/causal_state_utility_d3/RESULTS.md)：三状态增量效用未过原实际门槛；
-- [D2](../research/causal_state_delivery_d2/RESULTS.md)：双时钟历史工程回放；
-- [V19](../research/highvol_risk_episode_state_machine_v19_validation/VALIDATION_RESULTS.md)及V18/V17/V16冻结证据。
+[reception程序状态](../research/prospective_reception_recorder_v1/PROGRAM_STATE.json) → [云端验收结果](../research/prospective_reception_recorder_v1/CLOUD_ACCEPTANCE_RESULTS.md) → [云端回执](../research/prospective_reception_recorder_v1/CLOUD_ACCEPTANCE_EXECUTION_RECEIPT.json) → [D5R](../research/reception_clock_adjudication_d5r/RESULTS.md)。
 
-不为V19 accuracy开V20，不因缺日志强开D6，不查BlackBox逐行细节，不计算PnL，不恢复交易router，不提高production authority。
+历史没有逐条真实本机`received_at`；云端 recorder/adapter/handoff 验收完成。未来true-reception observations必须来自未来真实feed且服从V2治理。
 
-`risk_coordinate_full_replication=false`; `risk_coordinate_threshold_retune_allowed=false`; `measured_feed_latency_supported=false`; `blackbox_queried=false`; `production_authority=false`。
+## 下一执行边界
+
+优先收口历史research backlog；只在发现**不同因果机制**时开新科学题。不得把新题作为current-M3 refresh失败的参数救援。
+
+不查BlackBox、不读受保护2026逐行数据、不算PnL、不恢复交易router、不为V19开V20、不因reception缺口开D6、不提高production authority。

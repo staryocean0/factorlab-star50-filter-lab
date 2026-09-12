@@ -1,0 +1,113 @@
+{
+  "schema": "activity_degree_incremental_utility_v1_execution_receipt@1.0",
+  "date": "2026-09-12",
+  "decision": "CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED",
+  "source_main_commit": "a26f4a302d5f73486b3b0cd04da50e382020d28f",
+  "protocol_git_blob": "1972c0c5ab832e4b6e04e911cc7cebdfa21b1689",
+  "frozen_ancestry": {
+    "fine_activity_runner_git_blob": "2a5f607db1451a2e4576a9bc0940b67ac02f0d2e",
+    "fine_activity_protocol_git_blob": "d43f5b4a2c0395d1d022a3fb5e10c58dce08de0c",
+    "v9_partial_state_runner_git_blob": "ae2a7e095df58692ef9df0dfee5856cac727ca44"
+  },
+  "decisive_execution": {
+    "workflow_run_id": 34670357953,
+    "head_sha": "5fa76723d5142b96d53822343faad6bd046f9df6",
+    "fit_job_id": 103490442493,
+    "validation_job_id": 103490604669,
+    "conclusion": "success",
+    "frozen_model_sha256": "89660f0825373b5afd8d1d9c51642424fe79fae925f44d0f25a6f2f96ca78d8d",
+    "frozen_model_artifact_id": 10290482080,
+    "frozen_model_artifact_zip_sha256": "0c71f4d1c9605819ca92d742cbeabf36d1aaa4bbdb6e08e2c29e708796087965",
+    "validation_artifact_id": 10290917834,
+    "validation_artifact_zip_sha256": "a734a0083c9d197188591fa548668cdbc3f2a86df00b783f68f41acfecf69940"
+  },
+  "pre_decisive_implementation_history": [
+    {
+      "run_id": 34669915750,
+      "status": "failed_before_scientific_fit",
+      "reason": "synthetic floating equality tolerance too strict; test-only tolerance relaxed from 1e-12 to 1e-10"
+    },
+    {
+      "run_id": 34669960145,
+      "status": "failed_before_scientific_predictions",
+      "reason": "runner contained an implementation-only 2021-2022 forward-fit sample-size guard not present in the frozen protocol; the extra guard was removed without changing the cohort or formal gates"
+    },
+    {
+      "run_id": 34670136889,
+      "fit_status": "success",
+      "validation_status": "failed_before_primary_validation_comparisons",
+      "reason": "descriptive-only pandas tail column accessor used attribute syntax; changed to explicit column access",
+      "prior_frozen_model_sha256": "25314e5eb6d063f9520b1fecd186e091800ee2253c64c4b34fd585c64519685d",
+      "prior_frozen_model_artifact_id": 10289968493,
+      "prior_frozen_model_artifact_zip_sha256": "200bbe120d5fdb16e10a951c5f48b7b19bec333cd6dadf4f1584919750ccde7c",
+      "scientific_specification_changed_after_forward_diagnostic": false
+    }
+  ],
+  "numerical_reproducibility": {
+    "run_id": 34670797290,
+    "job_id": 103491650460,
+    "conclusion": "success",
+    "same_input_sha256": true,
+    "same_feature_schema_and_sample_counts": true,
+    "bitwise_identical_json": false,
+    "max_abs_feature_mean_difference": 8.881784197001252e-16,
+    "max_abs_feature_scale_difference": 1.1102230246251565e-16,
+    "max_abs_coefficient_difference": 8.161873954470877e-15,
+    "max_abs_forward_metric_difference": 7.4593109467002705e-16,
+    "development_coverage_difference": 0.0,
+    "all_numeric_differences_below_1e_10": true,
+    "freeze_before_validation_intact": true
+  },
+  "validation": {
+    "years": [2024, 2025],
+    "reused_validation": true,
+    "fresh_oos": false,
+    "joint_supported_endpoints": [],
+    "log_future_sigma": {
+      "15m": {
+        "n": 28984,
+        "development_n": 23233,
+        "coverage": 0.9590364635034081,
+        "A_vs_C_relative_gain": 0.02174990749271287,
+        "A_vs_C_supported": true,
+        "A_vs_N_relative_gain": 0.004329904370430845,
+        "A_vs_N_development_forward_gain": -2.4120254389890164e-05,
+        "A_vs_N_supported": false
+      },
+      "30m": {
+        "n": 24134,
+        "development_n": 19365,
+        "coverage": 0.9518438177874187,
+        "A_vs_C_relative_gain": 0.02805523523671375,
+        "A_vs_N_relative_gain": 0.005792704092050469,
+        "joint_supported": false
+      },
+      "60m": {
+        "n": 14485,
+        "development_n": 11779,
+        "coverage": 0.9243777919591576,
+        "A_vs_C_relative_gain": 0.03619310198548891,
+        "A_vs_N_relative_gain": 0.0018315752278672743,
+        "joint_supported": false
+      }
+    },
+    "tail_endpoint_promoted": false
+  },
+  "preserved_action_evidence": {
+    "repo_path": "research/activity_degree_incremental_utility_v1/evidence",
+    "import_commit": "e09aac3688d24f461c2771ace540761b9a05a839",
+    "byte_for_byte_from_validation_artifact": true,
+    "includes_original_sha256sums": true
+  },
+  "governance": {
+    "read_2026": false,
+    "blackbox_queried": false,
+    "pnl_computed": false,
+    "direction_evaluated": false,
+    "candidate_nominated": false,
+    "consumer_contract_changed": false,
+    "v20_started": false,
+    "d6_started": false,
+    "production_authority": false
+  }
+}

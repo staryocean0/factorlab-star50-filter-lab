@@ -1,0 +1,43 @@
+{
+  "schema": "activity_degree_incremental_utility_v1_decisive_receipt@1.0",
+  "decision": "CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED",
+  "decisive_run_id": 34670357953,
+  "decisive_head_sha": "5fa76723d5142b96d53822343faad6bd046f9df6",
+  "frozen_model_sha256": "89660f0825373b5afd8d1d9c51642424fe79fae925f44d0f25a6f2f96ca78d8d",
+  "validation_artifact_id": 10290917834,
+  "validation_artifact_zip_sha256": "a734a0083c9d197188591fa548668cdbc3f2a86df00b783f68f41acfecf69940",
+  "joint_endpoint_support": {
+    "15_log_future_sigma": false,
+    "15_future_tail": false,
+    "30_log_future_sigma": false,
+    "30_future_tail": false,
+    "60_log_future_sigma": false,
+    "60_future_tail": false
+  },
+  "key_validation_relative_gains": {
+    "15_log_rms_A_vs_C": 0.02174990749271287,
+    "15_log_rms_A_vs_N": 0.004329904370430845,
+    "30_log_rms_A_vs_C": 0.02805523523671375,
+    "30_log_rms_A_vs_N": 0.005792704092050469,
+    "60_log_rms_A_vs_C": 0.03619310198548891,
+    "60_log_rms_A_vs_N": 0.0018315752278672743
+  },
+  "validation_coverage": {
+    "15m": 0.9590364635034081,
+    "30m": 0.9518438177874187,
+    "60m": 0.9243777919591576
+  },
+  "development_n": {
+    "15m": 23233,
+    "30m": 19365,
+    "60m": 11779
+  },
+  "consumer_promotion": false,
+  "state_machine_promotion": false,
+  "validation_reused": true,
+  "fresh_oos": false,
+  "read_2026": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "production_authority": false
+}

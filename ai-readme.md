@@ -1,14 +1,22 @@
-# STAR50 / CSI1000 AI entry — prospective reception recorder reference accepted
+# STAR50 / CSI1000 AI entry
 
 Read `AGENTS.md`, `CURRENT_RESEARCH.md` and `CONTINUE_HERE.md` first.
-Current authority: `research/prospective_reception_recorder_v1/PROGRAM_STATE.json`, `PROTOCOL.md`, `SCHEMA.json`, `EXECUTION_RECEIPT.json`.
 
-Current state: `PROSPECTIVE_RECEPTION_RECORDER_V1_REFERENCE_ACCEPTED_LOCAL_INSTALL_PENDING`.
+Latest scientific state: **`CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`**.
 
-Historical D5R remains `D5R_TRUE_RECEPTION_CLOCK_UNAVAILABLE_HISTORICAL_LIVE_LATENCY_UNVERIFIED`: no per-tick true local received_at exists for `000688.SH` / `000852.SH`; do not infer one from available_at, batch ingested_at, mtime, observation time or row order.
+Primary current authority:
 
-The reference recorder now defines the only acceptable forward path: stamp UTC wall-clock, monotonic_ns, local sequence and raw payload identity at the actual feed callback before parsing/queueing, then parse market event time/symbol/price. 18 synthetic tests, compile and independent validator sample passed in chat. No live DataHub installation or real reception rows yet.
+- `research/activity_degree_incremental_utility_v1/PROGRAM_STATE.json`
+- `research/activity_degree_incremental_utility_v1/RESULTS.md`
+- `research/activity_degree_incremental_utility_v1/EXECUTION_RECEIPT.json`
+- `research/activity_degree_incremental_utility_v1/evidence/VALIDATION_RESULTS.json`
 
-New post-2026-08-21 market rows may belong to pending BlackBox-V1. Local installation may proceed with synthetic/allowed replay tests; any real capture must stay protected locally until governance permits use. Do not upload row-level new market data to public GitHub/chat.
+Interpret carefully: current M3 does add short-horizon future-RMS information relative to a D4-style current-I/V baseline (15m A-vs-C +2.175%, individually supported), but it does **not** clear the frozen practical gate against an equal-complexity lagged-M3 control. A-vs-N log-RMS gains are only about +0.433% / +0.579% / +0.183% at 15/30/60m; tail endpoints are not supported. Therefore current M3 must not be promoted into the D5 consumer or V19 state machine and its thresholds must not be retuned to rescue the result.
 
-Keep V19/D2-D5 conclusions unchanged. No D6/V20, payoff/router, new 2026 research, BlackBox query, PnL or production authority. `production_authority=false`.
+Historical decisions remain authoritative: risk-coordinate full replication did not pass frozen support gates; V19 stays frozen; D3 negative practical decision stays; D4 remains endpoint-limited current-I/V support; D5 remains bounded consumer engineering acceptance.
+
+Parallel reception state remains `DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING`. Historical D5R still says no true local per-tick `received_at` exists; do not infer one from `available_at`, batch `ingested_at`, file mtime, observation time or row order. Recorder/adapter/cloud engineering acceptance is complete; only future physical feed can create future true-reception observations.
+
+Next work is historical research-backlog closeout, then only scientifically distinct causal mechanisms. Do not revive router/PnL research, do not query BlackBox or protected 2026 row detail, do not start V20/D6, and do not raise production authority.
+
+`production_authority=false`.

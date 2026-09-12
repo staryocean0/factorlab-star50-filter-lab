@@ -1,0 +1,46 @@
+{
+  "schema": "activity_degree_incremental_utility_v1_program_state@1.0",
+  "date": "2026-09-12",
+  "state": "CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED",
+  "scientific_summary": {
+    "current_m3_adds_information_vs_d4_style_C_for_15m_log_rms": true,
+    "current_m3_refresh_beats_equal_complexity_lagged_m3_by_practical_gate": false,
+    "joint_supported_endpoint_count": 0,
+    "tail_endpoint_supported": false,
+    "m3_contains_no_information_claim_allowed": false,
+    "current_m3_consumer_promotion_allowed": false
+  },
+  "decisive_run_id": 34670357953,
+  "decisive_validation_job_id": 103490604669,
+  "frozen_model_sha256": "89660f0825373b5afd8d1d9c51642424fe79fae925f44d0f25a6f2f96ca78d8d",
+  "validation_artifact_id": 10290917834,
+  "validation_reused": true,
+  "fresh_oos": false,
+  "decisions_preserved": {
+    "v19_unchanged": true,
+    "d3_unchanged": true,
+    "d4_unchanged": true,
+    "d5_unchanged": true,
+    "reception_cloud_acceptance_unchanged": true
+  },
+  "closed_rescue_paths": [
+    "retune_m3_bands",
+    "retune_30bp_surface",
+    "retune_ridge_lambda",
+    "drop_lagged_m3_control",
+    "lower_one_percent_practical_gate",
+    "lower_development_sample_gate",
+    "pool_or_delete_rows_to_improve_support",
+    "change_horizon_after_validation",
+    "change_bootstrap_blocks_after_validation"
+  ],
+  "next_action": "CLOSE_HISTORICAL_BACKLOG_AND_ONLY_OPEN_A_NEW_SCIENTIFIC_LINE_IF_IT_TESTS_A_DISTINCT_CAUSAL_MECHANISM_NOT_A_RESCUE_OF_CURRENT_M3_REFRESH",
+  "read_2026": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "candidate_nominated": false,
+  "consumer_contract_changed": false,
+  "v20_started": false,
+  "d6_started": false,
+  "production_authority": false
+}
