@@ -2,30 +2,27 @@
 
 **状态上下文 + 连续风险程度 + 时间与可用性约束。** 本仓用于研究行情环境与策略适用条件，不开发交易动作、方向、仓位或收益 router。
 
-## 当前：D5样例消费者通过，历史真实接收时钟不可用
+## 当前：历史真实接收时钟不存在，前瞻 recorder 参考实现已通过
 
-当前断点：**D5R_TRUE_RECEPTION_CLOCK_UNAVAILABLE_HISTORICAL_LIVE_LATENCY_UNVERIFIED**。
+当前断点：**PROSPECTIVE_RECEPTION_RECORDER_V1_REFERENCE_ACCEPTED_LOCAL_INSTALL_PENDING**。
 
-D5 已完成本仓样例消费者验收；但随后本地只读检索确认，两个指数没有逐条真实本机 `received_at` 历史记录。因此无法把历史 `owner_realtime_assumption` 升级成实测 feed/network/processing latency，也无法从现有历史数据完成真实接收时钟验收。
+此前 D5R 已确认：两个指数历史存储没有逐条真实本机 `received_at`，所以历史 feed/network/processing latency 不能被补算。现在已经增加一个前瞻参考 recorder：在实际feed callback入口、解析和排队之前，先记录 UTC wall-clock、`monotonic_ns`、本地 sequence 和 raw payload identity，再解析 event time / symbol / price。
 
-[当前任务](CURRENT_RESEARCH.md) → [接续](CONTINUE_HERE.md) → [D5R进度](research/reception_clock_adjudication_d5r/PROGRAM_STATE.json) → [D5R结果](research/reception_clock_adjudication_d5r/RESULTS.md) → [本地负结果包](docs/ops/receipts/star50_true_reception_raw_20260912/README.md)。
+[当前任务](CURRENT_RESEARCH.md) → [接续](CONTINUE_HERE.md) → [recorder状态](research/prospective_reception_recorder_v1/PROGRAM_STATE.json) → [协议](research/prospective_reception_recorder_v1/PROTOCOL.md) → [schema](research/prospective_reception_recorder_v1/SCHEMA.json) → [本地接入说明](research/prospective_reception_recorder_v1/LOCAL_INTEGRATION_HANDOFF.md)。
 
-## 保留的结论
+会话内18项合成测试、编译与独立JSONL validator样例通过。没有读取新行情、没有安装到DataHub、没有实测延迟，也没有启动D6/V20。
+
+## 保留的研究结论
 
 - [V19](research/highvol_risk_episode_state_machine_v19_validation/VALIDATION_RESULTS.md)：冻结风险状态识别基线；
 - [D2](research/causal_state_delivery_d2/RESULTS.md)：因果双时钟历史工程回放；
-- [D3](research/causal_state_utility_d3/RESULTS.md)：三状态增量用途未获实际门槛晋升；
-- [D4](research/continuous_risk_utility_d4/RESULTS.md)：连续 I/V 对指定风险目标有限支持；
-- [D5](research/state_degree_consumer_d5/RESULTS.md)：本仓样例消费者字节/as-of/过期/缺失语义通过。
+- [D3](research/causal_state_utility_d3/RESULTS.md)：三状态增量用途未过实际门槛；
+- [D4](research/continuous_risk_utility_d4/RESULTS.md)：连续I/V对指定风险目标有限支持；
+- [D5](research/state_degree_consumer_d5/RESULTS.md)：本仓样例消费者工程通过；
+- [D5R](research/reception_clock_adjudication_d5r/RESULTS.md)：历史真实接收时钟不可用。
 
-这些都不等于真实本机 reception log 已存在，也不证明策略盈利或生产就绪。
+## 数据治理
 
-## 接收时钟边界
+当前日期已过 `2026-08-21`。根据 [V2数据政策](docs/governance/DATA_USAGE_POLICY_V2.md)，新的两指数市场数据可能进入 pending BlackBox-V1。可以安装recorder并在本地受保护层采集，但不能把新逐行timestamp/price直接上传公开GitHub或拿来研究。后续使用必须遵守明确的数据角色或预注册接口。
 
-本地 DataHub recording 相关表为空，`lake/recording` / `ticks.parquet` 未物化。`available_at`、batch `ingested_at`、文件 mtime、下载时间、市场 observation time、row_index 都不能冒充真实 `received_at`。
-
-若未来要验证真实延迟，只能前瞻持久化市场事件时钟与本机接收 wall-clock/monotonic clock/sequence 等字段；在此之前继续标记 `unmeasured_reception`。
-
-[V2数据治理](docs/governance/DATA_USAGE_POLICY_V2.md)与[研究桶边界](docs/governance/BUCKET_SCOPE_REPAIR_20260909.md)不变。无新2026/BlackBox/PnL/生产权限，不启动 D6/V20。
-
-`production_authority=false`。
+`measured_feed_latency_supported=false`; `live_recorder_installed=false`; `blackbox_queried=false`; `production_authority=false`。
