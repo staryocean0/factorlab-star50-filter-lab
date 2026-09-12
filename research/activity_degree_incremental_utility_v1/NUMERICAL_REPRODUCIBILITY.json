@@ -1,0 +1,187 @@
+{
+  "bitwise_identical": false,
+  "decisive_artifact_id": 10290482080,
+  "decisive_artifact_zip_sha256": "0c71f4d1c9605819ca92d742cbeabf36d1aaa4bbdb6e08e2c29e708796087965",
+  "decisive_head_sha": "5fa76723d5142b96d53822343faad6bd046f9df6",
+  "decisive_model_sha256": "89660f0825373b5afd8d1d9c51642424fe79fae925f44d0f25a6f2f96ca78d8d",
+  "decisive_run_id": 34670357953,
+  "development_forward_differences": {
+    "15|future_tail|C": {
+      "absolute_gain": 7.995991022080595e-19,
+      "relative_gain": 3.0466081046842675e-17
+    },
+    "15|future_tail|N": {
+      "absolute_gain": 4.2012834183813297e-19,
+      "relative_gain": 1.5829351718288365e-17
+    },
+    "15|log_future_sigma|C": {
+      "absolute_gain": 4.119968255444917e-17,
+      "relative_gain": 1.4137996329210978e-16
+    },
+    "15|log_future_sigma|N": {
+      "absolute_gain": 1.2366681029912785e-18,
+      "relative_gain": 4.296151108473811e-18
+    },
+    "30|future_tail|C": {
+      "absolute_gain": 9.893344823930228e-19,
+      "relative_gain": 2.0708261494473135e-17
+    },
+    "30|future_tail|N": {
+      "absolute_gain": 9.215718466126788e-19,
+      "relative_gain": 1.929879867024198e-17
+    },
+    "30|log_future_sigma|C": {
+      "absolute_gain": 2.905661822261152e-17,
+      "relative_gain": 1.7694179454963432e-16
+    },
+    "30|log_future_sigma|N": {
+      "absolute_gain": 3.494857940371243e-18,
+      "relative_gain": 2.15485181781494e-17
+    },
+    "60|future_tail|C": {
+      "absolute_gain": 2.3744027577432547e-17,
+      "relative_gain": 2.740863092043355e-16
+    },
+    "60|future_tail|N": {
+      "absolute_gain": 1.2888453325421434e-17,
+      "relative_gain": 1.4972832002024816e-16
+    },
+    "60|log_future_sigma|C": {
+      "absolute_gain": 8.370040771588094e-17,
+      "relative_gain": 7.4593109467002705e-16
+    },
+    "60|log_future_sigma|N": {
+      "absolute_gain": 9.947554932554503e-18,
+      "relative_gain": 9.063930161978817e-17
+    }
+  },
+  "interpretation": "Repeated ridge fits are structurally/input identical but the JSON is not byte-identical. The decisive Validation used the exact in-run frozen model, so freeze-before-Validation remains intact. This is engineering evidence, not a scientific promotion gate.",
+  "max_abs_differences": {
+    "beta": 8.161873954470877e-15,
+    "coverage_metric": 0.0,
+    "forward_metric": 7.4593109467002705e-16,
+    "intercept": 0.0,
+    "mean": 8.881784197001252e-16,
+    "scale": 1.1102230246251565e-16
+  },
+  "per_probe_max_abs_differences": {
+    "15|future_tail|A": {
+      "beta": 2.114627917215728e-15,
+      "intercept": 0.0,
+      "mean": 2.220446049250313e-16,
+      "scale": 1.1102230246251565e-16
+    },
+    "15|future_tail|C": {
+      "beta": 2.138914045879403e-15,
+      "intercept": 0.0,
+      "mean": 5.551115123125783e-17,
+      "scale": 1.1102230246251565e-16
+    },
+    "15|future_tail|N": {
+      "beta": 2.1788126858268697e-15,
+      "intercept": 0.0,
+      "mean": 2.220446049250313e-16,
+      "scale": 1.1102230246251565e-16
+    },
+    "15|log_future_sigma|A": {
+      "beta": 6.952771691715043e-15,
+      "intercept": 0.0,
+      "mean": 2.220446049250313e-16,
+      "scale": 1.1102230246251565e-16
+    },
+    "15|log_future_sigma|C": {
+      "beta": 4.364564265557647e-15,
+      "intercept": 0.0,
+      "mean": 5.551115123125783e-17,
+      "scale": 1.1102230246251565e-16
+    },
+    "15|log_future_sigma|N": {
+      "beta": 6.9735883734267645e-15,
+      "intercept": 0.0,
+      "mean": 2.220446049250313e-16,
+      "scale": 1.1102230246251565e-16
+    },
+    "30|future_tail|A": {
+      "beta": 2.2898349882893854e-15,
+      "intercept": 0.0,
+      "mean": 8.881784197001252e-16,
+      "scale": 1.1102230246251565e-16
+    },
+    "30|future_tail|C": {
+      "beta": 1.777224201138239e-15,
+      "intercept": 0.0,
+      "mean": 8.881784197001252e-16,
+      "scale": 1.1102230246251565e-16
+    },
+    "30|future_tail|N": {
+      "beta": 2.338407245616736e-15,
+      "intercept": 0.0,
+      "mean": 8.881784197001252e-16,
+      "scale": 1.1102230246251565e-16
+    },
+    "30|log_future_sigma|A": {
+      "beta": 5.2735593669694936e-15,
+      "intercept": 0.0,
+      "mean": 8.881784197001252e-16,
+      "scale": 1.1102230246251565e-16
+    },
+    "30|log_future_sigma|C": {
+      "beta": 8.161873954470877e-15,
+      "intercept": 0.0,
+      "mean": 8.881784197001252e-16,
+      "scale": 1.1102230246251565e-16
+    },
+    "30|log_future_sigma|N": {
+      "beta": 3.17280923756158e-15,
+      "intercept": 0.0,
+      "mean": 8.881784197001252e-16,
+      "scale": 1.1102230246251565e-16
+    },
+    "60|future_tail|A": {
+      "beta": 2.5647886592317093e-15,
+      "intercept": 0.0,
+      "mean": 1.1102230246251565e-16,
+      "scale": 1.1102230246251565e-16
+    },
+    "60|future_tail|C": {
+      "beta": 4.5727310826748635e-15,
+      "intercept": 0.0,
+      "mean": 1.1102230246251565e-16,
+      "scale": 5.551115123125783e-17
+    },
+    "60|future_tail|N": {
+      "beta": 2.4884608262887298e-15,
+      "intercept": 0.0,
+      "mean": 1.1102230246251565e-16,
+      "scale": 5.551115123125783e-17
+    },
+    "60|log_future_sigma|A": {
+      "beta": 4.822531263215524e-15,
+      "intercept": 0.0,
+      "mean": 1.1102230246251565e-16,
+      "scale": 1.1102230246251565e-16
+    },
+    "60|log_future_sigma|C": {
+      "beta": 4.541506060107281e-15,
+      "intercept": 0.0,
+      "mean": 1.1102230246251565e-16,
+      "scale": 5.551115123125783e-17
+    },
+    "60|log_future_sigma|N": {
+      "beta": 4.697631172945194e-15,
+      "intercept": 0.0,
+      "mean": 1.1102230246251565e-16,
+      "scale": 5.551115123125783e-17
+    }
+  },
+  "prior_artifact_id": 10289968493,
+  "prior_artifact_zip_sha256": "200bbe120d5fdb16e10a951c5f48b7b19bec333cd6dadf4f1584919750ccde7c",
+  "prior_head_sha": "fd16a6ee94474eff2ba7c6f8a0b4d9c9b7043451",
+  "prior_model_sha256": "25314e5eb6d063f9520b1fecd186e091800ee2253c64c4b34fd585c64519685d",
+  "prior_run_id": 34670136889,
+  "same_feature_schema_and_n": true,
+  "same_input_sha256": true,
+  "schema": "activity_degree_incremental_utility_v1_numerical_reproducibility@1.0",
+  "structural_identity": true,
+  "within_1e_10_all_numeric": true
+}
