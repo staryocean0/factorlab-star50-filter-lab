@@ -1,45 +1,47 @@
-# 当前任务：D5样例消费者已验收，转入有界外部研究接入
+# 当前任务：D5样例消费者已验收；历史真实接收时钟不可用
 
-更新：2026-09-12。使命：把当时可知的K线状态、连续风险程度与适用性信息交给下游，支持行情跟踪、环境分桶和策略适用性研究。本仓不开发交易动作。
+更新：2026-09-12。使命不变：把当时可知的K线状态、连续风险程度和适用性信息交给下游研究进程。本仓不开发交易动作。
 
 ## 当前权威链
 
-V2数据治理和BUCKET_SCOPE_REPAIR_20260909.md优先；方向见docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md。
-当前执行状态：research/state_degree_consumer_d5/PROGRAM_STATE.json → RESULTS.md → EXECUTION_RECEIPT.json / INDEPENDENT_VERIFICATION.json → PROTOCOL.md / SOURCE_IDENTITY.json。
-可运行例子与回迁：同目录REPRODUCE.md、example_consumer.py、LOCAL_HANDOFF.md。旧D4/D3/D2/D1的PROGRAM_STATE是各阶段封存状态，不覆盖本入口。
+数据治理仍以 `docs/governance/DATA_USAGE_POLICY_V2.md` 与研究桶边界为准。
+当前方向：`docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md`。
+当前断点：`research/reception_clock_adjudication_d5r/PROGRAM_STATE.json` → `RESULTS.md` → `DECISIVE_RECEIPT.json`。
+本地负结果来源：`docs/ops/receipts/star50_true_reception_raw_20260912/`，commit `09cb66a86be6a9bef3a91b52af34b747f812b407`，Release `star50-true-reception-raw-20260912`。
+D5 原始消费者证据仍在 `research/state_degree_consumer_d5/`，不改其封存字节。
 
-**D5_BOUNDED_RESEARCH_CONSUMER_ACCEPTED_EXTERNAL_INTEGRATION_PENDING。**
-本仓样例接入已实际执行并通过；外部FactorLab/DataHub或策略研究进程尚未接入，生产未授权。不是D5待执行，也不是又开新统计模型。
+## 当前正式状态
 
-## D5完成情况
+**D5R_TRUE_RECEPTION_CLOCK_UNAVAILABLE_HISTORICAL_LIVE_LATENCY_UNVERIFIED**。
 
-232704条D2 E15/CLOSE事件完整接入；116352条D4 E15属性一对一匹配。每种时钟113928可用、2424原不可用均保留。源状态、转移、确认性质、时间、裸值、概率及缺失传递零差异；D4增强数值最大差0。
-930816次固定边界查询与独立选择器逐项一致；20个消费者历史前缀检查、40项合成测试、治理/编译及两个CLI样例通过。全部在当前会话执行，使用标准库，无Actions、模型拟合、新行情或统计Validation。
+本地已完成只读检索，结论为 `NO_TRUE_RECEPTION_TIMESTAMP_AVAILABLE`：两个指数没有逐条真实本机 reception timestamp。Release ZIP 仅 5446 bytes、quote rows=0、SHA256 `63badecf70405452674831f41a6aef0de174ca8d10b113fc32c91a8e1ca24cf0`。
 
-E15只接同事件D4裸值和描述性lag/delta；CLOSE只用D2确认字段，不跨时钟复制E15增强或推广D4效用。numeric_bucket不交付，不把训练期分位配置当历史部署事实。V16概率保留原目标与可用性门控，不生产新概率。
+因此当前无法从历史数据计算真实 feed/network/processing latency、真实 E15 到达覆盖率或实际端到端提前量。不得拿 `available_at`、batch `ingested_at`、文件 mtime、下载时间、market observation time 或 row_index 冒充 `received_at`。
 
-published_at与received_at分开，收到前不能消费；晚到不能回填；过期/最新不可用不能回退旧状态；午休/日终明确无当前快照。上午确认可按原D2有效期作为午后首个E15前的上下文，但不是新的午后观察。
+## 保持原样的已完成证据
 
-四种结果：AVAILABLE、STATE_ONLY、UNAVAILABLE、NO_CURRENT_SNAPSHOT。缺失不是NORMAL，空概率不是0/1。日初缺参考与日末旧观察保留，最大观察年龄165秒；新鲜度不等于实测网络延迟。默认即时收到与2秒延迟样例均为历史/合成假设。
+- V19：冻结风险状态识别基线，残差优化路线关闭；
+- D2：双时钟历史工程回放支持；
+- D3：`D3_INCREMENTAL_UTILITY_NOT_SUPPORTED` 原判不变；
+- D4：连续 I/V 对 15/30/60m log未来RMS 与30m尾部有限支持；15/60m尾部不晋升；
+- D5：本仓样例消费者字节、as-of、过期、缺失、E15/CLOSE分离等工程验收通过。
 
-## 不被D5改写的科学结论
+D5 的零延迟/2秒延迟仍只是历史/合成消费条件；D5 工程通过不等于真实本机接收时钟已经验收。
 
-V19：冻结参考语义下的风险状态识别支持，残差路线关闭，不启动accuracy微调V20。
-D2：因果双时钟工程回放支持，不代表所有未来风险被提前识别。
-D3：D3_INCREMENTAL_UTILITY_NOT_SUPPORTED原判保留，三状态小增量未达原实际门槛。
-D4：连续I/V仅对15/30/60m log未来RMS、30m尾部在H/L双基准下获有限支持；15/60m尾部未晋升，delta与分位门控未独立验收。这是已知线索后的自适应可复用Validation，不是fresh OOS。
-D5：消费者字节/时钟/来源接对，不提高D3/D4证据等级，不证明策略收益。
+## 本地检索实际发现
 
-## 下一项实际工作与停止线
+DataHub `recording_datasets`、`recording_runtime`、`subscriptions`、`replay_sessions`、`source_receipts` 均为0行；`lake/recording` 与 `ticks.parquet` 未物化。现有 `market_index_transactions` 只有市场/重建观察时钟、价格与源顺序，没有本机到达时钟。
 
-按research/state_degree_consumer_d5/LOCAL_HANDOFF.md进行外部研究消费者回迁和独立进程验收；任务CL-D5-RESEARCH-CONSUMER-20260912。回执必须说明实际本地环境、commit/输入SHA、命令/退出码及差异。没有可调用的本地执行通道，不声称自动派发或已回迁。
+已有 `observation_datetime` / `observation_time` 不能当 reception；字面 `Z` 也不能据此解释为 UTC 本机接收瞬间。其他表中的 `received_at` / `local_timestamp` 属于元数据、ETF或期货等不同对象，不可借用。
 
-本仓此阶段完成，保持冻结维护；不为版本号启动D6或V20。若尚无实际外部消费需求，不需要继续造模型。真实feed、持久化/断线重连/修订策略、完整仓库suite和经济验收均未通过本次验收。
+## 下一步与停止线
 
-## 数据、权限与历史
+历史 measured-reception 路线在当前数据上已经收口。只有未来**前瞻真实记录**出现后，才重新打开接收时钟验收。
 
-Development2021–2023；V2 Validation至2026-08-21可复用，不能拟合当前受测候选或称fresh OOS。D5只消费原2021–2025封存派生产物；无raw3s/5m重读，无2026、保护期、BlackBox、PnL或生产扩权。V16的2026 final-5m覆盖不生成2026 realtime证据。
+未来采集至少需要：symbol、source/vendor/channel、market/event timestamp、timezone-aware local receive wall clock、local monotonic receive clock/sequence、price、source sequence/row identity、trading_day 与 recorder/version identity。
 
-NORMAL非安全保证、UNSAFE非看空，状态/强度不是买卖许可。不接管父结构Range/UpTrend/DownTrend，不开发仓位/方向/payoff/router，不改其他仓或live registry。
-原V16—V19与D1—D4代码、surface、报告、回执原样保留；原入口在11ade25e0ea7a25321955015e327854915cc211a。数学判定继续由执行者负责，权限不扩大。
-d5_completed=true；external_consumer_accepted=false；d6_started=false；v20_started=false；production_authority=false。
+这只是未来数据契约，不代表本轮已修改 DataHub、启动 recorder 或接生产。没有真实 reception log 时继续标记 `owner_realtime_assumption` / `unmeasured_reception`。
+
+不为缺日志启动 D6/V20，不重跑 V19/D2-D5，不查询 BlackBox、不计算 PnL、不改其他仓或 live registry。若没有新的真实 reception 数据，本仓进入冻结维护。
+
+`true_reception_timestamp_available=false`; `measured_feed_latency_supported=false`; `external_consumer_accepted=false`; `d6_started=false`; `v20_started=false`; `production_authority=false`。
