@@ -19,3 +19,4 @@ jobs:
       - run: python -m pytest -q
       - run: python scripts/validate_drawdown_study.py
       - run: python scripts/finalize_execution_audit.py --validate-only
+      - run: python scripts/validate_research_backlog_closeout.py
