@@ -1,10 +1,14 @@
-# STAR50 / CSI1000 AI entry — D5 bounded consumer accepted
+# STAR50 / CSI1000 AI entry — true reception clock unavailable
 
-Read AGENTS.md, CURRENT_RESEARCH.md and CONTINUE_HERE.md. Direction: docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md.
-Current authority: research/state_degree_consumer_d5/PROGRAM_STATE.json, RESULTS.md, EXECUTION_RECEIPT.json, INDEPENDENT_VERIFICATION.json, PROTOCOL.md and SOURCE_IDENTITY.json.
+Read `AGENTS.md`, `CURRENT_RESEARCH.md` and `CONTINUE_HERE.md` first.
+Current authority: `research/reception_clock_adjudication_d5r/PROGRAM_STATE.json`, `RESULTS.md`, `DECISIVE_RECEIPT.json`.
 
-D5_BOUNDED_RESEARCH_CONSUMER_ACCEPTED_EXTERNAL_INTEGRATION_PENDING. All232704 D2 events and116352 D4 E15 enrichments joined; zero source/numeric mismatch;930816 as-of checks,40 unit tests and20 consumer prefix checks passed. Sample commands actually executed. All in current chat, stdlib only, no Actions or new market data.
+Current state: `D5R_TRUE_RECEPTION_CLOCK_UNAVAILABLE_HISTORICAL_LIVE_LATENCY_UNVERIFIED`.
 
-E15 and CLOSE must not share E15-only enrichments. Publication and receipt are separate; no backfill, expired fallback, missing-as-NORMAL or fake probability. Quantile encoding is not delivered. D5 is bounded consumer engineering evidence, not new utility/OOS or production. D3 negative and D4 endpoint-limited decisions remain unchanged; V19 and D1-D4 sealed bytes are preserved.
+D5 bounded sample consumer remains accepted, but the local host search found no per-tick true local reception timestamp for `000688.SH` / `000852.SH`. The uploaded Release package contains zero quote rows. Do not reinterpret `available_at`, batch `ingested_at`, file mtime, download time, market observation time or row order as `received_at`.
 
-Next is genuine external research-process acceptance under LOCAL_HANDOFF.md, not a new D6/V20 model. No external execution has been dispatched or accepted. No live registry, strategy actions, parent-structure takeover, raw3s,2026,BlackBox or PnL. production_authority=false。
+Therefore owner_realtime_assumption remains unmeasured. No historical feed/network/processing latency distribution or actual E15 arrival coverage can be claimed. D3 negative utility decision, D4 endpoint-limited continuous support, D2 replay and V19 baseline are unchanged.
+
+Only prospective recorder data with market timestamp plus local receive wall-clock/monotonic clock/sequence can reopen measured-reception acceptance. Without such new data, freeze/maintain the repository; do not start D6/V20 or rerun completed research.
+
+No 2026 protected data, BlackBox, PnL, strategy actions or production authority. `production_authority=false`.
