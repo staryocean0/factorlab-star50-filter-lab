@@ -1,0 +1,18 @@
+{
+  "schema": "activity_degree_incremental_utility_v1_evidence_source@1.0",
+  "workflow_run_id": 34670357953,
+  "validation_job_id": 103490604669,
+  "head_sha": "5fa76723d5142b96d53822343faad6bd046f9df6",
+  "artifact_id": 10290917834,
+  "artifact_name": "activity-degree-v1-validation-34670357953",
+  "artifact_zip_sha256": "a734a0083c9d197188591fa548668cdbc3f2a86df00b783f68f41acfecf69940",
+  "frozen_model_artifact_id": 10290482080,
+  "frozen_model_artifact_zip_sha256": "0c71f4d1c9605819ca92d742cbeabf36d1aaa4bbdb6e08e2c29e708796087965",
+  "frozen_model_sha256": "89660f0825373b5afd8d1d9c51642424fe79fae925f44d0f25a6f2f96ca78d8d",
+  "validation_reused": true,
+  "fresh_oos": false,
+  "read_2026": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "production_authority": false
+}
