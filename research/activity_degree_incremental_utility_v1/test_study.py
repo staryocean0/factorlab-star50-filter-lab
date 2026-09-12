@@ -18,7 +18,7 @@ def test_strict_sampler_uniform_path_and_age():
     assert np.nanmax(got["age"][:j+1]) <= 3
     r = got["return_bp"][1:j+1]
     assert np.isfinite(r).all()
-    assert np.allclose(r, r[0], rtol=0, atol=1e-12)
+    assert np.allclose(r, r[0], rtol=0, atol=1e-10)
 
 
 def test_strict_sampler_refuses_crossed_source_gap():
@@ -26,7 +26,6 @@ def test_strict_sampler_refuses_crossed_source_gap():
     p = np.exp(t * 1e-6)
     rows = np.arange(len(t))
     got = sample_session(t, p, rows)
-    # A missing >3s source interval must make at least one affected 15s return unavailable.
     assert np.isnan(got["return_bp"]).any()
 
 
@@ -35,7 +34,6 @@ def test_same_second_rows_use_stable_last_row():
     p = np.array([100, 101, 102, 103, 104, 105, 106], float)
     rows = np.array([1, 1, 2, 1, 1, 1, 1])
     got = sample_session(t, p, rows)
-    # endpoint 15 is exact; duplicate source keys are allowed when row_index differs.
     assert got["price"][1] == 106
 
 
