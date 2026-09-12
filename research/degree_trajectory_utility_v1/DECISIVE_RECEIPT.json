@@ -1,0 +1,40 @@
+{
+  "schema": "degree_trajectory_utility_v1_decisive_receipt",
+  "decision": "ONE_STEP_DEGREE_TRAJECTORY_INCREMENTAL_UTILITY_NOT_SUPPORTED",
+  "frozen_model_sha256": "04b49e8613cad5b24822f8e827f8d6513f6fef74da5c2df0851e03473b4db188",
+  "decisive_run_id": 34680352701,
+  "validation_artifact_id": 10294052627,
+  "validation_results_sha256": "16e7db8b780f64cfa0fcc5091d3ab1feed4c63658465697381b2ae9dda390763",
+  "comparisons": {
+    "15|log_future_sigma|T_vs_C": {"relative_gain": 0.00114149077682118, "absolute_gain": 0.0003461083312760626, "primary_ci_low": -0.00006320842354965822, "forward_nonnegative": true, "supported": false},
+    "15|log_future_sigma|T_vs_O": {"relative_gain": 0.0011321087750465262, "absolute_gain": 0.00034326041574144335, "primary_ci_low": -0.00034465834187144914, "forward_nonnegative": true, "supported": false},
+    "15|future_tail|T_vs_C": {"relative_gain": 0.000375266478041687, "absolute_gain": 0.000011182260927956107, "primary_ci_low": -0.000018959435870397656, "forward_nonnegative": false, "supported": false},
+    "15|future_tail|T_vs_O": {"relative_gain": -0.00003401278581145487, "absolute_gain": -0.000001013104575438391, "primary_ci_low": -0.00003885059599543871, "forward_nonnegative": true, "supported": false},
+    "30|log_future_sigma|T_vs_C": {"relative_gain": 0.001495707886844707, "absolute_gain": 0.00025437927161591287, "primary_ci_low": 0.000026138829018075186, "forward_nonnegative": true, "supported": false},
+    "30|log_future_sigma|T_vs_O": {"relative_gain": 0.0015160404534766624, "absolute_gain": 0.0002578425391968144, "primary_ci_low": -0.00004682369431754242, "forward_nonnegative": true, "supported": false},
+    "30|future_tail|T_vs_C": {"relative_gain": 0.00039194175918628516, "absolute_gain": 0.00001920757473977132, "primary_ci_low": -0.00002123111093383687, "forward_nonnegative": false, "supported": false},
+    "30|future_tail|T_vs_O": {"relative_gain": -0.00036837740090243357, "absolute_gain": -0.000018039054358560474, "primary_ci_low": -0.00008759952247360523, "forward_nonnegative": true, "supported": false},
+    "60|log_future_sigma|T_vs_C": {"relative_gain": 0.00024161704896875729, "absolute_gain": 0.000028779373309866892, "primary_ci_low": -0.00012648524987372462, "forward_nonnegative": true, "supported": false},
+    "60|log_future_sigma|T_vs_O": {"relative_gain": -0.00040629413653216965, "absolute_gain": -0.00004836296859402044, "primary_ci_low": -0.0002651876109855914, "forward_nonnegative": true, "supported": false},
+    "60|future_tail|T_vs_C": {"relative_gain": 0.0004522709428181487, "absolute_gain": 0.00003802633236742557, "primary_ci_low": -0.0000427406781874841, "forward_nonnegative": false, "supported": false},
+    "60|future_tail|T_vs_O": {"relative_gain": 0.00019846925218345557, "absolute_gain": 0.00001668279165797716, "primary_ci_low": -0.00010408938670702931, "forward_nonnegative": true, "supported": false}
+  },
+  "joint_endpoint_support": {
+    "15|log_future_sigma": false,
+    "15|future_tail": false,
+    "30|log_future_sigma": false,
+    "30|future_tail": false,
+    "60|log_future_sigma": false,
+    "60|future_tail": false
+  },
+  "decisive_failure": "ALL_12_RELATIVE_GAINS_BELOW_FROZEN_1_PERCENT_PRACTICAL_GATE_AND_NO_STABLE_ADVANTAGE_VS_EQUAL_COMPLEXITY_LAG2_CONTROL",
+  "tail_absolute_gate_pass_count": 0,
+  "trajectory_coverage": 1.0,
+  "delta_independent_predictive_promotion": false,
+  "posthoc_rescue_forbidden": true,
+  "consumer_logic_change": false,
+  "read_2026": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "production_authority": false
+}
