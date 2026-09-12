@@ -1,0 +1,28 @@
+test_canonical_handles_bytes_datetime_tuple (test_datahub_adapter.DataHubAdapterTests.test_canonical_handles_bytes_datetime_tuple) ... ok
+test_canonical_json_is_key_order_stable (test_datahub_adapter.DataHubAdapterTests.test_canonical_json_is_key_order_stable) ... ok
+test_canonical_rejects_unsupported_object (test_datahub_adapter.DataHubAdapterTests.test_canonical_rejects_unsupported_object) ... ok
+test_capture_buffer_rejects_mutated_payload (test_datahub_adapter.DataHubAdapterTests.test_capture_buffer_rejects_mutated_payload) ... ok
+test_capture_buffer_rejects_parser_without_capture (test_datahub_adapter.DataHubAdapterTests.test_capture_buffer_rejects_parser_without_capture) ... ok
+test_cardinality_change_rejected_and_logged (test_datahub_adapter.DataHubAdapterTests.test_cardinality_change_rejected_and_logged) ... ok
+test_delegate_parser_failure_still_emits_failure_receipt (test_datahub_adapter.DataHubAdapterTests.test_delegate_parser_failure_still_emits_failure_receipt) ... ok
+test_empty_payload_roundtrip (test_datahub_adapter.DataHubAdapterTests.test_empty_payload_roundtrip) ... ok
+test_hq_tap_preserves_return_object_and_stamps_each_row (test_datahub_adapter.DataHubAdapterTests.test_hq_tap_preserves_return_object_and_stamps_each_row) ... ok
+test_non_list_hq_result_rejected (test_datahub_adapter.DataHubAdapterTests.test_non_list_hq_result_rejected) ... ok
+test_non_mapping_hq_item_rejected (test_datahub_adapter.DataHubAdapterTests.test_non_mapping_hq_item_rejected) ... ok
+test_parser_does_not_promote_datahub_parse_timestamp_to_market_event (test_datahub_adapter.DataHubAdapterTests.test_parser_does_not_promote_datahub_parse_timestamp_to_market_event) ... ok
+test_parser_preserves_uncontracted_raw_event_candidate_without_normalizing (test_datahub_adapter.DataHubAdapterTests.test_parser_preserves_uncontracted_raw_event_candidate_without_normalizing) ... ok
+test_parser_returns_delegate_output_unchanged (test_datahub_adapter.DataHubAdapterTests.test_parser_returns_delegate_output_unchanged) ... ok
+test_payload_hash_matches_canonical_sdk_object (test_datahub_adapter.DataHubAdapterTests.test_payload_hash_matches_canonical_sdk_object) ... ok
+test_price_preserved (test_datahub_adapter.DataHubAdapterTests.test_price_preserved) ... ok
+test_receipt_is_before_parser_by_design_clock_sequence (test_datahub_adapter.DataHubAdapterTests.test_receipt_is_before_parser_by_design_clock_sequence) ... ok
+test_source_sequence_preserved_when_present (test_datahub_adapter.DataHubAdapterTests.test_source_sequence_preserved_when_present) ... ok
+test_symbol_ambiguous_is_none (test_datahub_adapter.DataHubAdapterTests.test_symbol_ambiguous_is_none) ... ok
+test_symbol_base_maps_requested (test_datahub_adapter.DataHubAdapterTests.test_symbol_base_maps_requested) ... ok
+test_symbol_exact (test_datahub_adapter.DataHubAdapterTests.test_symbol_exact) ... ok
+test_symbol_missing_is_none (test_datahub_adapter.DataHubAdapterTests.test_symbol_missing_is_none) ... ok
+test_two_batches_fifo (test_datahub_adapter.DataHubAdapterTests.test_two_batches_fifo) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.002s
+
+OK

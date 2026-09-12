@@ -1,0 +1,23 @@
+{
+  "schema": "datahub_normalized_sample_reference_v1",
+  "handoff_branch": "handoff/star50-true-reception-raw-20260912",
+  "handoff_commit": "bc84b65ba0510d164dbc90a01d3a98692982fc97",
+  "package": "STAR50_DATAHUB_RAW_CALLBACK_SAMPLE_20260912",
+  "package_zip_sha256": "866824b8966b237ed8463afd6280186301db95c450876112da77787d5d50fa0d",
+  "level": "NORMALIZED_SOURCE_ROWS",
+  "callback_raw": "CALLBACK_RAW_NOT_PERSISTED",
+  "vendor": "baidu_netdisk_market_index_transaction_3s",
+  "trading_day": "2025-06-11",
+  "historical_market_data_accepted": true,
+  "historical_received_at_available": false,
+  "rows": {
+    "000688.SH": 4746,
+    "000852.SH": 4746
+  },
+  "manifest_identities": {
+    "000688_jsonl_sha256": "5d39a5a5e7aba828ee53f5980155fdd97eb7d82c0e37a1b100cd435034220cc9",
+    "000852_jsonl_sha256": "1b4a97e6d7e8f381cf144618050e56b1dd1b7c4bba31995904bb7fcf8419aca7",
+    "tdx_realtime_source_sha256": "b9e8dad9ba2b50f38716bfa5f311dd5c918301f97b45c7ef85f83c67c6a42117"
+  },
+  "note": "Historical market rows are accepted as project data. They are not reinterpreted as historical local reception timestamps."
+}
