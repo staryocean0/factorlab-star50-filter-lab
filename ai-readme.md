@@ -2,10 +2,11 @@
 
 Read `AGENTS.md`, `CURRENT_RESEARCH.md` and `CONTINUE_HERE.md` first.
 
-Latest scientific state: **`ONE_STEP_DEGREE_TRAJECTORY_INCREMENTAL_UTILITY_NOT_SUPPORTED`**.
+Latest scientific state: **`SIGNED_RETURN_ASYMMETRY_INCREMENTAL_UTILITY_NOT_SUPPORTED`**.
 
 Preserved predecessor states:
 
+- `ONE_STEP_DEGREE_TRAJECTORY_INCREMENTAL_UTILITY_NOT_SUPPORTED`;
 - `HISTORICAL_SHOCK_BURDEN_INCREMENTAL_UTILITY_NOT_SUPPORTED`;
 - `CROSS_INDEX_CURRENT_DEGREE_INCREMENTAL_UTILITY_NOT_SUPPORTED`;
 - `CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`.
@@ -14,29 +15,31 @@ Historical research backlog is closed; remaining executable legacy backlog = 0. 
 
 Primary current authority:
 
-- `research/degree_trajectory_utility_v1/PROGRAM_STATE.json`
-- `research/degree_trajectory_utility_v1/RESULTS.md`
-- `research/degree_trajectory_utility_v1/DECISIVE_RECEIPT.json`
-- `research/degree_trajectory_utility_v1/EXECUTION_RECEIPT.json`
-- `research/degree_trajectory_utility_v1/evidence/VALIDATION_RESULTS.json`
-- `research/degree_trajectory_utility_v1/evidence/FROZEN_MODELS.json`
+- `research/signed_risk_asymmetry_utility_v1/PROGRAM_STATE.json`
+- `research/signed_risk_asymmetry_utility_v1/RESULTS.md`
+- `research/signed_risk_asymmetry_utility_v1/DECISIVE_RECEIPT.json`
+- `research/signed_risk_asymmetry_utility_v1/EXECUTION_RECEIPT.json`
+- `research/signed_risk_asymmetry_utility_v1/evidence/VALIDATION_RESULTS.json`
+- `research/signed_risk_asymmetry_utility_v1/evidence/FROZEN_MODELS.json`
 
-Interpret the latest result strictly. C is the 84-column own-index D4-style current-I/V baseline. T adds the immediately preceding confirmed degree; O adds the two-valid-return-bars-back degree with the exact same 20-column transform/state-interaction block. T/O are both104 columns with identical schema/scaling/ridge. Since current I/V is already in C, lag1 degree and current-minus-lag1 delta are bijective at the raw-information level.
+Interpret the latest result strictly. C is the 84-column own-index D4-style current-I/V baseline. A adds two sign-shape coordinates computed only from the previous 12 valid completed 5m returns. M adds two magnitude-only coordinates from the same history with exactly the same 20-column nonlinear/state-interaction complexity. A/M are both104 columns with identical ridge and fitting rows. The current unfinished bar is excluded by `shift(1)`.
 
-Decisive run `34680352701`; frozen model SHA `04b49e8613cad5b24822f8e827f8d6513f6fef74da5c2df0851e03473b4db188`. Validation n is39,770 /33,950 /22,310 at15/30/60m with100% trajectory coverage.
+Decisive run `34681733485`; frozen model SHA `92a5fdd5a75a57a1ca3adb567e8a12d03309c7de4ef33a601fc67cbb8c38f4d2`. Validation n is39,770 /33,950 /22,310 at15/30/60m with100% coverage.
 
-All twelve formal relative loss reductions are below the frozen1% practical gate. RMS gains T-vs-C/O are about +0.114%/+0.113% at15m, **+0.150%/+0.152% at30m**, and +0.024%/-0.041% at60m. Tail effects are tiny;15/30m T-vs-O tail is negative; absolute Brier gains are far below0.0005.
+The important nuance is the60m RMS result: A-vs-C is **+1.35593%** and A-vs-M is **+1.02822%**, so both pooled point estimates clear the frozen1% practical threshold. Nevertheless both adjusted5-day CI lower bounds are negative, STAR50 (`000688.SH`) absolute gains are negative, and CSI1000 (`000852.SH`) gains are strongly positive. The frozen protocol requires a positive adjusted interval and nonnegative symbol/year slices, so all six joint promotions are false and all12 formal comparisons are unsupported.
 
-Do not misstate this as “delta contains zero information”:30m T-vs-C has a small positive adjusted interval. The correct conclusion is that the one-step trajectory does **not** show enough magnitude or stable advantage over the equal-complexity lag2 control for independent predictive promotion.
+Do not misstate this as “sign has zero information,” and do not misstate it as “60m signed risk is supported.” Correct: the fixed sign representation shows a heterogeneous CSI1000-positive / STAR50-negative hint, not a robust shared risk coordinate.
 
-D4/D5 `lag_intensity`, `lag_ratio`, `delta_intensity`, `delta_ratio` remain allowed as descriptive/diagnostic/consumer fields under their existing contract, but they are not validated predictive gates. Do not change D5 decision logic or V19 from this result.
+Never rescue this reusable Validation result by selecting only CSI1000, changing to6/24/48-bar windows, decay/EWMA, skew/downside-count forms, selected state/slot/year/symbol subsets, ridge/horizons/bootstrap/gates, or dropping M.
 
-Never use this reusable Validation result to retune lag3/lag4, smoothing/decay, normalizers, nonlinear transforms, selected symbol/state/time subsets, ridge/horizons/bootstrap family, or to drop O.
+No signed-asymmetry field/gate enters D5; V19 stays frozen; D4/D5 decisions stay unchanged; no direction/trading/PnL/production meaning is authorized.
 
-The prior shock-memory, cross-index and M3 negative promotion decisions remain authoritative; D4 own current-I/V support, D3 negative practical decision, V19 freeze and D5 bounded consumer remain unchanged.
+The prior trajectory, shock-memory, cross-index and M3 negative promotion decisions remain authoritative; D4 own current-I/V support, D3 negative practical decision, V19 freeze and D5 bounded consumer remain unchanged.
 
 Historical D5R still says no true local per-tick `received_at` exists; never infer one from available_at, batch ingested_at, file mtime, observation time or row order.
 
-Open new science only for a genuinely distinct causal risk mechanism frozen before outcomes. It must not be a rescue of trajectory lags/smoothing, shock-memory, cross-index current degree, M3, V19 or retired trading/router work. Do not query BlackBox or protected2026 row detail, do not start V20/D6, and do not raise production authority.
+Open new science only for a genuinely distinct causal risk mechanism frozen before outcomes. It must not be a rescue of signed asymmetry, trajectory lags/smoothing, shock-memory, cross-index current degree, M3, V19 or retired trading/router work. If no such independent mechanism remains after repository audit, hold/maintain authority rather than inventing another version.
+
+Do not query BlackBox or protected2026 row detail, do not start V20/D6, and do not raise production authority.
 
 `production_authority=false`.
