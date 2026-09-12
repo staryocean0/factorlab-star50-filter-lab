@@ -1,0 +1,11 @@
+{
+  "schema": "execution_audit_review_erratum@1",
+  "affected_file": "artifacts/execution_counterexamples/sessions/2025/analysis.json",
+  "affected_field": "graphical_evidence",
+  "withdrawn_phrase": "无法解释为单纯随机短震荡",
+  "correction": "该图只描述实现路径，不能排除随机收益聚集。2025长期水下是待解释事实；本轮未执行新的随机性检验，沿用首轮不支持异常严重聚集的结论。",
+  "reason": "读图描述的原措辞可能被误读为已经完成随机性排除，超出证据。追加更正，保留已封存原字节及摘要链。",
+  "changes_policy_or_results": false,
+  "fresh_oos": false,
+  "production_authority": false
+}

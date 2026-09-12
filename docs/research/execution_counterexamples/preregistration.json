@@ -1,0 +1,104 @@
+{
+  "schema": "star50_execution_counterexample_audit@1",
+  "parent_commit": "b9a4384c536cddbd7e5fe3a5b112984e8b314d63",
+  "lineage": "Descendant execution/measurement audit of sealed drawdown_conditions; no new strategy candidates, no retuning.",
+  "data_roles": [
+    {
+      "start": "2020-07-23",
+      "end": "2020-12-31",
+      "role": "warmup_only"
+    },
+    {
+      "start": "2021-01-01",
+      "end": "2025-12-31",
+      "role": "development_material_consumed"
+    },
+    {
+      "start": "2026-01-01",
+      "end": null,
+      "role": "excluded_no_read_no_selection"
+    }
+  ],
+  "hypotheses": [
+    "Historical bar-close observability differs from explicit source publication metadata; audit semantics rather than rewrite source fields.",
+    "One-minute later execution may alter losses and apparent conditional risk progress even with identical signals.",
+    "Slow-conflict reductions can miss profitable countertrend trades or restore full exposure before losses; exact signed opportunity and cost accounting can explain observed counterexamples without declaring structural causality.",
+    "Minute source repair may create nonobserved execution prices; separately count and skip synthetic fill events."
+  ],
+  "fixed_policy_source": "src/star50_filter/drawdown_research.py at parent_commit",
+  "fixed_policies": [
+    "baseline",
+    "slow_conflict_half",
+    "constant_075",
+    "constant_050"
+  ],
+  "diagnostic_comparator": "Retrospective constant matched to slow_conflict_half mean time exposure, separately per view/scenario/evaluation year; no deployable claim.",
+  "execution_scenarios": {
+    "legacy_on_minute": "Same next-five-minute-view open schedule as predecessor, located by source 1m open at close_label-1m. Minute marks expose intra-bar drawdowns. Starting account flat at first scored five-minute open. Final liquidation at last scored five-minute open in2025.",
+    "delay_1m": "Same frozen schedule, but execute at first 1m open whose inferred start is at least one wall-clock minute later. Signal formula unchanged.",
+    "delay_1m_observed": "delay_1m plus skip minute rows with source_kind containing causal_flat_missing_minute for fill events; preserve original mark series.",
+    "literal_publication": "Release each completed signal no earlier than its original timezone-aware available_at and its close time, interpreted as Shanghai wall-clock. At each scheduled five-minute open use latest released signal only; no intraday values before15:30. Latest batch wins; diagnostic of literal metadata, not an assertion about true vendor latency."
+  },
+  "account": "log_index q_before*log(Pnext/Pprev) less -log(1-c_bps*abs(delta_q)/10000). Complete orders, entry, resize, reversal and final exit. Same minute endpoints within each view. Also preserve legacy five-minute sampled metrics as separate comparator.",
+  "cost_bps": [
+    0,
+    1,
+    3,
+    5
+  ],
+  "views": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "sequential_sessions": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "review": "One-year preparation per command; main agent writes graphical/event interpretation and seals digest chain before next year. All policies are frozen predecessor policies; no blind/family candidate ranking and no new family to open. All years already consumed.",
+  "attribution": {
+    "condition_cells": "Lag source slow_conflict/chop and signal to each executed position; disjoint none/chop_only/slow_only/both.",
+    "opportunity": "Hindsight signed positive/negative gross contribution removed by half exposure; exact gross delta and cost savings vs baseline and same-exposure constant. Hindsight labels have no runtime authority.",
+    "counterexamples": "Top10 DD decline/recovery windows per baseline primary view/scenario/cost, plus annual and view4 deltas; report calendar labels only as diagnostic indices.",
+    "latency": "Sum portfolio holding-difference times identical minute log-return; no aggregate-MDD additive causal claim.",
+    "source_audit": "Exact existing 5m open and close to 1m endpoint lookup, available_at parse with offsets retained, synthetic marks by clock/year, no local resampling or substitute fills."
+  },
+  "metrics": [
+    "CAGR",
+    "minute_MDD",
+    "five_minute_MDD_reference",
+    "daily_MDD",
+    "underwater_days",
+    "turnover",
+    "cost_log",
+    "mean_exposure",
+    "top10_decline_recovery",
+    "annual_quarterly_deltas",
+    "signal_to_fill_delay"
+  ],
+  "attempts": {
+    "new_strategy_candidates": 0,
+    "existing_frozen_policies": 4,
+    "execution_measurement_scenarios": 4,
+    "costs": 4,
+    "views": 5,
+    "selection_budget": 0
+  },
+  "primary_objective": "Establish whether predecessor risk improvement survives realistic delay assumptions; MDD reduction is retained conditionally, return sacrifice allowed, no hidden choice of best scenario.",
+  "promotion": "No promotion while source availability semantics or tradable instrument mapping unresolved. No newly validated causal efficacy even if synthetic execution prefix tests pass.",
+  "source_access": "Only this repository and its exact previously exported 2020-2025 carriers, hashes checked against sealed input receipt. No other FactorLab repository.",
+  "authorities": {
+    "fresh_oos": false,
+    "production_authority": false,
+    "change_live_registry": false
+  },
+  "validation_tolerance": 1e-10,
+  "references": [
+    "https://www.sse.com.cn/market/sseindex/diclosure/c/c_20200619_5130634.shtml"
+  ]
+}

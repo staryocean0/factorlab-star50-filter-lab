@@ -1,0 +1,13 @@
+{
+  "schema": "execution_audit_clock_amendment@1",
+  "protocol_commit": "6197e36efd5ddacbbfc6319e9a920bd2b68b1de0",
+  "phase": "2021 source-only endpoint bridge, stopped before annual evidence publication",
+  "reason": "Source offset1-4 first bar per morning/afternoon session spans six one-minute labels. Uniform close-minus5 incorrectly dated its opening mark by1minute.",
+  "evidence": "2020 warmup plus2021: view0 all16944 open/close matches; offsets1-4 16238 closes all match, only first-session opens mismatched704,703,704,705 respectively (occasional equal prices). First +4 close09:39 open equals1m09:34 open, inferred start09:33.",
+  "rule": "For export_view_id 5m_offset_1..4, first morning/afternoon source bar per trading day inferred open=close_label-6minutes; all remaining bars=close_label-5minutes. Validate every open and close via exact source1m endpoint lookup. No price-search-selected timestamps.",
+  "mutation": "Only explicit source clock mapping and unit tests; no strategy formula, parameters, candidate count, metrics, cost scenarios or thresholds change.",
+  "causal_claim": "Mapping is an empirically verified exporter boundary convention, not proof of exchange tick timestamp or vendor publication latency.",
+  "source_read_upper_bound": "2021-12-31",
+  "raw_data_changed": false,
+  "prior_sealed_artifacts_changed": false
+}
