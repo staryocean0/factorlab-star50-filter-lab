@@ -1,0 +1,87 @@
+{
+  "schema": "intrabar_temporal_reversal_utility_v1_program_state",
+  "updated_at": "2026-09-12",
+  "state": "INTRABAR_TEMPORAL_REVERSAL_INCREMENTAL_UTILITY_NOT_SUPPORTED",
+  "source_main_commit": "b9a6a47b2aca8ea9dddec1aab69c19ae0ae92311",
+  "protocol_git_blob": "f801991737fb1dc043807cb5f3e4fd9fb17f1187",
+  "runner_git_blob": "b7d1f158883b6e2c30e2eaca59e3a010864d572b",
+  "test_git_blob": "8faeaae8fe2764872748df01bee550863bef3092",
+  "parent_runner_git_blob": "0afc45e5061f45f544ecc7ee4519eae4e5204bca",
+  "frozen_model_sha256": "bd01e23def9300781c64a03f8377247ff30c67d0191c6cd213329d382ff8262c",
+  "validation_results_sha256": "67b267af11802562f4f576d151472b064323c82af2a34e4451e471beb99b2cdc",
+  "decisive_run_id": 34685234360,
+  "fit_job_id": 103530973458,
+  "validation_job_id": 103531117262,
+  "fit_artifact_id": 10295610761,
+  "validation_artifact_id": 10294993214,
+  "base_columns": 84,
+  "temporal_columns": 104,
+  "order_invariant_control_columns": 104,
+  "temporal_order_invariant_complexity_matched": true,
+  "current_bar_returns": 19,
+  "global_sign_invariant": true,
+  "order_invariant_control_permutation_invariant": true,
+  "validation_joint_endpoint_support": {
+    "15|log_future_sigma": false,
+    "15|future_tail": false,
+    "30|log_future_sigma": false,
+    "30|future_tail": false,
+    "60|log_future_sigma": false,
+    "60|future_tail": false
+  },
+  "formal_comparison_support_count": 0,
+  "formal_comparison_count": 12,
+  "all_validation_point_estimates_negative": true,
+  "t_vs_c_rms_relative_gain": {
+    "15": -0.0011882363322920436,
+    "30": -0.0016111683912786048,
+    "60": -0.0019747276898865254
+  },
+  "t_vs_o_rms_relative_gain": {
+    "15": -0.0339167205460284,
+    "30": -0.04877370521125941,
+    "60": -0.06135704873708821
+  },
+  "t_vs_c_tail_relative_gain": {
+    "15": -0.0003581783308951645,
+    "30": -0.0002648058196743972,
+    "60": -0.00009019554106924679
+  },
+  "t_vs_o_tail_relative_gain": {
+    "15": -0.012014736522590918,
+    "30": -0.014154817404320473,
+    "60": -0.02008246363515227
+  },
+  "development_intrabar_coverage": {
+    "15": 0.5349414567048009,
+    "30": 0.5327569267046571,
+    "60": 0.5247592847317745
+  },
+  "validation_intrabar_coverage": {
+    "15": 0.9699019361327634,
+    "30": 0.9658910162002946,
+    "60": 0.9505154639175257
+  },
+  "60m_development_n_below_20000": true,
+  "temporal_reversal_practical_increment_supported": false,
+  "temporal_reversal_consumer_promotion": false,
+  "single_index_rescue_authorized": false,
+  "posthoc_order_feature_rescue_authorized": false,
+  "intrabar_temporal_reversal_spec_closed": true,
+  "d4_decision_unchanged": true,
+  "d5_contract_unchanged": true,
+  "v19_frozen": true,
+  "signed_asymmetry_remains_closed": true,
+  "multiscale_volatility_remains_closed": true,
+  "validation_reused": true,
+  "fresh_oos": false,
+  "read_2026": false,
+  "synthetic_2026_used": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "candidate_nominated": false,
+  "d6_started": false,
+  "v20_started": false,
+  "production_authority": false,
+  "next_action": "DO_NOT_RESCUE_INTRABAR_TEMPORAL_REVERSAL_V1; HOLD_OR_AUDIT_ONLY_A_GENUINELY_DISTINCT_PREREGISTERABLE_CAUSAL_MECHANISM"
+}
