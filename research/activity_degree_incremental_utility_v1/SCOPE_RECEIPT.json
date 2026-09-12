@@ -1,0 +1,22 @@
+{
+  "schema": "activity_degree_incremental_utility_v1_scope_receipt@1.0",
+  "scientific_scope": "non_pnl_future_risk_information",
+  "subjects": ["000688.SH", "000852.SH"],
+  "development_years": [2021, 2022, 2023],
+  "validation_years": [2024, 2025],
+  "warmup_year": 2020,
+  "new_scientific_object": "current_M3_incremental_refresh_vs_D4_style_C_and_equal_complexity_lagged_M3_N",
+  "consumer_contract_changed": false,
+  "v19_state_machine_changed": false,
+  "d4_decision_changed": false,
+  "d5_decision_changed": false,
+  "reception_decision_changed": false,
+  "read_2026": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "direction_evaluated": false,
+  "router_added": false,
+  "production_authority": false,
+  "temporary_maintenance_workflows_remaining": false,
+  "scientific_workflow_trigger_after_closeout": "workflow_dispatch_only"
+}
