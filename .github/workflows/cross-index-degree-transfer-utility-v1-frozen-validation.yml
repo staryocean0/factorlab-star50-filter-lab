@@ -6,6 +6,7 @@ on:
     branches: [research/cross-index-degree-transfer-utility-v1-20260912]
     paths:
       - '.github/workflows/cross-index-degree-transfer-utility-v1-frozen-validation.yml'
+      - 'scripts/run_cross_index_degree_transfer_validation_v1.py'
 
 permissions:
   contents: read
