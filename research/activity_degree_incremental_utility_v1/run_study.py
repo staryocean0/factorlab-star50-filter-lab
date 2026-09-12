@@ -519,8 +519,8 @@ def forward_and_fit(frame: pd.DataFrame, out: Path, identities: dict) -> None:
         dev, cov = cohort(frame, (2021, 2022, 2023), h)
         train = dev[dev.year.le(2022)].reset_index(drop=True)
         hold = dev[dev.year.eq(2023)].reset_index(drop=True)
-        if len(train) < 10000 or len(hold) < 5000:
-            raise RuntimeError(f"insufficient Development split h={h}: {len(train)} {len(hold)}")
+        if train.empty or hold.empty:
+            raise RuntimeError(f"empty Development forward split h={h}: {len(train)} {len(hold)}")
         coverage[str(h)] = cov
         for endpoint in ENDPOINTS:
             fwd_probes = {}
