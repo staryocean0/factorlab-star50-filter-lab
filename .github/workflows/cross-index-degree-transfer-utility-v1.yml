@@ -5,7 +5,10 @@ on:
   push:
     branches: [research/cross-index-degree-transfer-utility-v1-20260912]
     paths:
-      - 'research/cross_index_degree_transfer_utility_v1/**'
+      - 'research/cross_index_degree_transfer_utility_v1/PROTOCOL.md'
+      - 'research/cross_index_degree_transfer_utility_v1/run_study.py'
+      - 'research/cross_index_degree_transfer_utility_v1/test_study.py'
+      - 'scripts/run_cross_index_degree_transfer_validation_v1.py'
       - '.github/workflows/cross-index-degree-transfer-utility-v1.yml'
 
 permissions:
@@ -22,6 +25,7 @@ jobs:
           sparse-checkout: |
             /research/cross_index_degree_transfer_utility_v1/
             /research/activity_degree_incremental_utility_v1/run_study.py
+            /scripts/run_cross_index_degree_transfer_validation_v1.py
             /docs/governance/DATA_USAGE_POLICY_V2.md
             /docs/governance/data_usage_declaration.json
             /docs/governance/blackbox_query_ledger.json
@@ -86,6 +90,7 @@ jobs:
           sparse-checkout: |
             /research/cross_index_degree_transfer_utility_v1/
             /research/activity_degree_incremental_utility_v1/run_study.py
+            /scripts/run_cross_index_degree_transfer_validation_v1.py
             /docs/governance/DATA_USAGE_POLICY_V2.md
             /docs/governance/data_usage_declaration.json
             /docs/governance/blackbox_query_ledger.json
@@ -137,7 +142,7 @@ jobs:
       - name: Score frozen probes on reusable 2024-2025 Validation
         run: |
           mkdir -p artifacts
-          python research/cross_index_degree_transfer_utility_v1/run_study.py \
+          python scripts/run_cross_index_degree_transfer_validation_v1.py \
             --repo-root . --phase validate --out artifacts/validation \
             --models frozen/FROZEN_MODELS.json --model-sha frozen/MODEL_SHA256.txt
           cp frozen/FROZEN_MODELS.json frozen/MODEL_SHA256.txt frozen/FIT_RECEIPT.json artifacts/validation/
