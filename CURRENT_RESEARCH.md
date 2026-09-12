@@ -1,4 +1,4 @@
-# 当前任务：DataHub reception 云端工程验收已完成
+# 当前任务：DataHub reception 云端工程验收已完成；历史冻结研究继续收口
 
 更新：2026-09-12。使命不变：把当时可知的K线状态、连续风险程度和适用性信息交给下游研究进程。本仓不开发交易动作。
 
@@ -10,11 +10,13 @@
 
 ## 当前权威链
 
-`research/prospective_reception_recorder_v1/PROGRAM_STATE.json` → `CLOUD_ACCEPTANCE_RESULTS.md` → `CLOUD_ACCEPTANCE_EXECUTION_RECEIPT.json` → `DATAHUB_ADAPTER_RESULTS.md` → `DATAHUB_INTEGRATION.md` → `PROTOCOL.md` / `SCHEMA.json`。
+reception主线：`research/prospective_reception_recorder_v1/PROGRAM_STATE.json` → `CLOUD_ACCEPTANCE_RESULTS.md` → `CLOUD_ACCEPTANCE_EXECUTION_RECEIPT.json` → `DATAHUB_ADAPTER_RESULTS.md` → `DATAHUB_INTEGRATION.md` → `PROTOCOL.md` / `SCHEMA.json`。
+
+历史研究收口新增：`docs/research/risk_coordinate_validation_v1/RESULT.md` → `EXECUTION_RECEIPT.json` → 原冻结 `FROZEN_PROTOCOL.md` / `run_validation.py`。
 
 数据治理仍以 `docs/governance/DATA_USAGE_POLICY_V2.md` 为准；D5R及D5/D4/D3/D2/V19证据保持封存，不改判。
 
-## 云端实际完成的验收
+## DataHub reception 云端验收
 
 GitHub Actions run `34666927078` 已成功完成：
 
@@ -23,42 +25,49 @@ GitHub Actions run `34666927078` 已成功完成：
 - manifest 20个文件逐一 bytes/SHA256 全匹配；
 - 完整读取并独立审计 `000688.SH` 4,746行 + `000852.SH` 4,746行，共 **9,492行**；
 - 两指数 4,746点 observation-time 网格完全一致；
-- symbol/day/source/source_file/row_index/archive/dataset-version/价格与时间顺序检查全部通过；
-- 无伪造 reception 字段；
-- 真实 DataHub `realtime.py` 的注入 seam 通过 AST 再验证：`get_security_quotes` line 105 在 `parse_quotes` line 112 之前；
 - 18项 recorder + 23项 adapter = **41项测试全通过**；
-- compile 通过；
-- V2 data governance validator: OK；
-- 证据 artifact id `10288693269`，artifact ZIP SHA256 `627f7fb8e20f96133baa2691a3fcaaaf7d0fbc0dba6481645b516550f17b0ded`。
+- 真实 DataHub `realtime.py` 注入 seam 再验证：`get_security_quotes` line 105 在 `parse_quotes` line 112 之前；
+- compile 与 V2 data governance validator 通过；
+- evidence artifact id `10288693269`。
 
-因此，之前“云端无法完整执行9,492行独立数值检查”的缺口已经关闭。
+当前最早可控采集边界冻结为 **TDX Python SDK return → DataHub parser之前**。它是SDK-return/DataHub-ingress timing，不是wire-level arrival；parser自己的`datetime.now(UTC)`也不是vendor event time或historical received_at。
 
-## DataHub 接收边界
+## 新收口：risk-coordinate Validation v1
 
-当前真实源码能支持的最早 DataHub 控制边界冻结为：
+历史分支 `research/risk-coordinate-validation-v1-20260909` 并非“未执行”：审计恢复出原成功 run `34303912251`，但其结果从未写回当前权威树。本轮用**完全相同的冻结 protocol/runner blob**重新执行 run `34667783528`，110,911个2024/2025 Validation rows与旧run逐项复现。
 
-**TDX Python SDK `get_security_quotes()` 返回 → DataHub `parse_quotes()` 之前**。
+正式结论：
 
-它是 `tdx_hq_sdk_return` / DataHub ingress timing，不是 raw TCP/frame arrival。DataHub parser 自己生成的 `datetime.now(UTC)` 仍只是 parser-time metadata，不是 vendor event time，也不是历史 `received_at`。
+**RISK_COORDINATE_VALIDATION_NOT_FULLY_REPLICATED_NO_THRESHOLD_RETUNE**。
 
-## 性能证据边界
+更具体地说：
 
-Action 在 GitHub runner 上做了3,000次、每次2 quote的纯合成 wrapper 开销测试：增量 median 59,296 ns、p95 95,610 ns、p99 109,112 ns；6,000 receipt 与6,000 parsed records全部完成，pending batch=0。
+- state-persistence轴在STAR50/CSI1000 × 2024/2025四个池全部通过，Unsafe对未来15m继续Unsafe概率的增量约 **+47.88pp 至 +51.69pp**；
+- M3 `>2` 对 `<=0` 的未来15m RMS effect-size gate 在全部 state/index/year 极端比较中通过，倍率约 **1.83×–2.71×**；
+- 但完整 amplitude-axis promotion 在三个 Unsafe 极端格因冻结最小样本门槛失败：STAR50-2025 `>2` n=19<30；CSI1000-2024 `<=0` n=48<100；CSI1000-2025 `>2` n=20<30；
+- 因此 frozen full-replication verdict 仍是 `validation_diagnostic_does_not_fully_replicate`；
+- 不允许事后降低n门槛、合并年份、移动M3 band或调阈值救结果；
+- 不自动启动“M3对D4增量价值”作为救援实验。
 
-这只是 Python wrapper 的云端描述性开销，不是本地DataHub性能、feed/network latency或生产门槛。
+原run artifact id `10086030669`；复现run artifact id `10289539266`。无2026、无BlackBox、无PnL、无candidate nomination、无production authority。
 
-## 现在真正还缺的是什么
+## 研究 backlog 审计
 
-云端可执行的 recorder/adapter/schema/full-sample/governance 工程验收已经完成。当前缺口不再是“让本地模型做 wiring/测试”，而是一个未来才可能存在的数据证据：**真实本机 feed 运行后产生的 prospective reception observations**。
+为避免继续靠记忆接管旧设计，已对 **112个 `research/*` 分支**做云端扫描。run `34668006394` 全绿：
 
-GitHub Actions不能制造真实本机到达时钟。因此在没有治理允许使用的未来 true-reception 数据之前：
+- 81：RESULT_PRESENT；
+- 8：EXECUTED_RESULT_NOT_PERSISTED；
+- 1：FROZEN_NOT_SUCCESSFULLY_EXECUTED；
+- 2：FROZEN_DESIGN_ONLY；
+- 1：EXECUTED_NO_RESULT_MARKER；
+- 19：OTHER。
 
-- 不启动D6/V20；
-- 不把合成时钟冒充实测延迟；
-- 不查询BlackBox逐行细节；
-- 不计算PnL；
-- 不提高production authority。
+当前优先级不是再发明新版本，而是先审计真正冻结但未成功执行的 `research/session-aware-information-set-bounds-v0617-20260907`，确认其是否仍科学相关、是否已被后续机制取代，再决定是否原样接管执行。
 
-与此同时，可以继续推进**不依赖真实 reception clock 的云端研究线**；是否启动具体新题由已有证据和治理决定，不因“缺日志”强造新模型。
+## 当前证据边界
 
-`historical_market_data_accepted=true`; `cloud_acceptance_supported=true`; `full_normalized_sample_numerical_replay_performed=true`; `live_recorder_installed=false`; `true_reception_rows_collected=false`; `measured_feed_latency_supported=false`; `external_consumer_accepted=false`; `blackbox_queried=false`; `d6_started=false`; `v20_started=false`; `production_authority=false`。
+reception线唯一仍不可由云端创造的证据，是未来本机真实feed运行后产生的true-reception observations；它不阻塞其他云端研究。
+
+继续研究时仍遵守停止线：不为V19 accuracy开V20；不因缺日志强开D6；不查询BlackBox逐行细节；不计算PnL；不恢复交易router；不提高production authority。
+
+`historical_market_data_accepted=true`; `cloud_acceptance_supported=true`; `risk_coordinate_full_replication=false`; `risk_coordinate_threshold_retune_allowed=false`; `live_recorder_installed=false`; `true_reception_rows_collected=false`; `measured_feed_latency_supported=false`; `external_consumer_accepted=false`; `blackbox_queried=false`; `d6_started=false`; `v20_started=false`; `production_authority=false`。
