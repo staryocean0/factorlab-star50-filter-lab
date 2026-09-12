@@ -1,0 +1,35 @@
+{
+  "schema": "session_aware_information_set_bounds_v0617_closeout@1.0",
+  "date": "2026-09-12",
+  "decision": "V0617_PRIOR_IDENTITY_IRRECOVERABLE_REPLAY_PERMANENTLY_BLOCKED_UNDER_FROZEN_PROTOCOL",
+  "implementation_acceptance_preserved": true,
+  "real_authoritative_replay_executed": false,
+  "strict_pre_v0617_cutoff": "2026-09-07T10:20:25Z",
+  "audit": {
+    "run_id": 34670259559,
+    "job_id": 103490176002,
+    "commits_scanned": 70,
+    "text_blobs_scanned": 4412,
+    "authoritative_source_candidates": 0,
+    "v0615_leg_universe_candidates": 0,
+    "required_precommit_identity_recovered": false,
+    "unreachable_object_census_empty": true,
+    "artifact_id": 10290877670,
+    "artifact_zip_sha256": "3cf780df23a430cb07519e30d1e01850ae4287f79ab0d57cc4cb86698605f347",
+    "audit_json_sha256": "90bd96653474a2075a3e7df68b99f48c313ba0908745c7d7d72882c7df489aa5",
+    "stdout_sha256": "a412168ae3aceb453615048d1f71b0da2204f84cc23a6253f29cc3c5f9e3c601",
+    "pickaxe_sha256": "a87d3e82850bb7f578fc8d0fbc1c876de404be61d3d8663da3f8fff4b003263b",
+    "unreachable_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "forbidden_retroactive_substitutions": [
+    "newly_computed_hash_for_newly_selected_349923_row_candidate",
+    "reconstructed_v0615_leg_universe",
+    "known_350561_row_factorlab_surface",
+    "deleted_session_edge_or_gap_legs",
+    "inferred_support_from_neighboring_closes_or_wall_clock_buckets"
+  ],
+  "scientific_result_inferred": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "production_authority": false
+}
