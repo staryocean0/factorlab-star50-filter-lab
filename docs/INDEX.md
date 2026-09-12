@@ -4,6 +4,25 @@
 
 [当前任务](../CURRENT_RESEARCH.md) → [接续](../CONTINUE_HERE.md) → [M3程序状态](../research/activity_degree_incremental_utility_v1/PROGRAM_STATE.json) → [正式结果](../research/activity_degree_incremental_utility_v1/RESULTS.md) → [执行回执](../research/activity_degree_incremental_utility_v1/EXECUTION_RECEIPT.json) → [原始Validation结果](../research/activity_degree_incremental_utility_v1/evidence/VALIDATION_RESULTS.json)。
 
+## 历史 research backlog：已关闭
+
+112个 `research/*` 分支的高召回审计曾标出12个“可能未闭环”分支。逐项回读原Action、后继Validation与治理后，12/12均已裁决，**remaining executable legacy backlog = 0**。
+
+[机器closeout ledger](research/RESEARCH_BACKLOG_CLOSEOUT_20260912.json) → [人类说明](research/RESEARCH_BACKLOG_CLOSEOUT_20260912.md) → [v0.6.17严格身份closeout](research/session_aware_information_set_bounds_v0617/CLOSEOUT_RECEIPT_20260912.json)。
+
+`execution-audit` 现执行 `scripts/validate_research_backlog_closeout.py`，确保这12项不会因后续文档漂移重新被误当成当前待办。
+
+关键分类：
+
+- first-shock minute、V7、两个RMR：已执行但未形成当前可晋升机制；
+- V8/V9/V10：祖先Development/Validation链已被V17/V19吸收；
+- V11 2026-09-11：重复frozen设计，正式V11已失败，V12又否定简单expiry解释；
+- risk-gate-takeover：交接协调分支，不是漏跑实验；
+- old highvol-router：包含route/hold/cost/PnL/Sharpe/MDD，当前scope明确退役；
+- v0.6.17：实现通过，但严格pre-v0.6.17 Git审计找不到协议要求的两个事前identity，故 `V0617_PRIOR_IDENTITY_IRRECOVERABLE_REPLAY_PERMANENTLY_BLOCKED_UNDER_FROZEN_PROTOCOL`，不能事后补hash。
+
+历史分支和原verdict全部保留，closeout不删除、不改写历史证据，也不创造新candidate。
+
 ## Activity-degree incremental utility V1
 
 决定性Action `34670357953`完成Development fit/freeze与2024–2025 reusable Validation。冻结模型 SHA256 `89660f0825373b5afd8d1d9c51642424fe79fae925f44d0f25a6f2f96ca78d8d`。
@@ -39,6 +58,6 @@
 
 ## 下一执行边界
 
-优先收口历史research backlog；只在发现**不同因果机制**时开新科学题。不得把新题作为current-M3 refresh失败的参数救援。
+没有旧分支需要继续补跑。只有发现**不同因果风险机制**、并能在结果前冻结问题/比较器/门槛时才开新科学题。不得把新题作为current-M3、V19、旧detector、reversal或router的参数救援。
 
 不查BlackBox、不读受保护2026逐行数据、不算PnL、不恢复交易router、不为V19开V20、不因reception缺口开D6、不提高production authority。
