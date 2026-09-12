@@ -1,0 +1,22 @@
+{
+  "schema": "prospective_reception_recorder_v1_program_state",
+  "updated": "2026-09-12",
+  "state": "PROSPECTIVE_RECEPTION_RECORDER_V1_REFERENCE_ACCEPTED_LOCAL_INSTALL_PENDING",
+  "historical_reception_state": "D5R_TRUE_RECEPTION_CLOCK_UNAVAILABLE_HISTORICAL_LIVE_LATENCY_UNVERIFIED",
+  "reference_implementation": "research/prospective_reception_recorder_v1/recorder.py",
+  "validator": "research/prospective_reception_recorder_v1/validate_capture.py",
+  "protocol": "research/prospective_reception_recorder_v1/PROTOCOL.md",
+  "schema_file": "research/prospective_reception_recorder_v1/SCHEMA.json",
+  "synthetic_tests_passed": 18,
+  "compileall_passed": true,
+  "live_data_read": false,
+  "live_recorder_installed": false,
+  "true_reception_rows_collected": false,
+  "measured_feed_latency_supported": false,
+  "external_consumer_accepted": false,
+  "blackbox_queried": false,
+  "d6_started": false,
+  "v20_started": false,
+  "production_authority": false,
+  "next_action": "LOCAL_DATAHUB_SYNTHETIC_INTEGRATION_THEN_PROTECTED_PROSPECTIVE_CAPTURE"
+}
