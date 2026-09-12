@@ -1,0 +1,40 @@
+name: research-backlog-audit
+on:
+  push:
+    branches: [audit/research-backlog-20260912]
+    paths:
+      - 'scripts/audit_research_backlog.py'
+      - '.github/workflows/research-backlog-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch all research refs
+        run: git fetch origin '+refs/heads/research/*:refs/remotes/origin/research/*'
+      - name: Scan frozen/executed/result states
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p artifacts/research_backlog_audit
+          python scripts/audit_research_backlog.py \
+            --repo '${{ github.repository }}' \
+            --output artifacts/research_backlog_audit/audit.json \
+            | tee artifacts/research_backlog_audit/stdout.txt
+      - name: Hash audit evidence
+        run: |
+          cd artifacts/research_backlog_audit
+          sha256sum audit.json stdout.txt > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: research-backlog-audit-${{ github.run_id }}
+          path: artifacts/research_backlog_audit
+          retention-days: 90
+          if-no-files-found: error
