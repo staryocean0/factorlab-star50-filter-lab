@@ -2,9 +2,6 @@ name: activity-degree-incremental-utility-v1
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - research/activity-degree-incremental-utility-v1-20260912
 
 permissions:
   contents: read
