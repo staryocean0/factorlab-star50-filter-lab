@@ -1,17 +1,24 @@
 # STAR50 / CSI1000 当前权威索引
 
-## D5_BOUNDED_RESEARCH_CONSUMER_ACCEPTED_EXTERNAL_INTEGRATION_PENDING
+## 当前断点：D5R_TRUE_RECEPTION_CLOCK_UNAVAILABLE_HISTORICAL_LIVE_LATENCY_UNVERIFIED
 
-[方向](research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md) → [D5进度](../research/state_degree_consumer_d5/PROGRAM_STATE.json) → [结果](../research/state_degree_consumer_d5/RESULTS.md) → [执行](../research/state_degree_consumer_d5/EXECUTION_RECEIPT.json) → [独立复核](../research/state_degree_consumer_d5/INDEPENDENT_VERIFICATION.json) → [协议](../research/state_degree_consumer_d5/PROTOCOL.md) / [源码身份](../research/state_degree_consumer_d5/SOURCE_IDENTITY.json)。
+[当前任务](../CURRENT_RESEARCH.md) → [D5R程序状态](../research/reception_clock_adjudication_d5r/PROGRAM_STATE.json) → [D5R结果](../research/reception_clock_adjudication_d5r/RESULTS.md) → [判定回执](../research/reception_clock_adjudication_d5r/DECISIVE_RECEIPT.json) → [本地负结果包说明](ops/receipts/star50_true_reception_raw_20260912/README.md)。
 
-232704事件、116352 E15增强、930816固定查询零差异；40项测试、20个消费者前缀通过。本仓样例接入已执行，不是外部或生产上线。[运行说明](../research/state_degree_consumer_d5/REPRODUCE.md) / [本地研究接入交接](../research/state_degree_consumer_d5/LOCAL_HANDOFF.md)。
+本地检索确认两个指数没有逐条真实本机 reception timestamp；Release 包 quote rows=0。历史 measured-latency / actual received_at 验收因此无法完成。`available_at`、batch `ingested_at`、mtime、下载时间、market observation time 与 row_index 均不得替代 `received_at`。
 
-## 保持原样的历史证据
+## 保持原样的历史阶段证据
 
-- [D4有限连续属性支持](../research/continuous_risk_utility_d4/RESULTS.md) / [原消费者契约](../research/continuous_risk_utility_d4/CONSUMER_CONTRACT.md)。15/30/60m波动及30m尾部支持，15/60m尾部未晋升；自适应可复用Validation，非fresh OOS。
-- [D3未晋升](../research/causal_state_utility_d3/RESULTS.md) / [D2双时钟回放](../research/causal_state_delivery_d2/RESULTS.md) / [D1契约](../research/causal_state_delivery_v1/CONTRACT.md)。
-- [V19 Validation](../research/highvol_risk_episode_state_machine_v19_validation/VALIDATION_RESULTS.md) / [残差审计](../research/v19_residual_failure_audit/RESULTS.md)。
+- [D5样例消费者](../research/state_degree_consumer_d5/RESULTS.md)：本仓 consumer/as-of/过期/缺失工程验收通过，但接收延迟样例是合成/理想时钟；
+- [D4连续属性](../research/continuous_risk_utility_d4/RESULTS.md)：15/30/60m波动与30m尾部有限支持；
+- [D3](../research/causal_state_utility_d3/RESULTS.md)：增量效用未获原实际门槛晋升；
+- [D2](../research/causal_state_delivery_d2/RESULTS.md)：双时钟历史工程回放；
+- [V19](../research/highvol_risk_episode_state_machine_v19_validation/VALIDATION_RESULTS.md) / [残差审计](../research/v19_residual_failure_audit/RESULTS.md)；
 - [V18](../research/highvol_unsafe_switch_on_v18_validation/VALIDATION_RESULTS.md) / [V17](../research/highvol_realtime_horizon_adaptive_v17_validation/VALIDATION_RESULTS.md) / [V16](../research/highvol_horizon_adaptive_v16/FROZEN_HORIZON_ADAPTIVE_SURFACE.json)。
 
-[当前任务](../CURRENT_RESEARCH.md)、[接续](../CONTINUE_HERE.md)、[V2](governance/DATA_USAGE_POLICY_V2.md)、[角色](governance/data_usage_declaration.json)、[桶边界](governance/BUCKET_SCOPE_REPAIR_20260909.md)、[时钟澄清](governance/available_at_owner_clarification_20260906.json)、[BlackBox ledger](governance/blackbox_query_ledger.json)。
-旧入口快照11ade25e0ea7a25321955015e327854915cc211a，旧PROGRAM_STATE不覆盖当前阶段。d5_completed=true；external_consumer_accepted=false；d6_started=false；production_authority=false。
+## 下一可执行条件
+
+只有未来前瞻 recorder 真正持久化 market/event timestamp 与 local receive wall-clock/monotonic clock/sequence 后，才重新打开真实 reception 验收。没有这类新数据时保持冻结维护，不开 D6/V20。
+
+[V2](governance/DATA_USAGE_POLICY_V2.md)、[桶边界](governance/BUCKET_SCOPE_REPAIR_20260909.md)、[available_at澄清](governance/available_at_owner_clarification_20260906.json)、[BlackBox ledger](governance/blackbox_query_ledger.json)不变。
+
+`true_reception_timestamp_available=false`; `measured_feed_latency_supported=false`; `external_consumer_accepted=false`; `production_authority=false`。
