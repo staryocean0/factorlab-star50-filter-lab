@@ -1,0 +1,52 @@
+name: v0617-prior-identity-audit
+on:
+  push:
+    branches: [audit/v0617-prior-identity-recovery-20260912]
+    paths:
+      - 'scripts/audit_v0617_prior_identity.py'
+      - '.github/workflows/v0617-prior-identity-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch every current remote head and tag
+        run: |
+          git fetch origin '+refs/heads/*:refs/remotes/origin/*' '+refs/tags/*:refs/tags/*' --force
+          git fsck --no-reflogs --unreachable --no-progress > unreachable.txt || true
+      - name: Exhaustive pre-freeze text-blob scan
+        run: |
+          mkdir -p artifacts/v0617_prior_identity_audit
+          python scripts/audit_v0617_prior_identity.py \
+            --cutoff '2026-09-07T10:25:32Z' \
+            --output artifacts/v0617_prior_identity_audit/audit.json \
+            | tee artifacts/v0617_prior_identity_audit/stdout.txt
+          cp unreachable.txt artifacts/v0617_prior_identity_audit/unreachable.txt
+      - name: Search commit diffs before freeze using pickaxe
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT=artifacts/v0617_prior_identity_audit/pickaxe.txt
+          : > "$OUT"
+          for term in '349923' '0.6.15' 'v0615' 'leg_universe' 'leg-universe' 'strict_pair' 'strict-pair' 'expected_source_sha' 'source_sha256' 'identity_manifest'; do
+            echo "===== TERM: $term =====" >> "$OUT"
+            git log --all --before='2026-09-07T10:25:32Z' --date=iso-strict --format='%H %cI %s' -S"$term" --name-status -- . >> "$OUT" || true
+          done
+          cat "$OUT"
+      - name: Hash evidence
+        run: |
+          cd artifacts/v0617_prior_identity_audit
+          sha256sum audit.json stdout.txt pickaxe.txt unreachable.txt > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v0617-prior-identity-audit-${{ github.run_id }}
+          path: artifacts/v0617_prior_identity_audit
+          retention-days: 90
+          if-no-files-found: error
