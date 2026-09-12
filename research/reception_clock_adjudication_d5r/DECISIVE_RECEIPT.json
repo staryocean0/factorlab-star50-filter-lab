@@ -1,0 +1,44 @@
+{
+  "schema": "reception_clock_adjudication_d5r_decisive_receipt_v1",
+  "decision": "D5R_TRUE_RECEPTION_CLOCK_UNAVAILABLE_HISTORICAL_LIVE_LATENCY_UNVERIFIED",
+  "evidence_commit": "09cb66a86be6a9bef3a91b52af34b747f812b407",
+  "release_tag": "star50-true-reception-raw-20260912",
+  "release_asset_id": 558289013,
+  "release_asset_name": "STAR50_TRUE_RECEPTION_RAW_20260912.zip",
+  "release_asset_bytes": 5446,
+  "release_asset_sha256": "63badecf70405452674831f41a6aef0de174ca8d10b113fc32c91a8e1ca24cf0",
+  "local_verdict": "NO_TRUE_RECEPTION_TIMESTAMP_AVAILABLE",
+  "quote_rows": 0,
+  "searched_live_recording_rows": {
+    "recording_datasets": 0,
+    "recording_runtime": 0,
+    "subscriptions": 0,
+    "replay_sessions": 0,
+    "source_receipts": 0
+  },
+  "recording_lake_materialized": false,
+  "ticks_parquet_materialized": false,
+  "forbidden_substitutes": [
+    "available_at",
+    "batch_ingested_at",
+    "file_mtime",
+    "download_time",
+    "market_observation_time",
+    "row_index",
+    "other_instrument_local_timestamp"
+  ],
+  "preserved_authorities": [
+    "V19_VALIDATED_RESIDUAL_PATH_CLOSED_NO_V20",
+    "D2_CAUSAL_REPLAY_SUPPORTED_D3_NOT_EXECUTED",
+    "D3_INCREMENTAL_UTILITY_NOT_SUPPORTED",
+    "D4_CONTINUOUS_REFRESH_UTILITY_SUPPORTED_FOR_SPECIFIED_ENDPOINTS",
+    "D5_BOUNDED_RESEARCH_CONSUMER_ACCEPTED_EXTERNAL_INTEGRATION_PENDING"
+  ],
+  "historical_measured_reception_acceptance_possible": false,
+  "prospective_recording_required": true,
+  "d6_started": false,
+  "v20_started": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "production_authority": false
+}
