@@ -1,0 +1,61 @@
+{
+  "schema": "degree_trajectory_utility_v1_execution_receipt",
+  "decision": "ONE_STEP_DEGREE_TRAJECTORY_INCREMENTAL_UTILITY_NOT_SUPPORTED",
+  "source_main_commit": "e29c44cd61cdfcead7321a036850d7cd1b33006b",
+  "execution_branch": "research/degree-trajectory-utility-v1-20260912",
+  "protocol_git_blob": "fe2eebaa6b15c3f9a57ce05b3295b015acba7ea7",
+  "runner_git_blob": "0afc45e5061f45f544ecc7ee4519eae4e5204bca",
+  "parent_runner_git_blob": "b4d3c72e58706b2eb9ae8425f7e7f5439ba002c5",
+  "workflow_run_id": 34680352701,
+  "fit_job_id": 103517762036,
+  "validation_job_id": 103517878447,
+  "frozen_model_sha256": "04b49e8613cad5b24822f8e827f8d6513f6fef74da5c2df0851e03473b4db188",
+  "fit_artifact": {
+    "id": 10293132822,
+    "size_bytes": 25793,
+    "zip_sha256": "01cb69405d54b2af333e9d4de768669c9ccf42f0f789b2cf0dfc01b78864b64c"
+  },
+  "validation_artifact": {
+    "id": 10294052627,
+    "size_bytes": 68727,
+    "zip_sha256": "60c9133dbf6632b2f7dcf9795c70038ed50f4d18718fc54aaf2378010ceaeba8",
+    "validation_results_sha256": "16e7db8b780f64cfa0fcc5091d3ab1feed4c63658465697381b2ae9dda390763"
+  },
+  "tests": {
+    "causal_and_complexity_tests": 5,
+    "fit_phase_passed": true,
+    "validation_phase_passed": true,
+    "same_run_frozen_artifact_used_for_validation": true,
+    "evidence_persisted_to_git": true
+  },
+  "feature_identity": {
+    "C_columns": 84,
+    "T_columns": 104,
+    "O_columns": 104,
+    "T_O_schema_identical": true,
+    "trajectory_block_columns": 20,
+    "lag1_delta_raw_information_bijective": true
+  },
+  "development_rows": {
+    "15m": 59614,
+    "30m": 50890,
+    "60m": 33442
+  },
+  "validation_rows": {
+    "15m": 39770,
+    "30m": 33950,
+    "60m": 22310
+  },
+  "trajectory_coverage_all_horizons": 1.0,
+  "joint_endpoint_support_count": 0,
+  "formal_comparison_support_count": 0,
+  "validation_reused": true,
+  "fresh_oos": false,
+  "read_2026": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "candidate_nominated": false,
+  "production_authority": false,
+  "v20_started": false,
+  "d6_started": false
+}

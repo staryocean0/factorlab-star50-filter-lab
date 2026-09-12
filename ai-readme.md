@@ -2,10 +2,11 @@
 
 Read `AGENTS.md`, `CURRENT_RESEARCH.md` and `CONTINUE_HERE.md` first.
 
-Latest scientific state: **`HISTORICAL_SHOCK_BURDEN_INCREMENTAL_UTILITY_NOT_SUPPORTED`**.
+Latest scientific state: **`ONE_STEP_DEGREE_TRAJECTORY_INCREMENTAL_UTILITY_NOT_SUPPORTED`**.
 
 Preserved predecessor states:
 
+- `HISTORICAL_SHOCK_BURDEN_INCREMENTAL_UTILITY_NOT_SUPPORTED`;
 - `CROSS_INDEX_CURRENT_DEGREE_INCREMENTAL_UTILITY_NOT_SUPPORTED`;
 - `CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`.
 
@@ -13,29 +14,29 @@ Historical research backlog is closed; remaining executable legacy backlog = 0. 
 
 Primary current authority:
 
-- `research/historical_shock_burden_utility_v1/PROGRAM_STATE.json`
-- `research/historical_shock_burden_utility_v1/RESULTS.md`
-- `research/historical_shock_burden_utility_v1/DECISIVE_RECEIPT.json`
-- `research/historical_shock_burden_utility_v1/EXECUTION_RECEIPT.json`
-- `research/historical_shock_burden_utility_v1/evidence/VALIDATION_RESULTS.json`
-- `research/historical_shock_burden_utility_v1/evidence/FROZEN_MODELS.json`
+- `research/degree_trajectory_utility_v1/PROGRAM_STATE.json`
+- `research/degree_trajectory_utility_v1/RESULTS.md`
+- `research/degree_trajectory_utility_v1/DECISIVE_RECEIPT.json`
+- `research/degree_trajectory_utility_v1/EXECUTION_RECEIPT.json`
+- `research/degree_trajectory_utility_v1/evidence/VALIDATION_RESULTS.json`
+- `research/degree_trajectory_utility_v1/evidence/FROZEN_MODELS.json`
 
-Interpret the latest result strictly. S adds a fixed 12-valid-completed-bar confirmed 3σ shock-count / shock-excess memory block to the own-index D4-style current-I/V baseline. H is the exact equal-complexity control using confirmed historical high-vol count/excess. S/H are both 104 columns versus C=84.
+Interpret the latest result strictly. C is the 84-column own-index D4-style current-I/V baseline. T adds the immediately preceding confirmed degree; O adds the two-valid-return-bars-back degree with the exact same 20-column transform/state-interaction block. T/O are both104 columns with identical schema/scaling/ridge. Since current I/V is already in C, lag1 degree and current-minus-lag1 delta are bijective at the raw-information level.
 
-The decisive run is `34679293167`; original frozen model SHA is `65f9403e3aae00873432403f833c1d8772429c5172fc7f3fd76581a19a4222d3`. Validation n is 39,770 / 33,950 / 22,310 at 15/30/60m, with 100% memory coverage among otherwise eligible rows.
+Decisive run `34680352701`; frozen model SHA `04b49e8613cad5b24822f8e827f8d6513f6fef74da5c2df0851e03473b4db188`. Validation n is39,770 /33,950 /22,310 at15/30/60m with100% trajectory coverage.
 
-All twelve formal relative loss reductions are below the frozen 1% practical gate. RMS gains are only about +0.170%/+0.170% at 15m, +0.183%/+0.198% at 30m and +0.241%/+0.347% at 60m for S-vs-C/H. Tail gains are <0.05% and absolute Brier gains are far below 0.0005. Six endpoint×horizon joint promotions are all false.
+All twelve formal relative loss reductions are below the frozen1% practical gate. RMS gains T-vs-C/O are about +0.114%/+0.113% at15m, **+0.150%/+0.152% at30m**, and +0.024%/-0.041% at60m. Tail effects are tiny;15/30m T-vs-O tail is negative; absolute Brier gains are far below0.0005.
 
-Do not misstate this as “shock history contains zero information”: 15m S-vs-C has a small positive adjusted interval and stable pooled signs. The correct conclusion is that the fixed representation does **not** provide enough stable practical shock-specific increment beyond current I/V, recent-shock age and generic high-vol history to justify a new coordinate.
+Do not misstate this as “delta contains zero information”:30m T-vs-C has a small positive adjusted interval. The correct conclusion is that the one-step trajectory does **not** show enough magnitude or stable advantage over the equal-complexity lag2 control for independent predictive promotion.
 
-V5 recurrent-shock clock-reset evidence remains valid. It supports timing since the latest shock, not promotion of cumulative shock count/excess. Never use the current negative result to retune 12→6/24 bars, decay, 3σ/1.5 thresholds, index/state/time subsets, horizons, ridge, bootstrap family or to delete H.
+D4/D5 `lag_intensity`, `lag_ratio`, `delta_intensity`, `delta_ratio` remain allowed as descriptive/diagnostic/consumer fields under their existing contract, but they are not validated predictive gates. Do not change D5 decision logic or V19 from this result.
 
-The shock-memory fields must not be added to D5 or V19. Cross-index current degree and current-M3 remain non-promoted. D4 endpoint-limited own current-I/V support, D3 negative practical decision, V19 freeze and D5 bounded consumer remain unchanged.
+Never use this reusable Validation result to retune lag3/lag4, smoothing/decay, normalizers, nonlinear transforms, selected symbol/state/time subsets, ridge/horizons/bootstrap family, or to drop O.
 
-Backlog closeout rules still apply: old detector/RMR/router branches and v0.6.17 are not current pending science. Do not infer pending work from old branch names.
+The prior shock-memory, cross-index and M3 negative promotion decisions remain authoritative; D4 own current-I/V support, D3 negative practical decision, V19 freeze and D5 bounded consumer remain unchanged.
 
 Historical D5R still says no true local per-tick `received_at` exists; never infer one from available_at, batch ingested_at, file mtime, observation time or row order.
 
-Open new science only for a genuinely distinct causal risk mechanism frozen before outcomes; it must not be a rescue of shock-memory window/decay/threshold/subgroups, cross-index current degree, M3, V19 or retired trading/router work. Do not query BlackBox or protected 2026 row detail, do not start V20/D6, and do not raise production authority.
+Open new science only for a genuinely distinct causal risk mechanism frozen before outcomes. It must not be a rescue of trajectory lags/smoothing, shock-memory, cross-index current degree, M3, V19 or retired trading/router work. Do not query BlackBox or protected2026 row detail, do not start V20/D6, and do not raise production authority.
 
 `production_authority=false`.
