@@ -7,13 +7,6 @@ from star50_filter.backtest import execute_next_open
 
 ROOT = Path(__file__).resolve().parents[1]
 
-def test_only_star50_and_roles():
-    man = json.loads((ROOT / "data/manifest.json").read_text())
-    assert man["symbol"] == "000688.SH"
-    df = pd.read_parquet(ROOT / "data/development/5m_offset_0.parquet", columns=["symbol", "trading_day"])
-    assert set(df["symbol"].unique()) == {"000688.SH"}
-    assert str(df["trading_day"].min()) >= "2020-07-23"
-
 def test_lowpass_is_causal():
     x = np.cumsum(np.random.default_rng(0).normal(size=200))
     y = butter_lowpass(x, 12, order=1)

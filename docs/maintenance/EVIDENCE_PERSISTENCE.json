@@ -1,0 +1,270 @@
+[
+  {
+    "files_verified": [
+      {
+        "file": "FIT_RECEIPT.json",
+        "sha256": "39186882be4b257da3ee7ca74ee23daa9454e19d498fd21190d198e7e9c46dea"
+      },
+      {
+        "file": "FROZEN_MODELS.json",
+        "sha256": "bd01e23def9300781c64a03f8377247ff30c67d0191c6cd213329d382ff8262c"
+      },
+      {
+        "file": "MODEL_SHA256.txt",
+        "sha256": "e84298b5743a93306450d7789e020eb24434e9eb1eeb251bd457efdcc4873cb7"
+      },
+      {
+        "file": "VALIDATION_RESULTS.json",
+        "sha256": "67b267af11802562f4f576d151472b064323c82af2a34e4451e471beb99b2cdc"
+      },
+      {
+        "file": "blocks_15_future_tail_T_vs_C_20d.csv",
+        "sha256": "fab73e7be657a8205373de8a50a65c90a76d97abb5a78635897f57e699e88da8"
+      },
+      {
+        "file": "blocks_15_future_tail_T_vs_C_5d.csv",
+        "sha256": "39c320d1d60646a4020149601c9537fa37d4bb8ceb0eb5d547e1617209f387b1"
+      },
+      {
+        "file": "blocks_15_future_tail_T_vs_O_20d.csv",
+        "sha256": "a58d3b7d5e4634fb5da6b9c5e10eea8d5b1bd2606d084b6f5e279a6067aafc02"
+      },
+      {
+        "file": "blocks_15_future_tail_T_vs_O_5d.csv",
+        "sha256": "693b618bcacc5e74691453b2cc70028119c4c720227b9203cf606a1efff8d164"
+      },
+      {
+        "file": "blocks_15_log_future_sigma_T_vs_C_20d.csv",
+        "sha256": "e0d5c5d96e846dcfe90f7da4d1b8a4c3fc597bc30a74094b804b3e21a9bd7973"
+      },
+      {
+        "file": "blocks_15_log_future_sigma_T_vs_C_5d.csv",
+        "sha256": "58966557348c5df1c1146bd04872b9f59b3f61501fd0da6c7db66ead6bfad768"
+      },
+      {
+        "file": "blocks_15_log_future_sigma_T_vs_O_20d.csv",
+        "sha256": "5859fb49e9340cdf43dbf51598b30773feb0c2def68e1adfb6a19af001d0c109"
+      },
+      {
+        "file": "blocks_15_log_future_sigma_T_vs_O_5d.csv",
+        "sha256": "7a80710d237834561ba45024e02744e8d0c22cf4e088855720fe50da2037d8de"
+      },
+      {
+        "file": "blocks_30_future_tail_T_vs_C_20d.csv",
+        "sha256": "c51beab05fea06cc9bc3ed07b6aa513476e90a6434990ba651785577c8e58532"
+      },
+      {
+        "file": "blocks_30_future_tail_T_vs_C_5d.csv",
+        "sha256": "9109cb45732b6f4afd7ef26e9138e5a7ac74bbdde0568756591511f6bd4ed465"
+      },
+      {
+        "file": "blocks_30_future_tail_T_vs_O_20d.csv",
+        "sha256": "40de6d608554955f3c7e9b74dd0d82acbc1d2deab671d67ba5d4aead57174d3a"
+      },
+      {
+        "file": "blocks_30_future_tail_T_vs_O_5d.csv",
+        "sha256": "d72b3a1a7f608da4a0725a5cd989fe3ae99028e3686d3fad8429426d50365ece"
+      },
+      {
+        "file": "blocks_30_log_future_sigma_T_vs_C_20d.csv",
+        "sha256": "39a5a86ee255a0c725c74bde94f05269798df1b365cc9f3965531c8a9e34c7bc"
+      },
+      {
+        "file": "blocks_30_log_future_sigma_T_vs_C_5d.csv",
+        "sha256": "a12308cab2cced699c11b5fce761e6fe8808d49182830ef1bc03d3f026b9a23c"
+      },
+      {
+        "file": "blocks_30_log_future_sigma_T_vs_O_20d.csv",
+        "sha256": "0b9729e51c47150d68f8f491f55b4024ecc05efae1c3f10d260ec8680f011aef"
+      },
+      {
+        "file": "blocks_30_log_future_sigma_T_vs_O_5d.csv",
+        "sha256": "12b6167c547ebe58b3fae0bc30c0772e24eae54739b56d0fb75a0657591ab472"
+      },
+      {
+        "file": "blocks_60_future_tail_T_vs_C_20d.csv",
+        "sha256": "359c661587d50db339655c100aab79bf798ae6c4b07fd614116f1d0258200b7f"
+      },
+      {
+        "file": "blocks_60_future_tail_T_vs_C_5d.csv",
+        "sha256": "f28a662ec9d5cdd77892fe03b92ec759fa28f8ba3102a3796d51d1b0ddefe4fc"
+      },
+      {
+        "file": "blocks_60_future_tail_T_vs_O_20d.csv",
+        "sha256": "5a1bf007117e534c9b40ed080aa08b94d828244934b4da4bf46d8fca3505fa4e"
+      },
+      {
+        "file": "blocks_60_future_tail_T_vs_O_5d.csv",
+        "sha256": "39dd4ff7bcc7cf41e64325c40ff75a69dfdf608a43de3a54742d39a9fcb79a96"
+      },
+      {
+        "file": "blocks_60_log_future_sigma_T_vs_C_20d.csv",
+        "sha256": "725f1cf1ab60c60c504258e41d370c40a04eea0ba9fa82f41d65228ecda27cba"
+      },
+      {
+        "file": "blocks_60_log_future_sigma_T_vs_C_5d.csv",
+        "sha256": "e5ab0f7cd9a0e2d28cc8da477b6b1fcd389c82508b7d1274ba5dd39b9873bd63"
+      },
+      {
+        "file": "blocks_60_log_future_sigma_T_vs_O_20d.csv",
+        "sha256": "d009a890bed289fb62a65369111beb1a99221f13db318ddffe6a826f0c9db77c"
+      },
+      {
+        "file": "blocks_60_log_future_sigma_T_vs_O_5d.csv",
+        "sha256": "36e9077973d777a5afd1b3eccf8c19d0dfa0dafe54776fec2e6f327b8f11eeb1"
+      },
+      {
+        "file": "comparisons.csv",
+        "sha256": "cc072efdfc215e15a11ba68c6e2ab694a9eb513941d2a99ca5b4f7460c174cf4"
+      },
+      {
+        "file": "slice_gains_15.csv",
+        "sha256": "10dc5585acb45aa2421fd064bbb5fa582c0a710948f4824179b356012c1adcd0"
+      },
+      {
+        "file": "slice_gains_30.csv",
+        "sha256": "ccc0441eae59aa93db6744b9efbfcb036e99d0c1e526924f4af957f3504f5b30"
+      },
+      {
+        "file": "slice_gains_60.csv",
+        "sha256": "f63ddc070017c340e62ca0f63de06453a6cd21af60ce3cbf9edeb231d22d25c6"
+      }
+    ],
+    "recomputed": false,
+    "study": "intrabar_temporal_reversal_utility_v1"
+  },
+  {
+    "files_verified": [
+      {
+        "file": "FIT_RECEIPT.json",
+        "sha256": "23107f9a2e7a1b712db2afa3a2cdb99c6996311155d729cfecf89aa8280f52da"
+      },
+      {
+        "file": "FROZEN_MODELS.json",
+        "sha256": "8f37d237172a86c23aa75baf3f69f2f5b8948cbbd12c267bdde5da6864607d94"
+      },
+      {
+        "file": "MODEL_SHA256.txt",
+        "sha256": "e40b0dd9ef2c647abc2afad36f10d6f4d6390ab23fb70d2e12f79d212eb4c6e0"
+      },
+      {
+        "file": "VALIDATION_RESULTS.json",
+        "sha256": "2cc44ce7baff43dfd84884e6ce1ebf81aada12c2644e1bbe48384ac4d8f82654"
+      },
+      {
+        "file": "blocks_15_future_tail_R_vs_B_20d.csv",
+        "sha256": "a65314ffda885e7ac6f44a8093839742298938696eabdfe1a007dc757453b7f0"
+      },
+      {
+        "file": "blocks_15_future_tail_R_vs_B_5d.csv",
+        "sha256": "53b9bc1d081c1d80dff60a6d3e0bde12d592e83a7771ac88815cdce0fa6fc74a"
+      },
+      {
+        "file": "blocks_15_future_tail_R_vs_Q_20d.csv",
+        "sha256": "fcc88f0633780d38c0490753949811fe2daa51663ae09fbf69750eef03d83da0"
+      },
+      {
+        "file": "blocks_15_future_tail_R_vs_Q_5d.csv",
+        "sha256": "32d4be7931010d555e52089c30270e91223e4061cc7f329918b558de7e2e26b2"
+      },
+      {
+        "file": "blocks_15_log_future_sigma_R_vs_B_20d.csv",
+        "sha256": "8942b64cd9a1930500d70ebccea0e815e0bb82af89b343e3341d8a18b35031d2"
+      },
+      {
+        "file": "blocks_15_log_future_sigma_R_vs_B_5d.csv",
+        "sha256": "64f271c73098d9173e8fdde37c7d6bc0617b4cf6dac9e774c32b3dc3f19f35dd"
+      },
+      {
+        "file": "blocks_15_log_future_sigma_R_vs_Q_20d.csv",
+        "sha256": "3a4d17f6e332da3f0b2a2e0f039b550d362b9168e39b37393d5a9fc609d8aa22"
+      },
+      {
+        "file": "blocks_15_log_future_sigma_R_vs_Q_5d.csv",
+        "sha256": "704cc62ddaa3c3b7f03f55d64d6ba2433b81bce1ceb4801aaa3a70fbee116674"
+      },
+      {
+        "file": "blocks_30_future_tail_R_vs_B_20d.csv",
+        "sha256": "1eb671304514cf07af4b06196890572ed89b3bd551c83dd453ecb9ea37bea959"
+      },
+      {
+        "file": "blocks_30_future_tail_R_vs_B_5d.csv",
+        "sha256": "604cfa3f02a7c3dfe82fba7af311a9d750b5fd5c8bfed3031e98880f4dc995a5"
+      },
+      {
+        "file": "blocks_30_future_tail_R_vs_Q_20d.csv",
+        "sha256": "08f45dbb8c1bb9c9b05794a295ac8f701e184bade8e0b21b368524f6012617dc"
+      },
+      {
+        "file": "blocks_30_future_tail_R_vs_Q_5d.csv",
+        "sha256": "fd4f4a2c17dc44dc0de6ad495a1af7c32c5c524697fb64803b845ebd3af6440e"
+      },
+      {
+        "file": "blocks_30_log_future_sigma_R_vs_B_20d.csv",
+        "sha256": "0d69dc547820c3a1efa3693e33202948320d7c3724e62bc59d1561f6a3be45a0"
+      },
+      {
+        "file": "blocks_30_log_future_sigma_R_vs_B_5d.csv",
+        "sha256": "0ddc392b4df555fb6867eed83607ad424d53943779f8c89f966c63a978f8da35"
+      },
+      {
+        "file": "blocks_30_log_future_sigma_R_vs_Q_20d.csv",
+        "sha256": "71dd0cff092b3ee1769e2c2e75c2946b79040790eec35a037b5fa7e203659734"
+      },
+      {
+        "file": "blocks_30_log_future_sigma_R_vs_Q_5d.csv",
+        "sha256": "0391b39bc6e98781d40021a2bd4080c9237a2ae5f70ec4b661a7bf938fde2d70"
+      },
+      {
+        "file": "blocks_60_future_tail_R_vs_B_20d.csv",
+        "sha256": "2c4f324feb58adf9034661fe65c68786ccdcb71f1fb4a78c251594576f0a08f4"
+      },
+      {
+        "file": "blocks_60_future_tail_R_vs_B_5d.csv",
+        "sha256": "b17a51e47fb4c4074fa671172a11307a6b4fe143fcc6786008374cbafd54e115"
+      },
+      {
+        "file": "blocks_60_future_tail_R_vs_Q_20d.csv",
+        "sha256": "88db910284be54f42d93dd01b1a2be7b7414e78b8a2e4fd25870552a18502014"
+      },
+      {
+        "file": "blocks_60_future_tail_R_vs_Q_5d.csv",
+        "sha256": "656da5197fdebd10ba561ac804161698d389fb247b71ed152668bf06ab314d56"
+      },
+      {
+        "file": "blocks_60_log_future_sigma_R_vs_B_20d.csv",
+        "sha256": "c693bec8044b6a7eebfc199dc4affe422413bd32b140f0601e5faac0c6d99fa1"
+      },
+      {
+        "file": "blocks_60_log_future_sigma_R_vs_B_5d.csv",
+        "sha256": "a7651511048824cf623a3355959b9b4bb3035e3a8245bb017d5b10dbaddfc801"
+      },
+      {
+        "file": "blocks_60_log_future_sigma_R_vs_Q_20d.csv",
+        "sha256": "c65525863caadb295dff78f8411207725467cc1bc576f94e13f35c59c7077a71"
+      },
+      {
+        "file": "blocks_60_log_future_sigma_R_vs_Q_5d.csv",
+        "sha256": "018bd7a7e4871edd6e1913bf4f9038489e2309d5f962ed62151644896577d7cc"
+      },
+      {
+        "file": "comparisons.csv",
+        "sha256": "c939a345c2dd9f70c9c3c8aa2714e74b288b8fba32e4fa48d7b641cf984dfe6d"
+      },
+      {
+        "file": "descriptive_15.csv",
+        "sha256": "a18a0caed4d3fdc6dfe319717dfcfd00ee3779bb2ebb06d1fc05ea0eac38875e"
+      },
+      {
+        "file": "descriptive_30.csv",
+        "sha256": "d6dae42fb15e8bce0fe0c47f66e5abc98fa47fd690a654b6560c196a8fb44316"
+      },
+      {
+        "file": "descriptive_60.csv",
+        "sha256": "411c13c8625e75d1c72451bab93200325e35a37fa1901b999f9e1f04a218db39"
+      }
+    ],
+    "recomputed": false,
+    "study": "cross_index_residual_dislocation_utility_v1"
+  }
+]

@@ -1,0 +1,547 @@
+[
+  {
+    "link": "references/project-contract.md",
+    "original_source": ".codex/skills/strategy-slice-rebuild/SKILL.md",
+    "replacement": "docs/archive/repository_consistency_20260912/agent-skills/skills/strategy-slice-rebuild/references/project-contract.md",
+    "source": "docs/archive/repository_consistency_20260912/agent-skills/skills/strategy-slice-rebuild/SKILL.md",
+    "status": "relocated"
+  },
+  {
+    "link": "references/post-training-account-audit.md",
+    "original_source": ".codex/skills/strategy-slice-rebuild/SKILL.md",
+    "replacement": "docs/archive/repository_consistency_20260912/agent-skills/skills/strategy-slice-rebuild/references/post-training-account-audit.md",
+    "source": "docs/archive/repository_consistency_20260912/agent-skills/skills/strategy-slice-rebuild/SKILL.md",
+    "status": "relocated"
+  },
+  {
+    "link": "CURRENT_RESEARCH.md",
+    "original_source": "README.md",
+    "replacement": "docs/archive/repository_consistency_20260912/entrypoints/CURRENT_RESEARCH.md",
+    "source": "docs/archive/repository_consistency_20260912/entrypoints/README.md",
+    "status": "relocated"
+  },
+  {
+    "link": "CONTINUE_HERE.md",
+    "original_source": "README.md",
+    "replacement": "docs/archive/repository_consistency_20260912/entrypoints/CONTINUE_HERE.md",
+    "source": "docs/archive/repository_consistency_20260912/entrypoints/README.md",
+    "status": "relocated"
+  },
+  {
+    "link": "../CURRENT_RESEARCH.md",
+    "original_source": "docs/INDEX.md",
+    "replacement": "docs/archive/repository_consistency_20260912/entrypoints/CURRENT_RESEARCH.md",
+    "source": "docs/archive/repository_consistency_20260912/entrypoints/docs/INDEX.md",
+    "status": "relocated"
+  },
+  {
+    "link": "../CONTINUE_HERE.md",
+    "original_source": "docs/INDEX.md",
+    "replacement": "docs/archive/repository_consistency_20260912/entrypoints/CONTINUE_HERE.md",
+    "source": "docs/archive/repository_consistency_20260912/entrypoints/docs/INDEX.md",
+    "status": "relocated"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [],
+    "link": "../../../artifacts/conditional_bucket_v1_datahub_diagnosis/diagnosis.json",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/datahub_diagnosis.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/datahub_diagnosis.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [],
+    "link": "../../../artifacts/conditional_bucket_accounts_v1p3/source_freeze.json",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/result_v1.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/result_v1.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/half_day_slope_union_v2/final/summary.csv",
+      "artifacts/resolution_transfer_v1/migration_2021/summary.csv",
+      "artifacts/resolution_transfer_v1/migration_2022/summary.csv",
+      "artifacts/resolution_transfer_v1/migration_2023/summary.csv",
+      "artifacts/resolution_transfer_v1/migration_2024/summary.csv",
+      "artifacts/resolution_transfer_v1/migration_2025/summary.csv",
+      "artifacts/resolution_transfer_v1/seconds_2024/summary.csv",
+      "artifacts/resolution_transfer_v1/seconds_2025/summary.csv"
+    ],
+    "link": "../../../artifacts/conditional_bucket_accounts_v1p3/family/summary.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/result_v1.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/result_v1.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [],
+    "link": "../../../artifacts/conditional_bucket_accounts_v1p3/account_comparison.png",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/result_v1.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/result_v1.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/three_proposals_v1/comparison.csv",
+      "artifacts/three_proposals_v1/isolated/comparison.csv"
+    ],
+    "link": "../../../artifacts/conditional_bucket_accounts_v1p3/comparison.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/result_v1.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/result_v1.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [],
+    "link": "../../../artifacts/conditional_bucket_accounts_v1p3/monthly_comparison.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/result_v1.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/result_v1.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/streak_mechanism_v1/controller_acceptance.json",
+      "artifacts/three_proposals_v1/controller_acceptance.json",
+      "artifacts/wave_shape_v1p2/controller_acceptance.json"
+    ],
+    "link": "../../../artifacts/conditional_bucket_accounts_v1p3/controller_acceptance.json",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/result_v1.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/result_v1.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [],
+    "link": "../../../artifacts/conditional_bucket_accounts_v1p3/replay_validation.json",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/result_v1.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/result_v1.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [],
+    "link": "../../../artifacts/conditional_bucket_accounts_v1p3/test_receipt.json",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/result_v1.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/conditional_bucket_v1/result_v1.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/drawdown_conditions/figures/overview.svg",
+      "artifacts/execution_counterexamples/closeout/overview.svg"
+    ],
+    "link": "../../../artifacts/drawdown_conditions/figures/overview.svg",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/drawdown_conditions/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/drawdown_conditions/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/drawdown_conditions/figures/offset_robustness.svg"
+    ],
+    "link": "../../../artifacts/drawdown_conditions/figures/offset_robustness.svg",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/drawdown_conditions/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/drawdown_conditions/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/drawdown_conditions/closeout/five_year_metrics.csv",
+      "artifacts/execution_counterexamples/closeout/five_year_metrics.csv"
+    ],
+    "link": "../../../artifacts/drawdown_conditions/closeout/five_year_metrics.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/drawdown_conditions/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/drawdown_conditions/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/drawdown_conditions/descriptive/top10_drawdowns.csv"
+    ],
+    "link": "../../../artifacts/drawdown_conditions/descriptive/top10_drawdowns.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/drawdown_conditions/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/drawdown_conditions/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/drawdown_conditions/closeout/top10_decline_recovery_condition_cells.csv"
+    ],
+    "link": "../../../artifacts/drawdown_conditions/closeout/top10_decline_recovery_condition_cells.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/drawdown_conditions/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/drawdown_conditions/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/drawdown_conditions/figures/overview.svg",
+      "artifacts/execution_counterexamples/closeout/overview.svg"
+    ],
+    "link": "../../../artifacts/execution_counterexamples/closeout/overview.svg",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/execution_counterexamples/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/execution_counterexamples/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/drawdown_conditions/closeout/five_year_metrics.csv",
+      "artifacts/execution_counterexamples/closeout/five_year_metrics.csv"
+    ],
+    "link": "../../../artifacts/execution_counterexamples/closeout/five_year_metrics.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/execution_counterexamples/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/execution_counterexamples/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/execution_counterexamples/closeout/annual_mdd_deltas.csv"
+    ],
+    "link": "../../../artifacts/execution_counterexamples/closeout/annual_mdd_deltas.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/execution_counterexamples/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/execution_counterexamples/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/execution_counterexamples/closeout/top10_decline_recovery.csv"
+    ],
+    "link": "../../../artifacts/execution_counterexamples/closeout/top10_decline_recovery.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/execution_counterexamples/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/execution_counterexamples/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/execution_counterexamples/closeout/latency_attribution.csv"
+    ],
+    "link": "../../../artifacts/execution_counterexamples/closeout/latency_attribution.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/execution_counterexamples/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/execution_counterexamples/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/apr_sep_2025_morphology/validation.json",
+      "artifacts/causal_volatility_tool_v1/final/validation.json",
+      "artifacts/execution_counterexamples/closeout/validation.json",
+      "artifacts/original_drawdown_trade_audit_v1/validation.json",
+      "artifacts/resolution_transfer_v1/final/validation.json",
+      "artifacts/sampling_ratio_v1/validation.json",
+      "artifacts/streak_mechanism_v1/validation.json",
+      "artifacts/tail_distribution_v1/final/validation.json"
+    ],
+    "link": "../../../artifacts/execution_counterexamples/closeout/validation.json",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/execution_counterexamples/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/execution_counterexamples/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/causal_volatility_tool_v1/2024/receipt.json",
+      "artifacts/causal_volatility_tool_v1/2025/receipt.json",
+      "artifacts/cross_scale_root_cause/sessions/2021/receipt.json",
+      "artifacts/cross_scale_root_cause/sessions/2022/receipt.json",
+      "artifacts/cross_scale_root_cause/sessions/2023/receipt.json",
+      "artifacts/cross_scale_root_cause/sessions/2024/receipt.json",
+      "artifacts/cross_scale_root_cause/sessions/2025/receipt.json",
+      "artifacts/drawdown_material/receipt.json"
+    ],
+    "link": "../../../artifacts/half_day_slope_union_v1/receipt.json",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/half_day_slope_union_v1/result.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/half_day_slope_union_v1/result.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/half_day_slope_union_v1/thresholds.csv",
+      "artifacts/half_day_slope_union_v1_replay/thresholds.csv"
+    ],
+    "link": "../../../artifacts/half_day_slope_union_v1/thresholds.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/half_day_slope_union_v1/result.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/half_day_slope_union_v1/result.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/causal_volatility_tool_v1/final/report.html",
+      "artifacts/half_day_slope_union_v2/final/report.html",
+      "artifacts/resolution_transfer_v1/final/report.html",
+      "artifacts/tail_distribution_v1/final/report.html"
+    ],
+    "link": "../../../artifacts/half_day_slope_union_v2/final/report.html",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/half_day_slope_union_v2/result.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/half_day_slope_union_v2/result.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/half_day_slope_union_v2/final/comparison.png",
+      "artifacts/sampling_ratio_v1/comparison.png"
+    ],
+    "link": "../../../artifacts/half_day_slope_union_v2/final/comparison.png",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/half_day_slope_union_v2/result.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/half_day_slope_union_v2/result.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/half_day_slope_union_v2/final/trades_2025.html"
+    ],
+    "link": "../../../artifacts/half_day_slope_union_v2/final/trades_2025.html",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/half_day_slope_union_v2/result.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/half_day_slope_union_v2/result.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/half_day_slope_union_v2/final/parameter_effects.csv"
+    ],
+    "link": "../../../artifacts/half_day_slope_union_v2/final/parameter_effects.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/half_day_slope_union_v2/result.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/half_day_slope_union_v2/result.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/half_day_slope_union_v2/final/acceptance.json"
+    ],
+    "link": "../../../artifacts/half_day_slope_union_v2/final/acceptance.json",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/half_day_slope_union_v2/result.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/half_day_slope_union_v2/result.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/causal_volatility_tool_v1/final/report.html",
+      "artifacts/half_day_slope_union_v2/final/report.html",
+      "artifacts/resolution_transfer_v1/final/report.html",
+      "artifacts/tail_distribution_v1/final/report.html"
+    ],
+    "link": "../../../artifacts/half_day_slope_union_v2/final/report.html",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/half_day_slope_union_v2/workflow.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/half_day_slope_union_v2/workflow.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/original_drawdown_trade_audit_v1/5m_offset_0_ledger.md"
+    ],
+    "link": "../../artifacts/original_drawdown_trade_audit_v1/5m_offset_0_ledger.md",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/original_drawdown_trade_audit_v1.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/original_drawdown_trade_audit_v1.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/original_drawdown_trade_audit_v1/5m_offset_0_trades.csv"
+    ],
+    "link": "../../artifacts/original_drawdown_trade_audit_v1/5m_offset_0_trades.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/original_drawdown_trade_audit_v1.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/original_drawdown_trade_audit_v1.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/original_drawdown_trade_audit_v1/5m_offset_2_ledger.md"
+    ],
+    "link": "../../artifacts/original_drawdown_trade_audit_v1/5m_offset_2_ledger.md",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/original_drawdown_trade_audit_v1.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/original_drawdown_trade_audit_v1.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/original_drawdown_trade_audit_v1/5m_offset_2_trades.csv"
+    ],
+    "link": "../../artifacts/original_drawdown_trade_audit_v1/5m_offset_2_trades.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/original_drawdown_trade_audit_v1.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/original_drawdown_trade_audit_v1.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/apr_sep_2025_morphology/validation.json",
+      "artifacts/causal_volatility_tool_v1/final/validation.json",
+      "artifacts/execution_counterexamples/closeout/validation.json",
+      "artifacts/original_drawdown_trade_audit_v1/validation.json",
+      "artifacts/resolution_transfer_v1/final/validation.json",
+      "artifacts/sampling_ratio_v1/validation.json",
+      "artifacts/streak_mechanism_v1/validation.json",
+      "artifacts/tail_distribution_v1/final/validation.json"
+    ],
+    "link": "../../artifacts/original_drawdown_trade_audit_v1/validation.json",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/original_drawdown_trade_audit_v1.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/original_drawdown_trade_audit_v1.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/three_proposals_v1/fee_break_even.csv"
+    ],
+    "link": "../../../artifacts/three_proposals_v1/fee_break_even.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/three_proposals_v1/veto_overlap_attribution.csv"
+    ],
+    "link": "../../../artifacts/three_proposals_v1/veto_overlap_attribution.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/three_proposals_v1/original_mdd_window.csv"
+    ],
+    "link": "../../../artifacts/three_proposals_v1/original_mdd_window.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/three_proposals_v1/full_account_comparison.png"
+    ],
+    "link": "../../../artifacts/three_proposals_v1/full_account_comparison.png",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/apr_sep_2025_morphology/validation.json",
+      "artifacts/causal_volatility_tool_v1/final/validation.json",
+      "artifacts/execution_counterexamples/closeout/validation.json",
+      "artifacts/original_drawdown_trade_audit_v1/validation.json",
+      "artifacts/resolution_transfer_v1/final/validation.json",
+      "artifacts/sampling_ratio_v1/validation.json",
+      "artifacts/streak_mechanism_v1/validation.json",
+      "artifacts/tail_distribution_v1/final/validation.json"
+    ],
+    "link": "../../../artifacts/three_proposals_v1/validation.json",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/three_proposals_v1/comparison.csv",
+      "artifacts/three_proposals_v1/isolated/comparison.csv"
+    ],
+    "link": "../../../artifacts/three_proposals_v1/comparison.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/half_day_slope_union_v2/final/annual.csv",
+      "artifacts/three_proposals_v1/annual.csv",
+      "artifacts/three_proposals_v1/isolated/annual.csv"
+    ],
+    "link": "../../../artifacts/three_proposals_v1/annual.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/three_proposals_v1/isolated/quarterly.csv",
+      "artifacts/three_proposals_v1/quarterly.csv"
+    ],
+    "link": "../../../artifacts/three_proposals_v1/quarterly.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/three_proposals_v1/interval_decomposition.csv",
+      "artifacts/three_proposals_v1/isolated/interval_decomposition.csv"
+    ],
+    "link": "../../../artifacts/three_proposals_v1/interval_decomposition.csv",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "artifacts/three_proposals_v1/frozen_sources/star50/scripts/run_three_proposals_v1.py",
+      "scripts/run_three_proposals_v1.py"
+    ],
+    "link": "../../../scripts/run_three_proposals_v1.py",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "scripts/report_three_proposals_v1.py"
+    ],
+    "link": "../../../scripts/report_three_proposals_v1.py",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "scripts/replay_three_proposals_v1.py"
+    ],
+    "link": "../../../scripts/replay_three_proposals_v1.py",
+    "original_source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "docs/archive/mis_scoped_strategy_research_20260909/drawdown_conditions/report.md",
+      "docs/archive/mis_scoped_strategy_research_20260909/execution_counterexamples/report.md",
+      "docs/archive/mis_scoped_strategy_research_20260909/three_proposals_v1/report.md",
+      "docs/research/cross_scale_root_cause/report.md",
+      "docs/research/drawdown_conditions/report.md",
+      "docs/research/execution_counterexamples/report.md",
+      "docs/research/market_admission/report.md",
+      "docs/research/sampling_ratio_v1/report.md"
+    ],
+    "link": "../../research/three_proposals_v1/report.md",
+    "original_source": "docs/handoff/cloud_risk_gate_20260907/HANDOFF.md",
+    "source": "docs/handoff/cloud_risk_gate_20260907/HANDOFF.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [],
+    "link": "market-index-transactions-workflow.md",
+    "original_source": "docs/handoff/cloud_risk_gate_20260907/datahub/market-index-transactions-whitepaper.md",
+    "source": "docs/handoff/cloud_risk_gate_20260907/datahub/market-index-transactions-whitepaper.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "candidate_paths_not_asserted_equivalent": [
+      "docs/handoff/cloud_risk_gate_20260907/previous_entrypoints/cloud_execution_prompt.md",
+      "docs/user/cloud_execution_prompt.md"
+    ],
+    "link": "docs/user/cloud_execution_prompt.md",
+    "original_source": "docs/handoff/cloud_risk_gate_20260907/previous_entrypoints/README.md",
+    "source": "docs/handoff/cloud_risk_gate_20260907/previous_entrypoints/README.md",
+    "status": "historical_unresolved_not_current_entry"
+  },
+  {
+    "link": "attribution_review.md",
+    "original_source": "docs/research/drawdown_conditions/report.md",
+    "replacement": "docs/archive/mis_scoped_strategy_research_20260909/drawdown_conditions/attribution_review.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/drawdown_conditions/report.md",
+    "status": "relocated"
+  },
+  {
+    "link": "report.md",
+    "original_source": "docs/research/drawdown_conditions/workflow.md",
+    "replacement": "docs/archive/mis_scoped_strategy_research_20260909/drawdown_conditions/report.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/drawdown_conditions/workflow.md",
+    "status": "relocated"
+  },
+  {
+    "link": "workflow.md",
+    "original_source": "docs/research/execution_counterexamples/report.md",
+    "replacement": "docs/archive/mis_scoped_strategy_research_20260909/execution_counterexamples/workflow.md",
+    "source": "docs/archive/mis_scoped_strategy_research_20260909/execution_counterexamples/report.md",
+    "status": "relocated"
+  }
+]
