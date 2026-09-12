@@ -4,7 +4,7 @@ Date: 2026-09-12
 Source main: `a26f4a302d5f73486b3b0cd04da50e382020d28f`  
 Status at freeze: **results-blind for this V1 incremental comparison**. Earlier M3 Development/structural Validation findings and D4 I/V utility results are already known and must be disclosed; therefore the coming 2024–2025 evaluation is reusable/adaptive Validation, never fresh OOS.
 
-Pre-outcome source-audit correction: the original V9 E15 selector uses the latest same-bar 3s observation at or before the checkpoint and does not itself impose a <=3 second staleness gate. The <=3 second endpoint rule belongs to the inherited strict M3 grid. Because the scientific cohort below requires a complete strict M3 path including the decision-time endpoint, included rows still have a <=3 second decision endpoint. No model, gate, threshold, horizon, target or cohort rule changed in this correction.
+Pre-outcome source-audit corrections: (1) the original V9 E15 selector uses the latest same-bar 3s observation at or before the checkpoint and does not itself impose a <=3 second staleness gate; the <=3 second endpoint rule belongs to the inherited strict M3 grid. Because the scientific cohort below requires a complete strict M3 path including the decision-time endpoint, included rows still have a <=3 second decision endpoint. (2) the explicitly listed M3 augmentation block contains 8 columns, not 6: `m`, `m^2`, plus each term interacted with the 3 previous-state indicators. No model term, gate, threshold, horizon, target or cohort rule changed in these corrections.
 
 ## 1. Question
 
@@ -93,7 +93,7 @@ This study refits C on its M3-admissible cohort; it does not claim byte-identica
 
 ### A — current activity-surprise augmentation
 
-A = C plus a frozen M3 block:
+A = C plus the frozen 8-column M3 block:
 
 - `m = M3_current`;
 - `m^2`;
@@ -104,7 +104,7 @@ No M3 bands are model inputs. No clipping, threshold search or interaction searc
 
 ### N — equal-complexity lagged-M3 control
 
-N = C plus exactly the same six-column M3 block, replacing `M3_current` with `M3_lag`, where `M3_lag` is the immediately preceding E15 M3 in the same half-session and is therefore known before the current native bar.
+N = C plus exactly the same 8-column M3 block, replacing `M3_current` with `M3_lag`, where `M3_lag` is the immediately preceding E15 M3 in the same half-session and is therefore known before the current native bar.
 
 A and N have identical column counts, transforms, ridge rule and base information. `A vs N` asks whether the **current fine-scale refresh** contributes beyond merely giving the model more nonlinear fine-activity capacity.
 
