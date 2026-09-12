@@ -1,0 +1,84 @@
+name: datahub-reception-cloud-acceptance
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "research/prospective_reception_recorder_v1/**"
+      - ".github/workflows/datahub-reception-cloud-acceptance.yml"
+  pull_request:
+    paths:
+      - "research/prospective_reception_recorder_v1/**"
+      - ".github/workflows/datahub-reception-cloud-acceptance.yml"
+  workflow_dispatch:
+
+jobs:
+  cloud-acceptance:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Recover existing owner handoff package from handoff branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/star50_handoff" "$GITHUB_WORKSPACE/cloud_acceptance_output"
+          git fetch origin handoff/star50-true-reception-raw-20260912:refs/remotes/origin/handoff/star50-true-reception-raw-20260912
+          git show refs/remotes/origin/handoff/star50-true-reception-raw-20260912:docs/ops/receipts/star50_datahub_raw_callback_sample_20260912/STAR50_DATAHUB_RAW_CALLBACK_SAMPLE_20260912.zip > "$RUNNER_TEMP/star50_handoff/handoff.zip"
+          test "$(stat -c%s "$RUNNER_TEMP/star50_handoff/handoff.zip")" = "328518"
+          echo "866824b8966b237ed8463afd6280186301db95c450876112da77787d5d50fa0d  $RUNNER_TEMP/star50_handoff/handoff.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/star50_handoff/handoff.zip" -d "$RUNNER_TEMP/star50_handoff/unpacked"
+          test -f "$RUNNER_TEMP/star50_handoff/unpacked/STAR50_DATAHUB_RAW_CALLBACK_SAMPLE_20260912/MANIFEST.json"
+
+      - name: Run recorder and DataHub adapter tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd research/prospective_reception_recorder_v1
+          python -m unittest -v test_recorder.py test_datahub_adapter.py 2>&1 | tee "$GITHUB_WORKSPACE/cloud_acceptance_output/unit_tests.txt"
+          python -m compileall -q recorder.py datahub_adapter.py cloud_acceptance.py synthetic_overhead.py
+
+      - name: Audit full 9,492-row historical handoff and real DataHub source seam
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/prospective_reception_recorder_v1/cloud_acceptance.py \
+            --handoff-root "$RUNNER_TEMP/star50_handoff/unpacked/STAR50_DATAHUB_RAW_CALLBACK_SAMPLE_20260912" \
+            --output "$GITHUB_WORKSPACE/cloud_acceptance_output/cloud_acceptance.json" \
+            | tee "$GITHUB_WORKSPACE/cloud_acceptance_output/cloud_acceptance.stdout.txt"
+
+      - name: Record descriptive synthetic wrapper overhead
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/prospective_reception_recorder_v1/synthetic_overhead.py \
+            --iterations 3000 \
+            --output "$GITHUB_WORKSPACE/cloud_acceptance_output/synthetic_overhead.json" \
+            | tee "$GITHUB_WORKSPACE/cloud_acceptance_output/synthetic_overhead.stdout.txt"
+
+      - name: Re-run data governance validator
+        run: python scripts/validate_data_usage_policy.py
+
+      - name: Build immutable output hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd cloud_acceptance_output
+          sha256sum * | sort > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+
+      - name: Upload cloud acceptance evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: datahub-reception-cloud-acceptance-${{ github.sha }}
+          path: cloud_acceptance_output/
+          if-no-files-found: error
+          retention-days: 90
