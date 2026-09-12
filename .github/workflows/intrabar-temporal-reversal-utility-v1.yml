@@ -1,0 +1,176 @@
+name: intrabar-temporal-reversal-utility-v1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [research/intrabar-temporal-reversal-utility-v1-20260912]
+    paths:
+      - 'research/intrabar_temporal_reversal_utility_v1/**'
+      - '.github/workflows/intrabar-temporal-reversal-utility-v1.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  fit-development:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /research/intrabar_temporal_reversal_utility_v1/
+            /research/degree_trajectory_utility_v1/run_study.py
+            /research/cross_index_degree_transfer_utility_v1/run_study.py
+            /research/activity_degree_incremental_utility_v1/run_study.py
+            /docs/governance/DATA_USAGE_POLICY_V2.md
+            /docs/governance/data_usage_declaration.json
+            /docs/governance/blackbox_query_ledger.json
+            /scripts/validate_data_usage_policy.py
+            /data/market/5m/000688.SH/2020.parquet
+            /data/market/5m/000688.SH/2021.parquet
+            /data/market/5m/000688.SH/2022.parquet
+            /data/market/5m/000688.SH/2023.parquet
+            /data/market/5m/000852.SH/2020.parquet
+            /data/market/5m/000852.SH/2021.parquet
+            /data/market/5m/000852.SH/2022.parquet
+            /data/market/5m/000852.SH/2023.parquet
+            /data/cross_index_risk_gate_3s_v1/manifest.json
+            /data/cross_index_risk_gate_3s_v1/000688.SH_2021.parquet
+            /data/cross_index_risk_gate_3s_v1/000688.SH_2022.parquet
+            /data/cross_index_risk_gate_3s_v1/000688.SH_2023.parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_2021.parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_2022.parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_2023.parquet
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install bounded dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+      - name: Verify frozen identities and Development-only boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/validate_data_usage_policy.py --repo-root .
+          test "$(git hash-object research/intrabar_temporal_reversal_utility_v1/PROTOCOL.md)" = "f801991737fb1dc043807cb5f3e4fd9fb17f1187"
+          test "$(git hash-object research/intrabar_temporal_reversal_utility_v1/run_study.py)" = "b7d1f158883b6e2c30e2eaca59e3a010864d572b"
+          test "$(git hash-object research/intrabar_temporal_reversal_utility_v1/test_study.py)" = "8faeaae8fe2764872748df01bee550863bef3092"
+          test "$(git hash-object research/degree_trajectory_utility_v1/run_study.py)" = "0afc45e5061f45f544ecc7ee4519eae4e5204bca"
+          ! find data -type f \( -name '*2024*' -o -name '*2025*' -o -name '*2026*' \) | grep .
+          test ! -e data/cross_index_risk_gate_2026_v1
+      - name: Run causal, ordering and complexity invariants
+        run: python -m pytest -q research/intrabar_temporal_reversal_utility_v1/test_study.py
+      - name: Fit Development probes and freeze exact bytes
+        run: |
+          mkdir -p artifacts
+          python research/intrabar_temporal_reversal_utility_v1/run_study.py \
+            --repo-root . --phase fit --out artifacts/fit
+      - name: Hash frozen Development evidence
+        run: |
+          cd artifacts/fit
+          sha256sum FROZEN_MODELS.json FIT_RECEIPT.json MODEL_SHA256.txt > SHA256SUMS.txt
+          cat MODEL_SHA256.txt
+          cat FIT_RECEIPT.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: intrabar-temporal-reversal-v1-frozen-models-${{ github.run_id }}
+          path: artifacts/fit
+          retention-days: 90
+          if-no-files-found: error
+
+  reusable-validation:
+    needs: fit-development
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /research/intrabar_temporal_reversal_utility_v1/
+            /research/degree_trajectory_utility_v1/run_study.py
+            /research/cross_index_degree_transfer_utility_v1/run_study.py
+            /research/activity_degree_incremental_utility_v1/run_study.py
+            /docs/governance/DATA_USAGE_POLICY_V2.md
+            /docs/governance/data_usage_declaration.json
+            /docs/governance/blackbox_query_ledger.json
+            /scripts/validate_data_usage_policy.py
+            /data/market/5m/000688.SH/2020.parquet
+            /data/market/5m/000688.SH/2021.parquet
+            /data/market/5m/000688.SH/2022.parquet
+            /data/market/5m/000688.SH/2023.parquet
+            /data/market/5m/000688.SH/2024.parquet
+            /data/market/5m/000688.SH/2025.parquet
+            /data/market/5m/000852.SH/2020.parquet
+            /data/market/5m/000852.SH/2021.parquet
+            /data/market/5m/000852.SH/2022.parquet
+            /data/market/5m/000852.SH/2023.parquet
+            /data/market/5m/000852.SH/2024.parquet
+            /data/market/5m/000852.SH/2025.parquet
+            /data/cross_index_risk_gate_3s_v1/manifest.json
+            /data/cross_index_risk_gate_3s_v1/000688.SH_2021.parquet
+            /data/cross_index_risk_gate_3s_v1/000688.SH_2022.parquet
+            /data/cross_index_risk_gate_3s_v1/000688.SH_2023.parquet
+            /data/cross_index_risk_gate_3s_v1/000688.SH_2024.parquet
+            /data/cross_index_risk_gate_3s_v1/000688.SH_2025.parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_2021.parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_2022.parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_2023.parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_2024.parquet
+            /data/cross_index_risk_gate_3s_v1/000852.SH_2025.parquet
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install bounded dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas pyarrow pytest
+      - uses: actions/download-artifact@v4
+        with:
+          name: intrabar-temporal-reversal-v1-frozen-models-${{ github.run_id }}
+          path: frozen
+      - name: Verify exact freeze and reusable Validation boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/validate_data_usage_policy.py --repo-root .
+          test "$(git hash-object research/intrabar_temporal_reversal_utility_v1/PROTOCOL.md)" = "f801991737fb1dc043807cb5f3e4fd9fb17f1187"
+          test "$(git hash-object research/intrabar_temporal_reversal_utility_v1/run_study.py)" = "b7d1f158883b6e2c30e2eaca59e3a010864d572b"
+          test "$(git hash-object research/intrabar_temporal_reversal_utility_v1/test_study.py)" = "8faeaae8fe2764872748df01bee550863bef3092"
+          test "$(git hash-object research/degree_trajectory_utility_v1/run_study.py)" = "0afc45e5061f45f544ecc7ee4519eae4e5204bca"
+          test "$(sha256sum frozen/FROZEN_MODELS.json | awk '{print $1}')" = "$(cat frozen/MODEL_SHA256.txt)"
+          ! find data -type f -name '*2026*' | grep .
+          ! find data -type f | grep -Ei '2026.*synthetic|synthetic.*2026'
+          test ! -e data/cross_index_risk_gate_2026_v1
+      - name: Re-run causal invariants
+        run: python -m pytest -q research/intrabar_temporal_reversal_utility_v1/test_study.py
+      - name: Score unchanged frozen probes on 2024-2025 reusable Validation
+        run: |
+          mkdir -p artifacts
+          python research/intrabar_temporal_reversal_utility_v1/run_study.py \
+            --repo-root . --phase validate --out artifacts/validation \
+            --models frozen/FROZEN_MODELS.json --model-sha frozen/MODEL_SHA256.txt
+          cp frozen/FROZEN_MODELS.json frozen/MODEL_SHA256.txt frozen/FIT_RECEIPT.json artifacts/validation/
+      - name: Guard decision role and hash evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          s=json.load(open('artifacts/validation/VALIDATION_RESULTS.json'))
+          assert s['validation_years']==[2024,2025]
+          assert s['validation_reused'] is True and s['fresh_oos'] is False
+          assert s['read_2026'] is False and s['synthetic_2026_used'] is False
+          assert s['blackbox_queried'] is False and s['pnl_computed'] is False
+          assert s['candidate_nominated'] is False and s['production_authority'] is False
+          assert s['v20_started'] is False and s['d6_started'] is False
+          print(json.dumps({'decision':s['decision'],'joint_endpoint_support':s['joint_endpoint_support']},indent=2))
+          PY
+          cd artifacts/validation
+          find . -maxdepth 1 -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt
+          cat VALIDATION_RESULTS.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: intrabar-temporal-reversal-v1-validation-${{ github.run_id }}
+          path: artifacts/validation
+          retention-days: 90
+          if-no-files-found: error

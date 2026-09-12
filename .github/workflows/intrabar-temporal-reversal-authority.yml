@@ -1,0 +1,25 @@
+name: intrabar-temporal-reversal-authority
+
+on:
+  pull_request:
+  push:
+    branches: [research/intrabar-temporal-reversal-closeout-v1-20260912]
+    paths:
+      - 'research/intrabar_temporal_reversal_utility_v1/**'
+      - 'scripts/validate_intrabar_temporal_reversal_utility_v1.py'
+      - '.github/workflows/intrabar-temporal-reversal-authority.yml'
+      - 'CURRENT_RESEARCH.md'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-authority:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate decisive authority chain
+        run: python scripts/validate_intrabar_temporal_reversal_utility_v1.py
