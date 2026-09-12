@@ -1,23 +1,27 @@
-# 接续入口：D5本仓消费链已通过，外部研究接入待真实回执
+# 接续入口：D5样例消费者已通过；历史真实接收时钟不可用
 
-当前状态D5_BOUNDED_RESEARCH_CONSUMER_ACCEPTED_EXTERNAL_INTEGRATION_PENDING。不要重做D5，不重拟合V19或把D4旧“D5未启动”当作当前状态。
-先读AGENTS.md、CURRENT_RESEARCH.md、docs/research/CAUSAL_KLINE_STATE_NEXT_PHASE_20260911.md，再读research/state_degree_consumer_d5/的PROGRAM_STATE.json、RESULTS.md、EXECUTION_RECEIPT.json、PROTOCOL.md、SOURCE_IDENTITY.json和INDEPENDENT_VERIFICATION.json。
+当前状态：**D5R_TRUE_RECEPTION_CLOCK_UNAVAILABLE_HISTORICAL_LIVE_LATENCY_UNVERIFIED**。
 
-## 已完成
+不要重做 D5，不重拟合 V19/D3/D4，也不要再把“外部 reception 验收待执行”理解为历史数据仍可完成。先读：
 
-232704条双时钟事件与116352条E15增强完整接入；零源字段/增强数值差异；930816次as-of边界检查与独立选择器一致；20个历史前缀、40项单元测试和两个样例命令通过。完全在本会话执行，无新行情、拟合或Actions。
+1. `CURRENT_RESEARCH.md`
+2. `research/reception_clock_adjudication_d5r/PROGRAM_STATE.json`
+3. `research/reception_clock_adjudication_d5r/RESULTS.md`
+4. `research/reception_clock_adjudication_d5r/DECISIVE_RECEIPT.json`
+5. `docs/ops/receipts/star50_true_reception_raw_20260912/README.md`
+6. `docs/ops/receipts/star50_true_reception_raw_20260912/SOURCE_INFO.json`
+7. 原 `research/state_degree_consumer_d5/`、D4/D3/D2/V19 证据。
 
-```bash
-python scripts/validate_data_usage_policy.py
-python -m unittest discover -s research/state_degree_consumer_d5 -p 'test_*.py' -v
-```
+## 已确定事实
 
-样例查询、零/2秒合成延迟、独立账本验收的完整可运行命令见research/state_degree_consumer_d5/REPRODUCE.md。仅需要原D2/D4封存ZIP，不需新数据；完整D5证据包提供输入副本。不要为了浏览结果重跑统计模型。
+本地对 DataHub / FactorLab / recording 存储做了只读检索，没有找到 `000688.SH`、`000852.SH` 的逐条真实本机 `received_at`。Release `star50-true-reception-raw-20260912` 的 ZIP 为 5446 bytes，SHA256 `63badecf70405452674831f41a6aef0de174ca8d10b113fc32c91a8e1ca24cf0`，quote rows=0。
 
-## 下一实际动作
+不能用 `available_at`、batch `ingested_at`、mtime、下载时间、市场观察时钟或 row_index 代替 reception clock。D5 的零/2秒接收延迟样例仍是合成/理想时钟检查，不是实测 feed 延迟。
 
-任务CL-D5-RESEARCH-CONSUMER-20260912见research/state_degree_consumer_d5/LOCAL_HANDOFF.md：由真实本地研究进程验收，回传环境、提交/输入身份、命令、退出码与比对结果。无本地执行通道时只保留待回执，不声称已经派发或执行。不接生产registry。
+## 现在还能做什么
 
-E15增强不可填到CLOSE；缺D4数据只可标STATE_ONLY；UNAVAILABLE/NO_CURRENT_SNAPSHOT不是NORMAL。源发布和消费者收到分开，过期不回退，迟到不回填。CSV按Asia/Shanghai解释；不交付训练分位门控；旧观察及原概率目标不隐藏或改名。
+V19/D2/D3/D4/D5 原结论全部保留。历史 measured-latency 验收因数据不存在而关闭，不是代码失败。
 
-D3未晋升、D4有限分目标支持、V19/D2冻结基线不改。D5不是新统计效用证据或经济验收。不自动启动D6/V20，原封存代码和治理不变，无2026/BlackBox/PnL/生产权限。production_authority=false。
+只有未来前瞻 recorder 真正持久化 market timestamp + local receive wall clock + local monotonic sequence 等字段后，才可重新做实际接收延迟和 E15 到达覆盖验收。没有新 reception 数据时保持冻结维护，不开 D6/V20。
+
+`true_reception_timestamp_available=false`; `measured_feed_latency_supported=false`; `external_consumer_accepted=false`; `production_authority=false`。
