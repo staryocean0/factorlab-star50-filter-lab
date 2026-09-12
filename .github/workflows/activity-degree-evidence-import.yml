@@ -1,0 +1,76 @@
+name: activity-degree-evidence-import
+
+on:
+  push:
+    branches:
+      - research/activity-degree-incremental-utility-v1-20260912
+    paths:
+      - .github/workflows/activity-degree-evidence-import.yml
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  import-evidence:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/activity-degree-incremental-utility-v1-20260912
+          fetch-depth: 1
+      - name: Download exact completed Validation artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/m3-evidence
+          mkdir -p /tmp/m3-evidence
+          gh run download 34670357953 \
+            --repo staryocean0/factorlab-star50-filter-lab \
+            --name activity-degree-v1-validation-34670357953 \
+            --dir /tmp/m3-evidence
+          test -f /tmp/m3-evidence/VALIDATION_RESULTS.json
+          test -f /tmp/m3-evidence/SHA256SUMS.txt
+          test -f /tmp/m3-evidence/FROZEN_MODELS.json
+          test "$(sha256sum /tmp/m3-evidence/FROZEN_MODELS.json | awk '{print $1}')" = "89660f0825373b5afd8d1d9c51642424fe79fae925f44d0f25a6f2f96ca78d8d"
+          (cd /tmp/m3-evidence && sha256sum -c SHA256SUMS.txt)
+      - name: Preserve artifact files and provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          DEST=research/activity_degree_incremental_utility_v1/evidence
+          rm -rf "$DEST"
+          mkdir -p "$DEST"
+          cp -a /tmp/m3-evidence/. "$DEST/"
+          cat > "$DEST/EVIDENCE_SOURCE.json" <<'JSON'
+          {
+            "schema": "activity_degree_incremental_utility_v1_evidence_source@1.0",
+            "workflow_run_id": 34670357953,
+            "validation_job_id": 103490604669,
+            "head_sha": "5fa76723d5142b96d53822343faad6bd046f9df6",
+            "artifact_id": 10290917834,
+            "artifact_name": "activity-degree-v1-validation-34670357953",
+            "artifact_zip_sha256": "a734a0083c9d197188591fa548668cdbc3f2a86df00b783f68f41acfecf69940",
+            "frozen_model_artifact_id": 10290482080,
+            "frozen_model_artifact_zip_sha256": "0c71f4d1c9605819ca92d742cbeabf36d1aaa4bbdb6e08e2c29e708796087965",
+            "frozen_model_sha256": "89660f0825373b5afd8d1d9c51642424fe79fae925f44d0f25a6f2f96ca78d8d",
+            "validation_reused": true,
+            "fresh_oos": false,
+            "read_2026": false,
+            "blackbox_queried": false,
+            "pnl_computed": false,
+            "production_authority": false
+          }
+          JSON
+          git status --short
+      - name: Commit exact Action evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/activity_degree_incremental_utility_v1/evidence
+          git commit -m 'evidence: preserve completed current-M3 Validation artifact [skip ci]'
+          git push origin HEAD:research/activity-degree-incremental-utility-v1-20260912
