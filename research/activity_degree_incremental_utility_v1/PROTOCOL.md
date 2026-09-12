@@ -4,6 +4,8 @@ Date: 2026-09-12
 Source main: `a26f4a302d5f73486b3b0cd04da50e382020d28f`  
 Status at freeze: **results-blind for this V1 incremental comparison**. Earlier M3 Development/structural Validation findings and D4 I/V utility results are already known and must be disclosed; therefore the coming 2024–2025 evaluation is reusable/adaptive Validation, never fresh OOS.
 
+Pre-outcome source-audit correction: the original V9 E15 selector uses the latest same-bar 3s observation at or before the checkpoint and does not itself impose a <=3 second staleness gate. The <=3 second endpoint rule belongs to the inherited strict M3 grid. Because the scientific cohort below requires a complete strict M3 path including the decision-time endpoint, included rows still have a <=3 second decision endpoint. No model, gate, threshold, horizon, target or cohort rule changed in this correction.
+
 ## 1. Question
 
 On the already-defined low-amplitude surface, does a strictly causal 15-second activity-surprise coordinate add practically material future-risk information **after** the D4-style current E15 shock-intensity / volatility-ratio information set is already available?
@@ -27,7 +29,8 @@ The clock is adapted only from one-minute decision slots to the actual E15 5m ch
 D4-style current continuous coordinates are frozen to the V9 partial-state construction (`run_v9.py` Git blob `ae2a7e095df58692ef9df0dfee5856cac727ca44`) and D4 design semantics:
 
 - decision time = `bar_end - 15 seconds`;
-- choose latest 3s price at or before decision time, age <=3 seconds and inside the current native 5m bar;
+- V9 selects the latest 3s price at or before decision time inside the current native 5m bar, without a separate V9 staleness cutoff;
+- this V1 cohort additionally requires the inherited strict M3 path, so its decision-time grid endpoint is necessarily no more than 3 seconds old;
 - `partial_return = log(partial_price / previous_confirmed_5m_close)`;
 - `bg48` uses the previous 48 valid confirmed 5m returns, excluding current partial return;
 - `I_t = abs(partial_return)/bg48`;
@@ -60,7 +63,7 @@ The M3 ancestry is not generalized. A row enters the scientific cohort only when
 - the future endpoint is feasible within the same trading half-session/day under the 5m grid;
 - no current finalized 5m return or future field enters design.
 
-There is no stale-row deletion beyond the frozen <=3-second endpoint requirement needed to define the strict 3s checkpoint/path itself. Missing rows remain missing; no fallback to older available samples.
+There is no stale-row deletion beyond the inherited <=3-second grid-endpoint requirement needed to define the strict M3 path. Missing rows remain missing; no fallback to older available samples for M3.
 
 ## 5. Fixed future-risk endpoints
 
