@@ -1,0 +1,146 @@
+{
+  "package": "STAR50_DATAHUB_RAW_CALLBACK_SAMPLE_20260912",
+  "level": "NORMALIZED_SOURCE_ROWS",
+  "callback_raw": "CALLBACK_RAW_NOT_PERSISTED",
+  "vendor": "baidu_netdisk_market_index_transaction_3s",
+  "trading_day": "2025-06-11",
+  "symbols": [
+    "000688.SH",
+    "000852.SH"
+  ],
+  "files": [
+    {
+      "relative_path": "README.md",
+      "bytes": 7692,
+      "sha256": "76744b55e1445e3052432256bef3b42ad1dbb0298a2eaba27c97a64aab01a465",
+      "type": "documentation"
+    },
+    {
+      "relative_path": "SOURCE_SCHEMA.md",
+      "bytes": 4071,
+      "sha256": "b1303918937c22d1540e8a1c96b39e83249680e2ca419ebc7226e96028955a95",
+      "type": "documentation"
+    },
+    {
+      "relative_path": "parser_source/config/market_indices/core_market_indices.v1.json",
+      "bytes": 5981,
+      "sha256": "11c9064c3edb985f6358740a6952fa666348902beef19deb2bbe4e4bc9fefb61",
+      "type": "manifest_or_config"
+    },
+    {
+      "relative_path": "parser_source/config/reliability/source_contracts/market_index_transactions.v1.json",
+      "bytes": 6417,
+      "sha256": "cd191fe13721b7a643b667f04157a4dabd099856f366a46c3416f0916cbf626f",
+      "type": "manifest_or_config"
+    },
+    {
+      "relative_path": "parser_source/scripts/market_index_transactions.py",
+      "bytes": 6493,
+      "sha256": "ee7059343e876724be297fd6f3dc0b4f5227380d3bcc1ed451b0689fd412f64a",
+      "type": "parser_source"
+    },
+    {
+      "relative_path": "parser_source/src/datahub/adapters/tdx_remote/realtime.py",
+      "bytes": 21243,
+      "sha256": "b9e8dad9ba2b50f38716bfa5f311dd5c918301f97b45c7ef85f83c67c6a42117",
+      "type": "parser_source"
+    },
+    {
+      "relative_path": "parser_source/src/datahub/core/models/market_index_transactions.py",
+      "bytes": 397,
+      "sha256": "3fed25c0fdede9930a64d91d9793d894734a17db2660f3a2815daa06160be75b",
+      "type": "parser_source"
+    },
+    {
+      "relative_path": "parser_source/src/datahub/core/models/stream.py",
+      "bytes": 538,
+      "sha256": "4dbeab97d51d542035ca2e784be1fb1c26bc056167ffe99105c25166f8b92ed8",
+      "type": "parser_source"
+    },
+    {
+      "relative_path": "parser_source/src/datahub/core/services/market_indices/catalog.py",
+      "bytes": 6660,
+      "sha256": "a8394dff72f4c6cd083bcf9a8f5e08de58b99827aee55a31842ff6d64d5ed167",
+      "type": "parser_source"
+    },
+    {
+      "relative_path": "parser_source/src/datahub/core/services/market_indices/transactions_service.py",
+      "bytes": 33309,
+      "sha256": "e8282d00bfa0c67c9515ed49e120ba15de9a0723257f0dc50887b2401f435b66",
+      "type": "parser_source"
+    },
+    {
+      "relative_path": "parser_source/src/datahub/core/services/market_stream/realtime_service.py",
+      "bytes": 1158,
+      "sha256": "e4f5d805f434e1a658e507595efd00d0d38da0f74b7ee195be10dbb5adf4a56e",
+      "type": "parser_source"
+    },
+    {
+      "relative_path": "parser_source/src/datahub/core/services/market_stream/recording_service.py",
+      "bytes": 10418,
+      "sha256": "70c9c4f17cb87e226d341c2a010d683ebc9b0b31de3e00ddee39b5d01a521283",
+      "type": "parser_source"
+    },
+    {
+      "relative_path": "parser_source/src/datahub/orchestration/recording_coordinator.py",
+      "bytes": 1030,
+      "sha256": "98929dde4cdcc049c90ff881516139c8dc05c8125bc5bdda686ccbe9bed72802",
+      "type": "parser_source"
+    },
+    {
+      "relative_path": "parser_source/src/datahub/orchestration/stream_coordinator.py",
+      "bytes": 11223,
+      "sha256": "c22479f285d608d406a7465b7dfadae38e1554145f39ddf5684da98508f6107a",
+      "type": "parser_source"
+    },
+    {
+      "relative_path": "raw/000688.SH_2025-06-11.jsonl",
+      "bytes": 3145257,
+      "sha256": "5d39a5a5e7aba828ee53f5980155fdd97eb7d82c0e37a1b100cd435034220cc9",
+      "type": "normalized_source_rows_jsonl",
+      "symbol": "000688.SH",
+      "trading_day": "2025-06-11",
+      "rows": 4746
+    },
+    {
+      "relative_path": "raw/000688.SH_2025-06-11.parquet",
+      "bytes": 70367,
+      "sha256": "d1f0c5977e3fc5de901100af0d1c8eb80098c7a5c84d1ff5afa45303492eb1f4",
+      "type": "normalized_source_rows_parquet",
+      "symbol": "000688.SH",
+      "trading_day": "2025-06-11",
+      "rows": 4746
+    },
+    {
+      "relative_path": "raw/000852.SH_2025-06-11.jsonl",
+      "bytes": 3154933,
+      "sha256": "1b4a97e6d7e8f381cf144618050e56b1dd1b7c4bba31995904bb7fcf8419aca7",
+      "type": "normalized_source_rows_jsonl",
+      "symbol": "000852.SH",
+      "trading_day": "2025-06-11",
+      "rows": 4746
+    },
+    {
+      "relative_path": "raw/000852.SH_2025-06-11.parquet",
+      "bytes": 80387,
+      "sha256": "aa86360bdcf32023a1d85c9cefac7cdef2db69d39f58e83281acbbd3effe8286",
+      "type": "normalized_source_rows_parquet",
+      "symbol": "000852.SH",
+      "trading_day": "2025-06-11",
+      "rows": 4746
+    },
+    {
+      "relative_path": "raw/20250611.zip.source_receipt_excerpt.json",
+      "bytes": 600,
+      "sha256": "f6db4055d0530420d1d56cfa9974d426774e11345fbff0d3245df460c66602e1",
+      "type": "source_receipt_excerpt",
+      "trading_day": "2025-06-11"
+    },
+    {
+      "relative_path": "raw/VENDOR_CSV_HEADER_ONLY_FROM_LEFTOVER_20070917_ZIP.bin",
+      "bytes": 27,
+      "sha256": "53f47f522bd6ff6327013992734f597f942dc5bcd7a6db57a6040dcb4da8c792",
+      "type": "vendor_csv_header_bytes"
+    }
+  ]
+}

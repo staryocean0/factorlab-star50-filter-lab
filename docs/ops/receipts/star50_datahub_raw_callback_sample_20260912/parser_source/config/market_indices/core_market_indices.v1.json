@@ -1,0 +1,174 @@
+{
+  "schema_version": "datahub.market_index_catalog.v1",
+  "catalog_id": "cn_core_market_indices",
+  "product_contract": "config/market_indices/market_index_daily_product.v1.json",
+  "market": "cn_index",
+  "instrument_type": "market_index",
+  "frequency_capabilities": {
+    "3s": {
+      "status": "supported",
+      "source_id": "baidu_market_index_transaction_3s_deep_history_plus_tdx_incremental"
+    },
+    "1d": {
+      "status": "supported",
+      "source_id": "tdx_standard_market_index_daily_plus_derived_1m"
+    },
+    "1m": {
+      "status": "supported_derived",
+      "source_id": "market_index_transaction_derived_1m"
+    },
+    "5m": {
+      "status": "supported_on_demand_derived",
+      "source_id": "bars_cn_index_1m_raw_canonical"
+    },
+    "15m": {
+      "status": "supported_on_demand_derived",
+      "source_id": "bars_cn_index_1m_raw_canonical"
+    },
+    "30m": {
+      "status": "supported_on_demand_derived",
+      "source_id": "bars_cn_index_1m_raw_canonical"
+    },
+    "60m": {
+      "status": "supported_on_demand_derived",
+      "source_id": "bars_cn_index_1m_raw_canonical"
+    }
+  },
+  "lifecycle_policy": {
+    "calendar": "cn_a_trading_calendar",
+    "expected_from": "launch_date",
+    "expected_rule": "one daily observation on every authoritative CN-A trading day on or after launch_date",
+    "suspension_semantics": "not_applicable_to_index_level",
+    "pre_launch_observations": "retain_as_backcast_but_do_not_count_as_expected"
+  },
+  "indices": [
+    {
+      "symbol": "000001.SH",
+      "index_code": "000001",
+      "name_zh": "上证指数",
+      "name_en": "SSE Composite Index",
+      "publisher": "Shanghai Stock Exchange",
+      "publisher_code": "SSE",
+      "exchange": "SSE",
+      "category": "broad_market",
+      "launch_date": "1991-07-15",
+      "tdx_market_code": 1,
+      "tdx_transaction_code": "999999",
+      "official_url": "https://www.sse.com.cn/market/sseindex/indexlist/s/i000001/intro.shtml",
+      "derivative_underlyings": []
+    },
+    {
+      "symbol": "000016.SH",
+      "index_code": "000016",
+      "name_zh": "上证50",
+      "name_en": "SSE 50 Index",
+      "publisher": "China Securities Index Co., Ltd.",
+      "publisher_code": "CSI",
+      "exchange": "SSE",
+      "category": "size",
+      "launch_date": "2004-01-02",
+      "tdx_market_code": 1,
+      "official_url": "https://www.csindex.com.cn/#/indices/family/detail?indexCode=000016",
+      "derivative_underlyings": ["CFFEX_IH_FUTURE", "CFFEX_HO_OPTION"]
+    },
+    {
+      "symbol": "000300.SH",
+      "index_code": "000300",
+      "name_zh": "沪深300",
+      "name_en": "CSI 300 Index",
+      "publisher": "China Securities Index Co., Ltd.",
+      "publisher_code": "CSI",
+      "exchange": "SSE",
+      "category": "size",
+      "launch_date": "2005-04-08",
+      "tdx_market_code": 1,
+      "official_url": "https://www.csindex.com.cn/#/indices/family/detail?indexCode=000300",
+      "derivative_underlyings": ["CFFEX_IF_FUTURE", "CFFEX_IO_OPTION"]
+    },
+    {
+      "symbol": "000905.SH",
+      "index_code": "000905",
+      "name_zh": "中证500",
+      "name_en": "CSI 500 Index",
+      "publisher": "China Securities Index Co., Ltd.",
+      "publisher_code": "CSI",
+      "exchange": "SSE",
+      "category": "size",
+      "launch_date": "2007-01-15",
+      "tdx_market_code": 1,
+      "source_archive_code": "399905",
+      "official_url": "https://www.csindex.com.cn/#/indices/family/detail?indexCode=000905",
+      "derivative_underlyings": ["CFFEX_IC_FUTURE"]
+    },
+    {
+      "symbol": "000852.SH",
+      "index_code": "000852",
+      "name_zh": "中证1000",
+      "name_en": "CSI 1000 Index",
+      "publisher": "China Securities Index Co., Ltd.",
+      "publisher_code": "CSI",
+      "exchange": "SSE",
+      "category": "size",
+      "launch_date": "2014-10-17",
+      "tdx_market_code": 1,
+      "official_url": "https://www.csindex.com.cn/#/indices/family/detail?indexCode=000852",
+      "derivative_underlyings": ["CFFEX_IM_FUTURE", "CFFEX_MO_OPTION"]
+    },
+    {
+      "symbol": "000688.SH",
+      "index_code": "000688",
+      "name_zh": "科创50",
+      "name_en": "SSE STAR Market 50 Index",
+      "publisher": "Shanghai Stock Exchange",
+      "publisher_code": "SSE",
+      "exchange": "SSE",
+      "category": "board",
+      "launch_date": "2020-07-23",
+      "tdx_market_code": 1,
+      "official_url": "https://www.sse.com.cn/market/sseindex/indexlist/s/i000688/intro.shtml",
+      "derivative_underlyings": []
+    },
+    {
+      "symbol": "399001.SZ",
+      "index_code": "399001",
+      "name_zh": "深证成指",
+      "name_en": "SZSE Component Index",
+      "publisher": "Shenzhen Securities Information Co., Ltd.",
+      "publisher_code": "CNI",
+      "exchange": "SZSE",
+      "category": "broad_market",
+      "launch_date": "1995-01-23",
+      "tdx_market_code": 0,
+      "official_url": "https://www.cnindex.com.cn/module/index-detail.html?act_menu=1&indexCode=399001",
+      "derivative_underlyings": []
+    },
+    {
+      "symbol": "399006.SZ",
+      "index_code": "399006",
+      "name_zh": "创业板指",
+      "name_en": "ChiNext Index",
+      "publisher": "Shenzhen Securities Information Co., Ltd.",
+      "publisher_code": "CNI",
+      "exchange": "SZSE",
+      "category": "board",
+      "launch_date": "2010-06-01",
+      "tdx_market_code": 0,
+      "official_url": "https://www.cnindex.com.cn/module/index-detail.html?act_menu=1&indexCode=399006",
+      "derivative_underlyings": []
+    },
+    {
+      "symbol": "399330.SZ",
+      "index_code": "399330",
+      "name_zh": "深证100",
+      "name_en": "SZSE 100 Index",
+      "publisher": "Shenzhen Securities Information Co., Ltd.",
+      "publisher_code": "CNI",
+      "exchange": "SZSE",
+      "category": "size",
+      "launch_date": "2003-01-02",
+      "tdx_market_code": 0,
+      "official_url": "https://www.cnindex.com.cn/module/index-detail.html?act_menu=1&indexCode=399330",
+      "derivative_underlyings": []
+    }
+  ]
+}

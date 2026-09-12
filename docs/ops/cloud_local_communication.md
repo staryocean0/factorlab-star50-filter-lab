@@ -35,3 +35,15 @@
 - ZIP SHA256：`63badecf70405452674831f41a6aef0de174ca8d10b113fc32c91a8e1ca24cf0`
 - ZIP 大小：5446 bytes
 - 云端待复核：本包只证明本地没有逐笔 reception clock；不是风险状态或 consumer 结论。
+
+## CL-STAR50-DATAHUB-RAW-CALLBACK-SAMPLE-20260912
+
+- 任务：云端要求本地提取 parser 之前的真实 raw payload，供 DataHub adapter / prospective recorder 使用；不跑 V19/D2–D5、不装 recorder、不改 DataHub、不做延迟分析。
+- 本地结论：`CALLBACK_RAW_NOT_PERSISTED`。实际交付级别为 `NORMALIZED_SOURCE_ROWS`（`market_index_transactions` lake 行）。2025 vendor ZIP/CSV 原字节入库后已删除，当前百度账号无 `/A股数据_分笔成交_指数/`。未伪造 `received_at`。
+- vendor/source：`baidu_netdisk_market_index_transaction_3s`；原字段 `时间,价位,成交额`；成员 `000688.csv` / `000852.csv`。
+- 日期与行数：`2025-06-11`；`000688.SH` 4746 行；`000852.SH` 4746 行。
+- 交付包：[docs/ops/receipts/star50_datahub_raw_callback_sample_20260912/](receipts/star50_datahub_raw_callback_sample_20260912/)
+- ZIP：`docs/ops/receipts/star50_datahub_raw_callback_sample_20260912/STAR50_DATAHUB_RAW_CALLBACK_SAMPLE_20260912.zip`
+- ZIP SHA256：`866824b8966b237ed8463afd6280186301db95c450876112da77787d5d50fa0d`
+- ZIP 大小：328518 bytes
+- 云端待复核：本包只提供接口格式与 parser 源码副本；不是研究样本、风险状态或 consumer 结论。

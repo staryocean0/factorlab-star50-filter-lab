@@ -1,0 +1,24 @@
+{
+  "source_kind": "baidu_netdisk_market_index_transaction_3s",
+  "archive_path": "20250611.zip",
+  "archive_sha256": "f4045be45b8bc886de39ff595533e59416a042e09d7c1ee8f3682b574bf1afe5",
+  "requested_symbols": [
+    "000001.SH",
+    "000016.SH",
+    "000300.SH",
+    "000905.SH",
+    "000852.SH",
+    "000688.SH",
+    "399001.SZ",
+    "399006.SZ",
+    "399330.SZ"
+  ],
+  "selected_member_count": 9,
+  "missing_members": [],
+  "invalid_row_policy": "quarantine",
+  "invalid_row_count": 0,
+  "invalid_rows": [],
+  "trading_day": "2025-06-11",
+  "record_count": 42720,
+  "missing_expected_members": []
+}

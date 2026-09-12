@@ -1,0 +1,106 @@
+{
+  "schema_version": "datahub.source_contract_collection.v1",
+  "collection_id": "market_index_transactions",
+  "governance_note": "Deep history uses exact 3-second Baidu Netdisk index observations. Daily incrementals use TDX history-transaction rows whose protocol time is minute-only; stable in-minute sequence order reconstructs 3-second labels. Both sources carry interval turnover, not security volume.",
+  "source_contracts": [
+    {
+      "source_id": "baidu_netdisk_market_index_transaction_3s",
+      "publisher": "User-maintained Baidu Netdisk archive",
+      "authority_grade": "A1",
+      "fact_domains": ["market_index_level", "market_index_interval_turnover"],
+      "scope": {
+        "markets": ["cn_index"],
+        "exchanges": ["SSE", "SZSE"],
+        "instrument_types": ["market_index"],
+        "frequencies": ["3s"],
+        "price_spaces": ["raw_index_level"]
+      },
+      "field_semantics": {
+        "时间": "exact source observation timestamp including seconds",
+        "价位": "index level",
+        "成交额": "interval constituent turnover in CNY; non-cumulative"
+      },
+      "units": {"price": "index_points", "amount": "CNY", "volume": "not_available"},
+      "timezone": "Asia/Shanghai",
+      "session_semantics": "09:25 auction result, 3-second continuous observations, noon/final corrections, sparse closing auction",
+      "effective_window": {"from": "2000-07-14", "to": "2026-08-21"},
+      "historical_coverage": {
+        "mode": "daily ZIP under monthly directories",
+        "archive_count_observed_2026_08_23": 6331,
+        "archive_total_bytes_observed_2026_08_23": 61781292874,
+        "per_series_start": "first receipt-bound archive observation; launch-to-first-observation gaps remain explicit and are never fabricated"
+      },
+      "available_at_policy": "archive retrieval time; no historical first-publication claim",
+      "revision_policy": "remote fs_id, archive SHA-256 and immutable dataset_version bind each import",
+      "identity_mapping": "six-digit CSV member resolved only through the governed index catalog",
+      "parser_version": "market-index-transactions.v1",
+      "transport": {"kind": "Baidu Netdisk daily ZIP, UTF-8 BOM CSV"},
+      "retry_replay": {"retry_allowed": true, "replay_from_raw_receipt": true},
+      "raw_receipt_policy": {
+        "mode": "bytes_retained_replayable",
+        "sha256_required": true,
+        "request_metadata_required": true
+      },
+      "assertion_semantics": "positive_fact_source",
+      "enumeration": {"mode": "observation_source", "completion_proof": "calendar x daily archive x catalog member ledger"},
+      "coverage_envelope": "catalog-selected members in one immutable daily ZIP",
+      "absence_meaning": "missing member or timestamp is a source gap; no carry-forward is implied",
+      "negative_authority": {"allowed": false, "predicate": null},
+      "provenance": {
+        "origin_authority_id": "user_maintained_baidu_index_archive",
+        "provenance_root_id": "baidu_market_index_3s",
+        "correlated_source_group": "tdx_market_index_observation_family"
+      },
+      "known_limitations": ["no security volume", "from 2018-08-20 the 14:58-14:59 grid is closing auction and must stay sparse; 239 1m bars is the legal complete day", "archive is a user-maintained historical lane"],
+      "cross_validation_policy": "overlap must reconcile row count, price and amount against TDX history transaction after deterministic timestamp reconstruction"
+    },
+    {
+      "source_id": "tdx_market_index_history_transaction_reconstructed_3s",
+      "publisher": "Tongda Xin structured quote network",
+      "authority_grade": "A1",
+      "fact_domains": ["market_index_level", "market_index_interval_turnover"],
+      "scope": {
+        "markets": ["cn_index"],
+        "exchanges": ["SSE", "SZSE"],
+        "instrument_types": ["market_index"],
+        "frequencies": ["3s_reconstructed", "1m", "1d"],
+        "price_spaces": ["raw_index_level"]
+      },
+      "field_semantics": {
+        "time": "TDX protocol HH:MM only",
+        "sequence": "stable provider order within each minute; rank 0..19 maps to seconds rank*3",
+        "price": "index level",
+        "vol": "index interval turnover in hundreds of CNY; normalized amount=vol*100",
+        "buyorsell": "provider placeholder for index observations; not a trade-side signal"
+      },
+      "units": {"price": "index_points", "amount": "CNY", "volume": "not_available"},
+      "timezone": "Asia/Shanghai",
+      "session_semantics": "same observation family as Baidu archive; reconstructed seconds must be overlap-validated",
+      "effective_window": {"from": null, "to": null},
+      "historical_coverage": {"mode": "endpoint-dependent paged day history", "full_history_claim": false},
+      "available_at_policy": "retrieval time for observations; daily bars use governed schedule-bound availability",
+      "revision_policy": "new retrieval creates a new immutable version",
+      "identity_mapping": "catalog tdx_market_code + index_code",
+      "parser_version": "tdx-market-index-transaction-reconstruction.v1",
+      "transport": {"kind": "TDX 7709 get_history_transaction_data command 0x0FB5", "direct_route_required": true},
+      "retry_replay": {"retry_allowed": true, "replay_from_raw_receipt": false},
+      "raw_receipt_policy": {
+        "mode": "digest_and_request_metadata_only",
+        "sha256_required": true,
+        "request_metadata_required": true
+      },
+      "assertion_semantics": "positive_fact_source",
+      "enumeration": {"mode": "observation_source", "completion_proof": "page exhaustion and overlap reconciliation"},
+      "coverage_envelope": "explicit symbols and trading day",
+      "absence_meaning": "unknown until another healthy DIRECT endpoint is attempted",
+      "negative_authority": {"allowed": false, "predicate": null},
+      "provenance": {
+        "origin_authority_id": "tdx_structured_quote_network",
+        "provenance_root_id": "tdx_market_index_history_transaction",
+        "correlated_source_group": "tdx_market_index_observation_family"
+      },
+      "known_limitations": ["seconds are reconstructed, not protocol-native", "endpoint health is volatile", "requires a true DIRECT 7709 route"],
+      "cross_validation_policy": "Baidu overlap must match price and vol*100 amount after stable sequence reconstruction; mismatches deny promotion"
+    }
+  ]
+}
