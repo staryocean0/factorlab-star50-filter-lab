@@ -1,32 +1,32 @@
-# 接续入口：DataHub reception adapter 离线契约已通过，待本地 wiring
+# 接续入口：DataHub reception 云端验收已完成
 
-当前状态：**DATAHUB_RECEPTION_ADAPTER_V1_OFFLINE_CONTRACT_ACCEPTED_LOCAL_WIRING_PENDING**。
-历史接收判定仍是 **D5R_TRUE_RECEPTION_CLOCK_UNAVAILABLE_HISTORICAL_LIVE_LATENCY_UNVERIFIED**。
+当前状态：**DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING**。
+
+不要再回到“继续找历史raw”或“让本地模型做工程测试”。历史行情已经接受；云端可执行的 DataHub recorder/adapter 工程验收已经完成。
 
 先读：
 1. `CURRENT_RESEARCH.md`
 2. `research/prospective_reception_recorder_v1/PROGRAM_STATE.json`
-3. `research/prospective_reception_recorder_v1/DATAHUB_ADAPTER_RESULTS.md`
-4. `research/prospective_reception_recorder_v1/DATAHUB_INTEGRATION.md`
-5. `research/prospective_reception_recorder_v1/datahub_adapter.py`
-6. `research/prospective_reception_recorder_v1/DATAHUB_ADAPTER_EXECUTION_RECEIPT.json`
-7. 原 prospective recorder `PROTOCOL.md` / `SCHEMA.json`
-8. D5R、D5/D4/D3/D2/V19 证据与 V2 治理。
+3. `research/prospective_reception_recorder_v1/CLOUD_ACCEPTANCE_RESULTS.md`
+4. `research/prospective_reception_recorder_v1/CLOUD_ACCEPTANCE_EXECUTION_RECEIPT.json`
+5. `research/prospective_reception_recorder_v1/DATAHUB_ADAPTER_RESULTS.md`
+6. `research/prospective_reception_recorder_v1/DATAHUB_INTEGRATION.md`
+7. D5R、D5/D4/D3/D2/V19 与 V2治理。
 
 ## 已完成
 
-真实 DataHub 源码已审计，不再追历史 vendor raw。当前最早可控 seam 为 `TdxHqApiAdapter.get_security_quotes()` 的 Python SDK 返回之后、DataHub `parse_quotes()` 之前。适配层利用既有 `hq_api` / `quotes_parser` 依赖注入，无需重写轮询、fallback、stream coordinator 或 recording coordinator。
+Action run `34666927078` 全绿：完整恢复并校验既有 handoff ZIP，20个manifest文件全匹配，完整审计9,492行历史normalized sample，两指数4,746点网格完全一致；18 recorder + 23 adapter = 41 tests PASS；真实DataHub源码 seam AST复核通过；V2治理validator通过。
 
-当前会话实际执行23项适配层测试全部通过并通过compile检查。SDK payload保持不变；receipt先于parser；parser失败也保留receipt；payload中途改写/cardinality漂移会失败关闭；当前parser生成的`timestamp=now(UTC)`不会被误称vendor event time或received_at。
+当前冻结采集边界仍是：**TDX Python SDK return → DataHub parser之前**。它不是wire-level到达。
 
-用户交付的2025-06-11 normalized历史样本为两个指数各4,746行，继续作为有效历史行情和schema语义参考使用。不存在历史received_at只限制历史实测延迟声明，不质疑历史行情本身。
+云端synthetic wrapper开销仅作描述：两quote/iteration增量 median约59.3µs、p95约95.6µs、p99约109.1µs；不是live latency或生产门槛。
 
-## 下一实际动作
+## 当前证据缺口
 
-把 `TdxReceptionHqTap` 与 `ReceptionAwareQuotesParser` 挂到本地 DataHub 真实依赖注入点。第一阶段仅用synthetic或治理允许的replay/input验证 wiring、持久化、重启instance、重复/坏消息、性能开销与失败恢复；通过后再开始受保护前瞻采集。
+唯一与 reception 线直接相关、云端无法自行创造的证据，是未来本机真实 feed 运行后产生的 true-reception observations。它尚不存在，所以：
 
-当前已过2026-08-21，新采逐行subject数据可能属于pending BlackBox-V1。真实采集行先留受保护本地层，不上传公开GitHub/聊天、不直接做详细研究。
+`live_recorder_installed=false`; `true_reception_rows_collected=false`; `measured_feed_latency_supported=false`。
 
-不要重做V19/D2-D5，不开D6/V20，不把SDK-return timing叫raw TCP latency，不用parser `now()`/available_at/batch ingested_at代替received_at，不接交易router或生产registry。
+这不阻塞不依赖 reception clock 的其他云端研究。继续研究时遵守既有停止线：不为V19 accuracy开V20，不因缺日志强开D6，不查BlackBox逐行细节，不接PnL/router/production。
 
-`live_recorder_installed=false`; `true_reception_rows_collected=false`; `measured_feed_latency_supported=false`; `production_authority=false`。
+只有当新的本地独有数据确实成为某一步的必要输入时，才让用户转发“数据查找/打包/上传”提示词给本地模型；除此之外由云端直接执行。
