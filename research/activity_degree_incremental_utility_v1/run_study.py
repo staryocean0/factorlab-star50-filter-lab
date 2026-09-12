@@ -587,7 +587,7 @@ def descriptive_outputs(q: pd.DataFrame, probes: dict, h: int, out: Path) -> dic
         tmp = pd.DataFrame({"c_decile": cdec, "m3_decile": mdec, "target": target, "sigma": q.sigma.to_numpy(float), "tail": q.future_tail.to_numpy(float)})
         for (cd, md), g in tmp.groupby(["c_decile", "m3_decile"], dropna=False, sort=True):
             rows.append({"horizon": h, "endpoint": endpoint, "c_decile": None if pd.isna(cd) else int(cd), "m3_decile": None if pd.isna(md) else int(md),
-                         "n": int(len(g)), "target_mean": float(g.target.mean()), "sigma_mean": float(g.sigma.mean()), "tail_rate": float(g.tail.mean())})
+                         "n": int(len(g)), "target_mean": float(g.target.mean()), "sigma_mean": float(g.sigma.mean()), "tail_rate": float(g["tail"].mean())})
         for base, pb in (("C", pc), ("N", pn)):
             gain = (target-pb)**2 - (target-pa)**2
             for col in ("previous_state", "year", "symbol", "slot"):
