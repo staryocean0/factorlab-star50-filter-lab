@@ -1,0 +1,23 @@
+test_append_jsonl (test_recorder.RecorderTests.test_append_jsonl) ... ok
+test_cross_instance_join_rejected (test_recorder.RecorderTests.test_cross_instance_join_rejected) ... ok
+test_invalid_event_time_can_be_preserved (test_recorder.RecorderTests.test_invalid_event_time_can_be_preserved) ... ok
+test_invalid_symbol_rejected (test_recorder.RecorderTests.test_invalid_symbol_rejected) ... ok
+test_negative_clock_rejected (test_recorder.RecorderTests.test_negative_clock_rejected) ... ok
+test_non_bytes_payload_rejected (test_recorder.RecorderTests.test_non_bytes_payload_rejected) ... ok
+test_pair_rejects_identity_mismatch (test_recorder.RecorderTests.test_pair_rejects_identity_mismatch) ... ok
+test_parse_does_not_change_stamp (test_recorder.RecorderTests.test_parse_does_not_change_stamp) ... ok
+test_parsed_requires_timezone (test_recorder.RecorderTests.test_parsed_requires_timezone) ... ok
+test_price_must_be_positive (test_recorder.RecorderTests.test_price_must_be_positive) ... ok
+test_raw_payload_can_be_omitted_but_hash_remains (test_recorder.RecorderTests.test_raw_payload_can_be_omitted_but_hash_remains) ... ok
+test_required_source (test_recorder.RecorderTests.test_required_source) ... ok
+test_sequence_increments (test_recorder.RecorderTests.test_sequence_increments) ... ok
+test_stamp_records_raw_hash_and_clocks (test_recorder.RecorderTests.test_stamp_records_raw_hash_and_clocks) ... ok
+test_validator_accepts_wallclock_regression (test_recorder.RecorderTests.test_validator_accepts_wallclock_regression) ... ok
+test_validator_rejects_monotonic_regression (test_recorder.RecorderTests.test_validator_rejects_monotonic_regression) ... ok
+test_validator_rejects_noncontiguous_sequence (test_recorder.RecorderTests.test_validator_rejects_noncontiguous_sequence) ... ok
+test_wallclock_regression_is_recorded_not_rejected (test_recorder.RecorderTests.test_wallclock_regression_is_recorded_not_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.002s
+
+OK

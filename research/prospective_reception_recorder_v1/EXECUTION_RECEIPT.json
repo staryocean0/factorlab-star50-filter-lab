@@ -1,0 +1,42 @@
+{
+  "schema": "prospective_reception_recorder_v1_execution_receipt",
+  "date": "2026-09-12",
+  "source_main": "d592b8db1def0fc56ebba6ca87fdffca8b85fd11",
+  "execution_location": "current_chat_container",
+  "python": "3.13.5",
+  "commands": [
+    {
+      "command": "python -m unittest -v test_recorder.py",
+      "exit_code": 0,
+      "tests_run": 18,
+      "passed": 18
+    },
+    {
+      "command": "python -m compileall -q .",
+      "exit_code": 0
+    },
+    {
+      "command": "python validate_capture.py --receipts <synthetic>/receipts.jsonl --parsed <synthetic>/parsed.jsonl",
+      "exit_code": 0,
+      "receipt_rows": 1,
+      "parsed_rows": 1,
+      "passed": true
+    }
+  ],
+  "tested_local_sha256": {
+    "recorder.py": "ce3adfa00b6590f23d8ed551e36470ba6e8bdd54d5d3e750359f43d988db5700",
+    "validate_capture.py": "4304861c3134949c11d9c874648d6087347e61a334c4137cee971a8c476b172d",
+    "test_recorder.py": "df139fc6b5633fcc278809d596b75e1295eebaed4ae6be4ac23de97ae60f3e32"
+  },
+  "identity_note": "The reference semantics were executed in the chat container before publication. The repository test file was formatted compactly during publication, so this receipt does not claim byte-identical post-publication re-execution of every source file.",
+  "governance_note": "No governance files were modified. The current governance files were read from GitHub. A full repository checkout/governance-validator rerun was not possible in the chat container because outbound git clone/DNS is unavailable.",
+  "live_data_read": false,
+  "live_recorder_installed": false,
+  "true_reception_rows_collected": false,
+  "actions_dispatched": false,
+  "blackbox_queried": false,
+  "d6_started": false,
+  "v20_started": false,
+  "production_authority": false,
+  "decision": "REFERENCE_RECORDER_ACCEPTED_LOCAL_INSTALL_PENDING"
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "factorlab_true_reception_capture_v1",
+  "purpose": "prospective local receipt evidence captured before parsing",
+  "raw_receipt_required_fields": {
+    "recorder_version": "string",
+    "recorder_instance_id": "string",
+    "receipt_id": "string",
+    "source": "string",
+    "channel": "string|null",
+    "local_sequence": "int64 starting at 1 within recorder instance",
+    "receive_wallclock_utc_ns": "int64",
+    "receive_wallclock_utc": "RFC3339 UTC text rendered from receive_wallclock_utc_ns",
+    "receive_monotonic_ns": "int64, comparable only within recorder instance",
+    "process_start_wallclock_utc_ns": "int64",
+    "process_start_monotonic_ns": "int64",
+    "raw_payload_sha256": "lowercase hex SHA256",
+    "raw_payload_size": "int64",
+    "raw_payload_b64": "string|null subject to local policy"
+  },
+  "parsed_optional_fields": {
+    "symbol": "000688.SH|000852.SH|null",
+    "trading_day": "YYYY-MM-DD|null",
+    "market_event_time_raw": "source text|null",
+    "market_event_time_normalized": "normalized timestamp|null; only when semantics known",
+    "market_event_timezone": "explicit timezone/source semantics|null",
+    "event_time_parse_status": "PARSED|UNPARSED|INVALID",
+    "price": "positive float|null",
+    "source_sequence": "string|null",
+    "parse_error": "string|null"
+  },
+  "clock_rules": {
+    "capture_order": "sequence then wallclock and monotonic at callback boundary before parsing",
+    "wallclock_may_regress": true,
+    "monotonic_may_regress": false,
+    "cross_instance_monotonic_comparison": false
+  },
+  "forbidden_inference": [
+    "available_at_as_received_at",
+    "batch_ingested_at_as_received_at",
+    "file_mtime_as_received_at",
+    "market_event_time_as_received_at",
+    "row_index_as_received_at"
+  ],
+  "production_authority": false
+}
