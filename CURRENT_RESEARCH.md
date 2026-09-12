@@ -1,4 +1,4 @@
-# 当前任务：one-step degree trajectory 增量路径已关闭
+# 当前任务：signed-return asymmetry 增量路径已关闭
 
 更新：2026-09-12。使命不变：研究并交付**当时可知**的 K 线风险状态、连续风险程度、适用性和时间/缺失语义；本仓不开发交易动作、方向、仓位、收益 router 或生产策略。
 
@@ -6,13 +6,16 @@
 
 最新科学决定：
 
-**`ONE_STEP_DEGREE_TRAJECTORY_INCREMENTAL_UTILITY_NOT_SUPPORTED`**。
+**`SIGNED_RETURN_ASYMMETRY_INCREMENTAL_UTILITY_NOT_SUPPORTED`**。
 
 前置科学决定继续保留：
 
+- `ONE_STEP_DEGREE_TRAJECTORY_INCREMENTAL_UTILITY_NOT_SUPPORTED`；
 - `HISTORICAL_SHOCK_BURDEN_INCREMENTAL_UTILITY_NOT_SUPPORTED`；
 - `CROSS_INDEX_CURRENT_DEGREE_INCREMENTAL_UTILITY_NOT_SUPPORTED`；
-- `CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`。
+- `CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`；
+- D4 current own-index I/V 仅在指定 endpoint 保持有限支持；
+- D3 practical negative；V19 frozen；D5 bounded consumer contract 不变。
 
 并行 reception 工程状态仍是：
 
@@ -26,10 +29,15 @@
 
 最新科学主链：
 
-`research/degree_trajectory_utility_v1/PROGRAM_STATE.json` → `RESULTS.md` → `DECISIVE_RECEIPT.json` → `EXECUTION_RECEIPT.json` → `evidence/VALIDATION_RESULTS.json` / `evidence/FROZEN_MODELS.json` / `evidence/SHA256SUMS.txt` → frozen `PROTOCOL.md` / `run_study.py`。
+`research/signed_risk_asymmetry_utility_v1/PROGRAM_STATE.json` → `RESULTS.md` → `DECISIVE_RECEIPT.json` → `EXECUTION_RECEIPT.json` → `evidence/VALIDATION_RESULTS.json` / `evidence/FROZEN_MODELS.json` / `evidence/SHA256SUMS.txt` → frozen `PROTOCOL.md` / `run_study.py`。
+
+独立 fail-closed 校验：
+
+`scripts/validate_signed_risk_asymmetry_utility_v1.py` + `.github/workflows/signed-risk-asymmetry-authority.yml`。
 
 前置权威继续保留：
 
+- one-step degree trajectory：`research/degree_trajectory_utility_v1/`；
 - 12-bar shock memory：`research/historical_shock_burden_utility_v1/`；
 - cross-index current degree：`research/cross_index_degree_transfer_utility_v1/`；
 - current M3 refresh：`research/activity_degree_incremental_utility_v1/`；
@@ -39,101 +47,107 @@
 
 治理以 `docs/governance/DATA_USAGE_POLICY_V2.md` 为准。
 
-## 最新科学结果：One-step degree-trajectory incremental utility V1
+## 最新科学结果：Signed-risk asymmetry incremental utility V1
 
-D4/D5 已经传输 `lag_intensity`、`lag_ratio`、`delta_intensity`、`delta_ratio`，但原 contract 明确没有给 delta 独立预测效用验收。本轮正式补上这个科学问题。
+本轮问的是一个此前未正式验收的信息轴：**最近已完成收益的正负结构**，在 own current E15 intensity / volatility-ratio 与绝对波动历史已知以后，是否还能稳定增加未来非PnL风险信息。
 
-由于 current E15 I/V 已经在 baseline C 中，加入上一根 confirmed degree 与加入 `current - lag1` delta 在**原始信息层面一一等价**。因此冻结比较为：
+冻结信息只来自当前决策点之前的12个有效已完成5m收益；当前 unfinished bar 通过 `shift(1)` 明确排除。
+
+固定三模型：
 
 - C：84-column own-index D4-style current-I/V baseline；
-- T：C + lag1 confirmed degree 的固定20-column nonlinear/state-interaction block；
-- O：C + 完全同复杂度的 lag2 confirmed degree control；
-- T/O 都是104 columns，schema、scaling、ridge 完全一致。
+- A：C + `SEI12` / `SAI12` signed-asymmetry block；
+- M：C + 同窗口、同列数、同非线性/状态交互的 magnitude-only control；
+- A/M 都是104 columns，ridge、fit rows、复杂度一致。
 
-只有 `T vs C` 与 `T vs O` 同时通过，才承认最近一步 trajectory 有独立实用价值。
+只有 A 同时打赢 C 和 M，并通过预注册 practical/CI/slice gates，才可晋升。
 
-决定性 Action run：`34680352701`。Development 2021–2023 先 fit/freeze，随后同一 run 的 exact frozen artifact 才解锁 2024–2025 reusable Validation。
+决定性 Action run：`34681733485`。2021–2023 Development 先 fit/freeze；随后同一 run 的 exact frozen artifact 才解锁 2024–2025 reusable Validation。
 
 冻结模型 SHA256：
 
-`04b49e8613cad5b24822f8e827f8d6513f6fef74da5c2df0851e03473b4db188`。
+`92a5fdd5a75a57a1ca3adb567e8a12d03309c7de4ef33a601fc67cbb8c38f4d2`。
 
-Validation artifact：`10294052627`，ZIP SHA256：
+Validation artifact：`10293179281`，ZIP SHA256：
 
-`60c9133dbf6632b2f7dcf9795c70038ed50f4d18718fc54aaf2378010ceaeba8`。
+`f9597bb93b91a481b6a07a225dfae22c90c2f9178216079f41e6053f3076af79`。
 
 `VALIDATION_RESULTS.json` SHA256：
 
-`16e7db8b780f64cfa0fcc5091d3ab1feed4c63658465697381b2ae9dda390763`。
+`c0ffac04a70fed796bfb766876bd51f1781c788e4648b202eefd3b9ef01b203b`。
 
-完整决定性 evidence 已按原字节持久化进 `research/degree_trajectory_utility_v1/evidence/`。
+完整决定性 evidence 已按原字节持久化进 `research/signed_risk_asymmetry_utility_v1/evidence/`。
 
 ### Cohort / coverage
 
-- 15m：Development 59,614；Validation 39,770；trajectory coverage 100%；
+- 15m：Development 59,614；Validation 39,770；coverage 100%；
 - 30m：50,890 / 33,950 / 100%；
 - 60m：33,442 / 22,310 / 100%。
 
 ### 正式比较
 
-T 的 pooled relative squared-loss reduction：
+A 的 pooled relative squared-loss reduction：
 
-| Horizon | Endpoint | T vs C | T vs O |
-|---|---|---:|---:|
-| 15m | log future RMS | +0.11415% | +0.11321% |
-| 15m | future tail | +0.03753% | -0.00340% |
-| 30m | log future RMS | **+0.14957%** | **+0.15160%** |
-| 30m | future tail | +0.03919% | -0.03684% |
-| 60m | log future RMS | +0.02416% | -0.04063% |
-| 60m | future tail | +0.04523% | +0.01985% |
+| Horizon | Endpoint | A vs C | A vs M | Joint supported |
+|---|---|---:|---:|---|
+| 15m | log future RMS | +0.35160% | +0.19345% | No |
+| 15m | future tail | +0.19928% | +0.11586% | No |
+| 30m | log future RMS | +0.89813% | +0.70577% | No |
+| 30m | future tail | +0.30819% | +0.23314% | No |
+| 60m | log future RMS | **+1.35593%** | **+1.02822%** | **No** |
+| 60m | future tail | +0.54520% | +0.43298% | No |
 
-**12/12 formal comparisons 全部低于冻结 1% practical gate；六个 endpoint×horizon joint promotion 全部 false。**
+六个 endpoint×horizon joint promotion 全部 false；12项 formal comparison 全部 `supported=false`。
 
-Tail absolute Brier gains 全部远低于 `0.0005`。
+最值得解释的是60m future-RMS：pooled 点估计确实同时超过冻结1% practical threshold，但**仍不支持晋升**：
 
-30m log-RMS 是最值得解释、但仍不能晋升的一项：
+- A vs C 5-day family-adjusted CI lower = `-0.0016721298128465787`；
+- A vs M 5-day family-adjusted CI lower = `-0.0019976749339485705`；
+- STAR50 `000688.SH` 两组绝对 gain 都为负；
+- CSI1000 `000852.SH` 两组绝对 gain 都明显为正。
 
-- T vs C +0.14957%，5-day adjusted CI lower `+0.00002614`，2024/2025 与两个指数符号均非负，2023 forward 也为正；
-- T vs O +0.15160%，但 5-day adjusted CI lower `-0.00004682`，跨0；
-- 两个点估计都只有约 **0.15%**，约为冻结 1% practical gate 的七分之一。
+也就是说，这里存在**跨指数异质的统计提示**，不是一个已证明稳定的共同底层风险机制。预注册协议要求调整后区间为正且每个 symbol slice 非负，因此正式拒绝。
 
-因此不能说 trajectory/delta 完全没有信息；更准确的是：**最近一步 confirmed degree 对30m future RMS 含少量统计信息，但没有稳定打赢同复杂度 lag2，也没有足够实用幅度。**
+Tail 也不通过：最强绝对 Brier gain 只有 `0.0004583935491319103`，仍低于冻结 `0.0005` practical gate，且调整后区间跨0。
 
-15m RMS 约0.11%，区间跨0；60m T-vs-O RMS 已转负。tail 全部明显不支持独立预测 promotion。
+### 严格解释边界
 
-### D4/D5 delta 的正式解释
+不能说 signed asymmetry “完全没信息”；也不能把 pooled 60m >1% 摘出来说成“已支持”。正确结论是：
 
-本轮不删除 D4/D5 的 `lag_intensity`、`lag_ratio`、`delta_intensity`、`delta_ratio`。它们继续可以作为**描述/诊断/可观测消费字段**存在于原 contract 中。
+> 固定12-completed-bar signed-asymmetry 表征在 CSI1000 上出现较强60m RMS 信号，但在 STAR50 上同一表征为负，因此没有证明跨两指数稳健、可独立晋升的未来风险增量。
 
-但本轮明确冻结：
+禁止事后只保留 `000852.SH`。这会直接违反 V1 的冻结 protocol。
 
-- `delta_independent_predictive_promotion=false`；
-- 不把 delta 变成 D5 decision gate；
+本轮因此：
+
+- 不向 D5 增加 signed-asymmetry 字段或 decision gate；
 - 不修改 V19；
+- D4/D5 authority 不变；
+- 不产生方向/交易/PnL含义；
 - 不创建新 risk state / threshold / production field。
 
 ## Fixed path 已关闭
 
-lag1-vs-lag2 trajectory V1 到此关闭。禁止使用本次 reusable Validation 结果去做：
+signed-asymmetry V1 到此关闭。禁止使用本次 reusable Validation 去做：
 
-- lag3/lag4 搜索；
-- smoothing / decay；
-- alternate normalization；
-- 单指数、state、slot、episode 筛选；
-- 改 nonlinear transform / ridge / horizon / bootstrap family；
-- 删除 O control。
+- 只选 CSI1000；
+- 6/24/48-bar window 搜索；
+- decay/EWMA；
+- 改成 skewness、downside-count 或别的事后 sign 表征；
+- state/slot/year/symbol筛选；
+- 改 ridge / horizon / bootstrap family / practical gate；
+- 删除 magnitude-only M control。
 
-未来若研究 degree dynamics，必须是**真正不同的因果机制假设**，重新事前冻结，而不是围绕本轮小正信号做参数救援。
+若未来再研究收益符号结构，必须是**真正不同、事前可冻结的因果机制问题**，不能围绕本次 CSI1000 正信号做救援。
 
 ## 前置科学结果保持不变
 
-- 12-bar cumulative shock burden：有少量统计信号但没有实用、稳定的 shock-specific increment，不进D5/V19；
+- one-step trajectory/delta：最多约0.15%小信号，不获独立预测 promotion；D4/D5 delta 继续只作描述/诊断；
+- 12-bar cumulative shock burden：有少量统计信号但没有实用、稳定的 shock-specific increment；
 - cross-index current degree：other-current I/V 在 own-current 已知后不支持增量 promotion；
 - current M3：相对 D4 baseline 有信息，但 current-refresh 相对 lagged-M3 未过 practical gate；
 - D4 own current I/V：指定 endpoint 有限支持；
-- D3 practical negative；
-- V19 frozen；
-- D5 bounded consumer contract 不变。
+- D3 practical negative；V19 frozen；D5 bounded consumer contract 不变。
 
 ## 历史 backlog 与 reception
 
@@ -143,8 +157,8 @@ reception 仍是 `DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION
 
 ## 下一步边界
 
-本轮 trajectory fixed specification 已关闭。下一科学题必须是与 V19 / D4 / M3 / cross-index / shock-memory / trajectory 都真正不同的因果风险机制，并能在结果前冻结；否则正确动作是维持并审计现有 authority，而不是继续调 lag/window/threshold。
+signed-asymmetry fixed specification 已关闭。下一科学题必须与 V19 / D4 / M3 / cross-index / shock-memory / trajectory / signed-asymmetry 都真正不同，且能在结果前冻结；若仓库审计找不到这样的独立机制，正确动作就是 **hold / maintain authority**，不是继续制造窗口、阈值或单指数救援。
 
 仍然：不读受保护2026逐行数据，不查BlackBox，不算PnL，不恢复router，不开D6/V20，不提高production authority。
 
-`degree_trajectory_incremental_supported=false`; `delta_independent_predictive_promotion=false`; `d5_contract_unchanged=true`; `historical_shock_burden_incremental_supported=false`; `cross_index_current_degree_incremental_supported=false`; `current_m3_consumer_promotion=false`; `historical_research_backlog_closed=true`; `remaining_executable_legacy_backlog=0`; `validation_reused=true`; `fresh_oos=false`; `blackbox_queried=false`; `d6_started=false`; `v20_started=false`; `production_authority=false`.
+`signed_return_asymmetry_incremental_supported=false`; `pooled_60m_rms_one_percent_gate_met=true`; `cross_symbol_robustness_supported=false`; `single_index_rescue_authorized=false`; `signed_asymmetry_consumer_promotion=false`; `degree_trajectory_incremental_supported=false`; `delta_independent_predictive_promotion=false`; `d5_contract_unchanged=true`; `historical_shock_burden_incremental_supported=false`; `cross_index_current_degree_incremental_supported=false`; `current_m3_consumer_promotion=false`; `historical_research_backlog_closed=true`; `remaining_executable_legacy_backlog=0`; `validation_reused=true`; `fresh_oos=false`; `blackbox_queried=false`; `d6_started=false`; `v20_started=false`; `production_authority=false`.

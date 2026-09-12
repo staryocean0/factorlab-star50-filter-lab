@@ -1,0 +1,73 @@
+{
+  "schema": "signed_risk_asymmetry_utility_v1_execution_receipt",
+  "decision": "SIGNED_RETURN_ASYMMETRY_INCREMENTAL_UTILITY_NOT_SUPPORTED",
+  "source_main_commit": "291d04861e85492337a2f86f1fade0419254972d",
+  "execution_branch": "research/signed-risk-asymmetry-utility-v1-20260912",
+  "protocol_git_blob": "8e5690d4fa1250fcc2e3b5cc3bfdea733dd46880",
+  "runner_git_blob": "52fe22bef0b1e34364d908fc306fd076c8a20264",
+  "parent_runner_git_blob": "0afc45e5061f45f544ecc7ee4519eae4e5204bca",
+  "workflow_run_id": 34681733485,
+  "fit_job_id": 103521475450,
+  "validation_job_id": 103521623283,
+  "frozen_model_sha256": "92a5fdd5a75a57a1ca3adb567e8a12d03309c7de4ef33a601fc67cbb8c38f4d2",
+  "fit_artifact": {
+    "id": 10294178564,
+    "size_bytes": 26054,
+    "zip_sha256": "f7704e9e77163a6c7f977fb8d9007543d03b579aebf80ef5f403fb830a63a369"
+  },
+  "validation_artifact": {
+    "id": 10293179281,
+    "size_bytes": 67661,
+    "zip_sha256": "f9597bb93b91a481b6a07a225dfae22c90c2f9178216079f41e6053f3076af79",
+    "validation_results_sha256": "c0ffac04a70fed796bfb766876bd51f1781c788e4648b202eefd3b9ef01b203b"
+  },
+  "tests": {
+    "causal_and_complexity_tests": 6,
+    "fit_phase_passed": true,
+    "validation_phase_passed": true,
+    "same_run_frozen_artifact_used_for_validation": true,
+    "evidence_persisted_to_git": true
+  },
+  "feature_identity": {
+    "C_columns": 84,
+    "A_columns": 104,
+    "M_columns": 104,
+    "A_M_complexity_matched": true,
+    "signed_block_columns": 20,
+    "magnitude_control_block_columns": 20,
+    "current_final_return_excluded_by_shift1": true
+  },
+  "development_rows": {
+    "15m": 59614,
+    "30m": 50890,
+    "60m": 33442
+  },
+  "validation_rows": {
+    "15m": 39770,
+    "30m": 33950,
+    "60m": 22310
+  },
+  "asymmetry_coverage_all_horizons": 1.0,
+  "joint_endpoint_support_count": 0,
+  "formal_comparison_support_count": 0,
+  "strongest_pooled_comparison": {
+    "horizon": 60,
+    "endpoint": "log_future_sigma",
+    "comparison": "A_vs_C",
+    "relative_gain": 0.01355925535726075,
+    "absolute_gain": 0.0016150634791540668,
+    "adjusted_5day_ci_low": -0.0016721298128465787,
+    "supported": false
+  },
+  "single_index_rescue_authorized": false,
+  "consumer_logic_change": false,
+  "validation_reused": true,
+  "fresh_oos": false,
+  "read_2026": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "candidate_nominated": false,
+  "production_authority": false,
+  "v20_started": false,
+  "d6_started": false
+}
