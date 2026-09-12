@@ -1,0 +1,45 @@
+name: activity-degree-runner-patch
+
+on:
+  push:
+    branches:
+      - research/activity-degree-incremental-utility-v1-20260912
+    paths:
+      - .github/workflows/activity-degree-runner-patch.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/activity-degree-incremental-utility-v1-20260912
+          fetch-depth: 1
+      - name: Remove implementation-only forward sample guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('research/activity_degree_incremental_utility_v1/run_study.py')
+          s=p.read_text()
+          old='''        if len(train) < 10000 or len(hold) < 5000:\n            raise RuntimeError(f"insufficient Development split h={h}: {len(train)} {len(hold)}")\n'''
+          new='''        if train.empty or hold.empty:\n            raise RuntimeError(f"empty Development forward split h={h}: {len(train)} {len(hold)}")\n'''
+          if s.count(old) != 1:
+              raise SystemExit('expected guard not found exactly once')
+          p.write_text(s.replace(old,new))
+          PY
+          git diff --check
+          git diff -- research/activity_degree_incremental_utility_v1/run_study.py
+      - name: Commit exact implementation correction
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/activity_degree_incremental_utility_v1/run_study.py
+          git commit -m 'implementation: remove extra forward-fit size guard [skip ci]'
+          git push origin HEAD:research/activity-degree-incremental-utility-v1-20260912
