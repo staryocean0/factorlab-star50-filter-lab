@@ -1,0 +1,20 @@
+{
+  "schema": "historical_shock_burden_utility_v1_evidence_source",
+  "decisive_run_id": 34679293167,
+  "fit_job_id": 103514769483,
+  "validation_job_id": 103514946904,
+  "fit_artifact_id": 10293986119,
+  "fit_artifact_zip_sha256": "153476b787b8ae8401d3029e36303f6ef8af0285a6ba245725e5ae12b5d032cd",
+  "validation_artifact_id": 10294046103,
+  "validation_artifact_bytes": 67129,
+  "validation_artifact_zip_sha256": "943d44b741888307c978b4504edeb704ecdeedb75ecdf8f521eec07a4809f215",
+  "validation_results_sha256": "8fa3f332a033e8f57ebf3240e3891295444dd9b48a8e2f699e2244928eb2f8bd",
+  "frozen_models_sha256": "65f9403e3aae00873432403f833c1d8772429c5172fc7f3fd76581a19a4222d3",
+  "source_artifact_copied_byte_for_byte": true,
+  "validation_reused": true,
+  "fresh_oos": false,
+  "read_2026": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "production_authority": false
+}
