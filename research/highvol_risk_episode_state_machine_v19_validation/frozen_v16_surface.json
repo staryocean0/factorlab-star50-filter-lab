@@ -1,0 +1,53 @@
+{
+  "schema": "highvol_horizon_adaptive_surface_v16_frozen_v1",
+  "source_branch": "research/highvol-horizon-adaptive-surface-v16-20260910",
+  "source_execution_commit": "bcdc18d5886869865c6454fa323ebc6858090249",
+  "source_run_id": 34497737506,
+  "source_job_id": 102940376435,
+  "source_artifact_id": 10160511846,
+  "source_artifact_sha256": "3124ceb9bbeb48379f5469b979b6590468e26d8d5a3c9d16fa202ae19d07b077",
+  "source_runner_blob_sha": "f72384fd8c8554f1d3e11bcdeeb82fca20d63ed8",
+  "source_protocol_blob_sha": "e199f5522f309d07805ddc28ea2c3957a9364dba",
+  "v15_decisive_run_id": 34497176574,
+  "development_years": [2021, 2022, 2023],
+  "row_count": 7327,
+  "symbols": ["000688.SH", "000852.SH"],
+  "age_buckets": ["LT15", "M15_25", "M30_40", "GE45"],
+  "horizons_minutes": [15, 30, 60],
+  "construction": {
+    "15m": "state_plus_age_backward_capped",
+    "30m": "state_plus_age_capped_at_age_only_60",
+    "60m": "age_only_anchor"
+  },
+  "monotonic_adjustments_in_full_development_surface": 0,
+  "adaptive_surface": [
+    {"current_state":"UNSAFE","age_bucket":"LT15","p_15m":0.007220216606498195,"p_30m":0.032490974729241874,"p_60m":0.718728403593642},
+    {"current_state":"UNSAFE","age_bucket":"M15_25","p_15m":0.007858546168958742,"p_30m":0.0550098231827112,"p_60m":0.8646694214876033},
+    {"current_state":"UNSAFE","age_bucket":"M30_40","p_15m":0.013628620102214651,"p_30m":0.6252129471890971,"p_60m":0.944254835039818},
+    {"current_state":"UNSAFE","age_bucket":"GE45","p_15m":0.5246252676659529,"p_30m":0.8244111349036403,"p_60m":0.9799453053783045},
+    {"current_state":"RECOVERING","age_bucket":"LT15","p_15m":0.04778156996587031,"p_30m":0.08276450511945392,"p_60m":0.718728403593642},
+    {"current_state":"RECOVERING","age_bucket":"M15_25","p_15m":0.04478656403079076,"p_30m":0.10286913925822254,"p_60m":0.8646694214876033},
+    {"current_state":"RECOVERING","age_bucket":"M30_40","p_15m":0.08525149190110827,"p_30m":0.7689684569479965,"p_60m":0.944254835039818},
+    {"current_state":"RECOVERING","age_bucket":"GE45","p_15m":0.7501445922498554,"p_30m":0.9097744360902256,"p_60m":0.9799453053783045}
+  ],
+  "age_only_comparator": [
+    {"age_bucket":"LT15","n":1445,"p_15m":0.03939184519695923,"p_30m":0.07256392536281962,"p_60m":0.718728403593642},
+    {"age_bucket":"M15_25","n":1934,"p_15m":0.03460743801652893,"p_30m":0.08987603305785125,"p_60m":0.8646694214876033},
+    {"age_bucket":"M30_40","n":1756,"p_15m":0.0608646188850967,"p_30m":0.7212741751990899,"p_60m":0.944254835039818},
+    {"age_bucket":"GE45","n":2192,"p_15m":0.7023701002734731,"p_30m":0.8919781221513218,"p_60m":0.9799453053783045}
+  ],
+  "development_pooled_improvement_over_age_only": {
+    "15m": {"brier":0.002820966312336956,"log_loss":0.00940939653971068},
+    "30m": {"brier":0.0014218092982553332,"log_loss":0.004547626969935714},
+    "60m": {"brier":0.0,"log_loss":0.0}
+  },
+  "development_annual_brier_win_count": {"15m":3,"30m":3,"60m":0},
+  "adaptive_surface_supported": true,
+  "validation_authorized": true,
+  "threshold_search_performed": false,
+  "validation_queried": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "trading_rule_created": false,
+  "production_authority": false
+}

@@ -1,0 +1,39 @@
+name: legacy-data-integrity-manual-only
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: 'Type LEGACY_INTEGRITY_NOT_RESEARCH. Reads legacy symbol/day columns through 2026-08-21; no fitting or outcomes.'
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: legacy-integrity-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  integrity:
+    if: inputs.confirmation == 'LEGACY_INTEGRITY_NOT_RESEARCH'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /pyproject.toml
+            /src/
+            /scripts/validate_theme_package.py
+            /docs/governance/
+            /tests/integration/
+            /data/manifest.json
+            /data/development/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -e '.[maintenance]'
+      - name: Legacy immutable input integration only, not a research evaluation
+        run: |
+          python scripts/validate_theme_package.py
+          python -m pytest -o addopts='' -q tests/integration/test_legacy_market_integrity.py

@@ -1,0 +1,85 @@
+name: maintenance-bootstrap-once
+on:
+  push:
+    branches: [maintenance/repository-consistency-20260912]
+    paths:
+      - .github/workflows/maintenance-bootstrap-once.yml
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: repository-maintenance-bootstrap
+  cancel-in-progress: false
+jobs:
+  reconcile:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: maintenance/repository-consistency-20260912
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/data/
+            !/artifacts/
+            !/research_materials/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Load the exact pre-maintenance metadata baseline
+        run: |
+          test "$(git branch --show-current)" = maintenance/repository-consistency-20260912
+          test ! -e docs/governance/COMPONENT_LIFECYCLE.json
+          git fetch --filter=blob:none --depth=1 origin 5544fc093b8660b8eab4e7d0ceda2cbdb95f3b40
+      - uses: actions/download-artifact@v4
+        with:
+          name: intrabar-temporal-reversal-v1-validation-34685234360
+          repository: staryocean0/factorlab-star50-filter-lab
+          run-id: 34685234360
+          github-token: ${{ github.token }}
+          path: /tmp/closed-evidence/intrabar
+      - uses: actions/download-artifact@v4
+        with:
+          name: cross-index-residual-dislocation-v1-validation-34688304454
+          repository: staryocean0/factorlab-star50-filter-lab
+          run-id: 34688304454
+          github-token: ${{ github.token }}
+          path: /tmp/closed-evidence/residual
+      - name: Reconcile once without fitting, scoring or reading market rows
+        run: |
+          python -m py_compile scripts/repository_consistency.py tests/test_repository_consistency.py
+          python scripts/repository_consistency.py initialize --evidence-dir /tmp/closed-evidence
+          git add -A -- README.md CURRENT_RESEARCH.md CONTINUE_HERE.md ai-readme.md LOCAL_TAKEOVER.md AGENTS.md pyproject.toml docs research scripts src tests
+          git add --sparse -- data/LIFECYCLE.md artifacts/LIFECYCLE.md research_materials/LIFECYCLE.md
+          python - <<'PY'
+          import subprocess
+          changed=subprocess.check_output(['git','diff','--cached','--name-only']).decode().splitlines()
+          for p in changed:
+              assert not p.startswith('.github/'), p
+              if p.startswith(('data/','artifacts/','research_materials/')):
+                  assert p.endswith('/LIFECYCLE.md'), p
+          print('staged paths', len(changed))
+          PY
+          git diff --cached --stat
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'maintenance: persist evidence, reconcile docs and record all component lifecycles [skip ci]'
+          git push origin HEAD:maintenance/repository-consistency-20260912
+      - name: Export reviewable resulting documents and registry
+        run: |
+          python - <<'PY'
+          import pathlib,zipfile,subprocess
+          out=pathlib.Path('/tmp/maintenance-review');out.mkdir()
+          (out/'HEAD.txt').write_text(subprocess.check_output(['git','rev-parse','HEAD']).decode())
+          with zipfile.ZipFile(out/'changed-files.zip','w',zipfile.ZIP_DEFLATED) as z:
+              names=subprocess.check_output(['git','diff','--name-only','--diff-filter=ACM','HEAD^','HEAD']).decode().splitlines()
+              for n in names:
+                  if pathlib.Path(n).is_file(): z.write(n,n)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: repository-maintenance-review
+          path: /tmp/maintenance-review/
+          retention-days: 90
+          if-no-files-found: error
