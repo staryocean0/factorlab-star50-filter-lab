@@ -1,6 +1,6 @@
 # 权威叙事：状态上下文 + 连续风险程度 + 因果适用性
 
-2026-09-11建立；2026-09-12更新至 D5R 接收时钟审计。目标仍是把当时可知的K线风险状态、程度与适用性正确交给下游研究，不把实用导向偷换成交易动作。
+2026-09-11建立；2026-09-12更新至前瞻 reception recorder 参考实现。目标仍是把当时可知的K线风险状态、程度与适用性正确交给下游研究，不把实用导向偷换成交易动作。
 
 ## 已完成的证据层
 
@@ -9,41 +9,43 @@
 - D3：三状态表达未达到原实际增量门槛，`D3_INCREMENTAL_UTILITY_NOT_SUPPORTED` 不变。
 - D4：当前连续 I/V 对15/30/60m未来波动强度和30m尾部有限支持；15/60m尾部未晋升。
 - D5：本仓样例消费者把状态、连续程度、发布时间/接收时间/失效和缺失语义接通；它证明接口语义，不证明真实本机接收延迟。
+- D5R：历史两个指数没有逐条真实本机 `received_at`，历史实测 feed/network/processing latency 无法恢复。
 
-## D5R：历史真实 reception clock 不存在
+## 前瞻 reception recorder V1
 
-本地只读检索结果已上传到 commit `09cb66a86be6a9bef3a91b52af34b747f812b407` 与 Release `star50-true-reception-raw-20260912`。结论：`NO_TRUE_RECEPTION_TIMESTAMP_AVAILABLE`，quote rows=0。
+既然历史接收时钟不存在，唯一合理的数据路径是从未来开始真实采集。本轮已经完成参考实现和冻结协议，但尚未安装到 DataHub/live feed。
 
-DataHub recording 相关表为空，`lake/recording` / `ticks.parquet` 未物化。已有 `observation_datetime` / `observation_time` 是市场或重建观察时钟；`available_at` 是历史/派生可得口径；`ingested_at` 是batch导入时钟。它们都不能变成真实本机 `received_at`。
+核心要求：在真实feed callback入口、任何解析/排队/归一化之前，先保存本机UTC wall-clock、monotonic_ns、本地sequence和raw payload identity；随后才解释market/event time、symbol、price和source sequence。
 
-因此当前权威必须明确：
+wall-clock允许因NTP/系统调整回拨，monotonic用于同一recorder实例内的顺序和时差；进程重启必须新建recorder_instance_id，不跨实例偷接monotonic。解析失败不能删除原始receipt，重复源消息不在recorder层去重。
 
-**D5R_TRUE_RECEPTION_CLOCK_UNAVAILABLE_HISTORICAL_LIVE_LATENCY_UNVERIFIED**。
+参考代码和validator位于 `research/prospective_reception_recorder_v1/`。会话内18项合成测试、编译和一组独立JSONL validator CLI样例通过。没有新行情读取、没有实测延迟、没有DataHub安装或生产授权。
 
-这不推翻 V19/D2-D5，但阻止把 owner_realtime_assumption、零延迟样例或2秒合成样例描述为实测 feed/network/processing latency。
+## 数据治理：安装可以先做，真实新行必须隔离
+
+当前日期已经晚于 `2026-08-21`。按照 `DATA_USAGE_POLICY_V2.md`，新的两指数观测可能进入 pending BlackBox-V1。
+
+因此可以先把recorder代码接入本地callback并用synthetic/允许replay测试，但真实新行情一旦开始采集，逐行timestamp/price必须留在受保护本地数据层，不能上传公开GitHub/当前聊天，也不能直接用于研究调参或详细诊断。后续使用必须经过明确数据角色或预注册聚合接口。
+
+这一区分很重要：**建立测量能力不等于获得读取新市场数据的权限。**
 
 ## 现在正确的研究接口
 
 仍交付三个轴：
-
 1. V19状态上下文与转移；
 2. 当前连续风险程度 I/V 与适用的历史对照；
 3. observation / decision / published / expiry、确认性质和缺失原因。
 
-当没有真实 reception log 时，接收侧身份只能标记为 `owner_realtime_assumption` / `unmeasured_reception`。不得把缺失补正常，不得把合成 received_at 写成真实记录。
+当没有真实 reception log 时，接收侧只能标记 `owner_realtime_assumption` / `unmeasured_reception`。未来只有 recorder 真正产生、并在治理允许下使用的记录，才能升级 measured reception 证据。
 
-## 真实接收时钟的唯一后续路径
+## 当前停止线与下一动作
 
-历史数据不能反推 reception。若未来确有实际接入需求，只能前瞻采集真实 recorder 记录。最小字段：symbol、source/vendor/channel、market/event timestamp、timezone-aware local receive wall clock、local monotonic receive timestamp/sequence、price、source sequence/row identity、trading_day、recorder/version identity。
+当前状态：`PROSPECTIVE_RECEPTION_RECORDER_V1_REFERENCE_ACCEPTED_LOCAL_INSTALL_PENDING`。
 
-未来采集必须在接收瞬间持久化，不能事后从文件 mtime、batch import 或 observation time构造。采集本身属于基础设施观测，不自动授予生产或交易权限。
+下一步不是新模型，而是在本地 DataHub 的真实 feed callback 路径中按 `LOCAL_INTEGRATION_HANDOFF.md` 接入 recorder；第一阶段只做 synthetic/允许replay、开销、重启和持久化验收。通过后才启动受保护的前瞻采集。
 
-## 当前停止线
+不因缺历史日志启动 D6/V20，不重跑 V19/D2-D5，不恢复 payoff/router，不查询 BlackBox 细节，不计算PnL。
 
-没有真实 reception 数据时，本仓进入冻结维护；不为缺日志启动 D6/V20，不重跑 V19/D2-D5，不恢复 payoff/router，也不查询 BlackBox/PnL。
+当前权威链：`CURRENT_RESEARCH.md` → 本文 → `research/prospective_reception_recorder_v1/PROGRAM_STATE.json` → `PROTOCOL.md` / `SCHEMA.json` / `EXECUTION_RECEIPT.json` → D5R → 原D5/D4/D3/D2/V19证据。
 
-只有真实前瞻 reception 记录出现后，才重新打开“实测到达时钟、实际 E15 可用性与真实延迟”的验收问题。
-
-当前权威链：`CURRENT_RESEARCH.md` → 本文 → `research/reception_clock_adjudication_d5r/PROGRAM_STATE.json` → `RESULTS.md` / `DECISIVE_RECEIPT.json` → 本地负结果包 → 原 D5/D4/D3/D2/V19 证据。
-
-`true_reception_timestamp_available=false`; `measured_feed_latency_supported=false`; `external_consumer_accepted=false`; `d6_started=false`; `v20_started=false`; `production_authority=false`。
+`measured_feed_latency_supported=false`; `live_recorder_installed=false`; `true_reception_rows_collected=false`; `d6_started=false`; `v20_started=false`; `production_authority=false`。
