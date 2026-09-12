@@ -1,0 +1,66 @@
+{
+  "schema": "risk_coordinate_validation_v1_execution_receipt",
+  "updated": "2026-09-12",
+  "decision": "RISK_COORDINATE_VALIDATION_NOT_FULLY_REPLICATED_NO_THRESHOLD_RETUNE",
+  "scientific_verdict": "validation_diagnostic_does_not_fully_replicate",
+  "historical_execution": {
+    "run_id": 34303912251,
+    "job_id": 102316502560,
+    "execution_sha": "ac17e766e5d17b7d37cd90e83253c4874c33f44e",
+    "artifact_id": 10086030669,
+    "artifact_bytes": 3158,
+    "artifact_zip_sha256": "bf92728fed46f4db34ea45e5ce932c2d8f7557d48e7a5fa5290a1be43a5d36ed"
+  },
+  "reproduction_execution": {
+    "run_id": 34667783528,
+    "job_id": 103483115374,
+    "execution_sha": "08e70cbfa6b097435afabb9f228a71a771d50797",
+    "artifact_id": 10289539266,
+    "artifact_bytes": 3472,
+    "artifact_zip_sha256": "a374ed5daa4f34b5d2f4720d67dc668872b2412ff921bd1822b4a7fe038fb4b8",
+    "artifact_expires_at": "2026-12-11T02:29:02Z"
+  },
+  "frozen_identity": {
+    "validation_protocol_blob": "18e330b3ea9067a27ba2ec5351f5f8136b5fcc89",
+    "validation_runner_blob": "669930a56f80249b63d55973219185eb83f55f42",
+    "fine_activity_protocol_blob": "d43f5b4a2c0395d1d022a3fb5e10c58dce08de0c",
+    "fine_activity_runner_blob": "2a5f607db1451a2e4576a9bc0940b67ac02f0d2e",
+    "decomposition_protocol_blob": "9672291188dc92ade1046de603d7b178fba783c8",
+    "decomposition_result_blob": "832f632b882dcdd0fc51aa3ff83c9b814940e5cd"
+  },
+  "population": {
+    "validation_years": [2024, 2025],
+    "validation_rows": 110911,
+    "read_2026": false,
+    "blackbox_queried": false,
+    "fresh_oos": false
+  },
+  "checks": {
+    "state_persistence_axis_replicated_all_index_year_pools": true,
+    "state_persistence_gap_pp": {
+      "000688.SH_2024": 50.48860441318299,
+      "000688.SH_2025": 51.68691808519973,
+      "000852.SH_2024": 47.87725487725262,
+      "000852.SH_2025": 48.79151031400981
+    },
+    "m3_effect_size_gate_passed_all_extreme_comparisons": true,
+    "m3_full_amplitude_axis_replicated": false,
+    "failed_support_cells": [
+      {"symbol": "000688.SH", "year": 2025, "state": "Unsafe", "band": ">2", "n": 19, "required_n": 30},
+      {"symbol": "000852.SH", "year": 2024, "state": "Unsafe", "band": "<=0", "n": 48, "required_n": 100},
+      {"symbol": "000852.SH", "year": 2025, "state": "Unsafe", "band": ">2", "n": 20, "required_n": 30}
+    ]
+  },
+  "reproduction_evidence_sha256": {
+    "validation_risk_coordinate_cube.csv": "192e011c7aa873b451a0363bb6392296b6a88f9f637f256dfbc9842b740aeb3b",
+    "validation_pooled_state_summary.csv": "cfcb671deb2ab978c46f034e91e19e347af9fa0c81903f7588d1f99b286dff63",
+    "summary.json": "d6c306c6a06dba470f218bb1c19156c4b503abd398d706620775359dd9774ad8"
+  },
+  "original_and_reproduction_scientifically_identical": true,
+  "post_result_threshold_retune_allowed": false,
+  "pool_years_to_rescue_allowed": false,
+  "move_m3_bands_to_rescue_allowed": false,
+  "candidate_nominated": false,
+  "returns_or_pnl_evaluated": false,
+  "production_authority": false
+}
