@@ -1,0 +1,67 @@
+{
+  "schema": "cross_index_degree_transfer_utility_v1_decisive_receipt",
+  "date": "2026-09-12",
+  "decision": "CROSS_INDEX_CURRENT_DEGREE_INCREMENTAL_UTILITY_NOT_SUPPORTED",
+  "protocol_git_blob": "9d925368f01163b51421d5221d9a3ba4f5adaaaf",
+  "parent_runner_git_blob": "b148d8ccf1d13651434b7b14b42a27dc4b31f5e6",
+  "source_main_commit": "165cfb0a56aaf3ac7c616f9d2eadd27501f2e0e6",
+  "original_fit": {
+    "run_id": 34676891139,
+    "artifact_id": 10292497993,
+    "artifact_zip_sha256": "d46ead8563dda8e51be572044e981d49e3ff6a03f9fcebdac5d5e3f546b41df4",
+    "frozen_models_sha256": "7eae7142323b38c5ae54618745e9ad9891c00afb09d02e8eb8def4490675f6b6",
+    "C_columns": 84,
+    "X_columns": 99,
+    "L_columns": 99,
+    "cross_block_columns": 15,
+    "X_L_schema_identical": true
+  },
+  "decisive_validation": {
+    "run_id": 34677297901,
+    "job_id": 103509323551,
+    "head_sha": "022168ab5166024478bf337d2b3ad44e9164e922",
+    "artifact_id": 10292433776,
+    "artifact_bytes": 65330,
+    "artifact_zip_sha256": "1ab8a12d77beb15c7aba5880a588c3475dc7d6270ca121eb95056ef9aa56ba92",
+    "validation_results_sha256": "01780af3bcee5d087eb3af4ea02739a210a28b1cd211e08892a5be1de2b4664f",
+    "exact_original_frozen_model_bytes_used": true,
+    "causal_complexity_tests_passed": 7
+  },
+  "cohorts": {
+    "15m": {"development_n": 59614, "validation_n": 39770, "paired_coverage": 1.0},
+    "30m": {"development_n": 50890, "validation_n": 33950, "paired_coverage": 1.0},
+    "60m": {"development_n": 33442, "validation_n": 22310, "paired_coverage": 1.0}
+  },
+  "joint_endpoint_support": {
+    "15|log_future_sigma": false,
+    "15|future_tail": false,
+    "30|log_future_sigma": false,
+    "30|future_tail": false,
+    "60|log_future_sigma": false,
+    "60|future_tail": false
+  },
+  "largest_validation_relative_gain": {
+    "comparison": "X_vs_C",
+    "horizon_minutes": 60,
+    "endpoint": "future_tail",
+    "relative_gain": 0.0014197472619602676,
+    "absolute_gain": 0.0001193704395967601,
+    "frozen_relative_gate": 0.01,
+    "frozen_tail_absolute_gate": 0.0005,
+    "adjusted_5day_ci_low": -0.00007777758689119573,
+    "supported": false
+  },
+  "fixed_specification_closed": true,
+  "no_directional_or_symbol_rescue": true,
+  "promote_other_current_degree_to_d5": false,
+  "promote_cross_index_state_to_v19": false,
+  "validation_reused": true,
+  "fresh_oos": false,
+  "read_2026": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "candidate_nominated": false,
+  "d6_started": false,
+  "v20_started": false,
+  "production_authority": false
+}
