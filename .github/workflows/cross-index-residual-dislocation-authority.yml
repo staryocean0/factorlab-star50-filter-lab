@@ -1,0 +1,29 @@
+name: cross-index-residual-dislocation-authority
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - research/cross-index-residual-dislocation-closeout-v1-20260912
+    paths:
+      - 'research/cross_index_residual_dislocation_utility_v1/**'
+      - 'research/cross_index_degree_transfer_utility_v1/run_study.py'
+      - 'research/activity_degree_incremental_utility_v1/run_study.py'
+      - 'scripts/validate_cross_index_residual_dislocation_utility_v1.py'
+      - '.github/workflows/cross-index-residual-dislocation-authority.yml'
+      - 'CURRENT_RESEARCH.md'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-authority:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate decisive authority chain
+        run: python scripts/validate_cross_index_residual_dislocation_utility_v1.py
