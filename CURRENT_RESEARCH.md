@@ -1,4 +1,4 @@
-# 当前任务：跨指数 current-degree 增量路径已关闭
+# 当前任务：12-bar historical shock-burden 增量路径已关闭
 
 更新：2026-09-12。使命不变：研究并交付**当时可知**的 K 线风险状态、连续风险程度、适用性和时间/缺失语义；本仓不开发交易动作、方向、仓位、收益 router 或生产策略。
 
@@ -6,11 +6,12 @@
 
 最新科学决定：
 
-**`CROSS_INDEX_CURRENT_DEGREE_INCREMENTAL_UTILITY_NOT_SUPPORTED`**。
+**`HISTORICAL_SHOCK_BURDEN_INCREMENTAL_UTILITY_NOT_SUPPORTED`**。
 
-上一科学决定仍保留：
+前置科学决定继续保留：
 
-**`CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`**。
+- **`CROSS_INDEX_CURRENT_DEGREE_INCREMENTAL_UTILITY_NOT_SUPPORTED`**；
+- **`CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`**。
 
 并行 reception 工程状态：
 
@@ -26,107 +27,122 @@
 
 最新科学主链：
 
-`research/cross_index_degree_transfer_utility_v1/PROGRAM_STATE.json` → `RESULTS.md` → `DECISIVE_RECEIPT.json` → `EXECUTION_RECEIPT.json` → `evidence/VALIDATION_RESULTS.json` / `evidence/FROZEN_MODELS.json` / `evidence/SHA256SUMS.txt` → frozen `PROTOCOL.md` / `run_study.py`。
+`research/historical_shock_burden_utility_v1/PROGRAM_STATE.json` → `RESULTS.md` → `DECISIVE_RECEIPT.json` → `EXECUTION_RECEIPT.json` → `evidence/VALIDATION_RESULTS.json` / `evidence/FROZEN_MODELS.json` / `evidence/SHA256SUMS.txt` → frozen `PROTOCOL.md` / `run_study.py`。
 
-M3 主链作为前置证据保留：
+前置科学链继续保留：
 
-`research/activity_degree_incremental_utility_v1/PROGRAM_STATE.json` → `RESULTS.md` → `EXECUTION_RECEIPT.json` → `evidence/VALIDATION_RESULTS.json`。
-
-历史 backlog 权威：
-
-`docs/research/RESEARCH_BACKLOG_CLOSEOUT_20260912.json` → `RESEARCH_BACKLOG_CLOSEOUT_20260912.md` → `scripts/validate_research_backlog_closeout.py`。
-
-reception 并行链：
-
-`research/prospective_reception_recorder_v1/PROGRAM_STATE.json` → `CLOUD_ACCEPTANCE_RESULTS.md` → `CLOUD_ACCEPTANCE_EXECUTION_RECEIPT.json` → D5R。
+- cross-index current degree：`research/cross_index_degree_transfer_utility_v1/`；
+- current M3 refresh：`research/activity_degree_incremental_utility_v1/`；
+- D4 / D3 / D2 / V19；
+- 历史 backlog closeout：`docs/research/RESEARCH_BACKLOG_CLOSEOUT_20260912.json`；
+- reception 并行链：`research/prospective_reception_recorder_v1/` → D5R。
 
 治理以 `docs/governance/DATA_USAGE_POLICY_V2.md` 为准。
 
-## 最新科学结果：Cross-index current-degree transfer utility V1
+## 最新科学结果：Historical shock-burden incremental utility V1
 
-问题：在 target 自己的 confirmed history + current E15 I/V 已知后，**另一个指数同一 E15 的 current I/V** 是否仍有足够大的未来风险增量？
+问题：在 target 自己的 confirmed history、previous state / recent-shock age、以及 current E15 D4-style I/V 都已经知道后，过去最近 12 个**有效已完成交易 return bars** 中累计出现多少次 3σ shock、超出 3σ 多少，是否仍有独立且实用的未来风险信息。
 
 固定三模型：
 
-- C：target own D4-style history + current own I/V；
-- X：C + other-index current I/V 的 15-column frozen nonlinear/target-interaction block；
-- L：C + 完全同复杂度、只使用 other-index 已确认历史的 lag-I/V block。
+- C：84-column own-index D4-style causal baseline；
+- S：C + 12-bar confirmed shock count / excess 的 20-column fixed nonlinear/state-interaction block；
+- H：C + 完全同复杂度的 confirmed high-vol count / excess control block。
 
-每个 endpoint/horizon 只有 `X vs C` 与 `X vs L` **同时通过**才允许晋升。
+S/H 都是 104 columns，schema、scaling、ridge penalty 完全一致。只有 `S vs C` 和 `S vs H` **同时过门槛**，才能说 shock-specific memory 值得晋升。
 
-决定性 frozen Validation run `34677297901`、job `103509323551` 全绿。它直接下载并校验第一次 Development fit 在 Validation 前冻结的原始模型 bytes：
+决定性 Action run `34679293167`：Development 先 fit/freeze，随后才由同一 run 的 exact frozen artifact 解锁 2024–2025 reusable Validation。冻结模型 SHA256：
 
-`7eae7142323b38c5ae54618745e9ad9891c00afb09d02e8eb8def4490675f6b6`。
+`65f9403e3aae00873432403f833c1d8772429c5172fc7f3fd76581a19a4222d3`。
 
-决定性 artifact：`10292433776`，ZIP SHA256：
+Validation artifact `10294046103`，ZIP SHA256：
 
-`1ab8a12d77beb15c7aba5880a588c3475dc7d6270ca121eb95056ef9aa56ba92`。
+`943d44b741888307c978b4504edeb704ecdeedb75ecdf8f521eec07a4809f215`。
 
 `VALIDATION_RESULTS.json` SHA256：
 
-`01780af3bcee5d087eb3af4ea02739a210a28b1cd211e08892a5be1de2b4664f`。
+`8fa3f332a033e8f57ebf3240e3891295444dd9b48a8e2f699e2244928eb2f8bd`。
 
-完整 Action artifact 已按原字节持久化到 `research/cross_index_degree_transfer_utility_v1/evidence/`。
+完整 36-file Action evidence 已按原字节持久化到 `research/historical_shock_burden_utility_v1/evidence/`。
 
-### Cohort
+### Cohort 与 coverage
 
-- 15m：Development 59,614；Validation 39,770；paired coverage 100%；
+- 15m：Development 59,614；Validation 39,770；memory coverage 100%；
 - 30m：50,890 / 33,950 / 100%；
 - 60m：33,442 / 22,310 / 100%。
 
-### 结论
+### 正式比较
 
-12 个固定 comparison **全部未过冻结 1% practical relative gate**，而且 12 个 5-day Bonferroni adjusted CI 下界全部不大于 0。六个 endpoint×horizon joint promotion 全部 false。
+S 的 pooled relative squared-loss reduction：
 
-相对 own-C 的 pooled relative gain：
+| Horizon | Endpoint | S vs C | S vs H |
+|---|---|---:|---:|
+| 15m | log future RMS | +0.16994% | +0.16951% |
+| 15m | future tail | +0.03773% | +0.02048% |
+| 30m | log future RMS | +0.18307% | +0.19834% |
+| 30m | future tail | +0.03925% | +0.03670% |
+| 60m | log future RMS | +0.24096% | +0.34717% |
+| 60m | future tail | +0.03330% | +0.04419% |
 
-- log future RMS：15m +0.02198%，30m +0.05586%，60m +0.10147%；
-- future tail：15m +0.00094%，30m +0.07701%，60m +0.14197%。
+**12/12 formal comparisons 全部低于冻结 1% practical gate；六个 endpoint×horizon joint promotion 全部 false。**
 
-相对等复杂度 lag-other L 更小：
+Tail absolute Brier gains 约 `0.000006`–`0.000037`，全部远低于冻结 `0.0005` gate。
 
-- log future RMS：+0.00028% / +0.06299% / +0.03029%；
-- future tail：-0.03159% / +0.01541% / +0.00295%。
+15m log-RMS 是最值得解释但仍不能晋升的结果：
 
-最大 pooled 点估计也只有 +0.14197%，约为 1% frozen gate 的七分之一；对应 tail absolute Brier gain `0.00011937` 也远低于 frozen `0.0005`。
+- S vs C +0.16994%，5-day adjusted CI lower `+0.00001510`，两个指数和两个年份符号均非负，2023 forward 也为正；
+- 但 S vs H 仍只有 +0.16951%，5-day adjusted CI lower `-0.00003330`，并且两者都远低于 1%。
 
-此外多个 STAR50 target slice 为负、多个 year/tail slice 为负；30m/60m tail 的 X-vs-C 2023 forward Development gain 为负。因此不是“差一点过门槛”的结果。
+因此不能说“完全没有统计信息”；更准确的是：**有一点短期统计信号，但没有达到独立且实用的 shock-specific memory 增量门槛。**
 
-15m cohort 的 own/other current shock-intensity correlation 约 0.6356，own/other current vol-ratio 约 0.7354，other current vs lag vol-ratio 约 0.9148。解释上，这与 own-I/V 已经吸收大部分共同风险信息、other-current 剩余边际很小一致；这只是描述，不是 gate。
+30/60m 的主区间跨0，且多个 `S vs C` 2023 forward 为负。tail 全部明显失败。Validation 的 shock memory 本身也很稀疏：15m cohort 中 33,316 行过去12 bar无 shock，5,464 行仅1次，990 行>=2次；这个描述绝不能被事后转成 multi-shock 子样本筛选。
 
-**禁止**事后只挑 `STAR50 -> CSI1000` 或其他单向方向救结果；禁止搜 lag、状态、阈值、horizon 或删除样本救结果。other-current I/V 不进入 D5 consumer，也不成为 V19 新状态。
+### 科学解释
 
-执行中出现过三次纯工程阻断：descriptive `g.tail` pandas 名称碰撞、refit exact-byte SHA fail-closed、compat wrapper import path；都发生在不改变 frozen protocol/model/gates 的前提下。最终结果使用的是**第一次 Validation 前冻结的精确模型 bytes**，不是后来的 refit。
+这不推翻 V5 的“recurrent shock resets recovery clock”。recent-shock age 已经进入现有 recovery/state ancestry。本轮问的是：**在 timing + current degree 已经知道后，累计 shock burden 是否还应该成为新的风险坐标。** 冻结答案是不支持。
 
-## 前置科学结果：Activity-degree incremental utility V1
+12-bar specification 到此关闭。禁止用本次 reusable Validation 结果去调：
 
-**`CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`** 保持不变。
+- 12 → 6/24 或其他窗口；
+- decay；
+- 3σ / 1.5 threshold；
+- 单指数、状态、时段、episode 筛选；
+- ridge / horizon / bootstrap family；
+- 删除 H control。
 
-current M3 相对 D4-style own current-I/V baseline 对未来 log-RMS 确有额外信息：15m `A vs C` +2.175%，单项全部 gate 通过；30/60m 点估计也为正。但相对等复杂度 lagged-M3，15/30/60m 只有约 +0.433% / +0.579% / +0.183%，均低于冻结 1% practical gate，tail 也未晋升。因此 M3 不进入 D5/V19，不做参数救援。
+S 不进入 D5 consumer，也不修改 V19 state machine。
 
-## 历史 research backlog
+## 前置科学结果保持不变
 
-状态仍是 **remaining executable legacy backlog = 0**。112 个研究分支审计标出的 12 个高召回“未闭环”对象已经逐项裁决；不要再按旧 branch 名推断待执行任务。v0.6.17 因冻结协议要求的两个事前 identity 在严格 pre-freeze Git 历史中不存在而永久 fail-closed；old router/PnL 线仍退役。
+### Cross-index current degree
 
-## Reception 并行状态
+`CROSS_INDEX_CURRENT_DEGREE_INCREMENTAL_UTILITY_NOT_SUPPORTED`。other-current I/V 在 own current I/V 已知后，12项 frozen comparison 全部低于1%，不进入D5/V19，不做单向/lag/state救援。
 
-`DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING` 不变。历史没有逐条真实本机 `received_at`；云端 recorder/adapter/handoff 验收已经完成。未来真实 reception 证据只能由未来物理 feed 产生并服从 V2 治理。
+### Current M3
 
-## 保持不变的历史结论
+`CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`。M3 相对 own current-I/V 对 future RMS 有额外信息，但相对等复杂度 lagged-M3 的 current-refresh 实用增量未达到冻结1%门槛，不进入D5/V19。
+
+## 历史 backlog 与 reception
+
+历史 research backlog 仍是 **remaining executable legacy backlog = 0**。旧 detector/RMR/router/v0.6.17 等 closeout 不重开。
+
+`DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING` 不变。历史没有逐条真实本机 `received_at`；未来真实 reception evidence 只能由未来物理 feed 产生并服从 V2 治理。
+
+## 保持不变的核心结论
 
 - `RISK_COORDINATE_VALIDATION_NOT_FULLY_REPLICATED_NO_THRESHOLD_RETUNE`；
 - V19 冻结，不为 accuracy 开 V20；
-- D3 practical negative 不变；
-- D4 own-index current I/V endpoint-limited support 不变；
-- D5 bounded consumer contract 不变；
-- D5R 历史真实 reception clock 不可恢复。
+- D3 practical negative；
+- D4 own current I/V endpoint-limited support；
+- D5 bounded consumer contract；
+- D5R 历史 true-reception clock 不可恢复。
 
-## 下一步
+## 下一步边界
 
-当前 cross-index current-degree specification 已关闭。**不允许**把下一步变成单向 cross-index、lag 搜索、状态筛选或阈值调参来救它。
+本轮 12-bar shock-memory fixed specification 已关闭。**不允许**把下一步做成 window/decay/threshold/subgroup rescue。
 
-只有发现一个与 V19 / D4 / M3 / 当前 cross-index 证据真正不同、并能在看结果前冻结的独立因果风险机制时才新开科学实验；否则正确动作是维持并审计当前 authority。
+只有出现与 V19 / D4 / M3 / cross-index / 本轮 memory 证据真正不同、并能在结果前冻结的独立因果风险机制时才开新科学实验；否则维持并审计当前 authority。
 
-仍然：不读受保护 2026 逐行数据，不查 BlackBox，不算 PnL，不恢复 router，不开 D6/V20，不提高 production authority。
+仍然：不读受保护2026逐行数据，不查BlackBox，不算PnL，不恢复router，不开D6/V20，不提高production authority。
 
-`cross_index_current_degree_incremental_supported=false`; `cross_index_current_degree_consumer_promotion=false`; `current_m3_consumer_promotion=false`; `historical_research_backlog_closed=true`; `remaining_executable_legacy_backlog=0`; `validation_reused=true`; `fresh_oos=false`; `cloud_acceptance_supported=true`; `measured_feed_latency_supported=false`; `blackbox_queried=false`; `d6_started=false`; `v20_started=false`; `production_authority=false`.
+`historical_shock_burden_incremental_supported=false`; `historical_shock_burden_consumer_promotion=false`; `cross_index_current_degree_incremental_supported=false`; `current_m3_consumer_promotion=false`; `historical_research_backlog_closed=true`; `remaining_executable_legacy_backlog=0`; `validation_reused=true`; `fresh_oos=false`; `blackbox_queried=false`; `d6_started=false`; `v20_started=false`; `production_authority=false`.

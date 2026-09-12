@@ -2,35 +2,40 @@
 
 Read `AGENTS.md`, `CURRENT_RESEARCH.md` and `CONTINUE_HERE.md` first.
 
-Latest scientific state: **`CROSS_INDEX_CURRENT_DEGREE_INCREMENTAL_UTILITY_NOT_SUPPORTED`**.
+Latest scientific state: **`HISTORICAL_SHOCK_BURDEN_INCREMENTAL_UTILITY_NOT_SUPPORTED`**.
 
-Previous M3 state remains **`CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`**.
+Preserved predecessor states:
 
-Historical research backlog state: **closed; remaining executable legacy backlog = 0**. Do not infer pending work from old branch names. Read `docs/research/RESEARCH_BACKLOG_CLOSEOUT_20260912.json` before proposing to rerun a historical branch.
+- `CROSS_INDEX_CURRENT_DEGREE_INCREMENTAL_UTILITY_NOT_SUPPORTED`;
+- `CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`.
+
+Historical research backlog is closed; remaining executable legacy backlog = 0. Parallel reception remains `DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING`.
 
 Primary current authority:
 
-- `research/cross_index_degree_transfer_utility_v1/PROGRAM_STATE.json`
-- `research/cross_index_degree_transfer_utility_v1/RESULTS.md`
-- `research/cross_index_degree_transfer_utility_v1/DECISIVE_RECEIPT.json`
-- `research/cross_index_degree_transfer_utility_v1/EXECUTION_RECEIPT.json`
-- `research/cross_index_degree_transfer_utility_v1/evidence/VALIDATION_RESULTS.json`
-- `research/cross_index_degree_transfer_utility_v1/evidence/FROZEN_MODELS.json`
+- `research/historical_shock_burden_utility_v1/PROGRAM_STATE.json`
+- `research/historical_shock_burden_utility_v1/RESULTS.md`
+- `research/historical_shock_burden_utility_v1/DECISIVE_RECEIPT.json`
+- `research/historical_shock_burden_utility_v1/EXECUTION_RECEIPT.json`
+- `research/historical_shock_burden_utility_v1/evidence/VALIDATION_RESULTS.json`
+- `research/historical_shock_burden_utility_v1/evidence/FROZEN_MODELS.json`
 
-Interpret the latest result strictly: after target own D4-style current I/V is known, adding the other index's contemporaneous current I/V produces only tiny incremental loss reductions. Across 12 frozen X-vs-C/L comparisons, every relative improvement is below 1% and every primary 5-day adjusted interval crosses zero. The largest pooled point estimate is only about +0.142% for 60m future tail vs own-C, with absolute Brier gain ~0.000119 < 0.0005. No endpoint/horizon jointly passes.
+Interpret the latest result strictly. S adds a fixed 12-valid-completed-bar confirmed 3σ shock-count / shock-excess memory block to the own-index D4-style current-I/V baseline. H is the exact equal-complexity control using confirmed historical high-vol count/excess. S/H are both 104 columns versus C=84.
 
-Do not post-hoc rescue this with one-way STAR50/CSI1000 selection, alternate lags, state filters, thresholds, horizons, extra nonlinearities, or sample deletion. The visible STAR50-negative / CSI1000-positive slice asymmetry is a failed robustness condition, not an invitation to select one direction after outcomes.
+The decisive run is `34679293167`; original frozen model SHA is `65f9403e3aae00873432403f833c1d8772429c5172fc7f3fd76581a19a4222d3`. Validation n is 39,770 / 33,950 / 22,310 at 15/30/60m, with 100% memory coverage among otherwise eligible rows.
 
-The decisive Validation run is `34677297901`; it used the exact original pre-Validation frozen model SHA `7eae7142323b38c5ae54618745e9ad9891c00afb09d02e8eb8def4490675f6b6`. Complete Action evidence was copied byte-for-byte into the research `evidence/` directory.
+All twelve formal relative loss reductions are below the frozen 1% practical gate. RMS gains are only about +0.170%/+0.170% at 15m, +0.183%/+0.198% at 30m and +0.241%/+0.347% at 60m for S-vs-C/H. Tail gains are <0.05% and absolute Brier gains are far below 0.0005. Six endpoint×horizon joint promotions are all false.
 
-M3 remains a preserved predecessor result: it contains future-RMS information beyond own current-I/V, but its current refresh does not clear the frozen practical gate against equal-complexity lagged M3. Therefore M3 also remains outside D5/V19.
+Do not misstate this as “shock history contains zero information”: 15m S-vs-C has a small positive adjusted interval and stable pooled signs. The correct conclusion is that the fixed representation does **not** provide enough stable practical shock-specific increment beyond current I/V, recent-shock age and generic high-vol history to justify a new coordinate.
 
-Backlog closeout rules still apply: V7/first-shock/RMR failures are historical outcomes; V8/V9/V10 ancestry is superseded by V17/V19; 2026-09-11 V11 is duplicate; `risk-gate-takeover` is coordination; old highvol-router is outside current scope; v0.6.17 is permanently blocked under its frozen protocol because qualifying prior identities do not exist.
+V5 recurrent-shock clock-reset evidence remains valid. It supports timing since the latest shock, not promotion of cumulative shock count/excess. Never use the current negative result to retune 12→6/24 bars, decay, 3σ/1.5 thresholds, index/state/time subsets, horizons, ridge, bootstrap family or to delete H.
 
-Historical decisions remain authoritative: risk-coordinate full replication did not pass frozen support gates; V19 stays frozen; D3 negative practical decision stays; D4 remains endpoint-limited own current-I/V support; D5 remains bounded consumer engineering acceptance.
+The shock-memory fields must not be added to D5 or V19. Cross-index current degree and current-M3 remain non-promoted. D4 endpoint-limited own current-I/V support, D3 negative practical decision, V19 freeze and D5 bounded consumer remain unchanged.
 
-Parallel reception state remains `DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING`. Historical D5R still says no true local per-tick `received_at` exists; never infer one from available_at, batch ingested_at, file mtime, observation time or row order.
+Backlog closeout rules still apply: old detector/RMR/router branches and v0.6.17 are not current pending science. Do not infer pending work from old branch names.
 
-Open new science only for a genuinely distinct causal risk mechanism that can be frozen before outcomes and is not a rescue of M3, cross-index current degree, V19, old detector/reversal/router work. Do not query BlackBox or protected 2026 row detail, do not start V20/D6, and do not raise production authority.
+Historical D5R still says no true local per-tick `received_at` exists; never infer one from available_at, batch ingested_at, file mtime, observation time or row order.
+
+Open new science only for a genuinely distinct causal risk mechanism frozen before outcomes; it must not be a rescue of shock-memory window/decay/threshold/subgroups, cross-index current degree, M3, V19 or retired trading/router work. Do not query BlackBox or protected 2026 row detail, do not start V20/D6, and do not raise production authority.
 
 `production_authority=false`.
