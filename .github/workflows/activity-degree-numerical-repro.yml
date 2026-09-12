@@ -38,24 +38,15 @@ jobs:
         run: |
           set -euo pipefail
           python - <<'PY'
-          import json, math
+          import json
           from pathlib import Path
-          import numpy as np
 
           old=json.load(open('/tmp/prior-fit/FROZEN_MODELS.json'))
           new=json.load(open('research/activity_degree_incremental_utility_v1/evidence/FROZEN_MODELS.json'))
 
-          assert old['schema']==new['schema']
-          assert old['source_main']==new['source_main']
-          assert old['protocol_git_blob']==new['protocol_git_blob']
-          assert old['m3_runner_git_blob']==new['m3_runner_git_blob']
-          assert old['m3_protocol_git_blob']==new['m3_protocol_git_blob']
-          assert old['v9_runner_git_blob']==new['v9_runner_git_blob']
-          assert old['ridge_lambda']==new['ridge_lambda']
-          assert old['input_sha256']==new['input_sha256']
-          assert old['training_years']==new['training_years']
-          assert old['feature_identity']==new['feature_identity']
-          assert set(old['models'])==set(new['models'])
+          for key in ('schema','source_main','protocol_git_blob','m3_runner_git_blob','m3_protocol_git_blob','v9_runner_git_blob','ridge_lambda','input_sha256','training_years','feature_identity'):
+              assert old[key] == new[key], key
+          assert set(old['models']) == set(new['models'])
 
           maxima={'mean':0.0,'scale':0.0,'beta':0.0,'intercept':0.0,'forward_metric':0.0,'coverage_metric':0.0}
           per_probe={}
@@ -65,11 +56,13 @@ jobs:
               assert a['n']==b['n']
               d={}
               for field in ('mean','scale','beta'):
-                  x=np.asarray(a[field],float); y=np.asarray(b[field],float)
-                  z=float(np.max(np.abs(x-y))) if len(x) else 0.0
-                  d[field]=z; maxima[field]=max(maxima[field],z)
+                  assert len(a[field]) == len(b[field])
+                  z=max((abs(float(x)-float(y)) for x,y in zip(a[field],b[field])), default=0.0)
+                  d[field]=z
+                  maxima[field]=max(maxima[field],z)
               z=abs(float(a['intercept'])-float(b['intercept']))
-              d['intercept']=z; maxima['intercept']=max(maxima['intercept'],z)
+              d['intercept']=z
+              maxima['intercept']=max(maxima['intercept'],z)
               per_probe[k]=d
 
           assert set(old['development_forward'])==set(new['development_forward'])
@@ -79,23 +72,26 @@ jobs:
               for f in ('n','absolute_gain','relative_gain'):
                   if f=='n':
                       assert old['development_forward'][k][f]==new['development_forward'][k][f]
-                      continue
-                  z=abs(float(old['development_forward'][k][f])-float(new['development_forward'][k][f]))
-                  forward_diffs[k][f]=z; maxima['forward_metric']=max(maxima['forward_metric'],z)
+                  else:
+                      z=abs(float(old['development_forward'][k][f])-float(new['development_forward'][k][f]))
+                      forward_diffs[k][f]=z
+                      maxima['forward_metric']=max(maxima['forward_metric'],z)
 
           def walk(a,b,path=''):
               vals=[]
               if isinstance(a,dict):
-                  assert set(a)==set(b)
-                  for k in a: vals += walk(a[k],b[k],path+'/'+str(k))
+                  assert set(a)==set(b), path
+                  for k in a:
+                      vals += walk(a[k],b[k],path+'/'+str(k))
               elif isinstance(a,(int,float)) and isinstance(b,(int,float)):
                   vals.append((path,abs(float(a)-float(b))))
               else:
-                  assert a==b
+                  assert a==b, path
               return vals
+
           cov=walk(old['development_coverage'],new['development_coverage'])
           maxima['coverage_metric']=max((x[1] for x in cov),default=0.0)
-
+          within=all(v <= 1e-10 for v in maxima.values())
           out={
             'schema':'activity_degree_incremental_utility_v1_numerical_reproducibility@1.0',
             'prior_run_id':34670136889,
@@ -115,12 +111,11 @@ jobs:
             'max_abs_differences':maxima,
             'per_probe_max_abs_differences':per_probe,
             'development_forward_differences':forward_diffs,
-            'within_1e_10_all_numeric':all(v <= 1e-10 for v in maxima.values()),
-            'interpretation':'Repeated numpy.linalg ridge fits are structurally/input identical but not byte-identical; decisive Validation used the exact in-run frozen model and therefore freeze-before-Validation remains intact. This reproducibility audit is engineering evidence and is not a scientific promotion gate.'
+            'within_1e_10_all_numeric':within,
+            'interpretation':'Repeated ridge fits are structurally/input identical but the JSON is not byte-identical. The decisive Validation used the exact in-run frozen model, so freeze-before-Validation remains intact. This is engineering evidence, not a scientific promotion gate.'
           }
-          p=Path('research/activity_degree_incremental_utility_v1/NUMERICAL_REPRODUCIBILITY.json')
-          p.write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
-          print(json.dumps({'max_abs_differences':maxima,'within_1e_10_all_numeric':out['within_1e_10_all_numeric']},indent=2))
+          Path('research/activity_degree_incremental_utility_v1/NUMERICAL_REPRODUCIBILITY.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print(json.dumps({'max_abs_differences':maxima,'within_1e_10_all_numeric':within},indent=2))
           PY
       - name: Commit reproducibility receipt
         shell: bash
