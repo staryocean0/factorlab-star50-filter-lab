@@ -1,4 +1,4 @@
-# 当前任务：current M3 refresh 已关闭，历史 research backlog 已清零
+# 当前任务：跨指数 current-degree 增量路径已关闭
 
 更新：2026-09-12。使命不变：研究并交付**当时可知**的 K 线风险状态、连续风险程度、适用性和时间/缺失语义；本仓不开发交易动作、方向、仓位、收益 router 或生产策略。
 
@@ -6,31 +6,35 @@
 
 最新科学决定：
 
+**`CROSS_INDEX_CURRENT_DEGREE_INCREMENTAL_UTILITY_NOT_SUPPORTED`**。
+
+上一科学决定仍保留：
+
 **`CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`**。
 
 并行 reception 工程状态：
 
 **`DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING`**。
 
-历史研究队列状态：
+历史研究队列：
 
 **`RESEARCH_BACKLOG_20260912_CLOSED_NO_EXECUTABLE_LEGACY_BRANCH`**。
 
-三者互不覆盖。M3 决定回答新坐标是否值得晋升；reception 状态回答本机真实 arrival 证据边界；backlog closeout 只裁决旧分支是否仍是待执行任务，不创造新科学候选。
+这些状态互不覆盖。
 
 ## 当前权威链
 
-科学主链：
+最新科学主链：
 
-`research/activity_degree_incremental_utility_v1/PROGRAM_STATE.json` → `RESULTS.md` → `EXECUTION_RECEIPT.json` → `evidence/VALIDATION_RESULTS.json` / `evidence/SHA256SUMS.txt` → frozen `PROTOCOL.md` / `run_study.py`。
+`research/cross_index_degree_transfer_utility_v1/PROGRAM_STATE.json` → `RESULTS.md` → `DECISIVE_RECEIPT.json` → `EXECUTION_RECEIPT.json` → `evidence/VALIDATION_RESULTS.json` / `evidence/FROZEN_MODELS.json` / `evidence/SHA256SUMS.txt` → frozen `PROTOCOL.md` / `run_study.py`。
+
+M3 主链作为前置证据保留：
+
+`research/activity_degree_incremental_utility_v1/PROGRAM_STATE.json` → `RESULTS.md` → `EXECUTION_RECEIPT.json` → `evidence/VALIDATION_RESULTS.json`。
 
 历史 backlog 权威：
 
 `docs/research/RESEARCH_BACKLOG_CLOSEOUT_20260912.json` → `RESEARCH_BACKLOG_CLOSEOUT_20260912.md` → `scripts/validate_research_backlog_closeout.py`。
-
-v0.6.17 特殊关闭：
-
-`docs/research/session_aware_information_set_bounds_v0617/CLOSEOUT_RECEIPT_20260912.json` → `CLOSEOUT_20260912.md`。
 
 reception 并行链：
 
@@ -38,85 +42,91 @@ reception 并行链：
 
 治理以 `docs/governance/DATA_USAGE_POLICY_V2.md` 为准。
 
-## 最新科学结果：Activity-degree incremental utility V1
+## 最新科学结果：Cross-index current-degree transfer utility V1
 
-问题是在继承的 `pre5m_range < 30bp` 表面上，同一 E15 决策点的 current M3 是否：
+问题：在 target 自己的 confirmed history + current E15 I/V 已知后，**另一个指数同一 E15 的 current I/V** 是否仍有足够大的未来风险增量？
 
-1. 在历史 + previous-state/age + 当前 I/V 的 **C** 信息集之外仍有实际增量；且
-2. 能打赢完全等复杂度、只把 current M3 换成上一根 same-half-session M3 的 **N** 对照。
+固定三模型：
 
-A = C + current M3；N = C + lagged M3。每个 endpoint/horizon 只有 **A vs C 与 A vs N 同时过门槛** 才能晋升。
+- C：target own D4-style history + current own I/V；
+- X：C + other-index current I/V 的 15-column frozen nonlinear/target-interaction block；
+- L：C + 完全同复杂度、只使用 other-index 已确认历史的 lag-I/V block。
 
-决定性 Action run `34670357953` 两阶段全绿：Development 先 fit/freeze，随后才读 2024–2025 reusable Validation。冻结模型 SHA256：
+每个 endpoint/horizon 只有 `X vs C` 与 `X vs L` **同时通过**才允许晋升。
 
-`89660f0825373b5afd8d1d9c51642424fe79fae925f44d0f25a6f2f96ca78d8d`。
+决定性 frozen Validation run `34677297901`、job `103509323551` 全绿。它直接下载并校验第一次 Development fit 在 Validation 前冻结的原始模型 bytes：
 
-相对 C，current M3 在未来波动强度上确有额外信息：
+`7eae7142323b38c5ae54618745e9ad9891c00afb09d02e8eb8def4490675f6b6`。
 
-- 15m log future RMS：+2.1750%，`A vs C` 单项全部 gate 通过；
-- 30m：+2.8055%，但 Development n=19,365 < 20,000；
-- 60m：+3.6193%，但 Development n=11,779 < 20,000，Validation coverage 92.4378% < 95%。
+决定性 artifact：`10292433776`，ZIP SHA256：
 
-因此不能说“M3 在 I/V 之外没有信息”。
+`1ab8a12d77beb15c7aba5880a588c3475dc7d6270ca121eb95056ef9aa56ba92`。
 
-但相对等复杂度 lagged-M3 N，current refresh 的 log-RMS 相对改进只有：
+`VALIDATION_RESULTS.json` SHA256：
 
-- 15m：+0.4330%，且 2023 forward gain 为负；
-- 30m：+0.5793%，且 forward 为负、Development 样本不足；
-- 60m：+0.1832%，同时样本/coverage 等门槛失败。
+`01780af3bcee5d087eb3af4ea02739a210a28b1cd211e08892a5be1de2b4664f`。
 
-全部低于冻结的 **1% practical gate**。15/30/60m tail 也均未过 1% relative 与 `0.0005` absolute Brier 门槛。
+完整 Action artifact 已按原字节持久化到 `research/cross_index_degree_transfer_utility_v1/evidence/`。
 
-所以正式状态是 `CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`：**M3 有信息，但没有证明“现在刷新一次 M3”相对上一根 M3 有足够大的实际新增价值。**
+### Cohort
 
-禁止移动 M3 band、30bp surface、ridge、horizon、block、最小样本门槛，或删除 lagged-M3 对照来救结果。current M3 不进入 D5 consumer、不进入 V19 state machine。
+- 15m：Development 59,614；Validation 39,770；paired coverage 100%；
+- 30m：50,890 / 33,950 / 100%；
+- 60m：33,442 / 22,310 / 100%。
 
-Validation coverage：15m 95.9036%、30m 95.1844%、60m 92.4378%。完整 Validation artifact 已原字节写入 `research/activity_degree_incremental_utility_v1/evidence/`；artifact `10290917834`，ZIP SHA256 `a734a0083c9d197188591fa548668cdbc3f2a86df00b783f68f41acfecf69940`。
+### 结论
 
-重复 Development fit 的 JSON SHA 不同，但 audit run `34670797290` 证明输入 SHA、feature schema、样本数完全相同，最大系数差 `8.16e-15`，全部数值差 < `1e-10`；决定性 Validation 使用同一 run 内先冻结的精确模型字节。
+12 个固定 comparison **全部未过冻结 1% practical relative gate**，而且 12 个 5-day Bonferroni adjusted CI 下界全部不大于 0。六个 endpoint×horizon joint promotion 全部 false。
 
-## 历史 research backlog 已正式关闭
+相对 own-C 的 pooled relative gain：
 
-112 个 `research/*` 分支的审计曾标出 12 个高召回“未闭环”分支：8 个 Action 成功但没有结果 marker，1 个 frozen 后未成功科学执行，2 个 frozen design only，1 个 executed no result marker。
+- log future RMS：15m +0.02198%，30m +0.05586%，60m +0.10147%；
+- future tail：15m +0.00094%，30m +0.07701%，60m +0.14197%。
 
-逐项回读原 Action 与后继机制后，**12/12 都已裁决，当前 executable backlog = 0**：
+相对等复杂度 lag-other L 更小：
 
-- first-shock minute Development：完成但不晋升，后续 seconds/support/state 链取代；
-- V7：60s detector recall 77.21% 未过 90%，不具 Validation 资格；
-- V8/V9/V10 Development：各自完成，V8/V10 后继 Validation 存在，最终被 V17/V19 authority 吸收；
-- V10 Validation：2024–25 可用子集通过，但没有查询 2026；后续 V17/V19 取代当前调度权；
-- 两个 RMR reversal 分支：均正式 `broad_signal_source_not_established`，且 reversal/direction 本就不属于当前风险属性 scope；
-- v0.6.17：实现测试通过，但原 frozen protocol 要求的事前 349,923-row source identity 与 v0.6.15 leg-universe identity 在严格 pre-v0.6.17 Git 历史中均为 0，故永久 fail-closed，不能事后补 hash；
-- V11 2026-09-11：重复 frozen design；2026-09-10 的正式 V11 已因 60m state-rank crossover 判 `validation_eligible=false`，V12 又否定简单 shock-expiry 解释；
-- risk-gate-takeover：交接/协调容器，不是缺失 standalone experiment，已由 V16–V19/D2–D5链取代；
-- old highvol-router：历史 Development audit 虽写 `router_freeze_eligible=true`，但它包含 route/hold/cost/PnL/Sharpe/MDD，属于当前 scope 明确退役对象，不恢复。
+- log future RMS：+0.00028% / +0.06299% / +0.03029%；
+- future tail：-0.03159% / +0.01541% / +0.00295%。
 
-完整逐项 run/job/artifact/verdict 见 `docs/research/RESEARCH_BACKLOG_CLOSEOUT_20260912.json`。历史分支全部保留，原 verdict 不重写；只是明确它们不再是当前待执行任务。
+最大 pooled 点估计也只有 +0.14197%，约为 1% frozen gate 的七分之一；对应 tail absolute Brier gain `0.00011937` 也远低于 frozen `0.0005`。
 
-v0.6.17 的严格身份审计 run `34670259559`：70 commits / 4,412 text blobs；qualifying source identity=0，v0.6.15 leg identity=0，unreachable object census empty。正式状态：
+此外多个 STAR50 target slice 为负、多个 year/tail slice 为负；30m/60m tail 的 X-vs-C 2023 forward Development gain 为负。因此不是“差一点过门槛”的结果。
 
-**`V0617_PRIOR_IDENTITY_IRRECOVERABLE_REPLAY_PERMANENTLY_BLOCKED_UNDER_FROZEN_PROTOCOL`**。
+15m cohort 的 own/other current shock-intensity correlation 约 0.6356，own/other current vol-ratio 约 0.7354，other current vs lag vol-ratio 约 0.9148。解释上，这与 own-I/V 已经吸收大部分共同风险信息、other-current 剩余边际很小一致；这只是描述，不是 gate。
 
-这不是负的市场科学结果，而是原 preregistration 自己要求的 identity 前置条件无法恢复。
+**禁止**事后只挑 `STAR50 -> CSI1000` 或其他单向方向救结果；禁止搜 lag、状态、阈值、horizon 或删除样本救结果。other-current I/V 不进入 D5 consumer，也不成为 V19 新状态。
+
+执行中出现过三次纯工程阻断：descriptive `g.tail` pandas 名称碰撞、refit exact-byte SHA fail-closed、compat wrapper import path；都发生在不改变 frozen protocol/model/gates 的前提下。最终结果使用的是**第一次 Validation 前冻结的精确模型 bytes**，不是后来的 refit。
+
+## 前置科学结果：Activity-degree incremental utility V1
+
+**`CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`** 保持不变。
+
+current M3 相对 D4-style own current-I/V baseline 对未来 log-RMS 确有额外信息：15m `A vs C` +2.175%，单项全部 gate 通过；30/60m 点估计也为正。但相对等复杂度 lagged-M3，15/30/60m 只有约 +0.433% / +0.579% / +0.183%，均低于冻结 1% practical gate，tail 也未晋升。因此 M3 不进入 D5/V19，不做参数救援。
+
+## 历史 research backlog
+
+状态仍是 **remaining executable legacy backlog = 0**。112 个研究分支审计标出的 12 个高召回“未闭环”对象已经逐项裁决；不要再按旧 branch 名推断待执行任务。v0.6.17 因冻结协议要求的两个事前 identity 在严格 pre-freeze Git 历史中不存在而永久 fail-closed；old router/PnL 线仍退役。
+
+## Reception 并行状态
+
+`DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING` 不变。历史没有逐条真实本机 `received_at`；云端 recorder/adapter/handoff 验收已经完成。未来真实 reception 证据只能由未来物理 feed 产生并服从 V2 治理。
 
 ## 保持不变的历史结论
 
-- `RISK_COORDINATE_VALIDATION_NOT_FULLY_REPLICATED_NO_THRESHOLD_RETUNE` 不变；
-- V19 不为 accuracy 再开 V20；
-- D3 negative practical decision 不变；
-- D4 endpoint-limited I/V support 不变；
+- `RISK_COORDINATE_VALIDATION_NOT_FULLY_REPLICATED_NO_THRESHOLD_RETUNE`；
+- V19 冻结，不为 accuracy 开 V20；
+- D3 practical negative 不变；
+- D4 own-index current I/V endpoint-limited support 不变；
 - D5 bounded consumer contract 不变；
-- D5R 仍是历史真实本机 `received_at` 不可恢复；
-- reception cloud acceptance 仍等待未来治理允许的真实 reception observations。
+- D5R 历史真实 reception clock 不可恢复。
 
 ## 下一步
 
-**没有遗留分支需要继续补跑。**
+当前 cross-index current-degree specification 已关闭。**不允许**把下一步变成单向 cross-index、lag 搜索、状态筛选或阈值调参来救它。
 
-只有出现一个与现有 V19/D4/M3 证据不同的、可事前冻结的**独立因果风险机制问题**，才新开科学实验；不能把新题变成 M3、V19 或旧 detector/router 的参数救援。
+只有发现一个与 V19 / D4 / M3 / 当前 cross-index 证据真正不同、并能在看结果前冻结的独立因果风险机制时才新开科学实验；否则正确动作是维持并审计当前 authority。
 
-在没有这种独立机制、没有新的治理允许数据、也没有未来真实 reception observations 时，正确动作是维持/审计当前 authority，而不是为了“继续”强造新版本。
+仍然：不读受保护 2026 逐行数据，不查 BlackBox，不算 PnL，不恢复 router，不开 D6/V20，不提高 production authority。
 
-仍然：不读 2026 受保护逐行数据，不查 BlackBox，不算 PnL，不恢复 router，不开 D6/V20，不提高 production authority。
-
-`historical_research_backlog_closed=true`; `remaining_executable_legacy_backlog=0`; `current_m3_consumer_promotion=false`; `m3_contains_incremental_information_vs_C=true`; `current_m3_refresh_practical_increment_supported=false`; `validation_reused=true`; `fresh_oos=false`; `cloud_acceptance_supported=true`; `measured_feed_latency_supported=false`; `blackbox_queried=false`; `d6_started=false`; `v20_started=false`; `production_authority=false`。
+`cross_index_current_degree_incremental_supported=false`; `cross_index_current_degree_consumer_promotion=false`; `current_m3_consumer_promotion=false`; `historical_research_backlog_closed=true`; `remaining_executable_legacy_backlog=0`; `validation_reused=true`; `fresh_oos=false`; `cloud_acceptance_supported=true`; `measured_feed_latency_supported=false`; `blackbox_queried=false`; `d6_started=false`; `v20_started=false`; `production_authority=false`.
