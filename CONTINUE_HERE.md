@@ -1,9 +1,10 @@
-# 接续入口：12-bar historical shock-burden 已关闭
+# 接续入口：one-step degree trajectory 已关闭
 
-最新科学状态：**`HISTORICAL_SHOCK_BURDEN_INCREMENTAL_UTILITY_NOT_SUPPORTED`**。
+最新科学状态：**`ONE_STEP_DEGREE_TRAJECTORY_INCREMENTAL_UTILITY_NOT_SUPPORTED`**。
 
 前置状态继续有效：
 
+- `HISTORICAL_SHOCK_BURDEN_INCREMENTAL_UTILITY_NOT_SUPPORTED`；
 - `CROSS_INDEX_CURRENT_DEGREE_INCREMENTAL_UTILITY_NOT_SUPPORTED`；
 - `CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`；
 - `DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING`；
@@ -12,47 +13,46 @@
 ## 先读
 
 1. `CURRENT_RESEARCH.md`
-2. `research/historical_shock_burden_utility_v1/PROGRAM_STATE.json`
-3. `research/historical_shock_burden_utility_v1/RESULTS.md`
-4. `research/historical_shock_burden_utility_v1/DECISIVE_RECEIPT.json`
-5. `research/historical_shock_burden_utility_v1/EXECUTION_RECEIPT.json`
-6. `research/historical_shock_burden_utility_v1/evidence/VALIDATION_RESULTS.json`
-7. cross-index / M3 / D4 / D3 / D2 / V19 与 V2治理。
-8. 历史分支问题读 `docs/research/RESEARCH_BACKLOG_CLOSEOUT_20260912.json`；reception读 `research/prospective_reception_recorder_v1/` 和 D5R。
+2. `research/degree_trajectory_utility_v1/PROGRAM_STATE.json`
+3. `research/degree_trajectory_utility_v1/RESULTS.md`
+4. `research/degree_trajectory_utility_v1/DECISIVE_RECEIPT.json`
+5. `research/degree_trajectory_utility_v1/EXECUTION_RECEIPT.json`
+6. `research/degree_trajectory_utility_v1/evidence/VALIDATION_RESULTS.json`
+7. shock-memory / cross-index / M3 / D4 / D3 / D2 / V19 / D5 与 V2治理。
 
 ## 最新结论
 
-问题是：own current E15 I/V、previous state 和 recent-shock age 已知后，最近12个有效已完成交易return bars中的确认 shock count / excess 是否还有实用未来风险增量。
+D4/D5 已经输出 lag/delta 字段，但此前没有独立预测效用验收。本轮以 C/T/O 固定比较正式验收：
 
-C=own D4-style baseline；S=C+shock-memory；H=C+完全等复杂度 high-vol-memory control。只有 S 同时打赢 C 和 H 才允许晋升。
+- C = 84-column own D4-style current-I/V baseline；
+- T = C + lag1 confirmed degree；
+- O = C + 完全等复杂度 lag2 degree control；
+- T/O = 104 columns，同schema、scaling、ridge。
 
-决定性 run `34679293167` 使用 Validation 前冻结的 exact model SHA：
+current I/V 已经在 C 中，因此 lag1 raw degree 与 `current-lag1` delta 的新增原始信息一一等价。
 
-`65f9403e3aae00873432403f833c1d8772429c5172fc7f3fd76581a19a4222d3`。
+决定性 run `34680352701`；Validation 前冻结模型 SHA256：
 
-Validation n=39,770 / 33,950 / 22,310（15/30/60m），memory coverage均100%。
+`04b49e8613cad5b24822f8e827f8d6513f6fef74da5c2df0851e03473b4db188`。
 
-12项 formal comparison 的 relative gain 全部低于冻结1% practical gate。最强点估计也只是60m RMS `S vs H` **+0.34717%**。tail absolute Brier gains 全部 < `0.0005`。
+Validation n=39,770 / 33,950 / 22,310（15/30/60m），trajectory coverage均100%。
 
-15m RMS 确实有一点统计信号：S vs C +0.16994%，其5日调整区间下界略为正；但 S vs H 只有 +0.16951%，区间跨0，而且两者都离1%门槛很远。因此不能晋升为新的 shock-specific memory coordinate。
+12项 formal comparison 全部低于冻结1% practical gate。最强是30m future-RMS：
 
-2023 forward 对15m tail、30m S-vs-C RMS/tail、60m所有endpoint均有负项，也不支持扩大解释。
+- T vs C +0.14957%，5-day adjusted CI lower略为正；
+- T vs O +0.15160%，但adjusted CI跨0；
+- 两者都只有约0.15%，远低于1%。
 
-因此：
+15m RMS约0.11%；60m T-vs-O RMS转负。tail全部未获支持，15/30m T-vs-O tail为负，absolute Brier gains全部远低于`0.0005`。
 
-- 12-bar shock-memory 不进入D5 consumer；
-- 不修改V19；
-- 不把V5“reshock resets clock”偷换成“累计shock burden值得新增字段”；
-- 不做6/24 bar、decay、threshold、单index/state/time筛选救援。
+因此不能说delta完全没信息，但**没有证据支持其独立预测 promotion**。D4/D5 的 `lag_intensity` / `lag_ratio` / `delta_intensity` / `delta_ratio` 继续保留为描述/诊断/消费字段；不把它们变成D5 decision gate，不修改V19。
 
-完整决定性 evidence 已按原字节持久化在 `research/historical_shock_burden_utility_v1/evidence/`。
+完整决定性 evidence 已按原字节持久化在 `research/degree_trajectory_utility_v1/evidence/`。
 
-## 前置结论
+## Closed path
 
-cross-index current-degree 与 current-M3 两条 incremental utility 规格均已关闭且不晋升。D4 own current I/V endpoint-limited support、D3 negative、V19 frozen、D5 bounded consumer均不变。
+禁止用这次 reusable Validation 去做 lag3/lag4、smoothing/decay、alternate normalization、selected symbol/state/slot、变换/正则/horizon tuning，或删除 O control。
 
-## 接下来执行边界
-
-本轮 fixed 12-bar memory 规格正式关闭。下一科学题必须是**真正不同的因果风险机制**，并在看结果前冻结问题/比较器/门槛；不能把“继续”解释成调整 memory window、decay、threshold 或 subgroup。
+下一科学题必须是**真正不同的因果风险机制**；不能把“继续”解释成围绕 trajectory 小正信号调参数。
 
 不查BlackBox，不读受保护2026逐行数据，不算PnL，不恢复router，不开D6/V20，不提高production authority。
