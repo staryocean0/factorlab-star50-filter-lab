@@ -1,0 +1,53 @@
+name: maintenance-inventory-once
+on:
+  push:
+    branches: [maintenance/repository-consistency-20260912]
+    paths: [.github/workflows/maintenance-inventory-once.yml]
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/data/
+            !/artifacts/
+            !/research/**/evidence/
+            !/research/**/*2026*.parquet
+            !/research/**/*.csv
+            !/research/**/*.parquet
+            !/research/**/*.zip
+      - name: Export code and documentation; inventory data by Git metadata only
+        run: |
+          python - <<'PY'
+          import json, pathlib, subprocess, zipfile
+          root=pathlib.Path('.')
+          rows=[]
+          for raw in subprocess.check_output(['git','ls-tree','-rlz','HEAD']).split(b'\0'):
+              if not raw: continue
+              meta, name=raw.split(b'\t',1)
+              mode,typ,sha,size=meta.decode().split()
+              rows.append(dict(path=name.decode(),mode=mode,type=typ,git_blob=sha,size=int(size) if size!='-' else None))
+          out=pathlib.Path('/tmp/repository-maintenance');out.mkdir()
+          (out/'INVENTORY.json').write_text(json.dumps({'source_sha':subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),'files':rows},indent=2))
+          allowed={'.md','.py','.yml','.yaml','.toml','.json','.txt','.ini','.cfg','.sh','.ps1'}
+          count=0
+          with zipfile.ZipFile(out/'source-review.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for row in rows:
+                  p=pathlib.Path(row['path'])
+                  if p.parts[0] in ('data','artifacts') or 'evidence' in p.parts: continue
+                  if not p.is_file() or row['size']>2000000: continue
+                  if p.suffix not in allowed and p.name not in ('.gitignore','.gitattributes','Makefile'): continue
+                  z.write(p,p.as_posix());count+=1
+          print(json.dumps({'tracked_files':len(rows),'exported_code_docs':count,'market_rows_read':False,'outcomes_recomputed':False}))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: repository-maintenance-inventory
+          path: /tmp/repository-maintenance/
+          retention-days: 14
+          if-no-files-found: error
