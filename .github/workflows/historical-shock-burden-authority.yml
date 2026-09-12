@@ -1,0 +1,25 @@
+name: historical-shock-burden-authority
+
+on:
+  pull_request:
+  workflow_dispatch:
+  push:
+    branches: [research/historical-shock-burden-utility-v1-20260912]
+    paths:
+      - 'research/historical_shock_burden_utility_v1/**'
+      - 'scripts/validate_historical_shock_burden_utility_v1.py'
+      - '.github/workflows/historical-shock-burden-authority.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-authority:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate decisive authority chain
+        run: python scripts/validate_historical_shock_burden_utility_v1.py
