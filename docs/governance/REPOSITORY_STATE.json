@@ -1,0 +1,120 @@
+{
+  "active_workflow_sha256": {
+    ".github/workflows/ci.yml": "0521f90a138a026100ea552d502af15ec566fce95130b03b09bff66554a35521",
+    ".github/workflows/legacy-data-integrity.yml": "0334c2408d9d959761d5ccb29c144584be7e4feb7ba0bab9cf20fccc06436cd1"
+  },
+  "active_workflows": [
+    ".github/workflows/ci.yml",
+    ".github/workflows/legacy-data-integrity.yml"
+  ],
+  "as_of": "2026-09-12",
+  "authority_validators": [
+    "scripts/validate_data_usage_policy.py",
+    "scripts/validate_research_backlog_closeout.py",
+    "scripts/validate_degree_trajectory_utility_v1.py",
+    "scripts/validate_historical_shock_burden_utility_v1.py",
+    "scripts/validate_signed_risk_asymmetry_utility_v1.py",
+    "scripts/validate_intrabar_temporal_reversal_utility_v1.py",
+    "scripts/validate_cross_index_residual_dislocation_utility_v1.py"
+  ],
+  "baseline_commit": "5544fc093b8660b8eab4e7d0ceda2cbdb95f3b40",
+  "blackbox_query_authorized": false,
+  "d5_external_consumer_accepted": false,
+  "d5_supported_years": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "d6_started": false,
+  "data_declaration": "docs/governance/data_usage_declaration.json",
+  "data_policy": "docs/governance/DATA_USAGE_POLICY_V2.md",
+  "historical_executable_backlog": 0,
+  "latest_scientific_decision": "CROSS_INDEX_RESIDUAL_DISLOCATION_INCREMENTAL_UTILITY_NOT_SUPPORTED",
+  "latest_scientific_state_path": "research/cross_index_residual_dislocation_utility_v1/PROGRAM_STATE.json",
+  "latest_study_validation_years": [
+    2024,
+    2025
+  ],
+  "new_research_authorized": false,
+  "production_authority": false,
+  "program_state": "HOLD_CURRENT_AUTHORITY",
+  "raw_market_rows_read_by_maintenance": false,
+  "research_hold": true,
+  "schema": "star50_repository_state_v1",
+  "scientific_sources": [
+    {
+      "git_blob": "45c71172de3de4e152cac130f7f5d380dac542f8",
+      "path": "research/activity_degree_incremental_utility_v1/PROGRAM_STATE.json",
+      "snapshot_state": "CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED"
+    },
+    {
+      "git_blob": "c9e2c1072cb69b2be7b249e9089fd7efaeebb26a",
+      "path": "research/causal_state_delivery_d2/PROGRAM_STATE.json",
+      "snapshot_state": "D2_CAUSAL_REPLAY_SUPPORTED_D3_NOT_EXECUTED"
+    },
+    {
+      "git_blob": "72bc40f52135dda6b635fbdc2088d4966c907621",
+      "path": "research/causal_state_delivery_v1/PROGRAM_STATE.json",
+      "snapshot_state": "CAUSAL_KLINE_STATE_DELIVERY_V1_CONTRACT_TESTED_REPLAY_PENDING"
+    },
+    {
+      "git_blob": "03c32aeb8c9b1f98ca735714067c2435365a894c",
+      "path": "research/causal_state_utility_d3/PROGRAM_STATE.json",
+      "snapshot_state": "D3_COMPLETED_NO_PRACTICAL_INCREMENTAL_PROMOTION"
+    },
+    {
+      "git_blob": "1cef267bdb18a1b8791aced75b68b67ebe854332",
+      "path": "research/continuous_risk_utility_d4/PROGRAM_STATE.json",
+      "snapshot_state": "D4_COMPLETED_CONTINUOUS_ATTRIBUTES_PARTIALLY_SUPPORTED"
+    },
+    {
+      "git_blob": "ca41e4aed98e870e4bb37a9516f3b783365efaee",
+      "path": "research/cross_index_degree_transfer_utility_v1/PROGRAM_STATE.json",
+      "snapshot_state": "CROSS_INDEX_CURRENT_DEGREE_INCREMENTAL_UTILITY_NOT_SUPPORTED"
+    },
+    {
+      "git_blob": "cd93b9eb4c12f470b81be0ebebf23772e309fc05",
+      "path": "research/cross_index_residual_dislocation_utility_v1/PROGRAM_STATE.json",
+      "snapshot_state": "CROSS_INDEX_RESIDUAL_DISLOCATION_INCREMENTAL_UTILITY_NOT_SUPPORTED"
+    },
+    {
+      "git_blob": "17f5a8d64eb6fce9402c53226adcae463a67885c",
+      "path": "research/degree_trajectory_utility_v1/PROGRAM_STATE.json",
+      "snapshot_state": "ONE_STEP_DEGREE_TRAJECTORY_INCREMENTAL_UTILITY_NOT_SUPPORTED"
+    },
+    {
+      "git_blob": "b4cfe37a5d6a8dbe8a2ce23c56ddb27703e370e2",
+      "path": "research/historical_shock_burden_utility_v1/PROGRAM_STATE.json",
+      "snapshot_state": "HISTORICAL_SHOCK_BURDEN_INCREMENTAL_UTILITY_NOT_SUPPORTED"
+    },
+    {
+      "git_blob": "047669f6c96ff108490e9a219b5e3712d0400200",
+      "path": "research/intrabar_temporal_reversal_utility_v1/PROGRAM_STATE.json",
+      "snapshot_state": "INTRABAR_TEMPORAL_REVERSAL_INCREMENTAL_UTILITY_NOT_SUPPORTED"
+    },
+    {
+      "git_blob": "41a0c65e13c37eff7485e39ff4b5e75554275244",
+      "path": "research/prospective_reception_recorder_v1/PROGRAM_STATE.json",
+      "snapshot_state": "DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING"
+    },
+    {
+      "git_blob": "3832f1579fbac3a04afcc850addc41cecef9f756",
+      "path": "research/reception_clock_adjudication_d5r/PROGRAM_STATE.json",
+      "snapshot_state": "D5R_TRUE_RECEPTION_CLOCK_UNAVAILABLE_HISTORICAL_LIVE_LATENCY_UNVERIFIED"
+    },
+    {
+      "git_blob": "9532078ae78a4fdba5ef4ece1c6f2804c468749e",
+      "path": "research/signed_risk_asymmetry_utility_v1/PROGRAM_STATE.json",
+      "snapshot_state": "SIGNED_RETURN_ASYMMETRY_INCREMENTAL_UTILITY_NOT_SUPPORTED"
+    },
+    {
+      "git_blob": "e6c46fbf4a8500675eacc7a264a2978b2befd9e3",
+      "path": "research/state_degree_consumer_d5/PROGRAM_STATE.json",
+      "snapshot_state": "D5_BOUNDED_RESEARCH_CONSUMER_ACCEPTED_EXTERNAL_INTEGRATION_PENDING"
+    }
+  ],
+  "true_reception_evidence_pending": true,
+  "v20_started": false
+}
