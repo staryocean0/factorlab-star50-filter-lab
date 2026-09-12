@@ -1,6 +1,8 @@
-# 接续入口：current M3 不晋升，历史 backlog 已清零
+# 接续入口：cross-index current-degree 已关闭
 
-最新科学状态：**`CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`**。
+最新科学状态：**`CROSS_INDEX_CURRENT_DEGREE_INCREMENTAL_UTILITY_NOT_SUPPORTED`**。
+
+上一科学状态：**`CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`**，保持有效。
 
 并行 reception 工程状态：**`DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING`**。
 
@@ -9,47 +11,49 @@
 ## 先读
 
 1. `CURRENT_RESEARCH.md`
-2. `research/activity_degree_incremental_utility_v1/PROGRAM_STATE.json`
-3. `research/activity_degree_incremental_utility_v1/RESULTS.md`
-4. `research/activity_degree_incremental_utility_v1/EXECUTION_RECEIPT.json`
-5. `docs/research/RESEARCH_BACKLOG_CLOSEOUT_20260912.json`
-6. `docs/research/RESEARCH_BACKLOG_CLOSEOUT_20260912.md`
-7. `docs/research/session_aware_information_set_bounds_v0617/CLOSEOUT_RECEIPT_20260912.json`
-8. D4 / D3 / D2 / V19 与 V2治理；reception问题再读 `research/prospective_reception_recorder_v1/` 和 D5R。
+2. `research/cross_index_degree_transfer_utility_v1/PROGRAM_STATE.json`
+3. `research/cross_index_degree_transfer_utility_v1/RESULTS.md`
+4. `research/cross_index_degree_transfer_utility_v1/DECISIVE_RECEIPT.json`
+5. `research/cross_index_degree_transfer_utility_v1/EXECUTION_RECEIPT.json`
+6. `research/cross_index_degree_transfer_utility_v1/evidence/VALIDATION_RESULTS.json`
+7. M3 / D4 / D3 / D2 / V19 与 V2治理；历史分支问题再读 `docs/research/RESEARCH_BACKLOG_CLOSEOUT_20260912.json`。
+8. reception问题再读 `research/prospective_reception_recorder_v1/` 和 D5R。
 
-## 最新科学结论
+## 最新结论
 
-在继承的低幅度表面上，current M3 相对 D4-style C（历史 + previous-state/age + current I/V）对未来 log-RMS 有明显正增量；15m `A vs C` Validation约 **+2.175%**，单项全部gate通过。
+固定问题是：target 自己的 D4-style current I/V 已知以后，other index 同一 E15 的 current I/V 是否还能带来实用未来风险增量。
 
-但 promotion 还要求 current M3 打赢**等复杂度 lagged-M3**。15/30/60m `A vs N` 只有约 **+0.433% / +0.579% / +0.183%**，均未过冻结1% practical gate；15/30m 2023 forward为负，30/60m Development样本不足，60m coverage也不足。tail全部未晋升。
+C=own baseline；X=C+other-current；L=C+完全等复杂度 other-lag。只有 X 同时打赢 C 和 L 才能晋升。
+
+决定性 Action run `34677297901` 使用第一次 Development fit 在 Validation 前冻结的精确模型 SHA：
+
+`7eae7142323b38c5ae54618745e9ad9891c00afb09d02e8eb8def4490675f6b6`。
+
+Validation n=39,770 / 33,950 / 22,310（15/30/60m），paired coverage 都是100%。
+
+12项正式比较全部未过冻结1% practical relative gate，全部5日块Bonferroni区间下界<=0。最大 pooled 改进也只有60m tail X-vs-C的 **+0.14197%**；绝对Brier gain仅`0.00011937`，低于`0.0005`。
+
+多个STAR50 target slice为负，而CSI1000部分slice为正；这不能成为事后改成“只做STAR50→CSI1000”的理由。协议已经明确禁止按方向、lag、state、threshold或horizon救结果。
 
 因此：
 
-- 不把 current M3 加进 D5 consumer；
-- 不把 M3 变成 V19 state threshold；
-- 不移动M3 band、30bp surface、ridge、horizon、block或sample gate救结果；
-- 不删除lagged-M3对照；
-- 不把“M3有信息”偷换成“current refresh值得上线”。
+- other-current I/V 不进入 D5 consumer；
+- 不给 V19 增加 cross-index state；
+- 不开单向 cross-index rescue；
+- 不恢复 relative-value / router / PnL 线。
 
-决定性 Action run `34670357953`；完整artifact在 `research/activity_degree_incremental_utility_v1/evidence/`。
+完整 Action evidence 已按原字节持久化到 `research/cross_index_degree_transfer_utility_v1/evidence/`。
 
-## 历史 backlog 已经收完
+## 前置 M3 结论
 
-112个research分支审计标出的12个“可能未闭环”对象现已逐项裁决，**remaining executable backlog = 0**。不要再按分支名把它们当待执行任务：
+M3 有 own-I/V 之外的 future-RMS 信息，但 current-vs-lagged-M3 的实际 refresh 增量没有达到冻结1%门槛，因此仍是 `CURRENT_M3_INCREMENTAL_UTILITY_NOT_SUPPORTED`，不进入 D5/V19。
 
-- V7等祖先Development要么失败、要么已有后继Validation并被V17/V19取代；
-- first-shock minute与两个RMR分支没有形成可晋升机制；
-- V11 9/11是重复设计，正式V11/V12已回答；
-- risk-gate-takeover只是交接协调分支；
-- old highvol-router含PnL/route/hold/cost/Sharpe/MDD，当前scope明确退役；
-- v0.6.17因原协议要求的两个**事前 identity**在严格历史审计中都不存在，永久fail-closed，不能事后补hash冒充原预注册。
+## 历史 backlog
 
-机器权威：`docs/research/RESEARCH_BACKLOG_CLOSEOUT_20260912.json`。`execution-audit` 已接入 `scripts/validate_research_backlog_closeout.py`，以后closeout被破坏会直接失败。
+remaining executable legacy backlog = 0。不要再把旧 detector、RMR、V11 duplicate、risk-gate takeover、old router 或 v0.6.17 当成待执行任务。v0.6.17 的事前 identity 缺口不可事后补造。
 
-## 接下来执行什么
+## 接下来执行边界
 
-当前没有旧研究需要补跑。只有出现一个**独立的新因果风险机制**，并且能在看结果前冻结问题/比较器/门槛，才开新实验；不能为了保持版本增长而重做已经关闭的M3、V19、detector、reversal或router变体。
+本轮 cross-index current-degree 规格已经正式关闭。下一项只有在出现**真正不同的因果风险机制**且能在看结果前冻结问题/比较器/门槛时才允许开启；不能把“继续研究”解释成修改本轮方向、lag、状态或阈值。
 
-reception线也没有新的本地工程待办。只有未来真实本机feed产生、且V2治理允许使用的true-reception observations才能升级实测延迟证据。
-
-不查BlackBox，不读受保护2026逐行数据，不算PnL，不恢复router，不开D6/V20，不提高production authority。
+不查 BlackBox，不读受保护2026逐行数据，不算PnL，不恢复router，不开D6/V20，不提高production authority。

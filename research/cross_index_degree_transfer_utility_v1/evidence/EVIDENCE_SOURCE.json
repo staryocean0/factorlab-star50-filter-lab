@@ -1,0 +1,17 @@
+{
+  "schema": "cross_index_degree_transfer_utility_v1_evidence_source",
+  "decisive_run_id": 34677297901,
+  "decisive_job_id": 103509323551,
+  "artifact_id": 10292433776,
+  "artifact_bytes": 65330,
+  "artifact_zip_sha256": "1ab8a12d77beb15c7aba5880a588c3475dc7d6270ca121eb95056ef9aa56ba92",
+  "validation_results_sha256": "01780af3bcee5d087eb3af4ea02739a210a28b1cd211e08892a5be1de2b4664f",
+  "frozen_models_sha256": "7eae7142323b38c5ae54618745e9ad9891c00afb09d02e8eb8def4490675f6b6",
+  "source_artifact_copied_byte_for_byte": true,
+  "validation_reused": true,
+  "fresh_oos": false,
+  "read_2026": false,
+  "blackbox_queried": false,
+  "pnl_computed": false,
+  "production_authority": false
+}
