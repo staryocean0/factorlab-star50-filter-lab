@@ -1,12 +1,16 @@
 # STAR50 / CSI1000 当前权威索引
 
-## 当前断点：DATAHUB_RECEPTION_ADAPTER_V1_OFFLINE_CONTRACT_ACCEPTED_LOCAL_WIRING_PENDING
+## 当前断点：DATAHUB_RECEPTION_CLOUD_ACCEPTANCE_V1_SUPPORTED_TRUE_RECEPTION_EVIDENCE_PENDING
 
-[当前任务](../CURRENT_RESEARCH.md) → [程序状态](../research/prospective_reception_recorder_v1/PROGRAM_STATE.json) → [DataHub适配结果](../research/prospective_reception_recorder_v1/DATAHUB_ADAPTER_RESULTS.md) → [接入契约](../research/prospective_reception_recorder_v1/DATAHUB_INTEGRATION.md) → [adapter源码](../research/prospective_reception_recorder_v1/datahub_adapter.py) → [执行回执](../research/prospective_reception_recorder_v1/DATAHUB_ADAPTER_EXECUTION_RECEIPT.json) → 原[recorder协议](../research/prospective_reception_recorder_v1/PROTOCOL.md) / [schema](../research/prospective_reception_recorder_v1/SCHEMA.json)。
+[当前任务](../CURRENT_RESEARCH.md) → [程序状态](../research/prospective_reception_recorder_v1/PROGRAM_STATE.json) → [云端验收结果](../research/prospective_reception_recorder_v1/CLOUD_ACCEPTANCE_RESULTS.md) → [云端执行回执](../research/prospective_reception_recorder_v1/CLOUD_ACCEPTANCE_EXECUTION_RECEIPT.json) → [DataHub适配结果](../research/prospective_reception_recorder_v1/DATAHUB_ADAPTER_RESULTS.md) → [接入契约](../research/prospective_reception_recorder_v1/DATAHUB_INTEGRATION.md) → 原[recorder协议](../research/prospective_reception_recorder_v1/PROTOCOL.md) / [schema](../research/prospective_reception_recorder_v1/SCHEMA.json)。
 
-真实DataHub源码已经确认最早可控采集边界：TDX Python SDK `get_security_quotes()`返回后、DataHub `parse_quotes()`之前。23项适配层测试通过；原参考recorder 18项测试证据保留。该时钟是SDK-return/DataHub-ingress，不冒充raw TCP/frame到达。
+## 最新云端验收
 
-用户交付的2025-06-11 normalized历史样本为两个指数各4,746行，作为有效历史行情与schema语义参考直接使用；没有historical received_at只限制实测延迟声明，不质疑历史行情本身。
+GitHub Actions run `34666927078` 成功：完整恢复并验证用户既有handoff ZIP；20个manifest文件全匹配；完整审计9,492行（两指数各4,746）；4,746点跨指数observation grid完全一致；41项recorder/adapter测试PASS；DataHub源码seam复核与V2治理validator通过。artifact id `10288693269`。
+
+真实DataHub源码的最早可控采集边界仍是 **TDX Python SDK `get_security_quotes()`返回后、DataHub `parse_quotes()`之前**。这是SDK-return/DataHub-ingress，不是wire-level arrival。
+
+历史行情有效性不受historical received_at缺失影响。D5R只说明历史实测本机到达时钟不可恢复。
 
 ## 保持原样的历史阶段证据
 
@@ -17,10 +21,10 @@
 - [D2](../research/causal_state_delivery_d2/RESULTS.md)：双时钟历史工程回放；
 - [V19](../research/highvol_risk_episode_state_machine_v19_validation/VALIDATION_RESULTS.md)及V18/V17/V16冻结证据。
 
-## 下一可执行动作
+## 下一研究边界
 
-本地只需把已测试wrapper挂到DataHub现有`hq_api`/`quotes_parser`依赖注入点，先用synthetic或治理允许的replay/input验证真实wiring、持久化、重启、坏/重复消息和性能开销。通过后再开始受保护前瞻采集。
+云端工程验收已经完成，不再把“本地wiring测试”当成用户待办。reception线若要提升到实测层，只能等待未来真实本机feed产生、且治理允许使用的true-reception evidence。
 
-当前已过2026-08-21，新采逐行subject数据可能属于pending BlackBox-V1，先留受保护本地层；不直接上传逐行内容或详细研究。
+在此之前仍可继续不依赖reception clock的云端研究，但不因缺日志启动D6/V20，不查BlackBox逐行细节，不计算PnL，不接生产authority。
 
-`live_recorder_installed=false`; `measured_feed_latency_supported=false`; `d6_started=false`; `v20_started=false`; `production_authority=false`。
+`cloud_acceptance_supported=true`; `live_recorder_installed=false`; `true_reception_rows_collected=false`; `measured_feed_latency_supported=false`; `d6_started=false`; `v20_started=false`; `production_authority=false`。
