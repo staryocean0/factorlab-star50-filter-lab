@@ -1,0 +1,1 @@
+V1 is closed as `development_structure_not_established`. Follow-up work may only test the already-observed distinction between the fixed M3 activity-surprise axis and the inherited current 5m/preceding-30m volatility-ratio axis. It may not retune either axis or reopen first-shock/trading candidates.
